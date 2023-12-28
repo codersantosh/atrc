@@ -2,7 +2,7 @@
 	"name": "atrc",
 	"version": "1.0.0",
 	"description": "Atomic React Components",
-	"main": "index.js",
+	"main": "build/index.js",
 	"scripts": {
 		"build": "wp-scripts build index --webpack-src-dir=api --output-path=build",
 		"start": "wp-scripts start index --webpack-src-dir=api --output-path=build",

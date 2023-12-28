@@ -5,8 +5,6 @@ Type string
 /*WordPress*/
 import { __, sprintf } from '@wordpress/i18n';
 
-const { defaultSettings, initialize } = wp.codeEditor;
-
 import {
 	useEffect,
 	useState,
@@ -58,19 +56,23 @@ const CodeEditor = ({ editorValue, onChange, editorSettings }) => {
 
 	/*Initialize CodeMirror*/
 	useEffect(() => {
-		if (initialize) {
-			const codeM = initialize(
-				instanceId,
-				deepmerge(defaultSettings, editorSettings)
-			);
-			setCodeMirror(codeM);
-			codeM.codemirror.on('change', onChangeHandler);
-		}
+		if (typeof wp !== 'undefined' && wp.codeEditor) {
+			const { defaultSettings, initialize } = wp.codeEditor;
 
-		return () => {
-			debouncedOnChange?.current?.cancel();
-			codeMirror?.codemirror.off('change', onChangeHandler);
-		};
+			if (initialize) {
+				const codeM = initialize(
+					instanceId,
+					deepmerge(defaultSettings, editorSettings)
+				);
+				setCodeMirror(codeM);
+				codeM.codemirror.on('change', onChangeHandler);
+			}
+
+			return () => {
+				debouncedOnChange?.current?.cancel();
+				codeMirror?.codemirror.off('change', onChangeHandler);
+			};
+		}
 	}, []);
 
 	return (
