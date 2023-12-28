@@ -1,0 +1,10 @@
+#{$appPrefix} {
+    &-ctrl-bg {
+        #{$appPrefix} {
+            &-dropdown-device {
+                #{$varPrefix}-w: 100%;
+                width          : var(#{$varPrefix}-w);
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+#{$appPrefix} {
+    &-btn-grp {
+        #{$varPrefix}-g-t-b: 5px;
+        #{$varPrefix}-g-l-r: 8px;
+        #{$varPrefix}-gap  : var(#{$varPrefix}-g-t-b) var(#{$varPrefix}-g-l-r);
+        #{$varPrefix}-m    : 15px 0 0 0;
+
+    }
+
+    &-sidebar {
+        &-right {
+
+            .at-btn {
+                #{$varPrefix}-p: 10px 15px;
+            }
+
+        }
+    }
+}

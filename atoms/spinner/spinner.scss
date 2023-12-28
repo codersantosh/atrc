@@ -1,0 +1,22 @@
+@import'../../prefix-vars';
+
+#{$appPrefix} {
+    &-spinner {
+        &:not(#{$appPrefix}-spinner-inline) {
+            #{$varPrefix}-w  : 30px;
+            #{$varPrefix}-h  : 30px;
+            #{$varPrefix}-pos: absolute;
+            #{$varPrefix}-l  : 50%;
+            #{$varPrefix}-t  : 50%;
+            #{$varPrefix}-tf : translate(-50%, -50%);
+
+            left      : var(#{$varPrefix}-l);
+            top       : var(#{$varPrefix}-t);
+            position  : var(#{$varPrefix}-pos) !important;
+            height    : var(#{$varPrefix}-h) !important;
+            width     : var(#{$varPrefix}-w) !important;
+            transform : var(#{$varPrefix}-tf);
+        }
+    }
+
+}

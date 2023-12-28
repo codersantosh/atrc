@@ -1,0 +1,53 @@
+#{$appPrefix} {
+    &-ctrl-col-adv-lyt {
+        #{$varPrefix}-m: 0 0 15px 0;
+
+        #{$appPrefix} {
+            &-ctrl-select-btn {
+
+                #{$appPrefix} {
+                    &-btn-grp {
+                        #{$varPrefix}-gap: 5px;
+
+                    }
+
+                    &-btn-select {
+                        &:not(#{$appPrefix}-btn-active) {
+                            .at-svg {
+                                opacity: 0.5;
+                            }
+
+                            &:hover {
+                                .at-svg {
+                                    opacity: 0.8;
+
+                                }
+                            }
+                        }
+
+                        * {
+                            flex-basis: 100%;
+                        }
+
+                        #{$varPrefix}-p        :3px;
+                        #{$varPrefix}-fnt-sz   :0;
+                        #{$varPrefix}-ln-h     : normal;
+                        #{$varPrefix}-h        : auto;
+                        #{$varPrefix}-bg-cl    : #fff;
+                        // #{$varPrefix}-w     : calc((100% / 3) - var(#{$varPrefix}-gap) - 10px);
+                        // width               : var(#{$varPrefix}-w);
+
+                        .at-svg {
+                            // #{$varPrefix}-w : 100%;
+                            // #{$varPrefix}-h : 100%;
+                            // #{$varPrefix}-cl: #48b44f;
+                            #{$varPrefix}-w : 35px;
+                            #{$varPrefix}-h : 35px;
+                            #{$varPrefix}-cl: #536e85;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+/*-----------------------------
+	Compound Slider
+------------------------------*/
+.g-r-col-inputs {
+	display: -ms-flexbox;
+	display: flex;
+	margin-top: 30px;
+}
+
+.g-r-col-inputs .g-r-col-input-field {
+	width: calc(100% / 3 - 5px);
+	margin-right: 5px;
+}
+
+.g-r-col-inputs .g-r-col-input-field:last-child {
+	margin-right: 0;
+}
+
+.g-r-col-slider {
+	padding-top: 20px;
+}
+
+.g-r-col-slider .slider-handles [role='slider'] {
+	position: absolute;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 10px;
+	height: 10px;
+	padding: 0;
+	border-radius: 50%;
+	background-color: #275cf6;
+	border: 0;
+	outline: 0;
+}

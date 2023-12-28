@@ -1,0 +1,277 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+    &-rst {
+        &-btn {
+            #{$varPrefix}-p: 0;
+            #{$varPrefix}-h: auto;
+            padding        : var(#{$varPrefix}-p);
+            height         : var(#{$varPrefix}-h);
+
+            &:hover,
+            &:focus {
+                #{$varPrefix}-bg-cl: transparent;
+                background-color   : var(#{$varPrefix}-bg-cl) !important;
+            }
+        }
+
+        &-wrp {
+            #{$varPrefix}-gap: 0 15px;
+
+
+            .components {
+                &-flex {
+                    gap: calc(5px);
+                }
+
+                &-base-control {
+                    &:last-of-type {
+                        #{$varPrefix}-m: 0;
+                        margin-bottom  : var(#{$varPrefix}-m) !important;
+                    }
+
+                    flex-grow: 1;
+
+                    &__field {
+                        #{$varPrefix}-m: 0;
+                        margin-bottom  : var(#{$varPrefix}-m);
+                    }
+                }
+
+                &-base-control__label,
+                &-input-control__label {
+                    #{$varPrefix}-fnt-wt: 600;
+                    #{$varPrefix}-m     : 0 0 5px 0;
+                    #{$varPrefix}-cl    : var(#{$varPrefix}-body-color);
+                    #{$varPrefix}-txt-tf: capitalize;
+                    font-size           : var(#{$varPrefix}-fnt-sz) !important;
+                    font-weight         : var(#{$varPrefix}-fnt-wt) !important;
+                    color               : var(#{$varPrefix}-cl) !important;
+                    text-transform      : var(#{$varPrefix}-txt-tf) !important;
+                    margin              : var(#{$varPrefix}-m);
+                }
+
+                &-font-size-picker__controls {
+                    #{$varPrefix}-m: 0;
+                    margin-bottom  : var(#{$varPrefix}-m);
+
+                    .components-toggle-group-control-option-base {
+                        #{$varPrefix}-p: 0 11px;
+                        padding        : var(#{$varPrefix}-p);
+                    }
+
+                    .components-base-control {
+                        &:last-child {
+                            #{$varPrefix}-m: 0;
+                            margin-bottom  : var(#{$varPrefix}-m);
+                        }
+                    }
+                }
+            }
+
+            &#{$appPrefix} {
+                &-select-rst {
+                    #{$appPrefix} {
+                        &-btn {
+                            &-rst {
+                                &-i {
+                                    #{$varPrefix}-m: 39px 0 0 0;
+                                    margin         : var(#{$varPrefix}-m);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &-range-rst {
+                    #{$appPrefix} {
+                        &-btn {
+                            &-rst {
+                                &-i {
+                                    #{$varPrefix}-m: 33px 0 0 0;
+                                    margin         : var(#{$varPrefix}-m);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &-bdr-rst {
+                    #{$appPrefix} {
+                        &-btn {
+                            &-rst {
+                                &-i {
+                                    #{$varPrefix}-m: 8px 0 0 0;
+                                    margin         : var(#{$varPrefix}-m);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &-bdr-rad-rst {
+                    #{$appPrefix} {
+                        &-btn {
+                            &-rst {
+                                &-i {
+                                    #{$varPrefix}-m: 35px 0 0 0;
+                                    margin         : var(#{$varPrefix}-m);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &-ctrl-unit-rst {
+                    #{$appPrefix} {
+                        &-btn {
+                            &-rst {
+                                &-i {
+                                    #{$varPrefix}-m: 38px 0 0 0;
+                                    margin         : var(#{$varPrefix}-m);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &-txt-rst {
+                    #{$appPrefix} {
+                        &-btn {
+                            &-rst {
+                                &-i {
+                                    #{$varPrefix}-m: 33px 0 0 0;
+                                    margin         : var(#{$varPrefix}-m);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &-box-four-rst {
+                    #{$appPrefix} {
+                        &-btn {
+                            &-rst {
+                                &-i {
+                                    #{$varPrefix}-m: 15px 0 0 0;
+                                    margin         : var(#{$varPrefix}-m);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &-combobox-rst {
+                    #{$appPrefix} {
+                        &-btn {
+                            &-rst {
+                                &-i {
+                                    #{$varPrefix}-m: 40px 0 0 0;
+                                    margin         : var(#{$varPrefix}-m);
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    &-typ-ln-h {
+        #{$appPrefix} {
+            &-rst {
+                &-wrp {
+                    &#{$appPrefix} {
+                        &-select-rst {
+                            #{$appPrefix} {
+                                &-btn {
+                                    &-rst {
+                                        &-i {
+                                            #{$varPrefix}-m: 10px 0 0 0;
+                                            margin         : var(#{$varPrefix}-m);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &-txt-rst {
+                            #{$appPrefix} {
+                                &-btn {
+                                    &-rst {
+                                        &-i {
+                                            #{$varPrefix}-m: 12px 0 0 0;
+                                            margin         : var(#{$varPrefix}-m);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &-ctrl-unit-rst {
+                            #{$appPrefix} {
+                                &-btn {
+                                    &-rst {
+                                        &-i {
+                                            #{$varPrefix}-m: 12px 0 0 0;
+                                            margin         : var(#{$varPrefix}-m);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+
+                    }
+                }
+            }
+        }
+    }
+
+    &-ctrl-select-device {
+        #{$appPrefix} {
+            &-rst {
+                &-wrp {
+
+                    #{$appPrefix} {
+                        &-btn {
+                            &-rst {
+                                &-i {
+                                    #{$varPrefix}-m: 12px 0 0 0;
+                                    margin         : var(#{$varPrefix}-m);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-lbl-rst {
+        #{$appPrefix} {
+            &-btn {
+                &-rst {
+                    &-i {
+                        #{$varPrefix}-m: 4px 0 0 0 !important;
+                        margin         : var(#{$varPrefix}-m);
+                    }
+                }
+            }
+        }
+    }
+
+    &-ctrl-zidx-device {
+        #{$appPrefix} {
+            &-btn {
+                &-rst {
+                    &-i {
+                        #{$varPrefix}-m: 10px 0 0 0 !important;
+                        margin         : var(#{$varPrefix}-m);
+                    }
+                }
+            }
+        }
+    }
+}

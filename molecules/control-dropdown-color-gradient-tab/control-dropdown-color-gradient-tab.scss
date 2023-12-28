@@ -1,0 +1,8 @@
+#{$appPrefix} {
+    &-ctrl-dropdown-cl-grd-tab {
+        .component-color-indicator {
+            #{$varPrefix}-cur: pointer;
+            cursor           : var(#{$varPrefix}-cur);
+        }
+    }
+}

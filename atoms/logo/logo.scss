@@ -1,0 +1,24 @@
+@import'../../prefix-vars';
+
+#{$appPrefix} {
+    &-img {
+        &-logo {
+            #{$varPrefix}-max-w: 50px;
+        }
+    }
+
+    &-logo {
+        #{$appPrefix} {
+            &-lnk {
+                &-nav {
+                    #{$varPrefix}-opa  : 1;
+                    #{$varPrefix}-bdr-w: 0;
+                }
+
+                &-active {
+                    #{$varPrefix}-opa: 1;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+%grwItem {
+    #{$varPrefix}-w: 100%;
+    width          : var(#{$varPrefix}-w);
+}
+
+#{$appPrefix} {
+    &-ctrl-divr {
+        #{$appPrefix} {
+
+            &-select-rst {
+                @extend %grwItem;
+            }
+
+            &-ctrl-shp {
+                @extend %grwItem;
+
+                #{$appPrefix}-dropdown {
+                    @extend %grwItem;
+                }
+            }
+        }
+    }
+}

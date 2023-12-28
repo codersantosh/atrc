@@ -1,0 +1,20 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+    &-bs {
+        &-select {
+            &-plain {
+                .components {
+                    &-base {
+                        &-control {
+                            &__field {
+                                #{$varPrefix}-m: 0;
+                                margin-bottom  : var(#{$varPrefix}-m) !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

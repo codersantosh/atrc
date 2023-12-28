@@ -1,0 +1,119 @@
+#{$appPrefix} {
+    &-repeater {
+        #{$appPrefix} {
+            &-lbl {
+                &:empty {
+                    display: none;
+                }
+            }
+
+            &-hr {
+                #{$varPrefix}-m: 0 0 15px 0;
+            }
+
+        }
+
+
+        &-grp {
+            #{$varPrefix}-m: 0 0 15px 0;
+
+
+            &-actions {
+                #{$varPrefix}-gap: 0 5px;
+
+                .at-btn {
+                    #{$varPrefix}-p: 0;
+                    #{$varPrefix}-h: 16px;
+                    #{$varPrefix}-w: 16px;
+
+                    width  : var(#{$varPrefix}-w);
+                    height : var(#{$varPrefix}-h);
+
+                    .at {
+                        &-svg {
+                            #{$varPrefix}-h: 14px;
+                            #{$varPrefix}-w: 14px;
+                        }
+
+
+                    }
+
+                    &#{$appPrefix}-btn-dropdown {
+                        .at {
+                            &-svg {
+                                #{$varPrefix}-h: 20px;
+                                #{$varPrefix}-w: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &-itms {
+                #{$varPrefix}-bdr-cl : var(#{$varPrefix}-quaternary);
+                #{$varPrefix}-bdr-w  : 0 1px 1px 1px;
+                #{$varPrefix}-bdr-sty: solid;
+                #{$varPrefix}-bg-cl  : var(#{$varPrefix}-secondary);
+
+                &-fields {
+                    #{$varPrefix}-p: 15px;
+
+                    #{$appPrefix} {
+                        &-repeater-grp-itms {}
+                    }
+                }
+            }
+
+            &-header {
+
+                #{$varPrefix}-bdr-cl : var(#{$varPrefix}-quaternary);
+                #{$varPrefix}-bdr-w  : 1px;
+                #{$varPrefix}-bdr-sty: solid;
+                #{$varPrefix}-bg-cl  : var(#{$varPrefix}-white);
+
+                #{$appPrefix} {
+                    &-lbl {
+                        line-height    : 0;
+                        #{$varPrefix}-m: 0 !important;
+                    }
+                }
+
+                &#{$appPrefix} {
+                    &-header {
+                        #{$varPrefix}-p: 10px;
+                    }
+                }
+            }
+        }
+
+        #{$appPrefix} {
+            &-lbl {
+                #{$varPrefix}-m: 0 0 15px 0;
+
+                + {
+                    #{$appPrefix} {
+                        &-btn {
+                            &-add {
+                                #{$varPrefix}-m: 0 0 0 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-btn {
+        &-add {
+            #{$varPrefix}-bg-cl: var(#{$varPrefix}-primary);
+            #{$varPrefix}-cl   : var(#{$varPrefix}-white);
+            #{$varPrefix}-m    : 0;
+            #{$varPrefix}-p    : 10px 15px;
+
+            .at-gap {
+                #{$varPrefix}-gap: 0 10px;
+            }
+        }
+    }
+
+}

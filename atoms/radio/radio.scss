@@ -1,0 +1,34 @@
+@import'../../prefix-vars';
+
+#{$appPrefix} {
+    &-radio {
+        &-info {}
+
+        &-input {
+            #{$varPrefix}-m: 7px 10px 0 0;
+            margin         : var(#{$varPrefix}-m) !important;
+        }
+
+
+    }
+
+    &-span {
+        &-radio {
+            &-desc {
+                display: block;
+            }
+        }
+    }
+
+    &-form {
+
+        #{$appPrefix}-label {
+            &-radio {
+                &-label {
+                    #{$varPrefix}-m: 0;
+                    margin-bottom  : var(#{$varPrefix}-m) !important;
+                }
+            }
+        }
+    }
+}

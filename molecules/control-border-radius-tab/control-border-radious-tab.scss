@@ -1,0 +1,10 @@
+ #{$appPrefix} {
+
+     &-ctrl-bdr-rad-tab {
+         .components {
+             &-unit-control__select {
+                 color: var(#{$varPrefix}-cl) !important;
+             }
+         }
+     }
+ }

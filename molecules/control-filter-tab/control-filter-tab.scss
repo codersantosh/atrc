@@ -1,0 +1,49 @@
+@import'../../prefix-vars';
+
+#{$appPrefix} {
+    &-select {
+
+        &:focus,
+        &:focus-visible,
+        &:focus-within {
+            outline              : 0 !important;
+            #{$varPrefix}-box-sdw: none;
+            box-shadow           : var(#{$varPrefix}-box-sdw) !important;
+        }
+
+        .components {
+            &-input-control__backdrop {
+
+                &:focus,
+                &:focus-visible,
+                &:focus-within {
+                    outline              : 0 !important;
+                    #{$varPrefix}-box-sdw: none;
+                    box-shadow           : var(#{$varPrefix}-box-sdw) !important;
+                }
+            }
+
+        }
+
+        &-multi {
+            >div {
+                #{$varPrefix}-h      : auto;
+                #{$varPrefix}-min-h  : 35px;
+                #{$varPrefix}-bdr-rad: 2px;
+                #{$varPrefix}-bdr-cl : var(#{$varPrefix}-quaternary);
+                height               : var(#{$varPrefix}-h) !important;
+                min-height           : var(#{$varPrefix}-min-h) !important;
+                border-radius        : var(#{$varPrefix}-bdr-rad);
+                border-color         : var(#{$varPrefix}-bdr-cl) !important;
+
+
+            }
+
+            .css-g1d714-ValueContainer {
+                #{$varPrefix}-p: 0;
+                padding-top    : var(#{$varPrefix}-p) !important;
+                padding-bottom : var(#{$varPrefix}-p) !important;
+            }
+        }
+    }
+}

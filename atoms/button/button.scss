@@ -1,0 +1,197 @@
+@import '../../prefix-vars';
+
+/* Global button */
+.at-btn {
+	#{$varPrefix}-cur: pointer;
+	#{$varPrefix}-fnt-sz: 13px;
+	#{$varPrefix}-cl: var(#{$varPrefix}-white);
+	#{$varPrefix}-bg-cl: var(#{$varPrefix}-primary);
+	#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary);
+	#{$varPrefix}-bdr-w: initial;
+	#{$varPrefix}-bdr-sty: initial;
+	#{$varPrefix}-p: 6px 12px;
+	#{$varPrefix}-ln-h: normal;
+	line-height: var(#{$varPrefix}-ln-h);
+
+	&:hover {
+		#{$varPrefix}-bg-cl: var(#{$varPrefix}-primary--hover);
+		#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary--hover);
+		#{$varPrefix}-cl: var(#{$varPrefix}-white);
+	}
+
+	&[disabled] {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}
+
+/* Variants */
+#{$appPrefix} {
+	&-btn {
+		&-outl {
+			#{$varPrefix}-bg-cl: transparent;
+			#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-quaternary);
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-bdr-sty: solid;
+			#{$varPrefix}-p: 10px 15px;
+
+			&:hover {
+				#{$varPrefix}-bg-cl: transparent;
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary);
+				#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+			}
+		}
+
+		&-lnk {
+			#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+			#{$varPrefix}-bg-cl: transparent;
+			#{$varPrefix}-bdr-w: 0;
+			#{$varPrefix}-p: 0;
+
+			&:hover {
+				#{$varPrefix}-cl: var(#{$varPrefix}-primary--hover);
+				#{$varPrefix}-bg-cl: transparent;
+			}
+		}
+
+		&-devices {
+			#{$varPrefix}-bg-cl: transparent;
+			#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+
+			&:hover {
+				#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+				#{$varPrefix}-bg-cl: transparent;
+			}
+		}
+
+		&-delete {
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-danger);
+			#{$varPrefix}-opa: 0.6;
+			opacity: var(#{$varPrefix}-opa);
+
+			&:hover,
+			&:focus {
+				#{$varPrefix}-opa: 1;
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-danger);
+			}
+
+			&-icon {
+				#{$varPrefix}-cl: var(#{$varPrefix}-danger);
+				#{$varPrefix}-bg-cl: transparent;
+				height: auto;
+
+				&:hover,
+				&:focus {
+					#{$varPrefix}-cl: var(#{$varPrefix}-danger);
+					#{$varPrefix}-bg-cl: transparent;
+				}
+			}
+		}
+
+		&-dropdown {
+			#{$varPrefix}-bg-cl: transparent;
+			#{$varPrefix}-p: 0;
+			#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+
+			&:hover,
+			&:focus {
+				#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+				#{$varPrefix}-bg-cl: transparent;
+			}
+		}
+
+		&-rst {
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-danger);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-danger);
+			#{$varPrefix}-opa: 0.8;
+			opacity: var(#{$varPrefix}-opa);
+
+			&:hover,
+			&:focus {
+				#{$varPrefix}-opa: 1;
+			}
+
+			&-i {
+				#{$varPrefix}-bg-cl: transparent !important;
+				#{$varPrefix}-p: 0;
+				#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+
+				&:hover,
+				&:focus {
+					#{$varPrefix}-bg-cl: transparent;
+					#{$varPrefix}-cl: var(#{$varPrefix}-danger) !important;
+				}
+			}
+		}
+
+		&-pagination {
+			#{$varPrefix}-m: 0 3px;
+			margin: var(#{$varPrefix}-m);
+		}
+
+		&-icon {
+			#{$varPrefix}-p: 0;
+			#{$varPrefix}-h: 35px;
+			#{$varPrefix}-w: 35px;
+			#{$varPrefix}-bdr-rad: 50px;
+			#{$varPrefix}-bg-cl: transparent;
+			#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+
+			&:hover,
+			&:focus {
+				#{$varPrefix}-bg-cl: transparent;
+				#{$varPrefix}-cl: var(#{$varPrefix}-danger);
+			}
+
+			.at {
+				&-svg {
+					#{$varPrefix}-h: 16px;
+					#{$varPrefix}-w: 16px;
+				}
+			}
+		}
+
+		&-close {
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-danger);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-danger);
+			#{$varPrefix}-opa: 0.8;
+			#{$varPrefix}-ln-h: 1;
+			opacity: var(#{$varPrefix}-opa);
+
+			&:hover,
+			&:focus {
+				#{$varPrefix}-opa: 1;
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-danger);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-danger);
+			}
+
+			.at {
+				&-svg {
+					#{$varPrefix}-fnt-sz: 20px;
+					font-size: var(#{$varPrefix}-fnt-sz);
+				}
+			}
+		}
+
+		&-active {
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-quaternary);
+			#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+		}
+
+		&-spin {
+			#{$varPrefix}-gap: 0 10px;
+
+			#{$appPrefix} {
+				&-spinner {
+					#{$varPrefix}-m: 0;
+					#{$varPrefix}-h: 12px;
+					#{$varPrefix}-w: 12px;
+					margin: var(#{$varPrefix}-m) !important;
+					height: var(#{$varPrefix}-h) !important;
+					width: var(#{$varPrefix}-w) !important;
+				}
+			}
+		}
+	}
+}

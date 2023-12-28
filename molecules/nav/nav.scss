@@ -1,0 +1,60 @@
+@import'../../prefix-vars';
+
+#{$appPrefix} {
+
+    &-nav {
+
+        #{$varPrefix}-box-szg: border-box;
+        box-sizing           : var(#{$varPrefix}-box-szg);
+
+        &-ul {
+            #{$varPrefix}-gap: 25px;
+            #{$varPrefix}-p  : 0 15px;
+
+            li {
+                #{$varPrefix}-m: 0;
+                #{$varPrefix}-p: 0;
+                padding        : var(#{$varPrefix}-p);
+                margin         : var(#{$varPrefix}-m);
+            }
+        }
+
+
+        /*Nav Variant CSS*/
+        &-primary {
+            #{$varPrefix}-p: 0 0 0 20px;
+        }
+
+        &-secondary {
+            #{$varPrefix}-p: 0 20px 0 0;
+        }
+
+        &-vertical {
+            #{$appPrefix} {
+                &-ul {
+                    #{$varPrefix}-p: 0;
+                }
+
+                &-nav {
+                    &-lnk {
+                        #{$varPrefix}-p      : 20px;
+                        #{$varPrefix}-bdr-w  : 0;
+                        #{$varPrefix}-bdr-sty: none;
+                        #{$varPrefix}-bdr-cl : transparent;
+                        display              : block;
+                        padding              : var(#{$varPrefix}-p);
+                        border-width         : var(#{$varPrefix}-bdr-w);
+                        border-style         : var(#{$varPrefix}-bdr-sty);
+                        border-color         : var(#{$varPrefix}-bdr-cl);
+
+                    }
+
+                    &-active {
+                        #{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+                        background         : var(#{$varPrefix}-bg-cl);
+                    }
+                }
+            }
+        }
+    }
+}

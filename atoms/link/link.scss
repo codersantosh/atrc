@@ -1,0 +1,141 @@
+@import'../../prefix-vars';
+
+
+#{$appPrefix} {
+
+    &-lnk {
+
+        #{$varPrefix}-txt-dec: none;
+        #{$varPrefix}-cl     : var(#{$varPrefix}-body-color);
+        #{$varPrefix}-cur    : pointer;
+        #{$varPrefix}-outl   : 0;
+        #{$varPrefix}-box-sdw: none;
+        #{$varPrefix}-fnt-wt : 600;
+        #{$varPrefix}-fnt-sz : 13px;
+        font-size            : var(#{$varPrefix}-fnt-sz);
+        font-weight          : var(#{$varPrefix}-fnt-wt);
+        text-decoration      : var(#{$varPrefix}-txt-dec);
+        color                : var(#{$varPrefix}-cl);
+        cursor               : var(#{$varPrefix}-cur);
+        outline              : var(#{$varPrefix}-outl);
+        box-shadow           : var(#{$varPrefix}-box-sdw);
+        text-transform       : var(#{$varPrefix}-txt-tf);
+
+        &:hover,
+        &:focus {
+            #{$varPrefix}-cl : var(#{$varPrefix}-body-color);
+            outline          : var(#{$varPrefix}-outl);
+            box-shadow       : var(#{$varPrefix}-box-sdw);
+            color            : var(#{$varPrefix}-cl);
+        }
+
+        &-primary {
+            #{$varPrefix}-cl   : var(#{$varPrefix}-white);
+            #{$varPrefix}-bg-cl: var(#{$varPrefix}-primary);
+            #{$varPrefix}-p    : 6px 12px;
+
+            background-color : var(#{$varPrefix}-bg-cl);
+            padding          : var(#{$varPrefix}-p);
+
+            &:hover,
+            &:focus {
+                #{$varPrefix}-bg-cl: var(#{$varPrefix}-primary--hover);
+                #{$varPrefix}-cl   : var(#{$varPrefix}-white);
+            }
+
+            &-txt {
+                #{$varPrefix}-cl: var(#{$varPrefix}-primary);
+
+                &:hover,
+                &:focus {
+                    #{$varPrefix}-cl: var(#{$varPrefix}-primary--hover);
+                }
+            }
+        }
+
+        &-outl {
+            border-color         : var(#{$varPrefix}-bdr-cl);
+            border-width         : var(#{$varPrefix}-bdr-w);
+            border-style         : var(#{$varPrefix}-bdr-sty);
+            #{$varPrefix}-bg-cl  : transparent;
+            #{$varPrefix}-cl     : var(#{$varPrefix}-body-color);
+            #{$varPrefix}-bdr-cl : var(#{$varPrefix}-quaternary);
+            #{$varPrefix}-bdr-w  : 1px;
+            #{$varPrefix}-bdr-sty: solid;
+
+            &:hover {
+                #{$varPrefix}-bg-cl : transparent;
+                #{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary);
+                #{$varPrefix}-cl    : var(#{$varPrefix}-primary);
+            }
+        }
+
+        &-nav {
+            #{$varPrefix}-fnt-sz : 13px;
+            #{$varPrefix}-opa    : 0.8;
+            #{$varPrefix}-p      : 10px 0;
+            #{$varPrefix}-bdr-w  : 0 0 2px 0;
+            #{$varPrefix}-bdr-sty: solid;
+            #{$varPrefix}-bdr-cl : transparent;
+            #{$varPrefix}-cl     : var(#{$varPrefix}-body-color);
+            #{$varPrefix}-fnt-wt : 600;
+            #{$varPrefix}-txt-dec: none;
+            #{$varPrefix}-trs    : all 0.5s ease-in-out 0s;
+
+
+            padding        : var(#{$varPrefix}-p);
+            opacity        : var(#{$varPrefix}-opa);
+            border-width   : var(#{$varPrefix}-bdr-w);
+            border-style   : var(#{$varPrefix}-bdr-sty);
+            border-color   : var(#{$varPrefix}-bdr-cl);
+            color          : var(#{$varPrefix}-cl);
+            font-weight    : var(#{$varPrefix}-fnt-wt);
+            text-decoration: var(#{$varPrefix}-txt-dec);
+            font-size      : var(#{$varPrefix}-fnt-sz);
+
+            transition : var(#{$varPrefix}-trs);
+
+
+            display: inline-block;
+
+            &:hover,
+            &:focus {
+                #{$varPrefix}-opa: 1;
+                #{$varPrefix}-cl : var(#{$varPrefix}-body-color);
+
+            }
+
+        }
+
+        &-active {
+            #{$varPrefix}-opa   : 1;
+            #{$varPrefix}-bdr-cl: var(#{$varPrefix}-body-color);
+            #{$varPrefix}-cl    : var(#{$varPrefix}-body-color);
+        }
+
+        &-rst {
+            #{$varPrefix}-bg-cl : var(#{$varPrefix}-danger);
+            #{$varPrefix}-bdr-cl: var(#{$varPrefix}-danger);
+            #{$varPrefix}-opa   : 0.7;
+            #{$varPrefix}-ln-h  : 1;
+            #{$varPrefix}-p     : 6px 20px;
+            #{$varPrefix}-m     : 15px 0 0 0;
+            #{$varPrefix}-cl    : var(#{$varPrefix}-white);
+            opacity             : var(#{$varPrefix}-opa);
+            background-color    : var(#{$varPrefix}-bg-cl);
+            padding             : var(#{$varPrefix}-p);
+            color               : var(#{$varPrefix}-cl);
+
+            &:hover,
+            &:focus {
+                #{$varPrefix}-cl    : var(#{$varPrefix}-white);
+                #{$varPrefix}-opa   : 1;
+                #{$varPrefix}-bg-cl : var(#{$varPrefix}-danger);
+                #{$varPrefix}-bdr-cl: var(#{$varPrefix}-danger);
+                color               : var(#{$varPrefix}-cl);
+            }
+        }
+
+
+    }
+}

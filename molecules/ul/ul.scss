@@ -1,0 +1,17 @@
+@import'../../prefix-vars';
+
+#{$appPrefix} {
+    &-ul {
+        &-fl {
+            #{$varPrefix}-m: 0;
+            margin-top     : var(#{$varPrefix}-m);
+            margin-bottom  : var(#{$varPrefix}-m);
+
+            #{$appPrefix}-li {
+                #{$varPrefix}-m: inherit inherit 0 -2px;
+                margin         : var(#{$varPrefix}-m);
+
+            }
+        }
+    }
+}

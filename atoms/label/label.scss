@@ -1,0 +1,37 @@
+#{$appPrefix} {
+    &-lbl {
+        &:empty {
+            display: none;
+        }
+
+        display: inline-block;
+
+        #{$varPrefix}-fnt-wt: 600;
+        #{$varPrefix}-fnt-sz: 12px;
+        #{$varPrefix}-cl    : var(#{$varPrefix}-body-color);
+        #{$varPrefix}-txt-tf: capitalize;
+        font-size           : var(#{$varPrefix}-fnt-sz);
+        font-weight         : var(#{$varPrefix}-fnt-wt);
+        color               : var(#{$varPrefix}-cl);
+        text-transform      : var(#{$varPrefix}-txt-tf);
+
+        &.at-m {
+            #{$varPrefix}-m: 0 0 15px 0;
+        }
+
+        &-color-picker {
+            #{$varPrefix}-m: 0 !important;
+        }
+
+        &-dropdown-device-lbl {
+            #{$varPrefix}-m: 0 0 5px 0 !important;
+            margin         : var(#{$varPrefix}-m) !important;
+        }
+    }
+
+    &-ctrl-select-btn {
+        #{$appPrefix}-lbl {
+            // #{$varPrefix}-m: 0 0 5px 0;
+        }
+    }
+}

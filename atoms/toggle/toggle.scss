@@ -1,0 +1,22 @@
+@import'../../prefix-vars';
+
+#{$appPrefix} {
+    &-tog {
+        #{$varPrefix}-m: 0;
+        margin         :var(#{$varPrefix}-m) !important;
+
+        .components-base-control__field {
+            #{$varPrefix}-m: 0 !important;
+            margin-bottom  : var(#{$varPrefix}-m);
+        }
+
+        .components-form-toggle {
+            &.is-checked {
+
+                .components-form-toggle__track {
+                    background-color : var(#{$varPrefix}-success);
+                }
+            }
+        }
+    }
+}

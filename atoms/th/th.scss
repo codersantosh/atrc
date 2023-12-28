@@ -1,0 +1,9 @@
+@import'../../prefix-vars';
+
+#{$appPrefix} {
+    &-th {
+        #{$varPrefix}-p     : 15px;
+        #{$varPrefix}-txt-al: left;
+
+    }
+}

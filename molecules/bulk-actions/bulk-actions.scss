@@ -1,0 +1,35 @@
+@import'../../prefix-vars';
+
+#{$appPrefix} {
+
+    &-bulk-wrp {
+        #{$appPrefix}-btn-grp {
+
+            #{$appPrefix}-ttip {
+                .at-btn {
+
+                    transition               : all 0.3s ease-in-out 0s;
+                    animation-duration       : 0.75s;
+                    animation-delay          : 0.2s;
+                    animation-name           : animate-slide;
+                    animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
+                    animation-fill-mode      : backwards;
+                }
+            }
+        }
+
+    }
+
+}
+
+@keyframes animate-slide {
+    0% {
+        opacity  : 0;
+        transform: translate(-20px, 0);
+    }
+
+    100% {
+        opacity  : 1;
+        transform: translate(0, 0);
+    }
+}

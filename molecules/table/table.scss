@@ -1,0 +1,11 @@
+@import'../../prefix-vars';
+
+#{$appPrefix} {
+    &-tbl {
+        #{$varPrefix}-w: 100%;
+        width          : var(#{$varPrefix}-w);
+        border-collapse: collapse;
+        border-spacing : 0;
+    }
+
+}
