@@ -2,7 +2,7 @@
 import { isEmpty, isObject } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcAvailableDevices } from '../../../atrc/utils';
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Local*/
 const AtrcControlFlexAlignSelfDeviceClasses = (abStyle) => {

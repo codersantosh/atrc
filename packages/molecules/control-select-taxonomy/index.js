@@ -7,7 +7,7 @@ import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcSelect } from '../../../atrc/atoms';
+import { AtrcSelect } from '../../atoms';
 
 import { AtrcNotice, AtrcUseTaxonomies } from '../index';
 

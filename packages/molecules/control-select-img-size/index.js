@@ -13,7 +13,7 @@ import { map } from 'lodash';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcSelect } from '../../../atrc/atoms';
+import { AtrcSelect } from '../../atoms';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

@@ -5,13 +5,13 @@ import { isEmpty, forEach } from 'lodash';
 import {
 	AtrcControlPositionAllowedKeys,
 	AtrcControlPositionDeviceCss,
-} from '../../../atrc/molecules';
+} from '../../molecules';
 
 import {
 	AtrcAvailableTabs,
 	AtrcHasTabValues,
 	AtrcGetTabValues,
-} from '../../../atrc/utils';
+} from '../../utils';
 
 /*Local*/
 const AtrcControlPositionDeviceTabCss = (

@@ -13,7 +13,7 @@ import { clone, debounce, isArray, isNumber, isString } from 'lodash';
 import classnames from 'classnames';
 
 /*Inbuilt */
-import { AtrcDynamicSelect } from '../../../atrc/atoms';
+import { AtrcDynamicSelect } from '../../atoms';
 
 import { AtrcNotice } from '../index';
 

@@ -15,7 +15,7 @@ import classnames from 'classnames';
 import { isString } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcSelect } from '../../../atrc/atoms';
+import { AtrcSelect } from '../../atoms';
 
 import { AtrcNotice } from '../index';
 

@@ -5,13 +5,13 @@ import { isEmpty } from 'lodash';
 import {
 	AtrcControlTransformAllowedKeys,
 	AtrcControlTransformCSS,
-} from '../../../atrc/molecules';
+} from '../../molecules';
 
 import {
 	AtrcAvailableTabs,
 	AtrcHasTabValues,
 	AtrcGetTabValues,
-} from '../../../atrc/utils';
+} from '../../utils';
 
 /*Local*/
 const AtrcControlTransformTabCss = (

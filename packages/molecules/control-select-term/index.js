@@ -17,7 +17,7 @@ import classnames from 'classnames';
 import { debounce, isArray, isNumber, isString } from 'lodash';
 
 /*Inbuilt */
-import { AtrcDynamicSelect } from '../../../atrc/atoms';
+import { AtrcDynamicSelect } from '../../atoms';
 
 import { AtrcNotice } from '../index';
 
