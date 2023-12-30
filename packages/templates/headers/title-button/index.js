@@ -1,13 +1,15 @@
+/* Library */
 import classnames from 'classnames';
-import {
-	AtrcButton,
-	AtrcHr,
-	AtrcResetButtonIcon,
-	AtrcWord,
-	AtrcWrap,
-} from '../../../atoms';
 import { isEmpty } from 'lodash';
 
+/* Inbuilt */
+import AtrcWrap from '../../../atoms/wrap';
+import AtrcButton from '../../../atoms/button';
+import AtrcResetButtonIcon from '../../../atoms/reset-button-icon';
+import AtrcWord from '../../../atoms/word';
+import AtrcHr from '../../../atoms/hr';
+
+/* Local */
 const TitleButton = (props) => {
 	const {
 		title,

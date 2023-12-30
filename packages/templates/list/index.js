@@ -13,38 +13,37 @@ import {
 } from 'react-icons/bs';
 
 /*Inbuilt*/
-import { AtrcHeader, AtrcMain, AtrcSidebar } from '../../organisms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcSelect from '../../atoms/select';
+import AtrcToggle from '../../atoms/toggle';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
+import AtrcSpan from '../../atoms/span';
+import AtrcWord from '../../atoms/word';
+import AtrcImg from '../../atoms/img';
+import AtrcHr from '../../atoms/hr';
+import AtrcTh from '../../atoms/th';
+import AtrcCheckbox from '../../atoms/checkbox';
+import AtrcThead from '../../atoms/thead';
+import AtrcTr from '../../atoms/tr';
+import AtrcTbody from '../../atoms/tbody';
+import AtrcTd from '../../atoms/thead';
 
-import {
-	AtrcWrap,
-	AtrcIcon,
-	AtrcToggle,
-	AtrcWord,
-	AtrcHr,
-	AtrcButton,
-	AtrcSelect,
-	AtrcResetButtonIcon,
-	AtrcCheckbox,
-	AtrcThead,
-	AtrcTr,
-	AtrcTh,
-	AtrcTbody,
-	AtrcTd,
-	AtrcSpan,
-	AtrcImg,
-} from '../../atoms';
-import {
-	AtrcBase,
-	AtrcButtonGroup,
-	AtrcNav,
-	AtrcPagination,
-	AtrcSearch,
-	AtrcTable,
-	AtrcTooltip,
-	AtrcDropdown,
-	AtrcMenuGroup,
-	AtrcMenuItemsChoice,
-} from '../../molecules';
+import AtrcHeader from '../../organisms/header';
+import AtrcMain from '../../organisms/main';
+import AtrcSidebar from '../../organisms/sidebar';
+
+import AtrcButtonGroup from './../../molecules/button-group';
+import AtrcBase from './../../molecules/base';
+import AtrcPagination from './../../molecules/pagination';
+import AtrcSearch from './../../molecules/search';
+import AtrcTooltip from './../../molecules/tooltip';
+import AtrcNav from './../../molecules/nav';
+import AtrcTable from './../../molecules/table';
+import AtrcDropdown from './../../molecules/dropdown';
+import AtrcMenuGroup from './../../molecules/menu-group';
+import AtrcMenuItemsChoice from './../../molecules/menu-items-choice';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

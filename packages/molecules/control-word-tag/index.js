@@ -2,7 +2,7 @@
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcControlSelectButton } from '../index';
+import AtrcControlSelectButton from '../control-select-button';
 
 import SelectHtmlOptions from './options';
 

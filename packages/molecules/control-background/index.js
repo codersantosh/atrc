@@ -85,16 +85,14 @@ import classnames from 'classnames';
 import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcSelect } from '../../atoms';
+import AtrcSelect from '../../atoms/select';
 
-import {
-	AtrcControlImg,
-	AtrcControlVideo,
-	AtrcControlSelectDevice,
-	AtrcPanelTools,
-	AtrcControlDropdownColorGradientTab,
-	AtrcPanelRow,
-} from '../index';
+import AtrcControlImg from './../control-img';
+import AtrcControlVideo from './../control-video';
+import AtrcControlSelectDevice from './../control-select-device';
+import AtrcPanelTools from './../panel-tools';
+import AtrcControlDropdownColorGradientTab from './../control-dropdown-color-gradient-tab';
+import AtrcPanelRow from './../panel-row';
 
 import BackgroundPosition from './background-position';
 

@@ -15,11 +15,11 @@ import classnames from 'classnames';
 import { isString } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcSelect } from '../../atoms';
+import AtrcSelect from '../../atoms/select';
 
-import { AtrcNotice } from '../index';
+import AtrcNotice from '../notice';
 
-import { AtrcGetUsers } from '../../api';
+import AtrcGetUsers from '../../api/get-users';
 
 import AtrcPrefix from '../../prefix-vars';
 

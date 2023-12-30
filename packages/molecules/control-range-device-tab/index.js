@@ -27,12 +27,13 @@ import classnames from 'classnames';
 import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcRange } from '../../atoms';
+import AtrcRange from '../../atoms/range';
 
-import { AtrcDropdownDevice, AtrcPanelTools } from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcDropdownDevice from '../dropdown-device';
 
 /*Inbuilt Utils*/
-import { AtrcAvailableDevices } from '../../utils';
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

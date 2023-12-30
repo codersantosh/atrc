@@ -13,14 +13,14 @@ import { clone, debounce, isArray, isNumber, isString } from 'lodash';
 import classnames from 'classnames';
 
 /*Inbuilt */
-import { AtrcDynamicSelect } from '../../atoms';
+import { AtrcDynamicSelect } from '../../atoms/select';
 
-import { AtrcNotice } from '../index';
+import AtrcNotice from '../notice';
 
 import AtrcPrefix from '../../prefix-vars';
 
 /* API */
-import { AtrcGetPosts } from '../../api';
+import AtrcGetPosts from '../../api/get-posts';
 
 /* Local*/
 const perPage = 100;

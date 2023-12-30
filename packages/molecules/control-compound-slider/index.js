@@ -6,7 +6,8 @@ import { useMemo } from '@wordpress/element';
 import classnames from 'classnames';
 
 /* Inbuilt */
-import { AtrcLabel, AtrcWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
 import AtrcPrefix from '../../prefix-vars';
 
 /* Internal */

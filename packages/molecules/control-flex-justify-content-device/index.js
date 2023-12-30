@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import AtrcPrefix from '../../prefix-vars';
 
 /*Inbuilt*/
-import { AtrcControlSelectButtonDevice } from '../index';
+import AtrcControlSelectButtonDevice from '../control-select-button-device';
 
 import JustifyContentOptions from './options';
 

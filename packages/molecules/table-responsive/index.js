@@ -1,5 +1,5 @@
 /*Inbuilt*/
-import { AtrcWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
 
 /*Local Component*/
 const AtrcTableResponsive = ({ children }) => {

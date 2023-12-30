@@ -6,9 +6,13 @@ import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcWrap, AtrcIcon, AtrcWord, AtrcButton } from '../../atoms';
-import { AtrcModal } from '../index';
-import { AtrcButtonGroup } from '../../molecules';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcWord from '../../atoms/word';
+
+import AtrcModal from '../modal';
+import AtrcButtonGroup from '../button-group';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

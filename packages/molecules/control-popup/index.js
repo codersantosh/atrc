@@ -28,16 +28,15 @@ import classnames from 'classnames';
 import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcControlImg,
-	AtrcControlVideo,
-	AtrcPanelTools,
-	AtrcControlLink,
-	AtrcPanelRow,
-} from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
+import AtrcControlImg from '../control-img';
+import AtrcControlVideo from '../control-video';
+import AtrcControlLink from '../control-link';
 
 import AtrcPrefix from '../../prefix-vars';
-import { AtrcSelect } from '../../atoms';
+
+import AtrcSelect from '../../atoms/select';
 
 /*Local Components*/
 const RenderTabPanel = ({

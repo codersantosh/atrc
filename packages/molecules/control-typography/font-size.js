@@ -13,21 +13,22 @@ Type Object
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
+/* Library */
+import classNames from 'classnames';
+
 /*Inbuilt*/
-import {
-	AtrcControlFontSizePicker,
-	AtrcDropdownDevice,
-	AtrcPanelRow,
-} from '../index';
+import AtrcPanelRow from '../panel-row';
+import AtrcDropdownDevice from '../dropdown-device';
+import AtrcControlFontSizePicker from '../control-font-size-picker';
 
 import { FontSizeList } from './options';
 
+import AtrcAvailableDevices from '../../utils/available-devices';
+
 import {
-	AtrcAvailableDevices,
 	AtrcMappingDeviceKey,
 	AtrcMappingDeviceKeyValues,
-} from '../../utils';
-import classNames from 'classnames';
+} from './../../utils/object-values-with-devices';
 
 /*Local Components*/
 const RenderTab = ({ device, value, onChange }) => {

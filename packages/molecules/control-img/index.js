@@ -34,22 +34,18 @@ import { BsImage, BsTrash } from 'react-icons/bs';
 import { isEmpty, map, reduce } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcWrap,
-	AtrcButton,
-	AtrcIcon,
-	AtrcImg,
-	AtrcSelect,
-	AtrcText,
-	AtrcLabel,
-} from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcSelect from '../../atoms/select';
+import AtrcText from '../../atoms/text';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcImg from '../../atoms/img';
 
-import {
-	AtrcNotice,
-	AtrcPanelRow,
-	AtrcPanelTools,
-	AtrcTooltip,
-} from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcNotice from '../notice';
+import AtrcPanelRow from '../panel-row';
+import AtrcTooltip from '../tooltip';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

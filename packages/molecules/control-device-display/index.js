@@ -20,12 +20,13 @@ import classnames from 'classnames';
 import { isArray, isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcToggle } from '../../atoms';
+import AtrcToggle from '../../atoms/toggle';
 
-import { AtrcPanelRow, AtrcPanelTools } from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
 
 /*Inbuilt Utils*/
-import { AtrcAvailableDevices } from '../../utils';
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

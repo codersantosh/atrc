@@ -36,17 +36,17 @@ import { BsFile, BsX } from 'react-icons/bs';
 import { cloneDeep, omit } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcWrap,
-	AtrcButton,
-	AtrcIcon,
-	AtrcFile,
-	AtrcSelect,
-	AtrcText,
-	AtrcLabel,
-} from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcSelect from '../../atoms/select';
+import AtrcText from '../../atoms/text';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcFile from '../../atoms/file';
 
-import { AtrcButtonGroup, AtrcNotice } from '../index';
+
+import AtrcNotice from '../notice';
+import AtrcButtonGroup from '../button-group';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
@@ -141,7 +141,7 @@ const SelfHostedFile = (props) => {
 							src={obj.url}
 							key={key}
 						/>
-				  ))
+					))
 				: null}
 			<AtrcButtonGroup>
 				<AtrcButton
@@ -157,13 +157,13 @@ const SelfHostedFile = (props) => {
 					{addButtonProps.text
 						? addButtonProps.text
 						: // eslint-disable-next-line no-nested-ternary
-						data.length > 0
-						? frameProps.multiple
-							? __('Replace files', 'atrc-prefix-atrc')
-							: __('Replace file', 'atrc-prefix-atrc')
-						: frameProps.multiple
-						? __('Add files', 'atrc-prefix-atrc')
-						: __('Add file', 'atrc-prefix-atrc')}
+							data.length > 0
+							? frameProps.multiple
+								? __('Replace files', 'atrc-prefix-atrc')
+								: __('Replace file', 'atrc-prefix-atrc')
+							: frameProps.multiple
+								? __('Add files', 'atrc-prefix-atrc')
+								: __('Add file', 'atrc-prefix-atrc')}
 				</AtrcButton>
 				{!['urlOnly', 'buttonOnly'] && data.length > 0 ? (
 					<AtrcButton

@@ -2,13 +2,14 @@
 import { forEach, isEmpty } from 'lodash';
 
 /*Inbuilt*/
+import AtrcAvailableTabs from './available-tabs';
+import AtrcAvailableDevices from './available-devices';
 import {
-	AtrcAvailableDevices,
-	AtrcAvailableTabs,
 	AtrcGetTabValues,
 	AtrcHasTabValues,
-	AtrcUcFirst,
-} from './index';
+} from './object-values-with-allowed-keys-and-tabs';
+
+import { AtrcUcFirst } from './string';
 
 /*Local*/
 export function AtrcHasValueKey(value, key) {

@@ -8,8 +8,9 @@ import apiFetch from '@wordpress/api-fetch';
 import { addQueryArgs } from '@wordpress/url';
 
 /* Inbuilt */
-import { AtrcWrap } from '../../atoms';
-import { AtrcNotice } from './../../molecules';
+import AtrcWrap from '../../atoms/wrap';
+
+import AtrcNotice from './../../molecules/notice';
 
 /* Local */
 const AtrcPostCommentCount = (props, ref) => {

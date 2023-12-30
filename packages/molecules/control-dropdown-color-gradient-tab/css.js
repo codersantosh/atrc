@@ -1,10 +1,13 @@
 /*Library*/
 import { isEmpty } from 'lodash';
+
+/* Inbuilt */
+
+import AtrcAvailableTabs from '../../utils/available-tabs';
 import {
-	AtrcAvailableTabs,
 	AtrcGetTabValues,
 	AtrcHasTabValues,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Local*/
 

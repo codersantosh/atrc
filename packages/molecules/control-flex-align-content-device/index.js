@@ -2,7 +2,7 @@
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcControlSelectButtonDevice } from '../index';
+import AtrcControlSelectButtonDevice from '../control-select-button-device';
 
 import JustifyContentOptions from './options';
 

@@ -2,16 +2,14 @@
 import { isEmpty } from 'lodash';
 
 /*Atrc*/
-import {
-	AtrcControlTransformAllowedKeys,
-	AtrcControlTransformCSS,
-} from '../../molecules';
+import { AtrcControlTransformAllowedKeys } from './../control-transform';
+import AtrcControlTransformCSS from './../control-transform/css';
 
+import AtrcAvailableTabs from '../../utils/available-tabs';
 import {
-	AtrcAvailableTabs,
-	AtrcHasTabValues,
 	AtrcGetTabValues,
-} from '../../utils';
+	AtrcHasTabValues,
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Local*/
 const AtrcControlTransformTabCss = (

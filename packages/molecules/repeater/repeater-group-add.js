@@ -1,6 +1,11 @@
-import { AtrcTooltip } from '../index';
+/* WordPress */
 import { __ } from '@wordpress/i18n';
-import { AtrcButton, AtrcIcon } from '../../atoms';
+
+/* Atrc */
+import AtrcTooltip from '../tooltip';
+
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
 
 import { BsPlusSquare } from 'react-icons/bs';
 

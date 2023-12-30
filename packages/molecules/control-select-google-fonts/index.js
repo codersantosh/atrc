@@ -7,9 +7,11 @@ import { useState, useMemo, useEffect } from '@wordpress/element';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcCombobox, AtrcSpinner } from '../../atoms';
+import AtrcCombobox from '../../atoms/combobox';
+import AtrcSpinner from '../../atoms/spinner';
 
-import { AtrcNotice, AtrcPanelRow } from '../index';
+import AtrcNotice from '../notice';
+import AtrcPanelRow from '../panel-row';
 
 import AtrcControlSelectGoogleFontsWeight from './font-weight';
 import AtrcControlSelectGoogleFontsPreview from './fonts-preview';

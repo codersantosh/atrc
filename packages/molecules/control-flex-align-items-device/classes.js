@@ -2,7 +2,7 @@
 import { isEmpty, isObject } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcAvailableDevices } from '../../utils';
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Local*/
 const AtrcControlFlexAlignItemsDeviceClasses = (abStyle) => {
@@ -28,7 +28,8 @@ const AtrcControlFlexAlignItemsDeviceClasses = (abStyle) => {
 			if ('xs' === device.name) {
 				classes += ' at-al-itm-' + alItms[device.name] + ' ';
 			} else {
-				classes += ' at-al-itm-' + device.name + '-' + alItms[device.name] + ' ';
+				classes +=
+					' at-al-itm-' + device.name + '-' + alItms[device.name] + ' ';
 			}
 		}
 	}

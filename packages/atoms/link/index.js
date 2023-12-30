@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
 
 /*Inbuilt*/
-import { AtrcButton } from '../index';
+import AtrcButton from '../button';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

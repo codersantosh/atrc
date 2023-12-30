@@ -1,34 +1,32 @@
 /*Library*/
-import classnames from "classnames";
+import classnames from 'classnames';
 
 /*Inbuilt*/
-import AtrcPrefix from "../../prefix-vars";
-import {AtrcWrap} from "../../atoms";
+import AtrcPrefix from '../../prefix-vars';
+
+import AtrcWrap from '../../atoms/wrap';
 
 /*Local*/
 const AtrcMain = (props) => {
-    const {
-        className = '',
-        variant = '',
-        children='',
-        dangerouslySetInnerHTML='',
-        ...defaultProps
-    } = props;
+	const {
+		className = '',
+		variant = '',
+		children = '',
+		dangerouslySetInnerHTML = '',
+		...defaultProps
+	} = props;
 
-    return (
-        <AtrcWrap
-            tag='main'
-            className={
-                classnames(
-                    AtrcPrefix('main'),
-                    className,
-                    variant?AtrcPrefix()+variant:'',
-                )
-            }
-            {...defaultProps}
-        >
-            {children}
-        </AtrcWrap>
-    )
-}
+	return (
+		<AtrcWrap
+			tag='main'
+			className={classnames(
+				AtrcPrefix('main'),
+				className,
+				variant ? AtrcPrefix() + variant : ''
+			)}
+			{...defaultProps}>
+			{children}
+		</AtrcWrap>
+	);
+};
 export default AtrcMain;

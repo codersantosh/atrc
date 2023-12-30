@@ -1,15 +1,14 @@
 /*WordPress*/
-
 import { store as coreStore } from '@wordpress/core-data';
-
 import { forwardRef } from '@wordpress/element';
-
 import { useSelect } from '@wordpress/data';
-import { AtrcImg, AtrcWrap } from './../../atoms';
 import { __ } from '@wordpress/i18n';
 import { addQueryArgs, removeQueryArgs } from '@wordpress/url';
 
 /* Inbuilt */
+import AtrcWrap from '../../atoms/wrap';
+import AtrcImg from '../../atoms/img';
+
 import AtrcUseUserAvatar from './use-user-avatar';
 
 /* Local */

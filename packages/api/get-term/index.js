@@ -2,7 +2,7 @@
 import apiFetch from '@wordpress/api-fetch';
 
 /*Inbuilt*/
-import { AtrcGetRestBaseTaxonomy } from '../index';
+import AtrcGetRestBaseTaxonomy from '../get-rest-base-taxonomy';
 
 /*Local*/
 const AtrcGetTerm = async ({

@@ -6,7 +6,9 @@ import { decodeEntities } from '@wordpress/html-entities';
 import { forwardRef } from '@wordpress/element';
 
 /* Inbuilt */
-import { AtrcLink, AtrcSpinner, AtrcWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLink from '../../atoms/link';
+import AtrcSpinner from '../../atoms/spinner';
 
 /* Local */
 import AtrcUsePostTerms from './use-post-terms';

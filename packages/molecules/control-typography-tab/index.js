@@ -75,22 +75,23 @@ import classnames from 'classnames';
 import { map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcPanelTools, AtrcControlTypography } from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlTypography from '../control-typography';
 
 /*Inbuilt utils*/
 import {
 	AtrcGetTabValues,
-	AtrcUpdateTabValues,
 	AtrcHasTabValues,
+	AtrcUpdateTabValues,
 	AtrcResetTab,
 	AtrcResetTabs,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components*/
-import { AtrcControlTypographyAllowedKeys } from './../control-typography/index';
+import { AtrcControlTypographyAllowedKeys } from './../control-typography';
 
 const RenderTabPanel = (props) => {
 	const { value, tab, onChange, ...defaultProps } = props;

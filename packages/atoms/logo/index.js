@@ -1,8 +1,11 @@
-/*Inbuilt*/
-import { AtrcImg, AtrcWrap, AtrcLink } from '../index';
+/* Library */
 import classnames from 'classnames';
 
 /*Inbuilt*/
+import AtrcWrap from '../wrap';
+import AtrcImg from '../img';
+import AtrcLink from '../link';
+
 import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components*/

@@ -13,16 +13,14 @@ import { useInstanceId } from '@wordpress/compose';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import {
-	AtrcWrap,
-	AtrcImg,
-	AtrcIcon,
-	AtrcRadio,
-	AtrcLabel,
-	AtrcResetButtonIcon,
-} from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcIcon from '../../atoms/icon';
+import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
+import AtrcImg from '../../atoms/img';
+import AtrcRadio from '../../atoms/radio';
 
-import { AtrcDropdown } from '../index';
+import AtrcDropdown from '../dropdown';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
@@ -58,16 +56,16 @@ const RenderContent = ({ options, value, onChange, instanceId }) => (
 	<AtrcWrap
 		className={classnames(AtrcPrefix('ctrl-dropdown-html-wrp'), 'at-w')}>
 		{options.length
-			? options.map(function (item, index) {
+			? options.map(function (item, iDx) {
 					const inputId =
 						AtrcPrefix('ctrl-dropdown-html-item') +
 						'-' +
 						instanceId +
 						'-' +
-						index;
+						iDx;
 					return (
 						<AtrcWrap
-							key={index}
+							key={iDx}
 							className={classnames(AtrcPrefix('ctrl-dropdown-html-item'))}>
 							<AtrcLabel
 								className={classnames(
@@ -102,7 +100,7 @@ const RenderContent = ({ options, value, onChange, instanceId }) => (
 							</AtrcLabel>
 						</AtrcWrap>
 					);
-			  })
+				})
 			: null}
 	</AtrcWrap>
 );

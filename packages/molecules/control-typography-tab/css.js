@@ -1,16 +1,14 @@
 /*Library*/
 import { forEach, isEmpty } from 'lodash';
 
+import AtrcAvailableTabs from '../../utils/available-tabs';
 import {
-	AtrcAvailableTabs,
 	AtrcGetTabValues,
 	AtrcHasTabValues,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
-import {
-	AtrcControlTypographyAllowedKeys,
-	AtrcControlTypographyCss,
-} from '../index';
+import { AtrcControlTypographyAllowedKeys } from '../control-typography';
+import AtrcControlTypographyCss from '../control-typography/css';
 
 /*Local*/
 const AtrcControlTypographyTabCss = (

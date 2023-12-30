@@ -37,7 +37,8 @@ import classnames from 'classnames';
 import { map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcPanelTools, AtrcControlShape } from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlShape from '../control-shape';
 
 import SvgShapeOptions from './options';
 

@@ -2,7 +2,7 @@
 import { isEmpty, isObject } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcAvailableDevices } from '../../utils';
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Local*/
 const AtrcControlTextAlignClasses = (abStyle) => {

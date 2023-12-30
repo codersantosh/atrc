@@ -2,16 +2,14 @@
 import { isEmpty, forEach } from 'lodash';
 
 /*Atrc*/
-import {
-	AtrcControlPositionAllowedKeys,
-	AtrcControlPositionDeviceCss,
-} from '../../molecules';
+import { AtrcControlPositionAllowedKeys } from './../control-position-device';
+import AtrcControlPositionDeviceCss from './../control-position-device/css';
 
+import AtrcAvailableTabs from '../../utils/available-tabs';
 import {
-	AtrcAvailableTabs,
-	AtrcHasTabValues,
 	AtrcGetTabValues,
-} from '../../utils';
+	AtrcHasTabValues,
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Local*/
 const AtrcControlPositionDeviceTabCss = (

@@ -1,6 +1,9 @@
+/* WordPress */
 import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { AtrcSelect } from '../../atoms';
+
+/* Local */
+import AtrcSelect from '../../atoms/select';
 
 const ImageSizeSelect = (props) => {
 	const { imageSizes, ...defaultProps } = props;

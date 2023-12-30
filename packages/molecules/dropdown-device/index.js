@@ -10,15 +10,14 @@ import { find } from 'lodash';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import {
-	AtrcButton,
-	AtrcWrap,
-	AtrcIcon,
-	AtrcLabel,
-	AtrcWord,
-} from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcWord from '../../atoms/word';
 
-import { AtrcDropdown, AtrcTooltip } from '../index';
+import AtrcDropdown from '../dropdown';
+import AtrcTooltip from '../tooltip';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

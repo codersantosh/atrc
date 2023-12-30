@@ -37,25 +37,23 @@ import { BsCameraVideo, BsTrash } from 'react-icons/bs';
 import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+import AtrcSelect from '../../atoms/select';
+import AtrcText from '../../atoms/text';
+import AtrcToggle from '../../atoms/toggle';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcVideo from '../../atoms/video';
 import {
-	AtrcWrap,
-	AtrcButton,
-	AtrcIcon,
-	AtrcSelect,
-	AtrcText,
-	AtrcVideo,
-	AtrcToggle,
 	AtrcVideoIsHtml5,
 	AtrcVideoIsYoutube,
 	AtrcVideoIsVimeo,
-} from '../../atoms';
+} from '../../atoms/video';
 
-import {
-	AtrcControlImg,
-	AtrcPanelRow,
-	AtrcPanelTools,
-	AtrcTooltip,
-} from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
+import AtrcTooltip from '../tooltip';
+import AtrcControlImg from '../control-img';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

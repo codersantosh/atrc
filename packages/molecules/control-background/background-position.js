@@ -24,14 +24,17 @@ import { useEffect, useState } from '@wordpress/element';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcLabel, AtrcControlUnit } from '../../atoms';
+import AtrcLabel from '../../atoms/label';
+import AtrcControlUnit from '../../atoms/control-unit';
 
-import { AtrcControlSelectDevice, AtrcPanelRow } from '../index';
+import AtrcPanelRow from './../panel-row';
+
+import AtrcControlSelectDevice from './../control-select-device';
 
 import { PositionOptions } from './options';
 
 /*Inbuilt Utils*/
-import { AtrcIsNumeric } from '../../utils';
+import AtrcIsNumeric from '../../utils/is-numeric';
 
 /*Local Components*/
 const BackgroundPosition = ({ value, onChange }) => {

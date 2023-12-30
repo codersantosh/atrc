@@ -38,20 +38,18 @@ import classnames from 'classnames';
 import { map } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcControlBorderRadius,
-	AtrcPanelTools,
-	AtrcControlBorderRadiusAllowedKeys,
-} from '../index';
+import AtrcControlBorderRadius from '../control-border-radius';
+import AtrcPanelTools from '../panel-tools';
+import { AtrcControlBorderRadiusAllowedKeys } from '../control-border-radius';
 
 /*Inbuilt utils*/
 import {
-	AtrcUpdateTabValues,
-	AtrcHasTabValues,
-	AtrcResetTab,
 	AtrcGetTabValues,
+	AtrcHasTabValues,
+	AtrcUpdateTabValues,
+	AtrcResetTab,
 	AtrcResetTabs,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

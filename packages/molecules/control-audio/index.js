@@ -31,19 +31,19 @@ import { BsFillFileMusicFill, BsXCircleFill } from 'react-icons/bs';
 import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcWrap,
-	AtrcButton,
-	AtrcIcon,
-	AtrcSelect,
-	AtrcText,
-	AtrcLabel,
-	AtrcAudio,
-	AtrcToggle,
-	AtrcAudioIsHtml5,
-} from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcSelect from '../../atoms/select';
+import AtrcText from '../../atoms/text';
+import AtrcToggle from '../../atoms/toggle';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcAudio from '../../atoms/audio';
+import { AtrcAudioIsHtml5 } from '../../atoms/audio';
 
-import { AtrcButtonGroup, AtrcPanelRow, AtrcPanelTools } from '../index';
+import AtrcButtonGroup from './../button-group';
+import AtrcPanelRow from './../panel-row';
+import AtrcPanelTools from './../panel-tools';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

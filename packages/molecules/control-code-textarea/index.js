@@ -26,7 +26,8 @@ import deepmerge from 'deepmerge';
 /*Inbuilt*/
 import AtrcWrap from '../../atoms/wrap';
 
-import { AtrcNotice, AtrcPanelTools } from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcNotice from '../notice';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

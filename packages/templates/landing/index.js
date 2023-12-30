@@ -17,17 +17,17 @@ import {
 } from 'react-icons/bs';
 
 /*Inbuilt*/
-import {
-	AtrcWrap,
-	AtrcWord,
-	AtrcIcon,
-	AtrcLink,
-	AtrcSpan,
-	AtrcImg,
-	AtrcHr,
-} from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcIcon from '../../atoms/icon';
+import AtrcSpan from '../../atoms/span';
+import AtrcWord from '../../atoms/word';
+import AtrcLink from '../../atoms/link';
+import AtrcImg from '../../atoms/img';
+import AtrcHr from '../../atoms/hr';
 
-import { AtrcButtonGroup, AtrcNotice } from '../../molecules';
+import AtrcNotice from './../../molecules/notice';
+import AtrcButtonGroup from './../../molecules/button-group';
+
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 

@@ -44,10 +44,11 @@ import { isArray, isString } from 'lodash';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcControlBoxFour, AtrcDropdownDevice } from '../index';
+import AtrcControlBoxFour from '../control-box-four';
+import AtrcDropdownDevice from '../dropdown-device';
 
 /*Inbuilt Utils*/
-import { AtrcAvailableDevices } from '../../utils';
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

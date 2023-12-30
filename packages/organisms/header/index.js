@@ -5,8 +5,9 @@ import { useEffect } from '@wordpress/element';
 import classnames from 'classnames';
 
 /*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+
 import AtrcPrefix from '../../prefix-vars';
-import { AtrcWrap } from '../../atoms';
 
 /*Local*/
 const AtrcHeader = (props) => {

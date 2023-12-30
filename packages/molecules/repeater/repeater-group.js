@@ -10,13 +10,17 @@ import classnames from 'classnames';
 import { BsDashSquare } from 'react-icons/bs';
 
 /*Inbuilt*/
-import { AtrcWrap, AtrcButton, AtrcIcon, AtrcLabel } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
 
-import { AtrcTooltip } from '../index';
+import AtrcHeader from '../../organisms/header';
+
+import AtrcTooltip from '../tooltip';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
-import { AtrcHeader } from '../../organisms';
 
 /*Local*/
 const AtrcRepeaterGroup = (props) => {

@@ -6,7 +6,7 @@ import {
 	AtrcControlBorderColorShorthand,
 	AtrcControlBorderStyleShorthand,
 	AtrcControlBorderWidthShorthand,
-} from './../index';
+} from './../control-border';
 
 /* Local */
 const AtrcControlBorderCss = (

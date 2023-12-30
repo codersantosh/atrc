@@ -1,14 +1,12 @@
 /*WordPress*/
-
 import { useEntityProp, store as coreStore } from '@wordpress/core-data';
-
 import { forwardRef } from '@wordpress/element';
-
-import { useSelect } from '@wordpress/data';
-import { AtrcImg, AtrcWrap } from './../../atoms';
 import { __, sprintf } from '@wordpress/i18n';
+import { useSelect } from '@wordpress/data';
 
 /* Inbuilt */
+import AtrcWrap from '../../atoms/wrap';
+import AtrcImg from '../../atoms/img';
 
 /* Local */
 function getMediaSourceUrlBySizeSlug(media, slug) {
@@ -60,7 +58,7 @@ const AtrcPostFeaturedImage = (props, ref) => {
 									// translators: %s: The image's alt text.
 									__('Featured image: %s', 'atrc-prefix-atrc'),
 									media.alt_text
-							  )
+								)
 							: __('Featured image', 'atrc-prefix-atrc')
 					}
 				/>

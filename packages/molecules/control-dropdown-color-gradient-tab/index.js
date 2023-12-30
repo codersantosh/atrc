@@ -43,19 +43,18 @@ import classnames from 'classnames';
 import { map } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcControlDropdownColorGradient,
-	AtrcPanelTools,
-	AtrcControlDropdownColorGradientAllowedKeys,
-} from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlDropdownColorGradient from '../control-dropdown-color-gradient';
+import { AtrcControlDropdownColorGradientAllowedKeys } from '../control-dropdown-color-gradient';
 
 /*Inbuilt utils*/
+
 import {
 	AtrcGetTabValues,
-	AtrcUpdateTabValues,
 	AtrcHasTabValues,
+	AtrcUpdateTabValues,
 	AtrcResetTab,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

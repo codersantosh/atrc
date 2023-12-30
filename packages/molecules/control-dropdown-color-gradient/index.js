@@ -19,9 +19,12 @@ import { useRef } from '@wordpress/element';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcWrap, AtrcLabel, AtrcResetButtonIcon } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
 
-import { AtrcDropdown, AtrcColorGradientControl } from '../index';
+import AtrcDropdown from '../dropdown';
+import AtrcColorGradientControl from '../control-color-gradient';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

@@ -1,5 +1,11 @@
+/* Library */
 import classnames from 'classnames';
-import { AtrcImg, AtrcSpan, AtrcWord } from '../../../atoms';
+
+/* Inbuilt */
+import AtrcSpan from '../../../atoms/span';
+import AtrcWord from '../../../atoms/word';
+import AtrcImg from '../../../atoms/img';
+
 import AtrcPrefix from '../../../prefix-vars';
 
 const AtrcTemplateImgAndWord = (props) => {

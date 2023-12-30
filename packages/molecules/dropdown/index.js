@@ -5,7 +5,7 @@ import { Dropdown } from '@wordpress/components';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

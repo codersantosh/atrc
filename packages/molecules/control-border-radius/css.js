@@ -1,5 +1,5 @@
 /* Inbuilt */
-import { AtrcControlBoxFourShorthandCssOnly } from './../index';
+import { AtrcControlBoxFourShorthandCssOnly } from '../control-box-four/css';
 
 /* Local */
 const AtrcControlBorderRadiusCss = (value, property = 'border-radius') => {

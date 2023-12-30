@@ -11,9 +11,9 @@ import { useSelect } from '@wordpress/data';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcSelect } from '../../atoms';
+import AtrcSelect from '../../atoms/select';
 
-import { AtrcNotice } from '../index';
+import AtrcNotice from '../notice';
 
 import AtrcPrefix from '../../prefix-vars';
 

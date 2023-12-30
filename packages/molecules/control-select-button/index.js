@@ -2,15 +2,14 @@
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import {
-	AtrcWrap,
-	AtrcButton,
-	AtrcIcon,
-	AtrcResetButtonIcon,
-	AtrcLabel,
-} from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
 
-import { AtrcButtonGroup, AtrcTooltip } from '../index';
+import AtrcTooltip from '../tooltip';
+import AtrcButtonGroup from '../button-group';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

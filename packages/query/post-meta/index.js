@@ -6,9 +6,11 @@ import { useEntityProp } from '@wordpress/core-data';
 import { forwardRef } from '@wordpress/element';
 
 /* Inbuilt */
-import { AtrcWrap } from '../../atoms';
-import { AtrcNotice } from './../../molecules';
-import { AtrcIsScalar } from '../../utils';
+import AtrcWrap from '../../atoms/wrap';
+
+import AtrcNotice from './../../molecules/notice';
+
+import AtrcIsScalar from '../../utils/is-scalar';
 
 /* Local */
 const AtrcPostMeta = (props, ref) => {

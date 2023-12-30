@@ -15,12 +15,12 @@ import classnames from 'classnames';
 import { isArray } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcControlUnit } from '../../atoms';
+import AtrcControlUnit from '../../atoms/control-unit';
 
-import { AtrcDropdownDevice } from '../index';
+import AtrcDropdownDevice from '../dropdown-device';
 
 /*Inbuilt Utils*/
-import { AtrcAvailableDevices } from '../../utils';
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

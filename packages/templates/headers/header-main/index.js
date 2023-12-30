@@ -9,15 +9,17 @@ import { BsBell, BsList, BsX } from 'react-icons/bs';
 import classnames from 'classnames';
 
 /*Atrc*/
-import { AtrcButton, AtrcWrap, AtrcIcon, AtrcLogo } from '../../../atoms';
+import AtrcWrap from '../../../atoms/wrap';
+import AtrcButton from '../../../atoms/button';
+import AtrcIcon from '../../../atoms/icon';
+import AtrcLogo from '../../../atoms/logo';
 
-import {
-	AtrcNav,
-	AtrcControlDropdownMenu,
-	AtrcTooltip,
-} from '../../../molecules';
+import AtrcTooltip from './../../../molecules/tooltip';
+import AtrcNav from './../../../molecules/nav';
+import AtrcControlDropdownMenu from './../../../molecules/dropdown-menu';
 
-import { AtrcFloatingSidebar, AtrcHeader } from '../../../organisms';
+import AtrcHeader from '../../../organisms/header';
+import AtrcFloatingSidebar from '../../../organisms/floating-sidebar';
 
 /*Prefix*/
 import AtrcPrefix from '../../../prefix-vars';

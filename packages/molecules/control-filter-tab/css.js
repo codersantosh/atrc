@@ -1,13 +1,16 @@
 /*Library*/
 import { forEach, isEmpty } from 'lodash';
 
+/* Inbuilt */
+
+import AtrcAvailableTabs from '../../utils/available-tabs';
 import {
-	AtrcAvailableTabs,
 	AtrcGetTabValues,
 	AtrcHasTabValues,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
-import { AtrcControlFilterAllowedKeys, AtrcControlFilterCss } from '../index';
+import { AtrcControlFilterAllowedKeys } from '../control-filter';
+import AtrcControlFilterCss from '../control-filter/css';
 
 /*Local*/
 const AtrcControlFilterTabCss = (value, property = 'filter') => {
@@ -24,7 +27,6 @@ const AtrcControlFilterTabCss = (value, property = 'filter') => {
 							AtrcControlFilterAllowedKeys
 						),
 						typCss = AtrcControlFilterCss(typVal, property);
-
 
 					if (typCss && !isEmpty(typCss)) {
 						forEach(typCss, (item, itemKey) => {

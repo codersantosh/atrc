@@ -8,7 +8,8 @@ import { dateI18n, getSettings as getDateSettings } from '@wordpress/date';
 import { forwardRef } from '@wordpress/element';
 
 /* Inbuilt */
-import { AtrcLink, AtrcWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLink from '../../atoms/link';
 
 /* Local */
 const AtrcPostDate = (props, ref) => {

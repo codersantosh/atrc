@@ -13,9 +13,11 @@ import { video } from '@wordpress/icons';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcButton, AtrcIcon } from '../../atoms';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
 
-import { AtrcControlVideo, AtrcDropdown } from '../index';
+import AtrcDropdown from '../dropdown';
+import AtrcControlVideo from '../control-video';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

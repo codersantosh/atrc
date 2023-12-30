@@ -5,8 +5,9 @@ import { PanelBody } from '@wordpress/components';
 import classnames from 'classnames';
 
 /*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+
 import AtrcPrefix from '../../prefix-vars';
-import { AtrcWrap } from '../../atoms';
 
 /*Local Component*/
 const AtrcPanelBody = (props) => {

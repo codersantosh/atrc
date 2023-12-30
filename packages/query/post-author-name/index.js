@@ -8,7 +8,8 @@ import { store as coreStore } from '@wordpress/core-data';
 import { forwardRef } from '@wordpress/element';
 
 /* Inbuilt */
-import { AtrcWrap, AtrcLink } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLink from '../../atoms/link';
 
 /* Local */
 const AtrcPostAuthorName = (props, ref) => {

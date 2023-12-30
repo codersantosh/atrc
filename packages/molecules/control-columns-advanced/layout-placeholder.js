@@ -2,9 +2,13 @@
 import { __ } from '@wordpress/i18n';
 import { Placeholder } from '@wordpress/components';
 
+/* Library */
+import classNames from 'classnames';
+
 /*Inbuilt*/
-import { AtrcTooltip } from '..';
-import { AtrcButton, AtrcIcon } from '../../atoms';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcTooltip from '../tooltip';
 import {
 	FiveColumnsOptions,
 	FourColumnsOptions,
@@ -13,7 +17,6 @@ import {
 	ThreeColumnsOptions,
 	TwoColumnsOptions,
 } from './options';
-import classNames from 'classnames';
 import AtrcPrefix from '../../prefix-vars';
 
 /* Local */

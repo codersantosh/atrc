@@ -17,9 +17,9 @@ import classnames from 'classnames';
 import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcRange } from '../../atoms';
+import AtrcRange from '../../atoms/range';
 
-import { AtrcPanelTools } from '../index';
+import AtrcPanelTools from '../panel-tools';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

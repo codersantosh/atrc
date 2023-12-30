@@ -9,11 +9,13 @@ import classnames from 'classnames';
 import { isArray, isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcPanelTools, AtrcControlTextDevice } from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlTextDevice from '../control-text-device';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
-import { AtrcAvailableDevices } from '../../utils';
+
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Local Components*/
 const AtrcControlZindexDevice = (props) => {

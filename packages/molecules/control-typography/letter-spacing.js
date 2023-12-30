@@ -1,11 +1,14 @@
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
-import { AtrcGetDeviceValues } from '../../utils';
 
-/*Inbuilt*/
-import { AtrcControlUnitDevice, AtrcPanelRow } from '../index';
 /*Library*/
 import classnames from 'classnames';
+
+/*Inbuilt*/
+import AtrcPanelRow from '../panel-row';
+import AtrcControlUnitDevice from '../control-unit-device';
+
+import { AtrcGetDeviceValues } from '../../utils/object-values-with-devices';
 
 /*Local Components*/
 const LetterSpacing = ({ value, onChange, disableUnits = false }) => {

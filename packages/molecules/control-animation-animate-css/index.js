@@ -15,7 +15,9 @@ import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcWrap, AtrcSelect, AtrcText } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcSelect from '../../atoms/select';
+import AtrcText from '../../atoms/text';
 
 import { AnimationOptions } from './options';
 

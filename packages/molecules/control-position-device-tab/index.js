@@ -102,21 +102,18 @@ import classnames from 'classnames';
 import { map } from 'lodash';
 
 /*Inbuilt*/
-
-import {
-	AtrcPanelTools,
-	AtrcControlPositionDevice,
-	AtrcControlPositionAllowedKeys,
-} from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlPositionDevice from '../control-position-device';
+import { AtrcControlPositionAllowedKeys } from '../control-position-device';
 
 /*Inbuilt utils*/
 import {
 	AtrcGetTabValues,
-	AtrcUpdateTabValues,
 	AtrcHasTabValues,
+	AtrcUpdateTabValues,
 	AtrcResetTab,
 	AtrcResetTabs,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

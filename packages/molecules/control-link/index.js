@@ -15,10 +15,11 @@ import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-
-/*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcText from '../../atoms/text';
+import AtrcToggle from '../../atoms/toggle';
 import AtrcPrefix from '../../prefix-vars';
-import { AtrcLabel, AtrcText, AtrcToggle, AtrcWrap } from '../../atoms';
 import AtrcPanelRow from '../panel-row';
 
 /*Local Components*/

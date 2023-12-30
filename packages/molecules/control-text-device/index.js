@@ -12,12 +12,13 @@ Type Object
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcText } from '../../atoms';
+import AtrcText from '../../atoms/text';
 
-import { AtrcDropdownDevice } from '../index';
+import AtrcDropdownDevice from '../dropdown-device';
 
 /*Inbuilt Utils*/
-import { AtrcAvailableDevices, AtrcMappingDeviceValues } from '../../utils';
+import AtrcAvailableDevices from '../../utils/available-devices';
+import { AtrcMappingDeviceValues } from './../../utils/object-values-with-devices';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

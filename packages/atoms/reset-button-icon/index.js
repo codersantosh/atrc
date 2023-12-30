@@ -3,7 +3,9 @@ import classnames from 'classnames';
 import { BsArrowCounterclockwise } from 'react-icons/bs';
 
 /*Inbuilt*/
-import { AtrcWrap, AtrcButton, AtrcIcon } from '../index';
+import AtrcWrap from '../wrap';
+import AtrcButton from '../button';
+import AtrcIcon from '../icon';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

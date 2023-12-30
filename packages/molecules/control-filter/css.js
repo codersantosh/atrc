@@ -1,6 +1,8 @@
 /*Library*/
 import { isEmpty } from 'lodash';
-import { AtrcIsKeyWithValueNotEmpty } from '../../utils';
+
+/* Inbuilt */
+import { AtrcIsKeyWithValueNotEmpty } from './../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Local*/
 const AtrcControlFilterCss = (value, property) => {

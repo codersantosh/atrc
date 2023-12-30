@@ -1,16 +1,14 @@
 /*Library*/
 import { forEach, isEmpty } from 'lodash';
 
+import AtrcAvailableTabs from '../../utils/available-tabs';
 import {
-	AtrcAvailableTabs,
 	AtrcGetTabValues,
 	AtrcHasTabValues,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
-import {
-	AtrcControlBorderRadiusAllowedKeys,
-	AtrcControlBorderRadiusCss,
-} from '../index';
+import { AtrcControlBorderRadiusAllowedKeys } from '../control-border-radius';
+import AtrcControlBorderRadiusCss from '../control-border-radius/css';
 
 /*Local*/
 const AtrcControlBorderRadiusTabCss = (value, property = 'border-radius') => {

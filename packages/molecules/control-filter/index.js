@@ -30,17 +30,19 @@ import classnames from 'classnames';
 import { isArray, isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcRange, AtrcLabel, AtrcResetWrap } from '../../atoms';
+import AtrcLabel from '../../atoms/label';
+import { AtrcResetWrap } from '../../atoms/reset-button-icon';
+import AtrcRange from '../../atoms/range';
 
-import {
-    AtrcPanelTools,
-    AtrcControlDropdownColor,
-    AtrcPanelRow,
-} from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
+import AtrcControlDropdownColor from '../control-dropdown-color';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
-import { AtrcHasValueKey, AtrcResetValueKey } from '../../utils';
+
+import { AtrcHasValueKey } from './../../utils/object-values-with-devices';
+import { AtrcResetValueKey } from '../../utils/object-values-with-devices';
 
 /*Local*/
 export const AtrcControlFilterAllowedKeys = [
@@ -252,9 +254,7 @@ const AtrcControlFilter = (props) => {
 									'at-jfy-cont-st '
 								)}
 								key={iDx}>
-								<AtrcLabel>
-									{__('Drop shadow', 'atrc-prefix-atrc')}
-								</AtrcLabel>
+								<AtrcLabel>{__('Drop shadow', 'atrc-prefix-atrc')}</AtrcLabel>
 								<AtrcPanelRow className={classnames('at-m')}>
 									<AtrcRange
 										label={__('H-shadow', 'atrc-prefix-atrc')}
@@ -289,10 +289,7 @@ const AtrcControlFilter = (props) => {
 								<AtrcPanelRow className={classnames('at-m')}>
 									<AtrcResetWrap className={classnames(AtrcPrefix('lbl-rst'))}>
 										<AtrcControlDropdownColor
-											label={__(
-												'Shadow color',
-												'atrc-prefix-atrc'
-											)}
+											label={__('Shadow color', 'atrc-prefix-atrc')}
 											value={sdwCl}
 											onChange={(newVal) => setAttr(newVal, 'sdwCl')}
 										/>

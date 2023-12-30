@@ -7,9 +7,10 @@ import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcSelect } from '../../atoms';
+import AtrcSelect from '../../atoms/select';
 
-import { AtrcNotice, AtrcUseTaxonomies } from '../index';
+import AtrcNotice from '../notice';
+import { AtrcUseTaxonomies } from '../control-select-taxonomies-wise-terms';
 
 import AtrcPrefix from '../../prefix-vars';
 

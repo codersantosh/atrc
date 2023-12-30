@@ -5,8 +5,10 @@ import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcSelect } from '../../atoms';
-import { AtrcControlSvg, AtrcPanelRow } from '../index';
+import AtrcSelect from '../../atoms/select';
+
+import AtrcPanelRow from '../panel-row';
+import AtrcControlSvg from '../control-select-svg';
 
 import SvgDividerOptions from './options';
 

@@ -2,7 +2,9 @@
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcHr, AtrcLabel, AtrcWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcHr from '../../atoms/hr';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

@@ -9,7 +9,8 @@ import { SearchControl } from '@wordpress/components';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcButton, AtrcWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcButton from '../../atoms/button';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

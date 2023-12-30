@@ -2,7 +2,8 @@
 import { isEmpty } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcControlDropdownColorGradientTabCss } from './../../index';
+import { AtrcControlDropdownColorGradientTabCss } from './../../control-dropdown-color-gradient-tab/css';
+
 import BgImage from './bg-image';
 
 /*Local*/

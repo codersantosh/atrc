@@ -2,9 +2,10 @@
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcLi, AtrcLink } from '../../atoms';
+import AtrcLink from '../../atoms/link';
+import AtrcLi from '../../atoms/li';
 
-import { AtrcUl } from '../index';
+import AtrcUl from '../ul';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

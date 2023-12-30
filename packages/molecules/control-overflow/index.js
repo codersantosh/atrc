@@ -9,7 +9,8 @@ import classnames from 'classnames';
 import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcPanelTools, AtrcControlSelectDevice } from '../index';
+import AtrcControlSelectDevice from '../control-select-device';
+import AtrcPanelTools from '../panel-tools';
 
 import OverflowOptions from './options';
 

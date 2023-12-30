@@ -1,6 +1,11 @@
+/* Library */
 import { isEmpty } from 'lodash';
-import { AtrcAvailableDevices, AtrcUcFirst } from '../../utils';
-import { AtrcControlBoxFourShorthandCssOnly } from './../index';
+
+/* Inbuilt */
+import AtrcAvailableDevices from '../../utils/available-devices';
+import { AtrcUcFirst } from './../../utils/string';
+
+import { AtrcControlBoxFourShorthandCssOnly } from './../control-box-four/css';
 
 const AtrcControlBoxFourDeviceCss = ({ value, property }) => {
 	const output = {};

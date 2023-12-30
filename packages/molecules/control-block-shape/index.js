@@ -63,7 +63,8 @@ import classnames from 'classnames';
 import { isArray, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcPanelTools, AtrcControlShape } from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlShape from '../control-shape';
 
 import SvgShapeTopOptions from './options';
 import SvgShapeBottomOptions from './bottom-options';

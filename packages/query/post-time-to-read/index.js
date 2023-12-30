@@ -4,7 +4,6 @@ import { _n, _x, sprintf } from '@wordpress/i18n';
 import { useEntityBlockEditor, useEntityProp } from '@wordpress/core-data';
 
 import { forwardRef, useMemo } from '@wordpress/element';
-import { AtrcWrap } from '../../atoms';
 
 import {
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
@@ -12,6 +11,9 @@ import {
 } from '@wordpress/blocks';
 
 import { count as wordCount } from '@wordpress/wordcount';
+
+/* Inbuilt */
+import AtrcWrap from '../../atoms/wrap';
 
 /* Local */
 const AVERAGE_READING_RATE = 189;

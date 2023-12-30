@@ -1,12 +1,8 @@
-/**
- * External dependencies
- */
+/* Library */
 import classnames from 'classnames';
 import { isEmpty } from 'lodash';
 
-/**
- * WordPress dependencies
- */
+/* WordPress */
 import {
 	BaseControl,
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
@@ -16,12 +12,12 @@ import {
 	GradientPicker,
 } from '@wordpress/components';
 
-/**
- * Internal dependencies
- */
-import { AtrcUseColors } from '../../utils';
+/* Internal */
+import AtrcUseColors from '../../utils/use-colors';
+
 import AtrcPrefix from '../../prefix-vars';
 
+/* Local */
 const colorsAndGradientKeys = [
 	'colors',
 	'disableCustomColors',
@@ -78,7 +74,7 @@ function ColorGradientControlInner({
 						? (newColor) => {
 								onColorChange(newColor);
 								onGradientChange();
-						  }
+							}
 						: onColorChange
 				}
 				{...{ colors, disableCustomColors }}
@@ -97,7 +93,7 @@ function ColorGradientControlInner({
 						? (newGradient) => {
 								onGradientChange(newGradient);
 								onColorChange();
-						  }
+							}
 						: onGradientChange
 				}
 				{...{ gradients, disableCustomGradients }}

@@ -65,20 +65,18 @@ import classnames from 'classnames';
 import { map } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcControlFilter,
-	AtrcPanelTools,
-	AtrcControlFilterAllowedKeys,
-} from '../index';
+import { AtrcControlFilterAllowedKeys } from '../control-filter';
+import AtrcControlFilter from '../control-filter';
+import AtrcPanelTools from '../panel-tools';
 
 /*Inbuilt utils*/
 import {
 	AtrcGetTabValues,
-	AtrcUpdateTabValues,
 	AtrcHasTabValues,
+	AtrcUpdateTabValues,
 	AtrcResetTab,
 	AtrcResetTabs,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

@@ -1,18 +1,23 @@
+/* WordPress */
+import { __ } from '@wordpress/i18n';
+
 /*Library*/
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
 
-/*Prefix*/
-import AtrcPrefix from '../../prefix-vars';
 import { AtrcHeaderTitleButton } from '../headers';
+
 import {
 	AtrcWireFrameContentSidebar,
 	AtrcWireFrameHeaderContentFooter,
 } from '../wireframe';
-import { AtrcNav } from '../../molecules';
-import { __ } from '@wordpress/i18n';
+
+import AtrcNav from './../../molecules/nav';
+
+/*Prefix*/
+import AtrcPrefix from '../../prefix-vars';
 
 /*Local*/
 const AtrcSingle = (props) => {

@@ -8,7 +8,7 @@ import { store as coreStore } from '@wordpress/core-data';
 import { forwardRef } from '@wordpress/element';
 
 /* Inbuilt */
-import { AtrcWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
 
 /* Local */
 const AtrcPostAuthorBio = (props, ref) => {

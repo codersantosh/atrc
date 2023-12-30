@@ -2,7 +2,9 @@
 import { __ } from '@wordpress/i18n';
 
 /*Inbuilt*/
-import { AtrcControlSelectButton, AtrcPanelRow } from '../index';
+import AtrcPanelRow from '../panel-row';
+
+import AtrcControlSelectButton from '../control-select-button';
 
 import { TextTransformList } from './options';
 /*Library*/

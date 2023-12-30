@@ -4,11 +4,9 @@ import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 
 /*Inbuilt*/
-import {
-	AtrcRepeater,
-	AtrcRepeaterGroup,
-	AtrcRepeaterGroupAdd,
-} from '../index';
+import AtrcRepeater from '../repeater';
+import AtrcRepeaterGroup from '../repeater/repeater-group';
+import AtrcRepeaterGroupAdd from '../repeater/repeater-group-add';
 
 import AtrcControlSelectGoogleFonts from '../control-select-google-fonts';
 
@@ -24,16 +22,16 @@ const AtrcControlSelectGoogleFontsRepeater = (props) => {
 
 	const [fonts, setFonts] = useState(value);
 
-	const setFont = (newVal, index) => {
+	const setFont = (newVal, iDx) => {
 		const updatedFonts = [...fonts];
-		updatedFonts[index] = newVal;
+		updatedFonts[iDx] = newVal;
 		setFonts(updatedFonts);
 		onChange(updatedFonts);
 	};
 
-	const removeFont = (index) => {
+	const removeFont = (iDx) => {
 		const updatedFonts = [...fonts];
-		updatedFonts.splice(index, 1);
+		updatedFonts.splice(iDx, 1);
 		setFonts(updatedFonts);
 		onChange(updatedFonts);
 	};
@@ -42,17 +40,17 @@ const AtrcControlSelectGoogleFontsRepeater = (props) => {
 		<AtrcRepeater
 			label={label}
 			groups={() =>
-				fonts.map((font, index) => (
+				fonts.map((font, iDx) => (
 					<AtrcRepeaterGroup
-						groupIndex={index}
+						groupIndex={iDx}
 						deleteGroup={removeFont}
 						groupTitle={__('Google font', 'atrc-prefix-atrc')}
 						deleteTitle={__('Remove font', 'atrc-prefix-atrc')}
-						key={index}>
+						key={iDx}>
 						<AtrcControlSelectGoogleFonts
 							apiKey={apiKey}
 							value={font}
-							onChange={(newVal) => setFont(newVal, index)}
+							onChange={(newVal) => setFont(newVal, iDx)}
 						/>
 					</AtrcRepeaterGroup>
 				))

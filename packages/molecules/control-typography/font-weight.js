@@ -2,7 +2,7 @@
 import { __ } from '@wordpress/i18n';
 
 /*Inbuilt*/
-import { AtrcSelect } from '../../atoms';
+import AtrcSelect from '../../atoms/select';
 
 import { FontWeightList } from './options';
 import AtrcPanelRow from '../panel-row';

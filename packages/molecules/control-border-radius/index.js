@@ -18,7 +18,8 @@ import { __experimentalBorderRadiusControl as BorderRadiusControl } from '@wordp
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcResetButtonIcon, AtrcResetWrap } from '../../atoms';
+import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
+import { AtrcResetWrap } from '../../atoms/reset-button-icon';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

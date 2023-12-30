@@ -3,8 +3,10 @@ import { __ } from '@wordpress/i18n';
 import { Placeholder } from '@wordpress/components';
 
 /*Inbuilt*/
-import { AtrcTooltip } from '..';
-import { AtrcButton, AtrcIcon } from '../../atoms';
+import AtrcTooltip from '../tooltip';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+
 import {
 	FiveColumnsOptions,
 	FourColumnsOptions,

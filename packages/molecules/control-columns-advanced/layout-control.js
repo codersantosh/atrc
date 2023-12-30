@@ -6,9 +6,11 @@ import classnames from 'classnames';
 import { isArray } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcDropdownDevice } from '../';
+import AtrcDropdownDevice from '../dropdown-device';
+
 import AtrcPrefix from '../../prefix-vars';
-import { AtrcAvailableDevices } from '../../utils';
+
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /* Local */
 import ColumnLayout from './columns-layout';

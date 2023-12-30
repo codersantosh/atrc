@@ -7,7 +7,10 @@ import classnames from 'classnames';
 import { cloneDeep } from 'lodash';
 
 /* Inbuilt */
-import { AtrcControlCompoundSlider, AtrcControlSelectButton } from '../..';
+import AtrcControlSelectButton from '../../control-select-button';
+
+import AtrcControlCompoundSlider from '../../control-compound-slider';
+
 import {
 	CustomColumnOption,
 	ThreeColumnsOptions,

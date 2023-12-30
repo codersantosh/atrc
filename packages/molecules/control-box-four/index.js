@@ -19,11 +19,13 @@ import { __experimentalBoxControl as BoxControl } from '@wordpress/components';
 
 /*Library*/
 import classnames from 'classnames';
+import { cloneDeep } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcWrap, AtrcResetButtonIcon, AtrcResetWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
+import { AtrcResetWrap } from '../../atoms/reset-button-icon';
 import AtrcPrefix from '../../prefix-vars';
-import { cloneDeep } from 'lodash';
 
 /*Local*/
 const RenderBoxControl = (props) => {

@@ -38,20 +38,19 @@ import classnames from 'classnames';
 import { map } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcControlBoxShadow,
-	AtrcPanelTools,
-	AtrcControlBoxShadowAllowedKeys,
-} from '../index';
+
+import AtrcControlBoxShadow from '../control-box-shadow';
+import { AtrcControlBoxShadowAllowedKeys } from '../control-box-shadow';
+import AtrcPanelTools from '../panel-tools';
 
 /*Inbuilt utils*/
 import {
-	AtrcUpdateTabValues,
+	AtrcGetTabValues,
 	AtrcHasTabValues,
+	AtrcUpdateTabValues,
 	AtrcResetTab,
 	AtrcResetTabs,
-	AtrcGetTabValues,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

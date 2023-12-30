@@ -18,9 +18,11 @@ import classnames from 'classnames';
 import { isArray, isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcPanelRow, AtrcPanelTools } from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
 
-import { AtrcRange, AtrcSelect } from '../../atoms';
+import AtrcSelect from '../../atoms/select';
+import AtrcRange from '../../atoms/range';
 
 import TimingFunctionsOptions from './options';
 

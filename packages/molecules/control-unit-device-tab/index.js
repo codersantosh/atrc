@@ -39,21 +39,19 @@ import classnames from 'classnames';
 import { map } from 'lodash';
 
 /*Inbuilt*/
-
-import {
-	AtrcControlUnitDeviceAllowedKeys,
-	AtrcControlUnitDevice,
-	AtrcPanelTools,
-} from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlUnitDevice from '../control-unit-device';
+import { AtrcControlUnitDeviceAllowedKeys } from '../control-unit-device';
 
 /*Inbuilt utils*/
 import {
-	AtrcUpdateTabValues,
-	AtrcHasTabValues,
-	AtrcResetTab,
 	AtrcGetTabValues,
+	AtrcHasTabValues,
+	AtrcUpdateTabValues,
+	AtrcResetTab,
 	AtrcResetTabs,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
+
 import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components*/

@@ -32,22 +32,18 @@ import { useMemo } from '@wordpress/element';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import {
-	AtrcSelect,
-	AtrcLabel,
-	AtrcTextarea,
-	AtrcToggle,
-	AtrcWrap,
-} from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcSelect from '../../atoms/select';
+import AtrcToggle from '../../atoms/toggle';
+import AtrcTextarea from '../../atoms/textarea';
 
-import {
-	AtrcControlDropdownHtml,
-	AtrcControlDropdownColor,
-	AtrcControlResponsiveWidthHeight,
-	AtrcPanelTools,
-	AtrcIconPreview,
-	AtrcPanelRow,
-} from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
+import AtrcControlDropdownHtml from '../control-dropdown-html';
+import AtrcControlDropdownColor from '../control-dropdown-color';
+import AtrcControlResponsiveWidthHeight from '../control-responsive-width-height';
+import { AtrcIconPreview } from '../control-dropdown-html';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

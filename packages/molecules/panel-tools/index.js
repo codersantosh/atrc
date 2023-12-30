@@ -24,19 +24,20 @@ import classnames from 'classnames';
 import { map, forEach, sortBy } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcButton,
-	AtrcWrap,
-	AtrcIcon,
-	AtrcLabel,
-	AtrcResetButtonIcon,
-	AtrcSpan,
-} from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
+import AtrcSpan from '../../atoms/span';
 
-import { AtrcTabPanel, AtrcDropdown, AtrcTooltip, AtrcNotice } from '../index';
+import AtrcNotice from '../notice';
+import AtrcDropdown from '../dropdown';
+import AtrcTooltip from '../tooltip';
+import AtrcTabPanel from '../tab-panel';
 
 /*Inbuilt Utils*/
-import { AtrcUseStateCallback } from '../../utils';
+import AtrcUseStateCallback from './../../utils/use-state-callback';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
@@ -111,8 +112,8 @@ export function AtrcPanelTools(props) {
 			return false;
 		}
 		return sortBy(panelToolsState.activeItems, (tool) => {
-			const index = orderTools.indexOf(tool);
-			return index === -1 ? Infinity : index;
+			const iDx = orderTools.indexOf(tool);
+			return iDx === -1 ? Infinity : iDx;
 		});
 	}, [panelToolsState.activeItems]);
 
@@ -121,8 +122,8 @@ export function AtrcPanelTools(props) {
 		if (!newActiveItems.includes(item.name) && !isReset) {
 			newActiveItems.push(item.name);
 		} else if (newActiveItems.includes(item.name)) {
-			const index = newActiveItems.indexOf(item.name);
-			newActiveItems.splice(index, 1);
+			const iDx = newActiveItems.indexOf(item.name);
+			newActiveItems.splice(iDx, 1);
 		}
 
 		const valueCloned = Object.assign({}, panelToolsState);

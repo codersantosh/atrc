@@ -2,7 +2,8 @@
 import { isArray, isEmpty, mapKeys, omit, pick } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcAvailableTabs, AtrcIsScalar } from './index';
+import AtrcAvailableTabs from './available-tabs';
+import AtrcIsScalar from './is-scalar';
 
 /*Local*/
 export const AtrcIsKeyWithValueNotEmpty = (obj, key) => {

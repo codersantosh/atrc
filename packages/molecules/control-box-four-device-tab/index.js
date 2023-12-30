@@ -128,20 +128,18 @@ import { map } from 'lodash';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import {
-	AtrcPanelTools,
-	AtrcControlBoxFourDevice,
-	AtrcControlBoxFourDeviceAllowedKeys,
-} from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlBoxFourDevice from '../control-box-four-device';
+import { AtrcControlBoxFourDeviceAllowedKeys } from '../control-box-four-device';
 
 /*Inbuilt utils*/
 import {
-	AtrcUpdateTabValues,
+	AtrcGetTabValues,
 	AtrcHasTabValues,
+	AtrcUpdateTabValues,
 	AtrcResetTab,
 	AtrcResetTabs,
-	AtrcGetTabValues,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

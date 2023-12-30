@@ -6,10 +6,10 @@ import { useEntityProp } from '@wordpress/core-data';
 import { forwardRef } from '@wordpress/element';
 
 /* Inbuilt */
-import { AtrcLink, AtrcWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLink from '../../atoms/link';
 
 /* Local */
-
 const AtrcPostTitle = (props, ref) => {
 	const { postType, postId, htmlTag, linkOptions, ...defaultProps } = props;
 

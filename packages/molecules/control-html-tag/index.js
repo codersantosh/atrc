@@ -2,7 +2,7 @@
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcSelect } from '../../atoms';
+import AtrcSelect from '../../atoms/select';
 
 import SelectHtmlOptions from './options';
 

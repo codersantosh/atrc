@@ -1,10 +1,12 @@
 /*Library*/
 import { isEmpty } from 'lodash';
-import { AtrcAvailableDevices } from '../../utils';
+
+/* Inbuilt */
+import AtrcAvailableDevices from '../../utils/available-devices';
+
 import SvgShapeOptions from './options';
 
 /*Local*/
-
 const SelectedShape = (value, options) => {
 	const selectedShape = options.filter(function (item) {
 		return item.value === value;

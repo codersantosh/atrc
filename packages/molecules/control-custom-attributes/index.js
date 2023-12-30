@@ -16,9 +16,9 @@ import classnames from 'classnames';
 import { escape, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcText } from '../../atoms';
+import AtrcText from '../../atoms/text';
 
-import { AtrcPanelTools } from '../index';
+import AtrcPanelTools from '../panel-tools';
 import AtrcNotice from '../notice';
 import AtrcPrefix from '../../prefix-vars';
 

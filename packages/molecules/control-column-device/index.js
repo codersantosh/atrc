@@ -15,7 +15,7 @@ import classnames from 'classnames';
 import { map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcControlSelectDevice } from '../index';
+import AtrcControlSelectDevice from '../control-select-device';
 
 import ColumnOptions from './options';
 
@@ -45,8 +45,8 @@ const AtrcControlColumnDevice = (props) => {
 					onChange(newValue);
 				} else {
 					const intValues = {};
-					map(newValue, function (item, index) {
-						intValues[index] = parseInt(item);
+					map(newValue, function (item, iDx) {
+						intValues[iDx] = parseInt(item);
 					});
 					onChange(intValues);
 				}

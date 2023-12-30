@@ -6,9 +6,9 @@ import { PortalWithState } from 'react-portal';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
 
-import { AtrcSidebar } from '../index';
+import AtrcSidebar from '../sidebar';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

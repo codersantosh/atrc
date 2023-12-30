@@ -4,7 +4,7 @@ import apiFetch from '@wordpress/api-fetch';
 import { addQueryArgs } from '@wordpress/url';
 
 /*Inbuilt*/
-import { AtrcGetRestBaseType } from '../index';
+import AtrcGetRestBaseType from '../get-rest-base-types';
 
 /*Local*/
 const AtrcGetPosts = async ({

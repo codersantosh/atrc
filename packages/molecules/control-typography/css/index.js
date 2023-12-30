@@ -2,7 +2,8 @@
 import { forEach, isEmpty } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcDeviceCss, AtrcTabCss } from '../../../utils';
+import { AtrcTabCss } from './../../../utils/object-values-with-allowed-keys-and-tabs';
+import { AtrcDeviceCss } from '../../../utils/object-values-with-devices';
 
 /*Local*/
 const AtrcControlTypographyCss = (

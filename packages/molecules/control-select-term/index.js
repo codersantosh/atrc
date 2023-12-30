@@ -17,11 +17,11 @@ import classnames from 'classnames';
 import { debounce, isArray, isNumber, isString } from 'lodash';
 
 /*Inbuilt */
-import { AtrcDynamicSelect } from '../../atoms';
+import { AtrcDynamicSelect } from '../../atoms/select';
 
-import { AtrcNotice } from '../index';
+import AtrcNotice from '../notice';
 
-import { AtrcGetTerms } from '../../api';
+import AtrcGetTerms from '../../api/get-terms';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

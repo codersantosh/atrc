@@ -77,21 +77,22 @@ import classnames from 'classnames';
 import { map } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcControlBorder,
-	AtrcPanelTools,
-	AtrcControlBorderAllowedKeys,
-} from '../index';
+
+import AtrcControlBorder from '../control-border';
+import AtrcPanelTools from '../panel-tools';
+import { AtrcControlBorderAllowedKeys } from '../control-border';
 
 /*Inbuilt utils*/
+
 import {
-	AtrcUpdateTabValues,
+	AtrcGetTabValues,
 	AtrcHasTabValues,
+	AtrcUpdateTabValues,
 	AtrcResetTab,
 	AtrcResetTabs,
-	AtrcGetTabValues,
-	AtrcUseColorSolids,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
+
+import { AtrcUseColorSolids } from '../../utils/use-colors';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

@@ -7,7 +7,7 @@ import classnames from 'classnames';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
-import { AtrcLabel } from '../../atoms';
+import AtrcLabel from '../../atoms/label';
 
 /*Local Components*/
 const AtrcControlAlignmentMatrix = (props) => {

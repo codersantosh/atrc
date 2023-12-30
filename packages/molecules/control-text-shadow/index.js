@@ -15,9 +15,11 @@ import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcWrap, AtrcControlUnit } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcControlUnit from '../../atoms/control-unit';
 
-import { AtrcControlDropdownColor, AtrcPanelRow } from '../index';
+import AtrcPanelRow from '../panel-row';
+import AtrcControlDropdownColor from '../control-dropdown-color';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

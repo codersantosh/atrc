@@ -13,12 +13,13 @@ import classnames from 'classnames';
 import { isArray } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcSelect } from '../../atoms';
+import AtrcSelect from '../../atoms/select';
 
-import { AtrcDropdownDevice } from '../index';
+import AtrcDropdownDevice from '../dropdown-device';
 
 /*Inbuilt Utils*/
-import { AtrcAvailableDevices, AtrcMappingDeviceValues } from '../../utils';
+import AtrcAvailableDevices from '../../utils/available-devices';
+import { AtrcMappingDeviceValues } from './../../utils/object-values-with-devices';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

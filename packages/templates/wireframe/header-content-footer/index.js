@@ -2,9 +2,11 @@
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcWrap } from '../../../atoms';
+import AtrcWrap from '../../../atoms/wrap';
 
-import { AtrcFooter, AtrcHeader } from '../../../organisms';
+import AtrcHeader from '../../../organisms/header';
+
+import AtrcFooter from '../../../organisms/footer';
 
 /*Local*/
 const ContentCol = ({ contentColProps, renderContent, allowContentCol }) => {

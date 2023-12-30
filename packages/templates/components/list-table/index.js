@@ -1,8 +1,17 @@
-import { AtrcTbody, AtrcTh, AtrcThead, AtrcTr } from '../../../atoms';
+/* Library */
 import classnames from 'classnames';
-import AtrcPrefix from '../../../prefix-vars';
-import { AtrcTable } from '../../../molecules';
 
+/* Inbuilt */
+import AtrcTh from '../../../atoms/th';
+import AtrcTbody from './../../../atoms/tbody';
+import AtrcThead from './../../../atoms/thead';
+import AtrcTr from './../../../atoms/tr';
+
+import AtrcTable from './../../../molecules/table';
+
+import AtrcPrefix from '../../../prefix-vars';
+
+/* Local */
 const ListTable = (props) => {
 	const { tHeadLabels, renderTbody, ...defaultProps } = props;
 

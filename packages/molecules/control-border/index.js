@@ -31,9 +31,10 @@ import { __experimentalBorderBoxControl as BorderBoxControl } from '@wordpress/c
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcResetButtonIcon, AtrcResetWrap } from '../../atoms';
+import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
+import { AtrcResetWrap } from '../../atoms/reset-button-icon';
 
-import { AtrcControlBoxFourShorthandCssOnly } from '../index';
+import { AtrcControlBoxFourShorthandCssOnly } from '../control-box-four/css';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

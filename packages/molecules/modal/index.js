@@ -5,7 +5,7 @@ import { Modal } from '@wordpress/components';
 import classnames from 'classnames';
 
 /*Atrc*/
-import { AtrcWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

@@ -23,9 +23,11 @@ import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcLabel, AtrcWrap } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
 
-import { AtrcControlUnitDevice, AtrcPanelRow } from '../index';
+import AtrcPanelRow from '../panel-row';
+import AtrcControlUnitDevice from '../control-unit-device';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

@@ -13,9 +13,12 @@ import { audio } from '@wordpress/icons';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcButton, AtrcIcon } from '../../atoms';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
 
-import { AtrcControlAudio, AtrcDropdown } from '../index';
+import AtrcDropdown from '../dropdown';
+
+import AtrcControlAudio from '../control-audio';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

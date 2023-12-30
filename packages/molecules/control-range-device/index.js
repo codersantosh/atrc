@@ -14,12 +14,13 @@ import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcRange } from '../../atoms';
+import AtrcRange from '../../atoms/range';
 
-import { AtrcDropdownDevice } from '../index';
+import AtrcDropdownDevice from '../dropdown-device';
 
 /*Inbuilt Utils*/
-import { AtrcAvailableDevices, AtrcMappingDeviceValues } from '../../utils';
+import AtrcAvailableDevices from '../../utils/available-devices';
+import { AtrcMappingDeviceValues } from './../../utils/object-values-with-devices';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

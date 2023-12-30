@@ -1,16 +1,15 @@
 /*Library*/
 import { forEach, isEmpty } from 'lodash';
 
+/* Inbuilt */
+import AtrcAvailableTabs from '../../utils/available-tabs';
 import {
-	AtrcAvailableTabs,
 	AtrcGetTabValues,
 	AtrcHasTabValues,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
-import {
-	AtrcControlTextShadowAllowedKeys,
-	AtrcControlTextShadowCss,
-} from '../index';
+import { AtrcControlTextShadowAllowedKeys } from '../control-text-shadow';
+import AtrcControlTextShadowCss from '../control-text-shadow/css';
 
 /*Local*/
 const AtrcControlTextShadowTabCss = (value, property = 'text-shadow') => {

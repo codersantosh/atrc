@@ -5,7 +5,9 @@ import { __experimentalUnitControl as UnitControl } from '@wordpress/components'
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcWrap, AtrcResetButtonIcon, AtrcResetWrap } from '../index';
+import AtrcResetButtonIcon from '../reset-button-icon';
+import { AtrcResetWrap } from '../reset-button-icon';
+import AtrcWrap from '../wrap';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

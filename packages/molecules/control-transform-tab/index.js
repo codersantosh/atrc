@@ -49,29 +49,25 @@ import classnames from 'classnames';
 import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcToggle,
-	AtrcLabel,
-	AtrcSelect,
-	AtrcControlUnit,
-} from '../../atoms';
+import AtrcLabel from '../../atoms/label';
+import AtrcSelect from '../../atoms/select';
+import AtrcToggle from '../../atoms/toggle';
+import AtrcControlUnit from '../../atoms/control-unit';
 
-import {
-	AtrcPanelTools,
-	AtrcControlTransform,
-	AtrcNotice,
-	AtrcControlTransformAllowedKeys,
-	AtrcPanelRow,
-} from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcNotice from '../notice';
+import AtrcPanelRow from '../panel-row';
+import AtrcControlTransform from '../control-transform';
+import { AtrcControlTransformAllowedKeys } from '../control-transform';
 
 /*Inbuilt utils*/
 import {
 	AtrcGetTabValues,
-	AtrcUpdateTabValues,
 	AtrcHasTabValues,
+	AtrcUpdateTabValues,
 	AtrcResetTab,
 	AtrcResetTabs,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

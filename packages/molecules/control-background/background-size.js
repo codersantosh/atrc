@@ -29,9 +29,11 @@ import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 
 /*Inbuilt*/
-import { AtrcWrap, AtrcLabel, AtrcControlUnit } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcControlUnit from '../../atoms/control-unit';
 
-import { AtrcControlSelectDevice } from '../index';
+import AtrcControlSelectDevice from './../control-select-device';
 
 import { BgSzOptions } from './options';
 

@@ -5,8 +5,9 @@ import { useState } from '@wordpress/element';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcWrap } from '../../atoms';
-import { AtrcModal } from '../index';
+import AtrcWrap from '../../atoms/wrap';
+
+import AtrcModal from '../modal';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

@@ -19,7 +19,8 @@ import classnames from 'classnames';
 import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcControlDropdownColor, AtrcPanelTools } from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlDropdownColor from '../control-dropdown-color';
 
 /*Inbuilt utils*/
 

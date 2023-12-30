@@ -27,13 +27,17 @@ import classnames from 'classnames';
 import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcPanelRow, AtrcPanelTools } from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
 
-import { AtrcRange, AtrcLabel, AtrcControlUnit } from '../../atoms';
+import AtrcLabel from '../../atoms/label';
+import AtrcControlUnit from '../../atoms/control-unit';
+import AtrcRange from '../../atoms/range';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
-import { AtrcIsKeyWithValueNotEmpty } from '../../utils';
+
+import { AtrcIsKeyWithValueNotEmpty } from './../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Local Components*/
 export const AtrcControlTransformAllowedKeys = [

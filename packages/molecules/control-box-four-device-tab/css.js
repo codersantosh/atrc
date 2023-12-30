@@ -1,16 +1,17 @@
 /*Library*/
 import { forEach, isEmpty } from 'lodash';
 
+/* Inbuilt */
+
+import AtrcAvailableTabs from '../../utils/available-tabs';
 import {
-	AtrcAvailableTabs,
 	AtrcGetTabValues,
 	AtrcHasTabValues,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
-import {
-	AtrcControlBoxFourDeviceAllowedKeys,
-	AtrcControlBoxFourDeviceCss,
-} from '../index';
+import { AtrcControlBoxFourDeviceAllowedKeys } from '../control-box-four-device';
+
+import AtrcControlBoxFourDeviceCss from '../control-box-four-device/css';
 
 /*Local*/
 const AtrcControlBoxFourTabCss = ({

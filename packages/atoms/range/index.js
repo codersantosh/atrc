@@ -5,7 +5,8 @@ import { RangeControl } from '@wordpress/components';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcResetButtonIcon, AtrcResetWrap } from '../index';
+import AtrcResetButtonIcon from '../reset-button-icon';
+import { AtrcResetWrap } from '../reset-button-icon';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

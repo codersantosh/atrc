@@ -2,10 +2,10 @@
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcWrap } from '../../../atoms';
+import AtrcWrap from '../../../atoms/wrap';
 
 /*Prefix*/
-import { AtrcSidebar } from '../../../organisms';
+import AtrcSidebar from '../../../organisms/sidebar';
 
 /*Local*/
 const AtColumn = (props) => {

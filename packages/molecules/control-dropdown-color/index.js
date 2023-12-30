@@ -11,13 +11,15 @@ import { ColorIndicator, ColorPalette } from '@wordpress/components';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcWrap, AtrcLabel, AtrcResetButtonIcon } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
 
-import { AtrcDropdown } from '../index';
+import AtrcDropdown from '../dropdown';
 
 import AtrcPrefix from '../../prefix-vars';
 
-import { AtrcUseColorSolids } from '../../utils';
+import { AtrcUseColorSolids } from '../../utils/use-colors';
 
 /*Local Components*/
 export const AtrcControlDropdownColorAllowedKeys = ['cl'];

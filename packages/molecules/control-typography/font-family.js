@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { useMemo } from '@wordpress/element';
 
 /*Inbuilt*/
-import { AtrcSelect } from '../../atoms';
+import AtrcSelect from '../../atoms/select';
 
 import { SystemFontTypeList } from './options';
 import AtrcPanelRow from '../panel-row';

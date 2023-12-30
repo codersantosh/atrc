@@ -47,14 +47,14 @@ import {
 import AtrcPrefix from '../../prefix-vars';
 
 /*Inbuilt*/
-import { AtrcToggle, AtrcSelect, AtrcControlUnit } from '../../atoms';
+import AtrcSelect from '../../atoms/select';
+import AtrcToggle from '../../atoms/toggle';
+import AtrcControlUnit from '../../atoms/control-unit';
 
-import {
-	AtrcControlAnimationAnimateCss,
-	AtrcControlTransform,
-	AtrcNotice,
-	AtrcPanelTools,
-} from '../index';
+import AtrcControlAnimationAnimateCss from './../control-animation-animate-css';
+import AtrcControlTransform from './../control-transform';
+import AtrcNotice from './../notice';
+import AtrcPanelTools from './../panel-tools';
 
 /*Local Components*/
 
@@ -71,7 +71,7 @@ const mappingPredefinedValues = (value) => {
 				filter(keys(value), (prop) => allowedProperties.includes(prop)),
 				(obj, prop) => ({ ...obj, [prop]: value[prop] }),
 				{}
-		  )
+			)
 		: {};
 };
 
@@ -105,7 +105,7 @@ const mappingNewStyleInitialValues = (value) => {
 				filter(keys(value), (prop) => allowedProperties.includes(prop)),
 				(obj, prop) => ({ ...obj, [prop]: value[prop] }),
 				{}
-		  )
+			)
 		: {};
 };
 
@@ -179,11 +179,11 @@ const CustomAnimation = ({ label = '', value, onChange, resetCustom }) => {
 					? __(
 							'For initial transformation, use the transform options.',
 							'atrc-prefix-atrc'
-					  )
+						)
 					: __(
 							'For a smooth transformation, use the transition options.',
 							'atrc-prefix-atrc'
-					  )}
+						)}
 			</AtrcNotice>
 		</>
 	);

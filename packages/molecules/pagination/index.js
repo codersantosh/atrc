@@ -8,7 +8,10 @@ import classnames from 'classnames';
 import AtrcPrefix from '../../prefix-vars';
 
 /*Inbuilt*/
-import { AtrcWrap, AtrcSpan, AtrcText, AtrcButton } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcText from '../../atoms/text';
+import AtrcButton from '../../atoms/button';
+import AtrcSpan from '../../atoms/span';
 
 /*Local Component*/
 const AtrcPagination = (props) => {

@@ -5,9 +5,12 @@ import { forwardRef } from '@wordpress/element';
 import classnames from 'classnames';
 
 /*Inbuilt*/
+import AtrcWrap from '../wrap';
+
+import AtrcIsGradientColor from '../../utils/is-gradient-color';
+import { AtrcIsLinearGradientColor } from '../../utils/is-gradient-color';
+
 import AtrcPrefix from '../../prefix-vars';
-import { AtrcWrap } from '../index';
-import { AtrcIsGradientColor, AtrcIsLinearGradientColor } from '../../utils';
 
 /*Local Components*/
 export const AtrcProgressSvgGradientColor = ({ gradient, uniqueId }) => {
@@ -48,9 +51,9 @@ export const AtrcProgressSvgGradientColor = ({ gradient, uniqueId }) => {
 			<linearGradient
 				id={'at-lg-' + uniqueId}
 				gradientTransform={`${gradientObject.deg}`}>
-				{gradientObject.colors.map((item, index) => (
+				{gradientObject.colors.map((item, iDx) => (
 					<stop
-						key={index}
+						key={iDx}
 						offset={item.offset}
 						stopColor={item.color}
 					/>

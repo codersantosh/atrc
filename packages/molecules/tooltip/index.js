@@ -5,7 +5,7 @@ import { Tooltip } from '@wordpress/components';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcSpan } from '../../atoms';
+import AtrcSpan from '../../atoms/span';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

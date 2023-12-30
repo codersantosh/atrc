@@ -1,5 +1,7 @@
-import { AtrcIsKeyWithValueNotEmpty } from '../../utils';
+/* Inbuilt */
+import { AtrcIsKeyWithValueNotEmpty } from './../../utils/object-values-with-allowed-keys-and-tabs';
 
+/* Local */
 export default function AtrcControlTransformCSS(value) {
 	let transform = '';
 

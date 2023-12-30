@@ -4,29 +4,25 @@ import classnames from 'classnames';
 
 import AtrcPrefix from '../../../prefix-vars';
 
-import { AtrcHeader } from '../../../organisms';
+import AtrcHeader from '../../../organisms/header';
 
-import {
-	AtrcButton,
-	AtrcCheckbox,
-	AtrcHr,
-	AtrcIcon,
-	AtrcLink,
-	AtrcResetButtonIcon,
-	AtrcSelect,
-	AtrcSpinner,
-	AtrcToggle,
-	AtrcWord,
-	AtrcWrap,
-} from '../../../atoms';
+import AtrcWrap from '../../../atoms/wrap';
+import AtrcSelect from '../../../atoms/select';
+import AtrcToggle from '../../../atoms/toggle';
+import AtrcButton from '../../../atoms/button';
+import AtrcIcon from '../../../atoms/icon';
+import AtrcResetButtonIcon from '../../../atoms/reset-button-icon';
+import AtrcWord from '../../../atoms/word';
+import AtrcLink from '../../../atoms/link';
+import AtrcSpinner from '../../../atoms/spinner';
+import AtrcHr from '../../../atoms/hr';
+import AtrcCheckbox from '../../../atoms/checkbox';
 
-import {
-	AtrcBase,
-	AtrcButtonGroup,
-	AtrcPagination,
-	AtrcSearch,
-	AtrcTooltip,
-} from '../../../molecules';
+import AtrcBase from './../../../molecules/base';
+import AtrcButtonGroup from './../../../molecules/button-group';
+import AtrcPagination from './../../../molecules/pagination';
+import AtrcSearch from './../../../molecules/search';
+import AtrcTooltip from './../../../molecules/tooltip';
 
 import {
 	BsList,
@@ -38,15 +34,15 @@ import {
 
 const MapElements = ({ place, elements, atrcProps }) => {
 	let ml;
-	return elements.map(function (element, index) {
+	return elements.map(function (element, iDx) {
 		ml = '';
-		if (index) {
+		if (iDx) {
 			ml = 'ml-15';
 		}
 		if ('word' === element) {
 			return (
 				<AtrcWord
-					key={`me-${index}`}
+					key={`me-${iDx}`}
 					className={classnames(AtrcPrefix('m-0'), ml ? AtrcPrefix(ml) : '')}
 					{...atrcProps.word}
 				/>
@@ -55,7 +51,7 @@ const MapElements = ({ place, elements, atrcProps }) => {
 		if ('button' === element) {
 			return (
 				<AtrcTooltip
-					key={`me-${index}`}
+					key={`me-${iDx}`}
 					{...atrcProps.button.tooltipProps}>
 					{atrcProps.button.isPending ? <AtrcSpinner variant='inline' /> : null}
 					<AtrcButton {...atrcProps.button.buttonProps} />
@@ -65,7 +61,7 @@ const MapElements = ({ place, elements, atrcProps }) => {
 		if ('title' === element) {
 			return (
 				<AtrcWord
-					key={`me-${index}`}
+					key={`me-${iDx}`}
 					className={classnames(
 						AtrcPrefix('m-0'),
 						'at-m',
@@ -79,7 +75,7 @@ const MapElements = ({ place, elements, atrcProps }) => {
 		if ('addNew' === element) {
 			return (
 				<AtrcLink
-					key={`me-${index}`}
+					key={`me-${iDx}`}
 					type='router-link'
 					variant='primary'
 					className={classnames('at-m')}
@@ -91,7 +87,7 @@ const MapElements = ({ place, elements, atrcProps }) => {
 		if ('toggleFilter' === element) {
 			return (
 				<AtrcToggle
-					key={`me-${index}`}
+					key={`me-${iDx}`}
 					className={classnames(ml ? AtrcPrefix(ml) : '')}
 					{...atrcProps.toggleFilter}
 				/>
@@ -108,7 +104,7 @@ const MapElements = ({ place, elements, atrcProps }) => {
 					: atrcProps.filterButtonGroup.buttons;
 			return (
 				<AtrcButtonGroup
-					key={`me-${index}`}
+					key={`me-${iDx}`}
 					className={classnames(ml ? AtrcPrefix(ml) : '')}>
 					{buttons.map(function (buttonProps, btnIndex) {
 						return (
@@ -139,27 +135,26 @@ const MapElements = ({ place, elements, atrcProps }) => {
 		if ('filterSelectGroup' === element) {
 			return (
 				<AtrcWrap
-					key={`me-${index}`}
+					key={`me-${iDx}`}
 					className={classnames(
 						'at-flx',
 						'at-al-itm-ctr',
 						ml ? AtrcPrefix(ml) : ''
 					)}>
-					{atrcProps.filterSelectGroup.selects.map(function (
-						selectProps,
-						slIndex
-					) {
-						return (
-							<AtrcBase
-								key={`sl-${slIndex}`}
-								variant='select-plain'>
-								<AtrcSelect
-									allowReset={false}
-									{...selectProps}
-								/>
-							</AtrcBase>
-						);
-					})}
+					{atrcProps.filterSelectGroup.selects.map(
+						function (selectProps, slIndex) {
+							return (
+								<AtrcBase
+									key={`sl-${slIndex}`}
+									variant='select-plain'>
+									<AtrcSelect
+										allowReset={false}
+										{...selectProps}
+									/>
+								</AtrcBase>
+							);
+						}
+					)}
 					<AtrcButton
 						variant='primary'
 						className={classnames(AtrcPrefix('ml-15'))}
@@ -173,7 +168,7 @@ const MapElements = ({ place, elements, atrcProps }) => {
 		if ('search' === element) {
 			return (
 				<AtrcSearch
-					key={`me-${index}`}
+					key={`me-${iDx}`}
 					{...atrcProps.search}
 					testProps={{
 						className: classnames(ml ? AtrcPrefix(ml) : 'test'),
@@ -188,7 +183,7 @@ const MapElements = ({ place, elements, atrcProps }) => {
 		if ('bulkCheck' === element) {
 			return (
 				<AtrcWrap
-					key={`me-${index}`}
+					key={`me-${iDx}`}
 					className={classnames(
 						'at-flx',
 						'at-al-itm-ctr',
@@ -200,33 +195,32 @@ const MapElements = ({ place, elements, atrcProps }) => {
 					{atrcProps.bulkCheck.checkedIds.length > 0 &&
 					atrcProps.bulkCheck.actions ? (
 						<AtrcButtonGroup className={classnames(AtrcPrefix('m-0'))}>
-							{atrcProps.bulkCheck.actions.map(function (
-								actionProps,
-								btnIndex
-							) {
-								return (
-									<AtrcTooltip
-										key={`btn-next-${btnIndex}`}
-										{...actionProps.tooltipProps}>
-										<AtrcButton
-											variant='icon'
-											className={classnames(
-												'at-flx',
-												'at-al-itm-ctr',
-												'at-jfy-cont-ctr',
-												'at-bdr-rad',
-												'at-w',
-												'at-h'
-											)}
-											{...actionProps.buttonProps}>
-											<AtrcIcon
-												className={classnames('at-w', 'at-h')}
-												{...actionProps.iconProps}
-											/>
-										</AtrcButton>
-									</AtrcTooltip>
-								);
-							})}
+							{atrcProps.bulkCheck.actions.map(
+								function (actionProps, btnIndex) {
+									return (
+										<AtrcTooltip
+											key={`btn-next-${btnIndex}`}
+											{...actionProps.tooltipProps}>
+											<AtrcButton
+												variant='icon'
+												className={classnames(
+													'at-flx',
+													'at-al-itm-ctr',
+													'at-jfy-cont-ctr',
+													'at-bdr-rad',
+													'at-w',
+													'at-h'
+												)}
+												{...actionProps.buttonProps}>
+												<AtrcIcon
+													className={classnames('at-w', 'at-h')}
+													{...actionProps.iconProps}
+												/>
+											</AtrcButton>
+										</AtrcTooltip>
+									);
+								}
+							)}
 						</AtrcButtonGroup>
 					) : null}
 					{atrcProps.bulkCheck.checkedIds.length < 1 &&
@@ -252,7 +246,7 @@ const MapElements = ({ place, elements, atrcProps }) => {
 		if ('order' === element) {
 			return (
 				<AtrcWrap
-					key={`me-${index}`}
+					key={`me-${iDx}`}
 					className={classnames(
 						ml ? AtrcPrefix(ml) : '',
 						'at-flx',
@@ -298,7 +292,7 @@ const MapElements = ({ place, elements, atrcProps }) => {
 		if ('refresh' === element) {
 			return (
 				<AtrcTooltip
-					key={`me-${index}`}
+					key={`me-${iDx}`}
 					text={
 						'asc' === atrcProps.order.order
 							? __('Click for descending order', 'atrc-prefix-atrc')
@@ -319,7 +313,7 @@ const MapElements = ({ place, elements, atrcProps }) => {
 		if ('pagination' === element) {
 			return (
 				<AtrcPagination
-					key={`me-${index}`}
+					key={`me-${iDx}`}
 					className={classnames(ml ? AtrcPrefix(ml) : '')}
 					{...atrcProps.pagination}
 				/>
@@ -329,7 +323,7 @@ const MapElements = ({ place, elements, atrcProps }) => {
 		if ('listGrid' === element) {
 			return (
 				<AtrcTooltip
-					key={`me-${index}`}
+					key={`me-${iDx}`}
 					text={
 						atrcProps.listGrid.isList
 							? __('List layout', 'atrc-prefix-atrc')

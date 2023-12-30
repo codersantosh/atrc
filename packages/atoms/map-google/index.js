@@ -1,9 +1,14 @@
+/* WordPress */
 import { __, sprintf } from '@wordpress/i18n';
 import { useEffect, useState } from '@wordpress/element';
 
+/* Library */
 import classNames from 'classnames';
-import { AtrcUniqueID } from '../../utils';
 
+/* Inbuilt */
+import AtrcUniqueID from '../../utils/unique-id';
+
+/* Local */
 const AtrcGoogleMap = ({
 	id,
 	apiKey,
@@ -193,7 +198,7 @@ const AtrcGoogleMap = ({
 	) : (
 		<iframe
 			title={sprintf(
-				// translators: %d: Index
+				// translators: %s: location
 				__(
 					'Embedded content from Google Maps. Location: %s.',
 					'atrc-prefix-atrc'

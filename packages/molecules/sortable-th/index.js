@@ -4,7 +4,11 @@ import { chevronUp, chevronDown } from '@wordpress/icons';
 import { useState } from '@wordpress/element';
 
 /*Inbuilt*/
-import { AtrcTh, AtrcSpan, AtrcIcon, AtrcLink } from '../../atoms';
+import AtrcIcon from '../../atoms/icon';
+import AtrcSpan from '../../atoms/span';
+import AtrcLink from '../../atoms/link';
+import AtrcTh from '../../atoms/th';
+
 import classnames from 'classnames';
 
 /*Inbuilt*/

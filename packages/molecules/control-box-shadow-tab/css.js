@@ -1,16 +1,15 @@
 /*Library*/
 import { forEach, isEmpty } from 'lodash';
 
+/* Inbuilt */
+import AtrcAvailableTabs from '../../utils/available-tabs';
 import {
-	AtrcAvailableTabs,
 	AtrcGetTabValues,
 	AtrcHasTabValues,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
-import {
-	AtrcControlBoxShadowAllowedKeys,
-	AtrcControlBoxShadowCss,
-} from '../index';
+import { AtrcControlBoxShadowAllowedKeys } from '../control-box-shadow';
+import AtrcControlBoxShadowCss from '../control-box-shadow/css';
 
 /*Local*/
 const AtrcControlBoxShadowTabCss = (value, property = 'box-shadow') => {

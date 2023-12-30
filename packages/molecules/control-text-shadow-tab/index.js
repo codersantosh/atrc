@@ -32,20 +32,18 @@ import classnames from 'classnames';
 import { map } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcControlTextShadow,
-	AtrcPanelTools,
-	AtrcControlTextShadowAllowedKeys,
-} from '../index';
+import AtrcPanelTools from '../panel-tools';
+import { AtrcControlTextShadowAllowedKeys } from '../control-text-shadow';
+import AtrcControlTextShadow from '../control-text-shadow';
 
 /*Inbuilt utils*/
 import {
-	AtrcUpdateTabValues,
+	AtrcGetTabValues,
 	AtrcHasTabValues,
+	AtrcUpdateTabValues,
 	AtrcResetTab,
 	AtrcResetTabs,
-	AtrcGetTabValues,
-} from '../../utils';
+} from '../../utils/object-values-with-allowed-keys-and-tabs';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';

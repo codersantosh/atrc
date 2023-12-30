@@ -40,23 +40,21 @@ import classnames from 'classnames';
 import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcSelect } from '../../atoms';
+import AtrcSelect from '../../atoms/select';
 
-import {
-	AtrcControlGetPostTypeOptions,
-	AtrcControlGetTaxonomyOptions,
-	AtrcControlSelectPost,
-	AtrcControlSelectPostType,
-	AtrcControlSelectTaxonomy,
-	AtrcControlSelectTerm,
-	AtrcControlSelectUser,
-	AtrcNotice,
-	AtrcPanelRow,
-	AtrcPanelTools,
-	AtrcRepeater,
-	AtrcRepeaterGroup,
-	AtrcRepeaterGroupAdd,
-} from '../index';
+import { AtrcControlGetPostTypeOptions } from '../control-select-post-type';
+import { AtrcControlGetTaxonomyOptions } from '../control-select-taxonomy';
+import AtrcControlSelectPost from '../control-select-post';
+import AtrcControlSelectPostType from '../control-select-post-type';
+import AtrcControlSelectTaxonomy from '../control-select-taxonomy';
+import AtrcControlSelectTerm from '../control-select-term';
+import AtrcControlSelectUser from '../control-select-user';
+import AtrcNotice from '../notice';
+import AtrcPanelRow from '../panel-row';
+import AtrcPanelTools from '../panel-tools';
+import AtrcRepeater from '../repeater';
+import AtrcRepeaterGroup from '../repeater/repeater-group';
+import AtrcRepeaterGroupAdd from '../repeater/repeater-group-add';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
@@ -432,7 +430,7 @@ const AtrcControlConditionalDisplay = (props) => {
 		// Make a copy of the value array
 		const updatedGroups = [...value];
 
-		// Append a new item with empty values to the group at the specified index
+		// Append a new item with empty values to the group at the specified idx
 		updatedGroups[groupIndex] = [
 			...updatedGroups[groupIndex],
 			{ field: '', condition: '', value: '' },
@@ -459,7 +457,7 @@ const AtrcControlConditionalDisplay = (props) => {
 		// Make a copy of the value array
 		const updatedGroups = [...value];
 
-		// Remove the group at the specified index
+		// Remove the group at the specified idx
 		updatedGroups.splice(groupIndex, 1);
 
 		//Add notice to user
@@ -474,7 +472,7 @@ const AtrcControlConditionalDisplay = (props) => {
 		// Make a copy of the value array
 		const updatedGroups = [...value];
 
-		// Remove the item at the specified index from the group
+		// Remove the item at the specified idx from the group
 		updatedGroups[groupIndex].splice(itemIndex, 1);
 
 		// Check if the group is now empty
@@ -539,7 +537,7 @@ const AtrcControlConditionalDisplay = (props) => {
 													groupIndex={groupIndex}
 													deleteGroup={deleteGroup}
 													groupTitle={sprintf(
-														// translators: %s: placeholder for index
+														// translators: %s: placeholder for idx
 														__('Group %d', 'atrc-prefix-atrc'),
 														groupIndex + 1
 													)}
@@ -557,7 +555,7 @@ const AtrcControlConditionalDisplay = (props) => {
 																		deleteItem(groupIndex, itmIndex)
 																	}
 																	groupTitle={sprintf(
-																		// translators: %s: placeholder for index
+																		// translators: %s: placeholder for idx
 																		__('Condition %d', 'atrc-prefix-atrc'),
 																		itemIndex + 1
 																	)}
@@ -590,7 +588,7 @@ const AtrcControlConditionalDisplay = (props) => {
 													/>
 												</AtrcRepeaterGroup>
 											);
-									  })
+										})
 									: null
 							}
 							addGroup={() => (

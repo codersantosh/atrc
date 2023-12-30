@@ -1,10 +1,11 @@
 /*WordPress*/
 import { useMemo } from '@wordpress/element';
 
-/*Inbuilt*/
-import { AtrcSelect } from '../../atoms';
-
+/* Library */
 import { reduce, uniqBy } from 'lodash';
+
+/*Inbuilt*/
+import AtrcSelect from '../../atoms/select';
 
 /*Local*/
 const AtrcControlSelectGoogleFontsWeight = (props) => {

@@ -15,12 +15,11 @@ import AsyncSelect from 'react-select/async';
 import { isArray, isString, reduce } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcWrap,
-	AtrcResetButtonIcon,
-	AtrcResetWrap,
-	AtrcLabel,
-} from '../index';
+import AtrcWrap from '../wrap';
+
+import AtrcResetButtonIcon from '../reset-button-icon';
+import { AtrcResetWrap } from '../reset-button-icon';
+import AtrcLabel from '../label';
 
 import AtrcPrefix from '../../prefix-vars';
 

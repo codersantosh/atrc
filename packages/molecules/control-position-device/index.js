@@ -60,18 +60,16 @@ import classnames from 'classnames';
 import { isArray, isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import {
-	AtrcControlBoxFourDevice,
-	AtrcControlSelectDevice,
-	AtrcPanelRow,
-	AtrcPanelTools,
-} from '../index';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
+import AtrcControlBoxFourDevice from '../control-box-four-device';
+import AtrcControlSelectDevice from '../control-select-device';
+import { AtrcControlBoxFourDeviceAllowedKeys } from './../control-box-four-device';
 
 import PositionOptions from './options';
-import { AtrcControlBoxFourDeviceAllowedKeys } from './../control-box-four-device/index';
 
 /*Inbuilt Utils*/
-import { AtrcAvailableDevices } from '../../utils';
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';

@@ -16,16 +16,21 @@ import { __ } from '@wordpress/i18n';
 import { useEffect, useState } from '@wordpress/element';
 
 /*Inbuilt*/
-import { AtrcText, AtrcSelect, AtrcControlUnit } from '../../atoms';
+import AtrcSelect from '../../atoms/select';
+import AtrcText from '../../atoms/text';
+import AtrcControlUnit from '../../atoms/control-unit';
+
 import AtrcPrefix from '../../prefix-vars';
 
-import { AtrcDropdownDevice, AtrcPanelRow } from '../index';
+import AtrcPanelRow from '../panel-row';
+import AtrcDropdownDevice from '../dropdown-device';
+
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 import {
-	AtrcAvailableDevices,
 	AtrcMappingDeviceKey,
 	AtrcMappingDeviceKeyValues,
-} from '../../utils';
+} from './../../utils/object-values-with-devices';
 
 /*Library*/
 import classnames from 'classnames';

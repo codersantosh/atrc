@@ -41,7 +41,7 @@ import classnames from 'classnames';
 import { forEach, isArray, isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcPanelTools } from '../index';
+import AtrcPanelTools from '../panel-tools';
 
 import FontSize from './font-size';
 import FontFamily from './font-family';
@@ -54,13 +54,15 @@ import LetterSpacing from './letter-spacing';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
+
+import { AtrcUcFirst } from './../../utils/string';
+
 import {
 	AtrcHasDeviceValues,
 	AtrcHasValueKey,
 	AtrcResetDevices,
 	AtrcResetValueKey,
-	AtrcUcFirst,
-} from '../../utils';
+} from './../../utils/object-values-with-devices';
 
 /*Local Components*/
 export const AtrcControlTypographyAllowedKeys = [

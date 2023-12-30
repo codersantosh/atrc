@@ -8,14 +8,15 @@ import classnames from 'classnames';
 import { isEmpty, map, reduce, isArray } from 'lodash';
 
 /*Inbuilt*/
-import { AtrcWrap, AtrcIcon, AtrcButton, AtrcLabel } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
 
-import {
-	AtrcModalToggle,
-	AtrcButtonGroup,
-	AtrcTooltip,
-	AtrcSearch,
-} from '../index';
+import AtrcModalToggle from '../modal-toggle';
+import AtrcButtonGroup from '../button-group';
+import AtrcTooltip from '../tooltip';
+import AtrcSearch from '../search';
 
 import {
 	AtrcWireFrameSidebarContent,

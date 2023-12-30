@@ -4,8 +4,9 @@ import { useSelect } from '@wordpress/data';
 import { store as coreStore } from '@wordpress/core-data';
 
 /*Inbuilt*/
-import { AtrcControlSelectTerm } from './../';
-import { AtrcLabel } from '../../atoms';
+import AtrcControlSelectTerm from './../control-select-term';
+
+import AtrcLabel from '../../atoms/label';
 
 /* Local*/
 /**

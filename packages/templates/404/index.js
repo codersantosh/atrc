@@ -1,13 +1,15 @@
 /*Library*/
 import classnames from 'classnames';
+import { BsArrowLeft, BsEmojiFrown } from 'react-icons/bs';
 
 /*Inbuilt*/
-
-import { AtrcButton, AtrcWrap, AtrcIcon, AtrcWord } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcWord from '../../atoms/word';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
-import { BsArrowLeft, BsEmojiFrown } from 'react-icons/bs';
 
 /*Local*/
 const Atrc404 = (props) => {

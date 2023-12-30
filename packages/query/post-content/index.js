@@ -11,8 +11,9 @@ import {
 } from '@wordpress/block-editor';
 
 /* Inbuilt */
-import { AtrcWrap } from '../../atoms';
-import { AtrcNotice } from '../../molecules';
+import AtrcWrap from '../../atoms/wrap';
+
+import AtrcNotice from './../../molecules/notice';
 
 /* Local */
 const AtrcPostContent = (props, ref) => {

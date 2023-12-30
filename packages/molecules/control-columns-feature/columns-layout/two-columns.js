@@ -2,7 +2,7 @@
 import { __ } from '@wordpress/i18n';
 
 /* Inbuilt */
-import { AtrcControlSelectButton } from '../..';
+import AtrcControlSelectButton from '../../control-select-button';
 import { TwoColumnsOptions } from '../options';
 
 /* Local */

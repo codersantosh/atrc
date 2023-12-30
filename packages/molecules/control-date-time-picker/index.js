@@ -21,9 +21,13 @@ import { BsX } from 'react-icons/bs';
 import classnames from 'classnames';
 
 /*Inbuilt*/
-import { AtrcSpan, AtrcWrap, AtrcWord, AtrcIcon, AtrcLink } from '../../atoms';
+import AtrcWrap from '../../atoms/wrap';
+import AtrcIcon from '../../atoms/icon';
+import AtrcSpan from '../../atoms/span';
+import AtrcWord from '../../atoms/word';
+import AtrcLink from '../../atoms/link';
 
-import { AtrcDropdown } from '../index';
+import AtrcDropdown from '../dropdown';
 
 /* Local components */
 function UserDateToggle({ isOpen, onClick, date }) {
