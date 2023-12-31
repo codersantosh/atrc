@@ -1,28 +1,27 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-ctrl-unit-device {
-        #{$appPrefix}-ctrl-unit-wrp {
-            #{$varPrefix}-w: 100%;
-            width          : var(#{$varPrefix}-w);
-        }
+	&-ctrl-unit-device {
+		#{$appPrefix}-ctrl-unit-wrp {
+			#{$varPrefix}-w: 100%;
+			width: var(#{$varPrefix}-w);
+		}
 
-        #{$appPrefix} {
-
-            &-rst {
-                &-wrp {
-                    #{$appPrefix} {
-                        &-btn {
-                            &-rst {
-                                &-i {
-                                    #{$varPrefix}-m: 13px 0 0 0;
-                                    margin         : var(#{$varPrefix}-m);
-                                }
-                            }
-
-                        }
-
-                    }
-                }
-            }
-        }
-    }
+		#{$appPrefix} {
+			&-rst {
+				&-wrp {
+					#{$appPrefix} {
+						&-btn {
+							&-rst {
+								&-i {
+									#{$varPrefix}-m: 13px 0 0 0;
+									margin: var(#{$varPrefix}-m);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

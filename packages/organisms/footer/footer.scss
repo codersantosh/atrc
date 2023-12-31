@@ -1,8 +1,9 @@
-#{$appPrefix} {
-    &-footer {
-        &-tbl {
-            #{$varPrefix}-p: 15px;
-        }
-    }
+@import '../../prefix-vars.scss';
 
+#{$appPrefix} {
+	&-footer {
+		&-tbl {
+			#{$varPrefix}-p: 15px;
+		}
+	}
 }

@@ -4,255 +4,121 @@
 const fs = require('fs');
 const path = require('path');
 const glob = require('fast-glob');
-const ProgressBar = require('progress');
 const workerFarm = require('worker-farm');
 const { Readable, Transform } = require('stream');
 
-const files = process.argv.slice(2);
+const worker = workerFarm(require.resolve('./build-worker'));
 
-/**
- * Path to packages directory.
- *
- * @type {string}
- */
+const ProgressBar = require('progress');
+
 const PACKAGES_DIR = path.resolve(__dirname, '../packages').replace(/\\/g, '/');
-const stylesheetEntryPoints = glob.sync(
-	path.resolve(PACKAGES_DIR, '*/**/*.scss')
-);
+const BUILD_DIR = path.resolve(__dirname, '../build').replace(/\\/g, '/');
+const fileExtensions = ['js', 'scss']; // Add more file extensions as needed
 
-/**
- * Get the package name for a specified file
- *
- * @param {string} file File name.
- *
- * @return {string} Package name.
- */
-function getPackageName(file) {
-	return path.relative(PACKAGES_DIR, file).split(path.sep)[0];
+function getComponentOutputDir(file) {
+	const relativePath = path.relative(PACKAGES_DIR, file);
+	const outputDir = path
+		.resolve(BUILD_DIR, path.dirname(relativePath))
+		.replace(/\\/g, '/');
+	return path.join(outputDir, path.basename(file)).replace(/\\/g, '/');
 }
 
-/**
- * Parses all Sass import statements in a given file
- *
- * @param {string} file File name.
- *
- * @return {Array} List of Import Statements in a file.
- */
-function parseImportStatements(file) {
-	const fileContent = fs.readFileSync(file, 'utf8');
-	return fileContent.toString().match(/@import "(.*?)"/g);
-}
+function processFiles() {
+	const componentEntryPoints = [];
 
-function isFileImportedInStyleEntry(file, importStatements) {
-	const packageName = getPackageName(file);
-	const regex = new RegExp(`/${packageName}/`, 'g');
+	fileExtensions.forEach((ext) => {
+		const files = fs.readdirSync(PACKAGES_DIR, { withFileTypes: true });
 
-	return (
-		importStatements &&
-		importStatements.find((importStatement) => importStatement.match(regex))
-	);
-}
+		files.forEach((file) => {
+			if (file.isDirectory()) {
+				const collectFiles = (dir) => {
+					const componentFiles = fs.readdirSync(path.join(PACKAGES_DIR, dir));
 
-/**
- * Finds all stylesheet entry points that contain import statements
- * that include the given file name
- *
- * @param {string} file File name.
- *
- * @return {Array} List of entry points that import the styles from the file.
- */
-function findStyleEntriesThatImportFile(file) {
-	const entriesWithImport = stylesheetEntryPoints.reduce((acc, entryPoint) => {
-		const styleEntryImportStatements = parseImportStatements(entryPoint);
+					componentFiles.forEach((componentFile) => {
+						const fullPath = path.join(PACKAGES_DIR, dir, componentFile);
 
-		if (isFileImportedInStyleEntry(file, styleEntryImportStatements)) {
-			acc.push(entryPoint);
-		}
+						if (fs.statSync(fullPath).isDirectory()) {
+							collectFiles(path.join(dir, componentFile));
+						} else if (componentFile.endsWith(`.${ext}`)) {
+							componentEntryPoints.push(fullPath);
+						}
+					});
+				};
 
-		return acc;
-	}, []);
+				collectFiles(file.name);
+			} else {
+				// Handle files (add your code here)
+				// For example, you can access the file path using: path.join(PACKAGES_DIR, file.name)
+				// Your logic for handling files goes here
+				if (file.name.endsWith(`.${ext}`)) {
+					const filePath = path.join(PACKAGES_DIR, file.name);
+					// Add your specific logic for handling files here
+					// For example, you might want to read the file, process its contents, or perform other operations.
+					// You can use the 'filePath' variable to refer to the path of the current file.
 
-	return entriesWithImport;
-}
-
-/**
- * Returns a stream transform which maps an individual stylesheet to its
- * package entrypoint. Unlike JavaScript which uses an external bundler to
- * efficiently manage rebuilds by entrypoints, stylesheets are rebuilt fresh
- * in their entirety from the build script.
- *
- * @return {Transform} Stream transform instance.
- */
-function createStyleEntryTransform() {
-	const packages = new Set();
-
-	return new Transform({
-		objectMode: true,
-		async transform(file, encoding, callback) {
-			// Only stylesheets are subject to this transform.
-			if (path.extname(file) !== '.scss') {
-				this.push(file);
-				callback();
-				return;
+					componentEntryPoints.push(filePath);
+				}
 			}
-
-			// Only operate once per package, assuming entries are common.
-			const packageName = getPackageName(file);
-			if (packages.has(packageName)) {
-				callback();
-				return;
-			}
-
-			packages.add(packageName);
-			const entries = await glob(
-				path
-					.resolve(PACKAGES_DIR, packageName, 'src/*.scss')
-					.replace(/\\/g, '/')
-			);
-
-			// Account for the specific case where block styles in
-			// block-library package also need rebuilding.
-			if (
-				packageName === 'block-library' &&
-				['style.scss', 'editor.scss', 'theme.scss'].includes(
-					path.basename(file)
-				)
-			) {
-				entries.push(file);
-			}
-
-			entries.forEach((entry) => this.push(entry));
-
-			// Find other stylesheets that need to be rebuilt because
-			// they import the styles that are being transformed.
-			const styleEntries = findStyleEntriesThatImportFile(file);
-
-			// Rebuild stylesheets that import the styles being transformed.
-			if (styleEntries.length) {
-				styleEntries.forEach((entry) => stream.push(entry));
-			}
-
-			callback();
-		},
-	});
-}
-
-/**
- * Returns a stream transform which maps an individual block.json to the
- * index.js that imports it. Presently, babel resolves the import of json
- * files by inlining them as a JavaScript primitive in the importing file.
- * This transform ensures the importing file is rebuilt.
- *
- * @return {Transform} Stream transform instance.
- */
-function createBlockJsonEntryTransform() {
-	const blocks = new Set();
-
-	return new Transform({
-		objectMode: true,
-		async transform(file, encoding, callback) {
-			const matches = /block-library[\/\\]src[\/\\](.*)[\/\\]block.json$/.exec(
-				file
-			);
-			const blockName = matches ? matches[1] : undefined;
-
-			// Only block.json files in the block-library folder are subject to this transform.
-			if (!blockName) {
-				this.push(file);
-				callback();
-				return;
-			}
-
-			// Only operate once per block, assuming entries are common.
-			if (blockName && blocks.has(blockName)) {
-				callback();
-				return;
-			}
-
-			blocks.add(blockName);
-			this.push(file.replace('block.json', 'index.js'));
-			callback();
-		},
-	});
-}
-
-let onFileComplete = () => {};
-
-let stream;
-
-if (files.length) {
-	stream = new Readable({ encoding: 'utf8' });
-	files.forEach((file) => {
-		stream.push(file);
+		});
 	});
 
-	stream.push(null);
-	stream = stream
-		.pipe(createStyleEntryTransform())
-		.pipe(createBlockJsonEntryTransform());
-} else {
+	const totalFiles = componentEntryPoints.length;
+	let processedFiles = 0;
+
 	const bar = new ProgressBar('Build Progress: [:bar] :percent', {
 		width: 30,
 		incomplete: ' ',
-		total: 1,
+		total: totalFiles,
 	});
 
-	bar.tick(0);
+	let complete = 0;
+	for (const file of componentEntryPoints) {
+		try {
+			const componentOutputDir = getComponentOutputDir(file);
 
-	stream = glob.stream(
-		[`${PACKAGES_DIR}/*/**/**/*.{js,ts,tsx}`, `${PACKAGES_DIR}/*/**/*.scss`],
-		{
-			ignore: [
-				`**/benchmark/**`,
-				`**/{__mocks__,__tests__,test}/**`,
-				`**/{storybook,stories}/**`,
-				`**/e2e-test-utils-playwright/**`,
-			],
-			onlyFiles: true,
+			if (!fs.existsSync(componentOutputDir)) {
+				const isDirectory = fs.statSync(file).isDirectory();
+				if (isDirectory) {
+					fs.mkdirSync(componentOutputDir, { recursive: true });
+				} else {
+					fs.mkdirSync(path.dirname(componentOutputDir), { recursive: true });
+					worker(file, (error) => {
+						if (error) {
+							// If an error occurs, the process can't be ended immediately since
+							// other workers are likely pending. Optimally, it would end at the
+							// earliest opportunity (after the current round of workers has had
+							// the chance to complete), but this is not made directly possible
+							// through `worker-farm`. Instead, ensure at least that when the
+							// process does exit, it exits with a non-zero code to reflect the
+							// fact that an error had occurred.
+							process.exitCode = 1;
+							console.error(error);
+						}
+						++complete;
+					});
+				}
+			}
+
+			processedFiles += 1;
+			bar.tick();
+
+			if (processedFiles === totalFiles) {
+				console.log('Build process completed.');
+			}
+		} catch (error) {
+			console.error('Error processing file:', file, error);
 		}
-	);
-
-	// Pause to avoid data flow which would begin on the `data` event binding,
-	// but should wait until worker processing below.
-	//
-	// See: https://nodejs.org/api/stream.html#stream_two_reading_modes
-	stream.pause().on('data', (file) => {
-		bar.total = files.push(file);
-	});
-
-	onFileComplete = () => {
-		bar.tick();
-	};
+	}
 }
 
-const worker = workerFarm(require.resolve('./build-worker'));
+// Ensure PACKAGES_DIR and BUILD_DIR exist
+if (!fs.existsSync(PACKAGES_DIR)) {
+	console.error('Packages directory does not exist:', PACKAGES_DIR);
+	process.exit(1);
+}
 
-let ended = false,
-	complete = 0;
+if (!fs.existsSync(BUILD_DIR)) {
+	fs.mkdirSync(BUILD_DIR, { recursive: true });
+}
 
-stream
-	.on('data', (file) =>
-		worker(file, (error) => {
-			onFileComplete();
-
-			if (error) {
-				// If an error occurs, the process can't be ended immediately since
-				// other workers are likely pending. Optimally, it would end at the
-				// earliest opportunity (after the current round of workers has had
-				// the chance to complete), but this is not made directly possible
-				// through `worker-farm`. Instead, ensure at least that when the
-				// process does exit, it exits with a non-zero code to reflect the
-				// fact that an error had occurred.
-				process.exitCode = 1;
-
-				console.error(error);
-			}
-
-			++complete;
-			if (ended && complete === files.length) {
-				workerFarm.end(worker);
-			}
-		})
-	)
-	.on('end', () => (ended = true))
-	.resume();
+processFiles();

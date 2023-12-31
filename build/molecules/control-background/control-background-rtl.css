@@ -1,0 +1,4 @@
+.atrc-ctrl-bg .atrc-dropdown-device {
+  --at-w: 100%;
+  width: var(--at-w);
+}

@@ -1,0 +1,18 @@
+.atrc-search .components-search-control__input {
+  --at-h: 35px;
+  --at-bg-cl: var(--at-white);
+  --at-bdr-cl: var(--at-quaternary);
+  --at-bdr-w: 1px;
+  --at-bdr-sty: solid;
+  background: var(--at-bg-cl) !important;
+  height: var(--at-h) !important;
+  border-width: var(--at-bdr-w) !important;
+  border-style: var(--at-bdr-sty) !important;
+  border-color: var(--at-bdr-cl) !important;
+}
+.atrc-search .components-search-control__icon > svg {
+  display: none;
+}
+.atrc-btn-search {
+  --at-m: 0 0 0 15px;
+}

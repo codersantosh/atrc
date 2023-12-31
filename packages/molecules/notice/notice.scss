@@ -1,30 +1,30 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-notice {
-        #{$varPrefix}-p      : 8px 12px !important;
-        #{$varPrefix}-m      : 20px 0 !important;
-        #{$varPrefix}-box-sdw: 0 0 2px 1px rgba(0, 0, 0, 0.02);
+	&-notice {
+		#{$varPrefix}-p: 8px 12px !important;
+		#{$varPrefix}-m: 20px 0 !important;
+		#{$varPrefix}-box-sdw: 0 0 2px 1px rgba(0, 0, 0, 0.02);
 
-        .components {
-            &-button {
-                #{$varPrefix}-h    : auto;
-                #{$varPrefix}-min-w: auto;
-                height             : var(#{$varPrefix}-h);
-                min-width          : var(#{$varPrefix}-min-w);
+		.components {
+			&-button {
+				#{$varPrefix}-h: auto;
+				#{$varPrefix}-min-w: auto;
+				height: var(#{$varPrefix}-h);
+				min-width: var(#{$varPrefix}-min-w);
 
-                svg {
-                    #{$varPrefix}-h: 16px;
-                    #{$varPrefix}-w: 16px;
-                    height         : var(#{$varPrefix}-h);
-                    width          : var(#{$varPrefix}-w);
-                }
-            }
+				svg {
+					#{$varPrefix}-h: 16px;
+					#{$varPrefix}-w: 16px;
+					height: var(#{$varPrefix}-h);
+					width: var(#{$varPrefix}-w);
+				}
+			}
 
-            &-notice__content {
-
-                #{$varPrefix}-m: 4px 5px 4px 0;
-                margin         : var(#{$varPrefix}-m);
-            }
-        }
-    }
-
+			&-notice__content {
+				#{$varPrefix}-m: 4px 5px 4px 0;
+				margin: var(#{$varPrefix}-m);
+			}
+		}
+	}
 }

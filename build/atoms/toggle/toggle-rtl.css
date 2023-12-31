@@ -1,0 +1,11 @@
+.atrc-tog {
+  --at-m: 0;
+  margin: var(--at-m) !important;
+}
+.atrc-tog .components-base-control__field {
+  --at-m: 0 !important;
+  margin-bottom: var(--at-m);
+}
+.atrc-tog .components-form-toggle.is-checked .components-form-toggle__track {
+  background-color: var(--at-success);
+}

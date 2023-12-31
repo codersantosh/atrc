@@ -1,0 +1,9 @@
+.atrc-modal-confirm-body {
+  --at-p: 30px 30px 15px 30px;
+}
+.atrc-modal-confirm-footer {
+  --at-p: 0 15px 15px 15px;
+}
+.atrc-modal-confirm-footer .at-btn {
+  --at-p: 15px;
+}

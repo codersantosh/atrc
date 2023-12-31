@@ -1,0 +1,551 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+/*Attributes Structure
+Type Object
+{
+    frm = '',
+    id = 0,
+    url ='',
+    onSettings = false,
+    autoplay ='',
+    ctrl ='',
+    loop ='',
+    muted ='',
+    playsInline ='',
+    preload ='',
+    psrFrm ='',
+    psrId ='',
+    psrSz ='',
+    psrUrl ='',
+}
+* */
+
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useCallback, useEffect, useMemo } from '@wordpress/element';
+import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { useSelect } from '@wordpress/data';
+import { store as coreStore } from '@wordpress/core-data';
+
+/*Library*/
+import classnames from 'classnames';
+import { BsCameraVideo, BsTrash } from 'react-icons/bs';
+import { isEmpty, map } from 'lodash';
+
+/*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+import AtrcSelect from '../../atoms/select';
+import AtrcText from '../../atoms/text';
+import AtrcToggle from '../../atoms/toggle';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcVideo from '../../atoms/video';
+import { AtrcVideoIsHtml5, AtrcVideoIsYoutube, AtrcVideoIsVimeo } from '../../atoms/video';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
+import AtrcTooltip from '../tooltip';
+import AtrcControlImg from '../control-img';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+
+/*Local Components*/
+const SelfHostedVideo = props => {
+  const {
+    value = {},
+    onChange = () => {}
+  } = props;
+  const {
+    frm = '',
+    id = null,
+    url = '',
+    autoplay = false,
+    ctrl = false,
+    loop = false,
+    muted = false,
+    preload = 'auto',
+    psrUrl = ''
+  } = value;
+  const setAttr = (newVal, type) => {
+    const valueCloned = Object.assign({}, value);
+    valueCloned[type] = newVal;
+    onChange(valueCloned);
+  };
+  const setAttrs = newVals => {
+    let valueCloned = Object.assign({}, value);
+    valueCloned = {
+      ...valueCloned,
+      ...newVals
+    };
+    onChange(valueCloned);
+  };
+  const setMedia = media => {
+    if (!media || !media.id) {
+      return;
+    }
+    const newVals = {
+      id: media.id
+    };
+    newVals.url = media.url;
+    setAttrs(newVals);
+  };
+  const video = useSelect(select => {
+    const {
+      getMedia
+    } = select(coreStore);
+    return id && '' === frm ? getMedia(id, {
+      context: 'view'
+    }) : null;
+  }, [id, frm]);
+  const videoUrl = useMemo(() => {
+    if (video && video.source_url) {
+      return video.source_url;
+    }
+    return url;
+  }, [video]);
+
+  /*if new image url and old image URL is not same, update rl*/
+  useEffect(() => {
+    if (videoUrl && videoUrl !== url) {
+      setAttr(videoUrl, 'url');
+    }
+  }, [videoUrl]);
+  if (frm !== '') {
+    return null;
+  }
+  return /*#__PURE__*/React.createElement(MediaUploadCheck, null, /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames(AtrcPrefix('ctrl-vid-slf-hosted'), 'at-pos', 'at-flx-grw-1')
+  }, /*#__PURE__*/React.createElement(AtrcVideo, {
+    url: videoUrl,
+    autoplay: autoplay,
+    controls: ctrl,
+    loop: loop,
+    muted: muted,
+    preload: preload,
+    poster: psrUrl
+  }), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(MediaUpload, {
+    onSelect: setMedia,
+    allowedTypes: ['video'],
+    title: __('Select or upload background media', 'atrc-prefix-atrc'),
+    value: id,
+    render: ({
+      open
+    }) => /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcButton, {
+      variant: "uploads",
+      className: classnames('at-gap', 'at-flx', 'at-al-itm-ctr', 'at-jfy-cont-ctr', 'at-w'),
+      onClick: open
+    }, /*#__PURE__*/React.createElement(AtrcIcon, {
+      type: "bootstrap",
+      icon: BsCameraVideo
+    }), id ? __('Replace video', 'atrc-prefix-atrc') : __('Add video', 'atrc-prefix-atrc')), id ? /*#__PURE__*/React.createElement(AtrcTooltip, {
+      className: classnames(AtrcPrefix('uploads-del'), 'at-pos'),
+      text: __('Remove media', 'atrc-prefix-atrc')
+    }, /*#__PURE__*/React.createElement(AtrcButton, {
+      className: classnames('at-bdr-rad', 'at-flx', 'at-w', 'at-h', 'at-al-itm-ctr', 'at-jfy-cont-ctr'),
+      variant: "delete",
+      onClick: () => setAttrs({
+        id: null,
+        url: null
+      })
+    }, /*#__PURE__*/React.createElement(AtrcIcon, {
+      type: "bootstrap",
+      icon: BsTrash
+    }))) : null)
+  })))));
+};
+const ExternalVideo = props => {
+  const {
+    value = {},
+    onChange = () => {}
+  } = props;
+  const {
+    frm = '',
+    url = '',
+    onSettings = false,
+    autoplay = false,
+    ctrl = false,
+    loop = false,
+    muted = muted
+  } = value;
+  if (frm === '') {
+    return null;
+  }
+  return /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames(AtrcPrefix('ctrl-vid-ext'))
+  }, /*#__PURE__*/React.createElement(AtrcVideo, {
+    className: "at-m",
+    url: url,
+    onSettings: onSettings,
+    autoplay: autoplay,
+    controls: ctrl,
+    loop: loop,
+    muted: muted
+  }), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcText, {
+    label: __('Video URL', 'atrc-prefix-atrc'),
+    value: url,
+    type: "url",
+    onChange: onChange
+  })));
+};
+const VideoSettings = props => {
+  const {
+    value = {},
+    onChange = () => {},
+    allowAutoplay = true,
+    allowLoop = true,
+    allowMuted = true,
+    allowControls = true,
+    allowPlaysInline = true,
+    allowPreload = true,
+    allowPoster = true,
+    allowMobile = false
+  } = props;
+  const {
+    autoplay = false,
+    ctrl = false,
+    loop = false,
+    muted = false,
+    playsInline = false,
+    preload = 'auto',
+    psrFrm = '',
+    psrId = '',
+    psrSz = '',
+    psrUrl = '',
+    onBgVidMb = false
+  } = value;
+  const setAttr = (newVal, type) => {
+    const valueCloned = Object.assign({}, value);
+    valueCloned[type] = newVal;
+    onChange(valueCloned);
+  };
+  const resetAttr = type => {
+    const valueCloned = Object.assign({}, value);
+    delete valueCloned[type];
+    onChange(valueCloned);
+  };
+  const setPoster = newVal => {
+    const valueCloned = Object.assign({}, value);
+    delete valueCloned.psrFrm;
+    delete valueCloned.psrId;
+    delete valueCloned.psrUrl;
+    delete valueCloned.psrSz;
+    if (newVal.frm) {
+      valueCloned.psrFrm = newVal.frm;
+    }
+    if (newVal.id) {
+      valueCloned.psrId = newVal.id;
+    }
+    if (newVal.url) {
+      valueCloned.psrUrl = newVal.url;
+    }
+    if (newVal.size) {
+      valueCloned.psrSz = newVal.size;
+    }
+    onChange(valueCloned);
+  };
+  const resetPoster = () => {
+    const valueCloned = Object.assign({}, value);
+    delete valueCloned.psrFrm;
+    delete valueCloned.psrId;
+    delete valueCloned.psrUrl;
+    delete valueCloned.psrSz;
+    onChange(valueCloned);
+  };
+  const autoPlayHelpText = __('Autoplay may cause usability issues for some users.', 'atrc-prefix-atrc');
+  const getAutoplayHelp = useCallback(checked => {
+    return checked ? autoPlayHelpText : null;
+  }, []);
+  const hasTabValue = tab => {
+    if (!value || isEmpty(value)) {
+      return false;
+    }
+    return !!value[tab];
+  };
+  const AllTabs = useMemo(() => {
+    const tabs = [];
+    if (allowAutoplay) {
+      tabs.push({
+        name: 'autoplay',
+        title: __('Autoplay', 'atrc-prefix-atrc'),
+        hasValue: hasTabValue('autoplay'),
+        onDeselect: () => resetAttr('autoplay')
+      });
+    }
+    if (allowLoop) {
+      tabs.push({
+        name: 'loop',
+        title: __('Loop', 'atrc-prefix-atrc'),
+        hasValue: hasTabValue('loop'),
+        onDeselect: () => resetAttr('loop')
+      });
+    }
+    if (allowMuted) {
+      tabs.push({
+        name: 'muted',
+        title: __('Muted', 'atrc-prefix-atrc'),
+        hasValue: hasTabValue('muted'),
+        onDeselect: () => resetAttr('muted')
+      });
+    }
+    if (allowControls) {
+      tabs.push({
+        name: 'ctrl',
+        title: __('Controls', 'atrc-prefix-atrc'),
+        hasValue: hasTabValue('ctrl'),
+        onDeselect: () => resetAttr('ctrl')
+      });
+    }
+    if (allowPlaysInline) {
+      tabs.push({
+        name: 'playsInline',
+        title: __('Play inline', 'atrc-prefix-atrc'),
+        hasValue: hasTabValue('playsInline'),
+        onDeselect: () => resetAttr('playsInline')
+      });
+    }
+    if (allowPreload) {
+      tabs.push({
+        name: 'preload',
+        title: __('Preload', 'atrc-prefix-atrc'),
+        hasValue: hasTabValue('preload'),
+        onDeselect: () => resetAttr('preload')
+      });
+    }
+    if (allowPoster) {
+      tabs.push({
+        name: 'psr',
+        title: __('Poster', 'atrc-prefix-atrc'),
+        hasValue: !!(psrFrm || psrId || psrSz || psrUrl),
+        onDeselect: () => resetPoster()
+      });
+    }
+    if (allowMobile) {
+      tabs.push({
+        name: 'onBgVidMb',
+        title: __('Video on mobile', 'atrc-prefix-atrc'),
+        hasValue: hasTabValue('onBgVidMb'),
+        onDeselect: () => resetAttr('onBgVidMb')
+      });
+    }
+    return tabs;
+  }, []);
+  if (!allowAutoplay && !allowLoop && !allowMuted && !allowControls && !allowPlaysInline && !allowPreload && !allowPoster && !allowMobile) {
+    return null;
+  }
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    label: __('Settings', 'atrc-prefix-atrc'),
+    resetAll: () => onChange({}),
+    tools: AllTabs
+  }, activeItems => map(activeItems, (tab, iDx) => {
+    if ('autoplay' === tab) {
+      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+        className: classnames('at-m'),
+        key: iDx
+      }, /*#__PURE__*/React.createElement(AtrcToggle, {
+        label: __('Autoplay', 'atrc-prefix-atrc'),
+        checked: autoplay,
+        onChange: () => setAttr(!autoplay, 'autoplay'),
+        help: getAutoplayHelp
+      }));
+    }
+    if ('loop' === tab) {
+      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+        className: classnames('at-m'),
+        key: iDx
+      }, /*#__PURE__*/React.createElement(AtrcToggle, {
+        label: __('Loop', 'atrc-prefix-atrc'),
+        checked: loop,
+        onChange: () => setAttr(!loop, 'loop')
+      }));
+    }
+    if ('muted' === tab) {
+      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+        className: classnames('at-m'),
+        key: iDx
+      }, /*#__PURE__*/React.createElement(AtrcToggle, {
+        label: __('Muted', 'atrc-prefix-atrc'),
+        checked: muted,
+        onChange: () => setAttr(!muted, 'muted')
+      }));
+    }
+    if ('ctrl' === tab) {
+      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+        className: classnames('at-m'),
+        key: iDx
+      }, /*#__PURE__*/React.createElement(AtrcToggle, {
+        label: __('Playback controls', 'atrc-prefix-atrc'),
+        checked: ctrl,
+        onChange: () => setAttr(!ctrl, 'ctrl')
+      }));
+    }
+    if ('playsInline' === tab) {
+      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+        className: classnames('at-m'),
+        key: iDx
+      }, /*#__PURE__*/React.createElement(AtrcToggle, {
+        label: __('Play inline', 'atrc-prefix-atrc'),
+        checked: playsInline,
+        onChange: () => setAttr(!playsInline, 'playsInline')
+      }));
+    }
+    if ('preload' === tab) {
+      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+        className: classnames('at-m'),
+        key: iDx
+      }, /*#__PURE__*/React.createElement(AtrcSelect, {
+        label: __('Preload', 'atrc-prefix-atrc'),
+        wrapProps: {
+          className: 'at-flx-grw-1'
+        },
+        value: preload,
+        options: [{
+          label: __('Auto', 'atrc-prefix-atrc'),
+          value: 'auto'
+        }, {
+          label: __('Metadata', 'atrc-prefix-atrc'),
+          value: 'metadata'
+        }, {
+          label: __('None', 'atrc-prefix-atrc'),
+          value: 'none'
+        }],
+        onChange: newVal => setAttr(newVal, 'preload')
+      }));
+    }
+    if ('psr' === tab) {
+      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+        className: classnames('at-m'),
+        key: iDx
+      }, /*#__PURE__*/React.createElement(AtrcControlImg, {
+        label: __('Poster', 'atrc-prefix-atrc'),
+        value: {
+          frm: psrFrm,
+          id: psrId,
+          sz: psrSz,
+          url: psrUrl
+        },
+        allowDetails: false,
+        onChange: setPoster
+      }));
+    }
+    if ('onBgVidMb' === tab) {
+      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+        className: classnames('at-m'),
+        key: iDx
+      }, /*#__PURE__*/React.createElement(AtrcToggle, {
+        label: __('Enable video on mobile', 'atrc-prefix-atrc'),
+        checked: onBgVidMb,
+        onChange: () => setAttr(!onBgVidMb, 'onBgVidMb')
+      }));
+    }
+    return null;
+  }));
+};
+const AtrcControlVideo = props => {
+  const {
+    label = '',
+    value = {},
+    variant = '',
+    className = '',
+    onChange = () => {},
+    allowSource = true,
+    allowSelf = true,
+    allowExternal = true,
+    allowSettings = true,
+    allowAutoplay = true,
+    allowLoop = true,
+    allowMuted = true,
+    allowControls = true,
+    allowPlaysInline = true,
+    allowPreload = true,
+    allowPoster = true,
+    allowMobile = true,
+    ...defaultProps
+  } = props;
+  const {
+    frm = '',
+    onSettings = false
+  } = value;
+  const setAttr = (newVal, type) => {
+    const valueCloned = Object.assign({}, value);
+    valueCloned[type] = newVal;
+    onChange(valueCloned);
+  };
+  const setVideoUrl = newVal => {
+    const valueCloned = Object.assign({}, value);
+    delete valueCloned.id;
+    delete valueCloned.url;
+    valueCloned.url = newVal;
+    onChange(valueCloned);
+  };
+  useEffect(() => {
+    if ('external' !== frm && 'onSettings' in value) {
+      const valueCloned = Object.assign({}, value);
+      delete value.onSettings;
+      onChange(valueCloned);
+    }
+  }, [frm]);
+  const isSettingOn = () => {
+    if (!value.url) {
+      return false;
+    }
+    if (!(AtrcVideoIsHtml5(value.url) || AtrcVideoIsYoutube(value.url) || AtrcVideoIsVimeo(value.url))) {
+      return false;
+    }
+    if ('external' === frm) {
+      return onSettings && allowSettings;
+    } else if (allowSettings) {
+      return true;
+    }
+    return false;
+  };
+  return /*#__PURE__*/React.createElement(AtrcWrap, _extends({
+    className: classnames(AtrcPrefix('ctrl-vid'), 'at-flx-grw-1', className, variant ? AtrcPrefix('ctrl-vid') + '-' + variant : '')
+  }, defaultProps), allowSource && /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    label: __('Video source', 'atrc-prefix-atrc'),
+    wrapProps: {
+      className: 'at-flx-grw-1'
+    },
+    value: frm,
+    options: [{
+      label: __('Self hosted', 'atrc-prefix-atrc'),
+      value: ''
+    }, {
+      label: __('URL', 'atrc-prefix-atrc'),
+      value: 'external'
+    }],
+    onChange: newVal => setAttr(newVal, 'frm')
+  })), allowSelf && /*#__PURE__*/React.createElement(SelfHostedVideo, {
+    value: value,
+    onChange: onChange
+  }), allowExternal && /*#__PURE__*/React.createElement(ExternalVideo, {
+    value: value,
+    onChange: setVideoUrl
+  }), 'external' === frm && allowSettings ? /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcToggle, {
+    label: __('Enable video settings', 'atrc-prefix-atrc'),
+    help: __('Enabling this setting will disable all video settings from the provided URL but will apply the defined settings.', 'atrc-prefix-atrc'),
+    checked: onSettings,
+    onChange: () => setAttr(!onSettings, 'onSettings')
+  })) : null, isSettingOn() ? /*#__PURE__*/React.createElement(VideoSettings, {
+    value: value,
+    onChange: onChange,
+    allowAutoplay: allowAutoplay,
+    allowLoop: allowLoop,
+    allowMuted: allowMuted,
+    allowControls: allowControls,
+    allowPlaysInline: allowPlaysInline,
+    allowPreload: allowPreload,
+    allowPoster: allowPoster,
+    allowMobile: allowMobile
+  }) : null);
+};
+export default AtrcControlVideo;
+//# sourceMappingURL=index.js.map

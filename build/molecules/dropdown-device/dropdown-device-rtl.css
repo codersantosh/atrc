@@ -1,0 +1,48 @@
+.atrc-dropdown-device .atrc-dropdown + [role=tabpanel] {
+  --at-m: 10px 0 0 0;
+  margin: var(--at-m);
+}
+.atrc-dropdown-device .atrc-render-tog .at-svg {
+  --at-h: 10px;
+  --at-w: 10px;
+}
+.atrc-dropdown-device .atrc-render-tog .atrc-btn-devices {
+  --at-bg-cl: var(--at-quaternary);
+  --at-p: 0;
+  --at-m: 0 0 0 10px;
+  --at-h: 25px;
+  --at-w: 25px;
+  --at-bdr-rad: 50%;
+  --at-opa: 0.7;
+  --at-trs: all 0.5s ease-in-out 0s;
+  height: var(--at-h);
+  width: var(--at-w);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: var(--at-bdr-rad);
+  margin: var(--at-m);
+  opacity: var(--at-opa);
+  -webkit-transition: var(--at-trs);
+  transition: var(--at-trs);
+}
+.atrc-dropdown-device .atrc-render-tog .atrc-btn-devices[aria-expanded=true], .atrc-dropdown-device .atrc-render-tog .atrc-btn-devices:hover, .atrc-dropdown-device .atrc-render-tog .atrc-btn-devices:focus {
+  --at-opa: 1;
+}
+.atrc-dropdown-device .atrc-rst-wrp .components-font-size-picker + .atrc-btn-reset-i {
+  --at-m: -20px;
+  margin-bottom: var(--at-m);
+}
+.atrc-dropdown-cont {
+  --at-gap: 10px;
+}
+.atrc-dropdown-cont .at-svg {
+  --at-h: 14px;
+  --at-w: 14px;
+}

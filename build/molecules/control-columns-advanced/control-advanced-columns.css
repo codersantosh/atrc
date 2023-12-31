@@ -1,0 +1,28 @@
+.atrc-ctrl-col-adv-lyt {
+  --at-m: 0 0 15px 0;
+}
+.atrc-ctrl-col-adv-lyt .atrc-ctrl-select-btn .atrc-btn-grp {
+  --at-gap: 5px;
+}
+.atrc-ctrl-col-adv-lyt .atrc-ctrl-select-btn .atrc-btn-select {
+  --at-p: 3px;
+  --at-fnt-sz: 0;
+  --at-ln-h: normal;
+  --at-h: auto;
+  --at-bg-cl: #fff;
+}
+.atrc-ctrl-col-adv-lyt .atrc-ctrl-select-btn .atrc-btn-select:not(.atrc-btn-active) .at-svg {
+  opacity: 0.5;
+}
+.atrc-ctrl-col-adv-lyt .atrc-ctrl-select-btn .atrc-btn-select:not(.atrc-btn-active):hover .at-svg {
+  opacity: 0.8;
+}
+.atrc-ctrl-col-adv-lyt .atrc-ctrl-select-btn .atrc-btn-select * {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+.atrc-ctrl-col-adv-lyt .atrc-ctrl-select-btn .atrc-btn-select .at-svg {
+  --at-w: 35px;
+  --at-h: 35px;
+  --at-cl: #536e85;
+}

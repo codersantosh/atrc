@@ -1,58 +1,57 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-ctrl-img-slf-hosted {
-        #{$varPrefix}-pos: relative;
+	&-ctrl-img-slf-hosted {
+		#{$varPrefix}-pos: relative;
 
-        #{$appPrefix} {
-            &-btn {
-                &-uploads {
-                    #{$varPrefix}-gap   : 0 5px;
-                    #{$varPrefix}-p     : 15px 5px;
-                    #{$varPrefix}-fnt-sz: 14px;
-                    #{$varPrefix}-w     : 100%;
+		#{$appPrefix} {
+			&-btn {
+				&-uploads {
+					#{$varPrefix}-gap: 0 5px;
+					#{$varPrefix}-p: 15px 5px;
+					#{$varPrefix}-fnt-sz: 14px;
+					#{$varPrefix}-w: 100%;
 
+					.at-svg {
+						#{$varPrefix}-w: 15px;
+						#{$varPrefix}-h: 15px;
+					}
+				}
+			}
+		}
+	}
 
-                    .at-svg {
-                        #{$varPrefix}-w: 15px;
-                        #{$varPrefix}-h: 15px;
-                    }
-                }
-            }
-        }
-    }
+	&-img-sz {
+		#{$varPrefix}-m: 15px 0 0 0;
+	}
 
-    &-img-sz {
-        #{$varPrefix}-m: 15px 0 0 0;
-    }
+	&-uploads-del {
+		#{$varPrefix}-pos: absolute;
+		#{$varPrefix}-t: 15px;
+		#{$varPrefix}-r: 15px;
 
-    &-uploads-del {
-        #{$varPrefix}-pos: absolute;
-        #{$varPrefix}-t  : 15px;
-        #{$varPrefix}-r  : 15px;
+		#{$appPrefix} {
+			&-btn {
+				&-delete {
+					#{$varPrefix}-w: 25px;
+					#{$varPrefix}-h: 25px;
+					#{$varPrefix}-bdr-rad: 50px;
+					#{$varPrefix}-p: 0;
 
-        #{$appPrefix} {
-            &-btn {
+					.at-svg {
+						#{$varPrefix}-w: 12px;
+						#{$varPrefix}-h: 12px;
+					}
+				}
+			}
+		}
+	}
 
-                &-delete {
-                    #{$varPrefix}-w      : 25px;
-                    #{$varPrefix}-h      : 25px;
-                    #{$varPrefix}-bdr-rad: 50px;
-                    #{$varPrefix}-p      : 0;
-
-                    .at-svg {
-                        #{$varPrefix}-w: 12px;
-                        #{$varPrefix}-h: 12px;
-                    }
-                }
-            }
-        }
-    }
-
-    &-ctrl-img {
-        #{$appPrefix}-ctrl-img-ext {
-            .at-img {
-                #{$varPrefix}-m: 0 0 15px 0;
-            }
-        }
-    }
-
+	&-ctrl-img {
+		#{$appPrefix}-ctrl-img-ext {
+			.at-img {
+				#{$varPrefix}-m: 0 0 15px 0;
+			}
+		}
+	}
 }

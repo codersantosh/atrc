@@ -1,101 +1,98 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-pnl-body {
+	&-pnl-body {
+		#{$varPrefix}-bdr-w: 1px;
+		#{$varPrefix}-bdr-sty: solid;
+		#{$varPrefix}-bdr-cl: var(#{$varPrefix}-quaternary);
+		#{$varPrefix}-p: 0px;
 
-        #{$varPrefix}-bdr-w  : 1px;
-        #{$varPrefix}-bdr-sty: solid;
-        #{$varPrefix}-bdr-cl : var(#{$varPrefix}-quaternary);
-        #{$varPrefix}-p      : 0px;
+		&-cont {
+			#{$varPrefix}-p: 15px;
+			#{$varPrefix}-bdr-w: 1px 0 0 0;
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-secondary);
 
-        &-cont {
-            #{$varPrefix}-p    : 15px;
-            #{$varPrefix}-bdr-w: 1px 0 0 0;
-            #{$varPrefix}-bg-cl: var(#{$varPrefix}-secondary);
+			#{$appPrefix}-pnl-body {
+				&:first-child {
+					#{$varPrefix}-m: 0;
+					margin: var(#{$varPrefix}-p);
+				}
 
-            #{$appPrefix}-pnl-body {
-                &:first-child {
-                    #{$varPrefix}-m: 0;
-                    margin         : var(#{$varPrefix}-p);
-                }
+				+ #{$appPrefix}-pnl-body {
+					#{$varPrefix}-m: 15px 0 0 0;
+					margin: var(#{$varPrefix}-m);
+				}
+			}
+		}
 
-                +#{$appPrefix}-pnl-body {
-                    #{$varPrefix}-m: 15px 0 0 0;
-                    margin         : var(#{$varPrefix}-m);
-                }
-            }
-        }
+		+ #{$appPrefix}-pnl-body {
+			#{$varPrefix}-m: 15px 0 0 0;
+			margin: var(#{$varPrefix}-m);
+		}
 
-        +#{$appPrefix}-pnl-body {
-            #{$varPrefix}-m: 15px 0 0 0;
-            margin         : var(#{$varPrefix}-m);
-        }
+		+ #{$appPrefix}-ctrl-pnl-tools {
+			#{$varPrefix}-m: 15px 0 0 0;
+		}
 
-        +#{$appPrefix}-ctrl-pnl-tools {
-            #{$varPrefix}-m: 15px 0 0 0;
+		&.is-opened {
+			#{$varPrefix}-p: 0px;
+			padding: var(#{$varPrefix}-p);
 
-        }
+			> .components-panel__body-title {
+				#{$varPrefix}-m: 0;
+				margin: var(#{$varPrefix}-m);
+			}
+		}
 
+		.components-panel__body-title {
+			#{$varPrefix}-ln-h: 0;
+			#{$varPrefix}-fnt-wt: 600;
+			#{$varPrefix}-fnt-sz: 12px;
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+			#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+			line-height: var(#{$varPrefix}-ln-h);
+			background: var(#{$varPrefix}-bg-cl);
+			color: var(#{$varPrefix}-cl);
+			font-size: var(#{$varPrefix}-fnt-sz);
+			font-weight: var(#{$varPrefix}-fnt-wt);
 
-        &.is-opened {
-            #{$varPrefix}-p: 0px;
-            padding        : var(#{$varPrefix}-p);
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+				background: var(#{$varPrefix}-bg-cl);
+			}
+		}
 
-            >.components-panel__body-title {
-                #{$varPrefix}-m: 0;
-                margin         : var(#{$varPrefix}-m);
-            }
-        }
+		.components-panel__body-toggle {
+			#{$varPrefix}-cl: inherit;
+			#{$varPrefix}-fnt-wt: inherit;
+			#{$varPrefix}-fnt-sz: 12px;
+			color: var(#{$varPrefix}-cl);
+			font-size: var(#{$varPrefix}-fnt-sz);
+			font-weight: var(#{$varPrefix}-fnt-wt);
 
-        .components-panel__body-title {
-            #{$varPrefix}-ln-h  : 0;
-            #{$varPrefix}-fnt-wt: 600;
-            #{$varPrefix}-fnt-sz: 12px;
-            #{$varPrefix}-bg-cl : var(#{$varPrefix}-white);
-            #{$varPrefix}-cl    : var(#{$varPrefix}-body-color);
-            line-height         : var(#{$varPrefix}-ln-h);
-            background          : var(#{$varPrefix}-bg-cl);
-            color               : var(#{$varPrefix}-cl);
-            font-size           : var(#{$varPrefix}-fnt-sz);
-            font-weight         : var(#{$varPrefix}-fnt-wt);
+			&:hover {
+				#{$varPrefix}-bg-cl: transparent;
+				background: var(#{$varPrefix}-bg-cl);
+			}
 
-            &:hover {
-                #{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
-                background         : var(#{$varPrefix}-bg-cl);
-            }
-        }
+			&.components-button {
+				&:focus {
+					#{$varPrefix}-box-sdw: none;
+					box-shadow: var(#{$varPrefix}-box-sdw);
+				}
 
-        .components-panel__body-toggle {
-            #{$varPrefix}-cl    : inherit;
-            #{$varPrefix}-fnt-wt: inherit;
-            #{$varPrefix}-fnt-sz: 12px;
-            color               : var(#{$varPrefix}-cl);
-            font-size           : var(#{$varPrefix}-fnt-sz);
-            font-weight         : var(#{$varPrefix}-fnt-wt);
+				.components-panel__arrow {
+					#{$varPrefix}-r: 6px;
+					right: var(#{$varPrefix}-r);
+				}
+			}
+		}
 
-            &:hover {
-                #{$varPrefix}-bg-cl: transparent;
-                background         : var(#{$varPrefix}-bg-cl);
-            }
-
-            &.components-button {
-                &:focus {
-                    #{$varPrefix}-box-sdw: none;
-                    box-shadow           : var(#{$varPrefix}-box-sdw);
-
-                }
-
-                .components-panel__arrow {
-                    #{$varPrefix}-r: 6px;
-                    right          : var(#{$varPrefix}-r);
-                }
-            }
-        }
-
-        .components-button {
-            &:not(.components-tab-panel__tabs-item) {
-
-                #{$varPrefix}-p: 10px;
-                padding        : var(#{$varPrefix}-p);
-            }
-        }
-    }
+		.components-button {
+			&:not(.components-tab-panel__tabs-item) {
+				#{$varPrefix}-p: 10px;
+				padding: var(#{$varPrefix}-p);
+			}
+		}
+	}
 }

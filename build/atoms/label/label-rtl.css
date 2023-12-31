@@ -1,0 +1,24 @@
+.atrc-lbl {
+  display: inline-block;
+  --at-fnt-wt: 600;
+  --at-fnt-sz: 12px;
+  --at-cl: var(--at-body-color);
+  --at-txt-tf: capitalize;
+  font-size: var(--at-fnt-sz);
+  font-weight: var(--at-fnt-wt);
+  color: var(--at-cl);
+  text-transform: var(--at-txt-tf);
+}
+.atrc-lbl:empty {
+  display: none;
+}
+.atrc-lbl.at-m {
+  --at-m: 0 0 15px 0;
+}
+.atrc-lbl-color-picker {
+  --at-m: 0 !important;
+}
+.atrc-lbl-dropdown-device-lbl {
+  --at-m: 0 0 5px 0 !important;
+  margin: var(--at-m) !important;
+}

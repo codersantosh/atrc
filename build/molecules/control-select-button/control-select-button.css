@@ -1,0 +1,42 @@
+.atrc-ctrl-select-btn .atrc-btn-select {
+  --at-h: 35px;
+  --at-bdr-w: 1px;
+  --at-bdr-sty: solid;
+  --at-bdr-cl: var(--at-quaternary);
+  --at-bg-cl: var(--at-secondary);
+  --at-cl: var(--at-primary);
+  height: var(--at-h);
+}
+.atrc-ctrl-select-btn .atrc-btn-select .at-svg {
+  --at-w: 20px;
+  --at-h: 20px;
+}
+.atrc-ctrl-select-btn .atrc-btn-active {
+  --at-bg-cl: var(--at-quaternary);
+  --at-cl: var(--at-primary);
+}
+.atrc-ctrl-select-btn.atrc-ctrl-select-btn-2col {
+  --at-m: 15px 0 0 0;
+}
+.atrc-ctrl-select-btn.atrc-ctrl-select-btn-2col .atrc-btn-select {
+  --at-fnt-sz: 0;
+  --at-ln-h: normal;
+  --at-bg-cl: #fff;
+  --at-w: calc(50% - (var(--at-g-l-r)));
+  --at-h: auto;
+  height: var(--at-h);
+  width: var(--at-w);
+}
+.atrc-ctrl-select-btn.atrc-ctrl-select-btn-2col .atrc-btn-select .at-svg {
+  --at-w: 110px;
+  --at-h: 50px;
+}
+.atrc-ctrl-select-btn.atrc-ctrl-select-btn-2col .atrc-btn-select:not(.atrc-btn-active) .at-svg {
+  opacity: 0.5;
+}
+.atrc-ctrl-select-btn.atrc-ctrl-select-btn-2col .atrc-btn-select:not(.atrc-btn-active):hover .at-svg {
+  opacity: 0.8;
+}
+.atrc-ctrl-txt-al-device .atrc-ctrl-select-btn .atrc-btn-grp {
+  --at-gap: 5px;
+}

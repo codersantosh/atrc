@@ -1,21 +1,20 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
+	&-ctrl-txt-shw {
+		#{$appPrefix}-ctrl-unit-wrp {
+			flex-grow: 1;
 
-    &-ctrl-txt-shw {
-
-        #{$appPrefix}-ctrl-unit-wrp {
-            flex-grow: 1;
-
-            .components {
-                &-input-control {
-                    &__container {
-                        #{$varPrefix}-w: 100%;
-                        #{$varPrefix}-m: 10px;
-                        width          : var(#{$varPrefix}-w);
-                        margin-bottom  : var(#{$varPrefix}-m);
-
-                    }
-                }
-            }
-        }
-    }
+			.components {
+				&-input-control {
+					&__container {
+						#{$varPrefix}-w: 100%;
+						#{$varPrefix}-m: 10px;
+						width: var(#{$varPrefix}-w);
+						margin-bottom: var(#{$varPrefix}-m);
+					}
+				}
+			}
+		}
+	}
 }

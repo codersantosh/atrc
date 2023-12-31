@@ -1,23 +1,25 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-ctrl-flx-al-cont-device {
-        #{$appPrefix} {
-            &-btn-grp {
-                #{$varPrefix}-gap: 5px;
-            }
+	&-ctrl-flx-al-cont-device {
+		#{$appPrefix} {
+			&-btn-grp {
+				#{$varPrefix}-gap: 5px;
+			}
 
-            &-ctrl-select-btn {
-                #{$appPrefix} {
-                    &-btn-select {
-                        #{$varPrefix}-w: 35px;
-                        width          : var(#{$varPrefix}-w);
+			&-ctrl-select-btn {
+				#{$appPrefix} {
+					&-btn-select {
+						#{$varPrefix}-w: 35px;
+						width: var(#{$varPrefix}-w);
 
-                        .at-svg {
-                            #{$varPrefix}-w: 16px;
-                            #{$varPrefix}-h: 16px;
-                        }
-                    }
-                }
-            }
-        }
-    }
+						.at-svg {
+							#{$varPrefix}-w: 16px;
+							#{$varPrefix}-h: 16px;
+						}
+					}
+				}
+			}
+		}
+	}
 }

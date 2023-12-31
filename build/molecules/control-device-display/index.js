@@ -1,0 +1,109 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+/*Attributes Structure
+Type object{
+    xs:'',
+    sm:'',
+    md:'',
+    lg:'',
+    xl:'',
+    xxl:'',
+}
+**/
+
+/*WordPress*/
+import { __, sprintf } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
+
+/*Library*/
+import classnames from 'classnames';
+import { isArray, isEmpty, map } from 'lodash';
+
+/*Inbuilt*/
+import AtrcToggle from '../../atoms/toggle';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
+
+/*Inbuilt Utils*/
+import AtrcAvailableDevices from '../../utils/available-devices';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+
+/*Local Components*/
+const getNewVal = (value, key) => {
+  if (!value) {
+    return true;
+  }
+  return !value[key];
+};
+const RenderToggle = ({
+  value,
+  onChange,
+  allowedDevices
+}) => {
+  const Devices = () => {
+    if (isArray(allowedDevices)) {
+      return allowedDevices;
+    }
+    return AtrcAvailableDevices;
+  };
+  const dev = Devices();
+  return dev.map(function (tab, iDx) {
+    if (!tab.on) {
+      return false;
+    }
+    return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+      className: classnames('at-m'),
+      key: iDx
+    }, /*#__PURE__*/React.createElement(AtrcToggle, {
+      key: tab.name,
+      label: sprintf(
+      // translators: %s: placeholder for title
+      __('Hide on %s.', 'atrc-prefix-atrc'), tab.title),
+      checked: value && value[tab.name],
+      onChange: () => onChange(getNewVal(value, tab.name), tab.name)
+    }));
+  });
+};
+const AtrcControlDeviceDisplay = props => {
+  const {
+    label = '',
+    className = '',
+    variant = '',
+    value = {},
+    onChange = () => {},
+    allowedDevices = true,
+    ...defaultProps
+  } = props;
+  const setAttr = (newVal, type) => {
+    const valueCloned = Object.assign({}, value);
+    valueCloned[type] = newVal;
+    onChange(valueCloned);
+  };
+  const DisplayTabs = useMemo(() => {
+    return [{
+      name: 'display',
+      title: label,
+      hasValue: !isEmpty(value),
+      onDeselect: () => onChange({})
+    }];
+  }, []);
+
+  /* Return null since no device */
+  if (!allowedDevices) {
+    return null;
+  }
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, _extends({
+    className: classnames(AtrcPrefix('ctrl-device-d'), className, variant ? AtrcPrefix('ctrl-device-d') + '-' + variant : ''),
+    label: label,
+    resetAll: () => onChange({}),
+    tools: DisplayTabs
+  }, defaultProps), activeItems => map(activeItems, (tab, iDx) => /*#__PURE__*/React.createElement(RenderToggle, {
+    key: iDx,
+    value: value,
+    onChange: setAttr,
+    allowedDevices: allowedDevices
+  })));
+};
+export default AtrcControlDeviceDisplay;
+//# sourceMappingURL=index.js.map

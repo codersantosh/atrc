@@ -1,0 +1,54 @@
+.atrc-nxt-m-0 + .atrc-ctrl-pnl-tools {
+  --at-m: 0;
+}
+.atrc-active-radio {
+  --at-m: 5px 5px 0 0;
+}
+.atrc-ctrl-pnl-tools {
+  --at-m: 15px 0 0 0;
+}
+.atrc-ctrl-pnl-tools:first-child {
+  --at-m: 0;
+}
+.atrc-ctrl-pnl-tools-header {
+  --at-p: 5px 5px 5px 10px;
+  --at-bdr-w: 1px;
+  --at-bdr-sty: solid;
+  --at-bdr-cl: var(--at-quaternary);
+  --at-bg-cl: var(--at-white);
+}
+.atrc-ctrl-pnl-tools-header:hover {
+  --at-bg-cl: var(--at-white);
+}
+.atrc-ctrl-pnl-tools-body {
+  --at-p: 15px;
+  --at-bg-cl: var(--at-secondary);
+  --at-bdr-w: 0 1px 1px 1px;
+  --at-bdr-sty: solid;
+  --at-bdr-cl: var(--at-quaternary);
+}
+.atrc-ctrl-pnl-tools .atrc-ctrl-pnl-tools-body > .atrc-ctrl-pnl-tools + .atrc-ctrl-pnl-tools {
+  --at-m: 15px 0 0 0;
+}
+.atrc-ctrl-pnl-tools .atrc-ctrl-unit-wrp {
+  --at-w: 100%;
+  width: var(--at-w);
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.atrc-ctrl-pnl-tools .atrc-ctrl-unit-wrp .components-input-control__container {
+  --at-w: 100%;
+  width: var(--at-w);
+}
+.atrc-wrp .atrc-ctrl-pnl-tools:first-child {
+  --at-m: 0;
+}
+.atrc-wrp .atrc-ctrl-pnl-tools + .atrc-ctrl-pnl-tools {
+  --at-m: 15px 0 0 0;
+}
+.atrc-menu-itm-wrp .components-button .components-menu-item__item {
+  --at-box-szg: border-box;
+  -webkit-box-sizing: var(--at-box-szg) !important;
+          box-sizing: var(--at-box-szg) !important;
+}

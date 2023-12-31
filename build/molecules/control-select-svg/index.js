@@ -1,0 +1,294 @@
+/*Attributes Structure
+Type Object
+{
+    svgFrm = '',
+    svgDefd = '',
+    svgCust = '',
+    svgCl = '',
+    flipV = '',
+    flipH = '',
+
+    w = '',
+    smW = '',
+    mdW = '',
+    lgW = '',
+    xlW = '',
+    xxlW = '',
+    h = '',
+    smH = '',
+    mdH= '',
+    lgH = '',
+    xlH = '',
+    xxlH = ''
+}
+* */
+
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
+
+/*Library*/
+import classnames from 'classnames';
+
+/*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcSelect from '../../atoms/select';
+import AtrcToggle from '../../atoms/toggle';
+import AtrcTextarea from '../../atoms/textarea';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
+import AtrcControlDropdownHtml from '../control-dropdown-html';
+import AtrcControlDropdownColor from '../control-dropdown-color';
+import AtrcControlResponsiveWidthHeight from '../control-responsive-width-height';
+import { AtrcIconPreview } from '../control-dropdown-html';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+import { isEmpty, map } from 'lodash';
+
+/*Local Components */
+const SelectedShape = (value, options) => {
+  const selectedShape = options.filter(function (item) {
+    return item.value === value;
+  });
+  if (selectedShape.length) {
+    return selectedShape[0];
+  }
+  return null;
+};
+const SvgShapeDefined = ({
+  value,
+  onChange,
+  options
+}) => {
+  const selectedShape = SelectedShape(value, options);
+  const icon = selectedShape && selectedShape.svg;
+  return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlDropdownHtml, {
+    label: /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, null, __('Choose svg', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcIconPreview, {
+      icon: icon
+    })),
+    value: value,
+    onChange: onChange,
+    options: options
+  }));
+};
+const SvgShape = ({
+  from,
+  def,
+  cust,
+  definedOptions,
+  onChange
+}) => {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    label: __('Source', 'atrc-prefix-atrc'),
+    value: from,
+    options: [{
+      label: __('Defined', 'atrc-prefix-atrc'),
+      value: 'def'
+    }, {
+      label: __('Custom', 'atrc-prefix-atrc'),
+      value: 'cust'
+    }],
+    onChange: newVal => onChange(newVal, 'svgFrm')
+  })), 'def' === from ? /*#__PURE__*/React.createElement(SvgShapeDefined, {
+    value: def,
+    onChange: newVal => onChange(newVal, 'svgDefd'),
+    options: definedOptions
+  }) : /*#__PURE__*/React.createElement(AtrcTextarea, {
+    value: cust,
+    onChange: newVal => onChange(newVal, 'svgCust')
+  }));
+};
+const ShapeSettings = props => {
+  const {
+    value,
+    onChange = () => {}
+  } = props;
+  const {
+    flipV = false,
+    flipH = false,
+    ...imgProps
+  } = value;
+  const setAttr = (newVal, type) => {
+    const valueCloned = Object.assign({}, value);
+    valueCloned[type] = newVal;
+    onChange(valueCloned);
+  };
+  const setWidthHeight = newVal => {
+    let valueCloned = Object.assign({}, value);
+    delete valueCloned.w;
+    delete valueCloned.smW;
+    delete valueCloned.mdW;
+    delete valueCloned.lgW;
+    delete valueCloned.xlW;
+    delete valueCloned.xxlW;
+    delete valueCloned.h;
+    delete valueCloned.smH;
+    delete valueCloned.mdH;
+    delete valueCloned.lgH;
+    delete valueCloned.xlH;
+    delete valueCloned.xxlH;
+    valueCloned = {
+      ...valueCloned,
+      ...newVal
+    };
+    onChange(valueCloned);
+  };
+  const AllTabs = useMemo(() => {
+    return [{
+      name: 'flipV',
+      title: __('Flip vertically', 'atrc-prefix-atrc'),
+      hasValue: flipV,
+      onDeselect: () => setAttr(false, 'flipV')
+    }, {
+      name: 'flipH',
+      title: __('Flip horizontally', 'atrc-prefix-atrc'),
+      hasValue: flipH,
+      onDeselect: () => setAttr(false, 'flipH')
+    }, {
+      name: 'sz',
+      title: __('Size', 'atrc-prefix-atrc'),
+      hasValue: !isEmpty(imgProps),
+      onDeselect: () => setWidthHeight({})
+    }];
+  }, []);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    label: __('Shape options', 'atrc-prefix-atrc'),
+    resetAll: () => onChange({}),
+    tools: AllTabs
+  }, activeItems => map(activeItems, function (item, iDx) {
+    if ('flipV' === item) {
+      return /*#__PURE__*/React.createElement(AtrcToggle, {
+        label: __('Flip vertically', 'atrc-prefix-atrc'),
+        checked: flipV,
+        onChange: () => setAttr(!flipV, 'flipV'),
+        key: iDx
+      });
+    }
+    if ('flipH' === item) {
+      return /*#__PURE__*/React.createElement(AtrcToggle, {
+        label: __('Flip horizontally', 'atrc-prefix-atrc'),
+        checked: flipH,
+        onChange: () => setAttr(!flipH, 'flipH'),
+        key: iDx
+      });
+    }
+    if ('sz' === item) {
+      return /*#__PURE__*/React.createElement(AtrcControlResponsiveWidthHeight, {
+        label: __('Size', 'atrc-prefix-atrc'),
+        value: {
+          ...imgProps
+        },
+        onChange: setWidthHeight,
+        key: iDx
+      });
+    }
+    return null;
+  })));
+};
+const AtrcControlSvg = props => {
+  const {
+    value = {},
+    definedOptions = [],
+    variant = '',
+    className = '',
+    alloweColor = true,
+    alloweSettings = true,
+    onChange = () => {}
+  } = props;
+  const {
+    svgFrm = 'def',
+    svgDefd = '',
+    svgCust = '',
+    svgCl = '',
+    flipV = false,
+    flipH = false,
+    w = '',
+    smW = '',
+    mdW = '',
+    lgW = '',
+    xlW = '',
+    xxlW = '',
+    h = '',
+    smH = '',
+    mdH = '',
+    lgH = '',
+    xlH = '',
+    xxlH = ''
+  } = value;
+  const setAttr = (newVal, tp) => {
+    const valueCloned = Object.assign({}, value);
+    switch (tp) {
+      case 'svgDefd':
+        delete valueCloned.svgCust;
+        break;
+      case 'svgCust':
+        delete valueCloned.svgDefd;
+        break;
+      default:
+        break;
+    }
+    valueCloned[tp] = newVal;
+    onChange(valueCloned);
+  };
+  const setShapeSettings = newVal => {
+    let valueCloned = Object.assign({}, value);
+    delete valueCloned.flipV;
+    delete valueCloned.flipH;
+    delete valueCloned.w;
+    delete valueCloned.smW;
+    delete valueCloned.mdW;
+    delete valueCloned.lgW;
+    delete valueCloned.xlW;
+    delete valueCloned.xxlW;
+    delete valueCloned.h;
+    delete valueCloned.smH;
+    delete valueCloned.mdH;
+    delete valueCloned.lgH;
+    delete valueCloned.xlH;
+    delete valueCloned.xxlH;
+    valueCloned = {
+      ...valueCloned,
+      ...newVal
+    };
+    onChange(valueCloned);
+  };
+  return /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames(AtrcPrefix('ctrl-shp'), className, variant ? AtrcPrefix('ctrl-shp') + '-' + variant : '')
+  }, /*#__PURE__*/React.createElement(SvgShape, {
+    from: svgFrm,
+    def: svgDefd,
+    cust: svgCust,
+    onChange: setAttr,
+    definedOptions: definedOptions
+  }), alloweColor && 'def' === svgFrm ? /*#__PURE__*/React.createElement(AtrcControlDropdownColor, {
+    label: __('Color', 'atrc-prefix-atrc'),
+    value: svgCl,
+    onChange: newVal => onChange(newVal, 'svgCl')
+  }) : null, alloweSettings && svgDefd ? /*#__PURE__*/React.createElement(ShapeSettings, {
+    value: {
+      flipV,
+      flipH,
+      w,
+      smW,
+      mdW,
+      lgW,
+      xlW,
+      xxlW,
+      h,
+      smH,
+      mdH,
+      lgH,
+      xlH,
+      xxlH
+    },
+    onChange: setShapeSettings
+  }) : null);
+};
+export default AtrcControlSvg;
+//# sourceMappingURL=index.js.map

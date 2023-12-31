@@ -1,18 +1,20 @@
-#{$appPrefix} {
-    &-dropdown {
-        &-cont {
-            .components {
-                &-menu-item__item {
-                    #{$varPrefix}-min-w: 100%;
-                    min-width          : var(#{$varPrefix}-min-w);
-                }
+@import '../../prefix-vars.scss';
 
-                &-menu-group {
-                    #{$appPrefix}-lbl {
-                        #{$varPrefix}-m: 0;
-                    }
-                }
-            }
-        }
-    }
+#{$appPrefix} {
+	&-dropdown {
+		&-cont {
+			.components {
+				&-menu-item__item {
+					#{$varPrefix}-min-w: 100%;
+					min-width: var(#{$varPrefix}-min-w);
+				}
+
+				&-menu-group {
+					#{$appPrefix}-lbl {
+						#{$varPrefix}-m: 0;
+					}
+				}
+			}
+		}
+	}
 }

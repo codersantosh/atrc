@@ -1,90 +1,81 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-ctrl-select-btn {
-        #{$appPrefix} {
-            &-btn {
-                &-select {
+	&-ctrl-select-btn {
+		#{$appPrefix} {
+			&-btn {
+				&-select {
+					#{$varPrefix}-h: 35px;
+					#{$varPrefix}-bdr-w: 1px;
+					#{$varPrefix}-bdr-sty: solid;
+					#{$varPrefix}-bdr-cl: var(#{$varPrefix}-quaternary);
+					#{$varPrefix}-bg-cl: var(#{$varPrefix}-secondary);
+					#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+					height: var(#{$varPrefix}-h);
 
-                    #{$varPrefix}-h      : 35px;
-                    #{$varPrefix}-bdr-w  : 1px;
-                    #{$varPrefix}-bdr-sty: solid;
-                    #{$varPrefix}-bdr-cl : var(#{$varPrefix}-quaternary);
-                    #{$varPrefix}-bg-cl  : var(#{$varPrefix}-secondary);
-                    #{$varPrefix}-cl     : var(#{$varPrefix}-primary);
-                    height               : var(#{$varPrefix}-h);
+					.at {
+						&-svg {
+							#{$varPrefix}-w: 20px;
+							#{$varPrefix}-h: 20px;
+						}
+					}
+				}
 
-                    .at {
-                        &-svg {
-                            #{$varPrefix}-w: 20px;
-                            #{$varPrefix}-h: 20px;
-                        }
-                    }
+				&-active {
+					#{$varPrefix}-bg-cl: var(#{$varPrefix}-quaternary);
+					#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+				}
+			}
+		}
 
-                }
+		&#{$appPrefix} {
+			&-ctrl-select-btn {
+				&-2col {
+					#{$varPrefix}-m: 15px 0 0 0;
 
-                &-active {
-                    #{$varPrefix}-bg-cl: var(#{$varPrefix}-quaternary);
-                    #{$varPrefix}-cl   : var(#{$varPrefix}-primary);
-                }
+					#{$appPrefix} {
+						&-btn {
+							&-select {
+								#{$varPrefix}-fnt-sz: 0;
+								#{$varPrefix}-ln-h: normal;
+								#{$varPrefix}-bg-cl: #fff;
 
-            }
-        }
+								#{$varPrefix}-w: calc((100% / 2) - (var(#{$varPrefix}-g-l-r)));
+								#{$varPrefix}-h: auto;
+								height: var(#{$varPrefix}-h);
+								width: var(#{$varPrefix}-w);
 
-        &#{$appPrefix} {
-            &-ctrl-select-btn {
-                &-2col {
-                    #{$varPrefix}-m: 15px 0 0 0;
+								.at {
+									&-svg {
+										#{$varPrefix}-w: 110px;
+										#{$varPrefix}-h: 50px;
+									}
+								}
 
-                    #{$appPrefix} {
-                        &-btn {
-                            &-select {
-                                #{$varPrefix}-fnt-sz: 0;
-                                #{$varPrefix}-ln-h  : normal;
-                                #{$varPrefix}-bg-cl : #fff;
+								&:not(#{$appPrefix}-btn-active) {
+									.at-svg {
+										opacity: 0.5;
+									}
 
-                                #{$varPrefix}-w : calc((100% / 2) - (var(#{$varPrefix}-g-l-r)));
-                                #{$varPrefix}-h : auto;
-                                height          : var(#{$varPrefix}-h);
-                                width           : var(#{$varPrefix}-w);
+									&:hover {
+										.at-svg {
+											opacity: 0.8;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 
-
-                                .at {
-                                    &-svg {
-                                        #{$varPrefix}-w: 110px;
-                                        #{$varPrefix}-h: 50px;
-                                    }
-                                }
-
-                                &:not(#{$appPrefix}-btn-active) {
-                                    .at-svg {
-                                        opacity: 0.5;
-                                    }
-
-                                    &:hover {
-                                        .at-svg {
-                                            opacity: 0.8;
-
-                                        }
-                                    }
-                                }
-
-                            }
-
-
-
-                        }
-                    }
-
-                }
-            }
-        }
-
-    }
-
-    &-ctrl-txt-al-device {
-        #{$appPrefix}-ctrl-select-btn {
-            #{$appPrefix}-btn-grp {
-                #{$varPrefix}-gap: 5px;
-            }
-        }
-    }
+	&-ctrl-txt-al-device {
+		#{$appPrefix}-ctrl-select-btn {
+			#{$appPrefix}-btn-grp {
+				#{$varPrefix}-gap: 5px;
+			}
+		}
+	}
 }

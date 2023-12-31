@@ -1,0 +1,551 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+/*Library*/
+import classnames from 'classnames';
+import { __ } from '@wordpress/i18n';
+import { BsChatLeftDots, BsPerson, BsSliders, BsThreeDots, BsTrash, BsXLg } from 'react-icons/bs';
+
+/*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+import AtrcSelect from '../../atoms/select';
+import AtrcToggle from '../../atoms/toggle';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
+import AtrcSpan from '../../atoms/span';
+import AtrcWord from '../../atoms/word';
+import AtrcImg from '../../atoms/img';
+import AtrcHr from '../../atoms/hr';
+import AtrcTh from '../../atoms/th';
+import AtrcCheckbox from '../../atoms/checkbox';
+import AtrcThead from '../../atoms/thead';
+import AtrcTr from '../../atoms/tr';
+import AtrcTbody from '../../atoms/tbody';
+import AtrcTd from '../../atoms/thead';
+import AtrcHeader from '../../organisms/header';
+import AtrcMain from '../../organisms/main';
+import AtrcSidebar from '../../organisms/sidebar';
+import AtrcButtonGroup from './../../molecules/button-group';
+import AtrcBase from './../../molecules/base';
+import AtrcPagination from './../../molecules/pagination';
+import AtrcSearch from './../../molecules/search';
+import AtrcTooltip from './../../molecules/tooltip';
+import AtrcNav from './../../molecules/nav';
+import AtrcTable from './../../molecules/table';
+import AtrcDropdown from './../../molecules/dropdown';
+import AtrcMenuGroup from './../../molecules/menu-group';
+import AtrcMenuItemsChoice from './../../molecules/menu-items-choice';
+
+/*Prefix*/
+import AtrcPrefix from '../../prefix-vars';
+import { arrowDown } from '@wordpress/icons';
+
+/*Local*/
+const AtrcList = props => {
+  const {
+    className = '',
+    variant = '',
+    label,
+    right = null,
+    ...defaultProps
+  } = props;
+  return /*#__PURE__*/React.createElement(AtrcMain, _extends({
+    className: classnames(AtrcPrefix('ls'), AtrcPrefix('mt-40'), className, variant ? AtrcPrefix('list') + '-' + variant : '')
+  }, defaultProps), /*#__PURE__*/React.createElement(AtrcWrap, {
+    tag: "section",
+    className: classnames(AtrcPrefix('m-0'), 'at-row')
+  }, /*#__PURE__*/React.createElement(AtrcSidebar, {
+    className: "at-col-1"
+  }, /*#__PURE__*/React.createElement(AtrcNav, {
+    variant: "vrt",
+    navs: [{
+      to: 'menu1',
+      children: __('Menu 1', 'atrc-prefix-atrc')
+    }, {
+      to: 'menu2',
+      children: __('Menu 2', 'atrc-prefix-atrc')
+    }]
+  })), /*#__PURE__*/React.createElement(AtrcWrap, {
+    tag: "section",
+    className: "at-col-11"
+  }, /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames(AtrcPrefix('bg-white'), 'at-bg-cl')
+  }, /*#__PURE__*/React.createElement(AtrcHeader, {
+    className: classnames(AtrcPrefix('single-header'), className, variant ? AtrcPrefix('single-header') + '-' + variant : '')
+  }, /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames('at-p', 'at-flx', 'at-al-itm-ctr', 'at-jfy-cont-btw')
+  }, /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames('at-flx', 'at-al-itm-ctr')
+  }, /*#__PURE__*/React.createElement(AtrcWord, {
+    className: classnames(AtrcPrefix('m-0'))
+  }, "List"), /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "primary",
+    onClick: () => {},
+    className: classnames(AtrcPrefix('ml-15'))
+  }, "Add New"), /*#__PURE__*/React.createElement(AtrcToggle, {
+    label: __('Advanced Filter', 'atrc-prefix-atrc'),
+    className: classnames(AtrcPrefix('ml-15'), AtrcPrefix('mb-0'))
+  })), /*#__PURE__*/React.createElement(AtrcButtonGroup, null, /*#__PURE__*/React.createElement(AtrcButton, {
+    className: classnames(
+    // AtrcPrefix('pl-15'),
+    // AtrcPrefix('pr-15'),
+    // AtrcPrefix('pt-10'),
+    // AtrcPrefix('pb-10')
+    'at-p')
+  }, "Awating mod reply(0)"), /*#__PURE__*/React.createElement(AtrcButton, {
+    className: classnames(
+    // AtrcPrefix('pl-15'),
+    // AtrcPrefix('pr-15'),
+    // AtrcPrefix('pt-10'),
+    // AtrcPrefix('pb-10')
+    'at-p')
+  }, "Awating client reply(0)"), /*#__PURE__*/React.createElement(AtrcButton, {
+    className: classnames(
+    // AtrcPrefix('pl-15'),
+    // AtrcPrefix('pr-15'),
+    // AtrcPrefix('pt-10'),
+    // AtrcPrefix('pb-10')
+    'at-p')
+  }, "New(0)"), /*#__PURE__*/React.createElement(AtrcButton, {
+    className: classnames(
+    // AtrcPrefix('pl-15'),
+    // AtrcPrefix('pr-15'),
+    // AtrcPrefix('pt-10'),
+    // AtrcPrefix('pb-10')
+    'at-p')
+  }, "Closed(0)"), /*#__PURE__*/React.createElement(AtrcButton, {
+    className: classnames(
+    // AtrcPrefix('pl-15'),
+    // AtrcPrefix('pr-15'),
+    // AtrcPrefix('pt-10'),
+    // AtrcPrefix('pb-10')
+    'at-p'),
+    variant: "active"
+  }, "All(0)"), /*#__PURE__*/React.createElement(AtrcButton, {
+    className: classnames(
+    // AtrcPrefix('pl-15'),
+    // AtrcPrefix('pr-15'),
+    // AtrcPrefix('pt-10'),
+    // AtrcPrefix('pb-10')
+    'at-p'),
+    variant: "reset"
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
+    className: classnames(AtrcPrefix('mr-10')),
+    type: "bootstrap",
+    icon: BsSliders
+  }), "Reset Filter"))), /*#__PURE__*/React.createElement(AtrcHr, {
+    className: classnames(AtrcPrefix('m-0'))
+  }), /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames('at-p', 'at-flx', 'at-al-itm-ctr', 'at-jfy-cont-btw')
+  }, /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames('at-flx', 'at-al-itm-ctr')
+  }, /*#__PURE__*/React.createElement(AtrcBase, {
+    variant: "select-plain"
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    value: "",
+    options: [{
+      label: 'Big',
+      value: '100%'
+    }, {
+      label: 'Medium',
+      value: '50%'
+    }, {
+      label: 'Small',
+      value: '25%'
+    }],
+    onChange: () => {},
+    allowReset: false
+  })), /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "primary",
+    onClick: () => {},
+    className: classnames(AtrcPrefix('ml-15'))
+  }, "Apply")), /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames('at-flx', 'at-al-itm-ctr', 'at-jfy-cont-btw')
+  }, /*#__PURE__*/React.createElement(AtrcButtonGroup, null, /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "active",
+    className: classnames(AtrcPrefix('ml-15'),
+    // AtrcPrefix('pr-15'),
+    // AtrcPrefix('pt-10'),
+    // AtrcPrefix('pb-10'),
+    // AtrcPrefix('pl-10')
+    'at-p')
+  }, "All(0)"), /*#__PURE__*/React.createElement(AtrcButton, {
+    className: classnames(AtrcPrefix('ml-15'),
+    // AtrcPrefix('pr-15'),
+    // AtrcPrefix('pt-10'),
+    // AtrcPrefix('pb-10'),
+    // AtrcPrefix('pl-10')
+    'at-p')
+  }, "Unsolved(0)"), /*#__PURE__*/React.createElement(AtrcButton, {
+    className: classnames(AtrcPrefix('ml-15'),
+    // AtrcPrefix('pr-15'),
+    // AtrcPrefix('pt-10'),
+    // AtrcPrefix('pb-10'),
+    // AtrcPrefix('pl-10')
+    'at-p')
+  }, "Solved(0)")), /*#__PURE__*/React.createElement(AtrcSearch, {
+    buttonProps: {
+      variant: 'primary'
+    }
+  }))), /*#__PURE__*/React.createElement(AtrcHr, {
+    className: classnames(AtrcPrefix('m-0'))
+  }), /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames('at-p', 'at-flx', 'at-al-itm-ctr', 'at-jfy-cont-btw')
+  }, /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames('at-flx', 'at-al-itm-ctr')
+  }, /*#__PURE__*/React.createElement(AtrcCheckbox, null), /*#__PURE__*/React.createElement(AtrcButtonGroup, {
+    className: classnames(AtrcPrefix('mr-10'))
+  }, /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "icon",
+    className: classnames(AtrcPrefix('m-5'))
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    text: "This is tooltip"
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
+    type: "bootstrap",
+    icon: BsTrash
+  }))), /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "icon",
+    className: classnames(AtrcPrefix('m-5'))
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    text: "This is tooltip"
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
+    type: "bootstrap",
+    icon: BsPerson
+  }))), /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "icon",
+    className: classnames(AtrcPrefix('m-5'))
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    text: "This is tooltip"
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
+    type: "bootstrap",
+    icon: BsChatLeftDots
+  }))), /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "icon",
+    className: classnames(AtrcPrefix('m-5'))
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    text: "This is tooltip"
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
+    type: "bootstrap",
+    icon: BsXLg
+  })))), /*#__PURE__*/React.createElement(AtrcBase, {
+    variant: "select-plain"
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    value: "",
+    options: [{
+      label: 'Big',
+      value: '100%'
+    }, {
+      label: 'Medium',
+      value: '50%'
+    }, {
+      label: 'Small',
+      value: '25%'
+    }],
+    onChange: () => {},
+    allowReset: false
+  })), /*#__PURE__*/React.createElement(AtrcResetButtonIcon, null)), /*#__PURE__*/React.createElement(AtrcPagination, {
+    totalItems: 100,
+    doPagination: () => {},
+    currentPage: 10,
+    totalPages: 10
+  }))), /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames(AtrcPrefix('ls-body'), className, variant ? AtrcPrefix('ls-body') + '-' + variant : '')
+  }, /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames(AtrcPrefix('pt-15'))
+  }, /*#__PURE__*/React.createElement(AtrcTable, null, /*#__PURE__*/React.createElement(AtrcThead, {
+    className: classnames(AtrcPrefix('bg-primary-light'))
+  }, /*#__PURE__*/React.createElement(AtrcTr, null, /*#__PURE__*/React.createElement(AtrcTh, {
+    className: classnames('at-p')
+  }), /*#__PURE__*/React.createElement(AtrcTh, {
+    className: classnames('at-p')
+  }, "Author"), /*#__PURE__*/React.createElement(AtrcTh, {
+    className: classnames('at-p')
+  }, "Details"), /*#__PURE__*/React.createElement(AtrcTh, {
+    className: classnames('at-p')
+  }, "Mod"), /*#__PURE__*/React.createElement(AtrcTh, {
+    className: classnames('at-p')
+  }, "Visibility"), /*#__PURE__*/React.createElement(AtrcTh, {
+    className: classnames('at-p')
+  }, "Priority"), /*#__PURE__*/React.createElement(AtrcTh, {
+    className: classnames('at-p')
+  }, "Status"), /*#__PURE__*/React.createElement(AtrcTh, {
+    className: classnames('at-p')
+  }, "Date"), /*#__PURE__*/React.createElement(AtrcTh, {
+    className: classnames('at-p')
+  }, "Actions"))), /*#__PURE__*/React.createElement(AtrcTbody, null, /*#__PURE__*/React.createElement(AtrcTr, null, /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcCheckbox, null)), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcSpan, {
+    className: classnames('at-flx', 'at-al-itm-ctr')
+  }, /*#__PURE__*/React.createElement(AtrcImg, {
+    className: classnames(AtrcPrefix('mr-10')),
+    src: "http://1.gravatar.com/avatar/1a75e688bee2588b856ccc94b887597f?s=32&d=mm&r=g"
+  }), /*#__PURE__*/React.createElement(AtrcWord, {
+    tag: "span"
+  }, "Author Name"))), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcWord, {
+    tag: "p"
+  }, "Contrary to popular belief")), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcSpan, {
+    className: classnames('at-flx', 'at-al-itm-ctr')
+  }, /*#__PURE__*/React.createElement(AtrcImg, {
+    className: classnames(AtrcPrefix('mr-10')),
+    src: "http://1.gravatar.com/avatar/1a75e688bee2588b856ccc94b887597f?s=32&d=mm&r=g"
+  }), /*#__PURE__*/React.createElement(AtrcWord, {
+    tag: "span"
+  }, "Author Name"))), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    className: classnames(AtrcPrefix('badge')),
+    text: "This is tooltip"
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
+    className: classnames(AtrcPrefix('mr-5')),
+    type: "bootstrap",
+    icon: BsPerson
+  }), "Visibility")), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    className: classnames(AtrcPrefix('badge'), AtrcPrefix('priority-normal')),
+    text: "This is tooltip"
+  }, "Normal")), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    className: classnames(AtrcPrefix('badge'), AtrcPrefix('mr-5')),
+    text: "This is tooltip"
+  }, "Pending"), /*#__PURE__*/React.createElement(AtrcTooltip, {
+    className: classnames(AtrcPrefix('badge'), AtrcPrefix('priority-normal')),
+    text: "This is tooltip"
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
+    className: classnames(AtrcPrefix('mr-5')),
+    type: "bootstrap",
+    icon: BsPerson
+  }), "Unsolved")), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    text: "Date"
+  }, "Date Goes here")), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "icon",
+    className: classnames(AtrcPrefix('m-5'))
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    text: "This is tooltip"
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
+    type: "bootstrap",
+    icon: BsTrash
+  }))), /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "icon",
+    className: classnames(AtrcPrefix('m-5'))
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    text: "This is tooltip"
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
+    type: "bootstrap",
+    icon: BsPerson
+  }))), /*#__PURE__*/React.createElement(AtrcDropdown, {
+    renderContentStyle: {
+      width: '200px'
+    },
+    popoverProps: {
+      placement: 'bottom left'
+    },
+    focusOnMount: true,
+    renderToggle: ({
+      isOpen,
+      onToggle
+    }) => /*#__PURE__*/React.createElement(AtrcButton, {
+      "aria-expanded": isOpen,
+      onClick: onToggle,
+      variant: "icon",
+      className: classnames(AtrcPrefix('m-5'))
+    }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+      text: "This is tooltip"
+    }, /*#__PURE__*/React.createElement(AtrcIcon, {
+      type: "bootstrap",
+      icon: BsThreeDots
+    }))),
+    renderContent: ({
+      onToggle
+    }) => /*#__PURE__*/React.createElement(AtrcWrap, null, /*#__PURE__*/React.createElement(AtrcMenuGroup, {
+      label: __('Change Status', 'atrc-prefix-atrc')
+    }, /*#__PURE__*/React.createElement(AtrcMenuItemsChoice, {
+      choices: [{
+        value: 'pending',
+        label: __('Pending', 'atrc-prefix-atrc'),
+        info: __('Awaiting for approval.', 'atrc-prefix-atrc')
+      }, {
+        value: 'awaiting',
+        label: __('Awaiting', 'atrc-prefix-atrc'),
+        info: __('Awaiting first reply.', 'atrc-prefix-atrc')
+      }, {
+        value: 'closed',
+        label: __('Closed', 'atrc-prefix-atrc'),
+        info: __('Closed to new reply.', 'atrc-prefix-atrc')
+      }, {
+        value: 'awaitingc',
+        label: __('Awaiting client reply', 'atrc-prefix-atrc'),
+        info: __('Awaiting client reply.', 'atrc-prefix-atrc')
+      }, {
+        value: 'awaitinga',
+        label: __('Awaiting mod reply', 'atrc-prefix-atrc'),
+        info: __('Awaiting mod reply.', 'atrc-prefix-atrc')
+      }, {
+        value: 'flag',
+        label: __('Flag', 'atrc-prefix-atrc'),
+        info: __('Mark as flagged', 'atrc-prefix-atrc')
+      }, {
+        value: 'trash',
+        label: __('Trash', 'atrc-prefix-atrc'),
+        info: __('Move to the trash', 'atrc-prefix-atrc')
+      }],
+      icon: arrowDown,
+      value: "",
+      onSelect: newStatus => {}
+    })))
+  }))), /*#__PURE__*/React.createElement(AtrcTr, {
+    isEven: true
+  }, /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcCheckbox, null)), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcSpan, {
+    className: classnames('at-flx', 'at-al-itm-ctr')
+  }, /*#__PURE__*/React.createElement(AtrcImg, {
+    className: classnames(AtrcPrefix('mr-10')),
+    src: "http://1.gravatar.com/avatar/1a75e688bee2588b856ccc94b887597f?s=32&d=mm&r=g"
+  }), /*#__PURE__*/React.createElement(AtrcWord, {
+    tag: "span"
+  }, "Author Name"))), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcWord, {
+    tag: "p"
+  }, "Contrary to popular belief")), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcSpan, {
+    className: classnames('at-flx', 'at-al-itm-ctr')
+  }, /*#__PURE__*/React.createElement(AtrcImg, {
+    className: classnames(AtrcPrefix('mr-10')),
+    src: "http://1.gravatar.com/avatar/1a75e688bee2588b856ccc94b887597f?s=32&d=mm&r=g"
+  }), /*#__PURE__*/React.createElement(AtrcWord, {
+    tag: "span"
+  }, "Author Name"))), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    className: classnames(AtrcPrefix('badge')),
+    text: "This is tooltip"
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
+    className: classnames(AtrcPrefix('mr-10')),
+    type: "bootstrap",
+    icon: BsPerson
+  }), "Visibility")), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    className: classnames(AtrcPrefix('badge'), AtrcPrefix('priority-high')),
+    text: "This is tooltip"
+  }, "High")), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    className: classnames(AtrcPrefix('badge'), AtrcPrefix('mr-5')),
+    text: "This is tooltip"
+  }, "Pending"), /*#__PURE__*/React.createElement(AtrcTooltip, {
+    className: classnames(AtrcPrefix('badge'), AtrcPrefix('priority-normal')),
+    text: "This is tooltip"
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
+    className: classnames(AtrcPrefix('mr-5')),
+    type: "bootstrap",
+    icon: BsPerson
+  }), "Unsolved")), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    text: "Date"
+  }, "Date Goes here")), /*#__PURE__*/React.createElement(AtrcTd, {
+    className: classnames('at-p')
+  }, /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "icon",
+    className: classnames(AtrcPrefix('m-5'))
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    text: "This is tooltip"
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
+    type: "bootstrap",
+    icon: BsTrash
+  }))), /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "icon",
+    className: classnames(AtrcPrefix('m-5'))
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+    text: "This is tooltip"
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
+    type: "bootstrap",
+    icon: BsPerson
+  }))), /*#__PURE__*/React.createElement(AtrcDropdown, {
+    renderContentStyle: {
+      width: '200px'
+    },
+    popoverProps: {
+      placement: 'bottom left'
+    },
+    focusOnMount: true,
+    renderToggle: ({
+      isOpen,
+      onToggle
+    }) => /*#__PURE__*/React.createElement(AtrcButton, {
+      "aria-expanded": isOpen,
+      onClick: onToggle,
+      variant: "icon",
+      className: classnames(AtrcPrefix('m-5'))
+    }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+      text: "This is tooltip"
+    }, /*#__PURE__*/React.createElement(AtrcIcon, {
+      type: "bootstrap",
+      icon: BsThreeDots
+    }))),
+    renderContent: ({
+      onToggle
+    }) => /*#__PURE__*/React.createElement(AtrcWrap, null, /*#__PURE__*/React.createElement(AtrcMenuGroup, {
+      label: __('Change Status', 'atrc-prefix-atrc')
+    }, /*#__PURE__*/React.createElement(AtrcMenuItemsChoice, {
+      choices: [{
+        value: 'pending',
+        label: __('Pending', 'atrc-prefix-atrc'),
+        info: __('Awaiting for approval.', 'atrc-prefix-atrc')
+      }, {
+        value: 'awaiting',
+        label: __('Awaiting', 'atrc-prefix-atrc'),
+        info: __('Awaiting first reply.', 'atrc-prefix-atrc')
+      }, {
+        value: 'closed',
+        label: __('Closed', 'atrc-prefix-atrc'),
+        info: __('Closed to new reply.', 'atrc-prefix-atrc')
+      }, {
+        value: 'awaitingc',
+        label: __('Awaiting client reply', 'atrc-prefix-atrc'),
+        info: __('Awaiting client reply.', 'atrc-prefix-atrc')
+      }, {
+        value: 'awaitinga',
+        label: __('Awaiting mod reply', 'atrc-prefix-atrc'),
+        info: __('Awaiting mod reply.', 'atrc-prefix-atrc')
+      }, {
+        value: 'flag',
+        label: __('Flag', 'atrc-prefix-atrc'),
+        info: __('Mark as flagged', 'atrc-prefix-atrc')
+      }, {
+        value: 'trash',
+        label: __('Trash', 'atrc-prefix-atrc'),
+        info: __('Move to the trash', 'atrc-prefix-atrc')
+      }],
+      icon: arrowDown,
+      value: "",
+      onSelect: newStatus => {}
+    })))
+  }))))), /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames('at-p', 'at-flx', 'at-jfy-cont-end')
+  }, /*#__PURE__*/React.createElement(AtrcPagination, {
+    totalItems: 100,
+    doPagination: () => {},
+    currentPage: 10,
+    totalPages: 10,
+    isFooter: true
+  }))))))));
+};
+export default AtrcList;
+//# sourceMappingURL=index.js.map

@@ -1,5 +1,7 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-dropdown-cl {
-        #{$varPrefix}-m: 0 0 15px 0;
-    }
+	&-dropdown-cl {
+		#{$varPrefix}-m: 0 0 15px 0;
+	}
 }

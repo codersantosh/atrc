@@ -1,154 +1,144 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-tab-pnl {
-        &-inner {
+	&-tab-pnl {
+		&-inner {
+			.components {
+				&-tab-panel {
+					&__tab-content {
+						#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+						#{$varPrefix}-p: 15px;
+						padding: var(#{$varPrefix}-p);
+						background-color: var(#{$varPrefix}-bg-cl);
+					}
 
-            .components {
-                &-tab-panel {
+					&__tabs-item {
+						#{$varPrefix}-cl: var(#{$varPrefix}-quinary);
+						#{$varPrefix}-fnt-sz: 12px;
+						#{$varPrefix}-fnt-wt: 600;
+						#{$varPrefix}-h: 40px;
+						height: var(#{$varPrefix}-h);
+						color: var(#{$varPrefix}-cl);
+						font-size: var(#{$varPrefix}-fnt-sz);
+						font-weight: var(#{$varPrefix}-fnt-wt);
 
-                    &__tab-content {
-                        #{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
-                        #{$varPrefix}-p    : 15px;
-                        padding            : var(#{$varPrefix}-p);
-                        background-color   : var(#{$varPrefix}-bg-cl);
+						&::after {
+							display: none;
+						}
 
-                    }
+						&:focus {
+							&:not(:disabled) {
+								#{$varPrefix}-box-sdw:
+									inset 0 0 0 2px transparent,
+									inset 0 1.5px 0 0 var(#{$varPrefix}-primary);
+								box-shadow: var(#{$varPrefix}-box-sdw);
+							}
+						}
 
-                    &__tabs-item {
-                        #{$varPrefix}-cl    : var(#{$varPrefix}-quinary);
-                        #{$varPrefix}-fnt-sz: 12px;
-                        #{$varPrefix}-fnt-wt: 600;
-                        #{$varPrefix}-h     : 40px;
-                        height              : var(#{$varPrefix}-h);
-                        color               : var(#{$varPrefix}-cl);
-                        font-size           : var(#{$varPrefix}-fnt-sz);
-                        font-weight         : var(#{$varPrefix}-fnt-wt);
+						&.is-active {
+							#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+							#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+							#{$varPrefix}-box-sdw:
+								inset 0 0 0 2px transparent,
+								inset 0 1.5px 0 0 var(#{$varPrefix}-primary);
+							color: var(#{$varPrefix}-cl) !important;
+							background-color: var(#{$varPrefix}-bg-cl) !important;
+							box-shadow: var(#{$varPrefix}-box-sdw);
+						}
+					}
+				}
+			}
 
-                        &::after {
-                            display: none;
-                        }
+			#{$appPrefix}-lbl-cl-picker {
+				margin-bottom: 0;
+				margin-left: 8px;
+			}
 
-                        &:focus {
-                            &:not(:disabled) {
-                                #{$varPrefix}-box-sdw: inset 0 0 0 2px transparent,
-                                inset 0 1.5px 0 0 var(#{$varPrefix}-primary);
-                                box-shadow : var(#{$varPrefix}-box-sdw);
-                            }
-                        }
+			#{$appPrefix} {
+				&-ctrl-pnl-tools {
+					+ #{$appPrefix} {
+						&-ctrl-pnl-tools {
+							#{$varPrefix}-m: 15px 0 0 0;
+						}
+					}
 
-                        &.is-active {
-                            #{$varPrefix}-bg-cl : var(#{$varPrefix}-white);
-                            #{$varPrefix}-cl    : var(#{$varPrefix}-primary);
-                            #{$varPrefix}-box-sdw: inset 0 0 0 2px transparent,
-                            inset 0 1.5px 0 0 var(#{$varPrefix}-primary);
-                            color            : var(#{$varPrefix}-cl) !important;
-                            background-color : var(#{$varPrefix}-bg-cl) !important;
-                            box-shadow       : var(#{$varPrefix}-box-sdw);
-                        }
-                    }
-                }
-            }
+					&-header {
+						#{$varPrefix}-bdr-w: 1px;
+						#{$varPrefix}-bdr-sty: solid;
+						#{$varPrefix}-bdr-cl: var(#{$varPrefix}-quaternary);
+						border-width: var(#{$varPrefix}-bdr-w);
+						border-style: var(#{$varPrefix}-bdr-sty);
+						border-color: var(#{$varPrefix}-bdr-cl);
+					}
+				}
+			}
+		}
 
-            #{$appPrefix}-lbl-cl-picker {
-                margin-bottom: 0;
-                margin-left  : 8px;
-            }
+		&#{$appPrefix}-tab-pnl-inner {
+			&#{$appPrefix}-tab-pnl-primary {
+				> .components {
+					&-tab-panel {
+						&__tab-content {
+							#{$varPrefix}-bg-cl: var(#{$varPrefix}-octonary);
+						}
+					}
+				}
 
-            #{$appPrefix} {
-                &-ctrl-pnl-tools {
-                    +#{$appPrefix} {
-                        &-ctrl-pnl-tools {
-                            #{$varPrefix}-m: 15px 0 0 0;
-                        }
-                    }
+				> .components-tab-panel__tabs {
+					> .components-tab-panel__tabs-item.is-active {
+						#{$varPrefix}-bg-cl: var(#{$varPrefix}-octonary);
+						#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+					}
+				}
+			}
+		}
+	}
 
-                    &-header {
-                        #{$varPrefix}-bdr-w  : 1px;
-                        #{$varPrefix}-bdr-sty: solid;
-                        #{$varPrefix}-bdr-cl : var(#{$varPrefix}-quaternary);
-                        border-width         : var(#{$varPrefix}-bdr-w);
-                        border-style         : var(#{$varPrefix}-bdr-sty);
-                        border-color         : var(#{$varPrefix}-bdr-cl);
+	&-cl-grd-dropdown {
+		.components {
+			&-tab-panel {
+				&__tab-content {
+					#{$varPrefix}-bg-cl: var(#{$varPrefix}-secondary);
+					#{$varPrefix}-p: 15px;
+					padding: var(#{$varPrefix}-p);
+					background-color: var(#{$varPrefix}-bg-cl);
+				}
 
-                    }
-                }
+				&__tabs-item {
+					#{$varPrefix}-cl: var(#{$varPrefix}-quinary);
+					#{$varPrefix}-fnt-sz: 12px;
+					#{$varPrefix}-fnt-wt: 600;
+					#{$varPrefix}-h: 40px;
+					height: var(#{$varPrefix}-h);
+					color: var(#{$varPrefix}-cl);
+					font-size: var(#{$varPrefix}-fnt-sz);
+					font-weight: var(#{$varPrefix}-fnt-wt);
 
-            }
+					&::after {
+						display: none;
+					}
 
+					&:focus {
+						&:not(:disabled) {
+							#{$varPrefix}-box-sdw:
+								inset 0 0 0 2px transparent,
+								inset 0 1.5px 0 0 var(#{$varPrefix}-primary);
+							box-shadow: var(#{$varPrefix}-box-sdw);
+						}
+					}
 
-        }
-
-        &#{$appPrefix}-tab-pnl-inner {
-            &#{$appPrefix}-tab-pnl-primary {
-
-                >.components {
-                    &-tab-panel {
-                        &__tab-content {
-                            #{$varPrefix}-bg-cl: var(#{$varPrefix}-octonary);
-
-                        }
-
-                    }
-                }
-
-                >.components-tab-panel__tabs {
-
-                    >.components-tab-panel__tabs-item.is-active {
-                        #{$varPrefix}-bg-cl: var(#{$varPrefix}-octonary);
-                        #{$varPrefix}-cl   : var(#{$varPrefix}-primary);
-                    }
-                }
-
-            }
-        }
-
-
-    }
-
-    &-cl-grd-dropdown {
-        .components {
-            &-tab-panel {
-
-                &__tab-content {
-                    #{$varPrefix}-bg-cl: var(#{$varPrefix}-secondary);
-                    #{$varPrefix}-p    : 15px;
-                    padding            : var(#{$varPrefix}-p);
-                    background-color   : var(#{$varPrefix}-bg-cl);
-
-                }
-
-                &__tabs-item {
-                    #{$varPrefix}-cl    : var(#{$varPrefix}-quinary);
-                    #{$varPrefix}-fnt-sz: 12px;
-                    #{$varPrefix}-fnt-wt: 600;
-                    #{$varPrefix}-h     : 40px;
-                    height              : var(#{$varPrefix}-h);
-                    color               : var(#{$varPrefix}-cl);
-                    font-size           : var(#{$varPrefix}-fnt-sz);
-                    font-weight         : var(#{$varPrefix}-fnt-wt);
-
-                    &::after {
-                        display: none;
-                    }
-
-                    &:focus {
-                        &:not(:disabled) {
-                            #{$varPrefix}-box-sdw: inset 0 0 0 2px transparent,
-                            inset 0 1.5px 0 0 var(#{$varPrefix}-primary);
-                            box-shadow : var(#{$varPrefix}-box-sdw);
-                        }
-                    }
-
-                    &.is-active {
-                        #{$varPrefix}-bg-cl : var(#{$varPrefix}-secondary);
-                        #{$varPrefix}-cl    : var(#{$varPrefix}-primary);
-                        #{$varPrefix}-box-sdw: inset 0 0 0 2px transparent,
-                        inset 0 1.5px 0 0 var(#{$varPrefix}-primary);
-                        color            : var(#{$varPrefix}-cl);
-                        background-color : var(#{$varPrefix}-bg-cl);
-                        box-shadow       : var(#{$varPrefix}-box-sdw);
-                    }
-                }
-            }
-        }
-    }
+					&.is-active {
+						#{$varPrefix}-bg-cl: var(#{$varPrefix}-secondary);
+						#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+						#{$varPrefix}-box-sdw:
+							inset 0 0 0 2px transparent,
+							inset 0 1.5px 0 0 var(#{$varPrefix}-primary);
+						color: var(#{$varPrefix}-cl);
+						background-color: var(#{$varPrefix}-bg-cl);
+						box-shadow: var(#{$varPrefix}-box-sdw);
+					}
+				}
+			}
+		}
+	}
 }

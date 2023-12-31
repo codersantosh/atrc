@@ -1,0 +1,25 @@
+.atrc-checkbox .components-base-control__field {
+  --at-m: 0;
+  margin-bottom: var(--at-m);
+}
+.atrc-checkbox .components-checkbox-control__input {
+  --at-h: 15px;
+  --at-w: 15px;
+  height: var(--at-h) !important;
+  width: var(--at-w) !important;
+}
+.atrc-checkbox .components-checkbox-control__input-container {
+  --at-m: 0;
+  margin-left: var(--at-m);
+}
+.atrc-checkbox svg.components-checkbox-control__checked, .atrc-checkbox svg.components-checkbox-control__indeterminate {
+  --at-h: 19px;
+  --at-w: 19px;
+  height: var(--at-h) !important;
+  width: var(--at-w) !important;
+}
+.atrc-checkbox-label .components-checkbox-control__label {
+  --at-p: 5px;
+  display: inline-block;
+  padding-right: var(--at-m);
+}

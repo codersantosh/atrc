@@ -1,0 +1,53 @@
+.atrc-input-box .components-base-control__field {
+  --at-m: 0;
+  margin-bottom: var(--at-m) !important;
+}
+.atrc-body {
+  --at-w: 100%;
+  --at-pos: relative;
+  width: var(--at-w);
+  position: var(--at-pos);
+}
+.atrc-attachment-details {
+  --at-pos: relative;
+  position: var(--at-pos);
+}
+.atrc-attachment-details .atrc-btn-delete {
+  --at-bdr-rad: 50%;
+  --at-pos: absolute;
+  --at-r: -8px;
+  --at-t: -8px;
+  --at-h: 20px;
+  --at-w: 20px;
+  --at-p: 0;
+  padding: var(--at-p);
+  height: var(--at-h);
+  width: var(--at-w);
+  left: var(--at-r);
+  top: var(--at-t);
+  border-radius: var(--at-bdr-rad);
+  position: var(--at-pos);
+}
+.atrc-cont-area {
+  --at-pos: relative;
+  position: var(--at-pos);
+}
+.atrc-cont-area--preview {
+  --at-pos: absolute;
+  --at-t: 50%;
+  --at-r: 0;
+  --at-l: 0;
+  --at-p: 40px;
+  --at-tf: translateY(-50%);
+  position: var(--at-pos);
+  left: var(--at-r);
+  top: var(--at-t);
+  right: var(--at-l);
+  padding: var(--at-p);
+  -webkit-transform: var(--at-tf);
+      -ms-transform: var(--at-tf);
+          transform: var(--at-tf);
+}
+.atrc-render-tog {
+  --at-gap: 10px;
+}

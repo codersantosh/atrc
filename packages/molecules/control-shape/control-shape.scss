@@ -1,5 +1,7 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-shp-opt {
-        #{$varPrefix}-m: 15px 0 0 0;
-    }
+	&-shp-opt {
+		#{$varPrefix}-m: 15px 0 0 0;
+	}
 }

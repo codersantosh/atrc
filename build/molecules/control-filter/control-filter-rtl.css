@@ -1,0 +1,16 @@
+.atrc-ctrl-fl .atrc-ctrl-fl-drop-sdw .atrc-pnl-row {
+  --at-w: 100%;
+  width: var(--at-w) !important;
+}
+.atrc-ctrl-fl .atrc-pnl-row:not(:last-child) {
+  --at-bdr-w: 0 0 1px 0;
+  --at-bdr-cl: var(--at-quaternary);
+  --at-bdr-sty: solid;
+  border-width: var(--at-bdr-w);
+  border-style: var(--at-bdr-sty);
+  border-color: var(--at-bdr-cl);
+}
+.atrc-ctrl-fl .atrc-pnl-row .atrc-pnl-row {
+  --at-bdr-w: 0;
+  border-width: var(--at-bdr-w);
+}

@@ -1,52 +1,52 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-cb {
-        .components {
-            &-flex {
-                #{$varPrefix}-h      : 35px;
-                #{$varPrefix}-p      : 0;
-                #{$varPrefix}-bdr-w  : 0 !important;
-                #{$varPrefix}-bdr-sty: none;
-                #{$varPrefix}-bdr-cl : none;
-                padding              : var(#{$varPrefix}-p);
-                height               : var(#{$varPrefix}-h);
-                border-color         : var(#{$varPrefix}-bdr-cl);
-                border-width         : var(#{$varPrefix}-bdr-w);
-                border-style         : var(#{$varPrefix}-bdr-sty);
-            }
+	&-cb {
+		.components {
+			&-flex {
+				#{$varPrefix}-h: 35px;
+				#{$varPrefix}-p: 0;
+				#{$varPrefix}-bdr-w: 0 !important;
+				#{$varPrefix}-bdr-sty: none;
+				#{$varPrefix}-bdr-cl: none;
+				padding: var(#{$varPrefix}-p);
+				height: var(#{$varPrefix}-h);
+				border-color: var(#{$varPrefix}-bdr-cl);
+				border-width: var(#{$varPrefix}-bdr-w);
+				border-style: var(#{$varPrefix}-bdr-sty);
+			}
 
-            &-combobox-control {
-                &__input:not([type="submit"]) {
-                    #{$varPrefix}-p      : 0 10px !important;
-                    #{$varPrefix}-bdr-w  : 0 !important;
-                    #{$varPrefix}-bdr-sty: none;
-                    #{$varPrefix}-bdr-cl : none;
-                    #{$varPrefix}-bdr-rad: 3px;
+			&-combobox-control {
+				&__input:not([type='submit']) {
+					#{$varPrefix}-p: 0 10px !important;
+					#{$varPrefix}-bdr-w: 0 !important;
+					#{$varPrefix}-bdr-sty: none;
+					#{$varPrefix}-bdr-cl: none;
+					#{$varPrefix}-bdr-rad: 3px;
 
-                    padding       : var(#{$varPrefix}-p);
-                    border-radius : var(#{$varPrefix}-bdr-rad);
-                    border-color  : var(#{$varPrefix}-bdr-cl);
-                    border-width  : var(#{$varPrefix}-bdr-w);
-                    border-style  : var(#{$varPrefix}-bdr-sty);
+					padding: var(#{$varPrefix}-p);
+					border-radius: var(#{$varPrefix}-bdr-rad);
+					border-color: var(#{$varPrefix}-bdr-cl);
+					border-width: var(#{$varPrefix}-bdr-w);
+					border-style: var(#{$varPrefix}-bdr-sty);
+				}
 
-                }
+				&__suggestions-container {
+					#{$varPrefix}-bdr-w: 1px;
+					#{$varPrefix}-bdr-sty: solid;
+					#{$varPrefix}-bdr-cl: var(#{$varPrefix}-quaternary);
+					border-color: var(#{$varPrefix}-bdr-cl);
+					border-width: var(#{$varPrefix}-bdr-w);
+					border-style: var(#{$varPrefix}-bdr-sty);
 
-                &__suggestions-container {
-                    #{$varPrefix}-bdr-w  : 1px;
-                    #{$varPrefix}-bdr-sty: solid;
-                    #{$varPrefix}-bdr-cl : var(#{$varPrefix}-quaternary);
-                    border-color         : var(#{$varPrefix}-bdr-cl);
-                    border-width         : var(#{$varPrefix}-bdr-w);
-                    border-style         : var(#{$varPrefix}-bdr-sty);
-
-                    .components {
-
-                        &-form-token-field__suggestions-list {
-                            #{$varPrefix}-bdr-cl: var(#{$varPrefix}-quaternary) !important;
-                            border-color        : var(#{$varPrefix}-bdr-cl);
-                        }
-                    }
-                }
-            }
-        }
-    }
+					.components {
+						&-form-token-field__suggestions-list {
+							#{$varPrefix}-bdr-cl: var(#{$varPrefix}-quaternary) !important;
+							border-color: var(#{$varPrefix}-bdr-cl);
+						}
+					}
+				}
+			}
+		}
+	}
 }

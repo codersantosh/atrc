@@ -97,28 +97,10 @@ async function buildCSS(file) {
 		readFile(file, 'utf8'),
 	]);
 
-	const importLists = [
-		'colors',
-		'breakpoints',
-		'variables',
-		'mixins',
-		'animations',
-		'z-index',
-	]
-		// Editor and component styles should be excluded from the default CSS vars output.
-		.concat(
-			file.includes('common.scss') ||
-				!(file.includes('block-library') || file.includes('components'))
-				? ['default-custom-properties']
-				: []
-		)
-		.map((imported) => `@import "${imported}";`)
-		.join(' ');
-
 	const builtSass = await renderSass({
 		file,
 		includePaths: [path.join(PACKAGES_DIR, 'base-styles')],
-		data: ''.concat('@use "sass:math";', importLists, contents),
+		data: ''.concat('@use "sass:math";', contents),
 	});
 
 	const result = await postcss(
@@ -142,7 +124,6 @@ async function buildCSS(file) {
 async function buildJS(file) {
 	for (const [environment, buildDir] of Object.entries(JS_ENVIRONMENTS)) {
 		const destPath = getBuildPath(file.replace(/\.tsx?$/, '.js'), buildDir);
-		console.log(destPath);
 		const babelOptions = getBabelConfig(
 			environment,
 			file.replace(PACKAGES_DIR, 'atrc')
@@ -172,6 +153,7 @@ async function buildJS(file) {
  * @type {Object<string,Function>}
  */
 const BUILD_TASK_BY_EXTENSION = {
+	'.scss': buildCSS,
 	'.js': buildJS,
 	'.ts': buildJS,
 	'.tsx': buildJS,

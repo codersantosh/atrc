@@ -1,6 +1,8 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-ctrl-file {
-        #{$varPrefix}-gap: 0 15px;
-        #{$varPrefix}-m  : 0 0 15px 0;
-    }
+	&-ctrl-file {
+		#{$varPrefix}-gap: 0 15px;
+		#{$varPrefix}-m: 0 0 15px 0;
+	}
 }

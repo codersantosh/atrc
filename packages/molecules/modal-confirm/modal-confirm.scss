@@ -1,17 +1,19 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-modal {
-        &-confirm {
-            &-body {
-                #{$varPrefix}-p: 30px 30px 15px 30px;
-            }
+	&-modal {
+		&-confirm {
+			&-body {
+				#{$varPrefix}-p: 30px 30px 15px 30px;
+			}
 
-            &-footer {
-                #{$varPrefix}-p: 0 15px 15px 15px;
+			&-footer {
+				#{$varPrefix}-p: 0 15px 15px 15px;
 
-                .at-btn {
-                    #{$varPrefix}-p: 15px;
-                }
-            }
-        }
-    }
+				.at-btn {
+					#{$varPrefix}-p: 15px;
+				}
+			}
+		}
+	}
 }

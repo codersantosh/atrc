@@ -1,0 +1,4 @@
+.atrc-ctrl-divr .atrc-ctrl-shp .atrc-dropdown, .atrc-ctrl-divr .atrc-ctrl-shp, .atrc-ctrl-divr .atrc-select-rst {
+  --at-w: 100%;
+  width: var(--at-w);
+}

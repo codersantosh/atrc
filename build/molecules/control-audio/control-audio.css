@@ -1,0 +1,18 @@
+.atrc-ctrl-aud-slf-hosted {
+  --at-m: 0 0 15px 0;
+}
+.atrc-ctrl-aud-slf-hosted .atrc-btn-uploads {
+  --at-gap: 0 5px;
+  --at-p: 10px 7px;
+  --at-fnt-sz: 14px;
+  --at-w: calc(50% - 8px);
+}
+.atrc-ctrl-aud-slf-hosted .atrc-btn-uploads .at-svg {
+  --at-w: 13px;
+  --at-h: 13px;
+}
+.atrc-ctrl-aud .atrc-select-multi {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}

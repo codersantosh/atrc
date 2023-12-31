@@ -1,29 +1,29 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-ctrl-aud {
-        &-slf-hosted {
-            #{$varPrefix}-m: 0 0 15px 0;
+	&-ctrl-aud {
+		&-slf-hosted {
+			#{$varPrefix}-m: 0 0 15px 0;
 
-            #{$appPrefix}-btn {
-                &-uploads {
-                    #{$varPrefix}-gap   : 0 5px;
-                    #{$varPrefix}-p     : 10px 7px;
-                    #{$varPrefix}-fnt-sz: 14px;
-                    #{$varPrefix}-w     : calc((100% / 2) - 8px);
+			#{$appPrefix}-btn {
+				&-uploads {
+					#{$varPrefix}-gap: 0 5px;
+					#{$varPrefix}-p: 10px 7px;
+					#{$varPrefix}-fnt-sz: 14px;
+					#{$varPrefix}-w: calc((100% / 2) - 8px);
 
+					.at-svg {
+						#{$varPrefix}-w: 13px;
+						#{$varPrefix}-h: 13px;
+					}
+				}
+			}
+		}
 
-                    .at-svg {
-                        #{$varPrefix}-w: 13px;
-                        #{$varPrefix}-h: 13px;
-                    }
-                }
-            }
-        }
-
-        #{$appPrefix} {
-
-            &-select-multi {
-                flex-grow: 1;
-            }
-        }
-    }
+		#{$appPrefix} {
+			&-select-multi {
+				flex-grow: 1;
+			}
+		}
+	}
 }

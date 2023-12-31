@@ -1,9 +1,9 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-ctrl-device-d {
-
-        #{$appPrefix}-pnl-row {
-
-            #{$varPrefix}-m: 5px 0 0 0;
-        }
-    }
+	&-ctrl-device-d {
+		#{$appPrefix}-pnl-row {
+			#{$varPrefix}-m: 5px 0 0 0;
+		}
+	}
 }

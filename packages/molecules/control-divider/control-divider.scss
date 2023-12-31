@@ -1,23 +1,24 @@
+@import '../../prefix-vars.scss';
+
 %grwItem {
-    #{$varPrefix}-w: 100%;
-    width          : var(#{$varPrefix}-w);
+	#{$varPrefix}-w: 100%;
+	width: var(#{$varPrefix}-w);
 }
 
 #{$appPrefix} {
-    &-ctrl-divr {
-        #{$appPrefix} {
+	&-ctrl-divr {
+		#{$appPrefix} {
+			&-select-rst {
+				@extend %grwItem;
+			}
 
-            &-select-rst {
-                @extend %grwItem;
-            }
+			&-ctrl-shp {
+				@extend %grwItem;
 
-            &-ctrl-shp {
-                @extend %grwItem;
-
-                #{$appPrefix}-dropdown {
-                    @extend %grwItem;
-                }
-            }
-        }
-    }
+				#{$appPrefix}-dropdown {
+					@extend %grwItem;
+				}
+			}
+		}
+	}
 }

@@ -1,0 +1,108 @@
+.atrc-rst-btn {
+  --at-p: 0;
+  --at-h: auto;
+  padding: var(--at-p);
+  height: var(--at-h);
+}
+.atrc-rst-btn:hover, .atrc-rst-btn:focus {
+  --at-bg-cl: transparent;
+  background-color: var(--at-bg-cl) !important;
+}
+.atrc-rst-wrp {
+  --at-gap: 0 15px;
+}
+.atrc-rst-wrp .components-flex {
+  gap: 5px;
+}
+.atrc-rst-wrp .components-base-control {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.atrc-rst-wrp .components-base-control:last-of-type {
+  --at-m: 0;
+  margin-bottom: var(--at-m) !important;
+}
+.atrc-rst-wrp .components-base-control__field {
+  --at-m: 0;
+  margin-bottom: var(--at-m);
+}
+.atrc-rst-wrp .components-base-control__label, .atrc-rst-wrp .components-input-control__label {
+  --at-fnt-wt: 600;
+  --at-m: 0 0 5px 0;
+  --at-cl: var(--at-body-color);
+  --at-txt-tf: capitalize;
+  font-size: var(--at-fnt-sz) !important;
+  font-weight: var(--at-fnt-wt) !important;
+  color: var(--at-cl) !important;
+  text-transform: var(--at-txt-tf) !important;
+  margin: var(--at-m);
+}
+.atrc-rst-wrp .components-font-size-picker__controls {
+  --at-m: 0;
+  margin-bottom: var(--at-m);
+}
+.atrc-rst-wrp .components-font-size-picker__controls .components-toggle-group-control-option-base {
+  --at-p: 0 11px;
+  padding: var(--at-p);
+}
+.atrc-rst-wrp .components-font-size-picker__controls .components-base-control:last-child {
+  --at-m: 0;
+  margin-bottom: var(--at-m);
+}
+.atrc-rst-wrp.atrc-select-rst .atrc-btn-rst-i {
+  --at-m: 39px 0 0 0;
+  margin: var(--at-m);
+}
+.atrc-rst-wrp.atrc-range-rst .atrc-btn-rst-i {
+  --at-m: 33px 0 0 0;
+  margin: var(--at-m);
+}
+.atrc-rst-wrp.atrc-bdr-rst .atrc-btn-rst-i {
+  --at-m: 8px 0 0 0;
+  margin: var(--at-m);
+}
+.atrc-rst-wrp.atrc-bdr-rad-rst .atrc-btn-rst-i {
+  --at-m: 35px 0 0 0;
+  margin: var(--at-m);
+}
+.atrc-rst-wrp.atrc-ctrl-unit-rst .atrc-btn-rst-i {
+  --at-m: 38px 0 0 0;
+  margin: var(--at-m);
+}
+.atrc-rst-wrp.atrc-txt-rst .atrc-btn-rst-i {
+  --at-m: 33px 0 0 0;
+  margin: var(--at-m);
+}
+.atrc-rst-wrp.atrc-box-four-rst .atrc-btn-rst-i {
+  --at-m: 15px 0 0 0;
+  margin: var(--at-m);
+}
+.atrc-rst-wrp.atrc-combobox-rst .atrc-btn-rst-i {
+  --at-m: 40px 0 0 0;
+  margin: var(--at-m);
+}
+.atrc-typ-ln-h .atrc-rst-wrp.atrc-select-rst .atrc-btn-rst-i {
+  --at-m: 10px 0 0 0;
+  margin: var(--at-m);
+}
+.atrc-typ-ln-h .atrc-rst-wrp.atrc-txt-rst .atrc-btn-rst-i {
+  --at-m: 12px 0 0 0;
+  margin: var(--at-m);
+}
+.atrc-typ-ln-h .atrc-rst-wrp.atrc-ctrl-unit-rst .atrc-btn-rst-i {
+  --at-m: 12px 0 0 0;
+  margin: var(--at-m);
+}
+.atrc-ctrl-select-device .atrc-rst-wrp .atrc-btn-rst-i {
+  --at-m: 12px 0 0 0;
+  margin: var(--at-m);
+}
+.atrc-lbl-rst .atrc-btn-rst-i {
+  --at-m: 4px 0 0 0 !important;
+  margin: var(--at-m);
+}
+.atrc-ctrl-zidx-device .atrc-btn-rst-i {
+  --at-m: 10px 0 0 0 !important;
+  margin: var(--at-m);
+}

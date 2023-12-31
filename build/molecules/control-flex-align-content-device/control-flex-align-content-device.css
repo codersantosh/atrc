@@ -1,0 +1,11 @@
+.atrc-ctrl-flx-al-cont-device .atrc-btn-grp {
+  --at-gap: 5px;
+}
+.atrc-ctrl-flx-al-cont-device .atrc-ctrl-select-btn .atrc-btn-select {
+  --at-w: 35px;
+  width: var(--at-w);
+}
+.atrc-ctrl-flx-al-cont-device .atrc-ctrl-select-btn .atrc-btn-select .at-svg {
+  --at-w: 16px;
+  --at-h: 16px;
+}

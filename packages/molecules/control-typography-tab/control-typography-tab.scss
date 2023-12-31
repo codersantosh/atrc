@@ -1,19 +1,20 @@
-#{$appPrefix} {
-    &-ctrl-typ-tab {
-        .components {
+@import '../../prefix-vars.scss';
 
-            &-base-control__label,
-            &-input-control__label,
-            &-panel__body-toggle {
-                #{$varPrefix}-fnt-sz: 13px;
-                #{$varPrefix}-fnt-wt: 600;
-                #{$varPrefix}-cl    : var(#{$varPrefix}-body-color);
-                #{$varPrefix}-txt-tf: capitalize;
-                font-size           : var(#{$varPrefix}-fnt-sz) !important;
-                font-weight         : var(#{$varPrefix}-fnt-wt) !important;
-                color               : var(#{$varPrefix}-cl);
-                text-transform      : var(#{$varPrefix}-txt-tf) !important;
-            }
-        }
-    }
+#{$appPrefix} {
+	&-ctrl-typ-tab {
+		.components {
+			&-base-control__label,
+			&-input-control__label,
+			&-panel__body-toggle {
+				#{$varPrefix}-fnt-sz: 13px;
+				#{$varPrefix}-fnt-wt: 600;
+				#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+				#{$varPrefix}-txt-tf: capitalize;
+				font-size: var(#{$varPrefix}-fnt-sz) !important;
+				font-weight: var(#{$varPrefix}-fnt-wt) !important;
+				color: var(#{$varPrefix}-cl);
+				text-transform: var(#{$varPrefix}-txt-tf) !important;
+			}
+		}
+	}
 }

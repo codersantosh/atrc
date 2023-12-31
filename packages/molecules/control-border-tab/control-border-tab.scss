@@ -1,8 +1,10 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-ctrl-bdr-tab {
-        .components-input-control {
-            #{$varPrefix}-m: 0 15px 0 0;
-            margin         : var(#{$varPrefix}-m);
-        }
-    }
+	&-ctrl-bdr-tab {
+		.components-input-control {
+			#{$varPrefix}-m: 0 15px 0 0;
+			margin: var(#{$varPrefix}-m);
+		}
+	}
 }

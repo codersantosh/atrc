@@ -1,0 +1,4 @@
+.atrc-ctrl-dropdown-cl-grd-tab .component-color-indicator {
+  --at-cur: pointer;
+  cursor: var(--at-cur);
+}

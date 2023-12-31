@@ -1,8 +1,10 @@
+@import '../../prefix-vars.scss';
+
 #{$appPrefix} {
-    &-ctrl-dropdown-cl-grd-tab {
-        .component-color-indicator {
-            #{$varPrefix}-cur: pointer;
-            cursor           : var(#{$varPrefix}-cur);
-        }
-    }
+	&-ctrl-dropdown-cl-grd-tab {
+		.component-color-indicator {
+			#{$varPrefix}-cur: pointer;
+			cursor: var(#{$varPrefix}-cur);
+		}
+	}
 }
