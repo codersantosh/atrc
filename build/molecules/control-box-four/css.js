@@ -1,8 +1,16 @@
-export function AtrcControlBoxFourShorthandCssOnly(values, property = '', emptyVal = 0) {
-  let shorthandStr = '';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AtrcControlBoxFourShorthandCssOnly = AtrcControlBoxFourShorthandCssOnly;
+function AtrcControlBoxFourShorthandCssOnly(values) {
+  var property = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var emptyVal = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+  var shorthandStr = '';
   if (values.all) {
-    const splitedValues = values.all.split(' ');
-    const countValues = splitedValues.length;
+    var splitedValues = values.all.split(' ');
+    var countValues = splitedValues.length;
     switch (countValues) {
       case 1:
         values.t = splitedValues[0];
@@ -39,20 +47,20 @@ export function AtrcControlBoxFourShorthandCssOnly(values, property = '', emptyV
   }
   // Check if top and bottom values are equal and right and left values are equal
   else if (values.t === values.b && values.r === values.l) {
-    shorthandStr = `${values.t || emptyVal} ${values.r || emptyVal}`;
+    shorthandStr = "".concat(values.t || emptyVal, " ").concat(values.r || emptyVal);
   }
 
   // Check if right and left values are equal
   else if (values.r === values.l) {
-    shorthandStr = `${values.t ? values.t : emptyVal} ${values.r || emptyVal} ${values.b || emptyVal}`;
+    shorthandStr = "".concat(values.t ? values.t : emptyVal, " ").concat(values.r || emptyVal, " ").concat(values.b || emptyVal);
   }
   // Use all four values
   else {
-    shorthandStr = `${values.t || emptyVal} ${values.r || emptyVal} ${values.b || emptyVal} ${values.l || emptyVal}`;
+    shorthandStr = "".concat(values.t || emptyVal, " ").concat(values.r || emptyVal, " ").concat(values.b || emptyVal, " ").concat(values.l || emptyVal);
   }
   if (!property) {
     return shorthandStr;
   }
-  return `${property}      : ${shorthandStr};`;
+  return "".concat(property, "      : ").concat(shorthandStr, ";");
 }
 //# sourceMappingURL=css.js.map

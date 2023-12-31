@@ -1,43 +1,63 @@
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _i18n = require("@wordpress/i18n");
+var _coreData = require("@wordpress/core-data");
+var _date = require("@wordpress/date");
+var _element = require("@wordpress/element");
+var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
+var _link = _interopRequireDefault(require("../../atoms/link"));
+var _excluded = ["postType", "postId", "htmlTag", "displayType", "linkOptions", "format"];
 /*WordPress*/
-import { __ } from '@wordpress/i18n';
-import { useEntityProp } from '@wordpress/core-data';
-import { dateI18n, getSettings as getDateSettings } from '@wordpress/date';
-import { forwardRef } from '@wordpress/element';
-
 /* Inbuilt */
-import AtrcWrap from '../../atoms/wrap';
-import AtrcLink from '../../atoms/link';
-
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 /* Local */
-const AtrcPostDate = (props, ref) => {
-  const {
-    postType,
-    postId,
-    htmlTag,
-    displayType = 'date',
-    linkOptions,
-    format,
-    ...defaultProps
-  } = props;
-  const [date] = useEntityProp('postType', postType, displayType, postId);
-  const dateSettings = getDateSettings();
-  const [siteFormat = dateSettings.formats.date] = useEntityProp('root', 'site', 'date_format');
-  const dateLabel = displayType === 'date' ? __('Post date', 'atrc-prefix-atrc') : __('Post modified date', 'atrc-prefix-atrc');
-  let postDate = date ? /*#__PURE__*/React.createElement("time", {
-    dateTime: dateI18n('c', date)
-  }, dateI18n(format || siteFormat, date)) : dateLabel;
+var AtrcPostDate = function AtrcPostDate(props, ref) {
+  var postType = props.postType,
+    postId = props.postId,
+    htmlTag = props.htmlTag,
+    _props$displayType = props.displayType,
+    displayType = _props$displayType === void 0 ? 'date' : _props$displayType,
+    linkOptions = props.linkOptions,
+    format = props.format,
+    defaultProps = _objectWithoutProperties(props, _excluded);
+  var _useEntityProp = (0, _coreData.useEntityProp)('postType', postType, displayType, postId),
+    _useEntityProp2 = _slicedToArray(_useEntityProp, 1),
+    date = _useEntityProp2[0];
+  var dateSettings = (0, _date.getSettings)();
+  var _useEntityProp3 = (0, _coreData.useEntityProp)('root', 'site', 'date_format'),
+    _useEntityProp4 = _slicedToArray(_useEntityProp3, 1),
+    _useEntityProp4$ = _useEntityProp4[0],
+    siteFormat = _useEntityProp4$ === void 0 ? dateSettings.formats.date : _useEntityProp4$;
+  var dateLabel = displayType === 'date' ? (0, _i18n.__)('Post date', 'atrc-prefix-atrc') : (0, _i18n.__)('Post modified date', 'atrc-prefix-atrc');
+  var postDate = date ? /*#__PURE__*/React.createElement("time", {
+    dateTime: (0, _date.dateI18n)('c', date)
+  }, (0, _date.dateI18n)(format || siteFormat, date)) : dateLabel;
   if (linkOptions && linkOptions.on && date) {
-    postDate = /*#__PURE__*/React.createElement(AtrcLink, {
+    postDate = /*#__PURE__*/React.createElement(_link.default, {
       prefix: false,
       href: "#post-date-pseudo-link",
-      onClick: event => event.preventDefault()
+      onClick: function onClick(event) {
+        return event.preventDefault();
+      }
     }, postDate);
   }
-  return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+  return /*#__PURE__*/React.createElement(_wrap.default, _extends({}, defaultProps, {
     ref: ref,
     tag: htmlTag
   }), postDate);
 };
-export default forwardRef(AtrcPostDate);
+var _default = exports.default = (0, _element.forwardRef)(AtrcPostDate);
 //# sourceMappingURL=index.js.map

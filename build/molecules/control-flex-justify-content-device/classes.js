@@ -1,22 +1,27 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _lodash = require("lodash");
+var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Library*/
-import { isEmpty, isObject } from 'lodash';
 
 /*Inbuilt*/
-import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Local*/
-const AtrcControlFlexJustifyContentDeviceClasses = abStyle => {
+var AtrcControlFlexJustifyContentDeviceClasses = function AtrcControlFlexJustifyContentDeviceClasses(abStyle) {
   if (!abStyle || !abStyle.jfyCont) {
     return '';
   }
-  const {
-    jfyCont
-  } = abStyle;
-  if (!isObject(jfyCont)) return '';
-  if (isEmpty(jfyCont)) return '';
-  let classes = '';
-  for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-    const device = AtrcAvailableDevices[i];
+  var jfyCont = abStyle.jfyCont;
+  if (!(0, _lodash.isObject)(jfyCont)) return '';
+  if ((0, _lodash.isEmpty)(jfyCont)) return '';
+  var classes = '';
+  for (var i = 0; i < _availableDevices.default.length; i++) {
+    var device = _availableDevices.default[i];
     if (!device.on) {
       continue;
     }
@@ -30,5 +35,5 @@ const AtrcControlFlexJustifyContentDeviceClasses = abStyle => {
   }
   return classes;
 };
-export default AtrcControlFlexJustifyContentDeviceClasses;
+var _default = exports.default = AtrcControlFlexJustifyContentDeviceClasses;
 //# sourceMappingURL=classes.js.map

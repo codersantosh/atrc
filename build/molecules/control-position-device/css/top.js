@@ -1,24 +1,30 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 /*Local*/
-const Top = (value, innerOutput, property) => {
+var Top = function Top(value, innerOutput, property) {
   if (value.t) {
-    innerOutput.xs += `${property} : ${value.t};`;
+    innerOutput.xs += "".concat(property, " : ").concat(value.t, ";");
   }
   if (value.smT) {
-    innerOutput.sm += `${property} : ${value.smT};`;
+    innerOutput.sm += "".concat(property, " : ").concat(value.smT, ";");
   }
   if (value.mdT) {
-    innerOutput.md += `${property} : ${value.mdT};`;
+    innerOutput.md += "".concat(property, " : ").concat(value.mdT, ";");
   }
   if (value.lgT) {
-    innerOutput.lg += `${property} : ${value.lgT};`;
+    innerOutput.lg += "".concat(property, " : ").concat(value.lgT, ";");
   }
   if (value.xlT) {
-    innerOutput.xl += `${property} : ${value.xlT};`;
+    innerOutput.xl += "".concat(property, " : ").concat(value.xlT, ";");
   }
   if (value.xxlT) {
-    innerOutput.xxl += `${property} : ${value.xxlT};`;
+    innerOutput.xxl += "".concat(property, " : ").concat(value.xxlT, ";");
   }
   return innerOutput;
 };
-export default Top;
+var _default = exports.default = Top;
 //# sourceMappingURL=top.js.map

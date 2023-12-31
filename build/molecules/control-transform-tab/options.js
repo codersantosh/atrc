@@ -1,40 +1,46 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _i18n = require("@wordpress/i18n");
 /*WordPress*/
-import { __ } from '@wordpress/i18n';
 
 /* Origin Options*/
-const OriginOptions = [{
-  label: __('Default', 'atrc-prefix-atrc'),
+var OriginOptions = [{
+  label: (0, _i18n.__)('Default', 'atrc-prefix-atrc'),
   value: ''
 }, {
-  label: __('Top left', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Top left', 'atrc-prefix-atrc'),
   value: 'top left'
 }, {
-  label: __('Top center', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Top center', 'atrc-prefix-atrc'),
   value: 'top center'
 }, {
-  label: __('Top right', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Top right', 'atrc-prefix-atrc'),
   value: 'top right'
 }, {
-  label: __('Center left', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Center left', 'atrc-prefix-atrc'),
   value: 'center left'
 }, {
-  label: __('Center center', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Center center', 'atrc-prefix-atrc'),
   value: 'center center'
 }, {
-  label: __('Center right', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Center right', 'atrc-prefix-atrc'),
   value: 'center right'
 }, {
-  label: __('Bottom left', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Bottom left', 'atrc-prefix-atrc'),
   value: 'bottom left'
 }, {
-  label: __('Bottom center', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Bottom center', 'atrc-prefix-atrc'),
   value: 'bottom center'
 }, {
-  label: __('Bottom right', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Bottom right', 'atrc-prefix-atrc'),
   value: 'bottom right'
 }, {
-  label: __('Custom', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Custom', 'atrc-prefix-atrc'),
   value: 'custom'
 }];
-export default OriginOptions;
+var _default = exports.default = OriginOptions;
 //# sourceMappingURL=options.js.map

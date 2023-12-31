@@ -1,7 +1,9 @@
-import { __ } from '@wordpress/i18n';
-import { BsCheck2, BsTrash, BsX } from 'react-icons/bs';
-import { AtrcWireFrameAdvancedMultiHeaders } from '../../headers';
-/*#__PURE__*/React.createElement(AtrcWireFrameAdvancedMultiHeaders, {
+"use strict";
+
+var _i18n = require("@wordpress/i18n");
+var _bs = require("react-icons/bs");
+var _headers = require("../../headers");
+/*#__PURE__*/React.createElement(_headers.AtrcWireFrameAdvancedMultiHeaders, {
   headerElements: ['title', 'addNew', 'toggleFilter', 'filterButtonGroupWithReset', 'filterSelectGroup', 'filterButtonGroup', 'search', 'bulkCheck', 'sort', 'refresh', 'pagination'],
   topHeader: {
     left: ['title', 'addNew', 'toggleFilter'],
@@ -16,41 +18,57 @@ import { AtrcWireFrameAdvancedMultiHeaders } from '../../headers';
     right: ['pagination']
   },
   title: {
-    children: __('Custom Fonts', 'atrc-prefix-atrc')
+    children: (0, _i18n.__)('Custom Fonts', 'atrc-prefix-atrc')
   },
   addNew: {
     to: 'create',
-    children: __('Add new', 'atrc-prefix-atrc')
+    children: (0, _i18n.__)('Add new', 'atrc-prefix-atrc')
   },
   toggleFilter: {
-    label: __('Advanced Filter', 'atrc-prefix-atrc'),
+    label: (0, _i18n.__)('Advanced Filter', 'atrc-prefix-atrc'),
     checked: toggleFilter,
-    onChange: () => setToggleFilter(!toggleFilter)
+    onChange: function onChange() {
+      return setToggleFilter(!toggleFilter);
+    }
   },
   filterButtonGroupWithReset: {
     buttons: [{
-      children: __('Button 1(0)', 'atrc-prefix-atrc'),
-      onClick: () => setToggleFilter(!toggleFilter)
+      children: (0, _i18n.__)('Button 1(0)', 'atrc-prefix-atrc'),
+      onClick: function onClick() {
+        return setToggleFilter(!toggleFilter);
+      }
     }, {
-      children: __('Button 2(300)', 'atrc-prefix-atrc'),
-      onClick: () => setToggleFilter(!toggleFilter)
+      children: (0, _i18n.__)('Button 2(300)', 'atrc-prefix-atrc'),
+      onClick: function onClick() {
+        return setToggleFilter(!toggleFilter);
+      }
     }, {
-      children: __('Button 3(50)', 'atrc-prefix-atrc'),
-      onClick: () => setToggleFilter(!toggleFilter)
+      children: (0, _i18n.__)('Button 3(50)', 'atrc-prefix-atrc'),
+      onClick: function onClick() {
+        return setToggleFilter(!toggleFilter);
+      }
     }],
-    onReset: () => setToggleFilter(!toggleFilter),
-    resetLabel: __('Reset filters', 'atrc-prefix-atrc')
+    onReset: function onReset() {
+      return setToggleFilter(!toggleFilter);
+    },
+    resetLabel: (0, _i18n.__)('Reset filters', 'atrc-prefix-atrc')
   },
   filterButtonGroup: {
     buttons: [{
-      children: __('Button 1(0)', 'atrc-prefix-atrc'),
-      onClick: () => setToggleFilter(!toggleFilter)
+      children: (0, _i18n.__)('Button 1(0)', 'atrc-prefix-atrc'),
+      onClick: function onClick() {
+        return setToggleFilter(!toggleFilter);
+      }
     }, {
-      children: __('Button 2(300)', 'atrc-prefix-atrc'),
-      onClick: () => setToggleFilter(!toggleFilter)
+      children: (0, _i18n.__)('Button 2(300)', 'atrc-prefix-atrc'),
+      onClick: function onClick() {
+        return setToggleFilter(!toggleFilter);
+      }
     }, {
-      children: __('Button 3(50)', 'atrc-prefix-atrc'),
-      onClick: () => setToggleFilter(!toggleFilter)
+      children: (0, _i18n.__)('Button 3(50)', 'atrc-prefix-atrc'),
+      onClick: function onClick() {
+        return setToggleFilter(!toggleFilter);
+      }
     }]
   },
   filterSelectGroup: {
@@ -66,7 +84,9 @@ import { AtrcWireFrameAdvancedMultiHeaders } from '../../headers';
         label: 'Small',
         value: '25%'
       }],
-      onChange: () => setToggleFilter(!toggleFilter)
+      onChange: function onChange() {
+        return setToggleFilter(!toggleFilter);
+      }
     }, {
       value: '',
       options: [{
@@ -79,7 +99,9 @@ import { AtrcWireFrameAdvancedMultiHeaders } from '../../headers';
         label: 'Small',
         value: '25%'
       }],
-      onChange: () => setToggleFilter(!toggleFilter)
+      onChange: function onChange() {
+        return setToggleFilter(!toggleFilter);
+      }
     }, {
       value: '',
       options: [{
@@ -92,51 +114,65 @@ import { AtrcWireFrameAdvancedMultiHeaders } from '../../headers';
         label: 'Small',
         value: '25%'
       }],
-      onChange: () => setToggleFilter(!toggleFilter)
+      onChange: function onChange() {
+        return setToggleFilter(!toggleFilter);
+      }
     }],
-    onApply: () => setToggleFilter(!toggleFilter),
-    applyLabel: __('Apply', 'atrc-prefix-atrc')
+    onApply: function onApply() {
+      return setToggleFilter(!toggleFilter);
+    },
+    applyLabel: (0, _i18n.__)('Apply', 'atrc-prefix-atrc')
   },
   search: {
-    doSearch: () => setToggleFilter(!toggleFilter)
+    doSearch: function doSearch() {
+      return setToggleFilter(!toggleFilter);
+    }
   },
   bulkCheck: {
     checkProps: {
       checked: toggleFilter,
-      onChange: () => setToggleFilter(!toggleFilter)
+      onChange: function onChange() {
+        return setToggleFilter(!toggleFilter);
+      }
     },
     actions: [{
       buttonProps: {
-        onClick: () => setToggleFilter(!toggleFilter)
+        onClick: function onClick() {
+          return setToggleFilter(!toggleFilter);
+        }
       },
       tooltipProps: {
-        text: __('Delete permanently', 'atrc-prefix-atrc')
+        text: (0, _i18n.__)('Delete permanently', 'atrc-prefix-atrc')
       },
       iconProps: {
         type: 'bootstrap',
-        icon: BsTrash
+        icon: _bs.BsTrash
       }
     }, {
       buttonProps: {
-        onClick: () => setToggleFilter(!toggleFilter)
+        onClick: function onClick() {
+          return setToggleFilter(!toggleFilter);
+        }
       },
       tooltipProps: {
-        text: __('Mark as active', 'atrc-prefix-atrc')
+        text: (0, _i18n.__)('Mark as active', 'atrc-prefix-atrc')
       },
       iconProps: {
         type: 'bootstrap',
-        icon: BsCheck2
+        icon: _bs.BsCheck2
       }
     }, {
       buttonProps: {
-        onClick: () => setToggleFilter(!toggleFilter)
+        onClick: function onClick() {
+          return setToggleFilter(!toggleFilter);
+        }
       },
       tooltipProps: {
-        text: __('Mark as inactive', 'atrc-prefix-atrc')
+        text: (0, _i18n.__)('Mark as inactive', 'atrc-prefix-atrc')
       },
       iconProps: {
         type: 'bootstrap',
-        icon: BsX
+        icon: _bs.BsX
       }
     }],
     toggleItems: ['sort', 'refresh']
@@ -153,14 +189,18 @@ import { AtrcWireFrameAdvancedMultiHeaders } from '../../headers';
       label: 'Small',
       value: '25%'
     }],
-    onChange: () => setToggleFilter(!toggleFilter)
+    onChange: function onChange() {
+      return setToggleFilter(!toggleFilter);
+    }
   },
   refresh: {
-    onClick: () => setToggleFilter(!toggleFilter)
+    onClick: function onClick() {
+      return setToggleFilter(!toggleFilter);
+    }
   },
   pagination: {
     totalItems: 100,
-    doPagination: () => {},
+    doPagination: function doPagination() {},
     currentPage: 10,
     totalPages: 10
   }

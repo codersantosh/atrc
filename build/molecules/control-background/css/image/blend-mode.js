@@ -1,9 +1,15 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 /*Local*/
-const BgBlendMode = (value, innerOutput, property) => {
+var BgBlendMode = function BgBlendMode(value, innerOutput, property) {
   if (value.bgBlendMode) {
-    innerOutput.xs += `${property}      : ${value.bgBlendMode};`;
+    innerOutput.xs += "".concat(property, "      : ").concat(value.bgBlendMode, ";");
   }
   return innerOutput;
 };
-export default BgBlendMode;
+var _default = exports.default = BgBlendMode;
 //# sourceMappingURL=blend-mode.js.map

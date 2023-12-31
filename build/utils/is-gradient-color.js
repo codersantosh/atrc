@@ -1,10 +1,17 @@
-export default function AtrcIsGradientColor(value) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AtrcIsLinearGradientColor = AtrcIsLinearGradientColor;
+exports.default = AtrcIsGradientColor;
+function AtrcIsGradientColor(value) {
   if (!value) {
     return false;
   }
   return value.includes('linear-gradient') || value.includes('radial-gradient') || value.includes('conic-gradient');
 }
-export function AtrcIsLinearGradientColor(value) {
+function AtrcIsLinearGradientColor(value) {
   if (!value) {
     return false;
   }

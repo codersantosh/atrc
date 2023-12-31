@@ -1,22 +1,33 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _element = require("@wordpress/element");
+var _compose = require("@wordpress/compose");
+var _components = require("@wordpress/components");
+var _classnames = _interopRequireDefault(require("classnames"));
+var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
+var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
+var _excluded = ["className", "renderToggle", "renderContent", "width"];
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-/*WordPress*/
-import { useRef, useEffect, useState } from '@wordpress/element';
-import { useInstanceId, useMergeRefs } from '@wordpress/compose';
-import { Popover } from '@wordpress/components';
-
-/*Library*/
-import classnames from 'classnames';
-
-/*Inbuilt*/
-import AtrcWrap from '../../atoms/wrap';
-
-/*Inbuilt*/
-import AtrcPrefix from '../../prefix-vars';
-
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*WordPress*/ /*Library*/ /*Inbuilt*/ /*Inbuilt*/
 /*Local components and functions*/
 function useObservableState(initialState, onStateChange) {
-  const [state, setState] = useState(initialState);
-  return [state, value => {
+  var _useState = (0, _element.useState)(initialState),
+    _useState2 = _slicedToArray(_useState, 2),
+    state = _useState2[0],
+    setState = _useState2[1];
+  return [state, function (value) {
     setState(value);
     if (onStateChange) {
       onStateChange(value);
@@ -24,31 +35,38 @@ function useObservableState(initialState, onStateChange) {
   }];
 }
 function Dropdown(props) {
-  const {
-    renderContent,
-    renderToggle,
-    className,
-    contentClassName,
-    expandOnMobile,
-    headerTitle,
-    focusOnMount,
-    position,
-    popoverProps,
-    onClose,
-    onToggle,
-    style
-  } = props;
+  var renderContent = props.renderContent,
+    renderToggle = props.renderToggle,
+    className = props.className,
+    contentClassName = props.contentClassName,
+    expandOnMobile = props.expandOnMobile,
+    headerTitle = props.headerTitle,
+    focusOnMount = props.focusOnMount,
+    position = props.position,
+    popoverProps = props.popoverProps,
+    onClose = props.onClose,
+    onToggle = props.onToggle,
+    style = props.style;
   // Use internal state instead of a ref to make sure that the component
   // re-renders when the popover's anchor updates.
-  const [fallbackPopoverAnchor, setFallbackPopoverAnchor] = useState(null);
-  const containerRef = useRef();
-  const [isOpen, setIsOpen] = useObservableState(false, onToggle);
-  useEffect(() => () => {
-    if (onToggle && isOpen) {
-      onToggle(false);
-    }
+  var _useState3 = (0, _element.useState)(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    fallbackPopoverAnchor = _useState4[0],
+    setFallbackPopoverAnchor = _useState4[1];
+  var containerRef = (0, _element.useRef)();
+  var _useObservableState = useObservableState(false, onToggle),
+    _useObservableState2 = _slicedToArray(_useObservableState, 2),
+    isOpen = _useObservableState2[0],
+    setIsOpen = _useObservableState2[1];
+  (0, _element.useEffect)(function () {
+    return function () {
+      if (onToggle && isOpen) {
+        onToggle(false);
+      }
+    };
   }, [onToggle, isOpen]);
-  function toggle(tog = null) {
+  function toggle() {
+    var tog = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
     if (tog !== null) {
       setIsOpen(tog);
     } else {
@@ -63,10 +81,8 @@ function Dropdown(props) {
    * case a dialog has opened, allowing focus to return when it's dismissed.
    */
   function closeIfFocusOutside() {
-    const {
-      ownerDocument
-    } = containerRef.current;
-    const dialog = ownerDocument.activeElement.closest('[role="dialog"]');
+    var ownerDocument = containerRef.current.ownerDocument;
+    var dialog = ownerDocument.activeElement.closest('[role="dialog"]');
     if (!containerRef.current.contains(ownerDocument.activeElement) && (!dialog || dialog.contains(containerRef.current))) {
       close();
     }
@@ -77,25 +93,25 @@ function Dropdown(props) {
     }
     setIsOpen(false);
   }
-  const args = {
-    isOpen,
+  var args = {
+    isOpen: isOpen,
     onToggle: toggle,
     onClose: close
   };
-  const popoverPropsHaveAnchor = !!popoverProps?.anchor ||
+  var popoverPropsHaveAnchor = !!(popoverProps !== null && popoverProps !== void 0 && popoverProps.anchor) ||
   // Note: `anchorRef`, `getAnchorRect` and `anchorRect` are deprecated and
   // be removed from `Popover` from WordPress 6.3
-  !!popoverProps?.anchorRef || !!popoverProps?.getAnchorRect || !!popoverProps?.anchorRect;
+  !!(popoverProps !== null && popoverProps !== void 0 && popoverProps.anchorRef) || !!(popoverProps !== null && popoverProps !== void 0 && popoverProps.getAnchorRect) || !!(popoverProps !== null && popoverProps !== void 0 && popoverProps.anchorRect);
   return /*#__PURE__*/React.createElement("div", {
-    className: classnames('components-dropdown', className),
-    ref: useMergeRefs([setFallbackPopoverAnchor, containerRef])
+    className: (0, _classnames.default)('components-dropdown', className),
+    ref: (0, _compose.useMergeRefs)([setFallbackPopoverAnchor, containerRef])
     // Some UAs focus the closest focusable parent when the toggle is
     // clicked. Making this div focusable ensures such UAs will focus
     // it and `closeIfFocusOutside` can tell if the toggle was clicked.
     ,
     tabIndex: "-1",
     style: style
-  }, renderToggle(args), isOpen && /*#__PURE__*/React.createElement(Popover, _extends({
+  }, renderToggle(args), isOpen && /*#__PURE__*/React.createElement(_components.Popover, _extends({
     position: position,
     onClose: close,
     onFocusOutside: closeIfFocusOutside,
@@ -108,19 +124,21 @@ function Dropdown(props) {
     offset: 13,
     anchor: !popoverPropsHaveAnchor ? fallbackPopoverAnchor : undefined
   }, popoverProps, {
-    className: classnames('components-dropdown__content', popoverProps ? popoverProps.className : undefined, contentClassName)
+    className: (0, _classnames.default)('components-dropdown__content', popoverProps ? popoverProps.className : undefined, contentClassName)
   }), renderContent(args)));
 }
-const AtrcDropdownHover = props => {
-  const instanceId = useInstanceId(AtrcDropdownHover, AtrcPrefix('ctrl-dropdown-hover'));
-  let timer;
-  const {
-    className = '',
-    renderToggle = '',
-    renderContent = '',
-    width = '300px',
-    ...defaultProps
-  } = props;
+var AtrcDropdownHover = function AtrcDropdownHover(props) {
+  var instanceId = (0, _compose.useInstanceId)(AtrcDropdownHover, (0, _prefixVars.default)('ctrl-dropdown-hover'));
+  var timer;
+  var _props$className = props.className,
+    className = _props$className === void 0 ? '' : _props$className,
+    _props$renderToggle = props.renderToggle,
+    _renderToggle = _props$renderToggle === void 0 ? '' : _props$renderToggle,
+    _props$renderContent = props.renderContent,
+    _renderContent = _props$renderContent === void 0 ? '' : _props$renderContent,
+    _props$width = props.width,
+    width = _props$width === void 0 ? '300px' : _props$width,
+    defaultProps = _objectWithoutProperties(props, _excluded);
   function isInsideCurrent(element) {
     if (element.id === instanceId) {
       return true;
@@ -128,7 +146,7 @@ const AtrcDropdownHover = props => {
     return element.closest('#' + instanceId);
   }
   function handleMouseLeave(onToggle, e) {
-    timer = setTimeout(() => {
+    timer = setTimeout(function () {
       document.addEventListener('mousemove', setDropdownToggle, false);
       function setDropdownToggle(e) {
         if (!isInsideCurrent(e.target)) {
@@ -138,36 +156,44 @@ const AtrcDropdownHover = props => {
       }
     }, 300);
   }
-  useEffect(() => {
-    return () => {
+  (0, _element.useEffect)(function () {
+    return function () {
       if (timer) {
         clearTimeout(timer);
       }
     };
   }, []);
   return /*#__PURE__*/React.createElement(Dropdown, _extends({
-    className: classnames(AtrcPrefix('dropdown-hover'), className),
-    renderToggle: ({
-      isOpen,
-      onToggle
-    }) => /*#__PURE__*/React.createElement(AtrcWrap, {
-      variant: "render-toggle",
-      onMouseEnter: () => onToggle(true),
-      onMouseLeave: e => handleMouseLeave(onToggle, e),
-      "aria-expanded": isOpen
-    }, renderToggle),
-    renderContent: ({
-      isOpen,
-      onToggle
-    }) => /*#__PURE__*/React.createElement(AtrcWrap, {
-      id: instanceId,
-      variant: "dropdown-hover-cont",
-      style: {
-        width
-      },
-      onMouseLeave: e => handleMouseLeave(onToggle, e)
-    }, renderContent)
+    className: (0, _classnames.default)((0, _prefixVars.default)('dropdown-hover'), className),
+    renderToggle: function renderToggle(_ref) {
+      var isOpen = _ref.isOpen,
+        onToggle = _ref.onToggle;
+      return /*#__PURE__*/React.createElement(_wrap.default, {
+        variant: "render-toggle",
+        onMouseEnter: function onMouseEnter() {
+          return onToggle(true);
+        },
+        onMouseLeave: function onMouseLeave(e) {
+          return handleMouseLeave(onToggle, e);
+        },
+        "aria-expanded": isOpen
+      }, _renderToggle);
+    },
+    renderContent: function renderContent(_ref2) {
+      var isOpen = _ref2.isOpen,
+        onToggle = _ref2.onToggle;
+      return /*#__PURE__*/React.createElement(_wrap.default, {
+        id: instanceId,
+        variant: "dropdown-hover-cont",
+        style: {
+          width: width
+        },
+        onMouseLeave: function onMouseLeave(e) {
+          return handleMouseLeave(onToggle, e);
+        }
+      }, _renderContent);
+    }
   }, defaultProps));
 };
-export default AtrcDropdownHover;
+var _default = exports.default = AtrcDropdownHover;
 //# sourceMappingURL=index.js.map

@@ -1,17 +1,29 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AtrcIsImageUrl = AtrcIsImageUrl;
+exports.AtrcVideoIsHtml5 = AtrcVideoIsHtml5;
+exports.AtrcVideoIsVimeo = AtrcVideoIsVimeo;
+exports.AtrcVideoIsYoutube = AtrcVideoIsYoutube;
+exports.default = void 0;
+var _i18n = require("@wordpress/i18n");
+var _url = require("@wordpress/url");
+var _classnames = _interopRequireDefault(require("classnames"));
+var _img = _interopRequireDefault(require("../img"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /* WordPress */
-import { __ } from '@wordpress/i18n';
-import { addQueryArgs } from '@wordpress/url';
 
 /*Library*/
-import classnames from 'classnames';
-import AtrcImg from '../img';
+
 /*Local Components*/
 
 /*Source
  * https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-vid-id-from-a-url
  * */
-export function AtrcVideoIsYoutube(url) {
-  const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/,
+function AtrcVideoIsYoutube(url) {
+  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/,
     match = url.match(regExp);
   return match && match[7].length === 11 ? match[7] : false;
 }
@@ -19,43 +31,49 @@ function AtrcGetYoutubeVideUrl(props) {
   if (!props || !props.id) {
     throw new Error('A YouTube vid ID is required');
   }
-  let {
-    id,
-    autoplay = false,
-    loop = false,
-    muted = false,
-    mute = false,
-    controls = false,
-    showInfo = false,
-    playlist = '',
-    start = 0,
-    // default to the start of the vid
-    end = 0,
-    // default to the end of the vid
-    playsinline = false
-  } = props;
+  var id = props.id,
+    _props$autoplay = props.autoplay,
+    autoplay = _props$autoplay === void 0 ? false : _props$autoplay,
+    _props$loop = props.loop,
+    loop = _props$loop === void 0 ? false : _props$loop,
+    _props$muted = props.muted,
+    muted = _props$muted === void 0 ? false : _props$muted,
+    _props$mute = props.mute,
+    mute = _props$mute === void 0 ? false : _props$mute,
+    _props$controls = props.controls,
+    controls = _props$controls === void 0 ? false : _props$controls,
+    _props$showInfo = props.showInfo,
+    showInfo = _props$showInfo === void 0 ? false : _props$showInfo,
+    _props$playlist = props.playlist,
+    playlist = _props$playlist === void 0 ? '' : _props$playlist,
+    _props$start = props.start,
+    start = _props$start === void 0 ? 0 : _props$start,
+    _props$end = props.end,
+    end = _props$end === void 0 ? 0 : _props$end,
+    _props$playsinline = props.playsinline,
+    playsinline = _props$playsinline === void 0 ? false : _props$playsinline;
 
   // Set the playlist prop if loop is true and no playlist is provided
   if (loop && !playlist) {
     playlist = id;
   }
-  const quryArgs = {
-    autoplay,
-    loop,
+  var quryArgs = {
+    autoplay: autoplay,
+    loop: loop,
     mute: mute || muted,
-    controls,
-    showInfo,
-    start,
-    end,
-    playsinline
+    controls: controls,
+    showInfo: showInfo,
+    start: start,
+    end: end,
+    playsinline: playsinline
   };
   if (playlist) {
     quryArgs.playlist = playlist;
   }
-  return addQueryArgs(`https://www.youtube.com/embed/${id}`, quryArgs);
+  return (0, _url.addQueryArgs)("https://www.youtube.com/embed/".concat(id), quryArgs);
 }
-export function AtrcVideoIsVimeo(url) {
-  const regEx = /(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/?(showcase\/)*([0-9))([a-z]*\/)*([0-9]{6,11})[?]?.*/,
+function AtrcVideoIsVimeo(url) {
+  var regEx = /(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/?(showcase\/)*([0-9))([a-z]*\/)*([0-9]{6,11})[?]?.*/,
     match = url.match(regEx);
   return match && match.length === 7 ? match[6] : false;
 }
@@ -66,50 +84,66 @@ function vimeoVideoUrl(props) {
   }
 
   // Set default values for the props
-  const {
-    id,
-    autoplay = false,
-    loop = false,
-    muted = false,
-    controls = false,
-    playsinline = false,
-    speed = true
-  } = props;
+  var id = props.id,
+    _props$autoplay2 = props.autoplay,
+    autoplay = _props$autoplay2 === void 0 ? false : _props$autoplay2,
+    _props$loop2 = props.loop,
+    loop = _props$loop2 === void 0 ? false : _props$loop2,
+    _props$muted2 = props.muted,
+    muted = _props$muted2 === void 0 ? false : _props$muted2,
+    _props$controls2 = props.controls,
+    controls = _props$controls2 === void 0 ? false : _props$controls2,
+    _props$playsinline2 = props.playsinline,
+    playsinline = _props$playsinline2 === void 0 ? false : _props$playsinline2,
+    _props$speed = props.speed,
+    speed = _props$speed === void 0 ? true : _props$speed;
 
   // Build the URL
-  return `https://player.vimeo.com/vid/${id}?autoplay=${autoplay}&loop=${loop}&muted=${muted}&controls=${controls}&playsinline=${playsinline}&speed=${speed}`;
+  return "https://player.vimeo.com/vid/".concat(id, "?autoplay=").concat(autoplay, "&loop=").concat(loop, "&muted=").concat(muted, "&controls=").concat(controls, "&playsinline=").concat(playsinline, "&speed=").concat(speed);
 }
-export function AtrcVideoIsHtml5(url) {
+function AtrcVideoIsHtml5(url) {
   // Check if the URL is a valid vid file
   return /^(https?:)?\/\//.test(url) && /\.(mp4|webm|ogv|mov)$/.test(url);
 }
-export function AtrcIsImageUrl(url) {
+function AtrcIsImageUrl(url) {
   // Check if the URL is a valid image file
   return /^(https?:)?\/\//.test(url) && /\.(png|jpe?g|gif|bmp)$/.test(url);
 }
-const AtrcVideo = props => {
+var AtrcVideo = function AtrcVideo(props) {
   if (!props || !props.url) {
     return null;
   }
-  const {
-    variant = '',
-    className = '',
-    url = '',
-    onSettings = false,
-    autoplay = false,
-    controls = false,
-    loop = false,
-    muted = true,
-    playsInline = false,
-    width = '',
-    height = '',
-    allowFullScreen = false,
-    preload = '',
-    poster = ''
-  } = props;
+  var _props$variant = props.variant,
+    variant = _props$variant === void 0 ? '' : _props$variant,
+    _props$className = props.className,
+    className = _props$className === void 0 ? '' : _props$className,
+    _props$url = props.url,
+    url = _props$url === void 0 ? '' : _props$url,
+    _props$onSettings = props.onSettings,
+    onSettings = _props$onSettings === void 0 ? false : _props$onSettings,
+    _props$autoplay3 = props.autoplay,
+    autoplay = _props$autoplay3 === void 0 ? false : _props$autoplay3,
+    _props$controls3 = props.controls,
+    controls = _props$controls3 === void 0 ? false : _props$controls3,
+    _props$loop3 = props.loop,
+    loop = _props$loop3 === void 0 ? false : _props$loop3,
+    _props$muted3 = props.muted,
+    muted = _props$muted3 === void 0 ? true : _props$muted3,
+    _props$playsInline = props.playsInline,
+    playsInline = _props$playsInline === void 0 ? false : _props$playsInline,
+    _props$width = props.width,
+    width = _props$width === void 0 ? '' : _props$width,
+    _props$height = props.height,
+    height = _props$height === void 0 ? '' : _props$height,
+    _props$allowFullScree = props.allowFullScreen,
+    allowFullScreen = _props$allowFullScree === void 0 ? false : _props$allowFullScree,
+    _props$preload = props.preload,
+    preload = _props$preload === void 0 ? '' : _props$preload,
+    _props$poster = props.poster,
+    poster = _props$poster === void 0 ? '' : _props$poster;
   if (AtrcVideoIsHtml5(url)) {
     return /*#__PURE__*/React.createElement("video", {
-      className: classnames('at-vid', className, variant ? 'at-vid-' + variant : ''),
+      className: (0, _classnames.default)('at-vid', className, variant ? 'at-vid-' + variant : ''),
       autoPlay: autoplay,
       controls: controls,
       loop: loop,
@@ -123,60 +157,60 @@ const AtrcVideo = props => {
     });
   }
   if (AtrcIsImageUrl(url)) {
-    return /*#__PURE__*/React.createElement(AtrcImg, {
+    return /*#__PURE__*/React.createElement(_img.default, {
       src: url,
       width: width,
       height: height
     });
   }
   if (AtrcVideoIsYoutube(url)) {
-    const youtubeVideUrl = onSettings ? url : AtrcGetYoutubeVideUrl({
+    var youtubeVideUrl = onSettings ? url : AtrcGetYoutubeVideUrl({
       id: AtrcVideoIsYoutube(url),
-      autoplay,
-      loop,
-      muted,
-      controls,
+      autoplay: autoplay,
+      loop: loop,
+      muted: muted,
+      controls: controls,
       showInfo: false,
       playsinline: playsInline
     });
     return /*#__PURE__*/React.createElement("iframe", {
       height: height,
       width: width,
-      className: classnames('at-vid', className, variant ? 'at-vid-' + variant : ''),
+      className: (0, _classnames.default)('at-vid', className, variant ? 'at-vid-' + variant : ''),
       src: youtubeVideUrl,
       frameBorder: "0",
       allowFullScreen: allowFullScreen,
-      title: __('Youtube video', 'atrc-prefix-atrc')
+      title: (0, _i18n.__)('Youtube video', 'atrc-prefix-atrc')
     });
   }
   if (AtrcVideoIsVimeo(url)) {
-    const vimeoUrl = onSettings ? vimeoVideoUrl({
+    var vimeoUrl = onSettings ? vimeoVideoUrl({
       id: AtrcVideoIsVimeo(url),
-      autoplay,
-      loop,
-      muted,
-      controls,
+      autoplay: autoplay,
+      loop: loop,
+      muted: muted,
+      controls: controls,
       playsinline: playsInline
     }) : url;
     return /*#__PURE__*/React.createElement("iframe", {
       height: height,
       width: width,
-      className: classnames('at-vid', className, variant ? 'at-vid-' + variant : ''),
+      className: (0, _classnames.default)('at-vid', className, variant ? 'at-vid-' + variant : ''),
       src: vimeoUrl,
       frameBorder: "0",
       allowFullScreen: allowFullScreen,
-      title: __('Vimeo video', 'atrc-prefix-atrc')
+      title: (0, _i18n.__)('Vimeo video', 'atrc-prefix-atrc')
     });
   }
   return /*#__PURE__*/React.createElement("iframe", {
     height: height,
     width: width,
-    className: classnames('at-vid', className, variant ? 'at-vid-' + variant : ''),
+    className: (0, _classnames.default)('at-vid', className, variant ? 'at-vid-' + variant : ''),
     src: url,
     frameBorder: "0",
     allowFullScreen: allowFullScreen,
-    title: __('Other video', 'atrc-prefix-atrc')
+    title: (0, _i18n.__)('Other video', 'atrc-prefix-atrc')
   });
 };
-export default AtrcVideo;
+var _default = exports.default = AtrcVideo;
 //# sourceMappingURL=index.js.map

@@ -59,6 +59,7 @@ const renderSass = promisify(sass.render);
  * @return {string} Package name.
  */
 function getPackageName(file) {
+	console.log(file);
 	return path.relative(PACKAGES_DIR, file).split(path.sep)[0];
 }
 
@@ -85,6 +86,10 @@ function getBuildPath(file, buildFolder) {
 	// return path.resolve(pkgBuildPath, relativeToSrcPath);
 }
 
+async function buildJson(file) {
+	const destPath = getBuildPath(file, '');
+	fs.copyFileSync(file, destPath);
+}
 async function buildCSS(file) {
 	const outputFile = getBuildPath(file.replace('.scss', '.css'), 'build-style');
 	const outputFileRTL = getBuildPath(
@@ -153,6 +158,7 @@ async function buildJS(file) {
  * @type {Object<string,Function>}
  */
 const BUILD_TASK_BY_EXTENSION = {
+	'.json': buildJson,
 	'.scss': buildCSS,
 	'.js': buildJS,
 	'.ts': buildJS,

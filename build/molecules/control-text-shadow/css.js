@@ -1,18 +1,22 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _lodash = require("lodash");
 /* Library */
-import { isEmpty } from 'lodash';
 
 /* Local */
-const AtrcControlTextShadowCss = (value, property = 'text-shadow') => {
-  const output = {
+var AtrcControlTextShadowCss = function AtrcControlTextShadowCss(value) {
+  var property = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'text-shadow';
+  var output = {
     xs: ''
   };
-  if (!isEmpty(value) && value.x && value.y) {
-    output.xs += `${property} :
-		${value.x} ${value.y} 
-		${value.blr ? value.blr : ''}
-		${value.cl ? value.cl : ''};`;
+  if (!(0, _lodash.isEmpty)(value) && value.x && value.y) {
+    output.xs += "".concat(property, " :\n\t\t").concat(value.x, " ").concat(value.y, " \n\t\t").concat(value.blr ? value.blr : '', "\n\t\t").concat(value.cl ? value.cl : '', ";");
   }
   return output;
 };
-export default AtrcControlTextShadowCss;
+var _default = exports.default = AtrcControlTextShadowCss;
 //# sourceMappingURL=css.js.map

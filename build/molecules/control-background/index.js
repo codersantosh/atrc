@@ -1,3 +1,25 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.BackgroundImage = void 0;
+var _i18n = require("@wordpress/i18n");
+var _element = require("@wordpress/element");
+var _classnames = _interopRequireDefault(require("classnames"));
+var _lodash = require("lodash");
+var _select = _interopRequireDefault(require("../../atoms/select"));
+var _controlImg = _interopRequireDefault(require("./../control-img"));
+var _controlVideo = _interopRequireDefault(require("./../control-video"));
+var _controlSelectDevice = _interopRequireDefault(require("./../control-select-device"));
+var _panelTools = _interopRequireDefault(require("./../panel-tools"));
+var _controlDropdownColorGradientTab = _interopRequireDefault(require("./../control-dropdown-color-gradient-tab"));
+var _panelRow = _interopRequireDefault(require("./../panel-row"));
+var _backgroundPosition = _interopRequireDefault(require("./background-position"));
+var _backgroundSize = _interopRequireDefault(require("./background-size"));
+var _options = require("./options");
+var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Attributes Structure
  Type Object
  {
@@ -75,30 +97,15 @@
  * */
 
 /*WordPress*/
-import { __ } from '@wordpress/i18n';
-import { useMemo } from '@wordpress/element';
 
 /*Library*/
-import classnames from 'classnames';
-import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
-import AtrcSelect from '../../atoms/select';
-import AtrcControlImg from './../control-img';
-import AtrcControlVideo from './../control-video';
-import AtrcControlSelectDevice from './../control-select-device';
-import AtrcPanelTools from './../panel-tools';
-import AtrcControlDropdownColorGradientTab from './../control-dropdown-color-gradient-tab';
-import AtrcPanelRow from './../panel-row';
-import BackgroundPosition from './background-position';
-import BackgroundSize from './background-size';
-import { BgAtchOptions, BgBlendModeOptions, RepeatOptions } from './options';
 
 /*Inbuilt*/
-import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components*/
-const mappingBgPosNewValues = (newVal, value) => {
+var mappingBgPosNewValues = function mappingBgPosNewValues(newVal, value) {
   if (newVal && newVal.bgPosX) {
     value.bgPosX = newVal.bgPosX;
   } else {
@@ -161,7 +168,7 @@ const mappingBgPosNewValues = (newVal, value) => {
   }
   return value;
 };
-const mappingBgRptNewValues = (newVal, value) => {
+var mappingBgRptNewValues = function mappingBgRptNewValues(newVal, value) {
   if (newVal && newVal.xs) {
     value.bgRpt = newVal.xs;
   } else {
@@ -194,7 +201,7 @@ const mappingBgRptNewValues = (newVal, value) => {
   }
   return value;
 };
-const mappingBgSzNewValues = (newVal, value) => {
+var mappingBgSzNewValues = function mappingBgSzNewValues(newVal, value) {
   if (newVal && newVal.bgSz) {
     value.bgSz = newVal.bgSz;
   } else {
@@ -287,7 +294,7 @@ const mappingBgSzNewValues = (newVal, value) => {
   }
   return value;
 };
-const mappingBgAtchNewValues = (newVal, value) => {
+var mappingBgAtchNewValues = function mappingBgAtchNewValues(newVal, value) {
   if (newVal && newVal.xs) {
     value.bgAtch = newVal.xs;
   } else {
@@ -320,13 +327,13 @@ const mappingBgAtchNewValues = (newVal, value) => {
   }
   return value;
 };
-const BackgroundImageSettings = props => {
-  const {
-    value = {},
-    onChange = () => {}
-  } = props;
-  const setAttr = (newVal, type) => {
-    const valueCloned = Object.assign({}, value);
+var BackgroundImageSettings = function BackgroundImageSettings(props) {
+  var _props$value = props.value,
+    value = _props$value === void 0 ? {} : _props$value,
+    _props$onChange = props.onChange,
+    onChange = _props$onChange === void 0 ? function () {} : _props$onChange;
+  var setAttr = function setAttr(newVal, type) {
+    var valueCloned = Object.assign({}, value);
     if (newVal) {
       valueCloned[type] = newVal;
     } else {
@@ -334,8 +341,8 @@ const BackgroundImageSettings = props => {
     }
     onChange(valueCloned);
   };
-  const resetBgPos = () => {
-    const valueCloned = Object.assign({}, value);
+  var resetBgPos = function resetBgPos() {
+    var valueCloned = Object.assign({}, value);
     delete valueCloned.bgPosX;
     delete valueCloned.smBgPosX;
     delete valueCloned.mdBgPosX;
@@ -350,12 +357,12 @@ const BackgroundImageSettings = props => {
     delete valueCloned.xxlBgPosY;
     onChange(valueCloned);
   };
-  const setBgPos = newVal => {
-    const newValues = mappingBgPosNewValues(newVal, value);
+  var setBgPos = function setBgPos(newVal) {
+    var newValues = mappingBgPosNewValues(newVal, value);
     onChange(newValues);
   };
-  const resetBgRpt = () => {
-    const valueCloned = Object.assign({}, value);
+  var resetBgRpt = function resetBgRpt() {
+    var valueCloned = Object.assign({}, value);
     delete valueCloned.bgRpt;
     delete valueCloned.smBgRpt;
     delete valueCloned.mdBgRpt;
@@ -364,12 +371,12 @@ const BackgroundImageSettings = props => {
     delete valueCloned.xxlBgRpt;
     onChange(valueCloned);
   };
-  const setBgRpt = newVal => {
-    const newValues = mappingBgRptNewValues(newVal, value);
+  var setBgRpt = function setBgRpt(newVal) {
+    var newValues = mappingBgRptNewValues(newVal, value);
     onChange(newValues);
   };
-  const resetBgSz = () => {
-    const valueCloned = Object.assign({}, value);
+  var resetBgSz = function resetBgSz() {
+    var valueCloned = Object.assign({}, value);
     delete valueCloned.bgSz;
     delete valueCloned.smBgSz;
     delete valueCloned.mdBgSz;
@@ -390,12 +397,12 @@ const BackgroundImageSettings = props => {
     delete valueCloned.xxlBgH;
     onChange(valueCloned);
   };
-  const setBgSz = newVal => {
-    const newValues = mappingBgSzNewValues(newVal, value);
+  var setBgSz = function setBgSz(newVal) {
+    var newValues = mappingBgSzNewValues(newVal, value);
     onChange(newValues);
   };
-  const resetBgAtch = () => {
-    const valueCloned = Object.assign({}, value);
+  var resetBgAtch = function resetBgAtch() {
+    var valueCloned = Object.assign({}, value);
     delete valueCloned.bgAtch;
     delete valueCloned.smBgAtch;
     delete valueCloned.mdBgAtch;
@@ -404,17 +411,17 @@ const BackgroundImageSettings = props => {
     delete valueCloned.xxlBgAtch;
     onChange(valueCloned);
   };
-  const setBgAtch = newVal => {
-    const newValues = mappingBgAtchNewValues(newVal, value);
+  var setBgAtch = function setBgAtch(newVal) {
+    var newValues = mappingBgAtchNewValues(newVal, value);
     onChange(newValues);
   };
-  const resetBackgroundBlendMode = () => {
-    const valueCloned = Object.assign({}, value);
+  var resetBackgroundBlendMode = function resetBackgroundBlendMode() {
+    var valueCloned = Object.assign({}, value);
     delete valueCloned.bgBlendMode;
     onChange(valueCloned);
   };
-  const resetAll = () => {
-    const newValues = {};
+  var resetAll = function resetAll() {
+    var newValues = {};
     if (value.bgImgFrm) {
       newValues.bgImgFrm = value.bgImgFrm;
     }
@@ -429,8 +436,8 @@ const BackgroundImageSettings = props => {
     }
     onChange(newValues);
   };
-  const hasTabValue = tab => {
-    if (!value || isEmpty(value)) {
+  var hasTabValue = function hasTabValue(tab) {
+    if (!value || (0, _lodash.isEmpty)(value)) {
       return false;
     }
     if (tab === 'position') {
@@ -450,154 +457,168 @@ const BackgroundImageSettings = props => {
     }
     return false;
   };
-  const AllTabs = useMemo(() => {
+  var AllTabs = (0, _element.useMemo)(function () {
     return [{
       name: 'position',
-      title: __('Background position', 'atrc-prefix-atrc'),
+      title: (0, _i18n.__)('Background position', 'atrc-prefix-atrc'),
       hasValue: hasTabValue('position'),
-      onDeselect: () => resetBgPos()
+      onDeselect: function onDeselect() {
+        return resetBgPos();
+      }
     }, {
       name: 'repeat',
-      title: __('Background repeat', 'atrc-prefix-atrc'),
+      title: (0, _i18n.__)('Background repeat', 'atrc-prefix-atrc'),
       hasValue: hasTabValue('repeat'),
-      onDeselect: () => resetBgRpt()
+      onDeselect: function onDeselect() {
+        return resetBgRpt();
+      }
     }, {
       name: 'size',
-      title: __('Background size', 'atrc-prefix-atrc'),
+      title: (0, _i18n.__)('Background size', 'atrc-prefix-atrc'),
       hasValue: hasTabValue('size'),
-      onDeselect: () => resetBgSz()
+      onDeselect: function onDeselect() {
+        return resetBgSz();
+      }
     }, {
       name: 'attachment',
-      title: __('Background attachment', 'atrc-prefix-atrc'),
+      title: (0, _i18n.__)('Background attachment', 'atrc-prefix-atrc'),
       hasValue: hasTabValue('attachment'),
-      onDeselect: () => resetBgAtch()
+      onDeselect: function onDeselect() {
+        return resetBgAtch();
+      }
     }, {
       name: 'blend',
-      title: __('Background blend mode', 'atrc-prefix-atrc'),
+      title: (0, _i18n.__)('Background blend mode', 'atrc-prefix-atrc'),
       hasValue: hasTabValue('blend'),
-      onDeselect: () => resetBackgroundBlendMode()
+      onDeselect: function onDeselect() {
+        return resetBackgroundBlendMode();
+      }
     }];
   }, []);
   if (!(value.bgImgId || value.bgImgUrl)) {
     return null;
   }
-  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
-    label: __('Background image settings', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(_panelTools.default, {
+    label: (0, _i18n.__)('Background image settings', 'atrc-prefix-atrc'),
     resetAll: resetAll,
     tools: AllTabs
-  }, activeItems => map(activeItems, (tab, iDx) => {
-    if ('position' === tab) {
-      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
-        className: classnames('at-m', 'at-flx-col'),
-        key: iDx
-      }, /*#__PURE__*/React.createElement(BackgroundPosition, {
-        value: {
-          bgPosX: value && value.bgPosX,
-          smBgPosX: value && value.smBgPosX,
-          mdBgPosX: value && value.mdBgPosX,
-          lgBgPosX: value && value.lgBgPosX,
-          xlBgPosX: value && value.xlBgPosX,
-          xxlBgPosX: value && value.xxlBgPosX,
-          bgPosY: value && value.bgPosY,
-          smBgPosY: value && value.smBgPosY,
-          mdBgPosY: value && value.mdBgPosY,
-          lgBgPosY: value && value.lgBgPosY,
-          xlBgPosY: value && value.xlBgPosY,
-          xxlBgPosY: value && value.xxlBgPosY
-        },
-        onChange: setBgPos
-      }));
-    }
-    if ('repeat' === tab) {
-      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
-        className: classnames('at-m'),
-        key: iDx
-      }, /*#__PURE__*/React.createElement(AtrcControlSelectDevice, {
-        label: __('Background repeat', 'atrc-prefix-atrc'),
-        value: {
-          xs: value && value.bgRpt,
-          sm: value && value.smBgRpt,
-          md: value && value.mdBgRpt,
-          lg: value && value.lgBgRpt,
-          xl: value && value.xlBgRpt,
-          xxl: value && value.xxlBgRpt
-        },
-        options: RepeatOptions,
-        onChange: setBgRpt
-      }));
-    }
-    if ('size' === tab) {
-      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
-        className: classnames('at-m'),
-        key: iDx
-      }, /*#__PURE__*/React.createElement(BackgroundSize, {
-        label: __('Background size', 'atrc-prefix-atrc'),
-        value: {
-          bgSz: value && value.bgSz,
-          smBgSz: value && value.smBgSz,
-          mdBgSz: value && value.mdBgSz,
-          lgBgSz: value && value.lgBgSz,
-          xlBgSz: value && value.xlBgSz,
-          xxlBgSz: value && value.xxlBgSz,
-          bgW: value && value.bgW,
-          smBgW: value && value.smBgW,
-          mdBgW: value && value.mdBgW,
-          lgBgW: value && value.lgBgW,
-          xlBgW: value && value.xlBgW,
-          xxlBgW: value && value.xxlBgW,
-          bgH: value && value.bgH,
-          smBgH: value && value.smBgH,
-          mdBgH: value && value.mdBgH,
-          lgBgH: value && value.lgBgH,
-          xlBgH: value && value.xlBgH,
-          xxlBgH: value && value.xxlBgH
-        },
-        options: RepeatOptions,
-        onChange: setBgSz
-      }));
-    }
-    if ('attachment' === tab) {
-      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
-        className: classnames('at-m'),
-        key: iDx
-      }, /*#__PURE__*/React.createElement(AtrcControlSelectDevice, {
-        label: __('Background attachment', 'atrc-prefix-atrc'),
-        value: {
-          xs: value && value.bgAtch,
-          sm: value && value.smBgAtch,
-          md: value && value.mdBgAtch,
-          lg: value && value.lgBgAtch,
-          xl: value && value.xlBgAtch,
-          xxl: value && value.xxlBgAtch
-        },
-        options: BgAtchOptions,
-        onChange: setBgAtch
-      }));
-    }
-    if ('blend' === tab) {
-      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
-        className: classnames('at-m'),
-        key: iDx
-      }, /*#__PURE__*/React.createElement(AtrcSelect, {
-        label: __('Background blend mode', 'atrc-prefix-atrc'),
-        wrapProps: {
-          className: 'at-flx-grw-1'
-        },
-        value: value && value.bgBlendMode,
-        options: BgBlendModeOptions,
-        onChange: newVal => setAttr(newVal, 'bgBlendMode')
-      }));
-    }
-    return null;
-  }));
+  }, function (activeItems) {
+    return (0, _lodash.map)(activeItems, function (tab, iDx) {
+      if ('position' === tab) {
+        return /*#__PURE__*/React.createElement(_panelRow.default, {
+          className: (0, _classnames.default)('at-m', 'at-flx-col'),
+          key: iDx
+        }, /*#__PURE__*/React.createElement(_backgroundPosition.default, {
+          value: {
+            bgPosX: value && value.bgPosX,
+            smBgPosX: value && value.smBgPosX,
+            mdBgPosX: value && value.mdBgPosX,
+            lgBgPosX: value && value.lgBgPosX,
+            xlBgPosX: value && value.xlBgPosX,
+            xxlBgPosX: value && value.xxlBgPosX,
+            bgPosY: value && value.bgPosY,
+            smBgPosY: value && value.smBgPosY,
+            mdBgPosY: value && value.mdBgPosY,
+            lgBgPosY: value && value.lgBgPosY,
+            xlBgPosY: value && value.xlBgPosY,
+            xxlBgPosY: value && value.xxlBgPosY
+          },
+          onChange: setBgPos
+        }));
+      }
+      if ('repeat' === tab) {
+        return /*#__PURE__*/React.createElement(_panelRow.default, {
+          className: (0, _classnames.default)('at-m'),
+          key: iDx
+        }, /*#__PURE__*/React.createElement(_controlSelectDevice.default, {
+          label: (0, _i18n.__)('Background repeat', 'atrc-prefix-atrc'),
+          value: {
+            xs: value && value.bgRpt,
+            sm: value && value.smBgRpt,
+            md: value && value.mdBgRpt,
+            lg: value && value.lgBgRpt,
+            xl: value && value.xlBgRpt,
+            xxl: value && value.xxlBgRpt
+          },
+          options: _options.RepeatOptions,
+          onChange: setBgRpt
+        }));
+      }
+      if ('size' === tab) {
+        return /*#__PURE__*/React.createElement(_panelRow.default, {
+          className: (0, _classnames.default)('at-m'),
+          key: iDx
+        }, /*#__PURE__*/React.createElement(_backgroundSize.default, {
+          label: (0, _i18n.__)('Background size', 'atrc-prefix-atrc'),
+          value: {
+            bgSz: value && value.bgSz,
+            smBgSz: value && value.smBgSz,
+            mdBgSz: value && value.mdBgSz,
+            lgBgSz: value && value.lgBgSz,
+            xlBgSz: value && value.xlBgSz,
+            xxlBgSz: value && value.xxlBgSz,
+            bgW: value && value.bgW,
+            smBgW: value && value.smBgW,
+            mdBgW: value && value.mdBgW,
+            lgBgW: value && value.lgBgW,
+            xlBgW: value && value.xlBgW,
+            xxlBgW: value && value.xxlBgW,
+            bgH: value && value.bgH,
+            smBgH: value && value.smBgH,
+            mdBgH: value && value.mdBgH,
+            lgBgH: value && value.lgBgH,
+            xlBgH: value && value.xlBgH,
+            xxlBgH: value && value.xxlBgH
+          },
+          options: _options.RepeatOptions,
+          onChange: setBgSz
+        }));
+      }
+      if ('attachment' === tab) {
+        return /*#__PURE__*/React.createElement(_panelRow.default, {
+          className: (0, _classnames.default)('at-m'),
+          key: iDx
+        }, /*#__PURE__*/React.createElement(_controlSelectDevice.default, {
+          label: (0, _i18n.__)('Background attachment', 'atrc-prefix-atrc'),
+          value: {
+            xs: value && value.bgAtch,
+            sm: value && value.smBgAtch,
+            md: value && value.mdBgAtch,
+            lg: value && value.lgBgAtch,
+            xl: value && value.xlBgAtch,
+            xxl: value && value.xxlBgAtch
+          },
+          options: _options.BgAtchOptions,
+          onChange: setBgAtch
+        }));
+      }
+      if ('blend' === tab) {
+        return /*#__PURE__*/React.createElement(_panelRow.default, {
+          className: (0, _classnames.default)('at-m'),
+          key: iDx
+        }, /*#__PURE__*/React.createElement(_select.default, {
+          label: (0, _i18n.__)('Background blend mode', 'atrc-prefix-atrc'),
+          wrapProps: {
+            className: 'at-flx-grw-1'
+          },
+          value: value && value.bgBlendMode,
+          options: _options.BgBlendModeOptions,
+          onChange: function onChange(newVal) {
+            return setAttr(newVal, 'bgBlendMode');
+          }
+        }));
+      }
+      return null;
+    });
+  });
 };
-export const BackgroundImage = ({
-  label = __('Image', 'atrc-prefix-atrc'),
-  value,
-  setImage,
-  onChange
-}) => {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcControlImg, {
+var BackgroundImage = exports.BackgroundImage = function BackgroundImage(_ref) {
+  var _ref$label = _ref.label,
+    label = _ref$label === void 0 ? (0, _i18n.__)('Image', 'atrc-prefix-atrc') : _ref$label,
+    value = _ref.value,
+    setImage = _ref.setImage,
+    onChange = _ref.onChange;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_controlImg.default, {
     label: label,
     value: {
       frm: value && value.bgImgFrm,
@@ -615,18 +636,18 @@ export const BackgroundImage = ({
     allowDetails: true
   }));
 };
-const RenderTabPanel = ({
-  value,
-  onChange,
-  setColor,
-  setImage,
-  setVideo,
-  tab = 'color',
-  allowedColorTabs
-}) => {
+var RenderTabPanel = function RenderTabPanel(_ref2) {
+  var value = _ref2.value,
+    onChange = _ref2.onChange,
+    setColor = _ref2.setColor,
+    setImage = _ref2.setImage,
+    setVideo = _ref2.setVideo,
+    _ref2$tab = _ref2.tab,
+    tab = _ref2$tab === void 0 ? 'color' : _ref2$tab,
+    allowedColorTabs = _ref2.allowedColorTabs;
   if ('color' === tab) {
-    return /*#__PURE__*/React.createElement(AtrcControlDropdownColorGradientTab, {
-      label: __('Color', 'atrc-prefix-atrc'),
+    return /*#__PURE__*/React.createElement(_controlDropdownColorGradientTab.default, {
+      label: (0, _i18n.__)('Color', 'atrc-prefix-atrc'),
       value: {
         cl: value && value.bgCl,
         grd: value && value.bgGrd,
@@ -647,8 +668,8 @@ const RenderTabPanel = ({
     });
   }
   if ('video' === tab) {
-    return /*#__PURE__*/React.createElement(AtrcControlVideo, {
-      label: __('Video', 'atrc-prefix-atrc'),
+    return /*#__PURE__*/React.createElement(_controlVideo.default, {
+      label: (0, _i18n.__)('Video', 'atrc-prefix-atrc'),
       value: {
         frm: value && value.bgVidFrm,
         id: value && value.bgVidId,
@@ -670,21 +691,29 @@ const RenderTabPanel = ({
   }
   return null;
 };
-const AtrcControlBackground = props => {
-  const {
-    label = __('Background', 'atrc-prefix-atrc'),
-    help = '',
-    className = '',
-    variant = '',
-    value = {},
-    onChange = () => {},
-    allowColor = true,
-    allowedColorTabs = true,
-    allowImage = true,
-    allowVideo = true
-  } = props;
-  const setColor = newVal => {
-    const valueCloned = Object.assign({}, value);
+var AtrcControlBackground = function AtrcControlBackground(props) {
+  var _props$label = props.label,
+    label = _props$label === void 0 ? (0, _i18n.__)('Background', 'atrc-prefix-atrc') : _props$label,
+    _props$help = props.help,
+    help = _props$help === void 0 ? '' : _props$help,
+    _props$className = props.className,
+    className = _props$className === void 0 ? '' : _props$className,
+    _props$variant = props.variant,
+    variant = _props$variant === void 0 ? '' : _props$variant,
+    _props$value2 = props.value,
+    value = _props$value2 === void 0 ? {} : _props$value2,
+    _props$onChange2 = props.onChange,
+    onChange = _props$onChange2 === void 0 ? function () {} : _props$onChange2,
+    _props$allowColor = props.allowColor,
+    allowColor = _props$allowColor === void 0 ? true : _props$allowColor,
+    _props$allowedColorTa = props.allowedColorTabs,
+    allowedColorTabs = _props$allowedColorTa === void 0 ? true : _props$allowedColorTa,
+    _props$allowImage = props.allowImage,
+    allowImage = _props$allowImage === void 0 ? true : _props$allowImage,
+    _props$allowVideo = props.allowVideo,
+    allowVideo = _props$allowVideo === void 0 ? true : _props$allowVideo;
+  var setColor = function setColor(newVal) {
+    var valueCloned = Object.assign({}, value);
     delete valueCloned.bgCl;
     delete valueCloned.bgGrd;
     delete valueCloned.bgClHover;
@@ -711,8 +740,8 @@ const AtrcControlBackground = props => {
     }
     onChange(valueCloned);
   };
-  const setImage = newVal => {
-    const valueCloned = Object.assign({}, value);
+  var setImage = function setImage(newVal) {
+    var valueCloned = Object.assign({}, value);
     delete valueCloned.bgImgFrm;
     delete valueCloned.bgImgId;
     delete valueCloned.bgImgUrl;
@@ -731,8 +760,8 @@ const AtrcControlBackground = props => {
     }
     onChange(valueCloned);
   };
-  const resetImage = () => {
-    const valueCloned = Object.assign({}, value);
+  var resetImage = function resetImage() {
+    var valueCloned = Object.assign({}, value);
     delete valueCloned.bgImgFrm;
     delete valueCloned.bgImgId;
     delete valueCloned.bgImgUrl;
@@ -781,8 +810,8 @@ const AtrcControlBackground = props => {
     delete valueCloned.bgBlendMode;
     onChange(valueCloned);
   };
-  const setVideo = newVal => {
-    const valueCloned = Object.assign({}, value);
+  var setVideo = function setVideo(newVal) {
+    var valueCloned = Object.assign({}, value);
     delete valueCloned.bgVidFrm;
     delete valueCloned.bgVidId;
     delete valueCloned.bgVidUrl;
@@ -813,8 +842,8 @@ const AtrcControlBackground = props => {
     }
     onChange(valueCloned);
   };
-  const resetVideo = () => {
-    const valueCloned = Object.assign({}, value);
+  var resetVideo = function resetVideo() {
+    var valueCloned = Object.assign({}, value);
     delete valueCloned.bgVidFrm;
     delete valueCloned.bgVidId;
     delete valueCloned.bgVidUrl;
@@ -824,8 +853,8 @@ const AtrcControlBackground = props => {
     delete valueCloned.onBgVidMb;
     onChange(valueCloned);
   };
-  const hasTabValue = tab => {
-    if (!value || isEmpty(value)) {
+  var hasTabValue = function hasTabValue(tab) {
+    if (!value || (0, _lodash.isEmpty)(value)) {
       return false;
     }
     if (tab === 'color') {
@@ -839,51 +868,63 @@ const AtrcControlBackground = props => {
     }
     return false;
   };
-  const AllTabs = useMemo(() => {
-    const tabs = [];
+  var AllTabs = (0, _element.useMemo)(function () {
+    var tabs = [];
     if (allowColor) {
       tabs.push({
         name: 'color',
-        title: __('Color', 'atrc-prefix-atrc'),
+        title: (0, _i18n.__)('Color', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('color'),
-        onDeselect: () => setColor({})
+        onDeselect: function onDeselect() {
+          return setColor({});
+        }
       });
     }
     if (allowImage) {
       tabs.push({
         name: 'image',
-        title: __('Image', 'atrc-prefix-atrc'),
+        title: (0, _i18n.__)('Image', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('image'),
-        onDeselect: () => resetImage()
+        onDeselect: function onDeselect() {
+          return resetImage();
+        }
       });
     }
     if (allowVideo) {
       tabs.push({
         name: 'video',
-        title: __('Video', 'atrc-prefix-atrc'),
+        title: (0, _i18n.__)('Video', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('video'),
-        onDeselect: () => resetVideo()
+        onDeselect: function onDeselect() {
+          return resetVideo();
+        }
       });
     }
     return tabs;
   }, []);
-  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
-    className: classnames(AtrcPrefix('ctrl-bg'), className, variant ? AtrcPrefix('ctrl-bg') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(_panelTools.default, {
+    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-bg'), className, variant ? (0, _prefixVars.default)('ctrl-bg') + '-' + variant : ''),
     label: label,
     help: help,
-    resetAll: () => onChange({}),
+    resetAll: function resetAll() {
+      return onChange({});
+    },
     allowTabs: true,
     tools: AllTabs
-  }, activeItems => map(activeItems, (tab, iDx) => /*#__PURE__*/React.createElement(RenderTabPanel, {
-    value: value,
-    onChange: onChange,
-    setColor: setColor,
-    setImage: setImage,
-    setVideo: setVideo,
-    tab: tab,
-    allowedColorTabs: allowedColorTabs,
-    key: iDx
-  })));
+  }, function (activeItems) {
+    return (0, _lodash.map)(activeItems, function (tab, iDx) {
+      return /*#__PURE__*/React.createElement(RenderTabPanel, {
+        value: value,
+        onChange: onChange,
+        setColor: setColor,
+        setImage: setImage,
+        setVideo: setVideo,
+        tab: tab,
+        allowedColorTabs: allowedColorTabs,
+        key: iDx
+      });
+    });
+  });
 };
-export default AtrcControlBackground;
+var _default = exports.default = AtrcControlBackground;
 //# sourceMappingURL=index.js.map

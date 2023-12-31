@@ -1,4 +1,28 @@
-/*Attributes Structure
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _i18n = require("@wordpress/i18n");
+var _element = require("@wordpress/element");
+var _classnames = _interopRequireDefault(require("classnames"));
+var _lodash = require("lodash");
+var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
+var _select = _interopRequireDefault(require("../../atoms/select"));
+var _toggle = _interopRequireDefault(require("../../atoms/toggle"));
+var _controlUnit = _interopRequireDefault(require("../../atoms/control-unit"));
+var _controlAnimationAnimateCss = _interopRequireDefault(require("./../control-animation-animate-css"));
+var _controlTransform = _interopRequireDefault(require("./../control-transform"));
+var _notice = _interopRequireDefault(require("./../notice"));
+var _panelTools = _interopRequireDefault(require("./../panel-tools"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); } /*Attributes Structure
  Type Object
  {
     "ani":"",
@@ -23,46 +47,26 @@
     "opa":"",
     "blr":"",
 }
- * */
-
-/*WordPress*/
-import { __ } from '@wordpress/i18n';
-import { useMemo } from '@wordpress/element';
-
-/*Library*/
-import classnames from 'classnames';
-import { isEmpty, map, reduce, filter, keys, merge, pick, isArray } from 'lodash';
-
-/*Inbuilt*/
-import AtrcPrefix from '../../prefix-vars';
-
-/*Inbuilt*/
-import AtrcSelect from '../../atoms/select';
-import AtrcToggle from '../../atoms/toggle';
-import AtrcControlUnit from '../../atoms/control-unit';
-import AtrcControlAnimationAnimateCss from './../control-animation-animate-css';
-import AtrcControlTransform from './../control-transform';
-import AtrcNotice from './../notice';
-import AtrcPanelTools from './../panel-tools';
-
+ * */ /*WordPress*/ /*Library*/ /*Inbuilt*/ /*Inbuilt*/
 /*Local Components*/
 
 /*same for initial and new*/
-const mappingPredefinedValues = value => {
-  const allowedProperties = keys({
+var mappingPredefinedValues = function mappingPredefinedValues(value) {
+  var allowedProperties = (0, _lodash.keys)({
     ani: 0,
     dla: 0,
     dur: 0,
     iter: 0
   });
-  return value ? reduce(filter(keys(value), prop => allowedProperties.includes(prop)), (obj, prop) => ({
-    ...obj,
-    [prop]: value[prop]
-  }), {}) : {};
+  return value ? (0, _lodash.reduce)((0, _lodash.filter)((0, _lodash.keys)(value), function (prop) {
+    return allowedProperties.includes(prop);
+  }), function (obj, prop) {
+    return _objectSpread(_objectSpread({}, obj), {}, _defineProperty({}, prop, value[prop]));
+  }, {}) : {};
 };
 
 /*same for initial and new*/
-const allowedProperties = keys({
+var allowedProperties = (0, _lodash.keys)({
   ani: 0,
   dla: 0,
   dur: 0,
@@ -84,73 +88,81 @@ const allowedProperties = keys({
   opa: 0,
   blr: 0
 });
-const mappingNewStyleInitialValues = value => {
-  return value ? reduce(filter(keys(value), prop => allowedProperties.includes(prop)), (obj, prop) => ({
-    ...obj,
-    [prop]: value[prop]
-  }), {}) : {};
+var mappingNewStyleInitialValues = function mappingNewStyleInitialValues(value) {
+  return value ? (0, _lodash.reduce)((0, _lodash.filter)((0, _lodash.keys)(value), function (prop) {
+    return allowedProperties.includes(prop);
+  }), function (obj, prop) {
+    return _objectSpread(_objectSpread({}, obj), {}, _defineProperty({}, prop, value[prop]));
+  }, {}) : {};
 };
-const updateValueProps = (newVal, value) => {
-  if (!newVal || isEmpty(newVal)) {
+var updateValueProps = function updateValueProps(newVal, value) {
+  if (!newVal || (0, _lodash.isEmpty)(newVal)) {
     return {};
   }
-  const updatedValue = merge({}, value, newVal);
-  return pick(updatedValue, allowedProperties);
+  var updatedValue = (0, _lodash.merge)({}, value, newVal);
+  return (0, _lodash.pick)(updatedValue, allowedProperties);
 };
-const CustomAnimation = ({
-  label = '',
-  value,
-  onChange,
-  resetCustom
-}) => {
-  const setNewStyleValuesAttr = newVal => {
-    const newValues = updateValueProps(newVal, value);
+var CustomAnimation = function CustomAnimation(_ref) {
+  var _ref$label = _ref.label,
+    label = _ref$label === void 0 ? '' : _ref$label,
+    value = _ref.value,
+    onChange = _ref.onChange,
+    resetCustom = _ref.resetCustom;
+  var setNewStyleValuesAttr = function setNewStyleValuesAttr(newVal) {
+    var newValues = updateValueProps(newVal, value);
     onChange(newValues);
   };
-  const setAttr = (newVal, type) => {
-    const valueCloned = Object.assign({}, value);
+  var setAttr = function setAttr(newVal, type) {
+    var valueCloned = Object.assign({}, value);
     valueCloned[type] = newVal;
     onChange(valueCloned);
   };
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcToggle, {
-    label: __('Use 3D Transforms', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_toggle.default, {
+    label: (0, _i18n.__)('Use 3D Transforms', 'atrc-prefix-atrc'),
     checked: value && value.on3D,
-    onChange: () => setAttr(!(value && value.on3D), 'on3D')
-  }), value && value.on3D ? /*#__PURE__*/React.createElement(AtrcControlUnit, {
-    label: __('Perspective', 'atrc-prefix-atrc'),
+    onChange: function onChange() {
+      return setAttr(!(value && value.on3D), 'on3D');
+    }
+  }), value && value.on3D ? /*#__PURE__*/React.createElement(_controlUnit.default, {
+    label: (0, _i18n.__)('Perspective', 'atrc-prefix-atrc'),
     value: value && value.ppv,
-    onChange: newVal => setAttr(newVal, 'ppv')
-  }) : null, /*#__PURE__*/React.createElement(AtrcSelect, {
-    label: __('Type', 'atrc-prefix-atrc'),
+    onChange: function onChange(newVal) {
+      return setAttr(newVal, 'ppv');
+    }
+  }) : null, /*#__PURE__*/React.createElement(_select.default, {
+    label: (0, _i18n.__)('Type', 'atrc-prefix-atrc'),
     value: value && value.type,
     options: [{
-      label: __('Visible on scroll', 'atrc-prefix-atrc'),
+      label: (0, _i18n.__)('Visible on scroll', 'atrc-prefix-atrc'),
       value: 'visible'
     }, {
-      label: __('Progressive on scroll', 'atrc-prefix-atrc'),
+      label: (0, _i18n.__)('Progressive on scroll', 'atrc-prefix-atrc'),
       value: 'progressive'
     }],
-    onChange: newVal => setAttr(newVal, 'type')
-  }), /*#__PURE__*/React.createElement(AtrcControlTransform, {
-    label: 'progressive' === value.type ? __('Final transform', 'atrc-prefix-atrc') : __('New transform', 'atrc-prefix-atrc'),
+    onChange: function onChange(newVal) {
+      return setAttr(newVal, 'type');
+    }
+  }), /*#__PURE__*/React.createElement(_controlTransform.default, {
+    label: 'progressive' === value.type ? (0, _i18n.__)('Final transform', 'atrc-prefix-atrc') : (0, _i18n.__)('New transform', 'atrc-prefix-atrc'),
     value: mappingNewStyleInitialValues(value),
     onChange: setNewStyleValuesAttr,
     allow3D: value && value.on3D,
     allowExtra: true
-  }), /*#__PURE__*/React.createElement(AtrcNotice, {
+  }), /*#__PURE__*/React.createElement(_notice.default, {
     isDismissible: false,
     autoDismiss: false
-  }, __('Optional:', 'atrc-prefix-atrc'), 'progressive' === value.type ? __('For initial transformation, use the transform options.', 'atrc-prefix-atrc') : __('For a smooth transformation, use the transition options.', 'atrc-prefix-atrc')));
+  }, (0, _i18n.__)('Optional:', 'atrc-prefix-atrc'), 'progressive' === value.type ? (0, _i18n.__)('For initial transformation, use the transform options.', 'atrc-prefix-atrc') : (0, _i18n.__)('For a smooth transformation, use the transition options.', 'atrc-prefix-atrc')));
 };
-const RenderTabPanel = ({
-  label = '',
-  value,
-  onChange,
-  tab = 'predefined',
-  resetCustom
-}) => {
+var RenderTabPanel = function RenderTabPanel(_ref2) {
+  var _ref2$label = _ref2.label,
+    label = _ref2$label === void 0 ? '' : _ref2$label,
+    value = _ref2.value,
+    onChange = _ref2.onChange,
+    _ref2$tab = _ref2.tab,
+    tab = _ref2$tab === void 0 ? 'predefined' : _ref2$tab,
+    resetCustom = _ref2.resetCustom;
   if ('predefined' === tab) {
-    return /*#__PURE__*/React.createElement(AtrcControlAnimationAnimateCss, {
+    return /*#__PURE__*/React.createElement(_controlAnimationAnimateCss.default, {
       label: label,
       value: mappingPredefinedValues(value),
       onChange: onChange
@@ -163,23 +175,27 @@ const RenderTabPanel = ({
     resetCustom: resetCustom
   });
 };
-const AtrcControlAnimationScroll = props => {
-  const {
-    label = '',
-    value = {},
-    variant = '',
-    className = '',
-    onChange = () => {},
-    allowedOptions = true
-  } = props;
-  const doResetPredefined = valueCloned => {
+var AtrcControlAnimationScroll = function AtrcControlAnimationScroll(props) {
+  var _props$label = props.label,
+    label = _props$label === void 0 ? '' : _props$label,
+    _props$value = props.value,
+    value = _props$value === void 0 ? {} : _props$value,
+    _props$variant = props.variant,
+    variant = _props$variant === void 0 ? '' : _props$variant,
+    _props$className = props.className,
+    className = _props$className === void 0 ? '' : _props$className,
+    _props$onChange = props.onChange,
+    onChange = _props$onChange === void 0 ? function () {} : _props$onChange,
+    _props$allowedOptions = props.allowedOptions,
+    allowedOptions = _props$allowedOptions === void 0 ? true : _props$allowedOptions;
+  var doResetPredefined = function doResetPredefined(valueCloned) {
     delete valueCloned.ani;
     delete valueCloned.dla;
     delete valueCloned.dur;
     delete valueCloned.iter;
     return valueCloned;
   };
-  const doResetCustom = valueCloned => {
+  var doResetCustom = function doResetCustom(valueCloned) {
     delete valueCloned.type;
     delete valueCloned.on3D;
     delete valueCloned.ppv;
@@ -198,26 +214,26 @@ const AtrcControlAnimationScroll = props => {
     delete valueCloned.blr;
     return valueCloned;
   };
-  const setPredefinedAttr = newVal => {
-    const changedValues = mappingPredefinedValues(newVal);
+  var setPredefinedAttr = function setPredefinedAttr(newVal) {
+    var changedValues = mappingPredefinedValues(newVal);
     onChange(changedValues);
   };
-  const setCustomAttr = newVal => {
+  var setCustomAttr = function setCustomAttr(newVal) {
     onChange(newVal);
   };
-  const resetPredefined = () => {
-    const valueCloned = Object.assign({}, value);
+  var resetPredefined = function resetPredefined() {
+    var valueCloned = Object.assign({}, value);
     onChange(doResetPredefined(valueCloned));
   };
-  const resetCustom = () => {
-    const valueCloned = Object.assign({}, value);
+  var resetCustom = function resetCustom() {
+    var valueCloned = Object.assign({}, value);
     onChange(doResetCustom(valueCloned));
   };
-  const resetAll = () => {
+  var resetAll = function resetAll() {
     onChange({});
   };
-  const hasTabValue = tab => {
-    if (!value || isEmpty(value)) {
+  var hasTabValue = function hasTabValue(tab) {
+    if (!value || (0, _lodash.isEmpty)(value)) {
       return false;
     }
     if (tab === 'predefined') {
@@ -225,45 +241,53 @@ const AtrcControlAnimationScroll = props => {
     }
     return !!(value.type || value.on3D || value.ppv || value.translX || value.translY || value.translZ || value.rotX || value.rotY || value.rotZ || value.sclX || value.sclY || value.sclZ || value.skewX || value.skewY || value.opa || value.blr);
   };
-  const AllTabs = useMemo(() => {
-    const tabsOptions = [];
-    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('predefined')) {
+  var AllTabs = (0, _element.useMemo)(function () {
+    var tabsOptions = [];
+    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('predefined')) {
       tabsOptions.push({
         name: 'predefined',
-        title: __('Predefined', 'atrc-prefix-atrc'),
+        title: (0, _i18n.__)('Predefined', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('predefined'),
-        onDeselect: () => resetPredefined()
+        onDeselect: function onDeselect() {
+          return resetPredefined();
+        }
       });
     }
-    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('custom')) {
+    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('custom')) {
       tabsOptions.push({
         name: 'custom',
-        title: __('Custom', 'atrc-prefix-atrc'),
+        title: (0, _i18n.__)('Custom', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('custom'),
-        onDeselect: () => resetCustom()
+        onDeselect: function onDeselect() {
+          return resetCustom();
+        }
       });
     }
     return tabsOptions;
   }, []);
-  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
-    className: classnames(AtrcPrefix('ctrl-ani-scr'), className, variant ? AtrcPrefix('ctrl-ani-scr') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(_panelTools.default, {
+    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-ani-scr'), className, variant ? (0, _prefixVars.default)('ctrl-ani-scr') + '-' + variant : ''),
     label: label,
     resetAll: resetAll,
     isRadio: true,
     tools: AllTabs
-  }, activeItems => map(activeItems, (tab, iDx) => /*#__PURE__*/React.createElement(RenderTabPanel, {
-    value: value,
-    onChange: newVal => {
-      if ('predefined' === tab) {
-        setPredefinedAttr(newVal);
-      } else {
-        setCustomAttr(newVal);
-      }
-    },
-    tab: tab,
-    resetCustom: resetCustom,
-    key: iDx
-  })));
+  }, function (activeItems) {
+    return (0, _lodash.map)(activeItems, function (tab, iDx) {
+      return /*#__PURE__*/React.createElement(RenderTabPanel, {
+        value: value,
+        onChange: function onChange(newVal) {
+          if ('predefined' === tab) {
+            setPredefinedAttr(newVal);
+          } else {
+            setCustomAttr(newVal);
+          }
+        },
+        tab: tab,
+        resetCustom: resetCustom,
+        key: iDx
+      });
+    });
+  });
 };
-export default AtrcControlAnimationScroll;
+var _default = exports.default = AtrcControlAnimationScroll;
 //# sourceMappingURL=index.js.map

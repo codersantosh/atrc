@@ -1,20 +1,26 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TextTransformList = exports.TextDecorationList = exports.SystemFontTypeList = exports.FontWeightList = exports.FontTypeList = exports.FontStyleList = exports.FontSizeList = void 0;
+var _i18n = require("@wordpress/i18n");
+var _icons = require("@wordpress/icons");
 /*WordPress*/
-import { __ } from '@wordpress/i18n';
-import { formatCapitalize, formatLowercase, formatUppercase, reset } from '@wordpress/icons';
 
 /**
  * Font Type List
  *
  * @type {Array}
  */
-const FontTypeList = [{
-  label: __('Default', 'atrc-prefix-atrc'),
+var FontTypeList = exports.FontTypeList = [{
+  label: (0, _i18n.__)('Default', 'atrc-prefix-atrc'),
   value: ''
 }, {
-  label: __('System', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('System', 'atrc-prefix-atrc'),
   value: 'system'
 }, {
-  label: __('Google', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Google', 'atrc-prefix-atrc'),
   value: 'google'
 }];
 
@@ -23,26 +29,26 @@ const FontTypeList = [{
  *
  * @type {Array}
  */
-const SystemFontTypeList = [{
-  label: __('Arial', 'atrc-prefix-atrc'),
+var SystemFontTypeList = exports.SystemFontTypeList = [{
+  label: (0, _i18n.__)('Arial', 'atrc-prefix-atrc'),
   value: 'Arial'
 }, {
-  label: __('Tahoma', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Tahoma', 'atrc-prefix-atrc'),
   value: 'Tahoma'
 }, {
-  label: __('Verdana', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Verdana', 'atrc-prefix-atrc'),
   value: 'Verdana'
 }, {
-  label: __('Helvetica', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Helvetica', 'atrc-prefix-atrc'),
   value: 'Helvetica'
 }, {
-  label: __('Times New Roman', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Times New Roman', 'atrc-prefix-atrc'),
   value: 'Times New Roman'
 }, {
-  label: __('Trebuchet MS', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Trebuchet MS', 'atrc-prefix-atrc'),
   value: 'Trebuchet MS'
 }, {
-  label: __('Georgia', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Georgia', 'atrc-prefix-atrc'),
   value: 'Georgia'
 }];
 
@@ -51,41 +57,41 @@ const SystemFontTypeList = [{
  *
  * @type {Array}
  */
-const FontWeightList = [{
-  label: __('Default', 'atrc-prefix-atrc'),
+var FontWeightList = exports.FontWeightList = [{
+  label: (0, _i18n.__)('Default', 'atrc-prefix-atrc'),
   value: ''
 }, {
-  label: __('Normal', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Normal', 'atrc-prefix-atrc'),
   value: 'normal'
 }, {
-  label: __('Bold', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Bold', 'atrc-prefix-atrc'),
   value: 'bold'
 }, {
-  label: __('100', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('100', 'atrc-prefix-atrc'),
   value: '100'
 }, {
-  label: __('200', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('200', 'atrc-prefix-atrc'),
   value: '200'
 }, {
-  label: __('300', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('300', 'atrc-prefix-atrc'),
   value: '300'
 }, {
-  label: __('400', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('400', 'atrc-prefix-atrc'),
   value: '400'
 }, {
-  label: __('500', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('500', 'atrc-prefix-atrc'),
   value: '500'
 }, {
-  label: __('600', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('600', 'atrc-prefix-atrc'),
   value: '600'
 }, {
-  label: __('700', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('700', 'atrc-prefix-atrc'),
   value: '700'
 }, {
-  label: __('800', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('800', 'atrc-prefix-atrc'),
   value: '800'
 }, {
-  label: __('900', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('900', 'atrc-prefix-atrc'),
   value: '900'
 }];
 
@@ -95,22 +101,22 @@ const FontWeightList = [{
  * @type {Array}
  */
 
-const TextTransformList = [{
-  label: __('none', 'atrc-prefix-atrc'),
+var TextTransformList = exports.TextTransformList = [{
+  label: (0, _i18n.__)('none', 'atrc-prefix-atrc'),
   value: 'none',
-  icon: reset
+  icon: _icons.reset
 }, {
-  label: __('Uppercase', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Uppercase', 'atrc-prefix-atrc'),
   value: 'uppercase',
-  icon: formatUppercase
+  icon: _icons.formatUppercase
 }, {
-  label: __('Lowercase', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Lowercase', 'atrc-prefix-atrc'),
   value: 'lowercase',
-  icon: formatLowercase
+  icon: _icons.formatLowercase
 }, {
-  label: __('Capitalize', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Capitalize', 'atrc-prefix-atrc'),
   value: 'capitalize',
-  icon: formatCapitalize
+  icon: _icons.formatCapitalize
 }];
 
 /**
@@ -118,17 +124,17 @@ const TextTransformList = [{
  *
  * @type {Array}
  */
-const FontStyleList = [{
-  label: __('Default', 'atrc-prefix-atrc'),
+var FontStyleList = exports.FontStyleList = [{
+  label: (0, _i18n.__)('Default', 'atrc-prefix-atrc'),
   value: ''
 }, {
-  label: __('Normal', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Normal', 'atrc-prefix-atrc'),
   value: 'normal'
 }, {
-  label: __('Italic', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Italic', 'atrc-prefix-atrc'),
   value: 'italic'
 }, {
-  label: __('Oblique', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Oblique', 'atrc-prefix-atrc'),
   value: 'oblique'
 }];
 
@@ -137,44 +143,43 @@ const FontStyleList = [{
  *
  * @type {Array}
  */
-const TextDecorationList = [{
-  label: __('Default', 'atrc-prefix-atrc'),
+var TextDecorationList = exports.TextDecorationList = [{
+  label: (0, _i18n.__)('Default', 'atrc-prefix-atrc'),
   value: ''
 }, {
-  label: __('Underline', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Underline', 'atrc-prefix-atrc'),
   value: 'underline'
 }, {
-  label: __('Overline', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Overline', 'atrc-prefix-atrc'),
   value: 'overline'
 }, {
-  label: __('Line Through', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Line Through', 'atrc-prefix-atrc'),
   value: 'line-through'
 }, {
-  label: __('None', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('None', 'atrc-prefix-atrc'),
   value: 'none'
 }];
-const FontSizeList = [{
-  name: __('XS', 'atrc-prefix-atrc'),
+var FontSizeList = exports.FontSizeList = [{
+  name: (0, _i18n.__)('XS', 'atrc-prefix-atrc'),
   slug: 'xs',
   size: '14px'
 }, {
-  name: __('Small', 'atrc-prefix-atrc'),
+  name: (0, _i18n.__)('Small', 'atrc-prefix-atrc'),
   slug: 'small',
   size: '16px'
 }, {
-  name: __('Normal', 'atrc-prefix-atrc'),
+  name: (0, _i18n.__)('Normal', 'atrc-prefix-atrc'),
   slug: 'Normal',
   size: '18px'
 }, {
-  name: __('Medium', 'atrc-prefix-atrc'),
+  name: (0, _i18n.__)('Medium', 'atrc-prefix-atrc'),
   slug: 'medium',
   size: '24px'
 }, {
-  name: __('Large', 'atrc-prefix-atrc'),
+  name: (0, _i18n.__)('Large', 'atrc-prefix-atrc'),
   slug: 'large',
   size: '28px'
 }];
 
 /*Export Everything*/
-export { FontTypeList, SystemFontTypeList, FontWeightList, TextTransformList, FontStyleList, TextDecorationList, FontSizeList };
 //# sourceMappingURL=options.js.map

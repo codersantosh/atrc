@@ -1,22 +1,27 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.AtrcControlFlexShrinkDeviceClasses = exports.AtrcControlFlexNoWrapDeviceClasses = exports.AtrcControlFlexGrowDeviceClasses = exports.AtrcControlFlexFillDeviceClasses = void 0;
+var _lodash = require("lodash");
+var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Library*/
-import { isEmpty, isObject } from 'lodash';
 
 /*Inbuilt*/
-import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Local*/
-const AtrcControlFlexDirectionDeviceClasses = abStyle => {
+var AtrcControlFlexDirectionDeviceClasses = function AtrcControlFlexDirectionDeviceClasses(abStyle) {
   if (!abStyle || !abStyle.flxDir) {
     return '';
   }
-  const {
-    flxDir
-  } = abStyle;
-  if (!isObject(flxDir)) return '';
-  if (isEmpty(flxDir)) return '';
-  let classes = '';
-  for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-    const device = AtrcAvailableDevices[i];
+  var flxDir = abStyle.flxDir;
+  if (!(0, _lodash.isObject)(flxDir)) return '';
+  if ((0, _lodash.isEmpty)(flxDir)) return '';
+  var classes = '';
+  for (var i = 0; i < _availableDevices.default.length; i++) {
+    var device = _availableDevices.default[i];
     if ('xs' === device.name) {
       if (flxDir[device.name]) {
         switch (flxDir[device.name]) {
@@ -64,18 +69,16 @@ const AtrcControlFlexDirectionDeviceClasses = abStyle => {
   }
   return classes;
 };
-export const AtrcControlFlexNoWrapDeviceClasses = abStyle => {
+var AtrcControlFlexNoWrapDeviceClasses = exports.AtrcControlFlexNoWrapDeviceClasses = function AtrcControlFlexNoWrapDeviceClasses(abStyle) {
   if (!abStyle || !abStyle.flxWrp) {
     return ' at-flx-wrp ';
   }
-  const {
-    flxWrp
-  } = abStyle;
-  if (!isObject(flxWrp)) return ' at-flx-wrp ';
-  if (isEmpty(flxWrp)) return ' at-flx-wrp ';
-  let classes = '';
-  for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-    const device = AtrcAvailableDevices[i];
+  var flxWrp = abStyle.flxWrp;
+  if (!(0, _lodash.isObject)(flxWrp)) return ' at-flx-wrp ';
+  if ((0, _lodash.isEmpty)(flxWrp)) return ' at-flx-wrp ';
+  var classes = '';
+  for (var i = 0; i < _availableDevices.default.length; i++) {
+    var device = _availableDevices.default[i];
     if (!device.on) {
       continue;
     }
@@ -94,18 +97,16 @@ export const AtrcControlFlexNoWrapDeviceClasses = abStyle => {
   }
   return classes;
 };
-export const AtrcControlFlexFillDeviceClasses = abStyle => {
+var AtrcControlFlexFillDeviceClasses = exports.AtrcControlFlexFillDeviceClasses = function AtrcControlFlexFillDeviceClasses(abStyle) {
   if (!abStyle || !abStyle.flxFil) {
     return '';
   }
-  const {
-    flxFil
-  } = abStyle;
-  if (!isObject(flxFil)) return '';
-  if (isEmpty(flxFil)) return '';
-  let classes = '';
-  for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-    const device = AtrcAvailableDevices[i];
+  var flxFil = abStyle.flxFil;
+  if (!(0, _lodash.isObject)(flxFil)) return '';
+  if ((0, _lodash.isEmpty)(flxFil)) return '';
+  var classes = '';
+  for (var i = 0; i < _availableDevices.default.length; i++) {
+    var device = _availableDevices.default[i];
     if (!device.on) {
       continue;
     }
@@ -121,18 +122,16 @@ export const AtrcControlFlexFillDeviceClasses = abStyle => {
   }
   return classes;
 };
-export const AtrcControlFlexGrowDeviceClasses = abStyle => {
+var AtrcControlFlexGrowDeviceClasses = exports.AtrcControlFlexGrowDeviceClasses = function AtrcControlFlexGrowDeviceClasses(abStyle) {
   if (!abStyle || !abStyle.flxGrw) {
     return '';
   }
-  const {
-    flxGrw
-  } = abStyle;
-  if (!isObject(flxGrw)) return '';
-  if (isEmpty(flxGrw)) return '';
-  let classes = '';
-  for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-    const device = AtrcAvailableDevices[i];
+  var flxGrw = abStyle.flxGrw;
+  if (!(0, _lodash.isObject)(flxGrw)) return '';
+  if ((0, _lodash.isEmpty)(flxGrw)) return '';
+  var classes = '';
+  for (var i = 0; i < _availableDevices.default.length; i++) {
+    var device = _availableDevices.default[i];
     if (!device.on) {
       continue;
     }
@@ -148,18 +147,16 @@ export const AtrcControlFlexGrowDeviceClasses = abStyle => {
   }
   return classes;
 };
-export const AtrcControlFlexShrinkDeviceClasses = abStyle => {
+var AtrcControlFlexShrinkDeviceClasses = exports.AtrcControlFlexShrinkDeviceClasses = function AtrcControlFlexShrinkDeviceClasses(abStyle) {
   if (!abStyle || !abStyle.flxSrnk) {
     return '';
   }
-  const {
-    flxSrnk
-  } = abStyle;
-  if (!isObject(flxSrnk)) return '';
-  if (isEmpty(flxSrnk)) return '';
-  let classes = '';
-  for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-    const device = AtrcAvailableDevices[i];
+  var flxSrnk = abStyle.flxSrnk;
+  if (!(0, _lodash.isObject)(flxSrnk)) return '';
+  if ((0, _lodash.isEmpty)(flxSrnk)) return '';
+  var classes = '';
+  for (var i = 0; i < _availableDevices.default.length; i++) {
+    var device = _availableDevices.default[i];
     if (!device.on) {
       continue;
     }
@@ -175,5 +172,5 @@ export const AtrcControlFlexShrinkDeviceClasses = abStyle => {
   }
   return classes;
 };
-export default AtrcControlFlexDirectionDeviceClasses;
+var _default = exports.default = AtrcControlFlexDirectionDeviceClasses;
 //# sourceMappingURL=classes.js.map

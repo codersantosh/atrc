@@ -1,31 +1,38 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _position = _interopRequireDefault(require("./image/position"));
+var _repeat = _interopRequireDefault(require("./image/repeat"));
+var _size = _interopRequireDefault(require("./image/size"));
+var _attachment = _interopRequireDefault(require("./image/attachment"));
+var _blendMode = _interopRequireDefault(require("./image/blend-mode"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Inbuilt*/
-import BgPos from './image/position';
-import BgRpt from './image/repeat';
-import BgSz from './image/size';
-import BgAtch from './image/attachment';
-import BgBlendMode from './image/blend-mode';
 
 /*Local*/
-const BgImage = (value, innerOutput, properties) => {
+var BgImage = function BgImage(value, innerOutput, properties) {
   if (value.bgImgUrl) {
-    innerOutput.xs += `${properties.bgImg}      : url("${value.bgImgUrl}");`;
+    innerOutput.xs += "".concat(properties.bgImg, "      : url(\"").concat(value.bgImgUrl, "\");");
 
     /*Background position*/
-    innerOutput = BgPos(value, innerOutput, properties.bgPos);
+    innerOutput = (0, _position.default)(value, innerOutput, properties.bgPos);
 
     /*Background repeat*/
-    innerOutput = BgRpt(value, innerOutput, properties.bgRpt);
+    innerOutput = (0, _repeat.default)(value, innerOutput, properties.bgRpt);
 
     /*Background size*/
-    innerOutput = BgSz(value, innerOutput, properties.bgSz);
+    innerOutput = (0, _size.default)(value, innerOutput, properties.bgSz);
 
     /*Background attachment*/
-    innerOutput = BgAtch(value, innerOutput, properties.bgAtch);
+    innerOutput = (0, _attachment.default)(value, innerOutput, properties.bgAtch);
 
     /*Blend mod*/
-    innerOutput = BgBlendMode(value, innerOutput, properties.bgBlendMode);
+    innerOutput = (0, _blendMode.default)(value, innerOutput, properties.bgBlendMode);
   }
   return innerOutput;
 };
-export default BgImage;
+var _default = exports.default = BgImage;
 //# sourceMappingURL=bg-image.js.map

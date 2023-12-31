@@ -1,12 +1,14 @@
-import { withStorage } from '@wordpress/data';
-const store = createReduxStore('my-forum', {
-  reducer,
-  actions,
-  selectors,
-  controls,
-  middleware
+"use strict";
+
+var _data = require("@wordpress/data");
+var store = createReduxStore('my-forum', {
+  reducer: reducer,
+  actions: actions,
+  selectors: selectors,
+  controls: controls,
+  middleware: middleware
 });
-const persistedStore = withStorage(store, {
+var persistedStore = (0, _data.withStorage)(store, {
   storage: window.localStorage,
   storageKey: 'my-forum-state'
 });

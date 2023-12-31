@@ -1,22 +1,28 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _i18n = require("@wordpress/i18n");
 /*WordPress*/
-import { __ } from '@wordpress/i18n';
 
 /* Overflow Options*/
-const OverflowOptions = [{
-  label: __('Default', 'atrc-prefix-atrc'),
+var OverflowOptions = [{
+  label: (0, _i18n.__)('Default', 'atrc-prefix-atrc'),
   value: ''
 }, {
-  label: __('Visible', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Visible', 'atrc-prefix-atrc'),
   value: 'visible'
 }, {
-  label: __('Hidden', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Hidden', 'atrc-prefix-atrc'),
   value: 'hidden'
 }, {
-  label: __('Scroll', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('Scroll', 'atrc-prefix-atrc'),
   value: 'scroll'
 }, {
-  label: __('auto', 'atrc-prefix-atrc'),
+  label: (0, _i18n.__)('auto', 'atrc-prefix-atrc'),
   value: 'auto'
 }];
-export default OverflowOptions;
+var _default = exports.default = OverflowOptions;
 //# sourceMappingURL=options.js.map

@@ -1,26 +1,36 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _i18n = require("@wordpress/i18n");
+var _panelRow = _interopRequireDefault(require("../panel-row"));
+var _controlSelectButton = _interopRequireDefault(require("../control-select-button"));
+var _options = require("./options");
+var _classnames = _interopRequireDefault(require("classnames"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*WordPress*/
-import { __ } from '@wordpress/i18n';
 
 /*Inbuilt*/
-import AtrcPanelRow from '../panel-row';
-import AtrcControlSelectButton from '../control-select-button';
-import { TextTransformList } from './options';
+
 /*Library*/
-import classnames from 'classnames';
+
 /*Local Components*/
-const TextTransform = ({
-  value,
-  onChange
-}) => {
-  return /*#__PURE__*/React.createElement(AtrcPanelRow, {
-    className: classnames('at-m')
-  }, /*#__PURE__*/React.createElement(AtrcControlSelectButton, {
-    label: __('Text transform', 'atrc-prefix-atrc'),
+var TextTransform = function TextTransform(_ref) {
+  var value = _ref.value,
+    _onChange = _ref.onChange;
+  return /*#__PURE__*/React.createElement(_panelRow.default, {
+    className: (0, _classnames.default)('at-m')
+  }, /*#__PURE__*/React.createElement(_controlSelectButton.default, {
+    label: (0, _i18n.__)('Text transform', 'atrc-prefix-atrc'),
     value: value && value.txtTf,
-    options: TextTransformList,
-    onChange: newVal => onChange(newVal, 'txtTf'),
+    options: _options.TextTransformList,
+    onChange: function onChange(newVal) {
+      return _onChange(newVal, 'txtTf');
+    },
     allowReset: true
   }));
 };
-export default TextTransform;
+var _default = exports.default = TextTransform;
 //# sourceMappingURL=text-transform.js.map

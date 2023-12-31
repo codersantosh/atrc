@@ -1,33 +1,40 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _lodash = require("lodash");
+var _availableTabs = _interopRequireDefault(require("../../utils/available-tabs"));
+var _objectValuesWithAllowedKeysAndTabs = require("../../utils/object-values-with-allowed-keys-and-tabs");
+var _controlBoxFourDevice = require("../control-box-four-device");
+var _css = _interopRequireDefault(require("../control-box-four-device/css"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Library*/
-import { forEach, isEmpty } from 'lodash';
 
 /* Inbuilt */
 
-import AtrcAvailableTabs from '../../utils/available-tabs';
-import { AtrcGetTabValues, AtrcHasTabValues } from '../../utils/object-values-with-allowed-keys-and-tabs';
-import { AtrcControlBoxFourDeviceAllowedKeys } from '../control-box-four-device';
-import AtrcControlBoxFourDeviceCss from '../control-box-four-device/css';
-
 /*Local*/
-const AtrcControlBoxFourTabCss = ({
-  value,
-  property = '',
-  direction = true
-}) => {
-  const output = {};
-  let tabKey;
-  if (!isEmpty(value)) {
-    AtrcAvailableTabs.forEach(tab => {
-      if (AtrcAvailableTabs.includes(tab)) {
-        if (AtrcHasTabValues(tab, value, AtrcControlBoxFourDeviceAllowedKeys)) {
-          const boxVal = AtrcGetTabValues(value, tab, AtrcControlBoxFourDeviceAllowedKeys);
-          const boxCss = AtrcControlBoxFourDeviceCss({
+var AtrcControlBoxFourTabCss = function AtrcControlBoxFourTabCss(_ref) {
+  var value = _ref.value,
+    _ref$property = _ref.property,
+    property = _ref$property === void 0 ? '' : _ref$property,
+    _ref$direction = _ref.direction,
+    direction = _ref$direction === void 0 ? true : _ref$direction;
+  var output = {};
+  var tabKey;
+  if (!(0, _lodash.isEmpty)(value)) {
+    _availableTabs.default.forEach(function (tab) {
+      if (_availableTabs.default.includes(tab)) {
+        if ((0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)(tab, value, _controlBoxFourDevice.AtrcControlBoxFourDeviceAllowedKeys)) {
+          var boxVal = (0, _objectValuesWithAllowedKeysAndTabs.AtrcGetTabValues)(value, tab, _controlBoxFourDevice.AtrcControlBoxFourDeviceAllowedKeys);
+          var boxCss = (0, _css.default)({
             value: boxVal,
-            property,
-            direction
+            property: property,
+            direction: direction
           });
-          if (!isEmpty(boxCss)) {
-            forEach(boxCss, (item, itemKey) => {
+          if (!(0, _lodash.isEmpty)(boxCss)) {
+            (0, _lodash.forEach)(boxCss, function (item, itemKey) {
               if (tab === 'normal') {
                 tabKey = itemKey;
               } else {
@@ -45,5 +52,5 @@ const AtrcControlBoxFourTabCss = ({
   }
   return output;
 };
-export default AtrcControlBoxFourTabCss;
+var _default = exports.default = AtrcControlBoxFourTabCss;
 //# sourceMappingURL=css.js.map

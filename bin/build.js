@@ -13,7 +13,7 @@ const ProgressBar = require('progress');
 
 const PACKAGES_DIR = path.resolve(__dirname, '../packages').replace(/\\/g, '/');
 const BUILD_DIR = path.resolve(__dirname, '../build').replace(/\\/g, '/');
-const fileExtensions = ['js', 'scss']; // Add more file extensions as needed
+const fileExtensions = ['js', 'scss', 'json']; // Add more file extensions as needed
 
 function getComponentOutputDir(file) {
 	const relativePath = path.relative(PACKAGES_DIR, file);
@@ -23,7 +23,7 @@ function getComponentOutputDir(file) {
 	return path.join(outputDir, path.basename(file)).replace(/\\/g, '/');
 }
 
-function processFiles() {
+async function processFiles() {
 	const componentEntryPoints = [];
 
 	fileExtensions.forEach((ext) => {
@@ -72,6 +72,8 @@ function processFiles() {
 	});
 
 	let complete = 0;
+	console.log('Build process started...');
+
 	for (const file of componentEntryPoints) {
 		try {
 			const componentOutputDir = getComponentOutputDir(file);
@@ -81,20 +83,19 @@ function processFiles() {
 				if (isDirectory) {
 					fs.mkdirSync(componentOutputDir, { recursive: true });
 				} else {
-					fs.mkdirSync(path.dirname(componentOutputDir), { recursive: true });
-					worker(file, (error) => {
-						if (error) {
-							// If an error occurs, the process can't be ended immediately since
-							// other workers are likely pending. Optimally, it would end at the
-							// earliest opportunity (after the current round of workers has had
-							// the chance to complete), but this is not made directly possible
-							// through `worker-farm`. Instead, ensure at least that when the
-							// process does exit, it exits with a non-zero code to reflect the
-							// fact that an error had occurred.
-							process.exitCode = 1;
-							console.error(error);
-						}
-						++complete;
+					await fs.mkdirSync(path.dirname(componentOutputDir), {
+						recursive: true,
+					});
+					await new Promise((resolve, reject) => {
+						worker(file, (error) => {
+							if (error) {
+								process.exitCode = 1;
+								console.error(error);
+								reject(error);
+							} else {
+								resolve();
+							}
+						});
 					});
 				}
 			}

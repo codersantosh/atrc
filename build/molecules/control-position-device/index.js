@@ -1,4 +1,23 @@
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.AtrcControlPositionAllowedKeys = void 0;
+var _i18n = require("@wordpress/i18n");
+var _element = require("@wordpress/element");
+var _classnames = _interopRequireDefault(require("classnames"));
+var _lodash = require("lodash");
+var _panelTools = _interopRequireDefault(require("../panel-tools"));
+var _panelRow = _interopRequireDefault(require("../panel-row"));
+var _controlBoxFourDevice = _interopRequireDefault(require("../control-box-four-device"));
+var _controlSelectDevice = _interopRequireDefault(require("../control-select-device"));
+var _controlBoxFourDevice2 = require("./../control-box-four-device");
+var _options = _interopRequireDefault(require("./options"));
+var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
+var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
+var _excluded = ["className", "variant", "label", "value", "onChange", "allowedDevices", "boxFourProps"];
 /*Attributes Structure
 Type Object
 {
@@ -49,55 +68,51 @@ Type Object
 
 }
 * */
-
 /*WordPress*/
-import { __ } from '@wordpress/i18n';
-import { useMemo } from '@wordpress/element';
-
 /*Library*/
-import classnames from 'classnames';
-import { isArray, isEmpty, map } from 'lodash';
-
 /*Inbuilt*/
-import AtrcPanelTools from '../panel-tools';
-import AtrcPanelRow from '../panel-row';
-import AtrcControlBoxFourDevice from '../control-box-four-device';
-import AtrcControlSelectDevice from '../control-select-device';
-import { AtrcControlBoxFourDeviceAllowedKeys } from './../control-box-four-device';
-import PositionOptions from './options';
-
 /*Inbuilt Utils*/
-import AtrcAvailableDevices from '../../utils/available-devices';
-
 /*Inbuilt*/
-import AtrcPrefix from '../../prefix-vars';
-
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 /*Local Components*/
-export const AtrcControlPositionAllowedKeys = ['pos', 'smPos', 'mdPos', 'lgPos', 'xlPos', 'xxlPos', 't', 'b', 'r', 'l', 'xs', 'smT', 'smB', 'smR', 'smL', 'sm', 'mdT', 'mdB', 'mdR', 'mdL', 'md', 'lgT', 'lgB', 'lgR', 'lgL', 'lg', 'xlT', 'xlB', 'xlR', 'xlL', 'xl', 'xxlT', 'xxlB', 'xxlR', 'xxlL', 'xxl'];
-const AtrcControlPositionDevice = props => {
-  const {
-    className = '',
-    variant = '',
-    label = '',
-    value = {},
-    onChange = () => {},
-    allowedDevices = true,
-    boxFourProps = {},
-    ...defaultProps
-  } = props;
-  const hasPositionValue = () => {
-    if (!value || isEmpty(value)) {
+var AtrcControlPositionAllowedKeys = exports.AtrcControlPositionAllowedKeys = ['pos', 'smPos', 'mdPos', 'lgPos', 'xlPos', 'xxlPos', 't', 'b', 'r', 'l', 'xs', 'smT', 'smB', 'smR', 'smL', 'sm', 'mdT', 'mdB', 'mdR', 'mdL', 'md', 'lgT', 'lgB', 'lgR', 'lgL', 'lg', 'xlT', 'xlB', 'xlR', 'xlL', 'xl', 'xxlT', 'xxlB', 'xxlR', 'xxlL', 'xxl'];
+var AtrcControlPositionDevice = function AtrcControlPositionDevice(props) {
+  var _props$className = props.className,
+    className = _props$className === void 0 ? '' : _props$className,
+    _props$variant = props.variant,
+    variant = _props$variant === void 0 ? '' : _props$variant,
+    _props$label = props.label,
+    label = _props$label === void 0 ? '' : _props$label,
+    _props$value = props.value,
+    value = _props$value === void 0 ? {} : _props$value,
+    _props$onChange = props.onChange,
+    onChange = _props$onChange === void 0 ? function () {} : _props$onChange,
+    _props$allowedDevices = props.allowedDevices,
+    allowedDevices = _props$allowedDevices === void 0 ? true : _props$allowedDevices,
+    _props$boxFourProps = props.boxFourProps,
+    boxFourProps = _props$boxFourProps === void 0 ? {} : _props$boxFourProps,
+    defaultProps = _objectWithoutProperties(props, _excluded);
+  var hasPositionValue = function hasPositionValue() {
+    if (!value || (0, _lodash.isEmpty)(value)) {
       return false;
     }
     return !!(value.pos || value.smPos || value.mdPos || value.lgPos || value.xlPos || value.xxlPos);
   };
-  const hasDirectionValue = () => {
-    if (!value || isEmpty(value)) {
+  var hasDirectionValue = function hasDirectionValue() {
+    if (!value || (0, _lodash.isEmpty)(value)) {
       return false;
     }
     return !!(value.xs || value.sm || value.md || value.lg || value.xl || value.xxl || value.t || value.r || value.b || value.l || value.smT || value.smR || value.smB || value.smL || value.mdT || value.mdR || value.mdB || value.mdL || value.lgT || value.lgR || value.lgB || value.lgL || value.xlT || value.xlR || value.xlB || value.xlL || value.xxlT || value.xxlR || value.xxlB || value.xxlL);
   };
-  const doResetPosition = valueCloned => {
+  var doResetPosition = function doResetPosition(valueCloned) {
     delete valueCloned.pos;
     delete valueCloned.smPos;
     delete valueCloned.mdPos;
@@ -106,7 +121,7 @@ const AtrcControlPositionDevice = props => {
     delete valueCloned.xxlPos;
     return valueCloned;
   };
-  const doResetDirection = valueCloned => {
+  var doResetDirection = function doResetDirection(valueCloned) {
     delete valueCloned.t;
     delete valueCloned.r;
     delete valueCloned.b;
@@ -139,19 +154,19 @@ const AtrcControlPositionDevice = props => {
     delete valueCloned.xxl;
     return valueCloned;
   };
-  const resetPosition = () => {
-    const valueCloned = Object.assign({}, value);
+  var resetPosition = function resetPosition() {
+    var valueCloned = Object.assign({}, value);
     onChange(doResetPosition(valueCloned));
   };
-  const resetDirection = () => {
-    const valueCloned = Object.assign({}, value);
+  var resetDirection = function resetDirection() {
+    var valueCloned = Object.assign({}, value);
     onChange(doResetDirection(valueCloned));
   };
-  const resetAll = () => {
+  var resetAll = function resetAll() {
     onChange({});
   };
-  const setPosition = newVal => {
-    let valueCloned = Object.assign({}, value);
+  var setPosition = function setPosition(newVal) {
+    var valueCloned = Object.assign({}, value);
     valueCloned = doResetPosition(valueCloned);
     if (newVal.xs) {
       valueCloned.pos = newVal.xs;
@@ -173,30 +188,31 @@ const AtrcControlPositionDevice = props => {
     }
     onChange(valueCloned);
   };
-  const setDirection = newVal => {
-    let valueCloned = Object.assign({}, value);
+  var setDirection = function setDirection(newVal) {
+    var valueCloned = Object.assign({}, value);
     valueCloned = doResetDirection(valueCloned);
-    valueCloned = {
-      ...valueCloned,
-      ...newVal
-    };
+    valueCloned = _objectSpread(_objectSpread({}, valueCloned), newVal);
     onChange(valueCloned);
   };
-  const AllTabs = useMemo(() => {
+  var AllTabs = (0, _element.useMemo)(function () {
     return [{
       name: 'pos',
-      title: __('Position', 'atrc-prefix-atrc'),
+      title: (0, _i18n.__)('Position', 'atrc-prefix-atrc'),
       hasValue: hasPositionValue(),
-      onDeselect: () => resetPosition()
+      onDeselect: function onDeselect() {
+        return resetPosition();
+      }
     }, {
       name: 'dir',
-      title: __('Position direction', 'atrc-prefix-atrc'),
+      title: (0, _i18n.__)('Position direction', 'atrc-prefix-atrc'),
       hasValue: hasDirectionValue(),
-      onDeselect: () => resetDirection()
+      onDeselect: function onDeselect() {
+        return resetDirection();
+      }
     }];
   }, []);
-  const newValue = {};
-  AtrcControlBoxFourDeviceAllowedKeys.forEach(key => {
+  var newValue = {};
+  _controlBoxFourDevice2.AtrcControlBoxFourDeviceAllowedKeys.forEach(function (key) {
     if (Object.prototype.hasOwnProperty.call(value, key)) {
       newValue[key] = value[key];
     } else {
@@ -208,51 +224,53 @@ const AtrcControlPositionDevice = props => {
   if (!allowedDevices) {
     return null;
   }
-  const Devices = () => {
-    if (isArray(allowedDevices)) {
+  var Devices = function Devices() {
+    if ((0, _lodash.isArray)(allowedDevices)) {
       return allowedDevices;
     }
-    return AtrcAvailableDevices;
+    return _availableDevices.default;
   };
-  return /*#__PURE__*/React.createElement(AtrcPanelTools, _extends({
-    className: classnames(AtrcPrefix('ctrl-pos-device'), className, variant ? AtrcPrefix('ctrl-pos-device') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(_panelTools.default, _extends({
+    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-pos-device'), className, variant ? (0, _prefixVars.default)('ctrl-pos-device') + '-' + variant : ''),
     label: label,
     resetAll: resetAll,
     tools: AllTabs
-  }, defaultProps), activeItems => map(activeItems, (tab, iDx) => {
-    if ('pos' === tab) {
-      return /*#__PURE__*/React.createElement(AtrcPanelRow, {
-        className: classnames('at-m'),
+  }, defaultProps), function (activeItems) {
+    return (0, _lodash.map)(activeItems, function (tab, iDx) {
+      if ('pos' === tab) {
+        return /*#__PURE__*/React.createElement(_panelRow.default, {
+          className: (0, _classnames.default)('at-m'),
+          key: iDx
+        }, /*#__PURE__*/React.createElement(_controlSelectDevice.default, {
+          className: (0, _classnames.default)('at-flx-grw-1'),
+          label: (0, _i18n.__)('Position', 'atrc-prefix-atrc'),
+          options: _options.default,
+          value: {
+            xs: value && value.pos,
+            sm: value && value.smPos,
+            md: value && value.mdPos,
+            lg: value && value.lgPos,
+            xl: value && value.xlPos,
+            xxl: value && value.xxlPos
+          },
+          onChange: setPosition,
+          allowedDevices: Devices()
+        }));
+      }
+      /* No boxFourProps, it is needed as object */
+      return /*#__PURE__*/React.createElement(_panelRow.default, {
+        className: (0, _classnames.default)('at-m'),
         key: iDx
-      }, /*#__PURE__*/React.createElement(AtrcControlSelectDevice, {
-        className: classnames('at-flx-grw-1'),
-        label: __('Position', 'atrc-prefix-atrc'),
-        options: PositionOptions,
-        value: {
-          xs: value && value.pos,
-          sm: value && value.smPos,
-          md: value && value.mdPos,
-          lg: value && value.lgPos,
-          xl: value && value.xlPos,
-          xxl: value && value.xxlPos
-        },
-        onChange: setPosition,
-        allowedDevices: Devices()
+      }, /*#__PURE__*/React.createElement(_controlBoxFourDevice.default, {
+        label: (0, _i18n.__)('Position direction', 'atrc-prefix-atrc'),
+        className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-pos'), 'at-flx-grw-1', className, variant ? (0, _prefixVars.default)('ctrl-pos') + '-' + variant : ''),
+        value: newValue,
+        onChange: setDirection,
+        allowedDevices: Devices(),
+        boxFourProps: boxFourProps
       }));
-    }
-    /* No boxFourProps, it is needed as object */
-    return /*#__PURE__*/React.createElement(AtrcPanelRow, {
-      className: classnames('at-m'),
-      key: iDx
-    }, /*#__PURE__*/React.createElement(AtrcControlBoxFourDevice, {
-      label: __('Position direction', 'atrc-prefix-atrc'),
-      className: classnames(AtrcPrefix('ctrl-pos'), 'at-flx-grw-1', className, variant ? AtrcPrefix('ctrl-pos') + '-' + variant : ''),
-      value: newValue,
-      onChange: setDirection,
-      allowedDevices: Devices(),
-      boxFourProps: boxFourProps
-    }));
-  }));
+    });
+  });
 };
-export default AtrcControlPositionDevice;
+var _default = exports.default = AtrcControlPositionDevice;
 //# sourceMappingURL=index.js.map

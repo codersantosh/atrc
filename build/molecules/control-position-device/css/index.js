@@ -1,15 +1,22 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _lodash = require("lodash");
+var _top = _interopRequireDefault(require("./top"));
+var _right = _interopRequireDefault(require("./right"));
+var _bottom = _interopRequireDefault(require("./bottom"));
+var _left = _interopRequireDefault(require("./left"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Library*/
-import { isEmpty } from 'lodash';
 
 /*Inbuilt*/
-import Top from './top';
-import Right from './right';
-import Bottom from './bottom';
-import Left from './left';
 
 /*Local*/
-const AtrcControlPositionDeviceCss = (value, properties) => {
-  let innerOutput = {
+var AtrcControlPositionDeviceCss = function AtrcControlPositionDeviceCss(value, properties) {
+  var innerOutput = {
     xs: '',
     sm: '',
     md: '',
@@ -17,16 +24,16 @@ const AtrcControlPositionDeviceCss = (value, properties) => {
     xl: '',
     xxl: ''
   };
-  if (!isEmpty(value)) {
+  if (!(0, _lodash.isEmpty)(value)) {
     if (value.pos) {
-      innerOutput.xs += `${properties.pos}      : ${value.pos};`;
+      innerOutput.xs += "".concat(properties.pos, "      : ").concat(value.pos, ";");
     }
-    innerOutput = Top(value, innerOutput, properties.t);
-    innerOutput = Right(value, innerOutput, properties.r);
-    innerOutput = Bottom(value, innerOutput, properties.b);
-    innerOutput = Left(value, innerOutput, properties.l);
+    innerOutput = (0, _top.default)(value, innerOutput, properties.t);
+    innerOutput = (0, _right.default)(value, innerOutput, properties.r);
+    innerOutput = (0, _bottom.default)(value, innerOutput, properties.b);
+    innerOutput = (0, _left.default)(value, innerOutput, properties.l);
   }
   return innerOutput;
 };
-export default AtrcControlPositionDeviceCss;
+var _default = exports.default = AtrcControlPositionDeviceCss;
 //# sourceMappingURL=index.js.map

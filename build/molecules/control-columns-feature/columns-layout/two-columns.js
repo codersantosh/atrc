@@ -1,23 +1,29 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _i18n = require("@wordpress/i18n");
+var _controlSelectButton = _interopRequireDefault(require("../../control-select-button"));
+var _options = require("../options");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /* WordPress */
-import { __ } from '@wordpress/i18n';
 
 /* Inbuilt */
-import AtrcControlSelectButton from '../../control-select-button';
-import { TwoColumnsOptions } from '../options';
 
 /* Local */
-const TwoColumnsLayout = props => {
-  const {
-    value,
-    onChange = () => {}
-  } = props;
-  return /*#__PURE__*/React.createElement(AtrcControlSelectButton, {
-    label: __('Two columns layout', 'atrc-prefix-atrc'),
+var TwoColumnsLayout = function TwoColumnsLayout(props) {
+  var value = props.value,
+    _props$onChange = props.onChange,
+    onChange = _props$onChange === void 0 ? function () {} : _props$onChange;
+  return /*#__PURE__*/React.createElement(_controlSelectButton.default, {
+    label: (0, _i18n.__)('Two columns layout', 'atrc-prefix-atrc'),
     value: value,
-    options: TwoColumnsOptions,
+    options: _options.TwoColumnsOptions,
     onChange: onChange,
     allowReset: false
   });
 };
-export default TwoColumnsLayout;
+var _default = exports.default = TwoColumnsLayout;
 //# sourceMappingURL=two-columns.js.map

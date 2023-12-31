@@ -1,10 +1,19 @@
-export default function AtrcUniqueID(length = 7) {
-  const a = new Uint32Array(3);
-  let result = '';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = AtrcUniqueID;
+function AtrcUniqueID() {
+  var length = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 7;
+  var a = new Uint32Array(3);
+  var result = '';
   window.crypto.getRandomValues(a);
-  const characters = (performance.now().toString(36) + Array.from(a).map(A => A.toString(36)).join('')).replace(/\./g, ''),
+  var characters = (performance.now().toString(36) + Array.from(a).map(function (A) {
+      return A.toString(36);
+    }).join('')).replace(/\./g, ''),
     charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
+  for (var i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return 'ab-' + result;

@@ -1,4 +1,21 @@
-import AtrcControlColumnsFeature from './layout-control';
-import AtrcControlColumnsFeatureLayoutPlaceholder from './layout-placeholder';
-export { AtrcControlColumnsFeatureLayoutPlaceholder, AtrcControlColumnsFeature };
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "AtrcControlColumnsFeature", {
+  enumerable: true,
+  get: function get() {
+    return _layoutControl.default;
+  }
+});
+Object.defineProperty(exports, "AtrcControlColumnsFeatureLayoutPlaceholder", {
+  enumerable: true,
+  get: function get() {
+    return _layoutPlaceholder.default;
+  }
+});
+var _layoutControl = _interopRequireDefault(require("./layout-control"));
+var _layoutPlaceholder = _interopRequireDefault(require("./layout-placeholder"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 //# sourceMappingURL=index.js.map

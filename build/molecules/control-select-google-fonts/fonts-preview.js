@@ -1,42 +1,51 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = AtrcControlSelectGoogleFontsPreview;
+var _element = require("@wordpress/element");
+var _i18n = require("@wordpress/i18n");
+var _reactJss = require("react-jss");
 /*WordPress*/
-import { useEffect } from '@wordpress/element';
-import { __, sprintf } from '@wordpress/i18n';
 
 /*Library*/
-import { createUseStyles } from 'react-jss';
 
 /*Local*/
-const useStyles = createUseStyles({
+var useStyles = (0, _reactJss.createUseStyles)({
   root: {
-    fontFamily: ({
-      font
-    }) => font,
-    fontWeight: ({
-      weight
-    }) => weight
+    fontFamily: function fontFamily(_ref) {
+      var font = _ref.font;
+      return font;
+    },
+    fontWeight: function fontWeight(_ref2) {
+      var weight = _ref2.weight;
+      return weight;
+    }
   }
 });
-export default function AtrcControlSelectGoogleFontsPreview({
-  font,
-  weight
-}) {
-  const classes = useStyles({
-    font,
-    weight
+function AtrcControlSelectGoogleFontsPreview(_ref3) {
+  var font = _ref3.font,
+    weight = _ref3.weight;
+  var classes = useStyles({
+    font: font,
+    weight: weight
   });
-  useEffect(() => {
-    const link = document.createElement('link');
-    link.href = `https://fonts.googleapis.com/css?family=${font}:${weight}`;
+  (0, _element.useEffect)(function () {
+    var link = document.createElement('link');
+    link.href = "https://fonts.googleapis.com/css?family=".concat(font, ":").concat(weight);
     link.rel = 'stylesheet';
     document.head.appendChild(link);
   }, [font, weight]);
-  const weights = weight.split(',');
-  return /*#__PURE__*/React.createElement(React.Fragment, null, weights.map(wt => /*#__PURE__*/React.createElement("div", {
-    className: classes.root,
-    key: wt,
-    style: {
-      fontWeight: wt
-    }
-  }, sprintf(__('This text is styled with a Google font `%s` and weight `%s`.', 'atrc-prefix-atrc'), font, wt || __('default', 'atrc-prefix-atrc')))));
+  var weights = weight.split(',');
+  return /*#__PURE__*/React.createElement(React.Fragment, null, weights.map(function (wt) {
+    return /*#__PURE__*/React.createElement("div", {
+      className: classes.root,
+      key: wt,
+      style: {
+        fontWeight: wt
+      }
+    }, (0, _i18n.sprintf)((0, _i18n.__)('This text is styled with a Google font `%s` and weight `%s`.', 'atrc-prefix-atrc'), font, wt || (0, _i18n.__)('default', 'atrc-prefix-atrc')));
+  }));
 }
 //# sourceMappingURL=fonts-preview.js.map

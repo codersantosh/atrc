@@ -1,22 +1,27 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _lodash = require("lodash");
+var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Library*/
-import { isEmpty, isObject } from 'lodash';
 
 /*Inbuilt*/
-import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Local*/
-const AtrcControlFlexAlignItemsDeviceClasses = abStyle => {
+var AtrcControlFlexAlignItemsDeviceClasses = function AtrcControlFlexAlignItemsDeviceClasses(abStyle) {
   if (!abStyle || !abStyle.alItms) {
     return '';
   }
-  const {
-    alItms
-  } = abStyle;
-  if (!isObject(alItms)) return '';
-  if (isEmpty(alItms)) return '';
-  let classes = '';
-  for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-    const device = AtrcAvailableDevices[i];
+  var alItms = abStyle.alItms;
+  if (!(0, _lodash.isObject)(alItms)) return '';
+  if ((0, _lodash.isEmpty)(alItms)) return '';
+  var classes = '';
+  for (var i = 0; i < _availableDevices.default.length; i++) {
+    var device = _availableDevices.default[i];
     if (!device.on) {
       continue;
     }
@@ -30,5 +35,5 @@ const AtrcControlFlexAlignItemsDeviceClasses = abStyle => {
   }
   return classes;
 };
-export default AtrcControlFlexAlignItemsDeviceClasses;
+var _default = exports.default = AtrcControlFlexAlignItemsDeviceClasses;
 //# sourceMappingURL=classes.js.map

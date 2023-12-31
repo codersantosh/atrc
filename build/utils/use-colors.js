@@ -1,8 +1,26 @@
-import { useState, useEffect } from '@wordpress/element';
-import { select } from '@wordpress/data';
-import { isEmpty } from 'lodash';
-import { useSetting } from '@wordpress/block-editor';
-const DefaultColors = {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AtrcUseColorGradients = AtrcUseColorGradients;
+exports.AtrcUseColorSolids = AtrcUseColorSolids;
+exports.default = void 0;
+var _element = require("@wordpress/element");
+var _data = require("@wordpress/data");
+var _lodash = require("lodash");
+var _blockEditor = require("@wordpress/block-editor");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+var DefaultColors = {
   colors: [{
     color: 'var(#{$varPrefix}-white)fff',
     name: 'Base',
@@ -58,47 +76,53 @@ const DefaultColors = {
     name: 'Diagonal background to tertiary'
   }]
 };
-export function AtrcUseColorSolids() {
-  const [allSolids, setAllSolids] = useState([]);
-  const userPalette = useSetting('color.palette.custom');
-  const themePalette = useSetting('color.palette.theme');
-  const defaultPalette = useSetting('color.palette.default');
-  useEffect(() => {
-    let solids = [...(userPalette || []), ...(themePalette || []), ...(defaultPalette || [])];
-    if (isEmpty(solids)) {
-      solids = select('core/block-editor').getSettings().colors;
+function AtrcUseColorSolids() {
+  var _useState = (0, _element.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    allSolids = _useState2[0],
+    setAllSolids = _useState2[1];
+  var userPalette = (0, _blockEditor.useSetting)('color.palette.custom');
+  var themePalette = (0, _blockEditor.useSetting)('color.palette.theme');
+  var defaultPalette = (0, _blockEditor.useSetting)('color.palette.default');
+  (0, _element.useEffect)(function () {
+    var solids = [].concat(_toConsumableArray(userPalette || []), _toConsumableArray(themePalette || []), _toConsumableArray(defaultPalette || []));
+    if ((0, _lodash.isEmpty)(solids)) {
+      solids = (0, _data.select)('core/block-editor').getSettings().colors;
     }
-    if (isEmpty(solids)) {
-      solids = [...DefaultColors.colors];
+    if ((0, _lodash.isEmpty)(solids)) {
+      solids = _toConsumableArray(DefaultColors.colors);
     }
     setAllSolids(solids);
   }, [userPalette, themePalette, defaultPalette]);
   return allSolids;
 }
-export function AtrcUseColorGradients() {
-  const [allGradients, setAllGradients] = useState([]);
-  const userGradientPalette = useSetting('color.gradients.custom');
-  const themeGradientPalette = useSetting('color.gradients.theme');
-  const defaultGradientPalette = useSetting('color.gradients.default');
-  useEffect(() => {
-    let gradientsColor = [...(userGradientPalette || []), ...(themeGradientPalette || []), ...(defaultGradientPalette || [])];
-    if (isEmpty(gradientsColor)) {
-      gradientsColor = select('core/block-editor').getSettings().gradients;
+function AtrcUseColorGradients() {
+  var _useState3 = (0, _element.useState)([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    allGradients = _useState4[0],
+    setAllGradients = _useState4[1];
+  var userGradientPalette = (0, _blockEditor.useSetting)('color.gradients.custom');
+  var themeGradientPalette = (0, _blockEditor.useSetting)('color.gradients.theme');
+  var defaultGradientPalette = (0, _blockEditor.useSetting)('color.gradients.default');
+  (0, _element.useEffect)(function () {
+    var gradientsColor = [].concat(_toConsumableArray(userGradientPalette || []), _toConsumableArray(themeGradientPalette || []), _toConsumableArray(defaultGradientPalette || []));
+    if ((0, _lodash.isEmpty)(gradientsColor)) {
+      gradientsColor = (0, _data.select)('core/block-editor').getSettings().gradients;
     }
-    if (isEmpty(gradientsColor)) {
-      gradientsColor = [...DefaultColors.gradients];
+    if ((0, _lodash.isEmpty)(gradientsColor)) {
+      gradientsColor = _toConsumableArray(DefaultColors.gradients);
     }
     setAllGradients(gradientsColor);
   }, [userGradientPalette, themeGradientPalette, defaultGradientPalette]);
   return allGradients;
 }
-const AtrcUseColors = () => {
-  const allSolids = AtrcUseColorSolids();
-  const allGradients = AtrcUseColorGradients();
+var AtrcUseColors = function AtrcUseColors() {
+  var allSolids = AtrcUseColorSolids();
+  var allGradients = AtrcUseColorGradients();
   return {
-    allSolids,
-    allGradients
+    allSolids: allSolids,
+    allGradients: allGradients
   };
 };
-export default AtrcUseColors;
+var _default = exports.default = AtrcUseColors;
 //# sourceMappingURL=use-colors.js.map

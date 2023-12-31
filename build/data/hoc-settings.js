@@ -1,50 +1,62 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _data = require("@wordpress/data");
 /*WordPress*/
-import { withSelect, withDispatch } from '@wordpress/data';
 
 /*Local*/
-const AtrcApplyWithSettings = WrappedComponent => {
-  return withSelect((select, ownProps) => {
+var AtrcApplyWithSettings = function AtrcApplyWithSettings(WrappedComponent) {
+  return (0, _data.withSelect)(function (select, ownProps) {
     if (!ownProps || !ownProps.atrcStore || !ownProps.atrcStoreKey) {
       return null;
     }
-    const {
-      atrcStore = '',
-      atrcStoreKey = ''
-    } = ownProps;
-    const settingsData = select(atrcStore).getSettings(atrcStoreKey);
-    let isLoading = false;
-    let canSave = false;
-    let notices = [];
-    let settings = null;
+    var _ownProps$atrcStore = ownProps.atrcStore,
+      atrcStore = _ownProps$atrcStore === void 0 ? '' : _ownProps$atrcStore,
+      _ownProps$atrcStoreKe = ownProps.atrcStoreKey,
+      atrcStoreKey = _ownProps$atrcStoreKe === void 0 ? '' : _ownProps$atrcStoreKe;
+    var settingsData = select(atrcStore).getSettings(atrcStoreKey);
+    var isLoading = false;
+    var canSave = false;
+    var notices = [];
+    var settings = null;
     if (settingsData && settingsData.settings) {
-      ({
-        isLoading,
-        canSave,
-        notices,
-        settings
-      } = settingsData);
+      isLoading = settingsData.isLoading;
+      canSave = settingsData.canSave;
+      notices = settingsData.notices;
+      settings = settingsData.settings;
     }
     return {
-      isLoading,
-      canSave,
-      notices,
-      settings
+      isLoading: isLoading,
+      canSave: canSave,
+      notices: notices,
+      settings: settings
     };
-  })(withDispatch((dispatch, ownProps) => {
+  })((0, _data.withDispatch)(function (dispatch, ownProps) {
     if (!ownProps || !ownProps.atrcStore || !ownProps.atrcStoreKey) {
       return null;
     }
-    const {
-      atrcStore = '',
-      atrcStoreKey = ''
-    } = ownProps;
+    var _ownProps$atrcStore2 = ownProps.atrcStore,
+      atrcStore = _ownProps$atrcStore2 === void 0 ? '' : _ownProps$atrcStore2,
+      _ownProps$atrcStoreKe2 = ownProps.atrcStoreKey,
+      atrcStoreKey = _ownProps$atrcStoreKe2 === void 0 ? '' : _ownProps$atrcStoreKe2;
     return {
-      saveSettings: data => dispatch(atrcStore).saveSettings(atrcStoreKey, data, true),
-      updateSetting: (key, val) => dispatch(atrcStore).updateSetting(atrcStoreKey, key, val),
-      setNotice: notice => dispatch(ownProps.atrcStore).setNotice(atrcStoreKey, notice),
-      removeNotice: id => dispatch(ownProps.atrcStore).removeNotice(atrcStoreKey, id)
+      saveSettings: function saveSettings(data) {
+        return dispatch(atrcStore).saveSettings(atrcStoreKey, data, true);
+      },
+      updateSetting: function updateSetting(key, val) {
+        return dispatch(atrcStore).updateSetting(atrcStoreKey, key, val);
+      },
+      setNotice: function setNotice(notice) {
+        return dispatch(ownProps.atrcStore).setNotice(atrcStoreKey, notice);
+      },
+      removeNotice: function removeNotice(id) {
+        return dispatch(ownProps.atrcStore).removeNotice(atrcStoreKey, id);
+      }
     };
   })(WrappedComponent));
 };
-export default AtrcApplyWithSettings;
+var _default = exports.default = AtrcApplyWithSettings;
 //# sourceMappingURL=hoc-settings.js.map

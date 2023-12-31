@@ -1,24 +1,30 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 /*Local*/
-const Bottom = (value, innerOutput, property) => {
+var Bottom = function Bottom(value, innerOutput, property) {
   if (value.b) {
-    innerOutput.xs += `${property} : ${value.b};`;
+    innerOutput.xs += "".concat(property, " : ").concat(value.b, ";");
   }
   if (value.smB) {
-    innerOutput.sm += `${property} : ${value.smB};`;
+    innerOutput.sm += "".concat(property, " : ").concat(value.smB, ";");
   }
   if (value.mdB) {
-    innerOutput.md += `${property} : ${value.mdB};`;
+    innerOutput.md += "".concat(property, " : ").concat(value.mdB, ";");
   }
   if (value.lgB) {
-    innerOutput.lg += `${property} : ${value.lgB};`;
+    innerOutput.lg += "".concat(property, " : ").concat(value.lgB, ";");
   }
   if (value.xlB) {
-    innerOutput.xl += `${property} : ${value.xlB};`;
+    innerOutput.xl += "".concat(property, " : ").concat(value.xlB, ";");
   }
   if (value.xxlB) {
-    innerOutput.xxl += `${property} : ${value.xxlB};`;
+    innerOutput.xxl += "".concat(property, " : ").concat(value.xxlB, ";");
   }
   return innerOutput;
 };
-export default Bottom;
+var _default = exports.default = Bottom;
 //# sourceMappingURL=bottom.js.map

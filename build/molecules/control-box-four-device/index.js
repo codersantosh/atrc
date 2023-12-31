@@ -1,5 +1,23 @@
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-/*Attributes Structure
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.AtrcControlBoxFourDeviceAllowedKeys = void 0;
+var _lodash = require("lodash");
+var _classnames = _interopRequireDefault(require("classnames"));
+var _controlBoxFour = _interopRequireDefault(require("../control-box-four"));
+var _dropdownDevice = _interopRequireDefault(require("../dropdown-device"));
+var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
+var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); } /*Attributes Structure
 Type Object
 {
     "t":"",
@@ -38,30 +56,14 @@ Type Object
     "xxlL":"",
     "xxl":"",
 }
-* */
-
-/*Library*/
-import { isArray, isString } from 'lodash';
-import classnames from 'classnames';
-
-/*Inbuilt*/
-import AtrcControlBoxFour from '../control-box-four';
-import AtrcDropdownDevice from '../dropdown-device';
-
-/*Inbuilt Utils*/
-import AtrcAvailableDevices from '../../utils/available-devices';
-
-/*Inbuilt*/
-import AtrcPrefix from '../../prefix-vars';
-
+* */ /*Library*/ /*Inbuilt*/ /*Inbuilt Utils*/ /*Inbuilt*/
 /*Local Components*/
-export const AtrcControlBoxFourDeviceAllowedKeys = ['xs', 't', 'b', 'r', 'l', 'sm', 'smT', 'smR', 'smB', 'smL', 'md', 'mdT', 'mdR', 'mdB', 'mdL', 'lg', 'lgT', 'lgR', 'lgB', 'lgL', 'xl', 'xlT', 'xlR', 'xlB', 'xlL', 'xxl', 'xxlT', 'xxlR', 'xxlB', 'xxlL'];
-function mappingDeviceBoxFourValues({
-  value,
-  device,
-  valueType,
-  splitOnAxis
-}) {
+var AtrcControlBoxFourDeviceAllowedKeys = exports.AtrcControlBoxFourDeviceAllowedKeys = ['xs', 't', 'b', 'r', 'l', 'sm', 'smT', 'smR', 'smB', 'smL', 'md', 'mdT', 'mdR', 'mdB', 'mdL', 'lg', 'lgT', 'lgR', 'lgB', 'lgL', 'xl', 'xlT', 'xlR', 'xlB', 'xlL', 'xxl', 'xxlT', 'xxlR', 'xxlB', 'xxlL'];
+function mappingDeviceBoxFourValues(_ref) {
+  var value = _ref.value,
+    device = _ref.device,
+    valueType = _ref.valueType,
+    splitOnAxis = _ref.splitOnAxis;
   if (value && value[device]) {
     if ('string' === valueType) {
       return value[device];
@@ -94,30 +96,32 @@ function mappingDeviceBoxFourValues({
     l: value && value[device + 'L']
   };
 }
-const RenderTab = ({
-  device,
-  value,
-  onChange,
-  boxFourProps = {}
-}) => {
-  const {
-    valueType = '',
-    splitOnAxis = false
-  } = boxFourProps;
-  return /*#__PURE__*/React.createElement(AtrcControlBoxFour, _extends({
+var RenderTab = function RenderTab(_ref2) {
+  var device = _ref2.device,
+    value = _ref2.value,
+    _onChange = _ref2.onChange,
+    _ref2$boxFourProps = _ref2.boxFourProps,
+    boxFourProps = _ref2$boxFourProps === void 0 ? {} : _ref2$boxFourProps;
+  var _boxFourProps$valueTy = boxFourProps.valueType,
+    valueType = _boxFourProps$valueTy === void 0 ? '' : _boxFourProps$valueTy,
+    _boxFourProps$splitOn = boxFourProps.splitOnAxis,
+    splitOnAxis = _boxFourProps$splitOn === void 0 ? false : _boxFourProps$splitOn;
+  return /*#__PURE__*/React.createElement(_controlBoxFour.default, _extends({
     label: "",
     values: mappingDeviceBoxFourValues({
-      value,
-      device,
-      valueType,
-      splitOnAxis
+      value: value,
+      device: device,
+      valueType: valueType,
+      splitOnAxis: splitOnAxis
     }),
-    onChange: newVal => onChange(newVal, device)
+    onChange: function onChange(newVal) {
+      return _onChange(newVal, device);
+    }
   }, boxFourProps));
 };
 
 /*XS*/
-const mappingNormalNewXsValues = value => {
+var mappingNormalNewXsValues = function mappingNormalNewXsValues(value) {
   if (value && value.t === value.r === value.b === value.l) {
     return {
       xs: value.t
@@ -133,42 +137,31 @@ const mappingNormalNewXsValues = value => {
 };
 
 /*Other responsive devices*/
-const mappingNormalNewResponsiveValues = (value, device) => {
+var mappingNormalNewResponsiveValues = function mappingNormalNewResponsiveValues(value, device) {
   if (value && value.t === value.r === value.b === value.l) {
-    return {
-      [device]: value.t
-    };
+    return _defineProperty({}, device, value.t);
   }
   /*string check done below*/
-  return {
-    [device + 'T']: value && value.t,
-    [device + 'R']: value && value.r,
-    [device + 'B']: value && value.b,
-    [device + 'L']: value && value.l
-  };
+  return _defineProperty(_defineProperty(_defineProperty(_defineProperty({}, device + 'T', value && value.t), device + 'R', value && value.r), device + 'B', value && value.b), device + 'L', value && value.l);
 };
-function mappingDeviceNewValues({
-  value,
-  device,
-  newVal
-}) {
-  const valueCloned = Object.assign({}, value);
-  let newValues = {};
+function mappingDeviceNewValues(_ref5) {
+  var value = _ref5.value,
+    device = _ref5.device,
+    newVal = _ref5.newVal;
+  var valueCloned = Object.assign({}, value);
+  var newValues = {};
   if ('xs' === device) {
     delete valueCloned.t;
     delete valueCloned.r;
     delete valueCloned.b;
     delete valueCloned.l;
     delete valueCloned.xs;
-    if (isString(newVal)) {
+    if ((0, _lodash.isString)(newVal)) {
       valueCloned.xs = newVal;
       newValues = valueCloned;
     } else {
-      const changedValues = mappingNormalNewXsValues(newVal);
-      newValues = {
-        ...valueCloned,
-        ...changedValues
-      };
+      var changedValues = mappingNormalNewXsValues(newVal);
+      newValues = _objectSpread(_objectSpread({}, valueCloned), changedValues);
     }
   } else {
     delete valueCloned[device + 'T'];
@@ -176,54 +169,60 @@ function mappingDeviceNewValues({
     delete valueCloned[device + 'B'];
     delete valueCloned[device + 'L'];
     delete valueCloned[device];
-    if (isString(newVal)) {
+    if ((0, _lodash.isString)(newVal)) {
       valueCloned[device] = newVal;
       newValues = valueCloned;
     } else {
-      const changedValues = mappingNormalNewResponsiveValues(newVal, device);
-      newValues = {
-        ...valueCloned,
-        ...changedValues
-      };
+      var _changedValues = mappingNormalNewResponsiveValues(newVal, device);
+      newValues = _objectSpread(_objectSpread({}, valueCloned), _changedValues);
     }
   }
   return newValues;
 }
-const AtrcControlBoxFourDevice = props => {
-  const {
-    value = {},
-    label = '',
-    onChange = () => {},
-    variant = '',
-    className = '',
-    allowedDevices = true,
-    boxFourProps = {}
-  } = props;
+var AtrcControlBoxFourDevice = function AtrcControlBoxFourDevice(props) {
+  var _props$value = props.value,
+    value = _props$value === void 0 ? {} : _props$value,
+    _props$label = props.label,
+    label = _props$label === void 0 ? '' : _props$label,
+    _props$onChange = props.onChange,
+    _onChange2 = _props$onChange === void 0 ? function () {} : _props$onChange,
+    _props$variant = props.variant,
+    variant = _props$variant === void 0 ? '' : _props$variant,
+    _props$className = props.className,
+    className = _props$className === void 0 ? '' : _props$className,
+    _props$allowedDevices = props.allowedDevices,
+    allowedDevices = _props$allowedDevices === void 0 ? true : _props$allowedDevices,
+    _props$boxFourProps = props.boxFourProps,
+    boxFourProps = _props$boxFourProps === void 0 ? {} : _props$boxFourProps;
 
   /* Return null since no device */
   if (!allowedDevices) {
     return null;
   }
-  const Devices = () => {
-    if (isArray(allowedDevices)) {
+  var Devices = function Devices() {
+    if ((0, _lodash.isArray)(allowedDevices)) {
       return allowedDevices;
     }
-    return AtrcAvailableDevices;
+    return _availableDevices.default;
   };
-  return /*#__PURE__*/React.createElement(AtrcDropdownDevice, {
+  return /*#__PURE__*/React.createElement(_dropdownDevice.default, {
     label: label,
     tabs: Devices(),
-    className: classnames(AtrcPrefix('ctrl-box-four-device'), className, variant ? AtrcPrefix('ctrl-box-four-device') + '-' + variant : '')
-  }, tab => /*#__PURE__*/React.createElement(RenderTab, {
-    device: tab.name,
-    value: value,
-    onChange: (newVal, device) => onChange(mappingDeviceNewValues({
-      value,
-      device,
-      newVal
-    })),
-    boxFourProps: boxFourProps
-  }));
+    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-box-four-device'), className, variant ? (0, _prefixVars.default)('ctrl-box-four-device') + '-' + variant : '')
+  }, function (tab) {
+    return /*#__PURE__*/React.createElement(RenderTab, {
+      device: tab.name,
+      value: value,
+      onChange: function onChange(newVal, device) {
+        return _onChange2(mappingDeviceNewValues({
+          value: value,
+          device: device,
+          newVal: newVal
+        }));
+      },
+      boxFourProps: boxFourProps
+    });
+  });
 };
-export default AtrcControlBoxFourDevice;
+var _default = exports.default = AtrcControlBoxFourDevice;
 //# sourceMappingURL=index.js.map

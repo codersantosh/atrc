@@ -1,20 +1,22 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _lodash = require("lodash");
 /* Library */
-import { isEmpty } from 'lodash';
 
 /* Local */
-const AtrcControlBoxShadowCss = (value, property = 'box-shadow') => {
-  const output = {
+var AtrcControlBoxShadowCss = function AtrcControlBoxShadowCss(value) {
+  var property = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'box-shadow';
+  var output = {
     xs: ''
   };
-  if (!isEmpty(value) && value.x && value.y) {
-    output.xs += `${property} :
-		${value.pos ? value.pos : ''}
-		${value.x} ${value.y} 
-		${value.blr ? value.blr : ''}
-		${value.sprd ? value.sprd : ''} 
-		${value.cl ? value.cl : ''};`;
+  if (!(0, _lodash.isEmpty)(value) && value.x && value.y) {
+    output.xs += "".concat(property, " :\n\t\t").concat(value.pos ? value.pos : '', "\n\t\t").concat(value.x, " ").concat(value.y, " \n\t\t").concat(value.blr ? value.blr : '', "\n\t\t").concat(value.sprd ? value.sprd : '', " \n\t\t").concat(value.cl ? value.cl : '', ";");
   }
   return output;
 };
-export default AtrcControlBoxShadowCss;
+var _default = exports.default = AtrcControlBoxShadowCss;
 //# sourceMappingURL=css.js.map

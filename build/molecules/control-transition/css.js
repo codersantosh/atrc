@@ -1,18 +1,24 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _lodash = require("lodash");
 /*Library*/
-import { isEmpty } from 'lodash';
 
 /*Local*/
-const AtrcControlTransitionCss = (value, property) => {
-  const innerOutput = {
+var AtrcControlTransitionCss = function AtrcControlTransitionCss(value, property) {
+  var innerOutput = {
     xs: '',
     xsHover: ''
   };
-  if (!isEmpty(value)) {
+  if (!(0, _lodash.isEmpty)(value)) {
     if (value.dur || 0 === value.dur) {
-      innerOutput.xs += `${property}      : all ${value.dur}s ${value.tmgFn || 'ease'} ${value.dla || 0}s;`;
+      innerOutput.xs += "".concat(property, "      : all ").concat(value.dur, "s ").concat(value.tmgFn || 'ease', " ").concat(value.dla || 0, "s;");
     }
   }
   return innerOutput;
 };
-export default AtrcControlTransitionCss;
+var _default = exports.default = AtrcControlTransitionCss;
 //# sourceMappingURL=css.js.map

@@ -4,7 +4,7 @@ const ProgressBar = require('progress');
 
 const PACKAGES_DIR = path.resolve(__dirname, '../packages').replace(/\\/g, '/');
 const BUILD_DIR = path.resolve(__dirname, '../build').replace(/\\/g, '/');
-const fileExtensions = ['js', 'scss']; // Add more file extensions as needed
+const fileExtensions = ['js', 'json', 'scss']; // Add more file extensions as needed
 
 function getComponentType(file) {
 	return path.relative(PACKAGES_DIR, file).split(path.sep)[0];
