@@ -3,8 +3,6 @@ import { __ } from '@wordpress/i18n';
 
 import { decodeEntities } from '@wordpress/html-entities';
 
-import { forwardRef } from '@wordpress/element';
-
 /* Inbuilt */
 import AtrcWrap from '../../atoms/wrap';
 import AtrcLink from '../../atoms/link';
@@ -13,7 +11,7 @@ import AtrcSpinner from '../../atoms/spinner';
 /* Local */
 import AtrcUsePostTerms from './use-post-terms';
 
-const AtrcPostTerms = (props, ref) => {
+const AtrcPostTerms = (props) => {
 	const {
 		postType,
 		postId,
@@ -31,9 +29,7 @@ const AtrcPostTerms = (props, ref) => {
 
 	const TermTag = htmlTag;
 	return (
-		<AtrcWrap
-			{...defaultProps}
-			ref={ref}>
+		<AtrcWrap {...defaultProps}>
 			{isLoading && hasPost && <AtrcSpinner />}
 			{hasPost &&
 				!isLoading &&
@@ -70,4 +66,4 @@ const AtrcPostTerms = (props, ref) => {
 		</AtrcWrap>
 	);
 };
-export default forwardRef(AtrcPostTerms);
+export default AtrcPostTerms;

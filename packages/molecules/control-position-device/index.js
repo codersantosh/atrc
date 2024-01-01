@@ -319,7 +319,7 @@ const AtrcControlPositionDevice = (props) => {
 		if (isArray(allowedDevices)) {
 			return allowedDevices;
 		}
-		return AtrcAvailableDevices;
+		return AtrcAvailableDevices();
 	};
 
 	return (
@@ -343,7 +343,7 @@ const AtrcControlPositionDevice = (props) => {
 								<AtrcControlSelectDevice
 									className={classnames('at-flx-grw-1')}
 									label={__('Position', 'atrc-prefix-atrc')}
-									options={PositionOptions}
+									options={PositionOptions()}
 									value={{
 										xs: value && value.pos,
 										sm: value && value.smPos,

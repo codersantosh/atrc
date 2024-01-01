@@ -3,8 +3,6 @@ import { __ } from '@wordpress/i18n';
 
 import { useEntityProp } from '@wordpress/core-data';
 
-import { forwardRef } from '@wordpress/element';
-
 import {
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalUseHasRecursion as useHasRecursion,
@@ -16,7 +14,7 @@ import AtrcWrap from '../../atoms/wrap';
 import AtrcNotice from './../../molecules/notice';
 
 /* Local */
-const AtrcPostContent = (props, ref) => {
+const AtrcPostContent = (props) => {
 	const { postType, postId, htmlTag, ...defaultProps } = props;
 
 	const hasAlreadyRendered = useHasRecursion(postId);
@@ -25,9 +23,7 @@ const AtrcPostContent = (props, ref) => {
 
 	if (postId && postType && hasAlreadyRendered) {
 		return (
-			<AtrcWrap
-				{...defaultProps}
-				ref={ref}>
+			<AtrcWrap {...defaultProps}>
 				<AtrcNotice
 					isDismissible={false}
 					autoDismiss={false}>
@@ -38,9 +34,7 @@ const AtrcPostContent = (props, ref) => {
 	}
 
 	return content?.protected ? (
-		<AtrcWrap
-			{...defaultProps}
-			ref={ref}>
+		<AtrcWrap {...defaultProps}>
 			<AtrcNotice
 				isDismissible={false}
 				autoDismiss={false}>
@@ -50,11 +44,10 @@ const AtrcPostContent = (props, ref) => {
 	) : (
 		<AtrcWrap
 			{...defaultProps}
-			ref={ref}
 			tag={htmlTag}
 			dangerouslySetInnerHTML={{ __html: content?.rendered }}
 		/>
 	);
 };
 
-export default forwardRef(AtrcPostContent);
+export default AtrcPostContent;

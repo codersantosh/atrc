@@ -1,9 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 /*Local*/
 var Bottom = function Bottom(value, innerOutput, property) {
   if (value.b) {
@@ -26,5 +20,5 @@ var Bottom = function Bottom(value, innerOutput, property) {
   }
   return innerOutput;
 };
-var _default = exports.default = Bottom;
+export default Bottom;
 //# sourceMappingURL=bottom.js.map

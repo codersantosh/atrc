@@ -1,16 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AtrcGetandSetQueryParams = AtrcGetandSetQueryParams;
-exports.AtrcStore = void 0;
-exports.default = AtrcRegisterStore;
-var _i18n = require("@wordpress/i18n");
-var _data = require("@wordpress/data");
-var _lodash = require("lodash");
-var _api = _interopRequireDefault(require("./api"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -28,7 +15,17 @@ function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbol
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); } /*WordPress*/ /* Library */ /* API */
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+/*WordPress*/
+import { __, sprintf } from '@wordpress/i18n';
+import { createReduxStore, register } from '@wordpress/data';
+
+/* Library */
+import { cloneDeep, isEqual } from 'lodash';
+
+/* API */
+import AtrcApis from './api';
+
 /* Local */
 /* For local storage */
 var AtrcDataLocalStorageGetSettings = function AtrcDataLocalStorageGetSettings(localStorageKey) {
@@ -87,7 +84,7 @@ var AtrcDataLocalStorageRemoveSettings = function AtrcDataLocalStorageRemoveSett
   }
   return {};
 };
-function AtrcGetandSetQueryParams(key) {
+export function AtrcGetandSetQueryParams(key) {
   var updateParams = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var search;
   if (location.hash) {
@@ -228,7 +225,9 @@ var ClassAtrcStore = /*#__PURE__*/function () {
   }]);
   return ClassAtrcStore;
 }();
-var AtrcStore = exports.AtrcStore = new ClassAtrcStore();
+var AtrcStore = new ClassAtrcStore();
+export { AtrcStore };
+
 // The actions object should describe all action creators available for your store.
 var actions = {
   /* CURD Start
@@ -322,7 +321,7 @@ var actions = {
                   isLoading: true
                 });
                 _context.next = 4;
-                return _api.default.doApi(key, 'insertItem', data);
+                return AtrcApis.doApi(key, 'insertItem', data);
               case 4:
                 result = _context.sent;
                 dispatch({
@@ -367,7 +366,7 @@ var actions = {
                   isLoading: true
                 });
                 _context2.next = 4;
-                return _api.default.doApi(key, 'updateItem', data, data.id);
+                return AtrcApis.doApi(key, 'updateItem', data, data.id);
               case 4:
                 result = _context2.sent;
                 dispatch({
@@ -423,7 +422,7 @@ var actions = {
                       while (1) switch (_context3.prev = _context3.next) {
                         case 0:
                           _context3.next = 2;
-                          return _api.default.doApi(key, 'deleteItem', null, id);
+                          return AtrcApis.doApi(key, 'deleteItem', null, id);
                         case 2:
                           return _context3.abrupt("return", _context3.sent);
                         case 3:
@@ -476,7 +475,7 @@ var actions = {
                 queryArgs: queryArgs
               });
               _context5.next = 5;
-              return _api.default.doApi(key, 'getItems', queryArgs);
+              return AtrcApis.doApi(key, 'getItems', queryArgs);
             case 5:
               result = _context5.sent;
               dispatch({
@@ -519,7 +518,7 @@ var actions = {
                 queryArgs: queryArgs
               });
               _context6.next = 6;
-              return _api.default.doApi(key, 'getItems', queryArgs);
+              return AtrcApis.doApi(key, 'getItems', queryArgs);
             case 6:
               result = _context6.sent;
               dispatch({
@@ -666,7 +665,7 @@ var actions = {
                 break;
               case 6:
                 _context7.next = 8;
-                return _api.default.doApi(key, 'saveSettings', data);
+                return AtrcApis.doApi(key, 'saveSettings', data);
               case 8:
                 result = _context7.sent;
               case 9:
@@ -699,7 +698,7 @@ var actions = {
           resolveSelect = _ref14.resolveSelect,
           dispatch = _ref14.dispatch,
           registry = _ref14.registry;
-        callback(select, resolveSelect, dispatch, AtrcStore, _api.default, registry);
+        callback(select, resolveSelect, dispatch, AtrcStore, AtrcApis, registry);
       }
     );
   }
@@ -712,9 +711,9 @@ var getItemErrorNotice = function getItemErrorNotice(result, action) {
   if (error.message) {
     message = error.message;
   } else {
-    message = (0, _i18n.sprintf)(
+    message = sprintf(
     // translators: %s: action type
-    (0, _i18n.__)('Error while data store process for %s.', 'atrc-prefix-atrc'), action.type);
+    __('Error while data store process for %s.', 'atrc-prefix-atrc'), action.type);
   }
   return {
     type: 'error',
@@ -726,16 +725,16 @@ var getItemErrorNotice = function getItemErrorNotice(result, action) {
 // Controls are used to handle side-effects that are triggered by the dispatch of an action.
 var controls = {
   GET_ITEMS: function GET_ITEMS(action) {
-    return _api.default.doApi(action.key, 'getItems', action.queryArgs);
+    return AtrcApis.doApi(action.key, 'getItems', action.queryArgs);
   },
   GET_ITEM: function GET_ITEM(action) {
-    return _api.default.doApi(action.key, 'getItem', null, action.id);
+    return AtrcApis.doApi(action.key, 'getItem', null, action.id);
   },
   GET_SETTINGS: function GET_SETTINGS(action) {
     if ('localStorage' === AtrcStore.TYPES[action.key]) {
       return AtrcDataLocalStorageGetSettings(action.key);
     }
-    return _api.default.doApi(action.key, 'getSettings');
+    return AtrcApis.doApi(action.key, 'getSettings');
   }
 };
 // The selectors object includes a set of functions for accessing and deriving state values.
@@ -848,14 +847,14 @@ var reducer = function reducer() {
   if (!('key' in act)) {
     return state;
   }
-  var newState = (0, _lodash.cloneDeep)(state);
-  var action = (0, _lodash.cloneDeep)(act);
+  var newState = cloneDeep(state);
+  var action = cloneDeep(act);
   var key = action.key;
-  var items = (0, _lodash.cloneDeep)(newState[key]);
+  var items = cloneDeep(newState[key]);
   switch (action.type) {
     case 'GET_ITEMS':
       {
-        items.queryArgs = (0, _lodash.cloneDeep)(action.queryArgs) || {};
+        items.queryArgs = cloneDeep(action.queryArgs) || {};
         items.isLoading = true;
         items.canSave = false;
         break;
@@ -878,7 +877,7 @@ var reducer = function reducer() {
         items.totalPages = action.data.totalPages;
         items.countAllItems = action.data.countAllItems;
         if (action.queryArgs) {
-          items.queryArgs = (0, _lodash.cloneDeep)(action.queryArgs) || {};
+          items.queryArgs = cloneDeep(action.queryArgs) || {};
         }
       }
       break;
@@ -909,7 +908,7 @@ var reducer = function reducer() {
       if (items.selectItems.length === items.items.length) {
         items.selectItems = [];
       } else {
-        items.selectItems = (0, _lodash.cloneDeep)(items.items);
+        items.selectItems = cloneDeep(items.items);
       }
       break;
     case 'TOGGLE_SELECT':
@@ -935,22 +934,22 @@ var reducer = function reducer() {
     /* Notice */
     case 'SET_NOTICE':
       {
-        var _newNotices = (0, _lodash.cloneDeep)(items.notices);
+        var _newNotices = cloneDeep(items.notices);
         var _newKey = 'abc-' + Object.keys(_newNotices).length;
-        _newNotices[_newKey] = (0, _lodash.cloneDeep)(action.notice);
+        _newNotices[_newKey] = cloneDeep(action.notice);
         items.notices = _newNotices;
         break;
       }
     case 'REMOVE_NOTICE':
       {
-        var _newNotices2 = (0, _lodash.cloneDeep)(items.notices);
+        var _newNotices2 = cloneDeep(items.notices);
         var _newKey2 = action.id;
         delete _newNotices2[_newKey2];
         items.notices = _newNotices2;
         break;
       }
     case 'SET_NOTICES':
-      items.notices = (0, _lodash.cloneDeep)(action.notices);
+      items.notices = cloneDeep(action.notices);
       break;
     case 'INSERT_ITEM':
       {
@@ -959,16 +958,16 @@ var reducer = function reducer() {
         if (action.data.error) {
           _newNotices3[_newKey3] = getItemErrorNotice();
         } else {
-          items.items = [].concat(_toConsumableArray(items.items), [(0, _lodash.cloneDeep)(action.data)]);
-          items.item = (0, _lodash.cloneDeep)(action.data);
+          items.items = [].concat(_toConsumableArray(items.items), [cloneDeep(action.data)]);
+          items.item = cloneDeep(action.data);
 
           /* Set success notice */
           _newNotices3[_newKey3] = {
             type: 'success',
             code: 'GENERAL',
-            message: (0, _i18n.sprintf)(
+            message: sprintf(
             // translators: %s: item id
-            (0, _i18n.__)('The item with id %s is added successfully', 'atrc-prefix-atrc'), items.item.id)
+            __('The item with id %s is added successfully', 'atrc-prefix-atrc'), items.item.id)
           };
         }
         items.notices = _newNotices3;
@@ -1006,7 +1005,7 @@ var reducer = function reducer() {
             _newNotices5[newKey] = {
               type: 'success',
               code: 'GENERAL',
-              message: (0, _i18n.__)('Deleted successfully', 'atrc-prefix-atrc')
+              message: __('Deleted successfully', 'atrc-prefix-atrc')
             };
             items.notices = _newNotices5;
           }
@@ -1026,7 +1025,7 @@ var reducer = function reducer() {
 
     /* Add/Edit Item */
     case 'SET_ITEM':
-      items.item = (0, _lodash.cloneDeep)(action.item);
+      items.item = cloneDeep(action.item);
       items.original = action.item;
       break;
     case 'UPDATE_ITEM':
@@ -1044,18 +1043,18 @@ var reducer = function reducer() {
               return item.id === action.data.id ? action.data : item;
             });
           } else {
-            items.items = [].concat(_toConsumableArray(items.items), [(0, _lodash.cloneDeep)(action.data)]);
+            items.items = [].concat(_toConsumableArray(items.items), [cloneDeep(action.data)]);
           }
-          items.item = (0, _lodash.cloneDeep)(action.data);
+          items.item = cloneDeep(action.data);
           items.original = action.data;
 
           /* Set success notice */
           _newNotices6[_newKey5] = {
             type: 'success',
             code: 'GENERAL',
-            message: (0, _i18n.sprintf)(
+            message: sprintf(
             // translators: %s: item id
-            (0, _i18n.__)('The item with id %s is updated successfully', 'atrc-prefix-atrc'), items.item.id)
+            __('The item with id %s is updated successfully', 'atrc-prefix-atrc'), items.item.id)
           };
         }
         items.notices = _newNotices6;
@@ -1081,7 +1080,7 @@ var reducer = function reducer() {
     case 'UPDATE_ITEM_DATAS':
       {
         items.items = action.data;
-        if ((0, _lodash.isEqual)(items.original, items.item)) {
+        if (isEqual(items.original, items.item)) {
           items.canSave = false;
         } else {
           items.canSave = true;
@@ -1091,7 +1090,7 @@ var reducer = function reducer() {
     case 'UPDATE_ITEM_DATA':
       {
         items.item[action.dataKey] = action.dataVal;
-        if ((0, _lodash.isEqual)(items.original, items.item)) {
+        if (isEqual(items.original, items.item)) {
           items.canSave = false;
         } else {
           items.canSave = true;
@@ -1115,13 +1114,13 @@ var reducer = function reducer() {
           items.notices = _newNotices8;
         } else {
           items.original = action.data.settings;
-          items.settings = (0, _lodash.cloneDeep)(action.data.settings);
+          items.settings = cloneDeep(action.data.settings);
           if (action.setNotice) {
             /* Set success notice */
             _newNotices8[_newKey7] = {
               type: 'success',
               code: 'GENERAL',
-              message: (0, _i18n.__)('Updated successfully', 'atrc-prefix-atrc')
+              message: __('Updated successfully', 'atrc-prefix-atrc')
             };
             items.notices = _newNotices8;
           }
@@ -1133,7 +1132,7 @@ var reducer = function reducer() {
     case 'UPDATE_SETTING':
       {
         items.settings[action.dataKey] = action.dataVal;
-        if ((0, _lodash.isEqual)(items.original, items.settings)) {
+        if (isEqual(items.original, items.settings)) {
           items.canSave = false;
         } else {
           items.canSave = true;
@@ -1144,14 +1143,14 @@ var reducer = function reducer() {
   newState[key] = items;
   return newState;
 };
-function AtrcRegisterStore(name) {
-  var store = (0, _data.createReduxStore)(name, {
+export default function AtrcRegisterStore(name) {
+  var store = createReduxStore(name, {
     reducer: reducer,
     actions: actions,
     controls: controls,
     selectors: selectors,
     resolvers: resolvers
   });
-  return (0, _data.register)(store);
+  return register(store);
 }
 //# sourceMappingURL=store.js.map

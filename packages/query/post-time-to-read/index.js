@@ -3,7 +3,7 @@ import { _n, _x, sprintf } from '@wordpress/i18n';
 
 import { useEntityBlockEditor, useEntityProp } from '@wordpress/core-data';
 
-import { forwardRef, useMemo } from '@wordpress/element';
+import { useMemo } from '@wordpress/element';
 
 import {
 	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
@@ -18,7 +18,7 @@ import AtrcWrap from '../../atoms/wrap';
 /* Local */
 const AVERAGE_READING_RATE = 189;
 
-const AtrcPostTimeToRead = (props, ref) => {
+const AtrcPostTimeToRead = (props) => {
 	const { postType, postId, htmlTag, ...defaultProps } = props;
 
 	const [contentStructure] = useEntityProp(
@@ -68,10 +68,9 @@ const AtrcPostTimeToRead = (props, ref) => {
 	return (
 		<AtrcWrap
 			{...defaultProps}
-			ref={ref}
 			tag={htmlTag}>
 			{minutesToReadString}
 		</AtrcWrap>
 	);
 };
-export default forwardRef(AtrcPostTimeToRead);
+export default AtrcPostTimeToRead;

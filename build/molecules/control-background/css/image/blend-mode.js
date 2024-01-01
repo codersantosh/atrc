@@ -1,9 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 /*Local*/
 var BgBlendMode = function BgBlendMode(value, innerOutput, property) {
   if (value.bgBlendMode) {
@@ -11,5 +5,5 @@ var BgBlendMode = function BgBlendMode(value, innerOutput, property) {
   }
   return innerOutput;
 };
-var _default = exports.default = BgBlendMode;
+export default BgBlendMode;
 //# sourceMappingURL=blend-mode.js.map

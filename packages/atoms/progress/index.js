@@ -1,5 +1,4 @@
 /*WordPress*/
-import { forwardRef } from '@wordpress/element';
 
 /*Library*/
 import classnames from 'classnames';
@@ -63,7 +62,7 @@ export const AtrcProgressSvgGradientColor = ({ gradient, uniqueId }) => {
 	);
 };
 
-const AtrcProgress = (props, ref) => {
+const AtrcProgress = (props) => {
 	const {
 		className = '',
 		type = '',
@@ -84,7 +83,6 @@ const AtrcProgress = (props, ref) => {
 					className,
 					variant ? AtrcPrefix('prog') + '-' + variant : ''
 				)}
-				ref={ref}
 				{...defaultProps}>
 				<svg
 					className='at-svg at-w at-h'
@@ -129,7 +127,6 @@ const AtrcProgress = (props, ref) => {
 				className,
 				variant ? AtrcPrefix('prog') + '-' + variant : ''
 			)}
-			ref={ref}
 			{...defaultProps}>
 			<AtrcWrap
 				className={classnames(
@@ -142,4 +139,4 @@ const AtrcProgress = (props, ref) => {
 	);
 };
 
-export default forwardRef(AtrcProgress);
+export default AtrcProgress;

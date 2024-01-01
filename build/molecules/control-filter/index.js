@@ -1,23 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.AtrcControlFilterAllowedKeys = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _label = _interopRequireDefault(require("../../atoms/label"));
-var _resetButtonIcon = require("../../atoms/reset-button-icon");
-var _range = _interopRequireDefault(require("../../atoms/range"));
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _panelRow = _interopRequireDefault(require("../panel-row"));
-var _controlDropdownColor = _interopRequireDefault(require("../control-dropdown-color"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-var _objectValuesWithDevices = require("./../../utils/object-values-with-devices");
-var _objectValuesWithDevices2 = require("../../utils/object-values-with-devices");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Attributes Structure
 Type Object
 {
@@ -40,15 +20,28 @@ Type Object
 */
 
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
 
 /*Library*/
+import classnames from 'classnames';
+import { isArray, isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
+import AtrcLabel from '../../atoms/label';
+import { AtrcResetWrap } from '../../atoms/reset-button-icon';
+import AtrcRange from '../../atoms/range';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
+import AtrcControlDropdownColor from '../control-dropdown-color';
 
 /*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+import { AtrcHasValueKey } from './../../utils/object-values-with-devices';
+import { AtrcResetValueKey } from '../../utils/object-values-with-devices';
 
 /*Local*/
-var AtrcControlFilterAllowedKeys = exports.AtrcControlFilterAllowedKeys = ['blr', 'brgtNess', 'ctrs', 'grayScl', 'hueRot', 'inv', 'opa', 'sart', 'sepia', 'hSdw', 'vSdw', 'sdwBlr', 'sdwSprd', 'sdwCl'];
+export var AtrcControlFilterAllowedKeys = ['blr', 'brgtNess', 'ctrs', 'grayScl', 'hueRot', 'inv', 'opa', 'sart', 'sepia', 'hSdw', 'vSdw', 'sdwBlr', 'sdwSprd', 'sdwCl'];
 var AtrcControlFilter = function AtrcControlFilter(props) {
   var _props$label = props.label,
     label = _props$label === void 0 ? '' : _props$label,
@@ -82,107 +75,107 @@ var AtrcControlFilter = function AtrcControlFilter(props) {
     onChange(valueCloned);
   };
   var hasDropShadow = function hasDropShadow() {
-    if (!value || (0, _lodash.isEmpty)(value)) {
+    if (!value || isEmpty(value)) {
       return false;
     }
     return !!(hSdw || vSdw || sdwBlr || sdwSprd || sdwCl);
   };
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     var tabsOptions = [];
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('blur')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('blur')) {
       tabsOptions.push({
         name: 'blr',
-        title: (0, _i18n.__)('Blur', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithDevices.AtrcHasValueKey)(value, 'blr'),
+        title: __('Blur', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasValueKey(value, 'blr'),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithDevices2.AtrcResetValueKey)(value, 'blr'));
+          return onChange(AtrcResetValueKey(value, 'blr'));
         }
       });
     }
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('brightness')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('brightness')) {
       tabsOptions.push({
         name: 'brgtNess',
-        title: (0, _i18n.__)('Brightness', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithDevices.AtrcHasValueKey)(value, 'brgtNess'),
+        title: __('Brightness', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasValueKey(value, 'brgtNess'),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithDevices2.AtrcResetValueKey)(value, 'brgtNess'));
+          return onChange(AtrcResetValueKey(value, 'brgtNess'));
         }
       });
     }
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('contrast')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('contrast')) {
       tabsOptions.push({
         name: 'ctrs',
-        title: (0, _i18n.__)('Contrast', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithDevices.AtrcHasValueKey)(value, 'ctrs'),
+        title: __('Contrast', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasValueKey(value, 'ctrs'),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithDevices2.AtrcResetValueKey)(value, 'ctrs'));
+          return onChange(AtrcResetValueKey(value, 'ctrs'));
         }
       });
     }
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('grayscale')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('grayscale')) {
       tabsOptions.push({
         name: 'grayScl',
-        title: (0, _i18n.__)('Grayscale', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithDevices.AtrcHasValueKey)(value, 'grayScl'),
+        title: __('Grayscale', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasValueKey(value, 'grayScl'),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithDevices2.AtrcResetValueKey)(value, 'grayScl'));
+          return onChange(AtrcResetValueKey(value, 'grayScl'));
         }
       });
     }
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('hueRotate')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('hueRotate')) {
       tabsOptions.push({
         name: 'hueRot',
-        title: (0, _i18n.__)('Hue rotate', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithDevices.AtrcHasValueKey)(value, 'hueRot'),
+        title: __('Hue rotate', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasValueKey(value, 'hueRot'),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithDevices2.AtrcResetValueKey)(value, 'hueRot'));
+          return onChange(AtrcResetValueKey(value, 'hueRot'));
         }
       });
     }
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('invert')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('invert')) {
       tabsOptions.push({
         name: 'inv',
-        title: (0, _i18n.__)('Invert', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithDevices.AtrcHasValueKey)(value, 'inv'),
+        title: __('Invert', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasValueKey(value, 'inv'),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithDevices2.AtrcResetValueKey)(value, 'inv'));
+          return onChange(AtrcResetValueKey(value, 'inv'));
         }
       });
     }
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('opacity')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('opacity')) {
       tabsOptions.push({
         name: 'opa',
-        title: (0, _i18n.__)('Opacity', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithDevices.AtrcHasValueKey)(value, 'opa'),
+        title: __('Opacity', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasValueKey(value, 'opa'),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithDevices2.AtrcResetValueKey)(value, 'opa'));
+          return onChange(AtrcResetValueKey(value, 'opa'));
         }
       });
     }
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('saturate')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('saturate')) {
       tabsOptions.push({
         name: 'sart',
-        title: (0, _i18n.__)('Saturate', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithDevices.AtrcHasValueKey)(value, 'sart'),
+        title: __('Saturate', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasValueKey(value, 'sart'),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithDevices2.AtrcResetValueKey)(value, 'sart'));
+          return onChange(AtrcResetValueKey(value, 'sart'));
         }
       });
     }
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('sepia')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('sepia')) {
       tabsOptions.push({
         name: 'sepia',
-        title: (0, _i18n.__)('Sepia', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithDevices.AtrcHasValueKey)(value, 'sepia'),
+        title: __('Sepia', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasValueKey(value, 'sepia'),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithDevices2.AtrcResetValueKey)(value, 'sepia'));
+          return onChange(AtrcResetValueKey(value, 'sepia'));
         }
       });
     }
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('dropShadow')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('dropShadow')) {
       tabsOptions.push({
         name: 'dropSdw',
-        title: (0, _i18n.__)('Drop shadow', 'atrc-prefix-atrc'),
+        title: __('Drop shadow', 'atrc-prefix-atrc'),
         hasValue: hasDropShadow(),
         onDeselect: function onDeselect() {
           return resetDropShadow();
@@ -197,50 +190,50 @@ var AtrcControlFilter = function AtrcControlFilter(props) {
   if (!AllTabs.length) {
     return null;
   }
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-fl'), className, variant ? (0, _prefixVars.default)('ctrl-fl') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-fl'), className, variant ? AtrcPrefix('ctrl-fl') + '-' + variant : ''),
     label: label,
     resetAll: resetAll,
     tools: AllTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (tab, iDx) {
+    return map(activeItems, function (tab, iDx) {
       if ('dropSdw' === tab) {
-        return /*#__PURE__*/React.createElement(_panelRow.default, {
-          className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-fl-drop-sdw'), 'at-m', 'at-flx-col', 'at-al-itm-st', 'at-jfy-cont-st '),
+        return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+          className: classnames(AtrcPrefix('ctrl-fl-drop-sdw'), 'at-m', 'at-flx-col', 'at-al-itm-st', 'at-jfy-cont-st '),
           key: iDx
-        }, /*#__PURE__*/React.createElement(_label.default, null, (0, _i18n.__)('Drop shadow', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(_panelRow.default, {
-          className: (0, _classnames.default)('at-m')
-        }, /*#__PURE__*/React.createElement(_range.default, {
-          label: (0, _i18n.__)('H-shadow', 'atrc-prefix-atrc'),
-          help: (0, _i18n.__)('px', 'atrc-prefix-atrc'),
+        }, /*#__PURE__*/React.createElement(AtrcLabel, null, __('Drop shadow', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+          className: classnames('at-m')
+        }, /*#__PURE__*/React.createElement(AtrcRange, {
+          label: __('H-shadow', 'atrc-prefix-atrc'),
+          help: __('px', 'atrc-prefix-atrc'),
           value: hSdw,
           onChange: function onChange(newVal) {
             return setAttr(newVal, 'hSdw');
           }
-        })), /*#__PURE__*/React.createElement(_panelRow.default, {
-          className: (0, _classnames.default)('at-m')
-        }, /*#__PURE__*/React.createElement(_range.default, {
-          label: (0, _i18n.__)('V-shadow', 'atrc-prefix-atrc'),
-          help: (0, _i18n.__)('px', 'atrc-prefix-atrc'),
+        })), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+          className: classnames('at-m')
+        }, /*#__PURE__*/React.createElement(AtrcRange, {
+          label: __('V-shadow', 'atrc-prefix-atrc'),
+          help: __('px', 'atrc-prefix-atrc'),
           value: vSdw,
           onChange: function onChange(newVal) {
             return setAttr(newVal, 'vSdw');
           }
-        })), /*#__PURE__*/React.createElement(_panelRow.default, {
-          className: (0, _classnames.default)('at-m')
-        }, /*#__PURE__*/React.createElement(_range.default, {
-          label: (0, _i18n.__)('Shadow blur', 'atrc-prefix-atrc'),
-          help: (0, _i18n.__)('px', 'atrc-prefix-atrc'),
+        })), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+          className: classnames('at-m')
+        }, /*#__PURE__*/React.createElement(AtrcRange, {
+          label: __('Shadow blur', 'atrc-prefix-atrc'),
+          help: __('px', 'atrc-prefix-atrc'),
           value: sdwBlr,
           onChange: function onChange(newVal) {
             return setAttr(newVal, 'sdwBlr');
           }
-        })), /*#__PURE__*/React.createElement(_panelRow.default, {
-          className: (0, _classnames.default)('at-m')
-        }, /*#__PURE__*/React.createElement(_resetButtonIcon.AtrcResetWrap, {
-          className: (0, _classnames.default)((0, _prefixVars.default)('lbl-rst'))
-        }, /*#__PURE__*/React.createElement(_controlDropdownColor.default, {
-          label: (0, _i18n.__)('Shadow color', 'atrc-prefix-atrc'),
+        })), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+          className: classnames('at-m')
+        }, /*#__PURE__*/React.createElement(AtrcResetWrap, {
+          className: classnames(AtrcPrefix('lbl-rst'))
+        }, /*#__PURE__*/React.createElement(AtrcControlDropdownColor, {
+          label: __('Shadow color', 'atrc-prefix-atrc'),
           value: sdwCl,
           onChange: function onChange(newVal) {
             return setAttr(newVal, 'sdwCl');
@@ -251,44 +244,44 @@ var AtrcControlFilter = function AtrcControlFilter(props) {
       var helpTxt = '';
       switch (tab) {
         case 'blr':
-          tabLabel = (0, _i18n.__)('Blur', 'atrc-prefix-atrc');
-          helpTxt = (0, _i18n.__)('px', 'atrc-prefix-atrc');
+          tabLabel = __('Blur', 'atrc-prefix-atrc');
+          helpTxt = __('px', 'atrc-prefix-atrc');
           break;
         case 'brgtNess':
-          tabLabel = (0, _i18n.__)('Brightness', 'atrc-prefix-atrc');
+          tabLabel = __('Brightness', 'atrc-prefix-atrc');
           break;
         case 'ctrs':
-          tabLabel = (0, _i18n.__)('Contrast', 'atrc-prefix-atrc');
+          tabLabel = __('Contrast', 'atrc-prefix-atrc');
           break;
         case 'grayScl':
-          tabLabel = (0, _i18n.__)('Grayscale', 'atrc-prefix-atrc');
+          tabLabel = __('Grayscale', 'atrc-prefix-atrc');
           break;
         case 'hueRot':
-          tabLabel = (0, _i18n.__)('Hue rotate', 'atrc-prefix-atrc');
-          helpTxt = (0, _i18n.__)('deg', 'atrc-prefix-atrc');
+          tabLabel = __('Hue rotate', 'atrc-prefix-atrc');
+          helpTxt = __('deg', 'atrc-prefix-atrc');
           break;
         case 'inv':
-          tabLabel = (0, _i18n.__)('Invert', 'atrc-prefix-atrc');
+          tabLabel = __('Invert', 'atrc-prefix-atrc');
           break;
         case 'opa':
-          tabLabel = (0, _i18n.__)('Opacity', 'atrc-prefix-atrc');
+          tabLabel = __('Opacity', 'atrc-prefix-atrc');
           break;
         case 'sart':
-          tabLabel = (0, _i18n.__)('Saturate', 'atrc-prefix-atrc');
+          tabLabel = __('Saturate', 'atrc-prefix-atrc');
           break;
         case 'sepia':
-          tabLabel = (0, _i18n.__)('Sepia', 'atrc-prefix-atrc');
+          tabLabel = __('Sepia', 'atrc-prefix-atrc');
           break;
         default:
           break;
       }
       if (tabLabel) {
-        return /*#__PURE__*/React.createElement(_panelRow.default, {
-          className: (0, _classnames.default)('at-m'),
+        return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+          className: classnames('at-m'),
           key: iDx
-        }, /*#__PURE__*/React.createElement(_range.default, {
+        }, /*#__PURE__*/React.createElement(AtrcRange, {
           label: tabLabel,
-          help: helpTxt || (0, _i18n.__)('%', 'atrc-prefix-atrc'),
+          help: helpTxt || __('%', 'atrc-prefix-atrc'),
           value: value[tab],
           onChange: function onChange(newVal) {
             return setAttr(newVal, tab);
@@ -299,5 +292,5 @@ var AtrcControlFilter = function AtrcControlFilter(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlFilter;
+export default AtrcControlFilter;
 //# sourceMappingURL=index.js.map

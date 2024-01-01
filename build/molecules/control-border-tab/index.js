@@ -1,22 +1,3 @@
-"use strict";
-
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _controlBorder = _interopRequireWildcard(require("../control-border"));
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _objectValuesWithAllowedKeysAndTabs = require("../../utils/object-values-with-allowed-keys-and-tabs");
-var _useColors = require("../../utils/use-colors");
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Attributes Structure
 Type Object
 {
@@ -86,14 +67,26 @@ Type Object
 * */
 
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
 
 /*Library*/
+import classnames from 'classnames';
+import { map } from 'lodash';
 
 /*Inbuilt*/
 
+import AtrcControlBorder from '../control-border';
+import AtrcPanelTools from '../panel-tools';
+import { AtrcControlBorderAllowedKeys } from '../control-border';
+
 /*Inbuilt utils*/
 
+import { AtrcGetTabValues, AtrcHasTabValues, AtrcUpdateTabValues, AtrcResetTab, AtrcResetTabs } from '../../utils/object-values-with-allowed-keys-and-tabs';
+import { AtrcUseColorSolids } from '../../utils/use-colors';
+
 /*Prefix*/
+import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components*/
 var RenderTabPanel = function RenderTabPanel(_ref) {
@@ -101,8 +94,8 @@ var RenderTabPanel = function RenderTabPanel(_ref) {
     tab = _ref.tab,
     _onChange = _ref.onChange,
     allSolids = _ref.allSolids;
-  return /*#__PURE__*/React.createElement(_controlBorder.default, {
-    value: (0, _objectValuesWithAllowedKeysAndTabs.AtrcGetTabValues)(value, tab, _controlBorder.AtrcControlBorderAllowedKeys),
+  return /*#__PURE__*/React.createElement(AtrcControlBorder, {
+    value: AtrcGetTabValues(value, tab, AtrcControlBorderAllowedKeys),
     onChange: function onChange(newVal) {
       return _onChange(newVal, tab);
     },
@@ -122,54 +115,54 @@ var AtrcControlBorderTab = function AtrcControlBorderTab(props) {
     className = _props$className === void 0 ? '' : _props$className,
     _props$allowedTabs = props.allowedTabs,
     allowedTabs = _props$allowedTabs === void 0 ? ['normal', 'hover'] : _props$allowedTabs;
-  var allSolids = (0, _useColors.AtrcUseColorSolids)();
+  var allSolids = AtrcUseColorSolids();
   var setTabAttr = function setTabAttr(newVal, tab) {
-    onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcUpdateTabValues)(newVal, tab, value, _controlBorder.AtrcControlBorderAllowedKeys));
+    onChange(AtrcUpdateTabValues(newVal, tab, value, AtrcControlBorderAllowedKeys));
   };
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     var tabs = [];
     if (allowedTabs.includes('normal'.toLowerCase())) {
       tabs.push({
         name: 'normal',
-        title: (0, _i18n.__)('Normal', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)('normal', value, _controlBorder.AtrcControlBorderAllowedKeys),
+        title: __('Normal', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasTabValues('normal', value, AtrcControlBorderAllowedKeys),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTab)('normal', value, _controlBorder.AtrcControlBorderAllowedKeys));
+          return onChange(AtrcResetTab('normal', value, AtrcControlBorderAllowedKeys));
         }
       });
     }
     if (allowedTabs.includes('hover'.toLowerCase())) {
       tabs.push({
         name: 'Hover',
-        title: (0, _i18n.__)('Hover', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)('Hover', value, _controlBorder.AtrcControlBorderAllowedKeys),
+        title: __('Hover', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasTabValues('Hover', value, AtrcControlBorderAllowedKeys),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTab)('Hover', value, _controlBorder.AtrcControlBorderAllowedKeys));
+          return onChange(AtrcResetTab('Hover', value, AtrcControlBorderAllowedKeys));
         }
       });
     }
     if (allowedTabs.includes('parenthover'.toLowerCase())) {
       tabs.push({
         name: 'ParentHover',
-        title: (0, _i18n.__)('Parent hover', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)('ParentHover', value, _controlBorder.AtrcControlBorderAllowedKeys),
+        title: __('Parent hover', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasTabValues('ParentHover', value, AtrcControlBorderAllowedKeys),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTab)('ParentHover', value, _controlBorder.AtrcControlBorderAllowedKeys));
+          return onChange(AtrcResetTab('ParentHover', value, AtrcControlBorderAllowedKeys));
         }
       });
     }
     return tabs;
   }, []);
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-bdr-tab'), className, variant ? (0, _prefixVars.default)('ctrl-bdr-tab') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-bdr-tab'), className, variant ? AtrcPrefix('ctrl-bdr-tab') + '-' + variant : ''),
     label: label,
     resetAll: function resetAll() {
-      return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTabs)(value, _controlBorder.AtrcControlBorderAllowedKeys));
+      return onChange(AtrcResetTabs(value, AtrcControlBorderAllowedKeys));
     },
     allowTabs: true,
     tools: AllTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (tab, iDx) {
+    return map(activeItems, function (tab, iDx) {
       return /*#__PURE__*/React.createElement(RenderTabPanel, {
         value: value,
         onChange: function onChange(newVal) {
@@ -182,5 +175,5 @@ var AtrcControlBorderTab = function AtrcControlBorderTab(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlBorderTab;
+export default AtrcControlBorderTab;
 //# sourceMappingURL=index.js.map

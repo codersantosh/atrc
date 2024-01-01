@@ -39,7 +39,7 @@ const AtrcControlColumnDevice = (props) => {
 				className,
 				variant ? AtrcPrefix('ctrl-col-device') + '-' + variant : ''
 			)}
-			options={ColumnOptions}
+			options={ColumnOptions()}
 			onChange={(newValue) => {
 				if (!newValue) {
 					onChange(newValue);

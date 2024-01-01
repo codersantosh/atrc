@@ -1,20 +1,12 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AtrcAudioIsHtml5 = AtrcAudioIsHtml5;
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /* WordPress */
+import { __ } from '@wordpress/i18n';
 
 /*Library*/
+import classnames from 'classnames';
+import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components*/
-function AtrcAudioIsHtml5(url) {
+export function AtrcAudioIsHtml5(url) {
   // Check if the URL is a SoundCloud track
   if (url.includes('soundcloud.com') || url.includes('spotify.com') || url.includes('pocketcasts.com') || url.includes('mixcloud.com')) {
     return false;
@@ -47,7 +39,7 @@ var AtrcAudio = function AtrcAudio(props) {
     prefix = _props$prefix === void 0 ? '' : _props$prefix;
   if (AtrcAudioIsHtml5(url)) {
     return /*#__PURE__*/React.createElement("audio", {
-      className: (0, _classnames.default)('at-aud', className, variant ? (0, _prefixVars.default)('aud') + '-' + variant : ''),
+      className: classnames('at-aud', className, variant ? AtrcPrefix('aud') + '-' + variant : ''),
       autoPlay: autoplay,
       controls: controls,
       loop: loop,
@@ -58,11 +50,11 @@ var AtrcAudio = function AtrcAudio(props) {
     });
   }
   return /*#__PURE__*/React.createElement("iframe", {
-    className: (0, _classnames.default)('at-aud', 'at-frame', className, variant ? (0, _prefixVars.default)('aud') + '-' + variant : ''),
+    className: classnames('at-aud', 'at-frame', className, variant ? AtrcPrefix('aud') + '-' + variant : ''),
     src: url,
     frameBorder: "0",
-    title: (0, _i18n.__)('Other audio', 'atrc-prefix-atrc')
+    title: __('Other audio', 'atrc-prefix-atrc')
   });
 };
-var _default = exports.default = AtrcAudio;
+export default AtrcAudio;
 //# sourceMappingURL=index.js.map

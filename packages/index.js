@@ -21,7 +21,10 @@ export { default as AtrcCode } from './atoms/code';
 export { default as AtrcCombobox } from './atoms/combobox';
 export { default as AtrcControlUnit } from './atoms/control-unit';
 export { default as AtrcDivider } from './atoms/divider';
-export { default as AtrcEditor } from './atoms/editor';
+
+/* Fault tree shaking */
+// export { default as AtrcEditor } from './atoms/editor';
+
 export { default as AtrcFieldset } from './atoms/fieldset';
 export { default as AtrcFile } from './atoms/file';
 export { default as AtrcHr } from './atoms/hr';
@@ -61,12 +64,8 @@ export { AtrcVideoIsYoutube as AtrcVideoIsYoutube } from './atoms/video';
 export { default as AtrcWord } from './atoms/word';
 export { default as AtrcWrap } from './atoms/wrap';
 
-/* Redux Store Data */
-export { default as AtrcApis } from './data/api';
-export { default as AtrcRegisterStore } from './data/store';
-export { AtrcStore as AtrcStore } from './data/store';
-export { default as AtrcApplyWithSettings } from './data/hoc-settings';
-export { default as AtrcApplyWithItems } from './data/hoc-items';
+/* Redux Store Data on another package
+Fault tree shaking */
 
 /* Molecules */
 export { default as AtrcBase } from './molecules/base';
@@ -75,11 +74,11 @@ export { default as AtrcButtonGroup } from './molecules/button-group';
 
 export { default as AtrcControlAlignmentMatrix } from './molecules/control-alignment-matrix';
 
-export { AtrcControlColumnsAdvanced as AtrcControlColumnsAdvanced } from './molecules/control-columns-advanced';
-export { AtrcControlColumnsAdvancedLayoutPlaceholder as AtrcControlColumnsAdvancedLayoutPlaceholder } from './molecules/control-columns-advanced';
+export { default as AtrcControlColumnsAdvanced } from './molecules/control-columns-advanced/layout-control';
+export { default as AtrcControlColumnsAdvancedLayoutPlaceholder } from './molecules/control-columns-advanced/layout-placeholder';
 
-export { AtrcControlColumnsFeature as AtrcControlColumnsFeature } from './molecules/control-columns-feature';
-export { AtrcControlColumnsFeatureLayoutPlaceholder as AtrcControlColumnsFeatureLayoutPlaceholder } from './molecules/control-columns-feature';
+export { default as AtrcControlColumnsFeature } from './molecules/control-columns-feature/layout-control';
+export { default as AtrcControlColumnsFeatureLayoutPlaceholder } from './molecules/control-columns-feature/layout-placeholder';
 
 export { default as AtrcControlCompoundSlider } from './molecules/control-compound-slider';
 
@@ -125,7 +124,8 @@ export { default as AtrcControlBoxShadowCss } from './molecules/control-box-shad
 export { default as AtrcControlBoxShadowTab } from './molecules/control-box-shadow-tab';
 export { default as AtrcControlBoxShadowTabCss } from './molecules/control-box-shadow-tab/css';
 
-export { default as AtrcControlCodeTextarea } from './molecules/control-code-textarea';
+/* Fault tree shaking */
+// export { default as AtrcControlCodeTextarea } from './molecules/control-code-textarea';
 
 export { default as AtrcColorGradientControl } from './molecules/control-color-gradient';
 
@@ -194,7 +194,10 @@ export { default as AtrcControlFontSizePicker } from './molecules/control-font-s
 export { default as AtrcControlHtmlTag } from './molecules/control-html-tag';
 
 export { default as AtrcControlImg } from './molecules/control-img';
-export { default as AtrcControlImgSizeSelect } from './molecules/control-img/contro-img-size-select';
+
+/* Fault tree shaking */
+// export { default as AtrcControlImgSizeSelect } from './molecules/control-img/contro-img-size-select';
+
 export { default as AtrcControlImgShape } from './molecules/control-img-shape';
 export { default as AtrcControlImgShapeCss } from './molecules/control-img-shape/css';
 export { AtrcSvgToBase64 as AtrcSvgToBase64 } from './molecules/control-img-shape/css';
@@ -228,8 +231,8 @@ export { default as AtrcControlSelectDevice } from './molecules/control-select-d
 export { default as AtrcControlSelectDeviceTab } from './molecules/control-select-device-tab';
 
 export { default as AtrcControlSelectGoogleFonts } from './molecules/control-select-google-fonts';
-export { AtrcControlSelectGoogleFontsWeight as AtrcControlSelectGoogleFontsWeight } from './molecules/control-select-google-fonts';
-export { AtrcControlSelectGoogleFontsPreview as AtrcControlSelectGoogleFontsPreview } from './molecules/control-select-google-fonts';
+export { default as AtrcControlSelectGoogleFontsWeight } from './molecules/control-select-google-fonts/font-weight';
+export { default as AtrcControlSelectGoogleFontsPreview } from './molecules/control-select-google-fonts/fonts-preview';
 export { default as AtrcControlSelectGoogleFontsRepeater } from './molecules/control-select-google-fonts-repeater';
 export { default as AtrcGetGoogleFontsUrl } from './molecules/control-select-google-fonts/get-google-fonts-url';
 export { default as AtrcGetGoogleFontsFromUrl } from './molecules/control-select-google-fonts/get-google-fonts-from-url';

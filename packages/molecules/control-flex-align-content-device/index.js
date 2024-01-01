@@ -4,7 +4,7 @@ import classnames from 'classnames';
 /*Inbuilt*/
 import AtrcControlSelectButtonDevice from '../control-select-button-device';
 
-import JustifyContentOptions from './options';
+import AlignContentOptions from './options';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
@@ -26,7 +26,7 @@ const AtrcControlFlexAlignContentDevice = (props) => {
 				className,
 				variant ? AtrcPrefix('ctrl-flx-al-cont-device') + '-' + variant : ''
 			)}
-			options={JustifyContentOptions}
+			options={AlignContentOptions()}
 			value={value}
 			onChange={onChange}
 			{...defaultProps}

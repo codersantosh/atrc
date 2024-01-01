@@ -1,18 +1,5 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _toggle = _interopRequireDefault(require("../../atoms/toggle"));
-var _dropdownDevice = _interopRequireDefault(require("../dropdown-device"));
-var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
-var _objectValuesWithDevices = require("./../../utils/object-values-with-devices");
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); } /*Value Structure
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+/*Value Structure
 Type Object
 {
     "sm":"",
@@ -20,7 +7,23 @@ Type Object
     "lg":"",
     "xl":"",
 }
-* */ /*Library*/ /*Inbuilt*/ /*Inbuilt Utils*/ /*Inbuilt*/
+* */
+
+/*Library*/
+import classnames from 'classnames';
+import { isArray } from 'lodash';
+
+/*Inbuilt*/
+import AtrcToggle from '../../atoms/toggle';
+import AtrcDropdownDevice from '../dropdown-device';
+
+/*Inbuilt Utils*/
+import AtrcAvailableDevices from '../../utils/available-devices';
+import { AtrcMappingDeviceValues } from './../../utils/object-values-with-devices';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local Components*/
 var RenderTab = function RenderTab(_ref) {
   var device = _ref.device,
@@ -28,10 +31,10 @@ var RenderTab = function RenderTab(_ref) {
     _onChange = _ref.onChange,
     _ref$inputProps = _ref.inputProps,
     inputProps = _ref$inputProps === void 0 ? {} : _ref$inputProps;
-  return /*#__PURE__*/React.createElement(_toggle.default, _extends({}, inputProps, {
-    checked: (0, _objectValuesWithDevices.AtrcMappingDeviceValues)(value, device),
+  return /*#__PURE__*/React.createElement(AtrcToggle, _extends({}, inputProps, {
+    checked: AtrcMappingDeviceValues(value, device),
     onChange: function onChange() {
-      return _onChange(!(0, _objectValuesWithDevices.AtrcMappingDeviceValues)(value, device), device);
+      return _onChange(!AtrcMappingDeviceValues(value, device), device);
     }
   }));
 };
@@ -56,18 +59,18 @@ var AtrcControlToggleDevice = function AtrcControlToggleDevice(props) {
     return null;
   }
   var Devices = function Devices() {
-    if ((0, _lodash.isArray)(allowedDevices)) {
+    if (isArray(allowedDevices)) {
       return allowedDevices;
     }
-    return _availableDevices.default;
+    return AtrcAvailableDevices();
   };
   var setAttr = function setAttr(newVal, type) {
     var valueCloned = Object.assign({}, value);
     valueCloned[type] = newVal;
     onChange(valueCloned);
   };
-  return /*#__PURE__*/React.createElement(_dropdownDevice.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-tog-device'), className, variant ? (0, _prefixVars.default)('ctrl-tog-device') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcDropdownDevice, {
+    className: classnames(AtrcPrefix('ctrl-tog-device'), className, variant ? AtrcPrefix('ctrl-tog-device') + '-' + variant : ''),
     label: label,
     tabs: Devices()
   }, function (tab) {
@@ -79,5 +82,5 @@ var AtrcControlToggleDevice = function AtrcControlToggleDevice(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlToggleDevice;
+export default AtrcControlToggleDevice;
 //# sourceMappingURL=index.js.map

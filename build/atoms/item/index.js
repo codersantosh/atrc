@@ -1,18 +1,13 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _classnames = _interopRequireDefault(require("classnames"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
 var _excluded = ["className", "tag", "role", "size", "isBordered", "isRounded", "isSeparated", "isSuccess", "isFail", "isNew", "isBadge", "visibility", "priority", "variant", "children", "onClick"];
-/*Library*/
-/*Inbuilt*/
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*Library*/
+import classnames from 'classnames';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local Components*/
 var AtrcItem = function AtrcItem(props) {
   var className = props.className,
@@ -49,11 +44,11 @@ var AtrcItem = function AtrcItem(props) {
   var ItemTag = tag;
   return /*#__PURE__*/React.createElement(ItemTag, _extends({
     role: role,
-    className: (0, _classnames.default)(className, (0, _prefixVars.default)('itm'), size ? (0, _prefixVars.default)('itm') + '-' + size : '', isBordered ? (0, _prefixVars.default)('bdr') : '', isRounded ? (0, _prefixVars.default)('rounded') : '', isSeparated ? (0, _prefixVars.default)('sep') : '', isSuccess ? (0, _prefixVars.default)('success') : '', isFail ? (0, _prefixVars.default)('fail') : '', isNew ? (0, _prefixVars.default)('new') : '', isBadge ? (0, _prefixVars.default)('badge') : '',
+    className: classnames(className, AtrcPrefix('itm'), size ? AtrcPrefix('itm') + '-' + size : '', isBordered ? AtrcPrefix('bdr') : '', isRounded ? AtrcPrefix('rounded') : '', isSeparated ? AtrcPrefix('sep') : '', isSuccess ? AtrcPrefix('success') : '', isFail ? AtrcPrefix('fail') : '', isNew ? AtrcPrefix('new') : '', isBadge ? AtrcPrefix('badge') : '',
     // variant?'atrc-'+variant:'',
-    variant ? (0, _prefixVars.default)('') + variant : ''),
+    variant ? AtrcPrefix('') + variant : ''),
     onClick: onClick
   }, defaultProps), children);
 };
-var _default = exports.default = AtrcItem;
+export default AtrcItem;
 //# sourceMappingURL=index.js.map

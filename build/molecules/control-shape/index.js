@@ -1,30 +1,4 @@
-"use strict";
-
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
-var _label = _interopRequireDefault(require("../../atoms/label"));
-var _select = _interopRequireDefault(require("../../atoms/select"));
-var _toggle = _interopRequireDefault(require("../../atoms/toggle"));
-var _controlUnit = _interopRequireDefault(require("../../atoms/control-unit"));
-var _textarea = _interopRequireDefault(require("../../atoms/textarea"));
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _panelRow = _interopRequireDefault(require("../panel-row"));
-var _controlDropdownHtml = _interopRequireWildcard(require("../control-dropdown-html"));
-var _controlDropdownColor = _interopRequireDefault(require("../control-dropdown-color"));
-var _controlResponsiveWidthHeight = _interopRequireDefault(require("../control-responsive-width-height"));
-var _controlImg = _interopRequireDefault(require("../control-img"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-var _lodash = require("lodash");
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -35,7 +9,8 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*Attributes Structure
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+/*Attributes Structure
 Type Object
 {
     type = '',
@@ -64,7 +39,34 @@ Type Object
     xlH = '',
     xxlH = ''
 }
-* */ /*WordPress*/ /*Library*/ /*Inbuilt*/ /*Inbuilt*/
+* */
+
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useState, useEffect, useMemo } from '@wordpress/element';
+
+/*Library*/
+import classnames from 'classnames';
+
+/*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcSelect from '../../atoms/select';
+import AtrcToggle from '../../atoms/toggle';
+import AtrcControlUnit from '../../atoms/control-unit';
+import AtrcTextarea from '../../atoms/textarea';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
+import AtrcControlDropdownHtml from '../control-dropdown-html';
+import AtrcControlDropdownColor from '../control-dropdown-color';
+import AtrcControlResponsiveWidthHeight from '../control-responsive-width-height';
+import { AtrcIconPreview } from '../control-dropdown-html';
+import AtrcControlImg from '../control-img';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+import { map } from 'lodash';
+
 /*Local Components */
 var AtrcMaskPosition = function AtrcMaskPosition(_ref) {
   var value = _ref.value,
@@ -73,17 +75,17 @@ var AtrcMaskPosition = function AtrcMaskPosition(_ref) {
     posX = _value$posX === void 0 ? '' : _value$posX,
     _value$posY = value.posY,
     posY = _value$posY === void 0 ? '' : _value$posY;
-  var _useState = (0, _element.useState)(''),
+  var _useState = useState(''),
     _useState2 = _slicedToArray(_useState, 2),
     selectedX = _useState2[0],
     setSelectedX = _useState2[1];
-  var _useState3 = (0, _element.useState)(''),
+  var _useState3 = useState(''),
     _useState4 = _slicedToArray(_useState3, 2),
     selectedY = _useState4[0],
     setSelectedY = _useState4[1];
 
   /*Run only once on mount*/
-  (0, _element.useEffect)(function () {
+  useEffect(function () {
     if (!['', 'left', 'center', 'right'].includes(posX)) {
       setSelectedX('cust');
     } else {
@@ -101,7 +103,7 @@ var AtrcMaskPosition = function AtrcMaskPosition(_ref) {
     onChange(valueCloned);
   };
   /*Run on change selectedTransform*/
-  (0, _element.useEffect)(function () {
+  useEffect(function () {
     var valueCloned = Object.assign({}, value);
     if ('cust' !== selectedX) {
       valueCloned.posX = selectedX;
@@ -115,74 +117,74 @@ var AtrcMaskPosition = function AtrcMaskPosition(_ref) {
     }
     onChange(valueCloned);
   }, [selectedX, selectedY]);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_label.default, null, (0, _i18n.__)('Mask position', 'atrc-prefix-atrc'))), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_select.default, {
-    label: (0, _i18n.__)('Position X', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcLabel, null, __('Mask position', 'atrc-prefix-atrc'))), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    label: __('Position X', 'atrc-prefix-atrc'),
     wrapProps: {
       className: 'at-flx-grw-1'
     },
     value: selectedX,
     options: [{
-      label: (0, _i18n.__)('Default', 'atrc-prefix-atrc'),
+      label: __('Default', 'atrc-prefix-atrc'),
       value: ''
     }, {
-      label: (0, _i18n.__)('Left', 'atrc-prefix-atrc'),
+      label: __('Left', 'atrc-prefix-atrc'),
       value: 'left'
     }, {
-      label: (0, _i18n.__)('Center', 'atrc-prefix-atrc'),
+      label: __('Center', 'atrc-prefix-atrc'),
       value: 'center'
     }, {
-      label: (0, _i18n.__)('Right', 'atrc-prefix-atrc'),
+      label: __('Right', 'atrc-prefix-atrc'),
       value: 'right'
     }, {
-      label: (0, _i18n.__)('Custom', 'atrc-prefix-atrc'),
+      label: __('Custom', 'atrc-prefix-atrc'),
       value: 'cust'
     }],
     onChange: function onChange(newVal) {
       return setSelectedX(newVal);
     }
-  })), 'cust' === selectedX ? /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Custom value', 'atrc-prefix-atrc'),
+  })), 'cust' === selectedX ? /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Custom value', 'atrc-prefix-atrc'),
     value: posX,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'posX');
     }
-  })) : null, /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_select.default, {
-    label: (0, _i18n.__)('Position Y', 'atrc-prefix-atrc'),
+  })) : null, /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    label: __('Position Y', 'atrc-prefix-atrc'),
     wrapProps: {
       className: 'at-flx-grw-1'
     },
     value: selectedY,
     options: [{
-      label: (0, _i18n.__)('Default', 'atrc-prefix-atrc'),
+      label: __('Default', 'atrc-prefix-atrc'),
       value: ''
     }, {
-      label: (0, _i18n.__)('Top', 'atrc-prefix-atrc'),
+      label: __('Top', 'atrc-prefix-atrc'),
       value: 'top'
     }, {
-      label: (0, _i18n.__)('Center', 'atrc-prefix-atrc'),
+      label: __('Center', 'atrc-prefix-atrc'),
       value: 'center'
     }, {
-      label: (0, _i18n.__)('Bottom', 'atrc-prefix-atrc'),
+      label: __('Bottom', 'atrc-prefix-atrc'),
       value: 'bottom'
     }, {
-      label: (0, _i18n.__)('Custom', 'atrc-prefix-atrc'),
+      label: __('Custom', 'atrc-prefix-atrc'),
       value: 'cust'
     }],
     onChange: function onChange(newVal) {
       return setSelectedY(newVal);
     }
-  })), 'cust' === selectedY ? /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Custom Y', 'atrc-prefix-atrc'),
+  })), 'cust' === selectedY ? /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Custom Y', 'atrc-prefix-atrc'),
     value: posY,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'posY');
@@ -204,11 +206,11 @@ var SvgShapeDefined = function SvgShapeDefined(_ref2) {
     options = _ref2.options;
   var selectedShape = SelectedShape(value, options);
   var icon = selectedShape && selectedShape.svg;
-  return /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_controlDropdownHtml.default, {
-    className: (0, _classnames.default)('at-flx-grw-1'),
-    label: /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_label.default, null, (0, _i18n.__)('Choose svg', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(_controlDropdownHtml.AtrcIconPreview, {
+  return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlDropdownHtml, {
+    className: classnames('at-flx-grw-1'),
+    label: /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, null, __('Choose svg', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcIconPreview, {
       icon: icon
     })),
     value: value,
@@ -224,19 +226,19 @@ var SvgShape = function SvgShape(_ref3) {
     definedOptions = _ref3.definedOptions,
     _onChange = _ref3.onChange,
     allowColor = _ref3.allowColor;
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_select.default, {
-    label: (0, _i18n.__)('Source', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    label: __('Source', 'atrc-prefix-atrc'),
     wrapProps: {
       className: 'at-flx-grw-1'
     },
     value: frm,
     options: [{
-      label: (0, _i18n.__)('Defined', 'atrc-prefix-atrc'),
+      label: __('Defined', 'atrc-prefix-atrc'),
       value: 'def'
     }, {
-      label: (0, _i18n.__)('Custom', 'atrc-prefix-atrc'),
+      label: __('Custom', 'atrc-prefix-atrc'),
       value: 'cust'
     }],
     onChange: function onChange(newVal) {
@@ -248,18 +250,18 @@ var SvgShape = function SvgShape(_ref3) {
       return _onChange(newVal, 'svgDefd');
     },
     options: definedOptions
-  }) : /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_textarea.default, {
+  }) : /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcTextarea, {
     value: cust,
-    help: (0, _i18n.__)('To ensure proper functionality of the options, make sure to add the `at-svg` class to the SVG element.', 'atrc-prefix-atrc'),
+    help: __('To ensure proper functionality of the options, make sure to add the `at-svg` class to the SVG element.', 'atrc-prefix-atrc'),
     onChange: function onChange(newVal) {
       return _onChange(newVal, 'svgCust');
     }
-  })), allowColor ? /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_controlDropdownColor.default, {
-    label: (0, _i18n.__)('Color', 'atrc-prefix-atrc'),
+  })), allowColor ? /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlDropdownColor, {
+    label: __('Color', 'atrc-prefix-atrc'),
     value: color,
     onChange: function onChange(newVal) {
       return _onChange(newVal, 'svgCl');
@@ -272,8 +274,8 @@ var ImgShp = function ImgShp(_ref4) {
     sz = _ref4.sz,
     url = _ref4.url,
     onChange = _ref4.onChange;
-  return /*#__PURE__*/React.createElement(_controlImg.default, {
-    label: (0, _i18n.__)('Image', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(AtrcControlImg, {
+    label: __('Image', 'atrc-prefix-atrc'),
     value: {
       frm: frm,
       id: id,
@@ -338,24 +340,24 @@ var ShapeSettings = function ShapeSettings(props) {
     valueCloned = _objectSpread(_objectSpread({}, valueCloned), newVal);
     _onChange2(valueCloned);
   };
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     return [{
       name: 'flipV',
-      title: (0, _i18n.__)('Flip vertically', 'atrc-prefix-atrc'),
+      title: __('Flip vertically', 'atrc-prefix-atrc'),
       hasValue: flipV,
       onDeselect: function onDeselect() {
         return setAttr(false, 'flipV');
       }
     }, {
       name: 'flipH',
-      title: (0, _i18n.__)('Flip horizontally', 'atrc-prefix-atrc'),
+      title: __('Flip horizontally', 'atrc-prefix-atrc'),
       hasValue: flipH,
       onDeselect: function onDeselect() {
         return setAttr(false, 'flipH');
       }
     }, {
       name: 'zT',
-      title: (0, _i18n.__)('Bring front', 'atrc-prefix-atrc'),
+      title: __('Bring front', 'atrc-prefix-atrc'),
       hasValue: zT,
       onDeselect: function onDeselect() {
         return setAttr(false, 'zT');
@@ -363,7 +365,7 @@ var ShapeSettings = function ShapeSettings(props) {
     }];
   }, []);
   return /*#__PURE__*/React.createElement(React.Fragment, null, 'imgShp' === shapeType ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcMaskPosition, {
-    label: (0, _i18n.__)('Mask position', 'atrc-prefix-atrc'),
+    label: __('Mask position', 'atrc-prefix-atrc'),
     value: {
       posX: posX,
       posY: posY
@@ -373,37 +375,37 @@ var ShapeSettings = function ShapeSettings(props) {
       valueCloned = _objectSpread(_objectSpread({}, valueCloned), newVal);
       _onChange2(valueCloned);
     }
-  }), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_select.default, {
-    label: (0, _i18n.__)('Mask size', 'atrc-prefix-atrc'),
+  }), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    label: __('Mask size', 'atrc-prefix-atrc'),
     wrapProps: {
       className: 'at-flx-grw-1'
     },
     value: sz,
     options: [{
-      label: (0, _i18n.__)('Default', 'atrc-prefix-atrc'),
+      label: __('Default', 'atrc-prefix-atrc'),
       value: ''
     }, {
-      label: (0, _i18n.__)('Auto', 'atrc-prefix-atrc'),
+      label: __('Auto', 'atrc-prefix-atrc'),
       value: 'auto'
     }, {
-      label: (0, _i18n.__)('Contain', 'atrc-prefix-atrc'),
+      label: __('Contain', 'atrc-prefix-atrc'),
       value: 'contain'
     }, {
-      label: (0, _i18n.__)('Cover', 'atrc-prefix-atrc'),
+      label: __('Cover', 'atrc-prefix-atrc'),
       value: 'cover'
     }, {
-      label: (0, _i18n.__)('Custom', 'atrc-prefix-atrc'),
+      label: __('Custom', 'atrc-prefix-atrc'),
       value: 'cust'
     }],
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'sz');
     }
-  })), 'cust' === sz ? /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_controlResponsiveWidthHeight.default, {
-    label: (0, _i18n.__)('Custom mask size', 'atrc-prefix-atrc'),
+  })), 'cust' === sz ? /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlResponsiveWidthHeight, {
+    label: __('Custom mask size', 'atrc-prefix-atrc'),
     value: {
       w: w,
       smW: smW,
@@ -419,9 +421,9 @@ var ShapeSettings = function ShapeSettings(props) {
       xxlH: xxlH
     },
     onChange: setWidthHeight,
-    className: (0, _classnames.default)('at-flx-grw-1')
-  })) : null) : /*#__PURE__*/React.createElement(_controlResponsiveWidthHeight.default, {
-    label: (0, _i18n.__)('Size', 'atrc-prefix-atrc'),
+    className: classnames('at-flx-grw-1')
+  })) : null) : /*#__PURE__*/React.createElement(AtrcControlResponsiveWidthHeight, {
+    label: __('Size', 'atrc-prefix-atrc'),
     value: {
       w: w,
       smW: smW,
@@ -437,21 +439,21 @@ var ShapeSettings = function ShapeSettings(props) {
       xxlH: xxlH
     },
     onChange: setWidthHeight
-  }), /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('shp-opt')),
+  }), /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('shp-opt')),
     label: shapeOptionsLabel,
     resetAll: function resetAll() {
       return _onChange2({});
     },
     tools: AllTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (item, iDx) {
+    return map(activeItems, function (item, iDx) {
       if ('flipV' === item) {
-        return /*#__PURE__*/React.createElement(_panelRow.default, {
-          className: (0, _classnames.default)('at-m'),
+        return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+          className: classnames('at-m'),
           key: iDx
-        }, /*#__PURE__*/React.createElement(_toggle.default, {
-          label: (0, _i18n.__)('Flip vertically', 'atrc-prefix-atrc'),
+        }, /*#__PURE__*/React.createElement(AtrcToggle, {
+          label: __('Flip vertically', 'atrc-prefix-atrc'),
           checked: flipV,
           onChange: function onChange() {
             return setAttr(!flipV, 'flipV');
@@ -459,11 +461,11 @@ var ShapeSettings = function ShapeSettings(props) {
         }));
       }
       if ('flipH' === item) {
-        return /*#__PURE__*/React.createElement(_panelRow.default, {
-          className: (0, _classnames.default)('at-m'),
+        return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+          className: classnames('at-m'),
           key: iDx
-        }, /*#__PURE__*/React.createElement(_toggle.default, {
-          label: (0, _i18n.__)('Flip horizontally', 'atrc-prefix-atrc'),
+        }, /*#__PURE__*/React.createElement(AtrcToggle, {
+          label: __('Flip horizontally', 'atrc-prefix-atrc'),
           checked: flipH,
           onChange: function onChange() {
             return setAttr(!flipH, 'flipH');
@@ -471,11 +473,11 @@ var ShapeSettings = function ShapeSettings(props) {
         }));
       }
       if ('zT' === item) {
-        return /*#__PURE__*/React.createElement(_panelRow.default, {
-          className: (0, _classnames.default)('at-m'),
+        return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+          className: classnames('at-m'),
           key: iDx
-        }, /*#__PURE__*/React.createElement(_toggle.default, {
-          label: (0, _i18n.__)('Bring front', 'atrc-prefix-atrc'),
+        }, /*#__PURE__*/React.createElement(AtrcToggle, {
+          label: __('Bring front', 'atrc-prefix-atrc'),
           checked: zT,
           onChange: function onChange() {
             return setAttr(!zT, 'zT');
@@ -498,7 +500,7 @@ var AtrcControlShape = function AtrcControlShape(props) {
     _props$onChange2 = props.onChange,
     onChange = _props$onChange2 === void 0 ? function () {} : _props$onChange2,
     _props$shapeOptionsLa = props.shapeOptionsLabel,
-    shapeOptionsLabel = _props$shapeOptionsLa === void 0 ? (0, _i18n.__)('Shape options', 'atrc-prefix-atrc') : _props$shapeOptionsLa,
+    shapeOptionsLabel = _props$shapeOptionsLa === void 0 ? __('Shape options', 'atrc-prefix-atrc') : _props$shapeOptionsLa,
     _props$shapeType2 = props.shapeType,
     shapeType = _props$shapeType2 === void 0 ? '' : _props$shapeType2,
     _props$allowColor = props.allowColor,
@@ -602,21 +604,21 @@ var AtrcControlShape = function AtrcControlShape(props) {
     valueCloned = _objectSpread(_objectSpread({}, valueCloned), newVal);
     onChange(valueCloned);
   };
-  return /*#__PURE__*/React.createElement(_wrap.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-shp'), className, variant ? (0, _prefixVars.default)('ctrl-shp') + '-' + variant : '')
-  }, /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_select.default, {
-    label: (0, _i18n.__)('Type', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames(AtrcPrefix('ctrl-shp'), className, variant ? AtrcPrefix('ctrl-shp') + '-' + variant : '')
+  }, /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    label: __('Type', 'atrc-prefix-atrc'),
     wrapProps: {
       className: 'at-flx-grw-1'
     },
     value: type,
     options: [{
-      label: (0, _i18n.__)('Svg', 'atrc-prefix-atrc'),
+      label: __('Svg', 'atrc-prefix-atrc'),
       value: 'svg'
     }, {
-      label: (0, _i18n.__)('Image', 'atrc-prefix-atrc'),
+      label: __('Image', 'atrc-prefix-atrc'),
       value: 'img'
     }],
     onChange: function onChange(newVal) {
@@ -662,5 +664,5 @@ var AtrcControlShape = function AtrcControlShape(props) {
     onChange: setShapeSettings
   }) : null);
 };
-var _default = exports.default = AtrcControlShape;
+export default AtrcControlShape;
 //# sourceMappingURL=index.js.map

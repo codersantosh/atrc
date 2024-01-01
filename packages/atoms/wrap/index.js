@@ -1,5 +1,4 @@
 /*WordPress*/
-import { forwardRef } from '@wordpress/element';
 
 /*Library*/
 import classnames from 'classnames';
@@ -8,7 +7,7 @@ import classnames from 'classnames';
 import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components*/
-const AtrcWrap = (props, ref) => {
+const AtrcWrap = (props) => {
 	const {
 		tag = 'div',
 		className = '',
@@ -22,7 +21,6 @@ const AtrcWrap = (props, ref) => {
 	if (dangerouslySetInnerHTML) {
 		return (
 			<WrapTag
-				ref={ref}
 				className={classnames(className, variant ? AtrcPrefix() + variant : '')}
 				dangerouslySetInnerHTML={dangerouslySetInnerHTML}
 				{...defaultProps}
@@ -32,7 +30,6 @@ const AtrcWrap = (props, ref) => {
 
 	return (
 		<WrapTag
-			ref={ref}
 			className={classnames(className, variant ? AtrcPrefix('') + variant : '')}
 			{...defaultProps}>
 			{children}
@@ -40,4 +37,4 @@ const AtrcWrap = (props, ref) => {
 	);
 };
 
-export default forwardRef(AtrcWrap);
+export default AtrcWrap;

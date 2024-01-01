@@ -1,31 +1,5 @@
-"use strict";
-
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _blockEditor = require("@wordpress/block-editor");
-var _data = require("@wordpress/data");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _bs = require("react-icons/bs");
-var _lodash = require("lodash");
-var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
-var _label = _interopRequireDefault(require("../../atoms/label"));
-var _select = _interopRequireDefault(require("../../atoms/select"));
-var _text = _interopRequireDefault(require("../../atoms/text"));
-var _button = _interopRequireDefault(require("../../atoms/button"));
-var _icon = _interopRequireDefault(require("../../atoms/icon"));
-var _img = _interopRequireDefault(require("../../atoms/img"));
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _notice = _interopRequireDefault(require("../notice"));
-var _panelRow = _interopRequireDefault(require("../panel-row"));
-var _tooltip = _interopRequireDefault(require("../tooltip"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
 var _excluded = ["label", "value", "variant", "className", "onChange", "allowSource", "allowSelf", "allowExternal", "allowDetails", "allowSettings"];
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
@@ -39,7 +13,8 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*Attributes Structure
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+/*Attributes Structure
 Type Object
 {
     frm = '',
@@ -53,12 +28,40 @@ Type Object
 }
 
 map(obj, (currentValue, currentKey) => ( { value: key, label: key } ))
-* */ /*WordPress*/ /*Library*/ /*Inbuilt*/ /*Inbuilt*/
+* */
+
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useEffect, useMemo, useState, useRef } from '@wordpress/element';
+import { MediaUpload, MediaUploadCheck, store as blockEditorStore } from '@wordpress/block-editor';
+import { useSelect } from '@wordpress/data';
+
+/*Library*/
+import classnames from 'classnames';
+import { BsImage, BsTrash } from 'react-icons/bs';
+import { isEmpty, map, reduce } from 'lodash';
+
+/*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcSelect from '../../atoms/select';
+import AtrcText from '../../atoms/text';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcImg from '../../atoms/img';
+import AtrcPanelTools from '../panel-tools';
+import AtrcNotice from '../notice';
+import AtrcPanelRow from '../panel-row';
+import AtrcTooltip from '../tooltip';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local Components*/
 var SelfHostedImg = function SelfHostedImg(props) {
-  var isFirstRender = (0, _element.useRef)(true);
+  var isFirstRender = useRef(true);
   if (!(typeof wp !== 'undefined' && wp.media)) {
-    return /*#__PURE__*/React.createElement(_notice.default, null, (0, _i18n.__)('Add wp_enqueue_media(); on the page', 'atrc-prefix-atrc'));
+    return /*#__PURE__*/React.createElement(AtrcNotice, null, __('Add wp_enqueue_media(); on the page', 'atrc-prefix-atrc'));
   }
   var _props$value = props.value,
     value = _props$value === void 0 ? {} : _props$value,
@@ -87,12 +90,12 @@ var SelfHostedImg = function SelfHostedImg(props) {
 
   /* for local management */
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  var _useState = (0, _element.useState)(null),
+  var _useState = useState(null),
     _useState2 = _slicedToArray(_useState, 2),
     media = _useState2[0],
     setMedia = _useState2[1];
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  var _useState3 = (0, _element.useState)(sz),
+  var _useState3 = useState(sz),
     _useState4 = _slicedToArray(_useState3, 2),
     imgSz = _useState4[0],
     setImgSize = _useState4[1];
@@ -105,7 +108,7 @@ var SelfHostedImg = function SelfHostedImg(props) {
 
   /* Run at first, only once for first time*/
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  (0, _element.useEffect)(function () {
+  useEffect(function () {
     if (id && !media) {
       /* Need to use wp.media becuase const { getMedia } = select(coreStore); doesnot provide same and alos required properties */
       wp.media.attachment(id).fetch({
@@ -119,15 +122,15 @@ var SelfHostedImg = function SelfHostedImg(props) {
   }, []);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  var imageSizes = (0, _data.useSelect)(function (select) {
-    var settings = select(_blockEditor.store).getSettings();
+  var imageSizes = useSelect(function (select) {
+    var settings = select(blockEditorStore).getSettings();
     return id && '' === frm ? settings.imageSizes : null;
   }, [id, frm]);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  var imageSizesOptions = (0, _element.useMemo)(function () {
+  var imageSizesOptions = useMemo(function () {
     if (media && media.sizes) {
-      var keyValues = (0, _lodash.reduce)(imageSizes, function (accumulator, _ref) {
+      var keyValues = reduce(imageSizes, function (accumulator, _ref) {
         var name = _ref.name,
           slug = _ref.slug;
         accumulator[slug] = {
@@ -138,7 +141,7 @@ var SelfHostedImg = function SelfHostedImg(props) {
       }, {});
       return {
         keys: Object.keys(keyValues),
-        options: (0, _lodash.reduce)(media.sizes, function (accumulator, currentValue, currentKey) {
+        options: reduce(media.sizes, function (accumulator, currentValue, currentKey) {
           if (keyValues[currentKey]) {
             accumulator.push(keyValues[currentKey]);
           } else {
@@ -156,7 +159,7 @@ var SelfHostedImg = function SelfHostedImg(props) {
 
   /* set attributes when media change */
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  (0, _element.useEffect)(function () {
+  useEffect(function () {
     if (isFirstRender.current) {
       isFirstRender.current = false;
     } else {
@@ -194,11 +197,11 @@ var SelfHostedImg = function SelfHostedImg(props) {
   if (frm !== '') {
     return null;
   }
-  return /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_blockEditor.MediaUploadCheck, null, /*#__PURE__*/React.createElement(_wrap.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-img-slf-hosted'), 'at-pos', 'at-flx-grw-1')
-  }, /*#__PURE__*/React.createElement(_img.default, {
+  return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(MediaUploadCheck, null, /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames(AtrcPrefix('ctrl-img-slf-hosted'), 'at-pos', 'at-flx-grw-1')
+  }, /*#__PURE__*/React.createElement(AtrcImg, {
     src: url,
     alt: alt,
     title: ttl,
@@ -206,27 +209,27 @@ var SelfHostedImg = function SelfHostedImg(props) {
     srcset: srcset,
     width: w,
     height: h
-  }), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_blockEditor.MediaUpload, {
+  }), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(MediaUpload, {
     onSelect: setMedia,
     allowedTypes: ['image', 'video'],
-    title: (0, _i18n.__)('Select or upload background media', 'atrc-prefix-atrc'),
+    title: __('Select or upload background media', 'atrc-prefix-atrc'),
     value: id,
     render: function render(_ref2) {
       var open = _ref2.open;
-      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_button.default, {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcButton, {
         variant: "uploads",
-        className: (0, _classnames.default)('at-gap', 'at-flx', 'at-al-itm-ctr', 'at-jfy-cont-ctr', 'at-w'),
+        className: classnames('at-gap', 'at-flx', 'at-al-itm-ctr', 'at-jfy-cont-ctr', 'at-w'),
         onClick: open
-      }, /*#__PURE__*/React.createElement(_icon.default, {
+      }, /*#__PURE__*/React.createElement(AtrcIcon, {
         type: "bootstrap",
-        icon: _bs.BsImage
-      }), id ? (0, _i18n.__)('Replace media', 'atrc-prefix-atrc') : (0, _i18n.__)('Add media', 'atrc-prefix-atrc')), id ? /*#__PURE__*/React.createElement(_tooltip.default, {
-        className: (0, _classnames.default)((0, _prefixVars.default)('uploads-del'), 'at-pos'),
-        text: (0, _i18n.__)('Remove media', 'atrc-prefix-atrc')
-      }, /*#__PURE__*/React.createElement(_button.default, {
-        className: (0, _classnames.default)('at-bdr-rad', 'at-flx', 'at-w', 'at-h', 'at-al-itm-ctr', 'at-jfy-cont-ctr'),
+        icon: BsImage
+      }), id ? __('Replace media', 'atrc-prefix-atrc') : __('Add media', 'atrc-prefix-atrc')), id ? /*#__PURE__*/React.createElement(AtrcTooltip, {
+        className: classnames(AtrcPrefix('uploads-del'), 'at-pos'),
+        text: __('Remove media', 'atrc-prefix-atrc')
+      }, /*#__PURE__*/React.createElement(AtrcButton, {
+        className: classnames('at-bdr-rad', 'at-flx', 'at-w', 'at-h', 'at-al-itm-ctr', 'at-jfy-cont-ctr'),
         variant: "delete",
         onClick: function onClick() {
           return setAttrs({
@@ -234,15 +237,15 @@ var SelfHostedImg = function SelfHostedImg(props) {
             url: null
           });
         }
-      }, /*#__PURE__*/React.createElement(_icon.default, {
+      }, /*#__PURE__*/React.createElement(AtrcIcon, {
         type: "bootstrap",
-        icon: _bs.BsTrash
+        icon: BsTrash
       }))) : null);
     }
-  })), imageSizesOptions && imageSizesOptions.options ? /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_select.default, {
-    label: (0, _i18n.__)('Image size', 'atrc-prefix-atrc'),
+  })), imageSizesOptions && imageSizesOptions.options ? /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    label: __('Image size', 'atrc-prefix-atrc'),
     wrapProps: {
       className: 'at-flx-grw-1'
     },
@@ -268,17 +271,17 @@ var ExternalImg = function ExternalImg(props) {
   if (frm === '') {
     return null;
   }
-  return /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_wrap.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-img-ext'))
-  }, /*#__PURE__*/React.createElement(_img.default, {
-    className: (0, _classnames.default)('at-m'),
+  return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames(AtrcPrefix('ctrl-img-ext'))
+  }, /*#__PURE__*/React.createElement(AtrcImg, {
+    className: classnames('at-m'),
     src: url,
     alt: alt,
     title: ttl
-  }), /*#__PURE__*/React.createElement(_text.default, {
-    label: (0, _i18n.__)('Image URL', 'atrc-prefix-atrc'),
+  }), /*#__PURE__*/React.createElement(AtrcText, {
+    label: __('Image URL', 'atrc-prefix-atrc'),
     value: url,
     type: "url",
     onChange: onChange
@@ -293,20 +296,20 @@ var ImgDetails = function ImgDetails(props) {
     alt = _value$alt3 === void 0 ? '' : _value$alt3,
     _value$ttl3 = value.ttl,
     ttl = _value$ttl3 === void 0 ? '' : _value$ttl3;
-  return /*#__PURE__*/React.createElement(_wrap.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-img-img-details'))
-  }, /*#__PURE__*/React.createElement(_label.default, null, (0, _i18n.__)('Image details', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_text.default, {
-    label: (0, _i18n.__)('Alt text', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames(AtrcPrefix('ctrl-img-img-details'))
+  }, /*#__PURE__*/React.createElement(AtrcLabel, null, __('Image details', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcText, {
+    label: __('Alt text', 'atrc-prefix-atrc'),
     value: alt,
     onChange: function onChange(newVal) {
       return _onChange(newVal, 'alt');
     }
-  })), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_text.default, {
-    label: (0, _i18n.__)('Title', 'atrc-prefix-atrc'),
+  })), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcText, {
+    label: __('Title', 'atrc-prefix-atrc'),
     value: ttl,
     onChange: function onChange(newVal) {
       return _onChange(newVal, 'ttl');
@@ -332,7 +335,7 @@ var ImgSettings = function ImgSettings(props) {
     onChange(valueCloned);
   };
   var hasTabValue = function hasTabValue(tab) {
-    if (!value || (0, _lodash.isEmpty)(value)) {
+    if (!value || isEmpty(value)) {
       return false;
     }
     if (tab === 'details') {
@@ -340,12 +343,12 @@ var ImgSettings = function ImgSettings(props) {
     }
     return false;
   };
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     var tabs = [];
     if (allowDetails) {
       tabs.push({
         name: 'details',
-        title: (0, _i18n.__)('Image details', 'atrc-prefix-atrc'),
+        title: __('Image details', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('details'),
         onDeselect: function onDeselect() {
           return resetDetails();
@@ -357,14 +360,14 @@ var ImgSettings = function ImgSettings(props) {
   if (!allowDetails) {
     return null;
   }
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    label: (0, _i18n.__)('Settings', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    label: __('Settings', 'atrc-prefix-atrc'),
     resetAll: function resetAll() {
       return onChange({});
     },
     tools: AllTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (tab, iDx) {
+    return map(activeItems, function (tab, iDx) {
       if ('details' === tab) {
         return /*#__PURE__*/React.createElement(ImgDetails, {
           value: value,
@@ -413,21 +416,21 @@ var AtrcControlImg = function AtrcControlImg(props) {
     valueCloned.url = newVal;
     onChange(valueCloned);
   };
-  return /*#__PURE__*/React.createElement(_wrap.default, _extends({
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-img'), 'at-flx-grw-1', className, variant ? (0, _prefixVars.default)('ctrl-img') + '-' + variant : '')
-  }, defaultProps), label && /*#__PURE__*/React.createElement(_label.default, null, label), allowSource && /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_select.default, {
-    label: (0, _i18n.__)('Image source', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(AtrcWrap, _extends({
+    className: classnames(AtrcPrefix('ctrl-img'), 'at-flx-grw-1', className, variant ? AtrcPrefix('ctrl-img') + '-' + variant : '')
+  }, defaultProps), label && /*#__PURE__*/React.createElement(AtrcLabel, null, label), allowSource && /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    label: __('Image source', 'atrc-prefix-atrc'),
     wrapProps: {
       className: 'at-flx-grw-1'
     },
     value: frm,
     options: [{
-      label: (0, _i18n.__)('Self hosted', 'atrc-prefix-atrc'),
+      label: __('Self hosted', 'atrc-prefix-atrc'),
       value: ''
     }, {
-      label: (0, _i18n.__)('External', 'atrc-prefix-atrc'),
+      label: __('External', 'atrc-prefix-atrc'),
       value: 'ext'
     }],
     onChange: function onChange(newVal) {
@@ -445,5 +448,5 @@ var AtrcControlImg = function AtrcControlImg(props) {
     allowDetails: allowDetails
   }) : null);
 };
-var _default = exports.default = AtrcControlImg;
+export default AtrcControlImg;
 //# sourceMappingURL=index.js.map

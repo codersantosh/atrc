@@ -1,18 +1,7 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.AtrcControlBoxShadowAllowedKeys = void 0;
-var _i18n = require("@wordpress/i18n");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
-var _select = _interopRequireDefault(require("../../atoms/select"));
-var _controlUnit = _interopRequireDefault(require("../../atoms/control-unit"));
-var _controlDropdownColor = _interopRequireDefault(require("../control-dropdown-color"));
-var _panelRow = _interopRequireDefault(require("../panel-row"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
 var _excluded = ["value", "variant", "className", "onChange", "disableUnits"];
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 /*Attributes Structure
 Type Object
 {
@@ -24,16 +13,25 @@ Type Object
     pos : '',
 }
 * */
+
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+
 /*Library*/
+import classnames from 'classnames';
+
 /*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+import AtrcSelect from '../../atoms/select';
+import AtrcControlUnit from '../../atoms/control-unit';
+import AtrcControlDropdownColor from '../control-dropdown-color';
+import AtrcPanelRow from '../panel-row';
+
 /*Inbuilt*/
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local*/
-var AtrcControlBoxShadowAllowedKeys = exports.AtrcControlBoxShadowAllowedKeys = ['cl', 'x', 'y', 'blr', 'sprd', 'pos'];
+export var AtrcControlBoxShadowAllowedKeys = ['cl', 'x', 'y', 'blr', 'sprd', 'pos'];
 var AtrcControlBoxShadow = function AtrcControlBoxShadow(props) {
   var _props$value = props.value,
     value = _props$value === void 0 ? {} : _props$value,
@@ -63,64 +61,64 @@ var AtrcControlBoxShadow = function AtrcControlBoxShadow(props) {
     valueCloned[type] = newVal;
     onChange(valueCloned);
   };
-  return /*#__PURE__*/React.createElement(_wrap.default, _extends({
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-box-sdw'), className, variant ? (0, _prefixVars.default)('ctrl-box-sdw') + '-' + variant : '')
-  }, defaultProps), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_controlDropdownColor.default, {
+  return /*#__PURE__*/React.createElement(AtrcWrap, _extends({
+    className: classnames(AtrcPrefix('ctrl-box-sdw'), className, variant ? AtrcPrefix('ctrl-box-sdw') + '-' + variant : '')
+  }, defaultProps), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlDropdownColor, {
     value: cl,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'cl');
     }
-  })), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_select.default, {
-    label: (0, _i18n.__)('Position', 'atrc-prefix-atrc'),
+  })), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    label: __('Position', 'atrc-prefix-atrc'),
     wrapProps: {
       className: 'at-flx-grw-1'
     },
     value: pos,
     options: [{
-      label: (0, _i18n.__)('Default', 'atrc-prefix-atrc'),
+      label: __('Default', 'atrc-prefix-atrc'),
       value: ''
     }, {
-      label: (0, _i18n.__)('Inset', 'atrc-prefix-atrc'),
+      label: __('Inset', 'atrc-prefix-atrc'),
       value: 'inset'
     }],
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'pos');
     }
-  })), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('X', 'atrc-prefix-atrc'),
+  })), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('X', 'atrc-prefix-atrc'),
     value: x,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'x');
     },
     disableUnits: disableUnits
-  })), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Y', 'atrc-prefix-atrc'),
+  })), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Y', 'atrc-prefix-atrc'),
     value: y,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'y');
     },
     disableUnits: disableUnits
-  })), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Blur', 'atrc-prefix-atrc'),
+  })), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Blur', 'atrc-prefix-atrc'),
     value: blr,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'blr');
     },
     disableUnits: disableUnits
-  })), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Spread', 'atrc-prefix-atrc'),
+  })), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Spread', 'atrc-prefix-atrc'),
     value: sprd,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'sprd');
@@ -128,5 +126,5 @@ var AtrcControlBoxShadow = function AtrcControlBoxShadow(props) {
     disableUnits: disableUnits
   })));
 };
-var _default = exports.default = AtrcControlBoxShadow;
+export default AtrcControlBoxShadow;
 //# sourceMappingURL=index.js.map

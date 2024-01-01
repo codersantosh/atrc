@@ -1,9 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 /*Local*/
 var Right = function Right(value, innerOutput, property) {
   if (value.r) {
@@ -26,5 +20,5 @@ var Right = function Right(value, innerOutput, property) {
   }
   return innerOutput;
 };
-var _default = exports.default = Right;
+export default Right;
 //# sourceMappingURL=right.js.map

@@ -15,8 +15,10 @@ const AtrcControlFlexAlignContentDeviceClasses = (abStyle) => {
 
 	let classes = '';
 
-	for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-		const device = AtrcAvailableDevices[i];
+	const avDevices = AtrcAvailableDevices();
+
+	for (let i = 0; i < avDevices.length; i++) {
+		const device = avDevices[i];
 
 		if (!device.on) {
 			continue;

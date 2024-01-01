@@ -86,7 +86,7 @@ const AtrcControlImgShape = (props) => {
 								shapeOptionsLabel={__('Mask shape options', 'atrc-prefix-atrc')}
 								value={value}
 								onChange={onChange}
-								definedOptions={SvgShapeOptions}
+								definedOptions={SvgShapeOptions()}
 								shapeType='imgShp'
 								allowColor={false}
 								key={iDx}

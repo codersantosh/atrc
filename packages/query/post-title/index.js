@@ -3,14 +3,12 @@ import { __ } from '@wordpress/i18n';
 
 import { useEntityProp } from '@wordpress/core-data';
 
-import { forwardRef } from '@wordpress/element';
-
 /* Inbuilt */
 import AtrcWrap from '../../atoms/wrap';
 import AtrcLink from '../../atoms/link';
 
 /* Local */
-const AtrcPostTitle = (props, ref) => {
+const AtrcPostTitle = (props) => {
 	const { postType, postId, htmlTag, linkOptions, ...defaultProps } = props;
 
 	// eslint-disable-next-line no-unused-vars
@@ -25,7 +23,6 @@ const AtrcPostTitle = (props, ref) => {
 	let titleElement = (
 		<AtrcWrap
 			{...defaultProps}
-			ref={ref}
 			tag={htmlTag}>
 			{__('Title', 'atrc-prefix-atrc')}
 		</AtrcWrap>
@@ -36,7 +33,6 @@ const AtrcPostTitle = (props, ref) => {
 			titleElement = (
 				<AtrcWrap
 					{...defaultProps}
-					ref={ref}
 					tag={htmlTag}>
 					<AtrcLink
 						prefix={false}
@@ -54,7 +50,6 @@ const AtrcPostTitle = (props, ref) => {
 			titleElement = (
 				<AtrcWrap
 					{...defaultProps}
-					ref={ref}
 					tag={htmlTag}
 					dangerouslySetInnerHTML={{
 						__html: fullTitle?.rendered,
@@ -66,4 +61,4 @@ const AtrcPostTitle = (props, ref) => {
 	return titleElement;
 };
 
-export default forwardRef(AtrcPostTitle);
+export default AtrcPostTitle;

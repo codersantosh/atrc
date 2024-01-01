@@ -1,19 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _coreData = require("@wordpress/core-data");
-var _date = require("@wordpress/date");
-var _element = require("@wordpress/element");
-var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
-var _link = _interopRequireDefault(require("../../atoms/link"));
 var _excluded = ["postType", "postId", "htmlTag", "displayType", "linkOptions", "format"];
-/*WordPress*/
-/* Inbuilt */
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -23,8 +8,17 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useEntityProp } from '@wordpress/core-data';
+import { dateI18n, getSettings as getDateSettings } from '@wordpress/date';
+
+/* Inbuilt */
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLink from '../../atoms/link';
+
 /* Local */
-var AtrcPostDate = function AtrcPostDate(props, ref) {
+var AtrcPostDate = function AtrcPostDate(props) {
   var postType = props.postType,
     postId = props.postId,
     htmlTag = props.htmlTag,
@@ -33,20 +27,20 @@ var AtrcPostDate = function AtrcPostDate(props, ref) {
     linkOptions = props.linkOptions,
     format = props.format,
     defaultProps = _objectWithoutProperties(props, _excluded);
-  var _useEntityProp = (0, _coreData.useEntityProp)('postType', postType, displayType, postId),
+  var _useEntityProp = useEntityProp('postType', postType, displayType, postId),
     _useEntityProp2 = _slicedToArray(_useEntityProp, 1),
     date = _useEntityProp2[0];
-  var dateSettings = (0, _date.getSettings)();
-  var _useEntityProp3 = (0, _coreData.useEntityProp)('root', 'site', 'date_format'),
+  var dateSettings = getDateSettings();
+  var _useEntityProp3 = useEntityProp('root', 'site', 'date_format'),
     _useEntityProp4 = _slicedToArray(_useEntityProp3, 1),
     _useEntityProp4$ = _useEntityProp4[0],
     siteFormat = _useEntityProp4$ === void 0 ? dateSettings.formats.date : _useEntityProp4$;
-  var dateLabel = displayType === 'date' ? (0, _i18n.__)('Post date', 'atrc-prefix-atrc') : (0, _i18n.__)('Post modified date', 'atrc-prefix-atrc');
+  var dateLabel = displayType === 'date' ? __('Post date', 'atrc-prefix-atrc') : __('Post modified date', 'atrc-prefix-atrc');
   var postDate = date ? /*#__PURE__*/React.createElement("time", {
-    dateTime: (0, _date.dateI18n)('c', date)
-  }, (0, _date.dateI18n)(format || siteFormat, date)) : dateLabel;
+    dateTime: dateI18n('c', date)
+  }, dateI18n(format || siteFormat, date)) : dateLabel;
   if (linkOptions && linkOptions.on && date) {
-    postDate = /*#__PURE__*/React.createElement(_link.default, {
+    postDate = /*#__PURE__*/React.createElement(AtrcLink, {
       prefix: false,
       href: "#post-date-pseudo-link",
       onClick: function onClick(event) {
@@ -54,10 +48,9 @@ var AtrcPostDate = function AtrcPostDate(props, ref) {
       }
     }, postDate);
   }
-  return /*#__PURE__*/React.createElement(_wrap.default, _extends({}, defaultProps, {
-    ref: ref,
+  return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
     tag: htmlTag
   }), postDate);
 };
-var _default = exports.default = (0, _element.forwardRef)(AtrcPostDate);
+export default AtrcPostDate;
 //# sourceMappingURL=index.js.map

@@ -1,7 +1,7 @@
 /*WordPress*/
 import { useRef, useEffect, useState } from '@wordpress/element';
 
-import { useInstanceId, useMergeRefs } from '@wordpress/compose';
+import { useMergeRefs } from '@wordpress/compose';
 
 import { Popover } from '@wordpress/components';
 
@@ -13,6 +13,7 @@ import AtrcWrap from '../../atoms/wrap';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
+import AtrcUniqueID from '../../utils/unique-id';
 
 /*Local components and functions*/
 function useObservableState(initialState, onStateChange) {
@@ -135,10 +136,7 @@ function Dropdown(props) {
 }
 
 const AtrcDropdownHover = (props) => {
-	const instanceId = useInstanceId(
-		AtrcDropdownHover,
-		AtrcPrefix('ctrl-dropdown-hover')
-	);
+	const instanceId = AtrcUniqueID() + random(0, 9);
 
 	let timer;
 	const {

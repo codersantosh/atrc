@@ -3,13 +3,11 @@ import { __ } from '@wordpress/i18n';
 
 import { useEntityProp } from '@wordpress/core-data';
 
-import { forwardRef } from '@wordpress/element';
-
 /* Inbuilt */
 import AtrcWrap from '../../atoms/wrap';
 
 /* Local */
-const AtrcPostExcerpt = (props, ref) => {
+const AtrcPostExcerpt = (props) => {
 	const {
 		postType,
 		postId,
@@ -66,10 +64,9 @@ const AtrcPostExcerpt = (props, ref) => {
 	return (
 		<AtrcWrap
 			{...defaultProps}
-			ref={ref}
 			tag={htmlTag}>
 			{excerptContent}
 		</AtrcWrap>
 	);
 };
-export default forwardRef(AtrcPostExcerpt);
+export default AtrcPostExcerpt;

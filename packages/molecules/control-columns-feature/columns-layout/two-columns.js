@@ -12,7 +12,7 @@ const TwoColumnsLayout = (props) => {
 		<AtrcControlSelectButton
 			label={__('Two columns layout', 'atrc-prefix-atrc')}
 			value={value}
-			options={TwoColumnsOptions}
+			options={TwoColumnsOptions()}
 			onChange={onChange}
 			allowReset={false}
 		/>

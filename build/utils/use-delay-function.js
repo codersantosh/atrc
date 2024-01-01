@@ -1,10 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _element = require("@wordpress/element");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
@@ -14,27 +7,30 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*WordPress*/
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+/*WordPress*/
+import { useEffect, useRef, useState } from '@wordpress/element';
+
 /*Library*/
 var AtrcUseDelayFunction = function AtrcUseDelayFunction(fn) {
   var dla = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2000;
   if (!fn) return;
-  var _useState = (0, _element.useState)(0),
+  var _useState = useState(0),
     _useState2 = _slicedToArray(_useState, 2),
     count = _useState2[0],
     setCount = _useState2[1];
-  var _useState3 = (0, _element.useState)(0),
+  var _useState3 = useState(0),
     _useState4 = _slicedToArray(_useState3, 2),
     totalFn = _useState4[0],
     setTotalFn = _useState4[1];
-  var _useState5 = (0, _element.useState)([]),
+  var _useState5 = useState([]),
     _useState6 = _slicedToArray(_useState5, 2),
     args = _useState6[0],
     setArgs = _useState6[1];
-  var timeoutIdRef = (0, _element.useRef)();
-  var localCount = (0, _element.useRef)(count);
-  var localArgs = (0, _element.useRef)(args);
-  var localTotalFn = (0, _element.useRef)(totalFn);
+  var timeoutIdRef = useRef();
+  var localCount = useRef(count);
+  var localArgs = useRef(args);
+  var localTotalFn = useRef(totalFn);
   var setLocalCount = function setLocalCount() {
     localCount.current++;
     setCount(localCount.current);
@@ -51,7 +47,7 @@ var AtrcUseDelayFunction = function AtrcUseDelayFunction(fn) {
     }
     setTotalFn(localTotalFn.current);
   };
-  (0, _element.useEffect)(function () {
+  useEffect(function () {
     if (totalFn) {
       timeoutIdRef.current = setTimeout(function () {
         fn.apply(void 0, _toConsumableArray(args[count]));
@@ -80,5 +76,5 @@ var AtrcUseDelayFunction = function AtrcUseDelayFunction(fn) {
     clearTimeout: clearTimeout
   };
 };
-var _default = exports.default = AtrcUseDelayFunction;
+export default AtrcUseDelayFunction;
 //# sourceMappingURL=use-delay-function.js.map

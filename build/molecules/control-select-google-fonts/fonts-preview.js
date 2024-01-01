@@ -1,37 +1,32 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = AtrcControlSelectGoogleFontsPreview;
-var _element = require("@wordpress/element");
-var _i18n = require("@wordpress/i18n");
-var _reactJss = require("react-jss");
 /*WordPress*/
+import { useEffect } from '@wordpress/element';
+import { __, sprintf } from '@wordpress/i18n';
 
 /*Library*/
+import { createUseStyles } from 'react-jss';
 
 /*Local*/
-var useStyles = (0, _reactJss.createUseStyles)({
-  root: {
-    fontFamily: function fontFamily(_ref) {
-      var font = _ref.font;
-      return font;
-    },
-    fontWeight: function fontWeight(_ref2) {
-      var weight = _ref2.weight;
-      return weight;
+
+export default function AtrcControlSelectGoogleFontsPreview(_ref) {
+  var font = _ref.font,
+    weight = _ref.weight;
+  var useStyles = createUseStyles({
+    root: {
+      fontFamily: function fontFamily(_ref2) {
+        var font = _ref2.font;
+        return font;
+      },
+      fontWeight: function fontWeight(_ref3) {
+        var weight = _ref3.weight;
+        return weight;
+      }
     }
-  }
-});
-function AtrcControlSelectGoogleFontsPreview(_ref3) {
-  var font = _ref3.font,
-    weight = _ref3.weight;
+  });
   var classes = useStyles({
     font: font,
     weight: weight
   });
-  (0, _element.useEffect)(function () {
+  useEffect(function () {
     var link = document.createElement('link');
     link.href = "https://fonts.googleapis.com/css?family=".concat(font, ":").concat(weight);
     link.rel = 'stylesheet';
@@ -45,7 +40,7 @@ function AtrcControlSelectGoogleFontsPreview(_ref3) {
       style: {
         fontWeight: wt
       }
-    }, (0, _i18n.sprintf)((0, _i18n.__)('This text is styled with a Google font `%s` and weight `%s`.', 'atrc-prefix-atrc'), font, wt || (0, _i18n.__)('default', 'atrc-prefix-atrc')));
+    }, sprintf(__('This text is styled with a Google font `%s` and weight `%s`.', 'atrc-prefix-atrc'), font, wt || __('default', 'atrc-prefix-atrc')));
   }));
 }
 //# sourceMappingURL=fonts-preview.js.map

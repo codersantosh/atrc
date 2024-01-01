@@ -7,8 +7,6 @@ Single value
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
-import { useInstanceId } from '@wordpress/compose';
-
 /*Library*/
 import classnames from 'classnames';
 
@@ -24,6 +22,7 @@ import AtrcDropdown from '../dropdown';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
+import AtrcUniqueID from '../../utils/unique-id';
 
 /*Local Components*/
 const LocalIconPreview = ({ icon }) => {
@@ -148,10 +147,7 @@ const RenderControl = (props) => {
 const AtrcControlDropdownHtml = (props) => {
 	const { allowReset = true, value = '', onChange } = props;
 
-	const instanceId = useInstanceId(
-		AtrcControlDropdownHtml,
-		'atrc-ctrl-dropdown-html'
-	);
+	const instanceId = AtrcUniqueID() + random(0, 9);
 
 	if (allowReset) {
 		return (

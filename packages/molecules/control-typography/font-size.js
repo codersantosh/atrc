@@ -34,7 +34,7 @@ import {
 const RenderTab = ({ device, value, onChange }) => {
 	return (
 		<AtrcControlFontSizePicker
-			fontSizes={FontSizeList}
+			fontSizes={FontSizeList()}
 			fallbackFontSize={18}
 			value={AtrcMappingDeviceKeyValues(value, device, 'fntSz')}
 			onChange={(newVal) =>
@@ -49,7 +49,7 @@ const FontSize = ({ value, onChange }) => {
 		<AtrcPanelRow className={classNames('at-m')}>
 			<AtrcDropdownDevice
 				label={__('Font size', 'atrc-prefix-atrc')}
-				tabs={AtrcAvailableDevices}>
+				tabs={AtrcAvailableDevices()}>
 				{(tab) => (
 					<RenderTab
 						device={tab.name}

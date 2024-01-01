@@ -14,7 +14,7 @@ const OneColumnLayout = (props) => {
 		<AtrcControlSelectButton
 			label={__('Single column layout', 'atrc-prefix-atrc')}
 			value={value}
-			options={OneColumnOptions}
+			options={OneColumnOptions()}
 			onChange={onChange}
 			allowReset={false}
 		/>

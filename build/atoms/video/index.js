@@ -1,28 +1,16 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AtrcIsImageUrl = AtrcIsImageUrl;
-exports.AtrcVideoIsHtml5 = AtrcVideoIsHtml5;
-exports.AtrcVideoIsVimeo = AtrcVideoIsVimeo;
-exports.AtrcVideoIsYoutube = AtrcVideoIsYoutube;
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _url = require("@wordpress/url");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _img = _interopRequireDefault(require("../img"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /* WordPress */
+import { __ } from '@wordpress/i18n';
+import { addQueryArgs } from '@wordpress/url';
 
 /*Library*/
-
+import classnames from 'classnames';
+import AtrcImg from '../img';
 /*Local Components*/
 
 /*Source
  * https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-vid-id-from-a-url
  * */
-function AtrcVideoIsYoutube(url) {
+export function AtrcVideoIsYoutube(url) {
   var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/,
     match = url.match(regExp);
   return match && match[7].length === 11 ? match[7] : false;
@@ -70,9 +58,9 @@ function AtrcGetYoutubeVideUrl(props) {
   if (playlist) {
     quryArgs.playlist = playlist;
   }
-  return (0, _url.addQueryArgs)("https://www.youtube.com/embed/".concat(id), quryArgs);
+  return addQueryArgs("https://www.youtube.com/embed/".concat(id), quryArgs);
 }
-function AtrcVideoIsVimeo(url) {
+export function AtrcVideoIsVimeo(url) {
   var regEx = /(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/?(showcase\/)*([0-9))([a-z]*\/)*([0-9]{6,11})[?]?.*/,
     match = url.match(regEx);
   return match && match.length === 7 ? match[6] : false;
@@ -101,11 +89,11 @@ function vimeoVideoUrl(props) {
   // Build the URL
   return "https://player.vimeo.com/vid/".concat(id, "?autoplay=").concat(autoplay, "&loop=").concat(loop, "&muted=").concat(muted, "&controls=").concat(controls, "&playsinline=").concat(playsinline, "&speed=").concat(speed);
 }
-function AtrcVideoIsHtml5(url) {
+export function AtrcVideoIsHtml5(url) {
   // Check if the URL is a valid vid file
   return /^(https?:)?\/\//.test(url) && /\.(mp4|webm|ogv|mov)$/.test(url);
 }
-function AtrcIsImageUrl(url) {
+export function AtrcIsImageUrl(url) {
   // Check if the URL is a valid image file
   return /^(https?:)?\/\//.test(url) && /\.(png|jpe?g|gif|bmp)$/.test(url);
 }
@@ -143,7 +131,7 @@ var AtrcVideo = function AtrcVideo(props) {
     poster = _props$poster === void 0 ? '' : _props$poster;
   if (AtrcVideoIsHtml5(url)) {
     return /*#__PURE__*/React.createElement("video", {
-      className: (0, _classnames.default)('at-vid', className, variant ? 'at-vid-' + variant : ''),
+      className: classnames('at-vid', className, variant ? 'at-vid-' + variant : ''),
       autoPlay: autoplay,
       controls: controls,
       loop: loop,
@@ -157,7 +145,7 @@ var AtrcVideo = function AtrcVideo(props) {
     });
   }
   if (AtrcIsImageUrl(url)) {
-    return /*#__PURE__*/React.createElement(_img.default, {
+    return /*#__PURE__*/React.createElement(AtrcImg, {
       src: url,
       width: width,
       height: height
@@ -176,11 +164,11 @@ var AtrcVideo = function AtrcVideo(props) {
     return /*#__PURE__*/React.createElement("iframe", {
       height: height,
       width: width,
-      className: (0, _classnames.default)('at-vid', className, variant ? 'at-vid-' + variant : ''),
+      className: classnames('at-vid', className, variant ? 'at-vid-' + variant : ''),
       src: youtubeVideUrl,
       frameBorder: "0",
       allowFullScreen: allowFullScreen,
-      title: (0, _i18n.__)('Youtube video', 'atrc-prefix-atrc')
+      title: __('Youtube video', 'atrc-prefix-atrc')
     });
   }
   if (AtrcVideoIsVimeo(url)) {
@@ -195,22 +183,22 @@ var AtrcVideo = function AtrcVideo(props) {
     return /*#__PURE__*/React.createElement("iframe", {
       height: height,
       width: width,
-      className: (0, _classnames.default)('at-vid', className, variant ? 'at-vid-' + variant : ''),
+      className: classnames('at-vid', className, variant ? 'at-vid-' + variant : ''),
       src: vimeoUrl,
       frameBorder: "0",
       allowFullScreen: allowFullScreen,
-      title: (0, _i18n.__)('Vimeo video', 'atrc-prefix-atrc')
+      title: __('Vimeo video', 'atrc-prefix-atrc')
     });
   }
   return /*#__PURE__*/React.createElement("iframe", {
     height: height,
     width: width,
-    className: (0, _classnames.default)('at-vid', className, variant ? 'at-vid-' + variant : ''),
+    className: classnames('at-vid', className, variant ? 'at-vid-' + variant : ''),
     src: url,
     frameBorder: "0",
     allowFullScreen: allowFullScreen,
-    title: (0, _i18n.__)('Other video', 'atrc-prefix-atrc')
+    title: __('Other video', 'atrc-prefix-atrc')
   });
 };
-var _default = exports.default = AtrcVideo;
+export default AtrcVideo;
 //# sourceMappingURL=index.js.map

@@ -1,19 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.AtrcControlBlockShapeTopSelected = exports.AtrcControlBlockShapeBottomSelected = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _controlShape = _interopRequireDefault(require("../control-shape"));
-var _options = _interopRequireDefault(require("./options"));
-var _bottomOptions = _interopRequireDefault(require("./bottom-options"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Attributes Structure
 Type Object
 {
@@ -70,16 +54,25 @@ Type Object
 * */
 
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
 
 /*Library*/
+import classnames from 'classnames';
+import { isArray, map } from 'lodash';
 
 /*Inbuilt*/
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlShape from '../control-shape';
+import SvgShapeTopOptions from './options';
+import SvgShapeBottomOptions from './bottom-options';
 
 /*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components */
-var AtrcControlBlockShapeTopSelected = exports.AtrcControlBlockShapeTopSelected = function AtrcControlBlockShapeTopSelected(value) {
-  var selectedShape = _options.default.filter(function (item) {
+export var AtrcControlBlockShapeTopSelected = function AtrcControlBlockShapeTopSelected(value) {
+  var selectedShape = SvgShapeTopOptions.filter(function (item) {
     return item.value === value;
   });
   if (selectedShape.length) {
@@ -87,8 +80,8 @@ var AtrcControlBlockShapeTopSelected = exports.AtrcControlBlockShapeTopSelected 
   }
   return null;
 };
-var AtrcControlBlockShapeBottomSelected = exports.AtrcControlBlockShapeBottomSelected = function AtrcControlBlockShapeBottomSelected(value) {
-  var selectedShape = _bottomOptions.default.filter(function (item) {
+export var AtrcControlBlockShapeBottomSelected = function AtrcControlBlockShapeBottomSelected(value) {
+  var selectedShape = SvgShapeBottomOptions.filter(function (item) {
     return item.value === value;
   });
   if (selectedShape.length) {
@@ -459,22 +452,22 @@ var AtrcControlBlockShape = function AtrcControlBlockShape(props) {
     }
     onChange(valueCloned);
   };
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     var tabsOptions = [];
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('top')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('top')) {
       tabsOptions.push({
         name: 'top',
-        title: (0, _i18n.__)('Top shape', 'atrc-prefix-atrc'),
+        title: __('Top shape', 'atrc-prefix-atrc'),
         hasValue: tSvgDefd || tSvgCust || tImgId || tImgUrl,
         onDeselect: function onDeselect() {
           return resetTop();
         }
       });
     }
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('bottom')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('bottom')) {
       tabsOptions.push({
         name: 'bottom',
-        title: (0, _i18n.__)('Bottom shape', 'atrc-prefix-atrc'),
+        title: __('Bottom shape', 'atrc-prefix-atrc'),
         hasValue: bSvgDefd || bSvgCust || bImgId || bImgUrl,
         onDeselect: function onDeselect() {
           return resetBottom();
@@ -483,18 +476,18 @@ var AtrcControlBlockShape = function AtrcControlBlockShape(props) {
     }
     return tabsOptions;
   }, [value]);
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-blk-shp'), className, variant ? (0, _prefixVars.default)('ctrl-blk-shp') + '-' + variant : ''),
-    label: (0, _i18n.__)('Block shape', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-blk-shp'), className, variant ? AtrcPrefix('ctrl-blk-shp') + '-' + variant : ''),
+    label: __('Block shape', 'atrc-prefix-atrc'),
     resetAll: function resetAll() {
       return onChange({});
     },
     allowTabs: true,
     tools: AllTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (item, iDx) {
+    return map(activeItems, function (item, iDx) {
       if ('top' === item) {
-        return /*#__PURE__*/React.createElement(_controlShape.default, {
+        return /*#__PURE__*/React.createElement(AtrcControlShape, {
           value: {
             type: tType,
             svgFrm: tSvgFrm,
@@ -522,12 +515,12 @@ var AtrcControlBlockShape = function AtrcControlBlockShape(props) {
             xxlH: xxlTH
           },
           onChange: setTop,
-          definedOptions: _options.default,
+          definedOptions: SvgShapeTopOptions,
           key: iDx
         });
       }
       if ('bottom' === item) {
-        return /*#__PURE__*/React.createElement(_controlShape.default, {
+        return /*#__PURE__*/React.createElement(AtrcControlShape, {
           value: {
             type: bType,
             svgFrm: bSvgFrm,
@@ -555,7 +548,7 @@ var AtrcControlBlockShape = function AtrcControlBlockShape(props) {
             xxlH: xxlBH
           },
           onChange: setBottom,
-          definedOptions: _bottomOptions.default,
+          definedOptions: SvgShapeBottomOptions,
           key: iDx
         });
       }
@@ -563,5 +556,5 @@ var AtrcControlBlockShape = function AtrcControlBlockShape(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlBlockShape;
+export default AtrcControlBlockShape;
 //# sourceMappingURL=index.js.map

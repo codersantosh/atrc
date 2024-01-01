@@ -1,20 +1,8 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _controlTypography = _interopRequireDefault(require("../control-typography"));
-var _objectValuesWithAllowedKeysAndTabs = require("../../utils/object-values-with-allowed-keys-and-tabs");
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-var _controlTypography2 = require("./../control-typography");
 var _excluded = ["value", "tab", "onChange"],
   _excluded2 = ["value", "label", "onChange", "variant", "className", "allowedTabs"];
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 /*Value Structure
 Type Object
 {
@@ -80,24 +68,35 @@ Type Object
 
 }
 * */
+
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
+
 /*Library*/
+import classnames from 'classnames';
+import { map } from 'lodash';
+
 /*Inbuilt*/
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlTypography from '../control-typography';
+
 /*Inbuilt utils*/
+import { AtrcGetTabValues, AtrcHasTabValues, AtrcUpdateTabValues, AtrcResetTab, AtrcResetTabs } from '../../utils/object-values-with-allowed-keys-and-tabs';
+
 /*Prefix*/
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local Components*/
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import { AtrcControlTypographyAllowedKeys } from './../control-typography';
 var RenderTabPanel = function RenderTabPanel(props) {
   var value = props.value,
     tab = props.tab,
     _onChange = props.onChange,
     defaultProps = _objectWithoutProperties(props, _excluded);
-  return /*#__PURE__*/React.createElement(_controlTypography.default, _extends({
-    label: (0, _i18n.__)('Add typography options', 'atrc-prefix-atrc'),
-    value: (0, _objectValuesWithAllowedKeysAndTabs.AtrcGetTabValues)(value, tab, _controlTypography2.AtrcControlTypographyAllowedKeys),
+  return /*#__PURE__*/React.createElement(AtrcControlTypography, _extends({
+    label: __('Add typography options', 'atrc-prefix-atrc'),
+    value: AtrcGetTabValues(value, tab, AtrcControlTypographyAllowedKeys),
     onChange: function onChange(newVal) {
       return _onChange(newVal, tab);
     }
@@ -116,52 +115,52 @@ var AtrcControlTypographyTab = function AtrcControlTypographyTab(props) {
     allowedTabs = _props$allowedTabs === void 0 ? ['normal', 'hover'] : _props$allowedTabs,
     defaultProps = _objectWithoutProperties(props, _excluded2);
   var setTabAttr = function setTabAttr(newVal, tab) {
-    onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcUpdateTabValues)(newVal, tab, value, _controlTypography2.AtrcControlTypographyAllowedKeys));
+    onChange(AtrcUpdateTabValues(newVal, tab, value, AtrcControlTypographyAllowedKeys));
   };
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     var tabs = [];
     if (allowedTabs.includes('normal'.toLowerCase())) {
       tabs.push({
         name: 'normal',
-        title: (0, _i18n.__)('Normal', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)('normal', value, _controlTypography2.AtrcControlTypographyAllowedKeys),
+        title: __('Normal', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasTabValues('normal', value, AtrcControlTypographyAllowedKeys),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTab)('normal', value, _controlTypography2.AtrcControlTypographyAllowedKeys));
+          return onChange(AtrcResetTab('normal', value, AtrcControlTypographyAllowedKeys));
         }
       });
     }
     if (allowedTabs.includes('hover'.toLowerCase())) {
       tabs.push({
         name: 'Hover',
-        title: (0, _i18n.__)('Hover', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)('Hover', value, _controlTypography2.AtrcControlTypographyAllowedKeys),
+        title: __('Hover', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasTabValues('Hover', value, AtrcControlTypographyAllowedKeys),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTab)('Hover', value, _controlTypography2.AtrcControlTypographyAllowedKeys));
+          return onChange(AtrcResetTab('Hover', value, AtrcControlTypographyAllowedKeys));
         }
       });
     }
     if (allowedTabs.includes('parenthover'.toLowerCase())) {
       tabs.push({
         name: 'ParentHover',
-        title: (0, _i18n.__)('Parent hover', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)('ParentHover', value, _controlTypography2.AtrcControlTypographyAllowedKeys),
+        title: __('Parent hover', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasTabValues('ParentHover', value, AtrcControlTypographyAllowedKeys),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTab)('ParentHover', value, _controlTypography2.AtrcControlTypographyAllowedKeys));
+          return onChange(AtrcResetTab('ParentHover', value, AtrcControlTypographyAllowedKeys));
         }
       });
     }
     return tabs;
   }, []);
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-typ-tab'), className, variant ? (0, _prefixVars.default)('ctrl-typ-tab') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-typ-tab'), className, variant ? AtrcPrefix('ctrl-typ-tab') + '-' + variant : ''),
     label: label,
     resetAll: function resetAll() {
-      return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTabs)(value, _controlTypography2.AtrcControlTypographyAllowedKeys));
+      return onChange(AtrcResetTabs(value, AtrcControlTypographyAllowedKeys));
     },
     allowTabs: true,
     tools: AllTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (tab, iDx) {
+    return map(activeItems, function (tab, iDx) {
       return /*#__PURE__*/React.createElement(RenderTabPanel, _extends({
         value: value,
         onChange: function onChange(newVal) {
@@ -173,5 +172,5 @@ var AtrcControlTypographyTab = function AtrcControlTypographyTab(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlTypographyTab;
+export default AtrcControlTypographyTab;
 //# sourceMappingURL=index.js.map

@@ -19,7 +19,7 @@ const FontWeight = ({ value, onChange }) => {
 					className: 'at-flx-grw-1',
 				}}
 				value={value && value.fntWt}
-				options={FontWeightList}
+				options={FontWeightList()}
 				onChange={(newVal) => onChange(newVal, 'fntWt')}
 			/>
 		</AtrcPanelRow>

@@ -1,15 +1,8 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _lodash = require("lodash");
-var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Library*/
+import { isEmpty, isObject } from 'lodash';
 
 /*Inbuilt*/
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Local*/
 var AtrcControlTextAlignClasses = function AtrcControlTextAlignClasses(abStyle) {
@@ -17,10 +10,11 @@ var AtrcControlTextAlignClasses = function AtrcControlTextAlignClasses(abStyle) 
     return '';
   }
   var textAlign = abStyle.txtAl;
-  if (!(0, _lodash.isObject)(textAlign)) return '';
-  if ((0, _lodash.isEmpty)(textAlign)) return '';
-  for (var i = 0; i < _availableDevices.default.length; i++) {
-    var device = _availableDevices.default[i];
+  if (!isObject(textAlign)) return '';
+  if (isEmpty(textAlign)) return '';
+  var avDevices = AtrcAvailableDevices();
+  for (var i = 0; i < avDevices.length; i++) {
+    var device = avDevices[i];
     if (!device.on) {
       continue;
     }
@@ -30,5 +24,5 @@ var AtrcControlTextAlignClasses = function AtrcControlTextAlignClasses(abStyle) 
   }
   return '';
 };
-var _default = exports.default = AtrcControlTextAlignClasses;
+export default AtrcControlTextAlignClasses;
 //# sourceMappingURL=classes.js.map

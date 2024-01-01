@@ -1,15 +1,9 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _data = require("@wordpress/data");
 /*WordPress*/
+import { withSelect, withDispatch } from '@wordpress/data';
 
 /*Local*/
 var AtrcApplyWithItems = function AtrcApplyWithItems(WrappedComponent) {
-  return (0, _data.withSelect)(function (select, ownProps) {
+  return withSelect(function (select, ownProps) {
     if (!ownProps || !ownProps.atrcStore || !ownProps.atrcStoreKey) {
       return null;
     }
@@ -64,7 +58,7 @@ var AtrcApplyWithItems = function AtrcApplyWithItems(WrappedComponent) {
         return select(atrcStore).getItem(atrcStoreKey, id);
       }
     };
-  })((0, _data.withDispatch)(function (dispatch, ownProps) {
+  })(withDispatch(function (dispatch, ownProps) {
     if (!ownProps || !ownProps.atrcStore || !ownProps.atrcStoreKey) {
       return null;
     }
@@ -112,5 +106,5 @@ var AtrcApplyWithItems = function AtrcApplyWithItems(WrappedComponent) {
     };
   })(WrappedComponent));
 };
-var _default = exports.default = AtrcApplyWithItems;
+export default AtrcApplyWithItems;
 //# sourceMappingURL=hoc-items.js.map

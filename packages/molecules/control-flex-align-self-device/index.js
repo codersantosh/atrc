@@ -26,7 +26,7 @@ const AtrcControlFlexAlignSelfDevice = (props) => {
 				className,
 				variant ? AtrcPrefix('ctrl-flx-al-slf-device') + '-' + variant : ''
 			)}
-			options={AlignSelfOptions}
+			options={AlignSelfOptions()}
 			value={value}
 			onChange={onChange}
 			{...defaultProps}

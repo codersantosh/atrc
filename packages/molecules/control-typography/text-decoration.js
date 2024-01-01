@@ -20,7 +20,7 @@ const TextDecoration = ({ value, onChange }) => {
 					className: 'at-flx-grw-1',
 				}}
 				value={value && value.txtDec}
-				options={TextDecorationList}
+				options={TextDecorationList()}
 				onChange={(newVal) => onChange(newVal, 'txtDec')}
 			/>
 		</AtrcPanelRow>

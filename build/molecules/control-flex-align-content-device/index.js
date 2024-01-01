@@ -1,21 +1,17 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _classnames = _interopRequireDefault(require("classnames"));
-var _controlSelectButtonDevice = _interopRequireDefault(require("../control-select-button-device"));
-var _options = _interopRequireDefault(require("./options"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
 var _excluded = ["className", "variant", "value", "onChange"];
-/*Library*/
-/*Inbuilt*/
-/*Inbuilt*/
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*Library*/
+import classnames from 'classnames';
+
+/*Inbuilt*/
+import AtrcControlSelectButtonDevice from '../control-select-button-device';
+import AlignContentOptions from './options';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local Components*/
 var AtrcControlFlexAlignContentDevice = function AtrcControlFlexAlignContentDevice(props) {
   var _props$className = props.className,
@@ -27,12 +23,12 @@ var AtrcControlFlexAlignContentDevice = function AtrcControlFlexAlignContentDevi
     _props$onChange = props.onChange,
     onChange = _props$onChange === void 0 ? function () {} : _props$onChange,
     defaultProps = _objectWithoutProperties(props, _excluded);
-  return /*#__PURE__*/React.createElement(_controlSelectButtonDevice.default, _extends({
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-flx-al-cont-device'), className, variant ? (0, _prefixVars.default)('ctrl-flx-al-cont-device') + '-' + variant : ''),
-    options: _options.default,
+  return /*#__PURE__*/React.createElement(AtrcControlSelectButtonDevice, _extends({
+    className: classnames(AtrcPrefix('ctrl-flx-al-cont-device'), className, variant ? AtrcPrefix('ctrl-flx-al-cont-device') + '-' + variant : ''),
+    options: AlignContentOptions(),
     value: value,
     onChange: onChange
   }, defaultProps));
 };
-var _default = exports.default = AtrcControlFlexAlignContentDevice;
+export default AtrcControlFlexAlignContentDevice;
 //# sourceMappingURL=index.js.map

@@ -1,31 +1,27 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
 
-/* Timing Functions Options*/
-var TimingFunctionsOptions = [{
-  label: (0, _i18n.__)('Default', 'atrc-prefix-atrc'),
-  value: ''
-}, {
-  label: (0, _i18n.__)('Ease', 'atrc-prefix-atrc'),
-  value: 'ease'
-}, {
-  label: (0, _i18n.__)('Linear', 'atrc-prefix-atrc'),
-  value: 'linear'
-}, {
-  label: (0, _i18n.__)('Ease in', 'atrc-prefix-atrc'),
-  value: 'ease-in'
-}, {
-  label: (0, _i18n.__)('Ease out', 'atrc-prefix-atrc'),
-  value: 'ease-out'
-}, {
-  label: (0, _i18n.__)('Ease in out', 'atrc-prefix-atrc'),
-  value: 'ease-in-out'
-}];
-var _default = exports.default = TimingFunctionsOptions;
+/* Position Options*/
+var TimingFunctionsOptions = function TimingFunctionsOptions() {
+  return [{
+    label: __('Default', 'atrc-prefix-atrc'),
+    value: ''
+  }, {
+    label: __('Ease', 'atrc-prefix-atrc'),
+    value: 'ease'
+  }, {
+    label: __('Linear', 'atrc-prefix-atrc'),
+    value: 'linear'
+  }, {
+    label: __('Ease in', 'atrc-prefix-atrc'),
+    value: 'ease-in'
+  }, {
+    label: __('Ease out', 'atrc-prefix-atrc'),
+    value: 'ease-out'
+  }, {
+    label: __('Ease in out', 'atrc-prefix-atrc'),
+    value: 'ease-in-out'
+  }];
+};
+export default TimingFunctionsOptions;
 //# sourceMappingURL=options.js.map

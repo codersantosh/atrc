@@ -24,7 +24,7 @@ const SelectedShape = (value, options) => {
 };
 
 export const AtrcControlDividerDefaultSvg = ({ svgDefd }) => {
-	const selectedShape = SelectedShape(svgDefd, SvgDividerOptions);
+	const selectedShape = SelectedShape(svgDefd, SvgDividerOptions());
 	if (selectedShape) {
 		return selectedShape.svg();
 	}
@@ -82,7 +82,7 @@ const AtrcControlDivider = (props) => {
 							svgCust: 'cust' === value.svgFrm ? value.svg : '',
 						}}
 						onChange={setChange}
-						definedOptions={SvgDividerOptions}
+						definedOptions={SvgDividerOptions()}
 						alloweColor={false}
 						alloweSettings={false}
 						{...defaultProps}

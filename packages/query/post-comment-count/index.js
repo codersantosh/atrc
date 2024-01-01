@@ -1,7 +1,7 @@
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
-import { forwardRef, useEffect, useState } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 
 import apiFetch from '@wordpress/api-fetch';
 
@@ -13,7 +13,7 @@ import AtrcWrap from '../../atoms/wrap';
 import AtrcNotice from './../../molecules/notice';
 
 /* Local */
-const AtrcPostCommentCount = (props, ref) => {
+const AtrcPostCommentCount = (props) => {
 	const { postId, htmlTag, ...defaultProps } = props;
 
 	const [commentsCount, setCommentsCount] = useState();
@@ -43,11 +43,10 @@ const AtrcPostCommentCount = (props, ref) => {
 	return (
 		<AtrcWrap
 			{...defaultProps}
-			ref={ref}
 			tag={htmlTag}>
 			{commentsCount}
 		</AtrcWrap>
 	);
 };
 
-export default forwardRef(AtrcPostCommentCount);
+export default AtrcPostCommentCount;

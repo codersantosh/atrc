@@ -1,9 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Tick = exports.SliderRail = exports.Handle = void 0;
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -29,7 +23,7 @@ var railInnerStyle = {
   borderRadius: 7,
   pointerEvents: 'none'
 };
-var SliderRail = exports.SliderRail = function SliderRail(_ref) {
+export var SliderRail = function SliderRail(_ref) {
   var getRailProps = _ref.getRailProps;
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", _extends({
     style: railOuterStyle
@@ -39,7 +33,7 @@ var SliderRail = exports.SliderRail = function SliderRail(_ref) {
 };
 
 /* Slider handle */
-var Handle = exports.Handle = function Handle(props) {
+export var Handle = function Handle(props) {
   var _props$domain = _slicedToArray(props.domain, 2),
     min = _props$domain[0],
     max = _props$domain[1],
@@ -61,7 +55,7 @@ var Handle = exports.Handle = function Handle(props) {
     }
   }, getHandleProps(id)));
 };
-var Tick = exports.Tick = function Tick(_ref2) {
+export var Tick = function Tick(_ref2) {
   var tick = _ref2.tick,
     count = _ref2.count;
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {

@@ -1,16 +1,10 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = AtrcUsePostTerms;
-var _data = require("@wordpress/data");
-var _coreData = require("@wordpress/core-data");
 /*WordPress*/
+import { useSelect } from '@wordpress/data';
+import { store as coreStore } from '@wordpress/core-data';
 
 /* Local */
 var EMPTY_ARRAY = [];
-function AtrcUsePostTerms(_ref) {
+export default function AtrcUsePostTerms(_ref) {
   var _term$visibility2;
   var postId = _ref.postId,
     _ref$taxonomy = _ref.taxonomy,
@@ -19,16 +13,16 @@ function AtrcUsePostTerms(_ref) {
     showEmpty = _ref$showEmpty === void 0 ? false : _ref$showEmpty,
     _ref$showOnlyTopLevel = _ref.showOnlyTopLevel,
     showOnlyTopLevel = _ref$showOnlyTopLevel === void 0 ? false : _ref$showOnlyTopLevel;
-  var term = (0, _data.useSelect)(function (select) {
+  var term = useSelect(function (select) {
     var _taxObj$visibility;
     if (!taxonomy) return {};
-    var _select = select(_coreData.store),
+    var _select = select(coreStore),
       getTaxonomy = _select.getTaxonomy;
     var taxObj = getTaxonomy(taxonomy);
     return taxObj !== null && taxObj !== void 0 && (_taxObj$visibility = taxObj.visibility) !== null && _taxObj$visibility !== void 0 && _taxObj$visibility.publicly_queryable ? taxObj : {};
   }, [taxonomy]);
   var slug = term.slug;
-  return (0, _data.useSelect)(function (select) {
+  return useSelect(function (select) {
     var _term$visibility;
     var visible = term === null || term === void 0 || (_term$visibility = term.visibility) === null || _term$visibility === void 0 ? void 0 : _term$visibility.publicly_queryable;
     if (!visible) {
@@ -38,7 +32,7 @@ function AtrcUsePostTerms(_ref) {
         hasPostTerms: false
       };
     }
-    var _select2 = select(_coreData.store),
+    var _select2 = select(coreStore),
       getEntityRecords = _select2.getEntityRecords,
       isResolving = _select2.isResolving;
     var args = {

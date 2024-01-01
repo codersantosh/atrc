@@ -1,15 +1,9 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _data = require("@wordpress/data");
 /*WordPress*/
+import { withSelect, withDispatch } from '@wordpress/data';
 
 /*Local*/
 var AtrcApplyWithSettings = function AtrcApplyWithSettings(WrappedComponent) {
-  return (0, _data.withSelect)(function (select, ownProps) {
+  return withSelect(function (select, ownProps) {
     if (!ownProps || !ownProps.atrcStore || !ownProps.atrcStoreKey) {
       return null;
     }
@@ -34,7 +28,7 @@ var AtrcApplyWithSettings = function AtrcApplyWithSettings(WrappedComponent) {
       notices: notices,
       settings: settings
     };
-  })((0, _data.withDispatch)(function (dispatch, ownProps) {
+  })(withDispatch(function (dispatch, ownProps) {
     if (!ownProps || !ownProps.atrcStore || !ownProps.atrcStoreKey) {
       return null;
     }
@@ -58,5 +52,5 @@ var AtrcApplyWithSettings = function AtrcApplyWithSettings(WrappedComponent) {
     };
   })(WrappedComponent));
 };
-var _default = exports.default = AtrcApplyWithSettings;
+export default AtrcApplyWithSettings;
 //# sourceMappingURL=hoc-settings.js.map

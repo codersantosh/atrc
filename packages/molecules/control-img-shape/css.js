@@ -43,7 +43,7 @@ const AtrcControlImgShapeCss = (value, properties) => {
 				innerOutput.xs += `${properties.mskImg} : url('${base64Url}');`;
 			}
 		} else if (value.svgDefd) {
-			const selectedShape = SelectedShape(value.svgDefd, SvgShapeOptions);
+			const selectedShape = SelectedShape(value.svgDefd, SvgShapeOptions());
 			if (selectedShape && selectedShape.svg) {
 				const { svg } = selectedShape;
 				const base64Url = AtrcSvgToBase64(svg);
@@ -63,7 +63,9 @@ const AtrcControlImgShapeCss = (value, properties) => {
 		}
 
 		if ('cust' === value.sz) {
-			AtrcAvailableDevices.forEach((deviceProps) => {
+			const avDevices = AtrcAvailableDevices();
+
+			avDevices.forEach((deviceProps) => {
 				if (deviceProps.on) {
 					const device = deviceProps.name;
 					let x = 0;

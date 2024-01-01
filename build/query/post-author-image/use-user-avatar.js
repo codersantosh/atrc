@@ -1,17 +1,10 @@
-"use strict";
+/* WordPress */
+import { store as blockEditorStore } from '@wordpress/block-editor';
+import { store as coreStore } from '@wordpress/core-data';
+import { __, sprintf } from '@wordpress/i18n';
+import { useSelect } from '@wordpress/data';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = AtrcUseUserAvatar;
-var _blockEditor = require("@wordpress/block-editor");
-var _coreData = require("@wordpress/core-data");
-var _i18n = require("@wordpress/i18n");
-var _data = require("@wordpress/data");
-/**
- * WordPress dependencies
- */
-
+/* Local */
 function getAvatarSizes(sizes) {
   var minSize = sizes ? sizes[0] : 24;
   var maxSize = sizes ? sizes[sizes.length - 1] : 96;
@@ -22,8 +15,8 @@ function getAvatarSizes(sizes) {
   };
 }
 function useDefaultAvatar() {
-  var _useSelect = (0, _data.useSelect)(function (select) {
-      var _select = select(_blockEditor.store),
+  var _useSelect = useSelect(function (select) {
+      var _select = select(blockEditorStore),
         getSettings = _select.getSettings;
       var _getSettings = getSettings(),
         __experimentalDiscussionSettings = _getSettings.__experimentalDiscussionSettings;
@@ -32,13 +25,13 @@ function useDefaultAvatar() {
     defaultAvatarUrl = _useSelect.avatarURL;
   return defaultAvatarUrl;
 }
-function AtrcUseUserAvatar(_ref) {
+export default function AtrcUseUserAvatar(_ref) {
   var userId = _ref.userId,
     postId = _ref.postId,
     postType = _ref.postType;
-  var _useSelect2 = (0, _data.useSelect)(function (select) {
+  var _useSelect2 = useSelect(function (select) {
       var _getEditedEntityRecor;
-      var _select2 = select(_coreData.store),
+      var _select2 = select(coreStore),
         getEditedEntityRecord = _select2.getEditedEntityRecord,
         getUser = _select2.getUser;
       if (userId) {
@@ -64,7 +57,7 @@ function AtrcUseUserAvatar(_ref) {
     maxSize: maxSize,
     alt: authorDetails ?
     // translators: %s is the Author name.
-    (0, _i18n.sprintf)((0, _i18n.__)('%s Avatar'), authorDetails === null || authorDetails === void 0 ? void 0 : authorDetails.name) : (0, _i18n.__)('Default Avatar')
+    sprintf(__('%s Avatar'), authorDetails === null || authorDetails === void 0 ? void 0 : authorDetails.name) : __('Default Avatar')
   };
 }
 //# sourceMappingURL=use-user-avatar.js.map

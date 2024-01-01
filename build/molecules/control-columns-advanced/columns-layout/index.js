@@ -1,17 +1,10 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _oneColumn = _interopRequireDefault(require("./one-column"));
-var _twoColumns = _interopRequireDefault(require("./two-columns"));
-var _threeColumns = _interopRequireDefault(require("./three-columns"));
-var _fourColumns = _interopRequireDefault(require("./four-columns"));
-var _fiveColumns = _interopRequireDefault(require("./five-columns"));
-var _sixColumns = _interopRequireDefault(require("./six-columns"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /* Inbuilt */
+import OneColumnLayout from './one-column';
+import TwoColumnsLayout from './two-columns';
+import ThreeColumnsLayout from './three-columns';
+import FourColumnsLayout from './four-columns';
+import FiveColumnsLayout from './five-columns';
+import SixColumnsLayout from './six-columns';
 
 /* Local */
 var ColumnLayout = function ColumnLayout(props) {
@@ -21,37 +14,37 @@ var ColumnLayout = function ColumnLayout(props) {
     onChange = _props$onChange === void 0 ? function () {} : _props$onChange;
   columns = parseInt(columns);
   if (1 === columns) {
-    return /*#__PURE__*/React.createElement(_oneColumn.default, {
+    return /*#__PURE__*/React.createElement(OneColumnLayout, {
       value: value,
       onChange: onChange
     });
   } else if (2 === columns) {
-    return /*#__PURE__*/React.createElement(_twoColumns.default, {
+    return /*#__PURE__*/React.createElement(TwoColumnsLayout, {
       value: value,
       onChange: onChange
     });
   } else if (3 === columns) {
-    return /*#__PURE__*/React.createElement(_threeColumns.default, {
+    return /*#__PURE__*/React.createElement(ThreeColumnsLayout, {
       value: value,
       onChange: onChange
     });
   } else if (4 === columns) {
-    return /*#__PURE__*/React.createElement(_fourColumns.default, {
+    return /*#__PURE__*/React.createElement(FourColumnsLayout, {
       value: value,
       onChange: onChange
     });
   } else if (5 === columns) {
-    return /*#__PURE__*/React.createElement(_fiveColumns.default, {
+    return /*#__PURE__*/React.createElement(FiveColumnsLayout, {
       value: value,
       onChange: onChange
     });
   } else if (6 === columns) {
-    return /*#__PURE__*/React.createElement(_sixColumns.default, {
+    return /*#__PURE__*/React.createElement(SixColumnsLayout, {
       value: value,
       onChange: onChange
     });
   }
   return null;
 };
-var _default = exports.default = ColumnLayout;
+export default ColumnLayout;
 //# sourceMappingURL=index.js.map

@@ -3,8 +3,6 @@ import { __ } from '@wordpress/i18n';
 
 import { useEntityProp } from '@wordpress/core-data';
 
-import { forwardRef } from '@wordpress/element';
-
 /* Inbuilt */
 import AtrcWrap from '../../atoms/wrap';
 
@@ -13,7 +11,7 @@ import AtrcNotice from './../../molecules/notice';
 import AtrcIsScalar from '../../utils/is-scalar';
 
 /* Local */
-const AtrcPostMeta = (props, ref) => {
+const AtrcPostMeta = (props) => {
 	const { postType, postId, htmlTag, metaKey, ...defaultProps } = props;
 
 	// eslint-disable-next-line @wordpress/no-unused-vars-before-return, no-unused-vars
@@ -26,9 +24,7 @@ const AtrcPostMeta = (props, ref) => {
 	const metaValue = meta?.[metaKey] || null;
 	if (null === metaValue) {
 		return (
-			<AtrcWrap
-				{...defaultProps}
-				ref={ref}>
+			<AtrcWrap {...defaultProps}>
 				<AtrcNotice
 					isDismissible={false}
 					autoDismiss={false}>
@@ -42,9 +38,7 @@ const AtrcPostMeta = (props, ref) => {
 	}
 	if (!AtrcIsScalar(metaValue)) {
 		return (
-			<AtrcWrap
-				{...defaultProps}
-				ref={ref}>
+			<AtrcWrap {...defaultProps}>
 				<AtrcNotice
 					isDismissible={false}
 					autoDismiss={false}>
@@ -59,10 +53,9 @@ const AtrcPostMeta = (props, ref) => {
 	return (
 		<AtrcWrap
 			{...defaultProps}
-			ref={ref}
 			tag={htmlTag}>
 			{metaValue}
 		</AtrcWrap>
 	);
 };
-export default forwardRef(AtrcPostMeta);
+export default AtrcPostMeta;

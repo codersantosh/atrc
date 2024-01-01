@@ -1,17 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _controlDropdownColor = _interopRequireDefault(require("../control-dropdown-color"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Value Structure
 
 Type Object
@@ -23,14 +9,21 @@ Type Object
 **/
 
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
 
 /*Library*/
+import classnames from 'classnames';
+import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlDropdownColor from '../control-dropdown-color';
 
 /*Inbuilt utils*/
 
 /*Prefix*/
+import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components*/
 var AtrcControlDropdownColorTab = function AtrcControlDropdownColorTab(props) {
@@ -52,7 +45,7 @@ var AtrcControlDropdownColorTab = function AtrcControlDropdownColorTab(props) {
     onChange(valueCloned);
   };
   var hasTabValue = function hasTabValue(tab) {
-    if (!value || (0, _lodash.isEmpty)(value)) {
+    if (!value || isEmpty(value)) {
       return false;
     }
     return !!value[tab];
@@ -65,12 +58,12 @@ var AtrcControlDropdownColorTab = function AtrcControlDropdownColorTab(props) {
   var resetAll = function resetAll() {
     onChange({});
   };
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     var tabs = [];
     if (allowedTabs.includes('normal'.toLowerCase())) {
       tabs.push({
         name: 'normal',
-        title: (0, _i18n.__)('Normal', 'atrc-prefix-atrc'),
+        title: __('Normal', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('normal'),
         onDeselect: function onDeselect() {
           return resetTab('normal');
@@ -80,7 +73,7 @@ var AtrcControlDropdownColorTab = function AtrcControlDropdownColorTab(props) {
     if (allowedTabs.includes('hover'.toLowerCase())) {
       tabs.push({
         name: 'hover',
-        title: (0, _i18n.__)('Hover', 'atrc-prefix-atrc'),
+        title: __('Hover', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('hover'),
         onDeselect: function onDeselect() {
           return resetTab('hover');
@@ -90,7 +83,7 @@ var AtrcControlDropdownColorTab = function AtrcControlDropdownColorTab(props) {
     if (allowedTabs.includes('parenthover'.toLowerCase())) {
       tabs.push({
         name: 'parentHover',
-        title: (0, _i18n.__)('Parent hover', 'atrc-prefix-atrc'),
+        title: __('Parent hover', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('parentHover'),
         onDeselect: function onDeselect() {
           return resetTab('parentHover');
@@ -99,15 +92,15 @@ var AtrcControlDropdownColorTab = function AtrcControlDropdownColorTab(props) {
     }
     return tabs;
   }, []);
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-range-tab'), className, variant ? (0, _prefixVars.default)('ctrl-range-tab') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-range-tab'), className, variant ? AtrcPrefix('ctrl-range-tab') + '-' + variant : ''),
     label: label,
     resetAll: resetAll,
     allowTabs: true,
     tools: AllTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (tab, iDx) {
-      return /*#__PURE__*/React.createElement(_controlDropdownColor.default, {
+    return map(activeItems, function (tab, iDx) {
+      return /*#__PURE__*/React.createElement(AtrcControlDropdownColor, {
         label: '',
         value: value && value[tab],
         onChange: function onChange(newVal) {
@@ -118,5 +111,5 @@ var AtrcControlDropdownColorTab = function AtrcControlDropdownColorTab(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlDropdownColorTab;
+export default AtrcControlDropdownColorTab;
 //# sourceMappingURL=index.js.map

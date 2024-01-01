@@ -1,9 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 /*Local*/
 var Left = function Left(value, innerOutput, property) {
   if (value.l) {
@@ -26,5 +20,5 @@ var Left = function Left(value, innerOutput, property) {
   }
   return innerOutput;
 };
-var _default = exports.default = Left;
+export default Left;
 //# sourceMappingURL=left.js.map

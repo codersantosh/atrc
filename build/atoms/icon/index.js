@@ -1,23 +1,8 @@
-"use strict";
-
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _components = require("@wordpress/components");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
 var _excluded = ["className", "variant"],
   _excluded2 = ["icon", "className", "variant"],
   _excluded3 = ["iconUrl"],
   _excluded4 = ["className", "variant", "type", "svg", "icon"];
-/*WordPress*/
-/*Library*/
-/*Inbuilt*/
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -35,6 +20,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useEffect, useState } from '@wordpress/element';
+import { Icon } from '@wordpress/components';
+
+/*Library*/
+import classnames from 'classnames';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local Components*/
 var AtrcIconWp = function AtrcIconWp(props) {
   var _props$className = props.className,
@@ -42,8 +38,8 @@ var AtrcIconWp = function AtrcIconWp(props) {
     _props$variant = props.variant,
     variant = _props$variant === void 0 ? '' : _props$variant,
     defaultProps = _objectWithoutProperties(props, _excluded);
-  return /*#__PURE__*/React.createElement(_components.Icon, _extends({
-    className: (0, _classnames.default)('at-svg', className, variant ? (0, _prefixVars.default)('svg') + '-' + variant : '')
+  return /*#__PURE__*/React.createElement(Icon, _extends({
+    className: classnames('at-svg', className, variant ? AtrcPrefix('svg') + '-' + variant : '')
   }, defaultProps));
 };
 var AtrcIconTag = function AtrcIconTag(props) {
@@ -55,17 +51,17 @@ var AtrcIconTag = function AtrcIconTag(props) {
     defaultProps = _objectWithoutProperties(props, _excluded2);
   var IconTag = icon;
   return /*#__PURE__*/React.createElement(IconTag, _extends({
-    className: (0, _classnames.default)('at-svg', className, variant ? (0, _prefixVars.default)('svg') + '-' + variant : '')
+    className: classnames('at-svg', className, variant ? AtrcPrefix('svg') + '-' + variant : '')
   }, defaultProps));
 };
 var AtrcIconUrl = function AtrcIconUrl(props) {
   var iconUrl = props.iconUrl,
     defaultProps = _objectWithoutProperties(props, _excluded3);
-  var _useState = (0, _element.useState)(),
+  var _useState = useState(),
     _useState2 = _slicedToArray(_useState, 2),
     icon = _useState2[0],
     setIcon = _useState2[1];
-  (0, _element.useEffect)(function () {
+  useEffect(function () {
     function fetchIcon() {
       return _fetchIcon.apply(this, arguments);
     }
@@ -82,7 +78,7 @@ var AtrcIconUrl = function AtrcIconUrl(props) {
               }
               setIcon({
                 error: true,
-                msg: (0, _i18n.__)('Error: Icon url should contain .svg extension', 'atrc-prefix-atrc')
+                msg: __('Error: Icon url should contain .svg extension', 'atrc-prefix-atrc')
               });
               return _context.abrupt("return");
             case 4:
@@ -103,7 +99,7 @@ var AtrcIconUrl = function AtrcIconUrl(props) {
               _context.t0 = _context["catch"](4);
               setIcon({
                 error: true,
-                msg: _context.t0.message || (0, _i18n.__)('Error on icon url', 'atrc-prefix-atrc')
+                msg: _context.t0.message || __('Error on icon url', 'atrc-prefix-atrc')
               });
             case 17:
             case "end":
@@ -141,7 +137,7 @@ var AtrcIcon = function AtrcIcon(props) {
     defaultProps = _objectWithoutProperties(props, _excluded4);
   if (typeof icon === 'function') {
     return icon(_objectSpread({
-      className: (0, _classnames.default)('at-svg', 'at-w', 'at-h', className, variant ? (0, _prefixVars.default)('svg') + '-' + variant : '')
+      className: classnames('at-svg', 'at-w', 'at-h', className, variant ? AtrcPrefix('svg') + '-' + variant : '')
     }, defaultProps));
   }
   if (type === 'wp') {
@@ -156,19 +152,19 @@ var AtrcIcon = function AtrcIcon(props) {
   if (type === 'svg') {
     if (typeof svg === 'function') {
       return svg(_objectSpread({
-        className: (0, _classnames.default)(className, variant ? (0, _prefixVars.default)('svg') + '-' + variant : '')
+        className: classnames(className, variant ? AtrcPrefix('svg') + '-' + variant : '')
       }, defaultProps));
     }
     var div = document.createElement('div');
     div.innerHTML = svg;
     var hasHtmlTags = div.querySelector('*') !== null;
     return hasHtmlTags ? /*#__PURE__*/React.createElement("span", _extends({
-      className: (0, _classnames.default)('at-svg', className, variant ? (0, _prefixVars.default)('svg') + '-' + variant : ''),
+      className: classnames('at-svg', className, variant ? AtrcPrefix('svg') + '-' + variant : ''),
       dangerouslySetInnerHTML: {
         __html: svg
       }
     }, defaultProps)) : /*#__PURE__*/React.createElement("span", _extends({
-      className: (0, _classnames.default)('at-svg', className, variant ? (0, _prefixVars.default)('svg') + '-' + variant : '')
+      className: classnames('at-svg', className, variant ? AtrcPrefix('svg') + '-' + variant : '')
     }, defaultProps), svg);
   }
   if ('url' === type) {
@@ -176,5 +172,5 @@ var AtrcIcon = function AtrcIcon(props) {
   }
   return null;
 };
-var _default = exports.default = AtrcIcon;
+export default AtrcIcon;
 //# sourceMappingURL=index.js.map

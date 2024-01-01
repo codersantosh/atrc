@@ -1,20 +1,5 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _range = _interopRequireDefault(require("../../atoms/range"));
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _dropdownDevice = _interopRequireDefault(require("../dropdown-device"));
-var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); } /*Attributes Structure
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+/*Attributes Structure
 Type Object
 {
     "xs":"",
@@ -30,7 +15,27 @@ Type Object
     "xlHover":""
     "xxlHover":""
 }
-* */ /*WordPress*/ /*Library*/ /*Inbuilt*/ /*Inbuilt Utils*/ /*Inbuilt*/
+* */
+
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
+
+/*Library*/
+import classnames from 'classnames';
+import { isEmpty, map } from 'lodash';
+
+/*Inbuilt*/
+import AtrcRange from '../../atoms/range';
+import AtrcPanelTools from '../panel-tools';
+import AtrcDropdownDevice from '../dropdown-device';
+
+/*Inbuilt Utils*/
+import AtrcAvailableDevices from '../../utils/available-devices';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local Components*/
 function mappingDeviceTabValues(value, device, tab) {
   if (tab === 'normal') {
@@ -68,8 +73,8 @@ var RenderTab = function RenderTab(_ref) {
     _onChange = _ref.onChange,
     _ref$inputProps = _ref.inputProps,
     inputProps = _ref$inputProps === void 0 ? {} : _ref$inputProps;
-  return /*#__PURE__*/React.createElement(_range.default, _extends({}, inputProps, {
-    label: (0, _i18n.__)('Enter value', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(AtrcRange, _extends({}, inputProps, {
+    label: __('Enter value', 'atrc-prefix-atrc'),
     value: mappingDeviceTabValues(value, device, tab),
     onChange: function onChange(newVal) {
       return _onChange(newVal, device, tab);
@@ -85,9 +90,9 @@ var RenderTabPanel = function RenderTabPanel(_ref2) {
     tab = _ref2$tab === void 0 ? 'normal' : _ref2$tab,
     _ref2$inputProps = _ref2.inputProps,
     inputProps = _ref2$inputProps === void 0 ? {} : _ref2$inputProps;
-  return /*#__PURE__*/React.createElement(_dropdownDevice.default, {
+  return /*#__PURE__*/React.createElement(AtrcDropdownDevice, {
     label: label,
-    tabs: _availableDevices.default
+    tabs: AtrcAvailableDevices()
   }, function (rTab) {
     return /*#__PURE__*/React.createElement(RenderTab, {
       device: rTab.name,
@@ -117,7 +122,7 @@ var AtrcControlRangeDeviceTab = function AtrcControlRangeDeviceTab(props) {
     onChange(mappingDeviceTabNewValues(value, newVal, device, tab));
   };
   var hasDeviceTabValue = function hasDeviceTabValue(tab) {
-    if (!value || (0, _lodash.isEmpty)(value)) {
+    if (!value || isEmpty(value)) {
       return false;
     }
     if ('normal' === tab) {
@@ -147,12 +152,12 @@ var AtrcControlRangeDeviceTab = function AtrcControlRangeDeviceTab(props) {
   var resetAll = function resetAll() {
     onChange({});
   };
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     var tabs = [];
     if (allowedTabs.includes('normal'.toLowerCase())) {
       tabs.push({
         name: 'normal',
-        title: (0, _i18n.__)('Normal', 'atrc-prefix-atrc'),
+        title: __('Normal', 'atrc-prefix-atrc'),
         hasValue: hasDeviceTabValue('normal'),
         onDeselect: function onDeselect() {
           return resetTab('normal');
@@ -162,7 +167,7 @@ var AtrcControlRangeDeviceTab = function AtrcControlRangeDeviceTab(props) {
     if (allowedTabs.includes('hover'.toLowerCase())) {
       tabs.push({
         name: 'Hover',
-        title: (0, _i18n.__)('Hover', 'atrc-prefix-atrc'),
+        title: __('Hover', 'atrc-prefix-atrc'),
         hasValue: hasDeviceTabValue('Hover'),
         onDeselect: function onDeselect() {
           return resetTab('Hover');
@@ -172,7 +177,7 @@ var AtrcControlRangeDeviceTab = function AtrcControlRangeDeviceTab(props) {
     if (allowedTabs.includes('parenthover'.toLowerCase())) {
       tabs.push({
         name: 'ParentHover',
-        title: (0, _i18n.__)('Parent hover', 'atrc-prefix-atrc'),
+        title: __('Parent hover', 'atrc-prefix-atrc'),
         hasValue: hasDeviceTabValue('ParentHover'),
         onDeselect: function onDeselect() {
           return resetTab('ParentHover');
@@ -181,14 +186,14 @@ var AtrcControlRangeDeviceTab = function AtrcControlRangeDeviceTab(props) {
     }
     return tabs;
   }, []);
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-range-device-tab'), className, variant ? (0, _prefixVars.default)('ctrl-range-device-tab') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-range-device-tab'), className, variant ? AtrcPrefix('ctrl-range-device-tab') + '-' + variant : ''),
     label: label,
     resetAll: resetAll,
     allowTabs: true,
     tools: AllTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (tab, iDx) {
+    return map(activeItems, function (tab, iDx) {
       return /*#__PURE__*/React.createElement(RenderTabPanel, {
         value: value,
         onChange: function onChange(newVal, device) {
@@ -201,5 +206,5 @@ var AtrcControlRangeDeviceTab = function AtrcControlRangeDeviceTab(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlRangeDeviceTab;
+export default AtrcControlRangeDeviceTab;
 //# sourceMappingURL=index.js.map

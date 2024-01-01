@@ -1,30 +1,3 @@
-"use strict";
-
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _select = _interopRequireDefault(require("../../atoms/select"));
-var _controlSelectPostType = _interopRequireWildcard(require("../control-select-post-type"));
-var _controlSelectTaxonomy = _interopRequireWildcard(require("../control-select-taxonomy"));
-var _controlSelectPost = _interopRequireDefault(require("../control-select-post"));
-var _controlSelectTerm = _interopRequireDefault(require("../control-select-term"));
-var _controlSelectUser = _interopRequireDefault(require("../control-select-user"));
-var _notice = _interopRequireDefault(require("../notice"));
-var _panelRow = _interopRequireDefault(require("../panel-row"));
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _repeater = _interopRequireDefault(require("../repeater"));
-var _repeaterGroup = _interopRequireDefault(require("../repeater/repeater-group"));
-var _repeaterGroupAdd = _interopRequireDefault(require("../repeater/repeater-group-add"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
@@ -34,7 +7,8 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*Value Structure
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+/*Value Structure
 Type Object
 
 [
@@ -63,7 +37,35 @@ Type Object
         },
     ]
 ]
-* and so on*/ /*WordPress*/ /*Library*/ /*Inbuilt*/ /*Inbuilt*/
+* and so on*/
+
+/*WordPress*/
+import { __, sprintf } from '@wordpress/i18n';
+import { useMemo, useState, Fragment } from '@wordpress/element';
+
+/*Library*/
+import classnames from 'classnames';
+import { isEmpty, map } from 'lodash';
+
+/*Inbuilt*/
+import AtrcSelect from '../../atoms/select';
+import { AtrcControlGetPostTypeOptions } from '../control-select-post-type';
+import { AtrcControlGetTaxonomyOptions } from '../control-select-taxonomy';
+import AtrcControlSelectPost from '../control-select-post';
+import AtrcControlSelectPostType from '../control-select-post-type';
+import AtrcControlSelectTaxonomy from '../control-select-taxonomy';
+import AtrcControlSelectTerm from '../control-select-term';
+import AtrcControlSelectUser from '../control-select-user';
+import AtrcNotice from '../notice';
+import AtrcPanelRow from '../panel-row';
+import AtrcPanelTools from '../panel-tools';
+import AtrcRepeater from '../repeater';
+import AtrcRepeaterGroup from '../repeater/repeater-group';
+import AtrcRepeaterGroupAdd from '../repeater/repeater-group-add';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local Components*/
 var PostTypeGroup = function PostTypeGroup(_ref) {
   var options = _ref.options;
@@ -71,8 +73,8 @@ var PostTypeGroup = function PostTypeGroup(_ref) {
     return null;
   }
   return /*#__PURE__*/React.createElement("optgroup", {
-    label: (0, _i18n.__)('Post types', 'atrc-prefix-atrc')
-  }, (0, _lodash.map)(options, function (_ref2) {
+    label: __('Post types', 'atrc-prefix-atrc')
+  }, map(options, function (_ref2) {
     var label = _ref2.label,
       value = _ref2.value;
     return /*#__PURE__*/React.createElement("option", {
@@ -87,8 +89,8 @@ var TaxonomyGroup = function TaxonomyGroup(_ref3) {
     return null;
   }
   return /*#__PURE__*/React.createElement("optgroup", {
-    label: (0, _i18n.__)('Taxonomy terms', 'atrc-prefix-atrc')
-  }, (0, _lodash.map)(options, function (_ref4) {
+    label: __('Taxonomy terms', 'atrc-prefix-atrc')
+  }, map(options, function (_ref4) {
     var label = _ref4.label,
       value = _ref4.value;
     return /*#__PURE__*/React.createElement("option", {
@@ -108,10 +110,10 @@ var SelectSingleConditionValue = function SelectSingleConditionValue(_ref5) {
   var type3 = ['tax-archive'];
   var type4 = ['author-archive'];
   if (!field) {
-    return /*#__PURE__*/React.createElement(_panelRow.default, {
-      className: (0, _classnames.default)('at-m')
-    }, /*#__PURE__*/React.createElement(_select.default, {
-      label: (0, _i18n.__)('Value', 'atrc-prefix-atrc'),
+    return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+      className: classnames('at-m')
+    }, /*#__PURE__*/React.createElement(AtrcSelect, {
+      label: __('Value', 'atrc-prefix-atrc'),
       wrapProps: {
         className: 'at-flx-grw-1'
       },
@@ -119,15 +121,15 @@ var SelectSingleConditionValue = function SelectSingleConditionValue(_ref5) {
       onChange: function onChange() {},
       options: [{
         value: '',
-        label: (0, _i18n.__)('Select field', 'atrc-prefix-atrc')
+        label: __('Select field', 'atrc-prefix-atrc')
       }]
     }));
   }
   if (type1.includes(field)) {
-    return /*#__PURE__*/React.createElement(_panelRow.default, {
-      className: (0, _classnames.default)('at-m')
-    }, /*#__PURE__*/React.createElement(_select.default, {
-      label: (0, _i18n.__)('Value', 'atrc-prefix-atrc'),
+    return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+      className: classnames('at-m')
+    }, /*#__PURE__*/React.createElement(AtrcSelect, {
+      label: __('Value', 'atrc-prefix-atrc'),
       wrapProps: {
         className: 'at-flx-grw-1'
       },
@@ -137,45 +139,45 @@ var SelectSingleConditionValue = function SelectSingleConditionValue(_ref5) {
       },
       options: [{
         value: '',
-        label: (0, _i18n.__)('Select specific page', 'atrc-prefix-atrc')
+        label: __('Select specific page', 'atrc-prefix-atrc')
       }, {
         value: 'is_front_page',
-        label: (0, _i18n.__)('Front page', 'atrc-prefix-atrc')
+        label: __('Front page', 'atrc-prefix-atrc')
       }, {
         value: 'is_home',
-        label: (0, _i18n.__)('Home page', 'atrc-prefix-atrc')
+        label: __('Home page', 'atrc-prefix-atrc')
       }, {
         value: 'is_archive',
-        label: (0, _i18n.__)('Any archive page', 'atrc-prefix-atrc')
+        label: __('Any archive page', 'atrc-prefix-atrc')
       }, {
         value: 'is_post_type_archive',
-        label: (0, _i18n.__)('Any post type archive page', 'atrc-prefix-atrc')
+        label: __('Any post type archive page', 'atrc-prefix-atrc')
       }, {
         value: 'is_tax',
-        label: (0, _i18n.__)('Any taxonomy archive page', 'atrc-prefix-atrc')
+        label: __('Any taxonomy archive page', 'atrc-prefix-atrc')
       }, {
         value: 'is_author',
-        label: (0, _i18n.__)('Any author page', 'atrc-prefix-atrc')
+        label: __('Any author page', 'atrc-prefix-atrc')
       }, {
         value: 'is_date',
-        label: (0, _i18n.__)('Any date-based archive page', 'atrc-prefix-atrc')
+        label: __('Any date-based archive page', 'atrc-prefix-atrc')
       }, {
         value: 'is_singular',
-        label: (0, _i18n.__)('Any singular page', 'atrc-prefix-atrc')
+        label: __('Any singular page', 'atrc-prefix-atrc')
       }, {
         value: 'is_search',
-        label: (0, _i18n.__)('Search result page', 'atrc-prefix-atrc')
+        label: __('Search result page', 'atrc-prefix-atrc')
       }, {
         value: 'is_404',
-        label: (0, _i18n.__)('404 page', 'atrc-prefix-atrc')
+        label: __('404 page', 'atrc-prefix-atrc')
       }]
     }));
   }
   if (type2.includes(field)) {
-    return /*#__PURE__*/React.createElement(_panelRow.default, {
-      className: (0, _classnames.default)('at-m')
-    }, /*#__PURE__*/React.createElement(_controlSelectPostType.default, {
-      label: (0, _i18n.__)('Post type', 'atrc-prefix-atrc'),
+    return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+      className: classnames('at-m')
+    }, /*#__PURE__*/React.createElement(AtrcControlSelectPostType, {
+      label: __('Post type', 'atrc-prefix-atrc'),
       wrapProps: {
         className: 'at-flx-grw-1'
       },
@@ -186,10 +188,10 @@ var SelectSingleConditionValue = function SelectSingleConditionValue(_ref5) {
     }));
   }
   if (type3.includes(field)) {
-    return /*#__PURE__*/React.createElement(_panelRow.default, {
-      className: (0, _classnames.default)('at-m')
-    }, /*#__PURE__*/React.createElement(_controlSelectTaxonomy.default, {
-      label: (0, _i18n.__)('Taxonomy', 'atrc-prefix-atrc'),
+    return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+      className: classnames('at-m')
+    }, /*#__PURE__*/React.createElement(AtrcControlSelectTaxonomy, {
+      label: __('Taxonomy', 'atrc-prefix-atrc'),
       wrapProps: {
         className: 'at-flx-grw-1'
       },
@@ -200,10 +202,10 @@ var SelectSingleConditionValue = function SelectSingleConditionValue(_ref5) {
     }));
   }
   if (type4.includes(field)) {
-    return /*#__PURE__*/React.createElement(_panelRow.default, {
-      className: (0, _classnames.default)('at-m')
-    }, /*#__PURE__*/React.createElement(_controlSelectUser.default, {
-      label: (0, _i18n.__)('Users', 'atrc-prefix-atrc'),
+    return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+      className: classnames('at-m')
+    }, /*#__PURE__*/React.createElement(AtrcControlSelectUser, {
+      label: __('Users', 'atrc-prefix-atrc'),
       wrapProps: {
         className: 'at-flx-grw-1'
       },
@@ -214,10 +216,10 @@ var SelectSingleConditionValue = function SelectSingleConditionValue(_ref5) {
     }));
   }
   if (field.includes('&pt&-')) {
-    return /*#__PURE__*/React.createElement(_panelRow.default, {
-      className: (0, _classnames.default)('at-m')
-    }, /*#__PURE__*/React.createElement(_controlSelectPost.default, {
-      label: (0, _i18n.__)('Posts', 'atrc-prefix-atrc'),
+    return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+      className: classnames('at-m')
+    }, /*#__PURE__*/React.createElement(AtrcControlSelectPost, {
+      label: __('Posts', 'atrc-prefix-atrc'),
       wrapProps: {
         className: 'at-flx-grw-1'
       },
@@ -229,13 +231,13 @@ var SelectSingleConditionValue = function SelectSingleConditionValue(_ref5) {
     }));
   }
   if (field.includes('&tt&-')) {
-    return /*#__PURE__*/React.createElement(_panelRow.default, {
-      className: (0, _classnames.default)('at-m')
-    }, /*#__PURE__*/React.createElement(_controlSelectTerm.default, {
+    return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+      className: classnames('at-m')
+    }, /*#__PURE__*/React.createElement(AtrcControlSelectTerm, {
       wrapProps: {
         className: 'at-flx-grw-1'
       },
-      label: (0, _i18n.__)('Terms', 'atrc-prefix-atrc'),
+      label: __('Terms', 'atrc-prefix-atrc'),
       value: item.value,
       onChange: function onChange(newVal) {
         return handleChange(newVal, 'value', groupIndex, itemIndex);
@@ -244,10 +246,10 @@ var SelectSingleConditionValue = function SelectSingleConditionValue(_ref5) {
     }));
   }
   if ('user' === field) {
-    return /*#__PURE__*/React.createElement(_panelRow.default, {
-      className: (0, _classnames.default)('at-m')
-    }, /*#__PURE__*/React.createElement(_select.default, {
-      label: (0, _i18n.__)('Value', 'atrc-prefix-atrc'),
+    return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+      className: classnames('at-m')
+    }, /*#__PURE__*/React.createElement(AtrcSelect, {
+      label: __('Value', 'atrc-prefix-atrc'),
       wrapProps: {
         className: 'at-flx-grw-1'
       },
@@ -257,10 +259,10 @@ var SelectSingleConditionValue = function SelectSingleConditionValue(_ref5) {
       },
       options: [{
         value: '',
-        label: (0, _i18n.__)('Select value', 'atrc-prefix-atrc')
+        label: __('Select value', 'atrc-prefix-atrc')
       }, {
         value: 'is_user_logged_in',
-        label: (0, _i18n.__)('Logged in', 'atrc-prefix-atrc')
+        label: __('Logged in', 'atrc-prefix-atrc')
       }]
     }));
   }
@@ -270,15 +272,15 @@ var SelectSingleCondition = function SelectSingleCondition(_ref6) {
     handleChange = _ref6.handleChange,
     groupIndex = _ref6.groupIndex,
     itemIndex = _ref6.itemIndex;
-  var postOptions = (0, _controlSelectPostType.AtrcControlGetPostTypeOptions)();
-  var taxOptions = (0, _controlSelectTaxonomy.AtrcControlGetTaxonomyOptions)();
-  if ((0, _lodash.isEmpty)(postOptions) && (0, _lodash.isEmpty)(taxOptions)) {
+  var postOptions = AtrcControlGetPostTypeOptions();
+  var taxOptions = AtrcControlGetTaxonomyOptions();
+  if (isEmpty(postOptions) && isEmpty(taxOptions)) {
     return null;
   }
-  return /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_select.default, {
-    label: (0, _i18n.__)('Field', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    label: __('Field', 'atrc-prefix-atrc'),
     wrapProps: {
       className: 'at-flx-grw-1'
     },
@@ -288,25 +290,25 @@ var SelectSingleCondition = function SelectSingleCondition(_ref6) {
     }
   }, /*#__PURE__*/React.createElement("option", {
     value: ""
-  }, (0, _i18n.__)('Select field', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement("option", {
+  }, __('Select field', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement("option", {
     value: "specific-page"
-  }, (0, _i18n.__)('Site specific page', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement("optgroup", {
-    label: (0, _i18n.__)('Archive pages', 'atrc-prefix-atrc')
+  }, __('Site specific page', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement("optgroup", {
+    label: __('Archive pages', 'atrc-prefix-atrc')
   }, /*#__PURE__*/React.createElement("option", {
     value: "post-type-archive"
-  }, (0, _i18n.__)('Post type archive', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement("option", {
+  }, __('Post type archive', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement("option", {
     value: "tax-archive"
-  }, (0, _i18n.__)('Taxonomy archive', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement("option", {
+  }, __('Taxonomy archive', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement("option", {
     value: "author-archive"
-  }, (0, _i18n.__)('Author archive', 'atrc-prefix-atrc'))), /*#__PURE__*/React.createElement(PostTypeGroup, {
+  }, __('Author archive', 'atrc-prefix-atrc'))), /*#__PURE__*/React.createElement(PostTypeGroup, {
     options: postOptions
   }), /*#__PURE__*/React.createElement(TaxonomyGroup, {
     options: taxOptions
   }), /*#__PURE__*/React.createElement("optgroup", {
-    label: (0, _i18n.__)('Users', 'atrc-prefix-atrc')
+    label: __('Users', 'atrc-prefix-atrc')
   }, /*#__PURE__*/React.createElement("option", {
     value: "user"
-  }, (0, _i18n.__)('User', 'atrc-prefix-atrc')))));
+  }, __('User', 'atrc-prefix-atrc')))));
 };
 var SingleCondition = function SingleCondition(_ref7) {
   var groupIndex = _ref7.groupIndex,
@@ -318,10 +320,10 @@ var SingleCondition = function SingleCondition(_ref7) {
     handleChange: handleChange,
     groupIndex: groupIndex,
     itemIndex: itemIndex
-  }), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_select.default, {
-    label: (0, _i18n.__)('Condition', 'atrc-prefix-atrc'),
+  }), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    label: __('Condition', 'atrc-prefix-atrc'),
     wrapProps: {
       className: 'at-flx-grw-1'
     },
@@ -331,13 +333,13 @@ var SingleCondition = function SingleCondition(_ref7) {
     },
     options: [{
       value: '',
-      label: (0, _i18n.__)('Select condition', 'atrc-prefix-atrc')
+      label: __('Select condition', 'atrc-prefix-atrc')
     }, {
       value: '==',
-      label: (0, _i18n.__)('Equal', 'atrc-prefix-atrc')
+      label: __('Equal', 'atrc-prefix-atrc')
     }, {
       value: '!=',
-      label: (0, _i18n.__)('Not equal', 'atrc-prefix-atrc')
+      label: __('Not equal', 'atrc-prefix-atrc')
     }]
   })), /*#__PURE__*/React.createElement(SelectSingleConditionValue, {
     item: item,
@@ -360,7 +362,7 @@ var AtrcControlConditionalDisplay = function AtrcControlConditionalDisplay(props
     onChange = _props$onChange === void 0 ? function () {} : _props$onChange;
 
   // Initialize the state with an empty array
-  var _useState = (0, _element.useState)(),
+  var _useState = useState(),
     _useState2 = _slicedToArray(_useState, 2),
     notice = _useState2[0],
     setNotice = _useState2[1];
@@ -420,7 +422,7 @@ var AtrcControlConditionalDisplay = function AtrcControlConditionalDisplay(props
     updatedGroups.splice(groupIndex, 1);
 
     //Add notice to user
-    setNotice((0, _i18n.__)('Condition group deleted.', 'atrc-prefix-atrc'));
+    setNotice(__('Condition group deleted.', 'atrc-prefix-atrc'));
 
     // Set the updated value array as the new state
     onChange(updatedGroups);
@@ -440,13 +442,13 @@ var AtrcControlConditionalDisplay = function AtrcControlConditionalDisplay(props
       updatedGroups.splice(groupIndex, 1);
 
       //Add notice to user
-      setNotice((0, _i18n.__)('With the last condition deleted, the conditional group was too deleted.', 'atrc-prefix-atrc'));
+      setNotice(__('With the last condition deleted, the conditional group was too deleted.', 'atrc-prefix-atrc'));
     }
 
     // Set the updated value array as the new state
     onChange(updatedGroups);
   };
-  var ConditionTabs = (0, _element.useMemo)(function () {
+  var ConditionTabs = useMemo(function () {
     return [{
       name: 'conditional-display',
       title: label,
@@ -456,49 +458,49 @@ var AtrcControlConditionalDisplay = function AtrcControlConditionalDisplay(props
       }
     }];
   }, []);
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-conditional-d'), className, variant ? (0, _prefixVars.default)('ctrl-conditional-d') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-conditional-d'), className, variant ? AtrcPrefix('ctrl-conditional-d') + '-' + variant : ''),
     label: label,
     resetAll: function resetAll() {
       return onChange([]);
     },
     tools: ConditionTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (tab, iDx) {
-      return /*#__PURE__*/React.createElement(_element.Fragment, {
+    return map(activeItems, function (tab, iDx) {
+      return /*#__PURE__*/React.createElement(Fragment, {
         key: iDx
-      }, notice && /*#__PURE__*/React.createElement(_notice.default, {
+      }, notice && /*#__PURE__*/React.createElement(AtrcNotice, {
         key: tab,
         isDismissible: false,
         autoDismiss: 5000,
         onRemove: function onRemove() {
           return setNotice('');
         }
-      }, notice), /*#__PURE__*/React.createElement(_repeater.default, {
+      }, notice), /*#__PURE__*/React.createElement(AtrcRepeater, {
         key: tab,
         groups: function groups() {
-          return value.length ? (0, _lodash.map)(value, function (group, groupIndex) {
-            return /*#__PURE__*/React.createElement(_repeaterGroup.default, {
+          return value.length ? map(value, function (group, groupIndex) {
+            return /*#__PURE__*/React.createElement(AtrcRepeaterGroup, {
               key: groupIndex,
               groupIndex: groupIndex,
               deleteGroup: deleteGroup,
-              groupTitle: (0, _i18n.sprintf)(
+              groupTitle: sprintf(
               // translators: %s: placeholder for idx
-              (0, _i18n.__)('Group %d', 'atrc-prefix-atrc'), groupIndex + 1),
-              deleteTitle: (0, _i18n.__)('Delete condition group', 'atrc-prefix-atrc')
-            }, /*#__PURE__*/React.createElement(_repeater.default, {
+              __('Group %d', 'atrc-prefix-atrc'), groupIndex + 1),
+              deleteTitle: __('Delete condition group', 'atrc-prefix-atrc')
+            }, /*#__PURE__*/React.createElement(AtrcRepeater, {
               groups: function groups() {
-                return (0, _lodash.map)(group, function (item, itemIndex) {
-                  return /*#__PURE__*/React.createElement(_repeaterGroup.default, {
+                return map(group, function (item, itemIndex) {
+                  return /*#__PURE__*/React.createElement(AtrcRepeaterGroup, {
                     key: itemIndex,
                     groupIndex: itemIndex,
                     deleteGroup: function deleteGroup(itmIndex) {
                       return deleteItem(groupIndex, itmIndex);
                     },
-                    groupTitle: (0, _i18n.sprintf)(
+                    groupTitle: sprintf(
                     // translators: %s: placeholder for idx
-                    (0, _i18n.__)('Condition %d', 'atrc-prefix-atrc'), itemIndex + 1),
-                    deleteTitle: (0, _i18n.__)('Remove condition', 'atrc-prefix-atrc')
+                    __('Condition %d', 'atrc-prefix-atrc'), itemIndex + 1),
+                    deleteTitle: __('Remove condition', 'atrc-prefix-atrc')
                   }, /*#__PURE__*/React.createElement(SingleCondition, {
                     groupIndex: groupIndex,
                     itemIndex: itemIndex,
@@ -508,27 +510,27 @@ var AtrcControlConditionalDisplay = function AtrcControlConditionalDisplay(props
                 });
               },
               addGroup: function addGroup() {
-                return /*#__PURE__*/React.createElement(_repeaterGroupAdd.default, {
+                return /*#__PURE__*/React.createElement(AtrcRepeaterGroupAdd, {
                   addGroup: function addGroup() {
                     return addItem(groupIndex);
                   },
-                  tooltipText: (0, _i18n.__)('Condition item has && (AND) condition', 'atrc-prefix-atrc'),
-                  label: (0, _i18n.__)('AND Add condition', 'atrc-prefix-atrc')
+                  tooltipText: __('Condition item has && (AND) condition', 'atrc-prefix-atrc'),
+                  label: __('AND Add condition', 'atrc-prefix-atrc')
                 });
               }
             }));
           }) : null;
         },
         addGroup: function addGroup() {
-          return /*#__PURE__*/React.createElement(_repeaterGroupAdd.default, {
+          return /*#__PURE__*/React.createElement(AtrcRepeaterGroupAdd, {
             addGroup: _addGroup,
-            tooltipText: (0, _i18n.__)('Group has || (OR) condition', 'atrc-prefix-atrc'),
-            label: (0, _i18n.__)('OR Add condition group', 'atrc-prefix-atrc')
+            tooltipText: __('Group has || (OR) condition', 'atrc-prefix-atrc'),
+            label: __('OR Add condition group', 'atrc-prefix-atrc')
           });
         }
       }));
     });
   });
 };
-var _default = exports.default = AtrcControlConditionalDisplay;
+export default AtrcControlConditionalDisplay;
 //# sourceMappingURL=index.js.map

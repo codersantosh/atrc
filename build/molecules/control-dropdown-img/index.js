@@ -1,30 +1,28 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _components = require("@wordpress/components");
-var _icons = require("@wordpress/icons");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _button = _interopRequireDefault(require("../../atoms/button"));
-var _icon = _interopRequireDefault(require("../../atoms/icon"));
-var _dropdown = _interopRequireDefault(require("../dropdown"));
-var _controlImg = _interopRequireDefault(require("../control-img"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
 var _excluded = ["isToolbar", "value", "onChange", "variant", "className"];
-/*Attributes Structure
-Type string
-**/
-/*WordPress*/
-/*Library*/
-/*Inbuilt*/
-/*Inbuilt*/
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*Attributes Structure
+Type string
+**/
+
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { ToolbarButton } from '@wordpress/components';
+import { image } from '@wordpress/icons';
+
+/*Library*/
+import classnames from 'classnames';
+
+/*Inbuilt*/
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcDropdown from '../dropdown';
+import AtrcControlImg from '../control-img';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local Components*/
 
 var AtrcControlDropdownImg = function AtrcControlDropdownImg(props) {
@@ -38,28 +36,28 @@ var AtrcControlDropdownImg = function AtrcControlDropdownImg(props) {
     _props$className = props.className,
     className = _props$className === void 0 ? '' : _props$className,
     defaultProps = _objectWithoutProperties(props, _excluded);
-  return /*#__PURE__*/React.createElement(_dropdown.default, _extends({
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-dropdown-img'), className, variant ? (0, _prefixVars.default)('ctrl-dropdown-img') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcDropdown, _extends({
+    className: classnames(AtrcPrefix('ctrl-dropdown-img'), className, variant ? AtrcPrefix('ctrl-dropdown-img') + '-' + variant : ''),
     renderToggle: function renderToggle(_ref) {
       var isOpen = _ref.isOpen,
         onToggle = _ref.onToggle;
-      return isToolbar ? /*#__PURE__*/React.createElement(_components.ToolbarButton, {
+      return isToolbar ? /*#__PURE__*/React.createElement(ToolbarButton, {
         name: "img",
-        title: (0, _i18n.__)('Select image', 'atrc-prefix-atrc'),
+        title: __('Select image', 'atrc-prefix-atrc'),
         onClick: onToggle,
         isActive: false
-      }, /*#__PURE__*/React.createElement(_icon.default, {
-        icon: _icons.image
-      })) : /*#__PURE__*/React.createElement(_button.default, {
+      }, /*#__PURE__*/React.createElement(AtrcIcon, {
+        icon: image
+      })) : /*#__PURE__*/React.createElement(AtrcButton, {
         "aria-expanded": isOpen,
         onClick: onToggle
-      }, /*#__PURE__*/React.createElement(_icon.default, {
-        icon: _icons.image
+      }, /*#__PURE__*/React.createElement(AtrcIcon, {
+        icon: image
       }));
     },
     renderContent: function renderContent() {
-      return /*#__PURE__*/React.createElement(_controlImg.default, {
-        label: (0, _i18n.__)('Image', 'atrc-prefix-atrc'),
+      return /*#__PURE__*/React.createElement(AtrcControlImg, {
+        label: __('Image', 'atrc-prefix-atrc'),
         value: value,
         onChange: onChange,
         allowSettings: false
@@ -67,5 +65,5 @@ var AtrcControlDropdownImg = function AtrcControlDropdownImg(props) {
     }
   }, defaultProps));
 };
-var _default = exports.default = AtrcControlDropdownImg;
+export default AtrcControlDropdownImg;
 //# sourceMappingURL=index.js.map

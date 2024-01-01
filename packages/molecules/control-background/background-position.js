@@ -235,7 +235,7 @@ const BackgroundPosition = ({ value, onChange }) => {
 					xl: selectedBgPos.xlBgPosXY,
 					xxl: selectedBgPos.xxlBgPosXY,
 				}}
-				options={PositionOptions}
+				options={PositionOptions()}
 				onChange={(newVal) =>
 					setSelectedBgPos({
 						bgPosXY: newVal && newVal.xs,

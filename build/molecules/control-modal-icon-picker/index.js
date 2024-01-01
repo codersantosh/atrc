@@ -1,35 +1,4 @@
-"use strict";
-
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
-var _label = _interopRequireDefault(require("../../atoms/label"));
-var _button = _interopRequireDefault(require("../../atoms/button"));
-var _icon = _interopRequireDefault(require("../../atoms/icon"));
-var _modalToggle = _interopRequireDefault(require("../modal-toggle"));
-var _buttonGroup = _interopRequireDefault(require("../button-group"));
-var _tooltip = _interopRequireDefault(require("../tooltip"));
-var _search = _interopRequireDefault(require("../search"));
-var _wireframe = require("./../../templates/wireframe");
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-var ReactIconsAllFA = _interopRequireWildcard(require("react-icons/fa"));
-var WpIconsAllF = _interopRequireWildcard(require("@wordpress/icons"));
 var _excluded = ["children", "custom", "lib", "label", "value", "onChange", "closeOnIconSelect", "modalProps"];
-/*WordPress*/
-/*Library*/
-/*Inbuilt*/
-/*Prefix*/
-/* Icons Library === Important */
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -39,6 +8,31 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useState, useMemo } from '@wordpress/element';
+
+/*Library*/
+import classnames from 'classnames';
+import { isEmpty, map, reduce, isArray } from 'lodash';
+
+/*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import AtrcModalToggle from '../modal-toggle';
+import AtrcButtonGroup from '../button-group';
+import AtrcTooltip from '../tooltip';
+import AtrcSearch from '../search';
+import { AtrcWireFrameSidebarContent, AtrcWireFrameHeaderContentFooter } from './../../templates/wireframe';
+
+/*Prefix*/
+import AtrcPrefix from '../../prefix-vars';
+
+/* Icons Library === Important */
+import * as ReactIconsAllFA from 'react-icons/fa';
+import * as WpIconsAllF from '@wordpress/icons';
 var getIcon = function getIcon(value) {
   if (!value) {
     return null;
@@ -77,15 +71,15 @@ var AtrcControlIconPicker = function AtrcControlIconPicker(props) {
     allowed = _lib$allowed === void 0 ? [] : _lib$allowed,
     _lib$selected = lib.selected,
     selected = _lib$selected === void 0 ? [] : _lib$selected;
-  var _useState = (0, _element.useState)('all'),
+  var _useState = useState('all'),
     _useState2 = _slicedToArray(_useState, 2),
     iconType = _useState2[0],
     setIconType = _useState2[1];
-  var _useState3 = (0, _element.useState)(''),
+  var _useState3 = useState(''),
     _useState4 = _slicedToArray(_useState3, 2),
     query = _useState4[0],
     setQuery = _useState4[1];
-  var foundIcons = (0, _element.useMemo)(function () {
+  var foundIcons = useMemo(function () {
     if (!query) {
       return {
         wp: WpIconsAllF,
@@ -93,13 +87,13 @@ var AtrcControlIconPicker = function AtrcControlIconPicker(props) {
       };
     }
     return {
-      wp: (0, _lodash.reduce)(WpIconsAllF, function (accumulator, currentValue, currentKey) {
+      wp: reduce(WpIconsAllF, function (accumulator, currentValue, currentKey) {
         if (currentKey.toLowerCase().includes(query.toLowerCase())) {
           accumulator[currentKey] = currentValue;
         }
         return accumulator;
       }, {}),
-      fa: (0, _lodash.reduce)(ReactIconsAllFA, function (accumulator, currentValue, currentKey) {
+      fa: reduce(ReactIconsAllFA, function (accumulator, currentValue, currentKey) {
         if (currentKey.toLowerCase().includes(query.toLowerCase())) {
           accumulator[currentKey] = currentValue;
         }
@@ -107,80 +101,80 @@ var AtrcControlIconPicker = function AtrcControlIconPicker(props) {
       }, {})
     };
   }, [query]);
-  var allowedLib = (0, _element.useMemo)(function () {
+  var allowedLib = useMemo(function () {
     return allowed;
   }, [allowed]);
-  var selectedLibIcons = (0, _element.useMemo)(function () {
+  var selectedLibIcons = useMemo(function () {
     return selected;
   }, [allowed]);
-  return /*#__PURE__*/React.createElement(_modalToggle.default, _extends({
+  return /*#__PURE__*/React.createElement(AtrcModalToggle, _extends({
     renderToggle: function renderToggle(args) {
       if (children) {
         return children(args);
       }
       var isOpen = args.isOpen,
         onToggle = args.onToggle;
-      return /*#__PURE__*/React.createElement(React.Fragment, null, label && /*#__PURE__*/React.createElement(_label.default, null, label), /*#__PURE__*/React.createElement(_tooltip.default, {
-        text: (0, _i18n.__)('Select icon', 'atrc-prefix-atrc')
-      }, /*#__PURE__*/React.createElement(_button.default, {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, label && /*#__PURE__*/React.createElement(AtrcLabel, null, label), /*#__PURE__*/React.createElement(AtrcTooltip, {
+        text: __('Select icon', 'atrc-prefix-atrc')
+      }, /*#__PURE__*/React.createElement(AtrcButton, {
         "aria-expanded": isOpen,
         variant: "icon",
-        className: (0, _prefixVars.default)('m-5'),
+        className: AtrcPrefix('m-5'),
         onClick: onToggle
-      }, /*#__PURE__*/React.createElement(_icon.default, {
+      }, /*#__PURE__*/React.createElement(AtrcIcon, {
         type: "wp",
         icon: WpIconsAllF.moreVertical
       }))));
     },
     renderContent: function renderContent(_ref) {
       var onToggle = _ref.onToggle;
-      return /*#__PURE__*/React.createElement(_wireframe.AtrcWireFrameSidebarContent, {
+      return /*#__PURE__*/React.createElement(AtrcWireFrameSidebarContent, {
         wrapProps: {
           tag: 'section'
         },
         rowProps: {
           variant: 'm-0'
         },
-        renderSidebar: /*#__PURE__*/React.createElement(_buttonGroup.default, {
+        renderSidebar: /*#__PURE__*/React.createElement(AtrcButtonGroup, {
           variant: "vertical"
-        }, /*#__PURE__*/React.createElement(_tooltip.default, {
-          text: (0, _i18n.__)('All icons', 'atrc-prefix-atrc')
-        }, /*#__PURE__*/React.createElement(_button.default, {
+        }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+          text: __('All icons', 'atrc-prefix-atrc')
+        }, /*#__PURE__*/React.createElement(AtrcButton, {
           isActive: 'all' === iconType,
           onClick: function onClick() {
             return setIconType('all');
           }
-        }, (0, _i18n.__)('All icons', 'atrc-prefix-atrc'))), selectedLibIcons && selectedLibIcons.length ? /*#__PURE__*/React.createElement(_tooltip.default, {
-          text: (0, _i18n.__)('Available icons', 'atrc-prefix-atrc')
-        }, /*#__PURE__*/React.createElement(_button.default, {
+        }, __('All icons', 'atrc-prefix-atrc'))), selectedLibIcons && selectedLibIcons.length ? /*#__PURE__*/React.createElement(AtrcTooltip, {
+          text: __('Available icons', 'atrc-prefix-atrc')
+        }, /*#__PURE__*/React.createElement(AtrcButton, {
           isActive: 'selectedIcon' === iconType,
           onClick: function onClick() {
             return setIconType('selectedIcon');
           }
-        }, (0, _i18n.__)('Available icons', 'atrc-prefix-atrc'))) : /*#__PURE__*/React.createElement(React.Fragment, null, allowedLib.includes('wp') && /*#__PURE__*/React.createElement(_tooltip.default, {
-          text: (0, _i18n.__)('WordPress icons', 'atrc-prefix-atrc')
-        }, /*#__PURE__*/React.createElement(_button.default, {
+        }, __('Available icons', 'atrc-prefix-atrc'))) : /*#__PURE__*/React.createElement(React.Fragment, null, allowedLib.includes('wp') && /*#__PURE__*/React.createElement(AtrcTooltip, {
+          text: __('WordPress icons', 'atrc-prefix-atrc')
+        }, /*#__PURE__*/React.createElement(AtrcButton, {
           isActive: 'wp' === iconType,
           onClick: function onClick() {
             return setIconType('wp');
           }
-        }, (0, _i18n.__)('WordPress', 'atrc-prefix-atrc'))), allowedLib.includes('fa') && /*#__PURE__*/React.createElement(_tooltip.default, {
-          text: (0, _i18n.__)('Font Awesome icons', 'atrc-prefix-atrc')
-        }, /*#__PURE__*/React.createElement(_button.default, {
+        }, __('WordPress', 'atrc-prefix-atrc'))), allowedLib.includes('fa') && /*#__PURE__*/React.createElement(AtrcTooltip, {
+          text: __('Font Awesome icons', 'atrc-prefix-atrc')
+        }, /*#__PURE__*/React.createElement(AtrcButton, {
           isActive: 'fa' === iconType,
           onClick: function onClick() {
             return setIconType('fa');
           }
-        }, (0, _i18n.__)('Font Awesome', 'atrc-prefix-atrc')))), custom && (0, _lodash.isArray)(custom) && custom.length ? /*#__PURE__*/React.createElement(_tooltip.default, {
-          text: (0, _i18n.__)('Custom icons', 'atrc-prefix-atrc')
-        }, /*#__PURE__*/React.createElement(_button.default, {
+        }, __('Font Awesome', 'atrc-prefix-atrc')))), custom && isArray(custom) && custom.length ? /*#__PURE__*/React.createElement(AtrcTooltip, {
+          text: __('Custom icons', 'atrc-prefix-atrc')
+        }, /*#__PURE__*/React.createElement(AtrcButton, {
           isActive: 'custom' === iconType,
           onClick: function onClick() {
             return setIconType('custom');
           }
-        }, (0, _i18n.__)('Custom icons', 'atrc-prefix-atrc'))) : null),
-        renderContent: /*#__PURE__*/React.createElement(_wireframe.AtrcWireFrameHeaderContentFooter, {
-          renderHeader: /*#__PURE__*/React.createElement(_search.default, {
+        }, __('Custom icons', 'atrc-prefix-atrc'))) : null),
+        renderContent: /*#__PURE__*/React.createElement(AtrcWireFrameHeaderContentFooter, {
+          renderHeader: /*#__PURE__*/React.createElement(AtrcSearch, {
             type: "keyDown",
             buttonProps: {
               variant: 'primary'
@@ -189,15 +183,15 @@ var AtrcControlIconPicker = function AtrcControlIconPicker(props) {
               return setQuery(input);
             }
           }),
-          renderContent: /*#__PURE__*/React.createElement(_wrap.default, {
-            className: (0, _classnames.default)((0, _prefixVars.default)('modal-icon-picker-cont'))
-          }, selectedLibIcons && selectedLibIcons.length ? /*#__PURE__*/React.createElement(React.Fragment, null, 'all' === iconType || 'selectedIcon' === iconType ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_label.default, {
-            className: (0, _classnames.default)('at-m', 'at-blk')
-          }, (0, _i18n.__)('Available icons', 'atrc-prefix-atrc')), (0, _lodash.map)(selectedLibIcons, function (icon, key) {
+          renderContent: /*#__PURE__*/React.createElement(AtrcWrap, {
+            className: classnames(AtrcPrefix('modal-icon-picker-cont'))
+          }, selectedLibIcons && selectedLibIcons.length ? /*#__PURE__*/React.createElement(React.Fragment, null, 'all' === iconType || 'selectedIcon' === iconType ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, {
+            className: classnames('at-m', 'at-blk')
+          }, __('Available icons', 'atrc-prefix-atrc')), map(selectedLibIcons, function (icon, key) {
             var gotIcon = getIcon(icon);
             if (typeof gotIcon === 'function') {
-              return /*#__PURE__*/React.createElement(_button.default, {
-                className: (0, _classnames.default)((0, _prefixVars.default)('icon-ri')),
+              return /*#__PURE__*/React.createElement(AtrcButton, {
+                className: classnames(AtrcPrefix('icon-ri')),
                 variant: "icon-picker",
                 isActive: value.includes(icon),
                 onClick: function onClick() {
@@ -209,8 +203,8 @@ var AtrcControlIconPicker = function AtrcControlIconPicker(props) {
                 key: key
               }, gotIcon());
             }
-            return /*#__PURE__*/React.createElement(_button.default, {
-              className: (0, _classnames.default)((0, _prefixVars.default)('icon-wp')),
+            return /*#__PURE__*/React.createElement(AtrcButton, {
+              className: classnames(AtrcPrefix('icon-wp')),
               variant: "icon-picker",
               isActive: value.includes(icon),
               onClick: function onClick() {
@@ -219,18 +213,18 @@ var AtrcControlIconPicker = function AtrcControlIconPicker(props) {
                   onToggle();
                 }
               }
-            }, /*#__PURE__*/React.createElement(_icon.default, {
-              className: (0, _classnames.default)('at-w', 'at-h'),
+            }, /*#__PURE__*/React.createElement(AtrcIcon, {
+              className: classnames('at-w', 'at-h'),
               type: "wp",
               icon: gotIcon,
               size: 13
             }));
-          })) : null) : /*#__PURE__*/React.createElement(React.Fragment, null, allowedLib.includes('wp') && !(0, _lodash.isEmpty)(foundIcons.wp) && ('all' === iconType || 'wp' === iconType) ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_label.default, {
-            className: (0, _classnames.default)('at-m', 'at-blk')
-          }, (0, _i18n.__)('WordPress', 'atrc-prefix-atrc')), (0, _lodash.map)(foundIcons.wp, function (icon, key) {
+          })) : null) : /*#__PURE__*/React.createElement(React.Fragment, null, allowedLib.includes('wp') && !isEmpty(foundIcons.wp) && ('all' === iconType || 'wp' === iconType) ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, {
+            className: classnames('at-m', 'at-blk')
+          }, __('WordPress', 'atrc-prefix-atrc')), map(foundIcons.wp, function (icon, key) {
             if ('Icon' !== key) {
-              return /*#__PURE__*/React.createElement(_button.default, {
-                className: (0, _classnames.default)('at-w', 'at-h', 'at-m', 'at-p', (0, _prefixVars.default)('icon-wp')),
+              return /*#__PURE__*/React.createElement(AtrcButton, {
+                className: classnames('at-w', 'at-h', 'at-m', 'at-p', AtrcPrefix('icon-wp')),
                 variant: "icon-picker",
                 isActive: value.includes(key),
                 onClick: function onClick() {
@@ -240,20 +234,20 @@ var AtrcControlIconPicker = function AtrcControlIconPicker(props) {
                   }
                 },
                 key: key
-              }, /*#__PURE__*/React.createElement(_icon.default, {
-                className: (0, _classnames.default)('at-w', 'at-h'),
+              }, /*#__PURE__*/React.createElement(AtrcIcon, {
+                className: classnames('at-w', 'at-h'),
                 type: "wp",
                 icon: icon,
                 size: 13
               }));
             }
             return null;
-          })) : null, allowedLib.includes('fa') && !(0, _lodash.isEmpty)(foundIcons.fa) && ('all' === iconType || 'fa' === iconType) ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_label.default, {
-            className: (0, _classnames.default)('at-m', 'at-blk')
-          }, (0, _i18n.__)('Font Awesome', 'atrc-prefix-atrc')), (0, _lodash.map)(foundIcons.fa, function (icon, key) {
+          })) : null, allowedLib.includes('fa') && !isEmpty(foundIcons.fa) && ('all' === iconType || 'fa' === iconType) ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, {
+            className: classnames('at-m', 'at-blk')
+          }, __('Font Awesome', 'atrc-prefix-atrc')), map(foundIcons.fa, function (icon, key) {
             if (typeof icon === 'function') {
-              return /*#__PURE__*/React.createElement(_button.default, {
-                className: (0, _classnames.default)('at-w', 'at-h', 'at-m', 'at-p', (0, _prefixVars.default)('icon-ri')),
+              return /*#__PURE__*/React.createElement(AtrcButton, {
+                className: classnames('at-w', 'at-h', 'at-m', 'at-p', AtrcPrefix('icon-ri')),
                 variant: "icon-picker",
                 isActive: value.includes(key),
                 onClick: function onClick() {
@@ -266,11 +260,11 @@ var AtrcControlIconPicker = function AtrcControlIconPicker(props) {
               }, icon());
             }
             return null;
-          })) : null), (0, _lodash.isArray)(custom) && custom.length && ('all' === iconType || 'custom' === iconType) ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_label.default, {
-            className: (0, _classnames.default)('at-m', 'at-blk')
-          }, (0, _i18n.__)('Custom icons', 'atrc-prefix-atrc')), (0, _lodash.map)(custom, function (icon, key) {
-            return /*#__PURE__*/React.createElement(_button.default, {
-              className: (0, _classnames.default)('at-w', 'at-h', 'at-m', 'at-p', (0, _prefixVars.default)('icon-cstm')),
+          })) : null), isArray(custom) && custom.length && ('all' === iconType || 'custom' === iconType) ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, {
+            className: classnames('at-m', 'at-blk')
+          }, __('Custom icons', 'atrc-prefix-atrc')), map(custom, function (icon, key) {
+            return /*#__PURE__*/React.createElement(AtrcButton, {
+              className: classnames('at-w', 'at-h', 'at-m', 'at-p', AtrcPrefix('icon-cstm')),
               variant: "icon-picker",
               isActive: value.includes(icon.value),
               onClick: function onClick() {
@@ -280,7 +274,7 @@ var AtrcControlIconPicker = function AtrcControlIconPicker(props) {
                 }
               },
               key: key
-            }, /*#__PURE__*/React.createElement(_icon.default, {
+            }, /*#__PURE__*/React.createElement(AtrcIcon, {
               type: "url",
               iconUrl: icon.url
             }));
@@ -302,5 +296,5 @@ var AtrcControlIconPicker = function AtrcControlIconPicker(props) {
     modalProps: modalProps
   }, defaultProps));
 };
-var _default = exports.default = AtrcControlIconPicker;
+export default AtrcControlIconPicker;
 //# sourceMappingURL=index.js.map

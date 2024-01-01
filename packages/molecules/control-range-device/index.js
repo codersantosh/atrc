@@ -62,7 +62,7 @@ const AtrcControlRangeDevice = (props) => {
 				variant ? AtrcPrefix('ctrl-range-device') + '-' + variant : ''
 			)}
 			label={label}
-			tabs={AtrcAvailableDevices}
+			tabs={AtrcAvailableDevices()}
 			{...defaultProps}>
 			{(tab) => (
 				<RenderTab

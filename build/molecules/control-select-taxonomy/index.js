@@ -1,27 +1,22 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AtrcControlGetTaxonomyOptions = AtrcControlGetTaxonomyOptions;
-exports.default = void 0;
-var _element = require("@wordpress/element");
-var _i18n = require("@wordpress/i18n");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _select = _interopRequireDefault(require("../../atoms/select"));
-var _notice = _interopRequireDefault(require("../notice"));
-var _controlSelectTaxonomiesWiseTerms = require("../control-select-taxonomies-wise-terms");
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
 var _excluded = ["label", "value", "onChange", "showOptionNone", "optionNoneValue", "variant", "className", "postType"];
-/* WordPress*/
-/*Library*/
-/*Inbuilt*/
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/* WordPress*/
+import { useMemo } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+
+/*Library*/
+import classnames from 'classnames';
+
+/*Inbuilt*/
+import AtrcSelect from '../../atoms/select';
+import AtrcNotice from '../notice';
+import { AtrcUseTaxonomies } from '../control-select-taxonomies-wise-terms';
+import AtrcPrefix from '../../prefix-vars';
+
 /* Local*/
-function AtrcControlGetTaxonomyOptions() {
+export function AtrcControlGetTaxonomyOptions() {
   var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var _props$postType = props.postType,
     postType = _props$postType === void 0 ? '' : _props$postType,
@@ -29,11 +24,11 @@ function AtrcControlGetTaxonomyOptions() {
     showOptionNone = _props$showOptionNone === void 0 ? false : _props$showOptionNone,
     _props$optionNoneValu = props.optionNoneValue,
     optionNoneValue = _props$optionNoneValu === void 0 ? '' : _props$optionNoneValu;
-  var taxonomies = (0, _controlSelectTaxonomiesWiseTerms.AtrcUseTaxonomies)({
+  var taxonomies = AtrcUseTaxonomies({
     postType: postType
   });
   var ExcludeTaxonomies = ['nav_menu'];
-  var options = (0, _element.useMemo)(function () {
+  var options = useMemo(function () {
     var baseOptions = [];
     (taxonomies || []).forEach(function (_ref) {
       var name = _ref.name,
@@ -48,7 +43,7 @@ function AtrcControlGetTaxonomyOptions() {
     if (showOptionNone) {
       return [{
         value: optionNoneValue,
-        label: (0, _i18n.__)('Select', 'atrc-prefix-atrc')
+        label: __('Select', 'atrc-prefix-atrc')
       }].concat(baseOptions);
     }
     return baseOptions;
@@ -78,18 +73,18 @@ function AtrcControlSelectTaxonomy(props) {
     optionNoneValue: optionNoneValue
   });
   if (!options || !options.length) {
-    return /*#__PURE__*/React.createElement(_notice.default, {
+    return /*#__PURE__*/React.createElement(AtrcNotice, {
       autoDismiss: false,
       isDismissible: false
-    }, (0, _i18n.__)('No taxonomies found!', 'atrc-prefix-atrc'));
+    }, __('No taxonomies found!', 'atrc-prefix-atrc'));
   }
-  return /*#__PURE__*/React.createElement(_select.default, _extends({
+  return /*#__PURE__*/React.createElement(AtrcSelect, _extends({
     label: label,
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-select-taxonomy'), className, variant ? (0, _prefixVars.default)('ctrl-select-taxonomy') + '-' + variant : ''),
+    className: classnames(AtrcPrefix('ctrl-select-taxonomy'), className, variant ? AtrcPrefix('ctrl-select-taxonomy') + '-' + variant : ''),
     value: value,
     onChange: onChange,
     options: options
   }, defaultProps));
 }
-var _default = exports.default = AtrcControlSelectTaxonomy;
+export default AtrcControlSelectTaxonomy;
 //# sourceMappingURL=index.js.map

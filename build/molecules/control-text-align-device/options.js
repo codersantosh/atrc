@@ -1,36 +1,32 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _bs = require("react-icons/bs");
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
 
 /*Library*/
+import { BsJustify, BsTextCenter, BsTextLeft, BsTextRight } from 'react-icons/bs';
 
 /* Align Options*/
-var TextAlignOptions = [{
-  label: (0, _i18n.__)('Left', 'atrc-prefix-atrc'),
-  value: 'l',
-  icon: _bs.BsTextLeft,
-  iconType: 'bootstrap'
-}, {
-  label: (0, _i18n.__)('Justify', 'atrc-prefix-atrc'),
-  value: 'jfy',
-  icon: _bs.BsJustify,
-  iconType: 'bootstrap'
-}, {
-  label: (0, _i18n.__)('Center', 'atrc-prefix-atrc'),
-  value: 'ctr',
-  icon: _bs.BsTextCenter,
-  iconType: 'bootstrap'
-}, {
-  label: (0, _i18n.__)('Right', 'atrc-prefix-atrc'),
-  value: 'r',
-  icon: _bs.BsTextRight,
-  iconType: 'bootstrap'
-}];
-var _default = exports.default = TextAlignOptions;
+var TextAlignOptions = function TextAlignOptions() {
+  return [{
+    label: __('Left', 'atrc-prefix-atrc'),
+    value: 'l',
+    icon: BsTextLeft,
+    iconType: 'bootstrap'
+  }, {
+    label: __('Justify', 'atrc-prefix-atrc'),
+    value: 'jfy',
+    icon: BsJustify,
+    iconType: 'bootstrap'
+  }, {
+    label: __('Center', 'atrc-prefix-atrc'),
+    value: 'ctr',
+    icon: BsTextCenter,
+    iconType: 'bootstrap'
+  }, {
+    label: __('Right', 'atrc-prefix-atrc'),
+    value: 'r',
+    icon: BsTextRight,
+    iconType: 'bootstrap'
+  }];
+};
+export default TextAlignOptions;
 //# sourceMappingURL=options.js.map

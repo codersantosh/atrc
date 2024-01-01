@@ -53,7 +53,7 @@ const AtrcOverflowControl = (props) => {
 				map(activeItems, (item, iDx) => (
 					<AtrcControlSelectDevice
 						label={__('Overflow', 'atrc-prefix-atrc')}
-						options={OverflowOptions}
+						options={OverflowOptions()}
 						value={value}
 						onChange={onChange}
 						key={iDx}

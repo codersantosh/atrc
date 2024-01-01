@@ -1,10 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = AtrcGetGoogleFontsUrl;
-function AtrcGetGoogleFontsUrl(googleFontsCollections) {
+export default function AtrcGetGoogleFontsUrl(googleFontsCollections) {
   var url = googleFontsCollections.filter(function (_ref) {
     var family = _ref.family;
     return !!family;

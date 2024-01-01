@@ -33,7 +33,6 @@ export const AtrcControlUnitDeviceAllowedKeys = [
 	'lg',
 	'xl',
 	'xxl',
-	'xxl',
 ];
 
 function mappingDeviceValues(value, device) {
@@ -81,7 +80,7 @@ const AtrcControlUnitDevice = (props) => {
 		if (isArray(allowedDevices)) {
 			return allowedDevices;
 		}
-		return AtrcAvailableDevices;
+		return AtrcAvailableDevices();
 	};
 
 	return (

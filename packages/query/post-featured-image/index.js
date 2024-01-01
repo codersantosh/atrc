@@ -1,6 +1,5 @@
 /*WordPress*/
 import { useEntityProp, store as coreStore } from '@wordpress/core-data';
-import { forwardRef } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
 
@@ -12,7 +11,7 @@ import AtrcImg from '../../atoms/img';
 function getMediaSourceUrlBySizeSlug(media, slug) {
 	return media?.media_details?.sizes?.[slug]?.source_url || media?.source_url;
 }
-const AtrcPostFeaturedImage = (props, ref) => {
+const AtrcPostFeaturedImage = (props) => {
 	const {
 		postType,
 		postId,
@@ -47,7 +46,6 @@ const AtrcPostFeaturedImage = (props, ref) => {
 	return (
 		<AtrcWrap
 			{...defaultProps}
-			ref={ref}
 			tag='figure'>
 			{mediaUrl ? (
 				<AtrcImg
@@ -69,4 +67,4 @@ const AtrcPostFeaturedImage = (props, ref) => {
 	);
 };
 
-export default forwardRef(AtrcPostFeaturedImage);
+export default AtrcPostFeaturedImage;

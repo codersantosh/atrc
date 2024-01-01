@@ -147,7 +147,7 @@ const AtrcControlTransition = (props) => {
 										className: 'at-flx-grw-1',
 									}}
 									value={tmgFn}
-									options={TimingFunctionsOptions}
+									options={TimingFunctionsOptions()}
 									onChange={(newVal) => setAttr(newVal, tab)}
 								/>
 							</AtrcPanelRow>

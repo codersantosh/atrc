@@ -1,20 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _panelRow = _interopRequireDefault(require("../panel-row"));
-var _controlImg = _interopRequireDefault(require("../control-img"));
-var _controlVideo = _interopRequireDefault(require("../control-video"));
-var _controlLink = _interopRequireDefault(require("../control-link"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-var _select = _interopRequireDefault(require("../../atoms/select"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Attributes Structure
  Type Object
  {
@@ -37,10 +20,20 @@ ppUrl;
  * */
 
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
 
 /*Library*/
+import classnames from 'classnames';
+import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
+import AtrcControlImg from '../control-img';
+import AtrcControlVideo from '../control-video';
+import AtrcControlLink from '../control-link';
+import AtrcPrefix from '../../prefix-vars';
+import AtrcSelect from '../../atoms/select';
 
 /*Local Components*/
 var RenderTabPanel = function RenderTabPanel(_ref) {
@@ -51,8 +44,8 @@ var RenderTabPanel = function RenderTabPanel(_ref) {
     _ref$tab = _ref.tab,
     tab = _ref$tab === void 0 ? 'img' : _ref$tab;
   if ('lnk' === tab) {
-    return /*#__PURE__*/React.createElement(_controlLink.default, {
-      label: (0, _i18n.__)('Link', 'atrc-prefix-atrc'),
+    return /*#__PURE__*/React.createElement(AtrcControlLink, {
+      label: __('Link', 'atrc-prefix-atrc'),
       value: {
         url: value && value.ppUrl
       },
@@ -62,10 +55,10 @@ var RenderTabPanel = function RenderTabPanel(_ref) {
     });
   }
   if ('img' === tab) {
-    return /*#__PURE__*/React.createElement(_panelRow.default, {
-      className: (0, _classnames.default)('at-m')
-    }, /*#__PURE__*/React.createElement(_controlImg.default, {
-      label: (0, _i18n.__)('Image', 'atrc-prefix-atrc'),
+    return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+      className: classnames('at-m')
+    }, /*#__PURE__*/React.createElement(AtrcControlImg, {
+      label: __('Image', 'atrc-prefix-atrc'),
       value: {
         frm: value && value.ppImgFrm,
         id: value && value.ppImgId,
@@ -78,10 +71,10 @@ var RenderTabPanel = function RenderTabPanel(_ref) {
     }));
   }
   if ('vid' === tab) {
-    return /*#__PURE__*/React.createElement(_panelRow.default, {
-      className: (0, _classnames.default)('at-m')
-    }, /*#__PURE__*/React.createElement(_controlVideo.default, {
-      label: (0, _i18n.__)('Video', 'atrc-prefix-atrc'),
+    return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+      className: classnames('at-m')
+    }, /*#__PURE__*/React.createElement(AtrcControlVideo, {
+      label: __('Video', 'atrc-prefix-atrc'),
       value: {
         frm: value && value.ppVidFrm,
         id: value && value.ppVidId,
@@ -99,7 +92,7 @@ var RenderTabPanel = function RenderTabPanel(_ref) {
 };
 var AtrcControlPopup = function AtrcControlPopup(props) {
   var _props$label = props.label,
-    label = _props$label === void 0 ? (0, _i18n.__)('Popup options', 'atrc-prefix-atrc') : _props$label,
+    label = _props$label === void 0 ? __('Popup options', 'atrc-prefix-atrc') : _props$label,
     _props$help = props.help,
     help = _props$help === void 0 ? '' : _props$help,
     _props$className = props.className,
@@ -119,19 +112,19 @@ var AtrcControlPopup = function AtrcControlPopup(props) {
   var SelectOptions = [];
   if (allowLink) {
     SelectOptions.push({
-      label: (0, _i18n.__)('Link', 'atrc-prefix-atrc'),
+      label: __('Link', 'atrc-prefix-atrc'),
       value: 'lnk'
     });
   }
   if (allowImage) {
     SelectOptions.push({
-      label: (0, _i18n.__)('Image', 'atrc-prefix-atrc'),
+      label: __('Image', 'atrc-prefix-atrc'),
       value: 'img'
     });
   }
   if (allowVideo) {
     SelectOptions.push({
-      label: (0, _i18n.__)('Video', 'atrc-prefix-atrc'),
+      label: __('Video', 'atrc-prefix-atrc'),
       value: 'vid'
     });
   }
@@ -195,7 +188,7 @@ var AtrcControlPopup = function AtrcControlPopup(props) {
     onChange(valueCloned);
   };
   var hasTabValue = function hasTabValue() {
-    if (!value || (0, _lodash.isEmpty)(value)) {
+    if (!value || isEmpty(value)) {
       return false;
     }
     return !!(value.ppUrl || value.ppTarget || value.ppTtl || value.ppRel || value.ppImgFrm || value.ppImgId || value.ppImgUrl || value.ppImgSz || value.ppVidFrm || value.ppVidId || value.ppVidUrl);
@@ -242,8 +235,8 @@ var AtrcControlPopup = function AtrcControlPopup(props) {
     }
     onChange(valueCloned);
   };
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-pp'), className, variant ? (0, _prefixVars.default)('ctrl-pp') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-pp'), className, variant ? AtrcPrefix('ctrl-pp') + '-' + variant : ''),
     label: label,
     help: help,
     resetAll: function resetAll() {
@@ -252,19 +245,19 @@ var AtrcControlPopup = function AtrcControlPopup(props) {
     allowTabs: true,
     tools: [{
       name: 'pp',
-      title: (0, _i18n.__)('Popup', 'atrc-prefix-atrc'),
+      title: __('Popup', 'atrc-prefix-atrc'),
       hasValue: hasTabValue(),
       onDeselect: function onDeselect() {
         return onChange({});
       }
     }]
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (item, iDx) {
-      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_panelRow.default, {
+    return map(activeItems, function (item, iDx) {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcPanelRow, {
         className: "at-m",
         key: iDx
-      }, /*#__PURE__*/React.createElement(_select.default, {
-        label: (0, _i18n.__)('Source', 'atrc-prefix-atrc'),
+      }, /*#__PURE__*/React.createElement(AtrcSelect, {
+        label: __('Source', 'atrc-prefix-atrc'),
         wrapProps: {
           className: 'at-flx-grw-1'
         },
@@ -285,5 +278,5 @@ var AtrcControlPopup = function AtrcControlPopup(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlPopup;
+export default AtrcControlPopup;
 //# sourceMappingURL=index.js.map

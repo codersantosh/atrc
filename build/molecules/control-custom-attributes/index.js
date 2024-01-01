@@ -1,29 +1,30 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _text = _interopRequireDefault(require("../../atoms/text"));
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _notice = _interopRequireDefault(require("../notice"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*Value Structure
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+/*Value Structure
 Type object
 {
 data-title: 'my-title'
 }
-**/ /*WordPress*/ /** Libraries */ /*Inbuilt*/
+**/
+
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useState, useMemo, Fragment } from '@wordpress/element';
+
+/** Libraries */
+import classnames from 'classnames';
+import { escape, map } from 'lodash';
+
+/*Inbuilt*/
+import AtrcText from '../../atoms/text';
+import AtrcPanelTools from '../panel-tools';
+import AtrcNotice from '../notice';
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local components*/
 var AtrcControlCustomAttributes = function AtrcControlCustomAttributes(props) {
   var _props$label = props.label,
@@ -38,7 +39,7 @@ var AtrcControlCustomAttributes = function AtrcControlCustomAttributes(props) {
     notAllowedAttributes = _props$notAllowedAttr === void 0 ? [] : _props$notAllowedAttr,
     _props$onChange = props.onChange,
     _onChange = _props$onChange === void 0 ? function () {} : _props$onChange;
-  var _useState = (0, _element.useState)(Object.entries(value).map(function (_ref) {
+  var _useState = useState(Object.entries(value).map(function (_ref) {
       var _ref2 = _slicedToArray(_ref, 2),
         name = _ref2[0],
         val = _ref2[1];
@@ -47,7 +48,7 @@ var AtrcControlCustomAttributes = function AtrcControlCustomAttributes(props) {
     _useState2 = _slicedToArray(_useState, 2),
     inputValue = _useState2[0],
     setInputValue = _useState2[1];
-  var _useState3 = (0, _element.useState)(''),
+  var _useState3 = useState(''),
     _useState4 = _slicedToArray(_useState3, 2),
     error = _useState4[0],
     setError = _useState4[1];
@@ -78,11 +79,11 @@ var AtrcControlCustomAttributes = function AtrcControlCustomAttributes(props) {
       var attributeName = void 0;
       var attributeValue = void 0;
       if (name2 || name3) {
-        attributeName = (0, _lodash.escape)(name2 || name3);
-        attributeValue = (0, _lodash.escape)(value2 || true);
+        attributeName = escape(name2 || name3);
+        attributeValue = escape(value2 || true);
       } else {
-        attributeName = (0, _lodash.escape)(name);
-        attributeValue = (0, _lodash.escape)(value1);
+        attributeName = escape(name);
+        attributeValue = escape(value1);
       }
       if (attributeName) {
         if (notAllowedAttributes.includes(attributeName)) {
@@ -105,7 +106,7 @@ var AtrcControlCustomAttributes = function AtrcControlCustomAttributes(props) {
     }
     _onChange(updatedAttributes);
   };
-  var AttributesTabs = (0, _element.useMemo)(function () {
+  var AttributesTabs = useMemo(function () {
     return [{
       name: 'attributes',
       title: label,
@@ -115,18 +116,18 @@ var AtrcControlCustomAttributes = function AtrcControlCustomAttributes(props) {
       }
     }];
   }, []);
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-cust-attrib'), className, variant ? (0, _prefixVars.default)('ctrl-cust-attrib') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-cust-attrib'), className, variant ? AtrcPrefix('ctrl-cust-attrib') + '-' + variant : ''),
     label: label,
     resetAll: function resetAll() {
       return _onChange({});
     },
     tools: AttributesTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (tab, iDx) {
-      return /*#__PURE__*/React.createElement(_element.Fragment, {
+    return map(activeItems, function (tab, iDx) {
+      return /*#__PURE__*/React.createElement(Fragment, {
         key: iDx
-      }, /*#__PURE__*/React.createElement(_text.default, {
+      }, /*#__PURE__*/React.createElement(AtrcText, {
         label: label,
         value: inputValue,
         onBlur: handleBlur,
@@ -138,8 +139,8 @@ var AtrcControlCustomAttributes = function AtrcControlCustomAttributes(props) {
             setInputValue(newVal);
           }
         },
-        help: /*#__PURE__*/React.createElement(React.Fragment, null, (0, _i18n.__)('You can type in custom HTML attributes for this block in the field above.', 'atrc-prefix-atrc'), "\xA0", (0, _i18n.__)('Example:', 'atrc-prefix-atrc'), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("code", null, "data-title=\"my-title\""), /*#__PURE__*/React.createElement("br", null), (0, _i18n.__)("If the attributes are already present on the blocks it wouldn't apply.", 'atrc-prefix-atrc'))
-      }), error && /*#__PURE__*/React.createElement(_notice.default, {
+        help: /*#__PURE__*/React.createElement(React.Fragment, null, __('You can type in custom HTML attributes for this block in the field above.', 'atrc-prefix-atrc'), "\xA0", __('Example:', 'atrc-prefix-atrc'), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("code", null, "data-title=\"my-title\""), /*#__PURE__*/React.createElement("br", null), __("If the attributes are already present on the blocks it wouldn't apply.", 'atrc-prefix-atrc'))
+      }), error && /*#__PURE__*/React.createElement(AtrcNotice, {
         isDismissible: false,
         autoDismiss: false,
         status: "warning"
@@ -147,5 +148,5 @@ var AtrcControlCustomAttributes = function AtrcControlCustomAttributes(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlCustomAttributes;
+export default AtrcControlCustomAttributes;
 //# sourceMappingURL=index.js.map

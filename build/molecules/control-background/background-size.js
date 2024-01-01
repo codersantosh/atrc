@@ -1,23 +1,10 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.mappingBgSzNewValues = exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
-var _label = _interopRequireDefault(require("../../atoms/label"));
-var _controlUnit = _interopRequireDefault(require("../../atoms/control-unit"));
-var _controlSelectDevice = _interopRequireDefault(require("./../control-select-device"));
-var _options = require("./options");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*Attributes Structure
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+/*Attributes Structure
 Type Object
 {
     bgSz : '',
@@ -40,9 +27,21 @@ Type Object
     xlBgH:'',
     xxlBgH:'',
 }
- * */ /*WordPress*/ /*Inbuilt*/
+ * */
+
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useState } from '@wordpress/element';
+
+/*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcControlUnit from '../../atoms/control-unit';
+import AtrcControlSelectDevice from './../control-select-device';
+import { BgSzOptions } from './options';
+
 /*Local Components*/
-var mappingBgSzNewValues = exports.mappingBgSzNewValues = function mappingBgSzNewValues(newVal, value) {
+export var mappingBgSzNewValues = function mappingBgSzNewValues(newVal, value) {
   if (newVal && newVal.xs) {
     value.bgSz = newVal.xs;
   } else {
@@ -114,7 +113,7 @@ var BackgroundSize = function BackgroundSize(_ref) {
     xlBgH = _value$xlBgH === void 0 ? '' : _value$xlBgH,
     _value$xxlBgH = value.xxlBgH,
     xxlBgH = _value$xxlBgH === void 0 ? '' : _value$xxlBgH;
-  var _useState = (0, _element.useState)(),
+  var _useState = useState(),
     _useState2 = _slicedToArray(_useState, 2),
     selectedTab = _useState2[0],
     setSelectedTab = _useState2[1];
@@ -127,8 +126,8 @@ var BackgroundSize = function BackgroundSize(_ref) {
     valueCloned[type] = newVal;
     onChange(valueCloned);
   };
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_controlSelectDevice.default, {
-    label: (0, _i18n.__)('Background size', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcControlSelectDevice, {
+    label: __('Background size', 'atrc-prefix-atrc'),
     value: {
       xs: bgSz,
       sm: smBgSz,
@@ -137,96 +136,96 @@ var BackgroundSize = function BackgroundSize(_ref) {
       xl: xlBgSz,
       xxl: xxlBgSz
     },
-    options: _options.BgSzOptions,
+    options: BgSzOptions(),
     onChange: setBgSz,
     onTabChange: function onTabChange(newVal) {
       return setSelectedTab(newVal);
     }
-  }), 'xs' === selectedTab && 'custom' === bgSz ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_label.default, null, (0, _i18n.__)('Custom width and height', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(_wrap.default, {
+  }), 'xs' === selectedTab && 'custom' === bgSz ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, null, __('Custom width and height', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcWrap, {
     className: "at-flex"
-  }, /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Width', 'atrc-prefix-atrc'),
+  }, /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Width', 'atrc-prefix-atrc'),
     value: bgW,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'bgW');
     }
-  }), /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Height', 'atrc-prefix-atrc'),
+  }), /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Height', 'atrc-prefix-atrc'),
     value: bgH,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'bgH');
     }
-  }))) : null, 'sm' === selectedTab && 'custom' === smBgSz ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_label.default, null, (0, _i18n.__)('Custom width and height', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(_wrap.default, {
+  }))) : null, 'sm' === selectedTab && 'custom' === smBgSz ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, null, __('Custom width and height', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcWrap, {
     className: "at-flex"
-  }, /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Width', 'atrc-prefix-atrc'),
+  }, /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Width', 'atrc-prefix-atrc'),
     value: smBgW,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'smBgW');
     }
-  }), /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Height', 'atrc-prefix-atrc'),
+  }), /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Height', 'atrc-prefix-atrc'),
     value: smBgH,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'smBgH');
     }
-  }))) : null, 'md' === selectedTab && 'custom' === mdBgSz ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_label.default, null, (0, _i18n.__)('Custom width and height', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(_wrap.default, {
+  }))) : null, 'md' === selectedTab && 'custom' === mdBgSz ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, null, __('Custom width and height', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcWrap, {
     className: "at-flex"
-  }, /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Width', 'atrc-prefix-atrc'),
+  }, /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Width', 'atrc-prefix-atrc'),
     value: mdBgW,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'mdBgW');
     }
-  }), /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Height', 'atrc-prefix-atrc'),
+  }), /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Height', 'atrc-prefix-atrc'),
     value: mdBgH,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'mdBgH');
     }
-  }))) : null, 'lg' === selectedTab && 'custom' === lgBgSz ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_label.default, null, (0, _i18n.__)('Custom width and height', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(_wrap.default, {
+  }))) : null, 'lg' === selectedTab && 'custom' === lgBgSz ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, null, __('Custom width and height', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcWrap, {
     className: "at-flex"
-  }, /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Width', 'atrc-prefix-atrc'),
+  }, /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Width', 'atrc-prefix-atrc'),
     value: lgBgW,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'lgBgW');
     }
-  }), /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Height', 'atrc-prefix-atrc'),
+  }), /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Height', 'atrc-prefix-atrc'),
     value: lgBgH,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'lgBgH');
     }
-  }))) : null, 'xl' === selectedTab && 'custom' === xlBgSz ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_label.default, null, (0, _i18n.__)('Custom width and height', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(_wrap.default, {
+  }))) : null, 'xl' === selectedTab && 'custom' === xlBgSz ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, null, __('Custom width and height', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcWrap, {
     className: "at-flex"
-  }, /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Width', 'atrc-prefix-atrc'),
+  }, /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Width', 'atrc-prefix-atrc'),
     value: xlBgW,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'xlBgW');
     }
-  }), /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Height', 'atrc-prefix-atrc'),
+  }), /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Height', 'atrc-prefix-atrc'),
     value: xlBgH,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'xlBgH');
     }
-  }))) : null, 'xxl' === selectedTab && 'custom' === xxlBgSz ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_label.default, null, (0, _i18n.__)('Custom width and height', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(_wrap.default, {
+  }))) : null, 'xxl' === selectedTab && 'custom' === xxlBgSz ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, null, __('Custom width and height', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcWrap, {
     className: "at-flex"
-  }, /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Width', 'atrc-prefix-atrc'),
+  }, /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Width', 'atrc-prefix-atrc'),
     value: xxlBgW,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'xxlBgW');
     }
-  }), /*#__PURE__*/React.createElement(_controlUnit.default, {
-    label: (0, _i18n.__)('Height', 'atrc-prefix-atrc'),
+  }), /*#__PURE__*/React.createElement(AtrcControlUnit, {
+    label: __('Height', 'atrc-prefix-atrc'),
     value: xxlBgH,
     onChange: function onChange(newVal) {
       return setAttr(newVal, 'xxlBgH');
     }
   }))) : null);
 };
-var _default = exports.default = BackgroundSize;
+export default BackgroundSize;
 //# sourceMappingURL=background-size.js.map

@@ -1,9 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 /*Local*/
 var BgSz = function BgSz(value, innerOutput, property) {
   if (value.bgSz) {
@@ -50,5 +44,5 @@ var BgSz = function BgSz(value, innerOutput, property) {
   }
   return innerOutput;
 };
-var _default = exports.default = BgSz;
+export default BgSz;
 //# sourceMappingURL=size.js.map

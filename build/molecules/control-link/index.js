@@ -1,18 +1,7 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
-var _label = _interopRequireDefault(require("../../atoms/label"));
-var _text = _interopRequireDefault(require("../../atoms/text"));
-var _toggle = _interopRequireDefault(require("../../atoms/toggle"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-var _panelRow = _interopRequireDefault(require("../panel-row"));
 var _excluded = ["label", "className", "variant", "value", "onChange", "allowOn", "allowUrl", "allowTitle", "allowTarget", "allowRel"];
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 /*Attributes Structure
  Type Object
  {
@@ -22,13 +11,21 @@ tgt
 ttl
 rel
  * */
+
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+
 /*Library*/
+import classnames from 'classnames';
+
 /*Inbuilt*/
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcText from '../../atoms/text';
+import AtrcToggle from '../../atoms/toggle';
+import AtrcPrefix from '../../prefix-vars';
+import AtrcPanelRow from '../panel-row';
+
 /*Local Components*/
 var AtrcControlLink = function AtrcControlLink(props) {
   var _props$label = props.label,
@@ -83,16 +80,16 @@ var AtrcControlLink = function AtrcControlLink(props) {
     }
     return false;
   };
-  return /*#__PURE__*/React.createElement(React.Fragment, null, label && /*#__PURE__*/React.createElement(_label.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('m-0'))
-  }, label), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_wrap.default, _extends({
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-link'), 'at-flx-grw-1', className, variant ? (0, _prefixVars.default)('ctrl-link') + '-' + variant : '')
-  }, defaultProps), allowOn && /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_toggle.default, {
-    label: (0, _i18n.__)('Allow link', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(React.Fragment, null, label && /*#__PURE__*/React.createElement(AtrcLabel, {
+    className: classnames(AtrcPrefix('m-0'))
+  }, label), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcWrap, _extends({
+    className: classnames(AtrcPrefix('ctrl-link'), 'at-flx-grw-1', className, variant ? AtrcPrefix('ctrl-link') + '-' + variant : '')
+  }, defaultProps), allowOn && /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcToggle, {
+    label: __('Allow link', 'atrc-prefix-atrc'),
     checked: value && value.on,
     onChange: function onChange() {
       var newVal = true;
@@ -103,10 +100,10 @@ var AtrcControlLink = function AtrcControlLink(props) {
     }
   })), isAllowField({
     fieldType: 'url'
-  }) && /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_text.default, {
-    label: (0, _i18n.__)('URL', 'atrc-prefix-atrc'),
+  }) && /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcText, {
+    label: __('URL', 'atrc-prefix-atrc'),
     wrapProps: {
       className: 'at-flx-grw-1'
     },
@@ -117,10 +114,10 @@ var AtrcControlLink = function AtrcControlLink(props) {
     }
   })), isAllowField({
     fieldType: 'ttl'
-  }) && /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_text.default, {
-    label: (0, _i18n.__)('Title', 'atrc-prefix-atrc'),
+  }) && /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcText, {
+    label: __('Title', 'atrc-prefix-atrc'),
     value: value.ttl,
     type: "text",
     onChange: function onChange(newVal) {
@@ -128,10 +125,10 @@ var AtrcControlLink = function AtrcControlLink(props) {
     }
   })), isAllowField({
     fieldType: 'tgt'
-  }) && /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_toggle.default, {
-    label: (0, _i18n.__)('Open in new tab', 'atrc-prefix-atrc'),
+  }) && /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcToggle, {
+    label: __('Open in new tab', 'atrc-prefix-atrc'),
     checked: value && value.tgt === '_blank',
     onChange: function onChange() {
       var newVal = '';
@@ -142,10 +139,10 @@ var AtrcControlLink = function AtrcControlLink(props) {
     }
   })), isAllowField({
     fieldType: 'rel'
-  }) && /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_text.default, {
-    label: (0, _i18n.__)('Relation', 'atrc-prefix-atrc'),
+  }) && /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcText, {
+    label: __('Relation', 'atrc-prefix-atrc'),
     value: value.rel,
     type: "text",
     onChange: function onChange(newVal) {
@@ -153,5 +150,5 @@ var AtrcControlLink = function AtrcControlLink(props) {
     }
   })))));
 };
-var _default = exports.default = AtrcControlLink;
+export default AtrcControlLink;
 //# sourceMappingURL=index.js.map

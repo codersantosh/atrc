@@ -1,9 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 var ColInputs = function ColInputs(_ref) {
   var values = _ref.values;
   return /*#__PURE__*/React.createElement("div", {
@@ -20,5 +14,5 @@ var ColInputs = function ColInputs(_ref) {
     });
   }));
 };
-var _default = exports.default = ColInputs;
+export default ColInputs;
 //# sourceMappingURL=col-inputs.js.map

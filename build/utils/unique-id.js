@@ -1,10 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = AtrcUniqueID;
-function AtrcUniqueID() {
+export default function AtrcUniqueID() {
   var length = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 7;
   var a = new Uint32Array(3);
   var result = '';

@@ -14,7 +14,7 @@ const ThreeColumnsLayout = (props) => {
 		<AtrcControlSelectButton
 			label={__('Three columns layout', 'atrc-prefix-atrc')}
 			value={value}
-			options={ThreeColumnsOptions}
+			options={ThreeColumnsOptions()}
 			onChange={onChange}
 			allowReset={false}
 		/>

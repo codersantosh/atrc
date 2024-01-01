@@ -126,7 +126,7 @@ const BackgroundSize = ({ value, onChange }) => {
 					xl: xlBgSz,
 					xxl: xxlBgSz,
 				}}
-				options={BgSzOptions}
+				options={BgSzOptions()}
 				onChange={setBgSz}
 				onTabChange={(newVal) => setSelectedTab(newVal)}
 			/>

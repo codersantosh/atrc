@@ -25,7 +25,7 @@ const AtrcControlWordTag = (props) => {
 		if (options && options.length) {
 			return options;
 		}
-		return SelectHtmlOptions;
+		return SelectHtmlOptions();
 	};
 
 	return (

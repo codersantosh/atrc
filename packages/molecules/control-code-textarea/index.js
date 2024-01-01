@@ -14,10 +14,10 @@ import {
 	Fragment,
 } from '@wordpress/element';
 
-import { useInstanceId, debounce } from '@wordpress/compose';
+import { debounce } from '@wordpress/compose';
 
 /*Library*/
-import { map } from 'lodash';
+import { map, random } from 'lodash';
 
 import classnames from 'classnames';
 
@@ -31,13 +31,14 @@ import AtrcNotice from '../notice';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
+import AtrcUniqueID from './../../utils/unique-id';
 
 /*Local*/
 const CodeEditor = ({ editorValue, onChange, editorSettings }) => {
 	const [value, setValue] = useState(editorValue);
 	const [codeMirror, setCodeMirror] = useState(null);
 
-	const instanceId = useInstanceId(CodeEditor, 'atrc-control-code-textarea');
+	const instanceId = AtrcUniqueID() + random(0, 9);
 
 	const debouncedOnChange = useRef(
 		debounce(

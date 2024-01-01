@@ -1,36 +1,28 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _tooltip = _interopRequireDefault(require("../tooltip"));
-var _button = _interopRequireDefault(require("../../atoms/button"));
-var _icon = _interopRequireDefault(require("../../atoms/icon"));
-var _bs = require("react-icons/bs");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /* WordPress */
+import { __ } from '@wordpress/i18n';
 
 /* Atrc */
-
+import AtrcTooltip from '../tooltip';
+import AtrcButton from '../../atoms/button';
+import AtrcIcon from '../../atoms/icon';
+import { BsPlusSquare } from 'react-icons/bs';
 var AtrcRepeaterGroupAdd = function AtrcRepeaterGroupAdd(props) {
   var addGroup = props.addGroup,
     _props$tooltipText = props.tooltipText,
-    tooltipText = _props$tooltipText === void 0 ? (0, _i18n.__)('Add repeater fields', 'atrc-prefix-atrc') : _props$tooltipText,
+    tooltipText = _props$tooltipText === void 0 ? __('Add repeater fields', 'atrc-prefix-atrc') : _props$tooltipText,
     _props$label = props.label,
-    label = _props$label === void 0 ? (0, _i18n.__)('Add repeater fields', 'atrc-prefix-atrc') : _props$label;
-  return /*#__PURE__*/React.createElement(_button.default, {
+    label = _props$label === void 0 ? __('Add repeater fields', 'atrc-prefix-atrc') : _props$label;
+  return /*#__PURE__*/React.createElement(AtrcButton, {
     variant: "add",
     onClick: addGroup,
     className: "at-m"
-  }, /*#__PURE__*/React.createElement(_tooltip.default, {
+  }, /*#__PURE__*/React.createElement(AtrcTooltip, {
     className: "at-flx at-al-itm-ctr at-gap",
     text: tooltipText
-  }, /*#__PURE__*/React.createElement(_icon.default, {
+  }, /*#__PURE__*/React.createElement(AtrcIcon, {
     type: "bootstrap",
-    icon: _bs.BsPlusSquare
+    icon: BsPlusSquare
   }), label));
 };
-var _default = exports.default = AtrcRepeaterGroupAdd;
+export default AtrcRepeaterGroupAdd;
 //# sourceMappingURL=repeater-group-add.js.map

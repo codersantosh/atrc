@@ -1,11 +1,10 @@
-/**
- * WordPress dependencies
- */
+/* WordPress */
 import { store as blockEditorStore } from '@wordpress/block-editor';
 import { store as coreStore } from '@wordpress/core-data';
 import { __, sprintf } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
 
+/* Local */
 function getAvatarSizes(sizes) {
 	const minSize = sizes ? sizes[0] : 24;
 	const maxSize = sizes ? sizes[sizes.length - 1] : 96;

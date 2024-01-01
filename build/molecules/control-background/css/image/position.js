@@ -1,9 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 /*Local*/
 var BgPos = function BgPos(value, innerOutput, property) {
   if (value.bgPosX || value.bgPosY) {
@@ -38,5 +32,5 @@ var BgPos = function BgPos(value, innerOutput, property) {
   }
   return innerOutput;
 };
-var _default = exports.default = BgPos;
+export default BgPos;
 //# sourceMappingURL=position.js.map

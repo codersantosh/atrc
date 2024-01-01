@@ -1,10 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = AtrcGetQuantityAndUnitFromString;
-function AtrcGetQuantityAndUnitFromString(value) {
+export default function AtrcGetQuantityAndUnitFromString(value) {
   var allowedUnits = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
   var defaultQuantity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
   var defaultUnit = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';

@@ -7,14 +7,14 @@ import { __, sprintf } from '@wordpress/i18n';
 import { createUseStyles } from 'react-jss';
 
 /*Local*/
-const useStyles = createUseStyles({
-	root: {
-		fontFamily: ({ font }) => font,
-		fontWeight: ({ weight }) => weight,
-	},
-});
 
 export default function AtrcControlSelectGoogleFontsPreview({ font, weight }) {
+	const useStyles = createUseStyles({
+		root: {
+			fontFamily: ({ font }) => font,
+			fontWeight: ({ weight }) => weight,
+		},
+	});
 	const classes = useStyles({ font, weight });
 
 	useEffect(() => {

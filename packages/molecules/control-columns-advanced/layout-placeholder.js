@@ -17,6 +17,7 @@ import {
 	ThreeColumnsOptions,
 	TwoColumnsOptions,
 } from './options';
+
 import AtrcPrefix from '../../prefix-vars';
 
 /* Local */
@@ -42,7 +43,7 @@ const AtrcControlColumnsAdvancedLayoutPlaceholder = (props) => {
 			)}
 			label={label}
 			{...defaultProps}>
-			{OneColumnOptions.map((item, key) => (
+			{OneColumnOptions().map((item, key) => (
 				<AtrcTooltip
 					text={item.label}
 					key={key}>
@@ -54,7 +55,7 @@ const AtrcControlColumnsAdvancedLayoutPlaceholder = (props) => {
 					</AtrcButton>
 				</AtrcTooltip>
 			))}
-			{TwoColumnsOptions.map((item, key) => (
+			{TwoColumnsOptions().map((item, key) => (
 				<AtrcTooltip
 					text={item.label}
 					key={key}>
@@ -66,7 +67,7 @@ const AtrcControlColumnsAdvancedLayoutPlaceholder = (props) => {
 					</AtrcButton>
 				</AtrcTooltip>
 			))}
-			{ThreeColumnsOptions.map((item, key) => (
+			{ThreeColumnsOptions().map((item, key) => (
 				<AtrcTooltip
 					text={item.label}
 					key={key}>
@@ -78,7 +79,7 @@ const AtrcControlColumnsAdvancedLayoutPlaceholder = (props) => {
 					</AtrcButton>
 				</AtrcTooltip>
 			))}
-			{FourColumnsOptions.map((item, key) => (
+			{FourColumnsOptions().map((item, key) => (
 				<AtrcTooltip
 					text={item.label}
 					key={key}>
@@ -90,7 +91,7 @@ const AtrcControlColumnsAdvancedLayoutPlaceholder = (props) => {
 					</AtrcButton>
 				</AtrcTooltip>
 			))}
-			{FiveColumnsOptions.map((item, key) => (
+			{FiveColumnsOptions().map((item, key) => (
 				<AtrcTooltip
 					text={item.label}
 					key={key}>
@@ -102,7 +103,7 @@ const AtrcControlColumnsAdvancedLayoutPlaceholder = (props) => {
 					</AtrcButton>
 				</AtrcTooltip>
 			))}
-			{SixColumnsOptions.map((item, key) => (
+			{SixColumnsOptions().map((item, key) => (
 				<AtrcTooltip
 					text={item.label}
 					key={key}>

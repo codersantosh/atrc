@@ -14,7 +14,7 @@ const FiveColumnsLayout = (props) => {
 		<AtrcControlSelectButton
 			label={__('Five columns layout', 'atrc-prefix-atrc')}
 			value={value}
-			options={FiveColumnsOptions}
+			options={FiveColumnsOptions()}
 			onChange={onChange}
 			allowReset={false}
 		/>

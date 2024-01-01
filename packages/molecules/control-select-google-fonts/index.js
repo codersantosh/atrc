@@ -160,8 +160,4 @@ const AtrcControlSelectGoogleFonts = (props) => {
 		</>
 	);
 };
-export {
-	AtrcControlSelectGoogleFontsWeight,
-	AtrcControlSelectGoogleFontsPreview,
-};
 export default AtrcControlSelectGoogleFonts;

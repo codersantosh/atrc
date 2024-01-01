@@ -1,24 +1,27 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _range = _interopRequireDefault(require("../../atoms/range"));
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); } /*Attributes Structure
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+/*Attributes Structure
 Type Object
 {
     "normal":"",
     "hover":"",
 }
-* */ /*WordPress*/ /*Library*/ /*Inbuilt*/ /*Inbuilt*/
+* */
+
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
+
+/*Library*/
+import classnames from 'classnames';
+import { isEmpty, map } from 'lodash';
+
+/*Inbuilt*/
+import AtrcRange from '../../atoms/range';
+import AtrcPanelTools from '../panel-tools';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local Components*/
 var AtrcControlRangeTab = function AtrcControlRangeTab(props) {
   var _props$value = props.value,
@@ -41,7 +44,7 @@ var AtrcControlRangeTab = function AtrcControlRangeTab(props) {
     onChange(valueCloned);
   };
   var hasTabValue = function hasTabValue(tab) {
-    if (!value || (0, _lodash.isEmpty)(value)) {
+    if (!value || isEmpty(value)) {
       return false;
     }
     return !!value[tab];
@@ -54,12 +57,12 @@ var AtrcControlRangeTab = function AtrcControlRangeTab(props) {
   var resetAll = function resetAll() {
     onChange({});
   };
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     var tabs = [];
     if (allowedTabs.includes('normal'.toLowerCase())) {
       tabs.push({
         name: 'normal',
-        title: (0, _i18n.__)('Normal', 'atrc-prefix-atrc'),
+        title: __('Normal', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('normal'),
         onDeselect: function onDeselect() {
           return resetTab('normal');
@@ -69,7 +72,7 @@ var AtrcControlRangeTab = function AtrcControlRangeTab(props) {
     if (allowedTabs.includes('hover'.toLowerCase())) {
       tabs.push({
         name: 'hover',
-        title: (0, _i18n.__)('Hover', 'atrc-prefix-atrc'),
+        title: __('Hover', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('hover'),
         onDeselect: function onDeselect() {
           return resetTab('hover');
@@ -79,7 +82,7 @@ var AtrcControlRangeTab = function AtrcControlRangeTab(props) {
     if (allowedTabs.includes('parenthover'.toLowerCase())) {
       tabs.push({
         name: 'parentHover',
-        title: (0, _i18n.__)('Parent hover', 'atrc-prefix-atrc'),
+        title: __('Parent hover', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('parentHover'),
         onDeselect: function onDeselect() {
           return resetTab('parentHover');
@@ -88,16 +91,16 @@ var AtrcControlRangeTab = function AtrcControlRangeTab(props) {
     }
     return tabs;
   }, []);
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-range-tab'), className, variant ? (0, _prefixVars.default)('ctrl-range-tab') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-range-tab'), className, variant ? AtrcPrefix('ctrl-range-tab') + '-' + variant : ''),
     label: label,
     resetAll: resetAll,
     allowTabs: true,
     tools: AllTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (tab, iDx) {
-      return /*#__PURE__*/React.createElement(_range.default, _extends({}, inputProps, {
-        label: (0, _i18n.__)('Enter value', 'atrc-prefix-atrc'),
+    return map(activeItems, function (tab, iDx) {
+      return /*#__PURE__*/React.createElement(AtrcRange, _extends({}, inputProps, {
+        label: __('Enter value', 'atrc-prefix-atrc'),
         value: value && value[tab],
         onChange: function onChange(newVal) {
           return setAttr(newVal, tab);
@@ -107,5 +110,5 @@ var AtrcControlRangeTab = function AtrcControlRangeTab(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlRangeTab;
+export default AtrcControlRangeTab;
 //# sourceMappingURL=index.js.map

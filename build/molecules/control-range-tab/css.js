@@ -1,11 +1,5 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _lodash = require("lodash");
 /*Library*/
+import { isEmpty } from 'lodash';
 
 /*Local*/
 var AtrcControlRangeTabCss = function AtrcControlRangeTabCss(value, property) {
@@ -13,7 +7,7 @@ var AtrcControlRangeTabCss = function AtrcControlRangeTabCss(value, property) {
     xs: '',
     xsHover: ''
   };
-  if (!(0, _lodash.isEmpty)(value)) {
+  if (!isEmpty(value)) {
     if (value.normal !== undefined && value.normal !== null) {
       innerOutput.xs += "".concat(property, "      : ").concat(value.normal, ";");
     }
@@ -23,5 +17,5 @@ var AtrcControlRangeTabCss = function AtrcControlRangeTabCss(value, property) {
   }
   return innerOutput;
 };
-var _default = exports.default = AtrcControlRangeTabCss;
+export default AtrcControlRangeTabCss;
 //# sourceMappingURL=css.js.map

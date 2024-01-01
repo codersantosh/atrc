@@ -1,32 +1,25 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _lodash = require("lodash");
-var _availableTabs = _interopRequireDefault(require("../../utils/available-tabs"));
-var _objectValuesWithAllowedKeysAndTabs = require("../../utils/object-values-with-allowed-keys-and-tabs");
-var _controlTextShadow = require("../control-text-shadow");
-var _css = _interopRequireDefault(require("../control-text-shadow/css"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Library*/
+import { forEach, isEmpty } from 'lodash';
 
 /* Inbuilt */
+import AtrcAvailableTabs from '../../utils/available-tabs';
+import { AtrcGetTabValues, AtrcHasTabValues } from '../../utils/object-values-with-allowed-keys-and-tabs';
+import { AtrcControlTextShadowAllowedKeys } from '../control-text-shadow';
+import AtrcControlTextShadowCss from '../control-text-shadow/css';
 
 /*Local*/
 var AtrcControlTextShadowTabCss = function AtrcControlTextShadowTabCss(value) {
   var property = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'text-shadow';
   var output = {};
   var tabKey;
-  if (!(0, _lodash.isEmpty)(value)) {
-    _availableTabs.default.forEach(function (tab) {
-      if (_availableTabs.default.includes(tab)) {
-        if ((0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)(tab, value, _controlTextShadow.AtrcControlTextShadowAllowedKeys)) {
-          var textVal = (0, _objectValuesWithAllowedKeysAndTabs.AtrcGetTabValues)(value, tab, _controlTextShadow.AtrcControlTextShadowAllowedKeys);
-          var textCss = (0, _css.default)(textVal, property);
-          if (!(0, _lodash.isEmpty)(textCss)) {
-            (0, _lodash.forEach)(textCss, function (item, itemKey) {
+  if (!isEmpty(value)) {
+    AtrcAvailableTabs.forEach(function (tab) {
+      if (AtrcAvailableTabs.includes(tab)) {
+        if (AtrcHasTabValues(tab, value, AtrcControlTextShadowAllowedKeys)) {
+          var textVal = AtrcGetTabValues(value, tab, AtrcControlTextShadowAllowedKeys);
+          var textCss = AtrcControlTextShadowCss(textVal, property);
+          if (!isEmpty(textCss)) {
+            forEach(textCss, function (item, itemKey) {
               if (tab === 'normal') {
                 tabKey = itemKey;
               } else {
@@ -44,5 +37,5 @@ var AtrcControlTextShadowTabCss = function AtrcControlTextShadowTabCss(value) {
   }
   return output;
 };
-var _default = exports.default = AtrcControlTextShadowTabCss;
+export default AtrcControlTextShadowTabCss;
 //# sourceMappingURL=css.js.map

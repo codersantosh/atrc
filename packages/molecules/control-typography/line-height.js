@@ -135,7 +135,7 @@ const LineHeight = ({ value, onChange, disableUnits = false }) => {
 			<AtrcDropdownDevice
 				className={classnames(AtrcPrefix('typ-ln-h'), 'at-flx-grw-1')}
 				label={__('Line height', 'atrc-prefix-atrc')}
-				tabs={AtrcAvailableDevices}>
+				tabs={AtrcAvailableDevices()}>
 				{(tab) => (
 					<RenderTab
 						device={tab.name}

@@ -53,7 +53,7 @@ const AtrcControlAnimationAnimateCss = (props) => {
 			<AtrcSelect
 				label={__('Animation', 'atrc-prefix-atrc')}
 				value={ani}
-				options={AnimationOptions}
+				options={AnimationOptions()}
 				onChange={(newVal) => setAttr(newVal, 'ani')}
 			/>
 			<AtrcText

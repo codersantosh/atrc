@@ -3,8 +3,6 @@ import { __ } from '@wordpress/i18n';
 
 import { useEffect, useRef, useMemo } from '@wordpress/element';
 
-import { useInstanceId } from '@wordpress/compose';
-
 import { MenuGroup, MenuItem } from '@wordpress/components';
 
 import {
@@ -41,6 +39,7 @@ import AtrcUseStateCallback from './../../utils/use-state-callback';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
+import AtrcUniqueID from '../../utils/unique-id';
 
 /*Local Components*/
 export function AtrcPanelTools(props) {
@@ -74,10 +73,8 @@ export function AtrcPanelTools(props) {
 	});
 
 	const rowref = useRef();
-	const instanceId = useInstanceId(
-		AtrcPanelTools,
-		AtrcPrefix('') + 'pnl-tools'
-	);
+
+	const instanceId = AtrcUniqueID() + random(0, 9);
 
 	const getTabs = (newActiveItems) => {
 		const newTabs = [];

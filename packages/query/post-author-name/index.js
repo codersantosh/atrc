@@ -5,14 +5,12 @@ import { useSelect } from '@wordpress/data';
 
 import { store as coreStore } from '@wordpress/core-data';
 
-import { forwardRef } from '@wordpress/element';
-
 /* Inbuilt */
 import AtrcWrap from '../../atoms/wrap';
 import AtrcLink from '../../atoms/link';
 
 /* Local */
-const AtrcPostAuthorName = (props, ref) => {
+const AtrcPostAuthorName = (props) => {
 	const { postType, postId, htmlTag, linkOptions, ...defaultProps } = props;
 
 	const { authorName } = useSelect(
@@ -48,11 +46,10 @@ const AtrcPostAuthorName = (props, ref) => {
 	return (
 		<AtrcWrap
 			{...defaultProps}
-			ref={ref}
 			tag={htmlTag}>
 			{displayAuthor}
 		</AtrcWrap>
 	);
 };
 
-export default forwardRef(AtrcPostAuthorName);
+export default AtrcPostAuthorName;

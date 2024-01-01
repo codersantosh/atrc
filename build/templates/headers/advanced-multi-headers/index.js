@@ -1,37 +1,30 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _prefixVars = _interopRequireDefault(require("../../../prefix-vars"));
-var _header = _interopRequireDefault(require("../../../organisms/header"));
-var _wrap = _interopRequireDefault(require("../../../atoms/wrap"));
-var _select = _interopRequireDefault(require("../../../atoms/select"));
-var _toggle = _interopRequireDefault(require("../../../atoms/toggle"));
-var _button = _interopRequireDefault(require("../../../atoms/button"));
-var _icon = _interopRequireDefault(require("../../../atoms/icon"));
-var _resetButtonIcon = _interopRequireDefault(require("../../../atoms/reset-button-icon"));
-var _word = _interopRequireDefault(require("../../../atoms/word"));
-var _link = _interopRequireDefault(require("../../../atoms/link"));
-var _spinner = _interopRequireDefault(require("../../../atoms/spinner"));
-var _hr = _interopRequireDefault(require("../../../atoms/hr"));
-var _checkbox = _interopRequireDefault(require("../../../atoms/checkbox"));
-var _base = _interopRequireDefault(require("./../../../molecules/base"));
-var _buttonGroup = _interopRequireDefault(require("./../../../molecules/button-group"));
-var _pagination = _interopRequireDefault(require("./../../../molecules/pagination"));
-var _search = _interopRequireDefault(require("./../../../molecules/search"));
-var _tooltip = _interopRequireDefault(require("./../../../molecules/tooltip"));
-var _bs = require("react-icons/bs");
 var _excluded = ["place", "type"],
   _excluded2 = ["topHeader", "midHeader", "bottomHeader"],
   _excluded3 = ["allowHeader"];
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
+import AtrcPrefix from '../../../prefix-vars';
+import AtrcHeader from '../../../organisms/header';
+import AtrcWrap from '../../../atoms/wrap';
+import AtrcSelect from '../../../atoms/select';
+import AtrcToggle from '../../../atoms/toggle';
+import AtrcButton from '../../../atoms/button';
+import AtrcIcon from '../../../atoms/icon';
+import AtrcResetButtonIcon from '../../../atoms/reset-button-icon';
+import AtrcWord from '../../../atoms/word';
+import AtrcLink from '../../../atoms/link';
+import AtrcSpinner from '../../../atoms/spinner';
+import AtrcHr from '../../../atoms/hr';
+import AtrcCheckbox from '../../../atoms/checkbox';
+import AtrcBase from './../../../molecules/base';
+import AtrcButtonGroup from './../../../molecules/button-group';
+import AtrcPagination from './../../../molecules/pagination';
+import AtrcSearch from './../../../molecules/search';
+import AtrcTooltip from './../../../molecules/tooltip';
+import { BsList, BsFillGrid3X3GapFill, BsCaretDownFill, BsCaretUpFill, BsGripVertical } from 'react-icons/bs';
 var MapElements = function MapElements(_ref) {
   var place = _ref.place,
     elements = _ref.elements,
@@ -43,81 +36,81 @@ var MapElements = function MapElements(_ref) {
       ml = 'ml-15';
     }
     if ('word' === element) {
-      return /*#__PURE__*/React.createElement(_word.default, _extends({
+      return /*#__PURE__*/React.createElement(AtrcWord, _extends({
         key: "me-".concat(iDx),
-        className: (0, _classnames.default)((0, _prefixVars.default)('m-0'), ml ? (0, _prefixVars.default)(ml) : '')
+        className: classnames(AtrcPrefix('m-0'), ml ? AtrcPrefix(ml) : '')
       }, atrcProps.word));
     }
     if ('button' === element) {
-      return /*#__PURE__*/React.createElement(_tooltip.default, _extends({
+      return /*#__PURE__*/React.createElement(AtrcTooltip, _extends({
         key: "me-".concat(iDx)
-      }, atrcProps.button.tooltipProps), atrcProps.button.isPending ? /*#__PURE__*/React.createElement(_spinner.default, {
+      }, atrcProps.button.tooltipProps), atrcProps.button.isPending ? /*#__PURE__*/React.createElement(AtrcSpinner, {
         variant: "inline"
-      }) : null, /*#__PURE__*/React.createElement(_button.default, atrcProps.button.buttonProps));
+      }) : null, /*#__PURE__*/React.createElement(AtrcButton, atrcProps.button.buttonProps));
     }
     if ('title' === element) {
-      return /*#__PURE__*/React.createElement(_word.default, _extends({
+      return /*#__PURE__*/React.createElement(AtrcWord, _extends({
         key: "me-".concat(iDx),
-        className: (0, _classnames.default)((0, _prefixVars.default)('m-0'), 'at-m', ml ? (0, _prefixVars.default)(ml) : '')
+        className: classnames(AtrcPrefix('m-0'), 'at-m', ml ? AtrcPrefix(ml) : '')
       }, atrcProps.title));
     }
     if ('addNew' === element) {
-      return /*#__PURE__*/React.createElement(_link.default, _extends({
+      return /*#__PURE__*/React.createElement(AtrcLink, _extends({
         key: "me-".concat(iDx),
         type: "router-link",
         variant: "primary",
-        className: (0, _classnames.default)('at-m')
+        className: classnames('at-m')
       }, atrcProps.addNew));
     }
     if ('toggleFilter' === element) {
-      return /*#__PURE__*/React.createElement(_toggle.default, _extends({
+      return /*#__PURE__*/React.createElement(AtrcToggle, _extends({
         key: "me-".concat(iDx),
-        className: (0, _classnames.default)(ml ? (0, _prefixVars.default)(ml) : '')
+        className: classnames(ml ? AtrcPrefix(ml) : '')
       }, atrcProps.toggleFilter));
     }
     if ('filterButtonGroupWithReset' === element || 'filterButtonGroup' === element) {
       var buttons = 'filterButtonGroupWithReset' === element ? atrcProps.filterButtonGroupWithReset.buttons : atrcProps.filterButtonGroup.buttons;
-      return /*#__PURE__*/React.createElement(_buttonGroup.default, {
+      return /*#__PURE__*/React.createElement(AtrcButtonGroup, {
         key: "me-".concat(iDx),
-        className: (0, _classnames.default)(ml ? (0, _prefixVars.default)(ml) : '')
+        className: classnames(ml ? AtrcPrefix(ml) : '')
       }, buttons.map(function (buttonProps, btnIndex) {
-        return /*#__PURE__*/React.createElement(_button.default, _extends({
+        return /*#__PURE__*/React.createElement(AtrcButton, _extends({
           key: "btn-".concat(btnIndex),
-          className: (0, _classnames.default)('at-p')
+          className: classnames('at-p')
         }, buttonProps));
-      }), 'filterButtonGroupWithReset' === element ? /*#__PURE__*/React.createElement(_button.default, {
-        className: (0, _classnames.default)('at-m', 'at-p'),
+      }), 'filterButtonGroupWithReset' === element ? /*#__PURE__*/React.createElement(AtrcButton, {
+        className: classnames('at-m', 'at-p'),
         variant: "reset",
         onClick: atrcProps.filterButtonGroupWithReset.onReset
-      }, /*#__PURE__*/React.createElement(_icon.default, {
-        className: (0, _classnames.default)((0, _prefixVars.default)('mr-10')),
+      }, /*#__PURE__*/React.createElement(AtrcIcon, {
+        className: classnames(AtrcPrefix('mr-10')),
         type: "bootstrap",
-        icon: _bs.BsGripVertical
+        icon: BsGripVertical
       }), atrcProps.filterButtonGroupWithReset.resetLabel) : null);
     }
     if ('filterSelectGroup' === element) {
-      return /*#__PURE__*/React.createElement(_wrap.default, {
+      return /*#__PURE__*/React.createElement(AtrcWrap, {
         key: "me-".concat(iDx),
-        className: (0, _classnames.default)('at-flx', 'at-al-itm-ctr', ml ? (0, _prefixVars.default)(ml) : '')
+        className: classnames('at-flx', 'at-al-itm-ctr', ml ? AtrcPrefix(ml) : '')
       }, atrcProps.filterSelectGroup.selects.map(function (selectProps, slIndex) {
-        return /*#__PURE__*/React.createElement(_base.default, {
+        return /*#__PURE__*/React.createElement(AtrcBase, {
           key: "sl-".concat(slIndex),
           variant: "select-plain"
-        }, /*#__PURE__*/React.createElement(_select.default, _extends({
+        }, /*#__PURE__*/React.createElement(AtrcSelect, _extends({
           allowReset: false
         }, selectProps)));
-      }), /*#__PURE__*/React.createElement(_button.default, {
+      }), /*#__PURE__*/React.createElement(AtrcButton, {
         variant: "primary",
-        className: (0, _classnames.default)((0, _prefixVars.default)('ml-15')),
+        className: classnames(AtrcPrefix('ml-15')),
         onClick: atrcProps.filterSelectGroup.onApply
       }, atrcProps.filterSelectGroup.applyLabel));
     }
     if ('search' === element) {
-      return /*#__PURE__*/React.createElement(_search.default, _extends({
+      return /*#__PURE__*/React.createElement(AtrcSearch, _extends({
         key: "me-".concat(iDx)
       }, atrcProps.search, {
         testProps: {
-          className: (0, _classnames.default)(ml ? (0, _prefixVars.default)(ml) : 'test')
+          className: classnames(ml ? AtrcPrefix(ml) : 'test')
         },
         buttonProps: {
           variant: 'primary'
@@ -125,22 +118,22 @@ var MapElements = function MapElements(_ref) {
       }));
     }
     if ('bulkCheck' === element) {
-      return /*#__PURE__*/React.createElement(_wrap.default, {
+      return /*#__PURE__*/React.createElement(AtrcWrap, {
         key: "me-".concat(iDx),
-        className: (0, _classnames.default)('at-flx', 'at-al-itm-ctr', 'at-gap', (0, _prefixVars.default)('bulk-wrp'), ml ? (0, _prefixVars.default)(ml) : '')
-      }, /*#__PURE__*/React.createElement(_checkbox.default, atrcProps.bulkCheck.checkProps), atrcProps.bulkCheck.checkedIds.length > 0 && atrcProps.bulkCheck.actions ? /*#__PURE__*/React.createElement(_buttonGroup.default, {
-        className: (0, _classnames.default)((0, _prefixVars.default)('m-0'))
+        className: classnames('at-flx', 'at-al-itm-ctr', 'at-gap', AtrcPrefix('bulk-wrp'), ml ? AtrcPrefix(ml) : '')
+      }, /*#__PURE__*/React.createElement(AtrcCheckbox, atrcProps.bulkCheck.checkProps), atrcProps.bulkCheck.checkedIds.length > 0 && atrcProps.bulkCheck.actions ? /*#__PURE__*/React.createElement(AtrcButtonGroup, {
+        className: classnames(AtrcPrefix('m-0'))
       }, atrcProps.bulkCheck.actions.map(function (actionProps, btnIndex) {
-        return /*#__PURE__*/React.createElement(_tooltip.default, _extends({
+        return /*#__PURE__*/React.createElement(AtrcTooltip, _extends({
           key: "btn-next-".concat(btnIndex)
-        }, actionProps.tooltipProps), /*#__PURE__*/React.createElement(_button.default, _extends({
+        }, actionProps.tooltipProps), /*#__PURE__*/React.createElement(AtrcButton, _extends({
           variant: "icon",
-          className: (0, _classnames.default)('at-flx', 'at-al-itm-ctr', 'at-jfy-cont-ctr', 'at-bdr-rad', 'at-w', 'at-h')
-        }, actionProps.buttonProps), /*#__PURE__*/React.createElement(_icon.default, _extends({
-          className: (0, _classnames.default)('at-w', 'at-h')
+          className: classnames('at-flx', 'at-al-itm-ctr', 'at-jfy-cont-ctr', 'at-bdr-rad', 'at-w', 'at-h')
+        }, actionProps.buttonProps), /*#__PURE__*/React.createElement(AtrcIcon, _extends({
+          className: classnames('at-w', 'at-h')
         }, actionProps.iconProps))));
-      })) : null, atrcProps.bulkCheck.checkedIds.length < 1 && atrcProps.bulkCheck.toggleItems ? /*#__PURE__*/React.createElement(_wrap.default, {
-        className: (0, _classnames.default)(
+      })) : null, atrcProps.bulkCheck.checkedIds.length < 1 && atrcProps.bulkCheck.toggleItems ? /*#__PURE__*/React.createElement(AtrcWrap, {
+        className: classnames(
         // AtrcPrefix('ml-15'),
         'at-flx', 'at-al-itm-ctr', 'at-gap')
       }, /*#__PURE__*/React.createElement(MapElements, {
@@ -150,49 +143,49 @@ var MapElements = function MapElements(_ref) {
       })) : null);
     }
     if ('order' === element) {
-      return /*#__PURE__*/React.createElement(_wrap.default, {
+      return /*#__PURE__*/React.createElement(AtrcWrap, {
         key: "me-".concat(iDx),
-        className: (0, _classnames.default)(ml ? (0, _prefixVars.default)(ml) : '', 'at-flx', 'at-al-itm-ctr', 'at-gap')
-      }, /*#__PURE__*/React.createElement(_base.default, {
+        className: classnames(ml ? AtrcPrefix(ml) : '', 'at-flx', 'at-al-itm-ctr', 'at-gap')
+      }, /*#__PURE__*/React.createElement(AtrcBase, {
         variant: "select-plain",
-        className: (0, _classnames.default)(ml ? (0, _prefixVars.default)(ml) : '', 'at-flx', 'at-al-itm-ctr')
-      }, /*#__PURE__*/React.createElement(_select.default, _extends({
+        className: classnames(ml ? AtrcPrefix(ml) : '', 'at-flx', 'at-al-itm-ctr')
+      }, /*#__PURE__*/React.createElement(AtrcSelect, _extends({
         allowReset: false
-      }, atrcProps.order.selectProps))), /*#__PURE__*/React.createElement(_tooltip.default, {
-        text: 'asc' === atrcProps.order.order ? (0, _i18n.__)('Click for descending order', 'atrc-prefix-atrc') : (0, _i18n.__)('Click for ascending order', 'atrc-prefix-atrc')
-      }, /*#__PURE__*/React.createElement(_button.default, _extends({
+      }, atrcProps.order.selectProps))), /*#__PURE__*/React.createElement(AtrcTooltip, {
+        text: 'asc' === atrcProps.order.order ? __('Click for descending order', 'atrc-prefix-atrc') : __('Click for ascending order', 'atrc-prefix-atrc')
+      }, /*#__PURE__*/React.createElement(AtrcButton, _extends({
         variant: "icon",
-        className: (0, _classnames.default)('at-w', 'at-h')
-      }, atrcProps.order.buttonProps), /*#__PURE__*/React.createElement(_icon.default, {
+        className: classnames('at-w', 'at-h')
+      }, atrcProps.order.buttonProps), /*#__PURE__*/React.createElement(AtrcIcon, {
         type: "bootstrap",
-        icon: 'asc' === atrcProps.order.order ? _bs.BsCaretDownFill : _bs.BsCaretUpFill
+        icon: 'asc' === atrcProps.order.order ? BsCaretDownFill : BsCaretUpFill
       }))));
     }
     if ('refresh' === element) {
-      return /*#__PURE__*/React.createElement(_tooltip.default, {
+      return /*#__PURE__*/React.createElement(AtrcTooltip, {
         key: "me-".concat(iDx),
-        text: 'asc' === atrcProps.order.order ? (0, _i18n.__)('Click for descending order', 'atrc-prefix-atrc') : (0, _i18n.__)('Click for ascending order', 'atrc-prefix-atrc')
-      }, atrcProps.refresh.isPending ? /*#__PURE__*/React.createElement(_spinner.default, {
+        text: 'asc' === atrcProps.order.order ? __('Click for descending order', 'atrc-prefix-atrc') : __('Click for ascending order', 'atrc-prefix-atrc')
+      }, atrcProps.refresh.isPending ? /*#__PURE__*/React.createElement(AtrcSpinner, {
         variant: "inline"
-      }) : /*#__PURE__*/React.createElement(_resetButtonIcon.default, _extends({
+      }) : /*#__PURE__*/React.createElement(AtrcResetButtonIcon, _extends({
         value: "1"
       }, atrcProps.refresh.buttonProps)));
     }
     if ('pagination' === element) {
-      return /*#__PURE__*/React.createElement(_pagination.default, _extends({
+      return /*#__PURE__*/React.createElement(AtrcPagination, _extends({
         key: "me-".concat(iDx),
-        className: (0, _classnames.default)(ml ? (0, _prefixVars.default)(ml) : '')
+        className: classnames(ml ? AtrcPrefix(ml) : '')
       }, atrcProps.pagination));
     }
     if ('listGrid' === element) {
-      return /*#__PURE__*/React.createElement(_tooltip.default, {
+      return /*#__PURE__*/React.createElement(AtrcTooltip, {
         key: "me-".concat(iDx),
-        text: atrcProps.listGrid.isList ? (0, _i18n.__)('List layout', 'atrc-prefix-atrc') : (0, _i18n.__)('Grid layout', 'atrc-prefix-atrc')
-      }, /*#__PURE__*/React.createElement(_button.default, _extends({
-        className: (0, _classnames.default)((0, _prefixVars.default)('m-0'))
-      }, atrcProps.listGrid.buttonProps), /*#__PURE__*/React.createElement(_icon.default, {
+        text: atrcProps.listGrid.isList ? __('List layout', 'atrc-prefix-atrc') : __('Grid layout', 'atrc-prefix-atrc')
+      }, /*#__PURE__*/React.createElement(AtrcButton, _extends({
+        className: classnames(AtrcPrefix('m-0'))
+      }, atrcProps.listGrid.buttonProps), /*#__PURE__*/React.createElement(AtrcIcon, {
         type: "ri",
-        icon: atrcProps.listGrid.isList ? _bs.BsList : _bs.BsFillGrid3X3GapFill
+        icon: atrcProps.listGrid.isList ? BsList : BsFillGrid3X3GapFill
       })));
     }
     if (atrcProps[element]) {
@@ -207,22 +200,22 @@ var SingleHeader = function SingleHeader(props) {
     _props$type = props.type,
     type = _props$type === void 0 ? '' : _props$type,
     atrcProps = _objectWithoutProperties(props, _excluded);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wrap.default, {
-    className: (0, _classnames.default)('at-flx', 'at-al-itm-ctr', 'at-jfy-cont-btw', 'at-p')
-  }, place.left ? /*#__PURE__*/React.createElement(_wrap.default, {
-    className: (0, _classnames.default)('at-flx', 'at-al-itm-ctr', 'at-jfy-cont-st')
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames('at-flx', 'at-al-itm-ctr', 'at-jfy-cont-btw', 'at-p')
+  }, place.left ? /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames('at-flx', 'at-al-itm-ctr', 'at-jfy-cont-st')
   }, /*#__PURE__*/React.createElement(MapElements, {
     place: "left",
     elements: place.left,
     atrcProps: atrcProps
-  })) : null, place.right ? /*#__PURE__*/React.createElement(_wrap.default, {
-    className: (0, _classnames.default)('at-flx', 'at-al-itm-ctr', 'at-jfy-cont-end')
+  })) : null, place.right ? /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames('at-flx', 'at-al-itm-ctr', 'at-jfy-cont-end')
   }, /*#__PURE__*/React.createElement(MapElements, {
     place: "right",
     elements: place.right,
     atrcProps: atrcProps
-  })) : null), 'bottom' !== type ? /*#__PURE__*/React.createElement(_hr.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('m-0'))
+  })) : null), 'bottom' !== type ? /*#__PURE__*/React.createElement(AtrcHr, {
+    className: classnames(AtrcPrefix('m-0'))
   }) : null);
 };
 var MultiHeaders = function MultiHeaders(props) {
@@ -249,9 +242,9 @@ var AdvancedMultiHeaders = function AdvancedMultiHeaders(props) {
     allowHeader = _props$allowHeader === void 0 ? true : _props$allowHeader,
     defaultProps = _objectWithoutProperties(props, _excluded3);
   if (allowHeader) {
-    return /*#__PURE__*/React.createElement(_header.default, null, /*#__PURE__*/React.createElement(MultiHeaders, defaultProps));
+    return /*#__PURE__*/React.createElement(AtrcHeader, null, /*#__PURE__*/React.createElement(MultiHeaders, defaultProps));
   }
   return /*#__PURE__*/React.createElement(MultiHeaders, defaultProps);
 };
-var _default = exports.default = AdvancedMultiHeaders;
+export default AdvancedMultiHeaders;
 //# sourceMappingURL=index.js.map

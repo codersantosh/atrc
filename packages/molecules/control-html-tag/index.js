@@ -24,7 +24,7 @@ const AtrcControlHtmlTag = (props) => {
 		if (options && options.length) {
 			return options;
 		}
-		return SelectHtmlOptions;
+		return SelectHtmlOptions();
 	};
 
 	return (

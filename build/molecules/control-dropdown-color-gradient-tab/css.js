@@ -1,20 +1,14 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.AtrcControlDropdownColorGradientTabCss = void 0;
-var _lodash = require("lodash");
-var _availableTabs = _interopRequireDefault(require("../../utils/available-tabs"));
-var _objectValuesWithAllowedKeysAndTabs = require("../../utils/object-values-with-allowed-keys-and-tabs");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Library*/
+import { isEmpty } from 'lodash';
 
 /* Inbuilt */
 
+import AtrcAvailableTabs from '../../utils/available-tabs';
+import { AtrcGetTabValues, AtrcHasTabValues } from '../../utils/object-values-with-allowed-keys-and-tabs';
+
 /*Local*/
 
-var AtrcControlDropdownColorGradientTabCss = exports.AtrcControlDropdownColorGradientTabCss = function AtrcControlDropdownColorGradientTabCss(_ref) {
+export var AtrcControlDropdownColorGradientTabCss = function AtrcControlDropdownColorGradientTabCss(_ref) {
   var value = _ref.value,
     innerOutput = _ref.innerOutput,
     property = _ref.property,
@@ -56,11 +50,11 @@ var AtrcControlColorCSS = function AtrcControlColorCSS(value, property) {
 var AtrcControlDropdownColorGradientTabCssText = function AtrcControlDropdownColorGradientTabCssText(value) {
   var property = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'color';
   var output = {};
-  if (!(0, _lodash.isEmpty)(value)) {
-    _availableTabs.default.forEach(function (tab) {
-      if (_availableTabs.default.includes(tab)) {
-        if ((0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)(tab, value, ['cl', 'grd'])) {
-          var color = (0, _objectValuesWithAllowedKeysAndTabs.AtrcGetTabValues)(value, tab, ['cl', 'grd']),
+  if (!isEmpty(value)) {
+    AtrcAvailableTabs.forEach(function (tab) {
+      if (AtrcAvailableTabs.includes(tab)) {
+        if (AtrcHasTabValues(tab, value, ['cl', 'grd'])) {
+          var color = AtrcGetTabValues(value, tab, ['cl', 'grd']),
             css = AtrcControlColorCSS(color, property);
           switch (tab) {
             case 'normal':
@@ -76,5 +70,5 @@ var AtrcControlDropdownColorGradientTabCssText = function AtrcControlDropdownCol
   }
   return output;
 };
-var _default = exports.default = AtrcControlDropdownColorGradientTabCssText;
+export default AtrcControlDropdownColorGradientTabCssText;
 //# sourceMappingURL=css.js.map

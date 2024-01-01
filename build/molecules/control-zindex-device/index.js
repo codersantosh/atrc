@@ -1,25 +1,18 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _controlTextDevice = _interopRequireDefault(require("../control-text-device"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
 
 /*Library*/
+import classnames from 'classnames';
+import { isArray, isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlTextDevice from '../control-text-device';
 
 /*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Local Components*/
 var AtrcControlZindexDevice = function AtrcControlZindexDevice(props) {
@@ -35,11 +28,11 @@ var AtrcControlZindexDevice = function AtrcControlZindexDevice(props) {
     onChange = _props$onChange === void 0 ? function () {} : _props$onChange,
     _props$allowedDevices = props.allowedDevices,
     allowedDevices = _props$allowedDevices === void 0 ? true : _props$allowedDevices;
-  var ZindexTabs = (0, _element.useMemo)(function () {
+  var ZindexTabs = useMemo(function () {
     return [{
       name: 'zindex',
       title: label,
-      hasValue: !(0, _lodash.isEmpty)(value),
+      hasValue: !isEmpty(value),
       onDeselect: function onDeselect() {
         return onChange({});
       }
@@ -51,22 +44,22 @@ var AtrcControlZindexDevice = function AtrcControlZindexDevice(props) {
     return null;
   }
   var Devices = function Devices() {
-    if ((0, _lodash.isArray)(allowedDevices)) {
+    if (isArray(allowedDevices)) {
       return allowedDevices;
     }
-    return _availableDevices.default;
+    return AtrcAvailableDevices();
   };
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-zidx-device'), className, variant ? (0, _prefixVars.default)('ctrl-zidx-device') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-zidx-device'), className, variant ? AtrcPrefix('ctrl-zidx-device') + '-' + variant : ''),
     label: label,
     resetAll: function resetAll() {
       return onChange({});
     },
     tools: ZindexTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (tab, iDx) {
-      return /*#__PURE__*/React.createElement(_controlTextDevice.default, {
-        label: (0, _i18n.__)('Z-Index', 'atrc-prefix-atrc'),
+    return map(activeItems, function (tab, iDx) {
+      return /*#__PURE__*/React.createElement(AtrcControlTextDevice, {
+        label: __('Z-Index', 'atrc-prefix-atrc'),
         value: value,
         onChange: onChange,
         inputProps: {
@@ -78,5 +71,5 @@ var AtrcControlZindexDevice = function AtrcControlZindexDevice(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlZindexDevice;
+export default AtrcControlZindexDevice;
 //# sourceMappingURL=index.js.map

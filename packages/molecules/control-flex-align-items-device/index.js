@@ -26,7 +26,7 @@ const AtrcControlFlexAlignItemsDevice = (props) => {
 				className,
 				variant ? AtrcPrefix('ctrl-flx-al-itms-device') + '-' + variant : ''
 			)}
-			options={AlignItemsOptions}
+			options={AlignItemsOptions()}
 			value={value}
 			onChange={onChange}
 			{...defaultProps}

@@ -1,30 +1,26 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _icons = require("@wordpress/icons");
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { arrowDown, arrowLeft, arrowRight, arrowUp } from '@wordpress/icons';
 
 /*Local Components*/
-var FlexDirectionOptions = [{
-  label: (0, _i18n.__)('Horizontal(Row)', 'atrc-prefix-atrc'),
-  value: 'row',
-  icon: _icons.arrowRight
-}, {
-  label: (0, _i18n.__)('Vertical(Column)', 'atrc-prefix-atrc'),
-  value: 'col',
-  icon: _icons.arrowDown
-}, {
-  label: (0, _i18n.__)('Row reverse', 'atrc-prefix-atrc'),
-  value: 'rowRev',
-  icon: _icons.arrowLeft
-}, {
-  label: (0, _i18n.__)('Column reverse', 'atrc-prefix-atrc'),
-  value: 'colRev',
-  icon: _icons.arrowUp
-}];
-var _default = exports.default = FlexDirectionOptions;
+var FlexDirectionOptions = function FlexDirectionOptions() {
+  return [{
+    label: __('Horizontal(Row)', 'atrc-prefix-atrc'),
+    value: 'row',
+    icon: arrowRight
+  }, {
+    label: __('Vertical(Column)', 'atrc-prefix-atrc'),
+    value: 'col',
+    icon: arrowDown
+  }, {
+    label: __('Row reverse', 'atrc-prefix-atrc'),
+    value: 'rowRev',
+    icon: arrowLeft
+  }, {
+    label: __('Column reverse', 'atrc-prefix-atrc'),
+    value: 'colRev',
+    icon: arrowUp
+  }];
+};
+export default FlexDirectionOptions;
 //# sourceMappingURL=options.js.map

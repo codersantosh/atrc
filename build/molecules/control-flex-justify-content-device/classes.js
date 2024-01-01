@@ -1,15 +1,8 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _lodash = require("lodash");
-var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Library*/
+import { isEmpty, isObject } from 'lodash';
 
 /*Inbuilt*/
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Local*/
 var AtrcControlFlexJustifyContentDeviceClasses = function AtrcControlFlexJustifyContentDeviceClasses(abStyle) {
@@ -17,11 +10,12 @@ var AtrcControlFlexJustifyContentDeviceClasses = function AtrcControlFlexJustify
     return '';
   }
   var jfyCont = abStyle.jfyCont;
-  if (!(0, _lodash.isObject)(jfyCont)) return '';
-  if ((0, _lodash.isEmpty)(jfyCont)) return '';
+  if (!isObject(jfyCont)) return '';
+  if (isEmpty(jfyCont)) return '';
   var classes = '';
-  for (var i = 0; i < _availableDevices.default.length; i++) {
-    var device = _availableDevices.default[i];
+  var avDevices = AtrcAvailableDevices();
+  for (var i = 0; i < avDevices.length; i++) {
+    var device = avDevices[i];
     if (!device.on) {
       continue;
     }
@@ -35,5 +29,5 @@ var AtrcControlFlexJustifyContentDeviceClasses = function AtrcControlFlexJustify
   }
   return classes;
 };
-var _default = exports.default = AtrcControlFlexJustifyContentDeviceClasses;
+export default AtrcControlFlexJustifyContentDeviceClasses;
 //# sourceMappingURL=classes.js.map

@@ -1,5 +1,4 @@
 /*WordPress*/
-import { forwardRef } from '@wordpress/element';
 
 /*Library*/
 import classnames from 'classnames';
@@ -8,7 +7,7 @@ import classnames from 'classnames';
 import AtrcPrefix from '../../prefix-vars';
 
 /*Local components*/
-const AtrcSpan = (props, ref) => {
+const AtrcSpan = (props) => {
 	const {
 		children = '',
 		isNum = false,
@@ -25,10 +24,9 @@ const AtrcSpan = (props, ref) => {
 				isNum ? AtrcPrefix('num') : '',
 				variant ? AtrcPrefix('span') + '-' + variant : ''
 			)}
-			ref={ref}
 			{...defaultProps}>
 			{children}
 		</span>
 	);
 };
-export default forwardRef(AtrcSpan);
+export default AtrcSpan;

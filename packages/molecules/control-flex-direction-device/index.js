@@ -26,7 +26,7 @@ const AtrcControlFlexDirectionDevice = (props) => {
 				className,
 				variant ? AtrcPrefix('ctrl-flx-dir-device') + '-' + variant : ''
 			)}
-			options={FlexDirectionOptions}
+			options={FlexDirectionOptions()}
 			value={value}
 			onChange={onChange}
 			{...defaultProps}

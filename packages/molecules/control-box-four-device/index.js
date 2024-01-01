@@ -238,7 +238,7 @@ const AtrcControlBoxFourDevice = (props) => {
 		if (isArray(allowedDevices)) {
 			return allowedDevices;
 		}
-		return AtrcAvailableDevices;
+		return AtrcAvailableDevices();
 	};
 
 	return (

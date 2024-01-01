@@ -1,20 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _panelRow = _interopRequireDefault(require("../panel-row"));
-var _select = _interopRequireDefault(require("../../atoms/select"));
-var _range = _interopRequireDefault(require("../../atoms/range"));
-var _options = _interopRequireDefault(require("./options"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Value Structure
 Type Object
 {
@@ -25,12 +8,22 @@ dla : 0,
 * */
 
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
 
 /*Library*/
+import classnames from 'classnames';
+import { isArray, isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
+import AtrcSelect from '../../atoms/select';
+import AtrcRange from '../../atoms/range';
+import TimingFunctionsOptions from './options';
 
 /*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components*/
 var AtrcControlTransition = function AtrcControlTransition(props) {
@@ -64,37 +57,37 @@ var AtrcControlTransition = function AtrcControlTransition(props) {
     onChange({});
   };
   var hasTabValue = function hasTabValue(tab) {
-    if (!value || (0, _lodash.isEmpty)(value)) {
+    if (!value || isEmpty(value)) {
       return false;
     }
     return !!value[tab];
   };
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     var tabsOptions = [];
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('duration')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('duration')) {
       tabsOptions.push({
         name: 'dur',
-        title: (0, _i18n.__)('Duration', 'atrc-prefix-atrc'),
+        title: __('Duration', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('dur'),
         onDeselect: function onDeselect() {
           return resetAttr('dur');
         }
       });
     }
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('timingFunction')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('timingFunction')) {
       tabsOptions.push({
         name: 'tmgFn',
-        title: (0, _i18n.__)('Timing function', 'atrc-prefix-atrc'),
+        title: __('Timing function', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('tmgFn'),
         onDeselect: function onDeselect() {
           return resetAttr('tmgFn');
         }
       });
     }
-    if (true === allowedOptions || (0, _lodash.isArray)(allowedOptions) && allowedOptions.includes('delay')) {
+    if (true === allowedOptions || isArray(allowedOptions) && allowedOptions.includes('delay')) {
       tabsOptions.push({
         name: 'dla',
-        title: (0, _i18n.__)('Delay', 'atrc-prefix-atrc'),
+        title: __('Delay', 'atrc-prefix-atrc'),
         hasValue: hasTabValue('dla'),
         onDeselect: function onDeselect() {
           return resetAttr('dla');
@@ -103,20 +96,20 @@ var AtrcControlTransition = function AtrcControlTransition(props) {
     }
     return tabsOptions;
   }, [value]);
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-trs'), className, variant ? (0, _prefixVars.default)('ctrl-trs') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-trs'), className, variant ? AtrcPrefix('ctrl-trs') + '-' + variant : ''),
     label: label,
     resetAll: resetAll,
     tools: AllTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (tab, iDx) {
+    return map(activeItems, function (tab, iDx) {
       if ('dur' === tab) {
-        return /*#__PURE__*/React.createElement(_panelRow.default, {
-          className: (0, _classnames.default)('at-m'),
+        return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+          className: classnames('at-m'),
           key: iDx
-        }, /*#__PURE__*/React.createElement(_range.default, {
-          label: (0, _i18n.__)('Duration', 'atrc-prefix-atrc'),
-          help: (0, _i18n.__)('In seconds', 'atrc-prefix-atrc'),
+        }, /*#__PURE__*/React.createElement(AtrcRange, {
+          label: __('Duration', 'atrc-prefix-atrc'),
+          help: __('In seconds', 'atrc-prefix-atrc'),
           value: dur,
           onChange: function onChange(newVal) {
             return setAttr(newVal, tab);
@@ -127,28 +120,28 @@ var AtrcControlTransition = function AtrcControlTransition(props) {
         }));
       }
       if ('tmgFn' === tab) {
-        return /*#__PURE__*/React.createElement(_panelRow.default, {
-          className: (0, _classnames.default)('at-m'),
+        return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+          className: classnames('at-m'),
           key: iDx
-        }, /*#__PURE__*/React.createElement(_select.default, {
-          label: (0, _i18n.__)('Timing function', 'atrc-prefix-atrc'),
+        }, /*#__PURE__*/React.createElement(AtrcSelect, {
+          label: __('Timing function', 'atrc-prefix-atrc'),
           wrapProps: {
             className: 'at-flx-grw-1'
           },
           value: tmgFn,
-          options: _options.default,
+          options: TimingFunctionsOptions(),
           onChange: function onChange(newVal) {
             return setAttr(newVal, tab);
           }
         }));
       }
       if ('dla' === tab) {
-        return /*#__PURE__*/React.createElement(_panelRow.default, {
-          className: (0, _classnames.default)('at-m'),
+        return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+          className: classnames('at-m'),
           key: iDx
-        }, /*#__PURE__*/React.createElement(_range.default, {
-          label: (0, _i18n.__)('Delay', 'atrc-prefix-atrc'),
-          help: (0, _i18n.__)('In seconds', 'atrc-prefix-atrc'),
+        }, /*#__PURE__*/React.createElement(AtrcRange, {
+          label: __('Delay', 'atrc-prefix-atrc'),
+          help: __('In seconds', 'atrc-prefix-atrc'),
           value: dla,
           onChange: function onChange(newVal) {
             return setAttr(newVal, tab);
@@ -162,5 +155,5 @@ var AtrcControlTransition = function AtrcControlTransition(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlTransition;
+export default AtrcControlTransition;
 //# sourceMappingURL=index.js.map

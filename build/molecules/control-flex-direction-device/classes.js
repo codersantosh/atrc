@@ -1,15 +1,8 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.AtrcControlFlexShrinkDeviceClasses = exports.AtrcControlFlexNoWrapDeviceClasses = exports.AtrcControlFlexGrowDeviceClasses = exports.AtrcControlFlexFillDeviceClasses = void 0;
-var _lodash = require("lodash");
-var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Library*/
+import { isEmpty, isObject } from 'lodash';
 
 /*Inbuilt*/
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Local*/
 var AtrcControlFlexDirectionDeviceClasses = function AtrcControlFlexDirectionDeviceClasses(abStyle) {
@@ -17,11 +10,12 @@ var AtrcControlFlexDirectionDeviceClasses = function AtrcControlFlexDirectionDev
     return '';
   }
   var flxDir = abStyle.flxDir;
-  if (!(0, _lodash.isObject)(flxDir)) return '';
-  if ((0, _lodash.isEmpty)(flxDir)) return '';
+  if (!isObject(flxDir)) return '';
+  if (isEmpty(flxDir)) return '';
   var classes = '';
-  for (var i = 0; i < _availableDevices.default.length; i++) {
-    var device = _availableDevices.default[i];
+  var avDevices = AtrcAvailableDevices();
+  for (var i = 0; i < avDevices.length; i++) {
+    var device = avDevices[i];
     if ('xs' === device.name) {
       if (flxDir[device.name]) {
         switch (flxDir[device.name]) {
@@ -69,16 +63,17 @@ var AtrcControlFlexDirectionDeviceClasses = function AtrcControlFlexDirectionDev
   }
   return classes;
 };
-var AtrcControlFlexNoWrapDeviceClasses = exports.AtrcControlFlexNoWrapDeviceClasses = function AtrcControlFlexNoWrapDeviceClasses(abStyle) {
+export var AtrcControlFlexNoWrapDeviceClasses = function AtrcControlFlexNoWrapDeviceClasses(abStyle) {
   if (!abStyle || !abStyle.flxWrp) {
     return ' at-flx-wrp ';
   }
   var flxWrp = abStyle.flxWrp;
-  if (!(0, _lodash.isObject)(flxWrp)) return ' at-flx-wrp ';
-  if ((0, _lodash.isEmpty)(flxWrp)) return ' at-flx-wrp ';
+  if (!isObject(flxWrp)) return ' at-flx-wrp ';
+  if (isEmpty(flxWrp)) return ' at-flx-wrp ';
   var classes = '';
-  for (var i = 0; i < _availableDevices.default.length; i++) {
-    var device = _availableDevices.default[i];
+  var avDevices = AtrcAvailableDevices();
+  for (var i = 0; i < avDevices.length; i++) {
+    var device = avDevices[i];
     if (!device.on) {
       continue;
     }
@@ -97,16 +92,17 @@ var AtrcControlFlexNoWrapDeviceClasses = exports.AtrcControlFlexNoWrapDeviceClas
   }
   return classes;
 };
-var AtrcControlFlexFillDeviceClasses = exports.AtrcControlFlexFillDeviceClasses = function AtrcControlFlexFillDeviceClasses(abStyle) {
+export var AtrcControlFlexFillDeviceClasses = function AtrcControlFlexFillDeviceClasses(abStyle) {
   if (!abStyle || !abStyle.flxFil) {
     return '';
   }
   var flxFil = abStyle.flxFil;
-  if (!(0, _lodash.isObject)(flxFil)) return '';
-  if ((0, _lodash.isEmpty)(flxFil)) return '';
+  if (!isObject(flxFil)) return '';
+  if (isEmpty(flxFil)) return '';
   var classes = '';
-  for (var i = 0; i < _availableDevices.default.length; i++) {
-    var device = _availableDevices.default[i];
+  var avDevices = AtrcAvailableDevices();
+  for (var i = 0; i < avDevices.length; i++) {
+    var device = avDevices[i];
     if (!device.on) {
       continue;
     }
@@ -122,16 +118,17 @@ var AtrcControlFlexFillDeviceClasses = exports.AtrcControlFlexFillDeviceClasses 
   }
   return classes;
 };
-var AtrcControlFlexGrowDeviceClasses = exports.AtrcControlFlexGrowDeviceClasses = function AtrcControlFlexGrowDeviceClasses(abStyle) {
+export var AtrcControlFlexGrowDeviceClasses = function AtrcControlFlexGrowDeviceClasses(abStyle) {
   if (!abStyle || !abStyle.flxGrw) {
     return '';
   }
   var flxGrw = abStyle.flxGrw;
-  if (!(0, _lodash.isObject)(flxGrw)) return '';
-  if ((0, _lodash.isEmpty)(flxGrw)) return '';
+  if (!isObject(flxGrw)) return '';
+  if (isEmpty(flxGrw)) return '';
   var classes = '';
-  for (var i = 0; i < _availableDevices.default.length; i++) {
-    var device = _availableDevices.default[i];
+  var avDevices = AtrcAvailableDevices();
+  for (var i = 0; i < avDevices.length; i++) {
+    var device = avDevices[i];
     if (!device.on) {
       continue;
     }
@@ -147,16 +144,17 @@ var AtrcControlFlexGrowDeviceClasses = exports.AtrcControlFlexGrowDeviceClasses 
   }
   return classes;
 };
-var AtrcControlFlexShrinkDeviceClasses = exports.AtrcControlFlexShrinkDeviceClasses = function AtrcControlFlexShrinkDeviceClasses(abStyle) {
+export var AtrcControlFlexShrinkDeviceClasses = function AtrcControlFlexShrinkDeviceClasses(abStyle) {
   if (!abStyle || !abStyle.flxSrnk) {
     return '';
   }
   var flxSrnk = abStyle.flxSrnk;
-  if (!(0, _lodash.isObject)(flxSrnk)) return '';
-  if ((0, _lodash.isEmpty)(flxSrnk)) return '';
+  if (!isObject(flxSrnk)) return '';
+  if (isEmpty(flxSrnk)) return '';
   var classes = '';
-  for (var i = 0; i < _availableDevices.default.length; i++) {
-    var device = _availableDevices.default[i];
+  var avDevices = AtrcAvailableDevices();
+  for (var i = 0; i < avDevices.length; i++) {
+    var device = avDevices[i];
     if (!device.on) {
       continue;
     }
@@ -172,5 +170,5 @@ var AtrcControlFlexShrinkDeviceClasses = exports.AtrcControlFlexShrinkDeviceClas
   }
   return classes;
 };
-var _default = exports.default = AtrcControlFlexDirectionDeviceClasses;
+export default AtrcControlFlexDirectionDeviceClasses;
 //# sourceMappingURL=classes.js.map

@@ -643,7 +643,7 @@ const BackgroundImageSettings = (props) => {
 										xl: value && value.xlBgRpt,
 										xxl: value && value.xxlBgRpt,
 									}}
-									options={RepeatOptions}
+									options={RepeatOptions()}
 									onChange={setBgRpt}
 								/>
 							</AtrcPanelRow>
@@ -677,7 +677,7 @@ const BackgroundImageSettings = (props) => {
 										xlBgH: value && value.xlBgH,
 										xxlBgH: value && value.xxlBgH,
 									}}
-									options={RepeatOptions}
+									options={RepeatOptions()}
 									onChange={setBgSz}
 								/>
 							</AtrcPanelRow>
@@ -698,7 +698,7 @@ const BackgroundImageSettings = (props) => {
 										xl: value && value.xlBgAtch,
 										xxl: value && value.xxlBgAtch,
 									}}
-									options={BgAtchOptions}
+									options={BgAtchOptions()}
 									onChange={setBgAtch}
 								/>
 							</AtrcPanelRow>
@@ -715,7 +715,7 @@ const BackgroundImageSettings = (props) => {
 										className: 'at-flx-grw-1',
 									}}
 									value={value && value.bgBlendMode}
-									options={BgBlendModeOptions}
+									options={BgBlendModeOptions()}
 									onChange={(newVal) => setAttr(newVal, 'bgBlendMode')}
 								/>
 							</AtrcPanelRow>

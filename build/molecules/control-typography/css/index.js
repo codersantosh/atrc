@@ -1,15 +1,9 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _lodash = require("lodash");
-var _objectValuesWithAllowedKeysAndTabs = require("./../../../utils/object-values-with-allowed-keys-and-tabs");
-var _objectValuesWithDevices = require("../../../utils/object-values-with-devices");
 /*Library*/
+import { forEach, isEmpty } from 'lodash';
 
 /*Inbuilt*/
+import { AtrcTabCss } from './../../../utils/object-values-with-allowed-keys-and-tabs';
+import { AtrcDeviceCss } from '../../../utils/object-values-with-devices';
 
 /*Local*/
 var AtrcControlTypographyCss = function AtrcControlTypographyCss(value) {
@@ -31,57 +25,57 @@ var AtrcControlTypographyCss = function AtrcControlTypographyCss(value) {
     xl: '',
     xxl: ''
   };
-  if (value && !(0, _lodash.isEmpty)(value)) {
-    var fntSzCss = (0, _objectValuesWithDevices.AtrcDeviceCss)(value, 'fntSz', properties.fntSz);
-    if (fntSzCss && !(0, _lodash.isEmpty)(fntSzCss)) {
-      (0, _lodash.forEach)(fntSzCss, function (item, itemKey) {
+  if (value && !isEmpty(value)) {
+    var fntSzCss = AtrcDeviceCss(value, 'fntSz', properties.fntSz);
+    if (fntSzCss && !isEmpty(fntSzCss)) {
+      forEach(fntSzCss, function (item, itemKey) {
         output[itemKey] += item;
       });
     }
-    var fntFamCss = (0, _objectValuesWithAllowedKeysAndTabs.AtrcTabCss)(value, 'fntFam', properties.fntFam);
-    if (fntFamCss && !(0, _lodash.isEmpty)(fntFamCss)) {
-      (0, _lodash.forEach)(fntFamCss, function (item, itemKey) {
+    var fntFamCss = AtrcTabCss(value, 'fntFam', properties.fntFam);
+    if (fntFamCss && !isEmpty(fntFamCss)) {
+      forEach(fntFamCss, function (item, itemKey) {
         output[itemKey] += item;
       });
     }
-    var fntWtCss = (0, _objectValuesWithAllowedKeysAndTabs.AtrcTabCss)(value, 'fntWt', properties.fntWt);
-    if (fntWtCss && !(0, _lodash.isEmpty)(fntWtCss)) {
-      (0, _lodash.forEach)(fntWtCss, function (item, itemKey) {
+    var fntWtCss = AtrcTabCss(value, 'fntWt', properties.fntWt);
+    if (fntWtCss && !isEmpty(fntWtCss)) {
+      forEach(fntWtCss, function (item, itemKey) {
         output[itemKey] += item;
       });
     }
-    var fntStyCss = (0, _objectValuesWithAllowedKeysAndTabs.AtrcTabCss)(value, 'fntSty', properties.fntSty);
-    if (fntStyCss && !(0, _lodash.isEmpty)(fntStyCss)) {
-      (0, _lodash.forEach)(fntStyCss, function (item, itemKey) {
+    var fntStyCss = AtrcTabCss(value, 'fntSty', properties.fntSty);
+    if (fntStyCss && !isEmpty(fntStyCss)) {
+      forEach(fntStyCss, function (item, itemKey) {
         output[itemKey] += item;
       });
     }
-    var txtDecCss = (0, _objectValuesWithAllowedKeysAndTabs.AtrcTabCss)(value, 'txtDec', properties.txtDec);
-    if (txtDecCss && !(0, _lodash.isEmpty)(txtDecCss)) {
-      (0, _lodash.forEach)(txtDecCss, function (item, itemKey) {
+    var txtDecCss = AtrcTabCss(value, 'txtDec', properties.txtDec);
+    if (txtDecCss && !isEmpty(txtDecCss)) {
+      forEach(txtDecCss, function (item, itemKey) {
         output[itemKey] += item;
       });
     }
-    var txtTfCss = (0, _objectValuesWithAllowedKeysAndTabs.AtrcTabCss)(value, 'txtTf', properties.txtTf);
-    if (txtTfCss && !(0, _lodash.isEmpty)(txtTfCss)) {
-      (0, _lodash.forEach)(txtTfCss, function (item, itemKey) {
+    var txtTfCss = AtrcTabCss(value, 'txtTf', properties.txtTf);
+    if (txtTfCss && !isEmpty(txtTfCss)) {
+      forEach(txtTfCss, function (item, itemKey) {
         output[itemKey] += item;
       });
     }
-    var lnHCss = (0, _objectValuesWithDevices.AtrcDeviceCss)(value, 'lnH', properties.lnH);
-    if (lnHCss && !(0, _lodash.isEmpty)(lnHCss)) {
-      (0, _lodash.forEach)(lnHCss, function (item, itemKey) {
+    var lnHCss = AtrcDeviceCss(value, 'lnH', properties.lnH);
+    if (lnHCss && !isEmpty(lnHCss)) {
+      forEach(lnHCss, function (item, itemKey) {
         output[itemKey] += item;
       });
     }
-    var ltrSpCss = (0, _objectValuesWithDevices.AtrcDeviceCss)(value, 'ltrSp', properties.ltrSp);
-    if (ltrSpCss && !(0, _lodash.isEmpty)(ltrSpCss)) {
-      (0, _lodash.forEach)(ltrSpCss, function (item, itemKey) {
+    var ltrSpCss = AtrcDeviceCss(value, 'ltrSp', properties.ltrSp);
+    if (ltrSpCss && !isEmpty(ltrSpCss)) {
+      forEach(ltrSpCss, function (item, itemKey) {
         output[itemKey] += item;
       });
     }
   }
   return output;
 };
-var _default = exports.default = AtrcControlTypographyCss;
+export default AtrcControlTypographyCss;
 //# sourceMappingURL=index.js.map

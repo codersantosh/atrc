@@ -1,26 +1,12 @@
-"use strict";
-
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
-var _label = _interopRequireDefault(require("../../atoms/label"));
-var _select = _interopRequireDefault(require("../../atoms/select"));
-var _toggle = _interopRequireDefault(require("../../atoms/toggle"));
-var _textarea = _interopRequireDefault(require("../../atoms/textarea"));
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _panelRow = _interopRequireDefault(require("../panel-row"));
-var _controlDropdownHtml = _interopRequireWildcard(require("../control-dropdown-html"));
-var _controlDropdownColor = _interopRequireDefault(require("../control-dropdown-color"));
-var _controlResponsiveWidthHeight = _interopRequireDefault(require("../control-responsive-width-height"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-var _lodash = require("lodash");
 var _excluded = ["flipV", "flipH"];
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 /*Attributes Structure
 Type Object
 {
@@ -45,20 +31,31 @@ Type Object
     xxlH = ''
 }
 * */
+
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
+
 /*Library*/
+import classnames from 'classnames';
+
 /*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcSelect from '../../atoms/select';
+import AtrcToggle from '../../atoms/toggle';
+import AtrcTextarea from '../../atoms/textarea';
+import AtrcPanelTools from '../panel-tools';
+import AtrcPanelRow from '../panel-row';
+import AtrcControlDropdownHtml from '../control-dropdown-html';
+import AtrcControlDropdownColor from '../control-dropdown-color';
+import AtrcControlResponsiveWidthHeight from '../control-responsive-width-height';
+import { AtrcIconPreview } from '../control-dropdown-html';
+
 /*Inbuilt*/
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import AtrcPrefix from '../../prefix-vars';
+import { isEmpty, map } from 'lodash';
+
 /*Local Components */
 var SelectedShape = function SelectedShape(value, options) {
   var selectedShape = options.filter(function (item) {
@@ -75,10 +72,10 @@ var SvgShapeDefined = function SvgShapeDefined(_ref) {
     options = _ref.options;
   var selectedShape = SelectedShape(value, options);
   var icon = selectedShape && selectedShape.svg;
-  return /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_controlDropdownHtml.default, {
-    label: /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_label.default, null, (0, _i18n.__)('Choose svg', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(_controlDropdownHtml.AtrcIconPreview, {
+  return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlDropdownHtml, {
+    label: /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, null, __('Choose svg', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcIconPreview, {
       icon: icon
     })),
     value: value,
@@ -92,16 +89,16 @@ var SvgShape = function SvgShape(_ref2) {
     cust = _ref2.cust,
     definedOptions = _ref2.definedOptions,
     _onChange = _ref2.onChange;
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_select.default, {
-    label: (0, _i18n.__)('Source', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcSelect, {
+    label: __('Source', 'atrc-prefix-atrc'),
     value: from,
     options: [{
-      label: (0, _i18n.__)('Defined', 'atrc-prefix-atrc'),
+      label: __('Defined', 'atrc-prefix-atrc'),
       value: 'def'
     }, {
-      label: (0, _i18n.__)('Custom', 'atrc-prefix-atrc'),
+      label: __('Custom', 'atrc-prefix-atrc'),
       value: 'cust'
     }],
     onChange: function onChange(newVal) {
@@ -113,7 +110,7 @@ var SvgShape = function SvgShape(_ref2) {
       return _onChange(newVal, 'svgDefd');
     },
     options: definedOptions
-  }) : /*#__PURE__*/React.createElement(_textarea.default, {
+  }) : /*#__PURE__*/React.createElement(AtrcTextarea, {
     value: cust,
     onChange: function onChange(newVal) {
       return _onChange(newVal, 'svgCust');
@@ -151,41 +148,41 @@ var ShapeSettings = function ShapeSettings(props) {
     valueCloned = _objectSpread(_objectSpread({}, valueCloned), newVal);
     onChange(valueCloned);
   };
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     return [{
       name: 'flipV',
-      title: (0, _i18n.__)('Flip vertically', 'atrc-prefix-atrc'),
+      title: __('Flip vertically', 'atrc-prefix-atrc'),
       hasValue: flipV,
       onDeselect: function onDeselect() {
         return setAttr(false, 'flipV');
       }
     }, {
       name: 'flipH',
-      title: (0, _i18n.__)('Flip horizontally', 'atrc-prefix-atrc'),
+      title: __('Flip horizontally', 'atrc-prefix-atrc'),
       hasValue: flipH,
       onDeselect: function onDeselect() {
         return setAttr(false, 'flipH');
       }
     }, {
       name: 'sz',
-      title: (0, _i18n.__)('Size', 'atrc-prefix-atrc'),
-      hasValue: !(0, _lodash.isEmpty)(imgProps),
+      title: __('Size', 'atrc-prefix-atrc'),
+      hasValue: !isEmpty(imgProps),
       onDeselect: function onDeselect() {
         return setWidthHeight({});
       }
     }];
   }, []);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_panelTools.default, {
-    label: (0, _i18n.__)('Shape options', 'atrc-prefix-atrc'),
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    label: __('Shape options', 'atrc-prefix-atrc'),
     resetAll: function resetAll() {
       return onChange({});
     },
     tools: AllTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (item, iDx) {
+    return map(activeItems, function (item, iDx) {
       if ('flipV' === item) {
-        return /*#__PURE__*/React.createElement(_toggle.default, {
-          label: (0, _i18n.__)('Flip vertically', 'atrc-prefix-atrc'),
+        return /*#__PURE__*/React.createElement(AtrcToggle, {
+          label: __('Flip vertically', 'atrc-prefix-atrc'),
           checked: flipV,
           onChange: function onChange() {
             return setAttr(!flipV, 'flipV');
@@ -194,8 +191,8 @@ var ShapeSettings = function ShapeSettings(props) {
         });
       }
       if ('flipH' === item) {
-        return /*#__PURE__*/React.createElement(_toggle.default, {
-          label: (0, _i18n.__)('Flip horizontally', 'atrc-prefix-atrc'),
+        return /*#__PURE__*/React.createElement(AtrcToggle, {
+          label: __('Flip horizontally', 'atrc-prefix-atrc'),
           checked: flipH,
           onChange: function onChange() {
             return setAttr(!flipH, 'flipH');
@@ -204,8 +201,8 @@ var ShapeSettings = function ShapeSettings(props) {
         });
       }
       if ('sz' === item) {
-        return /*#__PURE__*/React.createElement(_controlResponsiveWidthHeight.default, {
-          label: (0, _i18n.__)('Size', 'atrc-prefix-atrc'),
+        return /*#__PURE__*/React.createElement(AtrcControlResponsiveWidthHeight, {
+          label: __('Size', 'atrc-prefix-atrc'),
           value: _objectSpread({}, imgProps),
           onChange: setWidthHeight,
           key: iDx
@@ -300,16 +297,16 @@ var AtrcControlSvg = function AtrcControlSvg(props) {
     valueCloned = _objectSpread(_objectSpread({}, valueCloned), newVal);
     _onChange2(valueCloned);
   };
-  return /*#__PURE__*/React.createElement(_wrap.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-shp'), className, variant ? (0, _prefixVars.default)('ctrl-shp') + '-' + variant : '')
+  return /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames(AtrcPrefix('ctrl-shp'), className, variant ? AtrcPrefix('ctrl-shp') + '-' + variant : '')
   }, /*#__PURE__*/React.createElement(SvgShape, {
     from: svgFrm,
     def: svgDefd,
     cust: svgCust,
     onChange: setAttr,
     definedOptions: definedOptions
-  }), alloweColor && 'def' === svgFrm ? /*#__PURE__*/React.createElement(_controlDropdownColor.default, {
-    label: (0, _i18n.__)('Color', 'atrc-prefix-atrc'),
+  }), alloweColor && 'def' === svgFrm ? /*#__PURE__*/React.createElement(AtrcControlDropdownColor, {
+    label: __('Color', 'atrc-prefix-atrc'),
     value: svgCl,
     onChange: function onChange(newVal) {
       return _onChange2(newVal, 'svgCl');
@@ -334,5 +331,5 @@ var AtrcControlSvg = function AtrcControlSvg(props) {
     onChange: setShapeSettings
   }) : null);
 };
-var _default = exports.default = AtrcControlSvg;
+export default AtrcControlSvg;
 //# sourceMappingURL=index.js.map

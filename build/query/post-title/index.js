@@ -1,18 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _coreData = require("@wordpress/core-data");
-var _element = require("@wordpress/element");
-var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
-var _link = _interopRequireDefault(require("../../atoms/link"));
 var _excluded = ["postType", "postId", "htmlTag", "linkOptions"];
-/*WordPress*/
-/* Inbuilt */
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -22,8 +8,16 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useEntityProp } from '@wordpress/core-data';
+
+/* Inbuilt */
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLink from '../../atoms/link';
+
 /* Local */
-var AtrcPostTitle = function AtrcPostTitle(props, ref) {
+var AtrcPostTitle = function AtrcPostTitle(props) {
   var postType = props.postType,
     postId = props.postId,
     htmlTag = props.htmlTag,
@@ -31,25 +25,23 @@ var AtrcPostTitle = function AtrcPostTitle(props, ref) {
     defaultProps = _objectWithoutProperties(props, _excluded);
 
   // eslint-disable-next-line no-unused-vars
-  var _useEntityProp = (0, _coreData.useEntityProp)('postType', postType, 'title', postId),
+  var _useEntityProp = useEntityProp('postType', postType, 'title', postId),
     _useEntityProp2 = _slicedToArray(_useEntityProp, 3),
     _useEntityProp2$ = _useEntityProp2[0],
     rawTitle = _useEntityProp2$ === void 0 ? '' : _useEntityProp2$,
     setTitle = _useEntityProp2[1],
     fullTitle = _useEntityProp2[2];
-  var _useEntityProp3 = (0, _coreData.useEntityProp)('postType', postType, 'link', postId),
+  var _useEntityProp3 = useEntityProp('postType', postType, 'link', postId),
     _useEntityProp4 = _slicedToArray(_useEntityProp3, 1),
     link = _useEntityProp4[0];
-  var titleElement = /*#__PURE__*/React.createElement(_wrap.default, _extends({}, defaultProps, {
-    ref: ref,
+  var titleElement = /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
     tag: htmlTag
-  }), (0, _i18n.__)('Title', 'atrc-prefix-atrc'));
+  }), __('Title', 'atrc-prefix-atrc'));
   if (postType && postId) {
     if (linkOptions && linkOptions.on && postType && postId) {
-      titleElement = /*#__PURE__*/React.createElement(_wrap.default, _extends({}, defaultProps, {
-        ref: ref,
+      titleElement = /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
         tag: htmlTag
-      }), /*#__PURE__*/React.createElement(_link.default, {
+      }), /*#__PURE__*/React.createElement(AtrcLink, {
         prefix: false,
         href: link,
         target: linkOptions.tgt || null,
@@ -62,8 +54,7 @@ var AtrcPostTitle = function AtrcPostTitle(props, ref) {
         }
       }));
     } else {
-      titleElement = /*#__PURE__*/React.createElement(_wrap.default, _extends({}, defaultProps, {
-        ref: ref,
+      titleElement = /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
         tag: htmlTag,
         dangerouslySetInnerHTML: {
           __html: fullTitle === null || fullTitle === void 0 ? void 0 : fullTitle.rendered
@@ -73,5 +64,5 @@ var AtrcPostTitle = function AtrcPostTitle(props, ref) {
   }
   return titleElement;
 };
-var _default = exports.default = (0, _element.forwardRef)(AtrcPostTitle);
+export default AtrcPostTitle;
 //# sourceMappingURL=index.js.map

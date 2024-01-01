@@ -1,9 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 /*Local*/
 var Top = function Top(value, innerOutput, property) {
   if (value.t) {
@@ -26,5 +20,5 @@ var Top = function Top(value, innerOutput, property) {
   }
   return innerOutput;
 };
-var _default = exports.default = Top;
+export default Top;
 //# sourceMappingURL=top.js.map

@@ -1,17 +1,7 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
-var _label = _interopRequireDefault(require("../../atoms/label"));
-var _panelRow = _interopRequireDefault(require("../panel-row"));
-var _controlUnitDevice = _interopRequireDefault(require("../control-unit-device"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
 var _excluded = ["value", "onChange", "label", "variant", "className"];
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 /*Attributes Structure
 Type Object
 {
@@ -29,14 +19,22 @@ Type Object
     "xxlH":""
 }
 * */
+
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+
 /*Library*/
+import classnames from 'classnames';
+
 /*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcPanelRow from '../panel-row';
+import AtrcControlUnitDevice from '../control-unit-device';
+
 /*Inbuilt*/
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local Components*/
 var AtrcControlResponsiveWH = function AtrcControlResponsiveWH(props) {
   var _props$value = props.value,
@@ -106,13 +104,13 @@ var AtrcControlResponsiveWH = function AtrcControlResponsiveWH(props) {
     }
     onChange(valueCloned);
   };
-  return /*#__PURE__*/React.createElement(_wrap.default, _extends({
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-resp-w-h'), className, variant ? (0, _prefixVars.default)('ctrl-resp-w-h') + '-' + variant : '')
-  }, defaultProps), label ? /*#__PURE__*/React.createElement(_label.default, null, label) : null, /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_controlUnitDevice.default, {
-    label: (0, _i18n.__)('Width', 'atrc-prefix-atrc'),
-    className: (0, _classnames.default)('at-flx-grw-1'),
+  return /*#__PURE__*/React.createElement(AtrcWrap, _extends({
+    className: classnames(AtrcPrefix('ctrl-resp-w-h'), className, variant ? AtrcPrefix('ctrl-resp-w-h') + '-' + variant : '')
+  }, defaultProps), label ? /*#__PURE__*/React.createElement(AtrcLabel, null, label) : null, /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlUnitDevice, {
+    label: __('Width', 'atrc-prefix-atrc'),
+    className: classnames('at-flx-grw-1'),
     value: {
       xs: value && value.w,
       sm: value && value.smW,
@@ -122,11 +120,11 @@ var AtrcControlResponsiveWH = function AtrcControlResponsiveWH(props) {
       xxl: value && value.xxlW
     },
     onChange: setWidth
-  })), /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_controlUnitDevice.default, {
-    label: (0, _i18n.__)('Height', 'atrc-prefix-atrc'),
-    className: (0, _classnames.default)('at-flx-grw-1'),
+  })), /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcControlUnitDevice, {
+    label: __('Height', 'atrc-prefix-atrc'),
+    className: classnames('at-flx-grw-1'),
     value: {
       xs: value && value.h,
       sm: value && value.smH,
@@ -138,5 +136,5 @@ var AtrcControlResponsiveWH = function AtrcControlResponsiveWH(props) {
     onChange: setHeight
   }))));
 };
-var _default = exports.default = AtrcControlResponsiveWH;
+export default AtrcControlResponsiveWH;
 //# sourceMappingURL=index.js.map

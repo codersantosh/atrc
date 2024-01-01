@@ -1,8 +1,6 @@
 /** WordPress*/
 import { useState, useEffect, useRef } from '@wordpress/element';
 
-import { useInstanceId } from '@wordpress/compose';
-
 import { MenuGroup, MenuItem } from '@wordpress/components';
 
 /** Library*/
@@ -21,6 +19,7 @@ import AtrcTooltip from '../tooltip';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
+import AtrcUniqueID from '../../utils/unique-id';
 
 /*Local Components*/
 export function AtrcDropdownDevice({
@@ -35,7 +34,8 @@ export function AtrcDropdownDevice({
 	const [selectedTab, setSelectedTab] = useState();
 
 	const rowref = useRef();
-	const instanceId = useInstanceId(AtrcDropdownDevice, 'tab-panel');
+
+	const instanceId = AtrcUniqueID() + random(0, 9);
 
 	const handleTabSelection = (tabName) => {
 		const nSelectedTab = find(tabs, { name: tabName });

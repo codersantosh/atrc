@@ -1,17 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _dropdownDevice = _interopRequireDefault(require("../dropdown-device"));
-var _controlSelectButton = _interopRequireDefault(require("../control-select-button"));
-var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
-var _objectValuesWithDevices = require("./../../utils/object-values-with-devices");
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Value Structure
 Type Object
 {
@@ -23,12 +9,19 @@ Type Object
 * */
 
 /*Library*/
+import classnames from 'classnames';
+import { isArray } from 'lodash';
 
 /*Inbuilt*/
+import AtrcDropdownDevice from '../dropdown-device';
+import AtrcControlSelectButton from '../control-select-button';
 
 /*Inbuilt Utils*/
+import AtrcAvailableDevices from '../../utils/available-devices';
+import { AtrcMappingDeviceValues } from './../../utils/object-values-with-devices';
 
 /*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components*/
 var RenderTab = function RenderTab(_ref) {
@@ -36,8 +29,8 @@ var RenderTab = function RenderTab(_ref) {
     value = _ref.value,
     options = _ref.options,
     _onChange = _ref.onChange;
-  return /*#__PURE__*/React.createElement(_controlSelectButton.default, {
-    value: (0, _objectValuesWithDevices.AtrcMappingDeviceValues)(value, device),
+  return /*#__PURE__*/React.createElement(AtrcControlSelectButton, {
+    value: AtrcMappingDeviceValues(value, device),
     onChange: function onChange(newVal) {
       return _onChange(newVal, device);
     },
@@ -68,18 +61,18 @@ var AtrcControlSelectButtonDevice = function AtrcControlSelectButtonDevice(props
     return null;
   }
   var Devices = function Devices() {
-    if ((0, _lodash.isArray)(allowedDevices)) {
+    if (isArray(allowedDevices)) {
       return allowedDevices;
     }
-    return _availableDevices.default;
+    return AtrcAvailableDevices();
   };
   var setAttr = function setAttr(newVal, type) {
     var valueCloned = Object.assign({}, value);
     valueCloned[type] = newVal;
     onChange(valueCloned);
   };
-  return /*#__PURE__*/React.createElement(_dropdownDevice.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-select-btn-device'), className, variant ? (0, _prefixVars.default)('ctrl-select-btn-device') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcDropdownDevice, {
+    className: classnames(AtrcPrefix('ctrl-select-btn-device'), className, variant ? AtrcPrefix('ctrl-select-btn-device') + '-' + variant : ''),
     label: label,
     tabs: Devices()
   }, function (tab) {
@@ -92,5 +85,5 @@ var AtrcControlSelectButtonDevice = function AtrcControlSelectButtonDevice(props
     });
   });
 };
-var _default = exports.default = AtrcControlSelectButtonDevice;
+export default AtrcControlSelectButtonDevice;
 //# sourceMappingURL=index.js.map

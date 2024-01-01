@@ -1,26 +1,23 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _classnames = _interopRequireDefault(require("classnames"));
-var _wrap = _interopRequireDefault(require("../../../atoms/wrap"));
-var _header = _interopRequireDefault(require("../../../organisms/header"));
-var _footer = _interopRequireDefault(require("../../../organisms/footer"));
 var _excluded = ["wrapProps"];
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); } /*Library*/ /*Inbuilt*/
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+/*Library*/
+import classnames from 'classnames';
+
+/*Inbuilt*/
+import AtrcWrap from '../../../atoms/wrap';
+import AtrcHeader from '../../../organisms/header';
+import AtrcFooter from '../../../organisms/footer';
+
 /*Local*/
 var ContentCol = function ContentCol(_ref) {
   var contentColProps = _ref.contentColProps,
     renderContent = _ref.renderContent,
     allowContentCol = _ref.allowContentCol;
   if (allowContentCol) {
-    return /*#__PURE__*/React.createElement(_wrap.default, _extends({}, contentColProps, {
-      className: (0, _classnames.default)('at-col-12', contentColProps.className || '')
+    return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, contentColProps, {
+      className: classnames('at-col-12', contentColProps.className || '')
     }), renderContent);
   }
   return /*#__PURE__*/React.createElement(React.Fragment, null, renderContent);
@@ -56,14 +53,14 @@ var Parts = function Parts(props) {
     allowFooterRow = _props$allowFooterRow === void 0 ? true : _props$allowFooterRow,
     _props$allowFooterCol = props.allowFooterCol,
     allowFooterCol = _props$allowFooterCol === void 0 ? true : _props$allowFooterCol;
-  return /*#__PURE__*/React.createElement(React.Fragment, null, renderHeader ? /*#__PURE__*/React.createElement(_header.default, _extends({}, headerRowProps, {
-    className: (0, _classnames.default)(allowHeaderRow ? 'at-row' : '', headerRowProps.className || '')
-  }), allowHeaderCol ? /*#__PURE__*/React.createElement(_wrap.default, _extends({}, headerColProps, {
-    className: (0, _classnames.default)('at-col-12', headerColProps.className || '')
-  }), renderHeader) : /*#__PURE__*/React.createElement(React.Fragment, null, renderHeader)) : null, renderContent ? allowContentRow ? /*#__PURE__*/React.createElement(_wrap.default, _extends({
+  return /*#__PURE__*/React.createElement(React.Fragment, null, renderHeader ? /*#__PURE__*/React.createElement(AtrcHeader, _extends({}, headerRowProps, {
+    className: classnames(allowHeaderRow ? 'at-row' : '', headerRowProps.className || '')
+  }), allowHeaderCol ? /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, headerColProps, {
+    className: classnames('at-col-12', headerColProps.className || '')
+  }), renderHeader) : /*#__PURE__*/React.createElement(React.Fragment, null, renderHeader)) : null, renderContent ? allowContentRow ? /*#__PURE__*/React.createElement(AtrcWrap, _extends({
     tag: "section"
   }, contentRowProps, {
-    className: (0, _classnames.default)('at-row', contentRowProps.className || '')
+    className: classnames('at-row', contentRowProps.className || '')
   }), /*#__PURE__*/React.createElement(ContentCol, {
     contentColProps: contentColProps,
     renderContent: renderContent,
@@ -72,10 +69,10 @@ var Parts = function Parts(props) {
     contentColProps: contentColProps,
     renderContent: renderContent,
     allowContentCol: allowContentCol
-  }) : null, renderFooter ? /*#__PURE__*/React.createElement(_footer.default, _extends({}, footerRowProps, {
-    className: (0, _classnames.default)(allowFooterRow ? 'at-row' : '', footerRowProps.className || '')
-  }), allowFooterCol ? /*#__PURE__*/React.createElement(_wrap.default, _extends({}, footerColProps, {
-    className: (0, _classnames.default)('at-col-12', footerColProps.className || '')
+  }) : null, renderFooter ? /*#__PURE__*/React.createElement(AtrcFooter, _extends({}, footerRowProps, {
+    className: classnames(allowFooterRow ? 'at-row' : '', footerRowProps.className || '')
+  }), allowFooterCol ? /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, footerColProps, {
+    className: classnames('at-col-12', footerColProps.className || '')
   }), renderFooter) : /*#__PURE__*/React.createElement(React.Fragment, null, renderFooter)) : null);
 };
 var AtrcWireFrameHeaderContentFooter = function AtrcWireFrameHeaderContentFooter(props) {
@@ -83,9 +80,9 @@ var AtrcWireFrameHeaderContentFooter = function AtrcWireFrameHeaderContentFooter
     wrapProps = _props$wrapProps === void 0 ? null : _props$wrapProps,
     defaultProps = _objectWithoutProperties(props, _excluded);
   if (wrapProps) {
-    return /*#__PURE__*/React.createElement(_wrap.default, wrapProps, /*#__PURE__*/React.createElement(Parts, defaultProps));
+    return /*#__PURE__*/React.createElement(AtrcWrap, wrapProps, /*#__PURE__*/React.createElement(Parts, defaultProps));
   }
   return /*#__PURE__*/React.createElement(Parts, defaultProps);
 };
-var _default = exports.default = AtrcWireFrameHeaderContentFooter;
+export default AtrcWireFrameHeaderContentFooter;
 //# sourceMappingURL=index.js.map

@@ -16,7 +16,7 @@ const TextTransform = ({ value, onChange }) => {
 			<AtrcControlSelectButton
 				label={__('Text transform', 'atrc-prefix-atrc')}
 				value={value && value.txtTf}
-				options={TextTransformList}
+				options={TextTransformList()}
 				onChange={(newVal) => onChange(newVal, 'txtTf')}
 				allowReset={true}
 			/>

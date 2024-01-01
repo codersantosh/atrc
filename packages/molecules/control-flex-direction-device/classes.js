@@ -15,8 +15,10 @@ const AtrcControlFlexDirectionDeviceClasses = (abStyle) => {
 
 	let classes = '';
 
-	for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-		const device = AtrcAvailableDevices[i];
+	const avDevices = AtrcAvailableDevices();
+
+	for (let i = 0; i < avDevices.length; i++) {
+		const device = avDevices[i];
 
 		if ('xs' === device.name) {
 			if (flxDir[device.name]) {
@@ -86,8 +88,10 @@ export const AtrcControlFlexNoWrapDeviceClasses = (abStyle) => {
 
 	let classes = '';
 
-	for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-		const device = AtrcAvailableDevices[i];
+	const avDevices = AtrcAvailableDevices();
+
+	for (let i = 0; i < avDevices.length; i++) {
+		const device = avDevices[i];
 
 		if (!device.on) {
 			continue;
@@ -120,8 +124,10 @@ export const AtrcControlFlexFillDeviceClasses = (abStyle) => {
 
 	let classes = '';
 
-	for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-		const device = AtrcAvailableDevices[i];
+	const avDevices = AtrcAvailableDevices();
+
+	for (let i = 0; i < avDevices.length; i++) {
+		const device = avDevices[i];
 
 		if (!device.on) {
 			continue;
@@ -151,8 +157,10 @@ export const AtrcControlFlexGrowDeviceClasses = (abStyle) => {
 
 	let classes = '';
 
-	for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-		const device = AtrcAvailableDevices[i];
+	const avDevices = AtrcAvailableDevices();
+
+	for (let i = 0; i < avDevices.length; i++) {
+		const device = avDevices[i];
 
 		if (!device.on) {
 			continue;
@@ -182,8 +190,10 @@ export const AtrcControlFlexShrinkDeviceClasses = (abStyle) => {
 
 	let classes = '';
 
-	for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-		const device = AtrcAvailableDevices[i];
+	const avDevices = AtrcAvailableDevices();
+
+	for (let i = 0; i < avDevices.length; i++) {
+		const device = avDevices[i];
 
 		if (!device.on) {
 			continue;

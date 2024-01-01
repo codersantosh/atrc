@@ -5,14 +5,12 @@ import { useEntityProp } from '@wordpress/core-data';
 
 import { dateI18n, getSettings as getDateSettings } from '@wordpress/date';
 
-import { forwardRef } from '@wordpress/element';
-
 /* Inbuilt */
 import AtrcWrap from '../../atoms/wrap';
 import AtrcLink from '../../atoms/link';
 
 /* Local */
-const AtrcPostDate = (props, ref) => {
+const AtrcPostDate = (props) => {
 	const {
 		postType,
 		postId,
@@ -59,10 +57,9 @@ const AtrcPostDate = (props, ref) => {
 	return (
 		<AtrcWrap
 			{...defaultProps}
-			ref={ref}
 			tag={htmlTag}>
 			{postDate}
 		</AtrcWrap>
 	);
 };
-export default forwardRef(AtrcPostDate);
+export default AtrcPostDate;

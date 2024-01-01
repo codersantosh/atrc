@@ -1,17 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _element = require("@wordpress/element");
-var _compose = require("@wordpress/compose");
-var _components = require("@wordpress/components");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
 var _excluded = ["className", "renderToggle", "renderContent", "width"];
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -20,10 +7,25 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*WordPress*/ /*Library*/ /*Inbuilt*/ /*Inbuilt*/
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+/*WordPress*/
+import { useRef, useEffect, useState } from '@wordpress/element';
+import { useMergeRefs } from '@wordpress/compose';
+import { Popover } from '@wordpress/components';
+
+/*Library*/
+import classnames from 'classnames';
+
+/*Inbuilt*/
+import AtrcWrap from '../../atoms/wrap';
+
+/*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+import AtrcUniqueID from '../../utils/unique-id';
+
 /*Local components and functions*/
 function useObservableState(initialState, onStateChange) {
-  var _useState = (0, _element.useState)(initialState),
+  var _useState = useState(initialState),
     _useState2 = _slicedToArray(_useState, 2),
     state = _useState2[0],
     setState = _useState2[1];
@@ -49,16 +51,16 @@ function Dropdown(props) {
     style = props.style;
   // Use internal state instead of a ref to make sure that the component
   // re-renders when the popover's anchor updates.
-  var _useState3 = (0, _element.useState)(null),
+  var _useState3 = useState(null),
     _useState4 = _slicedToArray(_useState3, 2),
     fallbackPopoverAnchor = _useState4[0],
     setFallbackPopoverAnchor = _useState4[1];
-  var containerRef = (0, _element.useRef)();
+  var containerRef = useRef();
   var _useObservableState = useObservableState(false, onToggle),
     _useObservableState2 = _slicedToArray(_useObservableState, 2),
     isOpen = _useObservableState2[0],
     setIsOpen = _useObservableState2[1];
-  (0, _element.useEffect)(function () {
+  useEffect(function () {
     return function () {
       if (onToggle && isOpen) {
         onToggle(false);
@@ -103,15 +105,15 @@ function Dropdown(props) {
   // be removed from `Popover` from WordPress 6.3
   !!(popoverProps !== null && popoverProps !== void 0 && popoverProps.anchorRef) || !!(popoverProps !== null && popoverProps !== void 0 && popoverProps.getAnchorRect) || !!(popoverProps !== null && popoverProps !== void 0 && popoverProps.anchorRect);
   return /*#__PURE__*/React.createElement("div", {
-    className: (0, _classnames.default)('components-dropdown', className),
-    ref: (0, _compose.useMergeRefs)([setFallbackPopoverAnchor, containerRef])
+    className: classnames('components-dropdown', className),
+    ref: useMergeRefs([setFallbackPopoverAnchor, containerRef])
     // Some UAs focus the closest focusable parent when the toggle is
     // clicked. Making this div focusable ensures such UAs will focus
     // it and `closeIfFocusOutside` can tell if the toggle was clicked.
     ,
     tabIndex: "-1",
     style: style
-  }, renderToggle(args), isOpen && /*#__PURE__*/React.createElement(_components.Popover, _extends({
+  }, renderToggle(args), isOpen && /*#__PURE__*/React.createElement(Popover, _extends({
     position: position,
     onClose: close,
     onFocusOutside: closeIfFocusOutside,
@@ -124,11 +126,11 @@ function Dropdown(props) {
     offset: 13,
     anchor: !popoverPropsHaveAnchor ? fallbackPopoverAnchor : undefined
   }, popoverProps, {
-    className: (0, _classnames.default)('components-dropdown__content', popoverProps ? popoverProps.className : undefined, contentClassName)
+    className: classnames('components-dropdown__content', popoverProps ? popoverProps.className : undefined, contentClassName)
   }), renderContent(args)));
 }
 var AtrcDropdownHover = function AtrcDropdownHover(props) {
-  var instanceId = (0, _compose.useInstanceId)(AtrcDropdownHover, (0, _prefixVars.default)('ctrl-dropdown-hover'));
+  var instanceId = AtrcUniqueID() + random(0, 9);
   var timer;
   var _props$className = props.className,
     className = _props$className === void 0 ? '' : _props$className,
@@ -156,7 +158,7 @@ var AtrcDropdownHover = function AtrcDropdownHover(props) {
       }
     }, 300);
   }
-  (0, _element.useEffect)(function () {
+  useEffect(function () {
     return function () {
       if (timer) {
         clearTimeout(timer);
@@ -164,11 +166,11 @@ var AtrcDropdownHover = function AtrcDropdownHover(props) {
     };
   }, []);
   return /*#__PURE__*/React.createElement(Dropdown, _extends({
-    className: (0, _classnames.default)((0, _prefixVars.default)('dropdown-hover'), className),
+    className: classnames(AtrcPrefix('dropdown-hover'), className),
     renderToggle: function renderToggle(_ref) {
       var isOpen = _ref.isOpen,
         onToggle = _ref.onToggle;
-      return /*#__PURE__*/React.createElement(_wrap.default, {
+      return /*#__PURE__*/React.createElement(AtrcWrap, {
         variant: "render-toggle",
         onMouseEnter: function onMouseEnter() {
           return onToggle(true);
@@ -182,7 +184,7 @@ var AtrcDropdownHover = function AtrcDropdownHover(props) {
     renderContent: function renderContent(_ref2) {
       var isOpen = _ref2.isOpen,
         onToggle = _ref2.onToggle;
-      return /*#__PURE__*/React.createElement(_wrap.default, {
+      return /*#__PURE__*/React.createElement(AtrcWrap, {
         id: instanceId,
         variant: "dropdown-hover-cont",
         style: {
@@ -195,5 +197,5 @@ var AtrcDropdownHover = function AtrcDropdownHover(props) {
     }
   }, defaultProps));
 };
-var _default = exports.default = AtrcDropdownHover;
+export default AtrcDropdownHover;
 //# sourceMappingURL=index.js.map

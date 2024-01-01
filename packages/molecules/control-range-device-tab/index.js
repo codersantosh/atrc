@@ -93,7 +93,7 @@ const RenderTabPanel = ({
 	return (
 		<AtrcDropdownDevice
 			label={label}
-			tabs={AtrcAvailableDevices}>
+			tabs={AtrcAvailableDevices()}>
 			{(rTab) => (
 				<RenderTab
 					device={rTab.name}

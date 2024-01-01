@@ -1,19 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _repeater = _interopRequireDefault(require("../repeater"));
-var _repeaterGroup = _interopRequireDefault(require("../repeater/repeater-group"));
-var _repeaterGroupAdd = _interopRequireDefault(require("../repeater/repeater-group-add"));
-var _controlSelectGoogleFonts = _interopRequireDefault(require("../control-select-google-fonts"));
 var _excluded = ["onChange", "value", "label", "apiKey"];
-/*WordPress*/
-/*Inbuilt*/
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -27,6 +12,16 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useState } from '@wordpress/element';
+
+/*Inbuilt*/
+import AtrcRepeater from '../repeater';
+import AtrcRepeaterGroup from '../repeater/repeater-group';
+import AtrcRepeaterGroupAdd from '../repeater/repeater-group-add';
+import AtrcControlSelectGoogleFonts from '../control-select-google-fonts';
+
 /*Local*/
 var AtrcControlSelectGoogleFontsRepeater = function AtrcControlSelectGoogleFontsRepeater(props) {
   var onChange = props.onChange,
@@ -37,7 +32,7 @@ var AtrcControlSelectGoogleFontsRepeater = function AtrcControlSelectGoogleFonts
     _props$apiKey = props.apiKey,
     apiKey = _props$apiKey === void 0 ? '' : _props$apiKey,
     defaultProps = _objectWithoutProperties(props, _excluded);
-  var _useState = (0, _element.useState)(value),
+  var _useState = useState(value),
     _useState2 = _slicedToArray(_useState, 2),
     fonts = _useState2[0],
     setFonts = _useState2[1];
@@ -53,17 +48,17 @@ var AtrcControlSelectGoogleFontsRepeater = function AtrcControlSelectGoogleFonts
     setFonts(updatedFonts);
     onChange(updatedFonts);
   };
-  return /*#__PURE__*/React.createElement(_repeater.default, _extends({
+  return /*#__PURE__*/React.createElement(AtrcRepeater, _extends({
     label: label,
     groups: function groups() {
       return fonts.map(function (font, iDx) {
-        return /*#__PURE__*/React.createElement(_repeaterGroup.default, {
+        return /*#__PURE__*/React.createElement(AtrcRepeaterGroup, {
           groupIndex: iDx,
           deleteGroup: removeFont,
-          groupTitle: (0, _i18n.__)('Google font', 'atrc-prefix-atrc'),
-          deleteTitle: (0, _i18n.__)('Remove font', 'atrc-prefix-atrc'),
+          groupTitle: __('Google font', 'atrc-prefix-atrc'),
+          deleteTitle: __('Remove font', 'atrc-prefix-atrc'),
           key: iDx
-        }, /*#__PURE__*/React.createElement(_controlSelectGoogleFonts.default, {
+        }, /*#__PURE__*/React.createElement(AtrcControlSelectGoogleFonts, {
           apiKey: apiKey,
           value: font,
           onChange: function onChange(newVal) {
@@ -73,15 +68,15 @@ var AtrcControlSelectGoogleFontsRepeater = function AtrcControlSelectGoogleFonts
       });
     },
     addGroup: function addGroup() {
-      return /*#__PURE__*/React.createElement(_repeaterGroupAdd.default, {
+      return /*#__PURE__*/React.createElement(AtrcRepeaterGroupAdd, {
         addGroup: function addGroup() {
           return setFonts([].concat(_toConsumableArray(fonts), [{}]));
         },
-        tooltipText: (0, _i18n.__)('Add Google font', 'atrc-prefix-atrc'),
-        label: (0, _i18n.__)('Add Google font', 'atrc-prefix-atrc')
+        tooltipText: __('Add Google font', 'atrc-prefix-atrc'),
+        label: __('Add Google font', 'atrc-prefix-atrc')
       });
     }
   }, defaultProps));
 };
-var _default = exports.default = AtrcControlSelectGoogleFontsRepeater;
+export default AtrcControlSelectGoogleFontsRepeater;
 //# sourceMappingURL=index.js.map

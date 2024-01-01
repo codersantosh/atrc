@@ -1,19 +1,7 @@
-"use strict";
-
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _controlDropdownColorGradient = _interopRequireWildcard(require("../control-dropdown-color-gradient"));
-var _objectValuesWithAllowedKeysAndTabs = require("../../utils/object-values-with-allowed-keys-and-tabs");
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
 var _excluded = ["value", "label", "onChange", "variant", "className", "allowedTabs"];
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 /*Value Structure
 Type object
 {
@@ -47,25 +35,35 @@ Type object
 }
 
 **/
+
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
+
 /*Library*/
+import classnames from 'classnames';
+import { map } from 'lodash';
+
 /*Inbuilt*/
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlDropdownColorGradient from '../control-dropdown-color-gradient';
+import { AtrcControlDropdownColorGradientAllowedKeys } from '../control-dropdown-color-gradient';
+
 /*Inbuilt utils*/
+
+import { AtrcGetTabValues, AtrcHasTabValues, AtrcUpdateTabValues, AtrcResetTab } from '../../utils/object-values-with-allowed-keys-and-tabs';
+
 /*Prefix*/
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local Components*/
 var RenderTabPanel = function RenderTabPanel(_ref) {
   var value = _ref.value,
     tab = _ref.tab,
     _onChange = _ref.onChange;
-  return /*#__PURE__*/React.createElement(_controlDropdownColorGradient.default, {
+  return /*#__PURE__*/React.createElement(AtrcControlDropdownColorGradient, {
     label: '',
-    value: (0, _objectValuesWithAllowedKeysAndTabs.AtrcGetTabValues)(value, tab, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys),
+    value: AtrcGetTabValues(value, tab, AtrcControlDropdownColorGradientAllowedKeys),
     onChange: function onChange(newVal) {
       return _onChange(newVal, tab);
     }
@@ -86,83 +84,83 @@ var AtrcControlDropdownColorGradientTab = function AtrcControlDropdownColorGradi
     allowedTabs = _props$allowedTabs === void 0 ? ['normal', 'hover'] : _props$allowedTabs,
     defaultProps = _objectWithoutProperties(props, _excluded);
   var setTabAttr = function setTabAttr(newVal, tab) {
-    onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcUpdateTabValues)(newVal, tab, value, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys));
+    onChange(AtrcUpdateTabValues(newVal, tab, value, AtrcControlDropdownColorGradientAllowedKeys));
   };
   var resetAll = function resetAll() {
     onChange({});
   };
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     var tabs = [];
     if (allowedTabs.includes('normal'.toLowerCase())) {
       tabs.push({
         name: 'normal',
-        title: (0, _i18n.__)('Normal', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)('normal', value, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys),
+        title: __('Normal', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasTabValues('normal', value, AtrcControlDropdownColorGradientAllowedKeys),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTab)('normal', value, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys));
+          return onChange(AtrcResetTab('normal', value, AtrcControlDropdownColorGradientAllowedKeys));
         }
       });
     }
     if (allowedTabs.includes('hover'.toLowerCase())) {
       tabs.push({
         name: 'Hover',
-        title: (0, _i18n.__)('Hover', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)('Hover', value, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys),
+        title: __('Hover', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasTabValues('Hover', value, AtrcControlDropdownColorGradientAllowedKeys),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTab)('Hover', value, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys));
+          return onChange(AtrcResetTab('Hover', value, AtrcControlDropdownColorGradientAllowedKeys));
         }
       });
     }
     if (allowedTabs.includes('active'.toLowerCase())) {
       tabs.push({
         name: 'Active',
-        title: (0, _i18n.__)('Active', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)('Active', value, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys),
+        title: __('Active', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasTabValues('Active', value, AtrcControlDropdownColorGradientAllowedKeys),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTab)('Active', value, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys));
+          return onChange(AtrcResetTab('Active', value, AtrcControlDropdownColorGradientAllowedKeys));
         }
       });
     }
     if (allowedTabs.includes('focus'.toLowerCase())) {
       tabs.push({
         name: 'Focus',
-        title: (0, _i18n.__)('Focus', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)('Focus', value, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys),
+        title: __('Focus', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasTabValues('Focus', value, AtrcControlDropdownColorGradientAllowedKeys),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTab)('Focus', value, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys));
+          return onChange(AtrcResetTab('Focus', value, AtrcControlDropdownColorGradientAllowedKeys));
         }
       });
     }
     if (allowedTabs.includes('visited'.toLowerCase())) {
       tabs.push({
         name: 'Visited',
-        title: (0, _i18n.__)('Visited', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)('Visited', value, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys),
+        title: __('Visited', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasTabValues('Visited', value, AtrcControlDropdownColorGradientAllowedKeys),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTab)('Visited', value, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys));
+          return onChange(AtrcResetTab('Visited', value, AtrcControlDropdownColorGradientAllowedKeys));
         }
       });
     }
     if (allowedTabs.includes('parenthover'.toLowerCase())) {
       tabs.push({
         name: 'ParentHover',
-        title: (0, _i18n.__)('Parent hover', 'atrc-prefix-atrc'),
-        hasValue: (0, _objectValuesWithAllowedKeysAndTabs.AtrcHasTabValues)('ParentHover', value, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys),
+        title: __('Parent hover', 'atrc-prefix-atrc'),
+        hasValue: AtrcHasTabValues('ParentHover', value, AtrcControlDropdownColorGradientAllowedKeys),
         onDeselect: function onDeselect() {
-          return onChange((0, _objectValuesWithAllowedKeysAndTabs.AtrcResetTab)('ParentHover', value, _controlDropdownColorGradient.AtrcControlDropdownColorGradientAllowedKeys));
+          return onChange(AtrcResetTab('ParentHover', value, AtrcControlDropdownColorGradientAllowedKeys));
         }
       });
     }
     return tabs;
   }, [value]);
-  return /*#__PURE__*/React.createElement(_panelTools.default, _extends({
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-dropdown-cl-grd-tab'), className, variant ? (0, _prefixVars.default)('ctrl-dropdown-cl-grd-tab') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, _extends({
+    className: classnames(AtrcPrefix('ctrl-dropdown-cl-grd-tab'), className, variant ? AtrcPrefix('ctrl-dropdown-cl-grd-tab') + '-' + variant : ''),
     label: label,
     resetAll: resetAll,
     allowTabs: true,
     tools: AllTabs
   }, defaultProps), function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (tab, iDx) {
+    return map(activeItems, function (tab, iDx) {
       return /*#__PURE__*/React.createElement(RenderTabPanel, {
         value: value,
         onChange: function onChange(newVal) {
@@ -174,5 +172,5 @@ var AtrcControlDropdownColorGradientTab = function AtrcControlDropdownColorGradi
     });
   });
 };
-var _default = exports.default = AtrcControlDropdownColorGradientTab;
+export default AtrcControlDropdownColorGradientTab;
 //# sourceMappingURL=index.js.map

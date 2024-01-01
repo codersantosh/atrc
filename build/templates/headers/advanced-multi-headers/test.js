@@ -1,9 +1,7 @@
-"use strict";
-
-var _i18n = require("@wordpress/i18n");
-var _bs = require("react-icons/bs");
-var _headers = require("../../headers");
-/*#__PURE__*/React.createElement(_headers.AtrcWireFrameAdvancedMultiHeaders, {
+import { __ } from '@wordpress/i18n';
+import { BsCheck2, BsTrash, BsX } from 'react-icons/bs';
+import { AtrcWireFrameAdvancedMultiHeaders } from '../../headers';
+/*#__PURE__*/React.createElement(AtrcWireFrameAdvancedMultiHeaders, {
   headerElements: ['title', 'addNew', 'toggleFilter', 'filterButtonGroupWithReset', 'filterSelectGroup', 'filterButtonGroup', 'search', 'bulkCheck', 'sort', 'refresh', 'pagination'],
   topHeader: {
     left: ['title', 'addNew', 'toggleFilter'],
@@ -18,14 +16,14 @@ var _headers = require("../../headers");
     right: ['pagination']
   },
   title: {
-    children: (0, _i18n.__)('Custom Fonts', 'atrc-prefix-atrc')
+    children: __('Custom Fonts', 'atrc-prefix-atrc')
   },
   addNew: {
     to: 'create',
-    children: (0, _i18n.__)('Add new', 'atrc-prefix-atrc')
+    children: __('Add new', 'atrc-prefix-atrc')
   },
   toggleFilter: {
-    label: (0, _i18n.__)('Advanced Filter', 'atrc-prefix-atrc'),
+    label: __('Advanced Filter', 'atrc-prefix-atrc'),
     checked: toggleFilter,
     onChange: function onChange() {
       return setToggleFilter(!toggleFilter);
@@ -33,17 +31,17 @@ var _headers = require("../../headers");
   },
   filterButtonGroupWithReset: {
     buttons: [{
-      children: (0, _i18n.__)('Button 1(0)', 'atrc-prefix-atrc'),
+      children: __('Button 1(0)', 'atrc-prefix-atrc'),
       onClick: function onClick() {
         return setToggleFilter(!toggleFilter);
       }
     }, {
-      children: (0, _i18n.__)('Button 2(300)', 'atrc-prefix-atrc'),
+      children: __('Button 2(300)', 'atrc-prefix-atrc'),
       onClick: function onClick() {
         return setToggleFilter(!toggleFilter);
       }
     }, {
-      children: (0, _i18n.__)('Button 3(50)', 'atrc-prefix-atrc'),
+      children: __('Button 3(50)', 'atrc-prefix-atrc'),
       onClick: function onClick() {
         return setToggleFilter(!toggleFilter);
       }
@@ -51,21 +49,21 @@ var _headers = require("../../headers");
     onReset: function onReset() {
       return setToggleFilter(!toggleFilter);
     },
-    resetLabel: (0, _i18n.__)('Reset filters', 'atrc-prefix-atrc')
+    resetLabel: __('Reset filters', 'atrc-prefix-atrc')
   },
   filterButtonGroup: {
     buttons: [{
-      children: (0, _i18n.__)('Button 1(0)', 'atrc-prefix-atrc'),
+      children: __('Button 1(0)', 'atrc-prefix-atrc'),
       onClick: function onClick() {
         return setToggleFilter(!toggleFilter);
       }
     }, {
-      children: (0, _i18n.__)('Button 2(300)', 'atrc-prefix-atrc'),
+      children: __('Button 2(300)', 'atrc-prefix-atrc'),
       onClick: function onClick() {
         return setToggleFilter(!toggleFilter);
       }
     }, {
-      children: (0, _i18n.__)('Button 3(50)', 'atrc-prefix-atrc'),
+      children: __('Button 3(50)', 'atrc-prefix-atrc'),
       onClick: function onClick() {
         return setToggleFilter(!toggleFilter);
       }
@@ -121,7 +119,7 @@ var _headers = require("../../headers");
     onApply: function onApply() {
       return setToggleFilter(!toggleFilter);
     },
-    applyLabel: (0, _i18n.__)('Apply', 'atrc-prefix-atrc')
+    applyLabel: __('Apply', 'atrc-prefix-atrc')
   },
   search: {
     doSearch: function doSearch() {
@@ -142,11 +140,11 @@ var _headers = require("../../headers");
         }
       },
       tooltipProps: {
-        text: (0, _i18n.__)('Delete permanently', 'atrc-prefix-atrc')
+        text: __('Delete permanently', 'atrc-prefix-atrc')
       },
       iconProps: {
         type: 'bootstrap',
-        icon: _bs.BsTrash
+        icon: BsTrash
       }
     }, {
       buttonProps: {
@@ -155,11 +153,11 @@ var _headers = require("../../headers");
         }
       },
       tooltipProps: {
-        text: (0, _i18n.__)('Mark as active', 'atrc-prefix-atrc')
+        text: __('Mark as active', 'atrc-prefix-atrc')
       },
       iconProps: {
         type: 'bootstrap',
-        icon: _bs.BsCheck2
+        icon: BsCheck2
       }
     }, {
       buttonProps: {
@@ -168,11 +166,11 @@ var _headers = require("../../headers");
         }
       },
       tooltipProps: {
-        text: (0, _i18n.__)('Mark as inactive', 'atrc-prefix-atrc')
+        text: __('Mark as inactive', 'atrc-prefix-atrc')
       },
       iconProps: {
         type: 'bootstrap',
-        icon: _bs.BsX
+        icon: BsX
       }
     }],
     toggleItems: ['sort', 'refresh']

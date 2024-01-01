@@ -1,5 +1,4 @@
 /*WordPress*/
-import { withInstanceId } from '@wordpress/compose';
 
 /*Library*/
 import classnames from 'classnames';
@@ -18,7 +17,6 @@ import ColumnLayout from './columns-layout';
 const AtrcControlColumnsAdvanced = (props) => {
 	const {
 		label,
-		instanceId,
 		value,
 		columns,
 		className = '',
@@ -37,7 +35,7 @@ const AtrcControlColumnsAdvanced = (props) => {
 		if (isArray(allowedDevices)) {
 			return allowedDevices;
 		}
-		return AtrcAvailableDevices;
+		return AtrcAvailableDevices();
 	};
 
 	const setAttr = (newVal, type) => {
@@ -46,11 +44,8 @@ const AtrcControlColumnsAdvanced = (props) => {
 		onChange(valueCloned);
 	};
 
-	const id = `control-advanced-columns-${instanceId}`;
-
 	return (
 		<AtrcDropdownDevice
-			id={id}
 			className={classnames(
 				AtrcPrefix('ctrl-col-adv-lyt'),
 				className,
@@ -72,4 +67,4 @@ const AtrcControlColumnsAdvanced = (props) => {
 	);
 };
 
-export default withInstanceId(AtrcControlColumnsAdvanced);
+export default AtrcControlColumnsAdvanced;

@@ -1,10 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AtrcControlBoxFourShorthandCssOnly = AtrcControlBoxFourShorthandCssOnly;
-function AtrcControlBoxFourShorthandCssOnly(values) {
+export function AtrcControlBoxFourShorthandCssOnly(values) {
   var property = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
   var emptyVal = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
   var shorthandStr = '';

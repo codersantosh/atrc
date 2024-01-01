@@ -1,9 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 /*Local*/
 var BgAtch = function BgAtch(value, innerOutput, property) {
   if (value.bgAtch) {
@@ -26,5 +20,5 @@ var BgAtch = function BgAtch(value, innerOutput, property) {
   }
   return innerOutput;
 };
-var _default = exports.default = BgAtch;
+export default BgAtch;
 //# sourceMappingURL=attachment.js.map

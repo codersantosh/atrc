@@ -1,32 +1,7 @@
-"use strict";
-
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AtrcDynamicSelect = AtrcDynamicSelect;
-exports.default = void 0;
-var _components = require("@wordpress/components");
-var _element = require("@wordpress/element");
-var _i18n = require("@wordpress/i18n");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _reactSelect = _interopRequireDefault(require("react-select"));
-var _async = _interopRequireDefault(require("react-select/async"));
-var _lodash = require("lodash");
-var _wrap = _interopRequireDefault(require("../wrap"));
-var _resetButtonIcon = _interopRequireWildcard(require("../reset-button-icon"));
-var _label = _interopRequireDefault(require("../label"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
 var _excluded = ["label", "value", "onChange", "showOptionNone", "optionNoneValue", "options", "className", "wrapProps", "isAsync"],
   _excluded2 = ["label", "variant", "className", "isMulti", "isAsync", "multiValType", "valType", "value", "options", "loadOptions", "onChange", "wrapProps"],
-  _excluded3 = ["variant", "className", "isMulti", "isAsync", "value", "options", "onChange", "wrapProps", "defaultValue"]; // Reference for multi select
-//https://stackoverflow.com/questions/54218351/changing-height-of-react-select-component
-/*WordPress*/
-/*Library*/
-/*Inbuilt*/
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  _excluded3 = ["variant", "className", "isMulti", "isAsync", "value", "options", "onChange", "wrapProps", "defaultValue"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -41,8 +16,28 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+// Reference for multi select
+//https://stackoverflow.com/questions/54218351/changing-height-of-react-select-component
+/*WordPress*/
+import { SelectControl } from '@wordpress/components';
+import { useMemo } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+
+/*Library*/
+import classnames from 'classnames';
+import Select from 'react-select';
+import AsyncSelect from 'react-select/async';
+import { isArray, isString, reduce } from 'lodash';
+
+/*Inbuilt*/
+import AtrcWrap from '../wrap';
+import AtrcResetButtonIcon from '../reset-button-icon';
+import { AtrcResetWrap } from '../reset-button-icon';
+import AtrcLabel from '../label';
+import AtrcPrefix from '../../prefix-vars';
+
 /*Local*/
-function AtrcDynamicSelect(props) {
+export function AtrcDynamicSelect(props) {
   var label = props.label,
     value = props.value,
     onChange = props.onChange,
@@ -59,7 +54,7 @@ function AtrcDynamicSelect(props) {
     isAsync = _props$isAsync === void 0 ? false : _props$isAsync,
     defaultProps = _objectWithoutProperties(props, _excluded);
   var setId = function setId(val) {
-    if ((0, _lodash.isString)(val)) {
+    if (isString(val)) {
       onChange(Number(val));
     } else {
       onChange(val);
@@ -68,7 +63,7 @@ function AtrcDynamicSelect(props) {
   if (showOptionNone && !isAsync) {
     options = [{
       value: optionNoneValue,
-      label: (0, _i18n.__)('Select', 'atrc-prefix-atrc')
+      label: __('Select', 'atrc-prefix-atrc')
     }].concat(_toConsumableArray(options));
   }
   return /*#__PURE__*/React.createElement(AtrcSelect, _extends({
@@ -104,7 +99,7 @@ var ReactSelect = function ReactSelect(props) {
     _props$wrapProps2 = props.wrapProps,
     wrapProps = _props$wrapProps2 === void 0 ? {} : _props$wrapProps2,
     defaultProps = _objectWithoutProperties(props, _excluded2);
-  var MapValue = (0, _element.useMemo)(function () {
+  var MapValue = useMemo(function () {
     if (!value) {
       return value;
     }
@@ -115,7 +110,7 @@ var ReactSelect = function ReactSelect(props) {
       } else {
         valArray = value.slice(0);
       }
-      return (0, _lodash.reduce)(options,
+      return reduce(options,
       // eslint-disable-next-line no-unused-vars
       function (accumulator, currentValue, currentKey) {
         if (valArray.includes(currentValue.value)) {
@@ -182,18 +177,18 @@ var ReactSelect = function ReactSelect(props) {
       onChange(newVal);
     }
   };
-  return /*#__PURE__*/React.createElement(_wrap.default, _extends({}, wrapProps, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('select-multi'), wrapProps.className ? wrapProps.className : '')
-  }), label && /*#__PURE__*/React.createElement(_label.default, null, label), isAsync ? /*#__PURE__*/React.createElement(_async.default, _extends({
-    className: (0, _classnames.default)((0, _prefixVars.default)('select'), (0, _prefixVars.default)('select-multi-select'), className, variant ? (0, _prefixVars.default)('select') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, wrapProps, {
+    className: classnames(AtrcPrefix('select-multi'), wrapProps.className ? wrapProps.className : '')
+  }), label && /*#__PURE__*/React.createElement(AtrcLabel, null, label), isAsync ? /*#__PURE__*/React.createElement(AsyncSelect, _extends({
+    className: classnames(AtrcPrefix('select'), AtrcPrefix('select-multi-select'), className, variant ? AtrcPrefix('select') + '-' + variant : ''),
     cacheOptions: true,
     defaultOptions: true,
     styles: customStyles,
     isMulti: isMulti,
     loadOptions: loadOptions,
     onChange: doChange
-  }, defaultProps)) : /*#__PURE__*/React.createElement(_reactSelect.default, _extends({
-    className: (0, _classnames.default)((0, _prefixVars.default)('select'), (0, _prefixVars.default)('select-multi-select'), className, variant ? (0, _prefixVars.default)('select') + '-' + variant : ''),
+  }, defaultProps)) : /*#__PURE__*/React.createElement(Select, _extends({
+    className: classnames(AtrcPrefix('select'), AtrcPrefix('select-multi-select'), className, variant ? AtrcPrefix('select') + '-' + variant : ''),
     styles: customStyles,
     isMulti: isMulti,
     options: options,
@@ -221,8 +216,8 @@ var RenderComponent = function RenderComponent(props) {
   if (isMulti || isAsync) {
     return /*#__PURE__*/React.createElement(ReactSelect, props);
   }
-  return /*#__PURE__*/React.createElement(_components.SelectControl, _extends({
-    className: (0, _classnames.default)((0, _prefixVars.default)('select'), className, variant ? (0, _prefixVars.default)('select') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(SelectControl, _extends({
+    className: classnames(AtrcPrefix('select'), className, variant ? AtrcPrefix('select') + '-' + variant : ''),
     onChange: onChange,
     options: options,
     value: value
@@ -242,13 +237,13 @@ var AtrcSelect = function AtrcSelect(props) {
     onChange = props.onChange,
     options = props.options,
     children = props.children;
-  if (!(options && (0, _lodash.isArray)(options) && options.length) && !children) {
+  if (!(options && isArray(options) && options.length) && !children) {
     // return null;
   }
   if (allowReset && !isMulti) {
-    return /*#__PURE__*/React.createElement(_resetButtonIcon.AtrcResetWrap, _extends({}, wrapProps, {
-      className: (0, _classnames.default)((0, _prefixVars.default)('select-rst'), wrapProps.className ? wrapProps.className : '')
-    }), /*#__PURE__*/React.createElement(RenderComponent, props), /*#__PURE__*/React.createElement(_resetButtonIcon.default, {
+    return /*#__PURE__*/React.createElement(AtrcResetWrap, _extends({}, wrapProps, {
+      className: classnames(AtrcPrefix('select-rst'), wrapProps.className ? wrapProps.className : '')
+    }), /*#__PURE__*/React.createElement(RenderComponent, props), /*#__PURE__*/React.createElement(AtrcResetButtonIcon, {
       value: value,
       defaultValue: defaultValue,
       onClick: function onClick() {
@@ -258,5 +253,5 @@ var AtrcSelect = function AtrcSelect(props) {
   }
   return /*#__PURE__*/React.createElement(RenderComponent, props);
 };
-var _default = exports.default = AtrcSelect;
+export default AtrcSelect;
 //# sourceMappingURL=index.js.map

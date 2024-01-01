@@ -12,7 +12,8 @@ const AtrcControlBoxFourDeviceCss = ({ value, property }) => {
 	const boxFours = ['t', 'r', 'b', 'l'];
 
 	if (!isEmpty(value)) {
-		AtrcAvailableDevices.forEach((deviceProps) => {
+		const avDevices = AtrcAvailableDevices();
+		avDevices.forEach((deviceProps) => {
 			if (deviceProps.on) {
 				const device = deviceProps.name;
 				let deviceKey;

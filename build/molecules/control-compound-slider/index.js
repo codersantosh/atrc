@@ -1,26 +1,19 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _wrap = _interopRequireDefault(require("../../atoms/wrap"));
-var _label = _interopRequireDefault(require("../../atoms/label"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-var _colSlider = _interopRequireDefault(require("./col-slider"));
-var _colInputs = _interopRequireDefault(require("./col-inputs"));
-var _panelRow = _interopRequireDefault(require("../panel-row"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /* WordPress */
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
 
 /*Library*/
+import classnames from 'classnames';
 
 /* Inbuilt */
+import AtrcWrap from '../../atoms/wrap';
+import AtrcLabel from '../../atoms/label';
+import AtrcPrefix from '../../prefix-vars';
 
 /* Internal */
+import ColSlider from './col-slider';
+import ColInputs from './col-inputs';
+import AtrcPanelRow from '../panel-row';
 
 /* Local */
 function createNewArray(arr, total) {
@@ -41,26 +34,26 @@ var AtrcControlCompoundSlider = function AtrcControlCompoundSlider(props) {
   var values = props.values,
     onChange = props.onChange,
     _props$label = props.label,
-    label = _props$label === void 0 ? (0, _i18n.__)('Custom widths', 'atrc-prefix-atrc') : _props$label,
+    label = _props$label === void 0 ? __('Custom widths', 'atrc-prefix-atrc') : _props$label,
     className = props.className,
     variant = props.variant,
     _props$total = props.total,
     total = _props$total === void 0 ? 100 : _props$total;
-  var InputsWidth = (0, _element.useMemo)(function () {
+  var InputsWidth = useMemo(function () {
     if (values && values.length) {
       return createNewArray(values, total);
     }
   }, [values, total]);
-  return /*#__PURE__*/React.createElement(_panelRow.default, {
-    className: (0, _classnames.default)('at-m')
-  }, /*#__PURE__*/React.createElement(_wrap.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-compound-slider'), className, variant ? (0, _prefixVars.default)('ctrl-compound-slider') + '-' + variant : '')
-  }, label ? /*#__PURE__*/React.createElement(_label.default, null, label) : null, /*#__PURE__*/React.createElement(_colSlider.default, {
+  return /*#__PURE__*/React.createElement(AtrcPanelRow, {
+    className: classnames('at-m')
+  }, /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames(AtrcPrefix('ctrl-compound-slider'), className, variant ? AtrcPrefix('ctrl-compound-slider') + '-' + variant : '')
+  }, label ? /*#__PURE__*/React.createElement(AtrcLabel, null, label) : null, /*#__PURE__*/React.createElement(ColSlider, {
     values: values,
     onChange: onChange
-  }), /*#__PURE__*/React.createElement(_colInputs.default, {
+  }), /*#__PURE__*/React.createElement(ColInputs, {
     values: InputsWidth
   })));
 };
-var _default = exports.default = AtrcControlCompoundSlider;
+export default AtrcControlCompoundSlider;
 //# sourceMappingURL=index.js.map

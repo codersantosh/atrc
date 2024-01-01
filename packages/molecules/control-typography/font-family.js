@@ -38,7 +38,7 @@ const FontFamily = ({ value, onChange, google, custom }) => {
 				onChange={(newVal) => onChange(newVal, 'fntFam')}>
 				<option value=''>{__('Default', 'atrc-prefix-atrc')}</option>
 				<optgroup label={__('System fonts', 'atrc-prefix-atrc')}>
-					{SystemFontTypeList.map((font) => (
+					{SystemFontTypeList().map((font) => (
 						<option
 							key={font.value}
 							value={font.value}>

@@ -1,9 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 /*Local*/
 var BgRpt = function BgRpt(value, innerOutput, property) {
   if (value.bgRpt) {
@@ -26,5 +20,5 @@ var BgRpt = function BgRpt(value, innerOutput, property) {
   }
   return innerOutput;
 };
-var _default = exports.default = BgRpt;
+export default BgRpt;
 //# sourceMappingURL=repeat.js.map

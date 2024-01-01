@@ -1,16 +1,9 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _lodash = require("lodash");
-var _css = require("./../../control-dropdown-color-gradient-tab/css");
-var _bgImage = _interopRequireDefault(require("./bg-image"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Library*/
+import { isEmpty } from 'lodash';
 
 /*Inbuilt*/
+import { AtrcControlDropdownColorGradientTabCss } from './../../control-dropdown-color-gradient-tab/css';
+import BgImage from './bg-image';
 
 /*Local*/
 var AtrcControlBackgroundCss = function AtrcControlBackgroundCss(value) {
@@ -43,8 +36,8 @@ var AtrcControlBackgroundCss = function AtrcControlBackgroundCss(value) {
     xxlHover: '',
     xxlActive: ''
   };
-  if (!(0, _lodash.isEmpty)(value)) {
-    innerOutput = (0, _css.AtrcControlDropdownColorGradientTabCss)({
+  if (!isEmpty(value)) {
+    innerOutput = AtrcControlDropdownColorGradientTabCss({
       value: {
         cl: value.bgCl,
         clHover: value.bgClHover,
@@ -57,9 +50,9 @@ var AtrcControlBackgroundCss = function AtrcControlBackgroundCss(value) {
       property: properties.bgCl,
       propGrd: properties.bgImg
     });
-    innerOutput = (0, _bgImage.default)(value, innerOutput, properties);
+    innerOutput = BgImage(value, innerOutput, properties);
   }
   return innerOutput;
 };
-var _default = exports.default = AtrcControlBackgroundCss;
+export default AtrcControlBackgroundCss;
 //# sourceMappingURL=index.js.map

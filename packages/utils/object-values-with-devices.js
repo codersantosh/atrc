@@ -33,7 +33,9 @@ export const AtrcGetDeviceValues = (value, key) => {
 	}
 
 	const newValue = {};
-	AtrcAvailableDevices.forEach((deviceProps) => {
+
+	const avDevices = AtrcAvailableDevices();
+	avDevices.forEach((deviceProps) => {
 		const device = deviceProps.name;
 		let deviceKey;
 		if (device === 'xs') {
@@ -54,8 +56,10 @@ export const AtrcHasDeviceValues = (value, key) => {
 		return false;
 	}
 
-	for (let i = 0; i < AtrcAvailableDevices.length; i++) {
-		const device = AtrcAvailableDevices[i].name;
+	const avDevices = AtrcAvailableDevices();
+
+	for (let i = 0; i < avDevices.length; i++) {
+		const device = avDevices[i].name;
 		let deviceKey;
 		if (device === 'xs') {
 			deviceKey = key;
@@ -76,7 +80,9 @@ export const AtrcResetDevices = (value, key) => {
 	}
 	const newValue = { ...value };
 
-	AtrcAvailableDevices.forEach((deviceProps) => {
+	const avDevices = AtrcAvailableDevices();
+
+	avDevices.forEach((deviceProps) => {
 		const device = deviceProps.name;
 		let deviceKey;
 		if (device === 'xs') {
@@ -98,7 +104,9 @@ export const AtrcDeviceCss = (value, key, cssProp) => {
 	}
 
 	const innerOutput = {};
-	AtrcAvailableDevices.forEach((deviceProps) => {
+	const avDevices = AtrcAvailableDevices();
+
+	avDevices.forEach((deviceProps) => {
 		if (deviceProps.on) {
 			const device = deviceProps.name;
 			let deviceKey;
@@ -120,15 +128,7 @@ export const AtrcDeviceCss = (value, key, cssProp) => {
 	return innerOutput;
 };
 
-export const AtrcDeviceAllowedKeys = [
-	'xs',
-	'sm',
-	'md',
-	'lg',
-	'xl',
-	'xxl',
-	'xxl',
-];
+export const AtrcDeviceAllowedKeys = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 export const AtrcDeviceTabCss = (value, key, cssProp) => {
 	if (!value) {

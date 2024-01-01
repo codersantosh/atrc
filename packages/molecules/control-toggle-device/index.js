@@ -55,7 +55,7 @@ const AtrcControlToggleDevice = (props) => {
 		if (isArray(allowedDevices)) {
 			return allowedDevices;
 		}
-		return AtrcAvailableDevices;
+		return AtrcAvailableDevices();
 	};
 
 	const setAttr = (newVal, type) => {

@@ -44,7 +44,7 @@ const RenderToggle = ({ value, onChange, allowedDevices }) => {
 		if (isArray(allowedDevices)) {
 			return allowedDevices;
 		}
-		return AtrcAvailableDevices;
+		return AtrcAvailableDevices();
 	};
 
 	const dev = Devices();

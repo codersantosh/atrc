@@ -18,7 +18,7 @@ const FontStyle = ({ value, onChange }) => {
 					className: 'at-flx-grw-1',
 				}}
 				value={value && value.fntSty}
-				options={FontStyleList}
+				options={FontStyleList()}
 				onChange={(newVal) => onChange(newVal, 'fntSty')}
 			/>
 		</AtrcPanelRow>

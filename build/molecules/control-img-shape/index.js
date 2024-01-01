@@ -1,18 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _element = require("@wordpress/element");
-var _i18n = require("@wordpress/i18n");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _controlShape = _interopRequireDefault(require("../control-shape"));
-var _options = _interopRequireDefault(require("./options"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Attributes Structure
 Type Object
 {
@@ -43,12 +28,20 @@ Type Object
 * */
 
 /*WordPress*/
+import { useMemo } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 /*Library*/
+import classnames from 'classnames';
+import { map } from 'lodash';
 
 /*Inbuilt*/
+import AtrcPanelTools from '../panel-tools';
+import AtrcControlShape from '../control-shape';
+import SvgShapeOptions from './options';
 
 /*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components */
 var AtrcControlImgShape = function AtrcControlImgShape(props) {
@@ -70,7 +63,7 @@ var AtrcControlImgShape = function AtrcControlImgShape(props) {
     imgId = _value$imgId === void 0 ? '' : _value$imgId,
     _value$imgUrl = value.imgUrl,
     imgUrl = _value$imgUrl === void 0 ? '' : _value$imgUrl;
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     return [{
       name: 'imgShp',
       title: label,
@@ -80,21 +73,21 @@ var AtrcControlImgShape = function AtrcControlImgShape(props) {
       }
     }];
   }, []);
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-img-shp'), className, variant ? (0, _prefixVars.default)('ctrl-img-shp') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-img-shp'), className, variant ? AtrcPrefix('ctrl-img-shp') + '-' + variant : ''),
     label: label,
     resetAll: function resetAll() {
       return onChange({});
     },
     tools: AllTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (item, iDx) {
+    return map(activeItems, function (item, iDx) {
       if ('imgShp' === item) {
-        return /*#__PURE__*/React.createElement(_controlShape.default, {
-          shapeOptionsLabel: (0, _i18n.__)('Mask shape options', 'atrc-prefix-atrc'),
+        return /*#__PURE__*/React.createElement(AtrcControlShape, {
+          shapeOptionsLabel: __('Mask shape options', 'atrc-prefix-atrc'),
           value: value,
           onChange: onChange,
-          definedOptions: _options.default,
+          definedOptions: SvgShapeOptions(),
           shapeType: "imgShp",
           allowColor: false,
           key: iDx
@@ -104,5 +97,5 @@ var AtrcControlImgShape = function AtrcControlImgShape(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlImgShape;
+export default AtrcControlImgShape;
 //# sourceMappingURL=index.js.map

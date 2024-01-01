@@ -14,7 +14,7 @@ const SixColumnsLayout = (props) => {
 		<AtrcControlSelectButton
 			label={__('Six columns layout', 'atrc-prefix-atrc')}
 			value={value}
-			options={SixColumnsOptions}
+			options={SixColumnsOptions()}
 			onChange={onChange}
 			allowReset={false}
 		/>

@@ -24,7 +24,7 @@ const AtrcControlFlexJustifyContentDevice = (props) => {
 				className,
 				variant ? AtrcPrefix('ctrl-flx-jfy-cont-device') + '-' + variant : ''
 			)}
-			options={JustifyContentOptions}
+			options={JustifyContentOptions()}
 			value={value}
 			onChange={onChange}
 			{...defaultProps}

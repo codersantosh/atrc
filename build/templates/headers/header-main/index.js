@@ -1,32 +1,29 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _icons = require("@wordpress/icons");
-var _bs = require("react-icons/bs");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _wrap = _interopRequireDefault(require("../../../atoms/wrap"));
-var _button = _interopRequireDefault(require("../../../atoms/button"));
-var _icon = _interopRequireDefault(require("../../../atoms/icon"));
-var _logo = _interopRequireDefault(require("../../../atoms/logo"));
-var _tooltip = _interopRequireDefault(require("./../../../molecules/tooltip"));
-var _nav = _interopRequireDefault(require("./../../../molecules/nav"));
-var _dropdownMenu = _interopRequireDefault(require("./../../../molecules/dropdown-menu"));
-var _header = _interopRequireDefault(require("../../../organisms/header"));
-var _floatingSidebar = _interopRequireDefault(require("../../../organisms/floating-sidebar"));
-var _prefixVars = _interopRequireDefault(require("../../../prefix-vars"));
 var _excluded = ["className", "variant", "logo", "primaryNav", "secondaryNav", "dropdownNav", "notification", "floatingSidebar", "button"];
-/*WordPress*/
-/*Library*/
-/*Atrc*/
-/*Prefix*/
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { moreHorizontalMobile } from '@wordpress/icons';
+
+/*Library*/
+import { BsBell, BsList, BsX } from 'react-icons/bs';
+import classnames from 'classnames';
+
+/*Atrc*/
+import AtrcWrap from '../../../atoms/wrap';
+import AtrcButton from '../../../atoms/button';
+import AtrcIcon from '../../../atoms/icon';
+import AtrcLogo from '../../../atoms/logo';
+import AtrcTooltip from './../../../molecules/tooltip';
+import AtrcNav from './../../../molecules/nav';
+import AtrcControlDropdownMenu from './../../../molecules/dropdown-menu';
+import AtrcHeader from '../../../organisms/header';
+import AtrcFloatingSidebar from '../../../organisms/floating-sidebar';
+
+/*Prefix*/
+import AtrcPrefix from '../../../prefix-vars';
+
 /*Local*/
 var AtrcCardHeaderMain = function AtrcCardHeaderMain(props) {
   var _props$className = props.className,
@@ -48,99 +45,99 @@ var AtrcCardHeaderMain = function AtrcCardHeaderMain(props) {
     _props$button = props.button,
     button = _props$button === void 0 ? null : _props$button,
     defaultProps = _objectWithoutProperties(props, _excluded);
-  return /*#__PURE__*/React.createElement(_header.default, _extends({
-    className: (0, _classnames.default)((0, _prefixVars.default)('main-header'), className, variant ? (0, _prefixVars.default)('ls-header-admin') + '-' + variant : '', 'at-flx', 'at-flx-col', 'at-pos', 'at-z-idx', 'at-p')
-  }, defaultProps), /*#__PURE__*/React.createElement(_wrap.default, {
+  return /*#__PURE__*/React.createElement(AtrcHeader, _extends({
+    className: classnames(AtrcPrefix('main-header'), className, variant ? AtrcPrefix('ls-header-admin') + '-' + variant : '', 'at-flx', 'at-flx-col', 'at-pos', 'at-z-idx', 'at-p')
+  }, defaultProps), /*#__PURE__*/React.createElement(AtrcWrap, {
     className: "at-flx at-jfy-cont-btw"
-  }, /*#__PURE__*/React.createElement(_wrap.default, {
+  }, /*#__PURE__*/React.createElement(AtrcWrap, {
     className: "at-flx at-jfy-cont-st at-al-itm-ctr"
-  }, logo ? /*#__PURE__*/React.createElement(_logo.default, logo) : null, primaryNav ? /*#__PURE__*/React.createElement(_nav.default, _extends({
-    className: (0, _classnames.default)('at-p'),
+  }, logo ? /*#__PURE__*/React.createElement(AtrcLogo, logo) : null, primaryNav ? /*#__PURE__*/React.createElement(AtrcNav, _extends({
+    className: classnames('at-p'),
     variant: "primary"
-  }, primaryNav)) : null), /*#__PURE__*/React.createElement(_wrap.default, {
+  }, primaryNav)) : null), /*#__PURE__*/React.createElement(AtrcWrap, {
     className: "at-flx at-jfy-cont-end at-al-itm-ctr"
-  }, secondaryNav ? /*#__PURE__*/React.createElement(_nav.default, _extends({
-    className: (0, _classnames.default)('at-p'),
+  }, secondaryNav ? /*#__PURE__*/React.createElement(AtrcNav, _extends({
+    className: classnames('at-p'),
     variant: "secondary"
-  }, secondaryNav)) : null, /*#__PURE__*/React.createElement(_wrap.default, {
-    className: (0, _classnames.default)('at-flx', 'at-al-itm-ctr', ' at-gap', (0, _prefixVars.default)('btn-grp-gap'))
-  }, button ? /*#__PURE__*/React.createElement(_button.default, _extends({
+  }, secondaryNav)) : null, /*#__PURE__*/React.createElement(AtrcWrap, {
+    className: classnames('at-flx', 'at-al-itm-ctr', ' at-gap', AtrcPrefix('btn-grp-gap'))
+  }, button ? /*#__PURE__*/React.createElement(AtrcButton, _extends({
     variant: "primary"
-  }, button)) : null, dropdownNav ? /*#__PURE__*/React.createElement(_dropdownMenu.default, {
-    icon: _icons.moreHorizontalMobile,
-    label: (0, _i18n.__)('More', 'atrc-prefix-atrc')
+  }, button)) : null, dropdownNav ? /*#__PURE__*/React.createElement(AtrcControlDropdownMenu, {
+    icon: moreHorizontalMobile,
+    label: __('More', 'atrc-prefix-atrc')
   }, function () {
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_nav.default, _extends({
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcNav, _extends({
       variant: "vertical"
     }, dropdownNav)));
-  }) : null, notification ? /*#__PURE__*/React.createElement(_floatingSidebar.default, {
+  }) : null, notification ? /*#__PURE__*/React.createElement(AtrcFloatingSidebar, {
     direction: "right",
     variant: "over",
     renderToggle: function renderToggle(_ref) {
       var isOpen = _ref.isOpen,
         onToggle = _ref.onToggle;
-      return /*#__PURE__*/React.createElement(_button.default, {
+      return /*#__PURE__*/React.createElement(AtrcButton, {
         variant: "devices",
         "aria-expanded": isOpen,
         onClick: onToggle
-      }, /*#__PURE__*/React.createElement(_tooltip.default, {
-        text: isOpen ? (0, _i18n.__)('Close notification', 'atrc-prefix-atrc') : (0, _i18n.__)('Open notification', 'atrc-prefix-atrc')
-      }, /*#__PURE__*/React.createElement(_icon.default, {
+      }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+        text: isOpen ? __('Close notification', 'atrc-prefix-atrc') : __('Open notification', 'atrc-prefix-atrc')
+      }, /*#__PURE__*/React.createElement(AtrcIcon, {
         type: "bootstrap",
-        icon: _bs.BsBell
+        icon: BsBell
       })));
     },
     renderContent: function renderContent(_ref2) {
       var isOpen = _ref2.isOpen,
         onToggle = _ref2.onToggle;
-      return /*#__PURE__*/React.createElement(_wrap.default, null, /*#__PURE__*/React.createElement(_button.default, {
+      return /*#__PURE__*/React.createElement(AtrcWrap, null, /*#__PURE__*/React.createElement(AtrcButton, {
         variant: "devices",
         "aria-expanded": isOpen,
         onClick: onToggle
-      }, /*#__PURE__*/React.createElement(_tooltip.default, {
-        text: (0, _i18n.__)('Close notification', 'atrc-prefix-atrc')
-      }, /*#__PURE__*/React.createElement(_icon.default, {
+      }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+        text: __('Close notification', 'atrc-prefix-atrc')
+      }, /*#__PURE__*/React.createElement(AtrcIcon, {
         type: "bootstrap",
-        icon: _bs.BsX
+        icon: BsX
       }))), notification);
     }
-  }) : null, floatingSidebar ? /*#__PURE__*/React.createElement(_floatingSidebar.default, {
+  }) : null, floatingSidebar ? /*#__PURE__*/React.createElement(AtrcFloatingSidebar, {
     direction: "right",
     variant: "over",
     renderToggle: function renderToggle(_ref3) {
       var isOpen = _ref3.isOpen,
         openPortal = _ref3.openPortal,
         onToggle = _ref3.onToggle;
-      return /*#__PURE__*/React.createElement(_button.default, {
+      return /*#__PURE__*/React.createElement(AtrcButton, {
         variant: "devices",
         "aria-expanded": isOpen,
         onClick: openPortal
-      }, /*#__PURE__*/React.createElement(_tooltip.default, {
-        text: isOpen ? (0, _i18n.__)('Close sidebar', 'atrc-prefix-atrc') : (0, _i18n.__)('Open sidebar', 'atrc-prefix-atrc')
-      }, /*#__PURE__*/React.createElement(_icon.default, {
+      }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+        text: isOpen ? __('Close sidebar', 'atrc-prefix-atrc') : __('Open sidebar', 'atrc-prefix-atrc')
+      }, /*#__PURE__*/React.createElement(AtrcIcon, {
         type: "bootstrap",
-        icon: _bs.BsList
+        icon: BsList
       })));
     },
     renderContent: function renderContent(_ref4) {
       var isOpen = _ref4.isOpen,
         onToggle = _ref4.onToggle,
         onClose = _ref4.onClose;
-      return /*#__PURE__*/React.createElement(_wrap.default, null, /*#__PURE__*/React.createElement(_wrap.default, {
-        className: (0, _classnames.default)('at-flx', 'at-jfy-cont-end')
-      }, /*#__PURE__*/React.createElement(_button.default, {
+      return /*#__PURE__*/React.createElement(AtrcWrap, null, /*#__PURE__*/React.createElement(AtrcWrap, {
+        className: classnames('at-flx', 'at-jfy-cont-end')
+      }, /*#__PURE__*/React.createElement(AtrcButton, {
         variant: "close",
         "aria-expanded": isOpen,
         onClick: onClose,
-        className: (0, _classnames.default)('at-p', 'at-m', 'at-w', 'at-h', 'at-flx', 'at-al-itm-ctr', 'at-jfy-cont-ctr')
-      }, /*#__PURE__*/React.createElement(_tooltip.default, {
-        text: (0, _i18n.__)('Close notification', 'atrc-prefix-atrc')
-      }, /*#__PURE__*/React.createElement(_icon.default, {
+        className: classnames('at-p', 'at-m', 'at-w', 'at-h', 'at-flx', 'at-al-itm-ctr', 'at-jfy-cont-ctr')
+      }, /*#__PURE__*/React.createElement(AtrcTooltip, {
+        text: __('Close notification', 'atrc-prefix-atrc')
+      }, /*#__PURE__*/React.createElement(AtrcIcon, {
         type: "bootstrap",
-        icon: _bs.BsX
+        icon: BsX
       })))), floatingSidebar());
     }
   }) : null))));
 };
-var _default = exports.default = AtrcCardHeaderMain;
+export default AtrcCardHeaderMain;
 //# sourceMappingURL=index.js.map

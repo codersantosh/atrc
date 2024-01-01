@@ -26,7 +26,7 @@ const AtrcControlTextAlignDevice = (props) => {
 				className,
 				variant ? AtrcPrefix('ctrl-txt-al-device') + '-' + variant : ''
 			)}
-			options={TextAlignOptions}
+			options={TextAlignOptions()}
 			value={value}
 			onChange={onChange}
 			{...defaultProps}

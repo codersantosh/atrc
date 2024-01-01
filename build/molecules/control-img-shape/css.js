@@ -1,17 +1,9 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AtrcSvgToBase64 = AtrcSvgToBase64;
-exports.default = void 0;
-var _lodash = require("lodash");
-var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
-var _options = _interopRequireDefault(require("./options"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Library*/
+import { isEmpty } from 'lodash';
 
 /* Inbuilt */
+import AtrcAvailableDevices from '../../utils/available-devices';
+import SvgShapeOptions from './options';
 
 /*Local*/
 var SelectedShape = function SelectedShape(value, options) {
@@ -23,7 +15,7 @@ var SelectedShape = function SelectedShape(value, options) {
   }
   return null;
 };
-function AtrcSvgToBase64(svgString) {
+export function AtrcSvgToBase64(svgString) {
   var base64Data = btoa(svgString);
   var base64Url = "data:image/svg+xml;base64,".concat(base64Data);
   return base64Url;
@@ -37,7 +29,7 @@ var AtrcControlImgShapeCss = function AtrcControlImgShapeCss(value, properties) 
     xl: '',
     xxl: ''
   };
-  if (!(0, _lodash.isEmpty)(value)) {
+  if (!isEmpty(value)) {
     if ('img' === value.type) {
       if (value.imgUrl) {
         innerOutput.xs += "".concat(properties.mskImg, " : url(\"").concat(value.imgUrl, "\");");
@@ -48,7 +40,7 @@ var AtrcControlImgShapeCss = function AtrcControlImgShapeCss(value, properties) 
         innerOutput.xs += "".concat(properties.mskImg, " : url('").concat(base64Url, "');");
       }
     } else if (value.svgDefd) {
-      var selectedShape = SelectedShape(value.svgDefd, _options.default);
+      var selectedShape = SelectedShape(value.svgDefd, SvgShapeOptions());
       if (selectedShape && selectedShape.svg) {
         var svg = selectedShape.svg;
         var _base64Url = AtrcSvgToBase64(svg);
@@ -65,7 +57,8 @@ var AtrcControlImgShapeCss = function AtrcControlImgShapeCss(value, properties) 
       }
     }
     if ('cust' === value.sz) {
-      _availableDevices.default.forEach(function (deviceProps) {
+      var avDevices = AtrcAvailableDevices();
+      avDevices.forEach(function (deviceProps) {
         if (deviceProps.on) {
           var device = deviceProps.name;
           var x = 0;
@@ -93,5 +86,5 @@ var AtrcControlImgShapeCss = function AtrcControlImgShapeCss(value, properties) 
   }
   return innerOutput;
 };
-var _default = exports.default = AtrcControlImgShapeCss;
+export default AtrcControlImgShapeCss;
 //# sourceMappingURL=css.js.map

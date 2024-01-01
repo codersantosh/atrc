@@ -1,19 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _i18n = require("@wordpress/i18n");
-var _element = require("@wordpress/element");
-var _classnames = _interopRequireDefault(require("classnames"));
-var _lodash = require("lodash");
-var _select = _interopRequireDefault(require("../../atoms/select"));
-var _panelTools = _interopRequireDefault(require("../panel-tools"));
-var _dropdownDevice = _interopRequireDefault(require("../dropdown-device"));
-var _availableDevices = _interopRequireDefault(require("../../utils/available-devices"));
-var _prefixVars = _interopRequireDefault(require("../../prefix-vars"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /*Attributes Structure
 Type Object
 {
@@ -33,14 +17,23 @@ Type Object
 * */
 
 /*WordPress*/
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
 
 /*Library*/
+import classnames from 'classnames';
+import { isEmpty, map } from 'lodash';
 
 /*Inbuilt*/
+import AtrcSelect from '../../atoms/select';
+import AtrcPanelTools from '../panel-tools';
+import AtrcDropdownDevice from '../dropdown-device';
 
 /*Inbuilt Utils*/
+import AtrcAvailableDevices from '../../utils/available-devices';
 
 /*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components*/
 function mappingDeviceTabValues(value, device, tab) {
@@ -80,7 +73,7 @@ var RenderTab = function RenderTab(_ref) {
     options = _ref.options,
     tab = _ref.tab,
     _onChange = _ref.onChange;
-  return /*#__PURE__*/React.createElement(_select.default, {
+  return /*#__PURE__*/React.createElement(AtrcSelect, {
     value: mappingDeviceTabValues(value, device, tab),
     onChange: function onChange(newVal) {
       return _onChange(newVal, device, tab);
@@ -100,9 +93,9 @@ var RenderTabPanel = function RenderTabPanel(_ref2) {
     onChange = _ref2.onChange,
     _ref2$tab = _ref2.tab,
     tab = _ref2$tab === void 0 ? 'normal' : _ref2$tab;
-  return /*#__PURE__*/React.createElement(_dropdownDevice.default, {
+  return /*#__PURE__*/React.createElement(AtrcDropdownDevice, {
     label: label,
-    tabs: _availableDevices.default
+    tabs: AtrcAvailableDevices()
   }, function (rTab) {
     return /*#__PURE__*/React.createElement(RenderTab, {
       device: rTab.name,
@@ -138,7 +131,7 @@ var AtrcControlSelectDeviceTab = function AtrcControlSelectDeviceTab(props) {
     onChange(mappingDeviceTabNewValues(value, newVal, device, tab));
   };
   var hasDeviceTabValue = function hasDeviceTabValue(tab) {
-    if (!value || (0, _lodash.isEmpty)(value)) {
+    if (!value || isEmpty(value)) {
       return false;
     }
     if ('normal' === tab) {
@@ -168,12 +161,12 @@ var AtrcControlSelectDeviceTab = function AtrcControlSelectDeviceTab(props) {
   var resetAll = function resetAll() {
     onChange({});
   };
-  var AllTabs = (0, _element.useMemo)(function () {
+  var AllTabs = useMemo(function () {
     var tabs = [];
     if (allowedTabs.includes('normal'.toLowerCase())) {
       tabs.push({
         name: 'normal',
-        title: (0, _i18n.__)('Normal', 'atrc-prefix-atrc'),
+        title: __('Normal', 'atrc-prefix-atrc'),
         hasValue: hasDeviceTabValue('normal'),
         onDeselect: function onDeselect() {
           return resetTab('normal');
@@ -183,7 +176,7 @@ var AtrcControlSelectDeviceTab = function AtrcControlSelectDeviceTab(props) {
     if (allowedTabs.includes('hover'.toLowerCase())) {
       tabs.push({
         name: 'Hover',
-        title: (0, _i18n.__)('Hover', 'atrc-prefix-atrc'),
+        title: __('Hover', 'atrc-prefix-atrc'),
         hasValue: hasDeviceTabValue('Hover'),
         onDeselect: function onDeselect() {
           return resetTab('Hover');
@@ -193,7 +186,7 @@ var AtrcControlSelectDeviceTab = function AtrcControlSelectDeviceTab(props) {
     if (allowedTabs.includes('parenthover'.toLowerCase())) {
       tabs.push({
         name: 'ParentHover',
-        title: (0, _i18n.__)('Parent hover', 'atrc-prefix-atrc'),
+        title: __('Parent hover', 'atrc-prefix-atrc'),
         hasValue: hasDeviceTabValue('ParentHover'),
         onDeselect: function onDeselect() {
           return resetTab('ParentHover');
@@ -202,14 +195,14 @@ var AtrcControlSelectDeviceTab = function AtrcControlSelectDeviceTab(props) {
     }
     return tabs;
   }, []);
-  return /*#__PURE__*/React.createElement(_panelTools.default, {
-    className: (0, _classnames.default)((0, _prefixVars.default)('ctrl-select-device-tab'), className, variant ? (0, _prefixVars.default)('ctrl-select-device-tab') + '-' + variant : ''),
+  return /*#__PURE__*/React.createElement(AtrcPanelTools, {
+    className: classnames(AtrcPrefix('ctrl-select-device-tab'), className, variant ? AtrcPrefix('ctrl-select-device-tab') + '-' + variant : ''),
     label: label,
     resetAll: resetAll,
     allowTabs: true,
     tools: AllTabs
   }, function (activeItems) {
-    return (0, _lodash.map)(activeItems, function (tab, iDx) {
+    return map(activeItems, function (tab, iDx) {
       return /*#__PURE__*/React.createElement(RenderTabPanel, {
         isMulti: isMulti,
         value: value,
@@ -224,5 +217,5 @@ var AtrcControlSelectDeviceTab = function AtrcControlSelectDeviceTab(props) {
     });
   });
 };
-var _default = exports.default = AtrcControlSelectDeviceTab;
+export default AtrcControlSelectDeviceTab;
 //# sourceMappingURL=index.js.map

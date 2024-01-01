@@ -1,5 +1,4 @@
 /*WordPress*/
-import { withInstanceId } from '@wordpress/compose';
 
 /*Library*/
 import classnames from 'classnames';
@@ -13,7 +12,6 @@ import ColumnLayout from './columns-layout';
 const AtrcControlColumnsAdvanced = (props) => {
 	const {
 		label,
-		instanceId,
 		value,
 		columns,
 		className = '',
@@ -28,11 +26,8 @@ const AtrcControlColumnsAdvanced = (props) => {
 		return null;
 	}
 
-	const id = `control-advanced-columns-${instanceId}`;
-
 	return (
 		<ColumnLayout
-			id={id}
 			className={classnames(
 				AtrcPrefix('ctrl-select-device'),
 				className,
@@ -47,4 +42,4 @@ const AtrcControlColumnsAdvanced = (props) => {
 	);
 };
 
-export default withInstanceId(AtrcControlColumnsAdvanced);
+export default AtrcControlColumnsAdvanced;
