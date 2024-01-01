@@ -1,6 +1,6 @@
 {
 	"name": "atrc",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"description": "Atomic React Components",
 	"main": "build/index.js",
 	"types": "lib/types",
