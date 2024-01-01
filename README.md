@@ -31,7 +31,7 @@ Once you have these prerequisites in place, you are ready to seamlessly integrat
 
 ## Table of contents
 
-- [Atrc (atrc) - Atomic React Components](#atrc%20-%20atomic-react-components)
+- [Atrc (atrc) - Atomic React Components](#atrc-atrc---atomic-react-components)
   - [Prerequisites](#prerequisites)
   - [Table of contents](#table-of-contents)
   - [Getting Started](#getting-started)
