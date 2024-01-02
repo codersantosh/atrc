@@ -424,3 +424,5 @@ export { default as AtrcUseDelayFunction } from './utils/use-delay-function';
 export { default as AtrcUniqueID } from './utils/unique-id';
 
 export { default as AtrcSvgComponentToString } from './utils/svg-component-to-string';
+
+export { default as AtrcUseInstanceId } from './utils/use-instance-id';

@@ -1,3 +1,6 @@
+/*React*/
+import { forwardRef } from 'react';
+
 /*WordPress*/
 import { _n, _x, sprintf } from '@wordpress/i18n';
 
@@ -18,7 +21,7 @@ import AtrcWrap from '../../atoms/wrap';
 /* Local */
 const AVERAGE_READING_RATE = 189;
 
-const AtrcPostTimeToRead = (props) => {
+const AtrcPostTimeToRead = (props, ref) => {
 	const { postType, postId, htmlTag, ...defaultProps } = props;
 
 	const [contentStructure] = useEntityProp(
@@ -68,9 +71,10 @@ const AtrcPostTimeToRead = (props) => {
 	return (
 		<AtrcWrap
 			{...defaultProps}
+			ref={ref}
 			tag={htmlTag}>
 			{minutesToReadString}
 		</AtrcWrap>
 	);
 };
-export default AtrcPostTimeToRead;
+export default forwardRef(AtrcPostTimeToRead);

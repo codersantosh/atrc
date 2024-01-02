@@ -8,16 +8,19 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-/*WordPress*/
+/*React*/
+import { forwardRef } from 'react';
+
+// import { forwardRef } from '@wordpress/element'; /* this cause tree shaking issue */
 
 /*Library*/
 import classnames from 'classnames';
 
 /*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
 import AtrcWrap from '../wrap';
 import AtrcIsGradientColor from '../../utils/is-gradient-color';
 import { AtrcIsLinearGradientColor } from '../../utils/is-gradient-color';
-import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components*/
 export var AtrcProgressSvgGradientColor = function AtrcProgressSvgGradientColor(_ref) {
@@ -59,15 +62,15 @@ export var AtrcProgressSvgGradientColor = function AtrcProgressSvgGradientColor(
   return /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("linearGradient", {
     id: 'at-lg-' + uniqueId,
     gradientTransform: "".concat(gradientObject.deg)
-  }, gradientObject.colors.map(function (item, iDx) {
+  }, gradientObject.colors.map(function (item, index) {
     return /*#__PURE__*/React.createElement("stop", {
-      key: iDx,
+      key: index,
       offset: item.offset,
       stopColor: item.color
     });
   })));
 };
-var AtrcProgress = function AtrcProgress(props) {
+var AtrcProgress = function AtrcProgress(props, ref) {
   var _props$className = props.className,
     className = _props$className === void 0 ? '' : _props$className,
     _props$type = props.type,
@@ -85,7 +88,8 @@ var AtrcProgress = function AtrcProgress(props) {
     defaultProps = _objectWithoutProperties(props, _excluded);
   if ('cir' === type) {
     return /*#__PURE__*/React.createElement(AtrcWrap, _extends({
-      className: classnames('at-prog', 'at-prog-cir', className, variant ? AtrcPrefix('prog') + '-' + variant : '')
+      className: classnames('at-prog', 'at-prog-cir', className, variant ? AtrcPrefix('prog') + '-' + variant : ''),
+      ref: ref
     }, defaultProps), /*#__PURE__*/React.createElement("svg", {
       className: "at-svg at-w at-h",
       xmlns: "http://www.w3.org/2000/svg",
@@ -108,10 +112,11 @@ var AtrcProgress = function AtrcProgress(props) {
     }, children) : null);
   }
   return /*#__PURE__*/React.createElement(AtrcWrap, _extends({
-    className: classnames('at-prog', 'at-prog-hor', className, variant ? AtrcPrefix('prog') + '-' + variant : '')
+    className: classnames('at-prog', 'at-prog-hor', className, variant ? AtrcPrefix('prog') + '-' + variant : ''),
+    ref: ref
   }, defaultProps), /*#__PURE__*/React.createElement(AtrcWrap, {
     className: classnames('at-prog-bar at-ovf at-h at-w at-trs', AtrcIsGradientColor(barColor) ? 'at-bg-img' : 'at-bg-cl')
   }, children));
 };
-export default AtrcProgress;
+export default /*#__PURE__*/forwardRef(AtrcProgress);
 //# sourceMappingURL=index.js.map

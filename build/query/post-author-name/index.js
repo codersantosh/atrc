@@ -2,6 +2,8 @@ var _excluded = ["postType", "postId", "htmlTag", "linkOptions"];
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*React*/
+import { forwardRef } from 'react';
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
@@ -12,7 +14,7 @@ import AtrcWrap from '../../atoms/wrap';
 import AtrcLink from '../../atoms/link';
 
 /* Local */
-var AtrcPostAuthorName = function AtrcPostAuthorName(props) {
+var AtrcPostAuthorName = function AtrcPostAuthorName(props, ref) {
   var postType = props.postType,
     postId = props.postId,
     htmlTag = props.htmlTag,
@@ -38,8 +40,9 @@ var AtrcPostAuthorName = function AtrcPostAuthorName(props) {
     }
   }, displayName) : displayName;
   return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+    ref: ref,
     tag: htmlTag
   }), displayAuthor);
 };
-export default AtrcPostAuthorName;
+export default /*#__PURE__*/forwardRef(AtrcPostAuthorName);
 //# sourceMappingURL=index.js.map

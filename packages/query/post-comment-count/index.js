@@ -1,3 +1,5 @@
+/*React*/
+import { forwardRef } from 'react';
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -9,11 +11,10 @@ import { addQueryArgs } from '@wordpress/url';
 
 /* Inbuilt */
 import AtrcWrap from '../../atoms/wrap';
-
 import AtrcNotice from './../../molecules/notice';
 
 /* Local */
-const AtrcPostCommentCount = (props) => {
+const AtrcPostCommentCount = (props, ref) => {
 	const { postId, htmlTag, ...defaultProps } = props;
 
 	const [commentsCount, setCommentsCount] = useState();
@@ -43,10 +44,11 @@ const AtrcPostCommentCount = (props) => {
 	return (
 		<AtrcWrap
 			{...defaultProps}
+			ref={ref}
 			tag={htmlTag}>
 			{commentsCount}
 		</AtrcWrap>
 	);
 };
 
-export default AtrcPostCommentCount;
+export default forwardRef(AtrcPostCommentCount);

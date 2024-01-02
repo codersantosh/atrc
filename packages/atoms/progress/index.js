@@ -1,15 +1,18 @@
-/*WordPress*/
+/*React*/
+import { forwardRef } from 'react';
+
+// import { forwardRef } from '@wordpress/element'; /* this cause tree shaking issue */
 
 /*Library*/
 import classnames from 'classnames';
 
 /*Inbuilt*/
+import AtrcPrefix from '../../prefix-vars';
+
 import AtrcWrap from '../wrap';
 
 import AtrcIsGradientColor from '../../utils/is-gradient-color';
 import { AtrcIsLinearGradientColor } from '../../utils/is-gradient-color';
-
-import AtrcPrefix from '../../prefix-vars';
 
 /*Local Components*/
 export const AtrcProgressSvgGradientColor = ({ gradient, uniqueId }) => {
@@ -50,9 +53,9 @@ export const AtrcProgressSvgGradientColor = ({ gradient, uniqueId }) => {
 			<linearGradient
 				id={'at-lg-' + uniqueId}
 				gradientTransform={`${gradientObject.deg}`}>
-				{gradientObject.colors.map((item, iDx) => (
+				{gradientObject.colors.map((item, index) => (
 					<stop
-						key={iDx}
+						key={index}
 						offset={item.offset}
 						stopColor={item.color}
 					/>
@@ -62,7 +65,7 @@ export const AtrcProgressSvgGradientColor = ({ gradient, uniqueId }) => {
 	);
 };
 
-const AtrcProgress = (props) => {
+const AtrcProgress = (props, ref) => {
 	const {
 		className = '',
 		type = '',
@@ -83,6 +86,7 @@ const AtrcProgress = (props) => {
 					className,
 					variant ? AtrcPrefix('prog') + '-' + variant : ''
 				)}
+				ref={ref}
 				{...defaultProps}>
 				<svg
 					className='at-svg at-w at-h'
@@ -127,6 +131,7 @@ const AtrcProgress = (props) => {
 				className,
 				variant ? AtrcPrefix('prog') + '-' + variant : ''
 			)}
+			ref={ref}
 			{...defaultProps}>
 			<AtrcWrap
 				className={classnames(
@@ -138,5 +143,4 @@ const AtrcProgress = (props) => {
 		</AtrcWrap>
 	);
 };
-
-export default AtrcProgress;
+export default forwardRef(AtrcProgress);

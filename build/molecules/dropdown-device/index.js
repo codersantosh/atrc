@@ -21,10 +21,10 @@ import AtrcIcon from '../../atoms/icon';
 import AtrcWord from '../../atoms/word';
 import AtrcDropdown from '../dropdown';
 import AtrcTooltip from '../tooltip';
+import AtrcUseInstanceId from '../../utils/use-instance-id';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
-import AtrcUniqueID from '../../utils/unique-id';
 
 /*Local Components*/
 export function AtrcDropdownDevice(_ref) {
@@ -43,7 +43,7 @@ export function AtrcDropdownDevice(_ref) {
     selectedTab = _useState2[0],
     setSelectedTab = _useState2[1];
   var rowref = useRef();
-  var instanceId = AtrcUniqueID() + random(0, 9);
+  var instanceId = AtrcUseInstanceId(AtrcDropdownDevice, 'atrc-dropdown-device');
   var handleTabSelection = function handleTabSelection(tabName) {
     var nSelectedTab = find(tabs, {
       name: tabName

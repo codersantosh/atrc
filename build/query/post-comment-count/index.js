@@ -8,6 +8,8 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*React*/
+import { forwardRef } from 'react';
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 import { useEffect, useState } from '@wordpress/element';
@@ -19,7 +21,7 @@ import AtrcWrap from '../../atoms/wrap';
 import AtrcNotice from './../../molecules/notice';
 
 /* Local */
-var AtrcPostCommentCount = function AtrcPostCommentCount(props) {
+var AtrcPostCommentCount = function AtrcPostCommentCount(props, ref) {
   var postId = props.postId,
     htmlTag = props.htmlTag,
     defaultProps = _objectWithoutProperties(props, _excluded);
@@ -49,8 +51,9 @@ var AtrcPostCommentCount = function AtrcPostCommentCount(props) {
     return /*#__PURE__*/React.createElement(AtrcNotice, null, __('Post not found.', 'atrc-prefix-atrc'));
   }
   return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+    ref: ref,
     tag: htmlTag
   }), commentsCount);
 };
-export default AtrcPostCommentCount;
+export default /*#__PURE__*/forwardRef(AtrcPostCommentCount);
 //# sourceMappingURL=index.js.map

@@ -13,7 +13,6 @@ import AtrcWrap from '../../atoms/wrap';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
-import AtrcUniqueID from '../../utils/unique-id';
 
 /*Local components and functions*/
 function useObservableState(initialState, onStateChange) {
@@ -136,7 +135,10 @@ function Dropdown(props) {
 }
 
 const AtrcDropdownHover = (props) => {
-	const instanceId = AtrcUniqueID() + random(0, 9);
+	const instanceId = AtrcUseInstanceId(
+		AtrcDropdownHover,
+		'atrc-ctrl-dropdown-hover'
+	);
 
 	let timer;
 	const {

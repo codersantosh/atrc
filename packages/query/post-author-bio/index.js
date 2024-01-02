@@ -1,3 +1,6 @@
+/*React*/
+import { forwardRef } from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -9,7 +12,7 @@ import { store as coreStore } from '@wordpress/core-data';
 import AtrcWrap from '../../atoms/wrap';
 
 /* Local */
-const AtrcPostAuthorBio = (props) => {
+const AtrcPostAuthorBio = (props, ref) => {
 	const { postType, postId, htmlTag, ...defaultProps } = props;
 
 	const { authorDetails } = useSelect(
@@ -34,10 +37,11 @@ const AtrcPostAuthorBio = (props) => {
 	return (
 		<AtrcWrap
 			{...defaultProps}
+			ref={ref}
 			tag={htmlTag}
 			dangerouslySetInnerHTML={{ __html: displayAuthorBiography }}
 		/>
 	);
 };
 
-export default AtrcPostAuthorBio;
+export default forwardRef(AtrcPostAuthorBio);

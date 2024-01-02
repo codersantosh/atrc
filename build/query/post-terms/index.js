@@ -1,6 +1,9 @@
 var _excluded = ["postType", "postId", "htmlTag", "taxonomy", "separator"];
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*React*/
+import { forwardRef } from 'react';
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 import { decodeEntities } from '@wordpress/html-entities';
@@ -12,7 +15,7 @@ import AtrcSpinner from '../../atoms/spinner';
 
 /* Local */
 import AtrcUsePostTerms from './use-post-terms';
-var AtrcPostTerms = function AtrcPostTerms(props) {
+var AtrcPostTerms = function AtrcPostTerms(props, ref) {
   var _selectedTerm;
   var postType = props.postType,
     postId = props.postId,
@@ -30,7 +33,9 @@ var AtrcPostTerms = function AtrcPostTerms(props) {
     isLoading = _AtrcUsePostTerms.isLoading;
   var hasPost = postType;
   var TermTag = htmlTag;
-  return /*#__PURE__*/React.createElement(AtrcWrap, defaultProps, isLoading && hasPost && /*#__PURE__*/React.createElement(AtrcSpinner, null), hasPost && !isLoading && hasPostTerms && postTerms.map(function (postTerm) {
+  return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+    ref: ref
+  }), isLoading && hasPost && /*#__PURE__*/React.createElement(AtrcSpinner, null), hasPost && !isLoading && hasPostTerms && postTerms.map(function (postTerm) {
     return /*#__PURE__*/React.createElement(TermTag, {
       key: postTerm.id,
       className: "at-txt"
@@ -49,5 +54,5 @@ var AtrcPostTerms = function AtrcPostTerms(props) {
     }), curr);
   }), hasPost && !isLoading && !hasPostTerms && (((_selectedTerm = selectedTerm) === null || _selectedTerm === void 0 || (_selectedTerm = _selectedTerm.labels) === null || _selectedTerm === void 0 ? void 0 : _selectedTerm.no_terms) || __('Term items not found.', 'atrc-prefix-atrc')));
 };
-export default AtrcPostTerms;
+export default /*#__PURE__*/forwardRef(AtrcPostTerms);
 //# sourceMappingURL=index.js.map

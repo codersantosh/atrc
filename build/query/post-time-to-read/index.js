@@ -8,6 +8,9 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*React*/
+import { forwardRef } from 'react';
+
 /*WordPress*/
 import { _n, _x, sprintf } from '@wordpress/i18n';
 import { useEntityBlockEditor, useEntityProp } from '@wordpress/core-data';
@@ -22,7 +25,7 @@ import AtrcWrap from '../../atoms/wrap';
 
 /* Local */
 var AVERAGE_READING_RATE = 189;
-var AtrcPostTimeToRead = function AtrcPostTimeToRead(props) {
+var AtrcPostTimeToRead = function AtrcPostTimeToRead(props, ref) {
   var postType = props.postType,
     postId = props.postId,
     htmlTag = props.htmlTag,
@@ -62,8 +65,9 @@ var AtrcPostTimeToRead = function AtrcPostTimeToRead(props) {
     _n('%d minute', '%d minutes', minutesToRead), minutesToRead);
   }, [contentStructure, blocks]);
   return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+    ref: ref,
     tag: htmlTag
   }), minutesToReadString);
 };
-export default AtrcPostTimeToRead;
+export default /*#__PURE__*/forwardRef(AtrcPostTimeToRead);
 //# sourceMappingURL=index.js.map

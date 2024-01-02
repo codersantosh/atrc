@@ -1,5 +1,3 @@
-/*WordPress*/
-
 /*Library*/
 import classnames from 'classnames';
 import { isArray } from 'lodash';
@@ -10,6 +8,8 @@ import AtrcDropdownDevice from '../dropdown-device';
 import AtrcPrefix from '../../prefix-vars';
 
 import AtrcAvailableDevices from '../../utils/available-devices';
+
+import AtrcUseInstanceId from '../../utils/use-instance-id';
 
 /* Local */
 import ColumnLayout from './columns-layout';
@@ -25,6 +25,11 @@ const AtrcControlColumnsAdvanced = (props) => {
 		allowedDevices = true,
 		...defaultProps
 	} = props;
+
+	const instanceId = AtrcUseInstanceId(
+		AtrcControlColumnsAdvanced,
+		'atrc-dropdown-device'
+	);
 
 	/* Return null since no device */
 	if (!allowedDevices) {
@@ -46,6 +51,7 @@ const AtrcControlColumnsAdvanced = (props) => {
 
 	return (
 		<AtrcDropdownDevice
+			id={instanceId}
 			className={classnames(
 				AtrcPrefix('ctrl-col-adv-lyt'),
 				className,

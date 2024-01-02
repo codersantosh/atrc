@@ -17,9 +17,10 @@ import AtrcWord from '../../atoms/word';
 import AtrcDropdown from '../dropdown';
 import AtrcTooltip from '../tooltip';
 
+import AtrcUseInstanceId from '../../utils/use-instance-id';
+
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
-import AtrcUniqueID from '../../utils/unique-id';
 
 /*Local Components*/
 export function AtrcDropdownDevice({
@@ -35,7 +36,10 @@ export function AtrcDropdownDevice({
 
 	const rowref = useRef();
 
-	const instanceId = AtrcUniqueID() + random(0, 9);
+	const instanceId = AtrcUseInstanceId(
+		AtrcDropdownDevice,
+		'atrc-dropdown-device'
+	);
 
 	const handleTabSelection = (tabName) => {
 		const nSelectedTab = find(tabs, { name: tabName });

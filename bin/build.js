@@ -105,6 +105,7 @@ async function processFiles() {
 
 			if (processedFiles === totalFiles) {
 				console.log('Build process completed.');
+				process.exit(0);
 			}
 		} catch (error) {
 			console.error('Error processing file:', file, error);

@@ -1,3 +1,5 @@
+/*React*/
+import { forwardRef } from 'react';
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -8,7 +10,7 @@ import AtrcWrap from '../../atoms/wrap';
 import AtrcLink from '../../atoms/link';
 
 /* Local */
-const AtrcPostTitle = (props) => {
+const AtrcPostTitle = (props, ref) => {
 	const { postType, postId, htmlTag, linkOptions, ...defaultProps } = props;
 
 	// eslint-disable-next-line no-unused-vars
@@ -23,6 +25,7 @@ const AtrcPostTitle = (props) => {
 	let titleElement = (
 		<AtrcWrap
 			{...defaultProps}
+			ref={ref}
 			tag={htmlTag}>
 			{__('Title', 'atrc-prefix-atrc')}
 		</AtrcWrap>
@@ -33,6 +36,7 @@ const AtrcPostTitle = (props) => {
 			titleElement = (
 				<AtrcWrap
 					{...defaultProps}
+					ref={ref}
 					tag={htmlTag}>
 					<AtrcLink
 						prefix={false}
@@ -50,6 +54,7 @@ const AtrcPostTitle = (props) => {
 			titleElement = (
 				<AtrcWrap
 					{...defaultProps}
+					ref={ref}
 					tag={htmlTag}
 					dangerouslySetInnerHTML={{
 						__html: fullTitle?.rendered,
@@ -61,4 +66,4 @@ const AtrcPostTitle = (props) => {
 	return titleElement;
 };
 
-export default AtrcPostTitle;
+export default forwardRef(AtrcPostTitle);

@@ -8,10 +8,13 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*React*/
+import { forwardRef } from 'react';
+
 /*WordPress*/
 import { useEntityProp, store as coreStore } from '@wordpress/core-data';
-import { __, sprintf } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
+import { __, sprintf } from '@wordpress/i18n';
 
 /* Inbuilt */
 import AtrcWrap from '../../atoms/wrap';
@@ -22,7 +25,7 @@ function getMediaSourceUrlBySizeSlug(media, slug) {
   var _media$media_details;
   return (media === null || media === void 0 || (_media$media_details = media.media_details) === null || _media$media_details === void 0 || (_media$media_details = _media$media_details.sizes) === null || _media$media_details === void 0 || (_media$media_details = _media$media_details[slug]) === null || _media$media_details === void 0 ? void 0 : _media$media_details.source_url) || (media === null || media === void 0 ? void 0 : media.source_url);
 }
-var AtrcPostFeaturedImage = function AtrcPostFeaturedImage(props) {
+var AtrcPostFeaturedImage = function AtrcPostFeaturedImage(props, ref) {
   var postType = props.postType,
     postId = props.postId,
     htmlTag = props.htmlTag,
@@ -48,6 +51,7 @@ var AtrcPostFeaturedImage = function AtrcPostFeaturedImage(props) {
   }, [featuredImage]);
   var mediaUrl = getMediaSourceUrlBySizeSlug(media, size);
   return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+    ref: ref,
     tag: "figure"
   }), mediaUrl ? /*#__PURE__*/React.createElement(AtrcImg, {
     src: mediaUrl,
@@ -56,5 +60,5 @@ var AtrcPostFeaturedImage = function AtrcPostFeaturedImage(props) {
     __('Featured image: %s', 'atrc-prefix-atrc'), media.alt_text) : __('Featured image', 'atrc-prefix-atrc')
   }) : __('Not featured image found!', 'atrc-prefix-atrc'));
 };
-export default AtrcPostFeaturedImage;
+export default /*#__PURE__*/forwardRef(AtrcPostFeaturedImage);
 //# sourceMappingURL=index.js.map

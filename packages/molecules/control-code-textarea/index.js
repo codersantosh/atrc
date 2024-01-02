@@ -17,7 +17,7 @@ import {
 import { debounce } from '@wordpress/compose';
 
 /*Library*/
-import { map, random } from 'lodash';
+import { map } from 'lodash';
 
 import classnames from 'classnames';
 
@@ -29,16 +29,17 @@ import AtrcWrap from '../../atoms/wrap';
 import AtrcPanelTools from '../panel-tools';
 import AtrcNotice from '../notice';
 
+import AtrcUseInstanceId from '../../utils/use-instance-id';
+
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
-import AtrcUniqueID from './../../utils/unique-id';
 
 /*Local*/
 const CodeEditor = ({ editorValue, onChange, editorSettings }) => {
 	const [value, setValue] = useState(editorValue);
 	const [codeMirror, setCodeMirror] = useState(null);
 
-	const instanceId = AtrcUniqueID() + random(0, 9);
+	const instanceId = AtrcUseInstanceId(CodeEditor, 'control-code-textarea');
 
 	const debouncedOnChange = useRef(
 		debounce(

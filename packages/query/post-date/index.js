@@ -1,3 +1,5 @@
+/*React*/
+import { forwardRef } from 'react';
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -10,7 +12,7 @@ import AtrcWrap from '../../atoms/wrap';
 import AtrcLink from '../../atoms/link';
 
 /* Local */
-const AtrcPostDate = (props) => {
+const AtrcPostDate = (props, ref) => {
 	const {
 		postType,
 		postId,
@@ -57,9 +59,10 @@ const AtrcPostDate = (props) => {
 	return (
 		<AtrcWrap
 			{...defaultProps}
+			ref={ref}
 			tag={htmlTag}>
 			{postDate}
 		</AtrcWrap>
 	);
 };
-export default AtrcPostDate;
+export default forwardRef(AtrcPostDate);

@@ -14,7 +14,7 @@ import { useEffect, useState, useMemo, useRef, useCallback, Fragment } from '@wo
 import { debounce } from '@wordpress/compose';
 
 /*Library*/
-import { map, random } from 'lodash';
+import { map } from 'lodash';
 import classnames from 'classnames';
 import deepmerge from 'deepmerge';
 
@@ -22,10 +22,10 @@ import deepmerge from 'deepmerge';
 import AtrcWrap from '../../atoms/wrap';
 import AtrcPanelTools from '../panel-tools';
 import AtrcNotice from '../notice';
+import AtrcUseInstanceId from '../../utils/use-instance-id';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
-import AtrcUniqueID from './../../utils/unique-id';
 
 /*Local*/
 var CodeEditor = function CodeEditor(_ref) {
@@ -40,7 +40,7 @@ var CodeEditor = function CodeEditor(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     codeMirror = _useState4[0],
     setCodeMirror = _useState4[1];
-  var instanceId = AtrcUniqueID() + random(0, 9);
+  var instanceId = AtrcUseInstanceId(CodeEditor, 'control-code-textarea');
   var debouncedOnChange = useRef(debounce(function (val) {
     onChange(val);
   }, 500, {

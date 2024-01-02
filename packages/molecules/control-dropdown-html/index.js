@@ -20,9 +20,10 @@ import AtrcRadio from '../../atoms/radio';
 
 import AtrcDropdown from '../dropdown';
 
+import AtrcUseInstanceId from '../../utils/use-instance-id';
+
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
-import AtrcUniqueID from '../../utils/unique-id';
 
 /*Local Components*/
 const LocalIconPreview = ({ icon }) => {
@@ -147,7 +148,10 @@ const RenderControl = (props) => {
 const AtrcControlDropdownHtml = (props) => {
 	const { allowReset = true, value = '', onChange } = props;
 
-	const instanceId = AtrcUniqueID() + random(0, 9);
+	const instanceId = AtrcUseInstanceId(
+		AtrcControlDropdownHtml,
+		'atrc-ctrl-dropdown-html'
+	);
 
 	if (allowReset) {
 		return (

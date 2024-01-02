@@ -1,3 +1,5 @@
+/*React*/
+import { forwardRef } from 'react';
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -11,7 +13,7 @@ import AtrcSpinner from '../../atoms/spinner';
 /* Local */
 import AtrcUsePostTerms from './use-post-terms';
 
-const AtrcPostTerms = (props) => {
+const AtrcPostTerms = (props, ref) => {
 	const {
 		postType,
 		postId,
@@ -29,7 +31,9 @@ const AtrcPostTerms = (props) => {
 
 	const TermTag = htmlTag;
 	return (
-		<AtrcWrap {...defaultProps}>
+		<AtrcWrap
+			{...defaultProps}
+			ref={ref}>
 			{isLoading && hasPost && <AtrcSpinner />}
 			{hasPost &&
 				!isLoading &&
@@ -66,4 +70,4 @@ const AtrcPostTerms = (props) => {
 		</AtrcWrap>
 	);
 };
-export default AtrcPostTerms;
+export default forwardRef(AtrcPostTerms);

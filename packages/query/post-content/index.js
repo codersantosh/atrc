@@ -1,3 +1,5 @@
+/*React*/
+import { forwardRef } from 'react';
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -10,11 +12,10 @@ import {
 
 /* Inbuilt */
 import AtrcWrap from '../../atoms/wrap';
-
 import AtrcNotice from './../../molecules/notice';
 
 /* Local */
-const AtrcPostContent = (props) => {
+const AtrcPostContent = (props, ref) => {
 	const { postType, postId, htmlTag, ...defaultProps } = props;
 
 	const hasAlreadyRendered = useHasRecursion(postId);
@@ -23,7 +24,9 @@ const AtrcPostContent = (props) => {
 
 	if (postId && postType && hasAlreadyRendered) {
 		return (
-			<AtrcWrap {...defaultProps}>
+			<AtrcWrap
+				{...defaultProps}
+				ref={ref}>
 				<AtrcNotice
 					isDismissible={false}
 					autoDismiss={false}>
@@ -34,7 +37,9 @@ const AtrcPostContent = (props) => {
 	}
 
 	return content?.protected ? (
-		<AtrcWrap {...defaultProps}>
+		<AtrcWrap
+			{...defaultProps}
+			ref={ref}>
 			<AtrcNotice
 				isDismissible={false}
 				autoDismiss={false}>
@@ -44,10 +49,11 @@ const AtrcPostContent = (props) => {
 	) : (
 		<AtrcWrap
 			{...defaultProps}
+			ref={ref}
 			tag={htmlTag}
 			dangerouslySetInnerHTML={{ __html: content?.rendered }}
 		/>
 	);
 };
 
-export default AtrcPostContent;
+export default forwardRef(AtrcPostContent);

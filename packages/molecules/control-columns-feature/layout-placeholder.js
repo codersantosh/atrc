@@ -23,7 +23,6 @@ import AtrcPrefix from '../../prefix-vars';
 const AtrcControlColumnsAdvancedLayoutPlaceholder = (props) => {
 	const {
 		label = __('Select columns', 'atrc-prefix-atrc'),
-		instanceId,
 		value,
 		columns,
 		className = '',

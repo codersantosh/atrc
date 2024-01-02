@@ -1,17 +1,21 @@
+/*React*/
+import { forwardRef } from 'react';
 /*WordPress*/
+
 import { store as coreStore } from '@wordpress/core-data';
+
 import { useSelect } from '@wordpress/data';
+
 import { __ } from '@wordpress/i18n';
 import { addQueryArgs, removeQueryArgs } from '@wordpress/url';
 
 /* Inbuilt */
+import AtrcUseUserAvatar from './use-user-avatar';
 import AtrcWrap from '../../atoms/wrap';
 import AtrcImg from '../../atoms/img';
 
-import AtrcUseUserAvatar from './use-user-avatar';
-
 /* Local */
-const AtrcPostAuthorImage = (props) => {
+const AtrcPostAuthorImage = (props, ref) => {
 	const {
 		postType,
 		postId,
@@ -48,6 +52,7 @@ const AtrcPostAuthorImage = (props) => {
 	return (
 		<AtrcWrap
 			{...defaultProps}
+			ref={ref}
 			tag='figure'>
 			{doubledSizedSrc ? (
 				<AtrcImg
@@ -61,4 +66,4 @@ const AtrcPostAuthorImage = (props) => {
 	);
 };
 
-export default AtrcPostAuthorImage;
+export default forwardRef(AtrcPostAuthorImage);

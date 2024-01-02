@@ -34,12 +34,10 @@ import AtrcDropdown from '../dropdown';
 import AtrcTooltip from '../tooltip';
 import AtrcTabPanel from '../tab-panel';
 
-/*Inbuilt Utils*/
-import AtrcUseStateCallback from './../../utils/use-state-callback';
-
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
-import AtrcUniqueID from '../../utils/unique-id';
+import AtrcUseInstanceId from '../../utils/use-instance-id';
+import AtrcUseStateCallback from './../../utils/use-state-callback';
 
 /*Local Components*/
 export function AtrcPanelTools(props) {
@@ -74,7 +72,7 @@ export function AtrcPanelTools(props) {
 
 	const rowref = useRef();
 
-	const instanceId = AtrcUniqueID() + random(0, 9);
+	const instanceId = AtrcUseInstanceId(AtrcPanelTools, 'atrc-pnl-tools');
 
 	const getTabs = (newActiveItems) => {
 		const newTabs = [];

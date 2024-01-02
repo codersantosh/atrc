@@ -22,10 +22,10 @@ import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
 import AtrcImg from '../../atoms/img';
 import AtrcRadio from '../../atoms/radio';
 import AtrcDropdown from '../dropdown';
+import AtrcUseInstanceId from '../../utils/use-instance-id';
 
 /*Inbuilt*/
 import AtrcPrefix from '../../prefix-vars';
-import AtrcUniqueID from '../../utils/unique-id';
 
 /*Local Components*/
 var LocalIconPreview = function LocalIconPreview(_ref) {
@@ -122,7 +122,7 @@ var AtrcControlDropdownHtml = function AtrcControlDropdownHtml(props) {
     _props$value = props.value,
     value = _props$value === void 0 ? '' : _props$value,
     onChange = props.onChange;
-  var instanceId = AtrcUniqueID() + random(0, 9);
+  var instanceId = AtrcUseInstanceId(AtrcControlDropdownHtml, 'atrc-ctrl-dropdown-html');
   if (allowReset) {
     return /*#__PURE__*/React.createElement(AtrcWrap, {
       className: classnames(AtrcPrefix('rst-wrp'), AtrcPrefix('lbl-rst'), 'at-flx', 'at-al-itm-st', 'at-gap', 'at-flx-grw-1')

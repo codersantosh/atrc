@@ -1,3 +1,5 @@
+/*React*/
+import { forwardRef } from 'react';
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -10,7 +12,7 @@ import AtrcWrap from '../../atoms/wrap';
 import AtrcLink from '../../atoms/link';
 
 /* Local */
-const AtrcPostAuthorName = (props) => {
+const AtrcPostAuthorName = (props, ref) => {
 	const { postType, postId, htmlTag, linkOptions, ...defaultProps } = props;
 
 	const { authorName } = useSelect(
@@ -46,10 +48,11 @@ const AtrcPostAuthorName = (props) => {
 	return (
 		<AtrcWrap
 			{...defaultProps}
+			ref={ref}
 			tag={htmlTag}>
 			{displayAuthor}
 		</AtrcWrap>
 	);
 };
 
-export default AtrcPostAuthorName;
+export default forwardRef(AtrcPostAuthorName);

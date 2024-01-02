@@ -8,6 +8,8 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*React*/
+import { forwardRef } from 'react';
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 import { useEntityProp } from '@wordpress/core-data';
@@ -17,7 +19,7 @@ import AtrcWrap from '../../atoms/wrap';
 import AtrcLink from '../../atoms/link';
 
 /* Local */
-var AtrcPostTitle = function AtrcPostTitle(props) {
+var AtrcPostTitle = function AtrcPostTitle(props, ref) {
   var postType = props.postType,
     postId = props.postId,
     htmlTag = props.htmlTag,
@@ -35,11 +37,13 @@ var AtrcPostTitle = function AtrcPostTitle(props) {
     _useEntityProp4 = _slicedToArray(_useEntityProp3, 1),
     link = _useEntityProp4[0];
   var titleElement = /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+    ref: ref,
     tag: htmlTag
   }), __('Title', 'atrc-prefix-atrc'));
   if (postType && postId) {
     if (linkOptions && linkOptions.on && postType && postId) {
       titleElement = /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+        ref: ref,
         tag: htmlTag
       }), /*#__PURE__*/React.createElement(AtrcLink, {
         prefix: false,
@@ -55,6 +59,7 @@ var AtrcPostTitle = function AtrcPostTitle(props) {
       }));
     } else {
       titleElement = /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+        ref: ref,
         tag: htmlTag,
         dangerouslySetInnerHTML: {
           __html: fullTitle === null || fullTitle === void 0 ? void 0 : fullTitle.rendered
@@ -64,5 +69,5 @@ var AtrcPostTitle = function AtrcPostTitle(props) {
   }
   return titleElement;
 };
-export default AtrcPostTitle;
+export default /*#__PURE__*/forwardRef(AtrcPostTitle);
 //# sourceMappingURL=index.js.map

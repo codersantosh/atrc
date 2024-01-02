@@ -8,15 +8,18 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*React*/
+import { forwardRef } from 'react';
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 import { useEntityProp } from '@wordpress/core-data';
 
 /* Inbuilt */
+
 import AtrcWrap from '../../atoms/wrap';
 
 /* Local */
-var AtrcPostExcerpt = function AtrcPostExcerpt(props) {
+var AtrcPostExcerpt = function AtrcPostExcerpt(props, ref) {
   var postType = props.postType,
     postId = props.postId,
     htmlTag = props.htmlTag,
@@ -57,8 +60,9 @@ var AtrcPostExcerpt = function AtrcPostExcerpt(props) {
   var isTrimmed = trimmedExcerpt !== rawOrRenderedExcerpt;
   var excerptContent = !isTrimmed ? rawOrRenderedExcerpt || __('No excerpt found', 'atrc-prefix-atrc') : trimmedExcerpt;
   return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+    ref: ref,
     tag: htmlTag
   }), excerptContent);
 };
-export default AtrcPostExcerpt;
+export default /*#__PURE__*/forwardRef(AtrcPostExcerpt);
 //# sourceMappingURL=index.js.map

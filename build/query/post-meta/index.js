@@ -8,6 +8,8 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+/*React*/
+import { forwardRef } from 'react';
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 import { useEntityProp } from '@wordpress/core-data';
@@ -18,7 +20,7 @@ import AtrcNotice from './../../molecules/notice';
 import AtrcIsScalar from '../../utils/is-scalar';
 
 /* Local */
-var AtrcPostMeta = function AtrcPostMeta(props) {
+var AtrcPostMeta = function AtrcPostMeta(props, ref) {
   var postType = props.postType,
     postId = props.postId,
     htmlTag = props.htmlTag,
@@ -32,20 +34,25 @@ var AtrcPostMeta = function AtrcPostMeta(props) {
     updateMeta = _useEntityProp2[1];
   var metaValue = (meta === null || meta === void 0 ? void 0 : meta[metaKey]) || null;
   if (null === metaValue) {
-    return /*#__PURE__*/React.createElement(AtrcWrap, defaultProps, /*#__PURE__*/React.createElement(AtrcNotice, {
+    return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+      ref: ref
+    }), /*#__PURE__*/React.createElement(AtrcNotice, {
       isDismissible: false,
       autoDismiss: false
     }, __('Meta value not found for the provided meta key and it should be accessible through the REST API.', 'atrc-prefix-atrc')));
   }
   if (!AtrcIsScalar(metaValue)) {
-    return /*#__PURE__*/React.createElement(AtrcWrap, defaultProps, /*#__PURE__*/React.createElement(AtrcNotice, {
+    return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+      ref: ref
+    }), /*#__PURE__*/React.createElement(AtrcNotice, {
       isDismissible: false,
       autoDismiss: false
     }, __('Supported values are limited to strings, numbers, or scalar values only.', 'atrc-prefix-atrc')));
   }
   return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+    ref: ref,
     tag: htmlTag
   }), metaValue);
 };
-export default AtrcPostMeta;
+export default /*#__PURE__*/forwardRef(AtrcPostMeta);
 //# sourceMappingURL=index.js.map
