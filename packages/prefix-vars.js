@@ -1,4 +1,4 @@
-const AtrcCssPrefix = 'atrc-';
+const AtrcCssPrefix = 'at-';
 export const AtrcVarPrefix = '--at';
 
 export default function AtrcPrefix(suffix = '') {
