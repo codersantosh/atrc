@@ -1,12 +1,12 @@
-.atrc-dropdown-device .atrc-dropdown + [role=tabpanel] {
+.at-dropdown-device .at-dropdown + [role=tabpanel] {
   --at-m: 10px 0 0 0;
   margin: var(--at-m);
 }
-.atrc-dropdown-device .atrc-render-tog .at-svg {
+.at-dropdown-device .at-render-tog .at-svg {
   --at-h: 10px;
   --at-w: 10px;
 }
-.atrc-dropdown-device .atrc-render-tog .atrc-btn-devices {
+.at-dropdown-device .at-render-tog .at-btn-devices {
   --at-bg-cl: var(--at-quaternary);
   --at-p: 0;
   --at-m: 0 0 0 10px;
@@ -32,17 +32,17 @@
   -webkit-transition: var(--at-trs);
   transition: var(--at-trs);
 }
-.atrc-dropdown-device .atrc-render-tog .atrc-btn-devices[aria-expanded=true], .atrc-dropdown-device .atrc-render-tog .atrc-btn-devices:hover, .atrc-dropdown-device .atrc-render-tog .atrc-btn-devices:focus {
+.at-dropdown-device .at-render-tog .at-btn-devices[aria-expanded=true], .at-dropdown-device .at-render-tog .at-btn-devices:hover, .at-dropdown-device .at-render-tog .at-btn-devices:focus {
   --at-opa: 1;
 }
-.atrc-dropdown-device .atrc-rst-wrp .components-font-size-picker + .atrc-btn-reset-i {
+.at-dropdown-device .at-rst-wrp .components-font-size-picker + .at-btn-reset-i {
   --at-m: -20px;
   margin-bottom: var(--at-m);
 }
-.atrc-dropdown-cont {
+.at-dropdown-cont {
   --at-gap: 10px;
 }
-.atrc-dropdown-cont .at-svg {
+.at-dropdown-cont .at-svg {
   --at-h: 14px;
   --at-w: 14px;
 }

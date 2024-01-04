@@ -1,4 +1,4 @@
-.atrc-search .components-search-control__input {
+.at-search .components-search-control__input {
   --at-h: 35px;
   --at-bg-cl: var(--at-white);
   --at-bdr-cl: var(--at-quaternary);
@@ -10,9 +10,9 @@
   border-style: var(--at-bdr-sty) !important;
   border-color: var(--at-bdr-cl) !important;
 }
-.atrc-search .components-search-control__icon > svg {
+.at-search .components-search-control__icon > svg {
   display: none;
 }
-.atrc-btn-search {
+.at-btn-search {
   --at-m: 0 0 0 15px;
 }

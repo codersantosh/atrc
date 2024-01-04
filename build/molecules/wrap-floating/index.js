@@ -21,18 +21,18 @@ var AtrcWrapFloating = function AtrcWrapFloating(props) {
     defaultProps = _objectWithoutProperties(props, _excluded);
   var Position = function Position() {
     switch (position) {
-      case 'bottom-right':
-        return 'br';
       case 'bottom-left':
         return 'bl';
       case 'top-right':
         return 'tr';
       case 'top-left':
         return 'tl';
+      default:
+        return 'br';
     }
   };
   return /*#__PURE__*/React.createElement(Portal, null, /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
-    className: classnames(className, position ? AtrcPrefix('wrp-flt-') + Position() : '')
+    className: classnames(className, 'at-wrp-flt', 'at-pos', 'at-z-idx', position ? AtrcPrefix('wrp-flt-') + Position() : '')
   })));
 };
 export default AtrcWrapFloating;

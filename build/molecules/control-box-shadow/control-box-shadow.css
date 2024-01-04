@@ -1,13 +1,13 @@
-.atrc-ctrl-box-shw-tab .atrc-ctrl-unit-wrp {
+.at-ctrl-box-shw-tab .at-ctrl-unit-wrp {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
-.atrc-ctrl-box-shw-tab .atrc-ctrl-unit-wrp + .atrc-btn-reset-i {
+.at-ctrl-box-shw-tab .at-ctrl-unit-wrp + .at-btn-reset-i {
   --at-m: -15px;
   margin-bottom: var(--at-m) !important;
 }
-.atrc-ctrl-box-shw-tab .atrc-ctrl-unit-wrp .components-input-control__container {
+.at-ctrl-box-shw-tab .at-ctrl-unit-wrp .components-input-control__container {
   --at-w: 100%;
   --at-m: 10px;
   width: var(--at-w);

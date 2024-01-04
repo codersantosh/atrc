@@ -1,13 +1,13 @@
-.atrc-header {
+.at-header {
   --at-p: 20px;
 }
-.atrc-header .at-txt {
+.at-header .at-txt {
   --at-m: 0;
 }
-.atrc-header .atrc-hr {
+.at-header .at-hr {
   --at-m: 0;
 }
-.atrc-header-sticky {
+.at-header-sticky {
   --at-pos: fixed;
   --at-t: 32px;
   --at-r: 0;

@@ -1,38 +1,38 @@
-.atrc-modal-icon-picker-cont .atrc-lbl {
+.at-modal-icon-picker-cont .at-lbl {
   --at-m: 15px 0;
 }
-.atrc-modal-icon-picker .at-btn {
+.at-modal-icon-picker .at-btn {
   --at-cl: var(--at-primary);
   --at-bg-cl: var(--at-secondary);
 }
-.atrc-modal-icon-picker .at-btn:hover, .atrc-modal-icon-picker .at-btn:focus {
+.at-modal-icon-picker .at-btn:hover, .at-modal-icon-picker .at-btn:focus {
   --at-cl: var(--at-primary);
   --at-bg-cl: var(--at-secondary--hover);
 }
-.atrc-modal-icon-picker .at-btn.atrc-btn-active {
+.at-modal-icon-picker .at-btn.at-btn-active {
   --at-bg-cl: var(--at-quaternary);
   --at-cl: var(--at-primary);
 }
-.atrc-modal-icon-picker .atrc-btn-primary {
+.at-modal-icon-picker .at-btn-primary {
   --at-bg-cl: var(--at-primary);
   --at-cl: var(--at-white);
 }
-.atrc-modal-icon-picker .atrc-btn-primary:hover {
+.at-modal-icon-picker .at-btn-primary:hover {
   --at-bg-cl: var(--at-primary--hover);
   --at-cl: var(--at-white);
 }
-.atrc-btn-icon-picker {
+.at-btn-icon-picker {
   --at-m: 3px;
   --at-p: 0;
   --at-h: 35px;
   --at-w: 35px;
 }
-.atrc-icon-wp .at-svg {
+.at-icon-wp .at-svg {
   --at-h: 20px;
   --at-w: 20px;
   --at-cl: var(--at-primary);
   fill: var(--at-cl);
 }
-.atrc-allowed-icons .atrc-btn-icon-picker {
+.at-allowed-icons .at-btn-icon-picker {
   --at-bg-cl: var(--at-quaternary) !important;
 }

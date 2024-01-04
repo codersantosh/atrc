@@ -1,27 +1,27 @@
-.atrc-txt-h1 {
+.at-txt-h1 {
   --at-fnt-sz: 2rem;
   --at-cl: var(--at-body-color);
 }
-.atrc-txt-h2 {
+.at-txt-h2 {
   --at-fnt-sz: 1.75rem;
 }
-.atrc-txt-h3 {
+.at-txt-h3 {
   --at-fnt-sz: 1.5rem;
 }
-.atrc-txt-h4 {
+.at-txt-h4 {
   --at-fnt-sz: 1.375rem;
 }
-.atrc-txt-h5 {
+.at-txt-h5 {
   --at-fnt-sz: 1.125rem;
 }
-.atrc-txt-h6 {
+.at-txt-h6 {
   --at-fnt-sz: 1rem;
 }
-.atrc-txt-p {
+.at-txt-p {
   --at-fnt-sz: 1rem;
   --at-cl: var(--at-body-color);
 }
-.atrc-txt-info-italic {
+.at-txt-info-italic {
   --at-fnt-sz: 13px;
   --at-fnt-sty: italic;
   --at-m: 5px 0 0 0;

@@ -1,4 +1,4 @@
-.atrc-ctrl-typ-tab .components-base-control__label, .atrc-ctrl-typ-tab .components-input-control__label, .atrc-ctrl-typ-tab .components-panel__body-toggle {
+.at-ctrl-typ-tab .components-base-control__label, .at-ctrl-typ-tab .components-input-control__label, .at-ctrl-typ-tab .components-panel__body-toggle {
   --at-fnt-sz: 13px;
   --at-fnt-wt: 600;
   --at-cl: var(--at-body-color);

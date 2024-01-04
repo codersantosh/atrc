@@ -1,14 +1,14 @@
-.atrc-ctrl-dropdown-html-wrp {
+.at-ctrl-dropdown-html-wrp {
   --at-w: 200px;
 }
-.atrc-ctrl-dropdown-html-item .at-svg {
+.at-ctrl-dropdown-html-item .at-svg {
   --at-w: 100% !important;
   --at-h: initial !important;
   height: var(--at-h);
   width: var(--at-w);
   --at-cl: var(--at-primary);
 }
-.atrc-ctrl-dropdown-html-item-preview {
+.at-ctrl-dropdown-html-item-preview {
   --at-p: 10px;
   --at-bdr-w: 1px;
   --at-bdr-sty: solid;

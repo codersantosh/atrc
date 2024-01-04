@@ -1,10 +1,10 @@
-.atrc-select:focus, .atrc-select:focus-visible, .atrc-select:focus-within {
+.at-select:focus, .at-select:focus-visible, .at-select:focus-within {
   outline: 0 !important;
   --at-box-sdw: none;
   -webkit-box-shadow: var(--at-box-sdw) !important;
           box-shadow: var(--at-box-sdw) !important;
 }
-.atrc-select-multi > div {
+.at-select-multi > div {
   --at-h: 35px;
   --at-min-h: 35px;
   --at-bdr-rad: 3px;
@@ -14,7 +14,7 @@
   border-radius: var(--at-bdr-rad);
   border-color: var(--at-bdr-cl) !important;
 }
-.atrc-select-multi .css-g1d714-ValueContainer {
+.at-select-multi .css-g1d714-ValueContainer {
   --at-p: 0;
   padding-top: var(--at-p) !important;
   padding-bottom: var(--at-p) !important;

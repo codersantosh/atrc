@@ -1,16 +1,16 @@
-.atrc-txt-small {
+.at-txt-small {
   --at-w: 40px;
   width: var(--at-w);
 }
-.atrc-txt-small .components-text-control__input {
+.at-txt-small .components-text-control__input {
   --at-h: 40px;
   height: var(--at-h) !important;
 }
-.atrc-txt .components-base-control__field {
+.at-txt .components-base-control__field {
   --at-m: 0 !important;
   margin-bottom: var(--at-m);
 }
-.atrc-txt .components-text-control__input {
+.at-txt .components-text-control__input {
   --at-h: 35px;
   --at-bdr-w: 1px;
   --at-bdr-sty: solid;

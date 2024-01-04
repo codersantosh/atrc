@@ -1,38 +1,38 @@
-.atrc-ctrl-vid-slf-hosted {
+.at-ctrl-vid-slf-hosted {
   --at-pos: relative;
   --at-m: 0 0 15px 0;
 }
-.atrc-ctrl-vid-slf-hosted .atrc-btn-uploads {
+.at-ctrl-vid-slf-hosted .at-btn-uploads {
   --at-gap: 0 5px;
   --at-p: 15px 5px;
   --at-fnt-sz: 14px;
   --at-w: 100%;
 }
-.atrc-ctrl-vid-slf-hosted .atrc-btn-uploads .at-svg {
+.at-ctrl-vid-slf-hosted .at-btn-uploads .at-svg {
   --at-w: 15px;
   --at-h: 15px;
 }
-.atrc-ctrl-vid-ext {
+.at-ctrl-vid-ext {
   --at-m: 15px 0 0 0;
 }
-.atrc-ctrl-vid-ext .atrc-pnl-row:first-of-type {
+.at-ctrl-vid-ext .atrc-pnl-row:first-of-type {
   margin: 15px 0 0 0 !important;
 }
-.atrc-ctrl-vid-uploads-del {
+.at-ctrl-vid-uploads-del {
   --at-pos: absolute;
   --at-t: 15px;
   --at-r: 15px;
 }
-.atrc-ctrl-vid-btn-delete {
+.at-ctrl-vid-btn-delete {
   --at-w: 25px;
   --at-h: 25px;
   --at-bdr-rad: 50px;
   --at-p: 0;
 }
-.atrc-ctrl-vid-btn-delete .at-svg {
+.at-ctrl-vid-btn-delete .at-svg {
   --at-w: 12px;
   --at-h: 12px;
 }
-.atrc-ctrl-vid .atrc-ctrl-img {
+.at-ctrl-vid .at-ctrl-img {
   --at-m: 0 0 15px 0;
 }

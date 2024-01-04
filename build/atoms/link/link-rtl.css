@@ -1,4 +1,4 @@
-.atrc-lnk {
+.at-lnk {
   --at-txt-dec: none;
   --at-cl: var(--at-body-color);
   --at-cur: pointer;
@@ -17,31 +17,31 @@
           box-shadow: var(--at-box-sdw);
   text-transform: var(--at-txt-tf);
 }
-.atrc-lnk:hover, .atrc-lnk:focus {
+.at-lnk:hover, .at-lnk:focus {
   --at-cl: var(--at-body-color);
   outline: var(--at-outl);
   -webkit-box-shadow: var(--at-box-sdw);
           box-shadow: var(--at-box-sdw);
   color: var(--at-cl);
 }
-.atrc-lnk-primary {
+.at-lnk-primary {
   --at-cl: var(--at-white);
   --at-bg-cl: var(--at-primary);
   --at-p: 6px 12px;
   background-color: var(--at-bg-cl);
   padding: var(--at-p);
 }
-.atrc-lnk-primary:hover, .atrc-lnk-primary:focus {
+.at-lnk-primary:hover, .at-lnk-primary:focus {
   --at-bg-cl: var(--at-primary--hover);
   --at-cl: var(--at-white);
 }
-.atrc-lnk-primary-txt {
+.at-lnk-primary-txt {
   --at-cl: var(--at-primary);
 }
-.atrc-lnk-primary-txt:hover, .atrc-lnk-primary-txt:focus {
+.at-lnk-primary-txt:hover, .at-lnk-primary-txt:focus {
   --at-cl: var(--at-primary--hover);
 }
-.atrc-lnk-outl {
+.at-lnk-outl {
   border-color: var(--at-bdr-cl);
   border-width: var(--at-bdr-w);
   border-style: var(--at-bdr-sty);
@@ -51,12 +51,12 @@
   --at-bdr-w: 1px;
   --at-bdr-sty: solid;
 }
-.atrc-lnk-outl:hover {
+.at-lnk-outl:hover {
   --at-bg-cl: transparent;
   --at-bdr-cl: var(--at-primary);
   --at-cl: var(--at-primary);
 }
-.atrc-lnk-nav {
+.at-lnk-nav {
   --at-fnt-sz: 13px;
   --at-opa: 0.8;
   --at-p: 10px 0;
@@ -81,16 +81,16 @@
   transition: var(--at-trs);
   display: inline-block;
 }
-.atrc-lnk-nav:hover, .atrc-lnk-nav:focus {
+.at-lnk-nav:hover, .at-lnk-nav:focus {
   --at-opa: 1;
   --at-cl: var(--at-body-color);
 }
-.atrc-lnk-active {
+.at-lnk-active {
   --at-opa: 1;
   --at-bdr-cl: var(--at-body-color);
   --at-cl: var(--at-body-color);
 }
-.atrc-lnk-rst {
+.at-lnk-rst {
   --at-bg-cl: var(--at-danger);
   --at-bdr-cl: var(--at-danger);
   --at-opa: 0.7;
@@ -103,7 +103,7 @@
   padding: var(--at-p);
   color: var(--at-cl);
 }
-.atrc-lnk-rst:hover, .atrc-lnk-rst:focus {
+.at-lnk-rst:hover, .at-lnk-rst:focus {
   --at-cl: var(--at-white);
   --at-opa: 1;
   --at-bg-cl: var(--at-danger);

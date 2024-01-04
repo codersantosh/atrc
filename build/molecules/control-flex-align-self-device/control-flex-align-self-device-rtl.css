@@ -1,11 +1,11 @@
-.atrc-ctrl-flx-al-slf-device .atrc-btn-grp {
+.at-ctrl-flx-al-slf-device .at-btn-grp {
   --at-gap: 5px;
 }
-.atrc-ctrl-flx-al-slf-device .atrc-ctrl-select-btn .atrc-btn-select {
+.at-ctrl-flx-al-slf-device .at-ctrl-select-btn .at-btn-select {
   --at-w: 35px;
   width: var(--at-w);
 }
-.atrc-ctrl-flx-al-slf-device .atrc-ctrl-select-btn .atrc-btn-select .at-svg {
+.at-ctrl-flx-al-slf-device .at-ctrl-select-btn .at-btn-select .at-svg {
   --at-w: 16px;
   --at-h: 16px;
 }

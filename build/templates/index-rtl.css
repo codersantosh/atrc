@@ -1,182 +1,182 @@
-.atrc-landing .at-row.at-m {
+.at-landing .at-row.at-m {
   --at-m: 30px calc(var(--at-gtr) * -1) 0 calc(var(--at-gtr) * -1);
 }
-.atrc-landing .atrc-txt-p {
+.at-landing .at-txt-p {
   --at-m: 0 0 15px 0;
 }
-.atrc-hero-banner {
+.at-hero-banner {
   --at-bdr-rad: 5px;
   --at-m: 0 0 40px 0;
   --at-p: 40px 60px;
   --at-bg-img: linear-gradient(130deg, var(--at-white) 0%, #f0f5fb 74%);
 }
-.atrc-hero-banner .atrc-txt-h1 {
+.at-hero-banner .at-txt-h1 {
   --at-m: 0 0 15px 0;
   --at-fnt-wt: 700;
 }
-.atrc-hero-banner .atrc-txt-p {
+.at-hero-banner .at-txt-p {
   --at-m: 0 0 15px 0;
   --at-fnt-sz: 14px;
   --at-ln-h: 1.5;
 }
-.atrc-hero-banner .atrc-txt-p {
+.at-hero-banner .at-txt-p {
   --at-m: 0 0 15px 0;
   --at-fnt-sz: 14px;
   --at-ln-h: 1.5;
 }
-.atrc-hero-banner .atrc-txt-p.atrc-p-lead {
+.at-hero-banner .at-txt-p.at-p-lead {
   --at-fnt-sz: 20px;
   --at-fnt-wt: 300;
 }
-.atrc-hero-banner .atrc-lnk-secondary {
+.at-hero-banner .at-lnk-secondary {
   --at-body-color: var(--at-black);
 }
-.atrc-hero-banner .atrc-lnk-secondary:hover, .atrc-hero-banner .atrc-lnk-secondary:focus {
+.at-hero-banner .at-lnk-secondary:hover, .at-hero-banner .at-lnk-secondary:focus {
   --at-body-color: var(--at-black);
 }
-.atrc-lnk {
+.at-lnk {
   display: inline-block;
   --at-txt-tf: capitalize;
 }
-.atrc-lnk .at-svg {
+.at-lnk .at-svg {
   --at-m: 0 10px 0 0;
   --at-h: 18px;
   --at-w: 18px;
 }
-.atrc-lnk-secondary {
+.at-lnk-secondary {
   --at-bg-cl: var(--at-tertiary);
   --at-cl: var(--at-body-color);
 }
-.atrc-lnk-secondary:hover, .atrc-lnk-secondary:focus {
+.at-lnk-secondary:hover, .at-lnk-secondary:focus {
   --at-bg-cl: var(--at-tertiary--hover);
   --at-cl: var(--at-body-color);
 }
-.atrc-hero-btn-grp {
+.at-hero-btn-grp {
   --at-gap: 0 10px;
 }
-.atrc-hero-btn-grp .atrc-lnk {
+.at-hero-btn-grp .at-lnk {
   --at-p: 15px 35px;
 }
-.atrc-round-bdr {
+.at-round-bdr {
   --at-bdr-rad: 50%;
   --at-bdr-sty: dashed;
   --at-bdr-cl: var(--at-primary) var(--at-quaternary) transparent var(--at-quaternary);
 }
-.atrc-intro-profile {
+.at-intro-profile {
   --at-h: 150px;
   --at-w: 150px;
   --at-m: auto;
   --at-bdr-w: 3px;
 }
-.atrc-intro-profile .at-img {
+.at-intro-profile .at-img {
   --at-max-w: 90px;
 }
-.atrc-intro-profile-info {
+.at-intro-profile-info {
   --at-txt-al: center;
 }
-.atrc-intro-profile-info .atrc-btn-grp {
+.at-intro-profile-info .at-btn-grp {
   --at-gap: 0 10px !important;
 }
-.atrc-intro-profile-info .atrc-btn-grp .at-btn {
+.at-intro-profile-info .at-btn-grp .at-btn {
   --at-p: 6px 12px !important;
 }
-.atrc-intro-auth {
+.at-intro-auth {
   --at-m: 0 0 30px 0;
 }
-.atrc-intro-auth .atrc-card {
+.at-intro-auth .at-card {
   --at-p: 40px;
 }
-.atrc-prsn-detail {
+.at-prsn-detail {
   --at-gap: 20px;
   --at-w: 100px;
 }
-.atrc-prsn-detail .at-svg {
+.at-prsn-detail .at-svg {
   --at-m: 0 5px 0 0;
   --at-h: 16px;
   --at-w: 16px;
 }
-.atrc-prsn-detail .at-txt {
+.at-prsn-detail .at-txt {
   --at-fnt-sz: 13px;
 }
-.atrc-prsn-icon-wrp {
+.at-prsn-icon-wrp {
   --at-gap: 5px;
 }
-.atrc-social {
+.at-social {
   --at-m: 40px 0 0 0;
   --at-h: 50px;
   --at-w: 50px;
   --at-bdr-w: 1px;
   --at-gap: 10px;
 }
-.atrc-social .at-svg {
+.at-social .at-svg {
   --at-h: 16px;
   --at-w: 16px;
 }
-.atrc-card {
+.at-card {
   --at-m: 30px 0 0 0;
 }
-.atrc-card-header {
+.at-card-header {
   --at-p: 20px;
   --at-gap: 10px;
 }
-.atrc-card-header .at-svg {
+.at-card-header .at-svg {
   --at-h: 16px;
   --at-w: 16px;
 }
-.atrc-card-heading {
+.at-card-heading {
   --at-fnt-sz: 0.98rem;
   --at-fnt-wt: 600;
   --at-m: 0;
 }
-.atrc-card-body {
+.at-card-body {
   --at-p: 20px;
 }
-.atrc-card-body .atrc-txt-p {
+.at-card-body .at-txt-p {
   --at-m: 0;
 }
-.atrc-card-body .at-btn {
+.at-card-body .at-btn {
   --at-m: 15px 0 0 0;
 }
-.atrc-card-icon {
+.at-card-icon {
   --at-bdr-w: 1px;
   --at-bdr-sty: solid;
   --at-bdr-cl: var(--at-white);
   --at-h: 80px;
   --at-w: 80px;
 }
-.atrc-card-icon .at-svg {
+.at-card-icon .at-svg {
   --at-h: 40px;
   --at-w: 40px;
   --at-cl: var(--at-white);
 }
-.atrc-card.at-bg-img {
+.at-card.at-bg-img {
   --at-p: 40px;
   --at-gap: 20px;
 }
-.atrc-card .atrc-btn-grp {
+.at-card .at-btn-grp {
   --at-gap: 30px 0;
 }
-.atrc-card .atrc-btn-grp .at-btn {
+.at-card .at-btn-grp .at-btn {
   --at-gap: 10px;
   --at-p: 20px;
 }
-.atrc-card .atrc-txt-white {
+.at-card .at-txt-white {
   --at-m: 0;
   --at-cl: var(--at-white);
 }
-.atrc-card .atrc-txt-h2 {
+.at-card .at-txt-h2 {
   --at-fnt-sz: 3rem;
 }
-.atrc-card .atrc-txt-lead {
+.at-card .at-txt-lead {
   --at-fnt-sz: 1.2rem;
   --at-m: 0;
   --at-cl: var(--at-white);
   --at-txt-tf: capitalize;
 }
-.atrc-card .atrc-stats .atrc-hr {
+.at-card .at-stats .at-hr {
   --at-m: 20px 0;
 }
-.atrc-card-col {
+.at-card-col {
   --at-gap: 10px 0;
   --at-p: 8px 10px;
 }

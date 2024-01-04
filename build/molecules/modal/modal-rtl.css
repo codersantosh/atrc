@@ -1,13 +1,13 @@
-.atrc-modal {
+.at-modal {
   --at-max-w: 1140px;
   max-width: var(--at-max-w);
 }
-.atrc-modal-body * {
+.at-modal-body * {
   --at-box-szg: border-box;
   -webkit-box-sizing: var(--at-box-szg);
           box-sizing: var(--at-box-szg);
 }
-.atrc-modal-confirm .components-modal__header {
+.at-modal-confirm .components-modal__header {
   --at-pos: static;
   --at-p: 5px 15px;
   --at-h: auto;
@@ -21,21 +21,21 @@
   border-width: var(--at-bdr-w);
   border-style: var(--at-bdr-sty);
 }
-.atrc-modal-confirm .components-modal__header-heading {
+.at-modal-confirm .components-modal__header-heading {
   --at-fnt-sz: 15px;
   font-size: var(--at-fnt-sz);
 }
-.atrc-modal-confirm .components-modal__content {
+.at-modal-confirm .components-modal__content {
   --at-p: 0;
   --at-m: 0;
   padding: var(--at-p);
   margin-top: var(--at-m);
 }
-.atrc-modal-confirm-body {
+.at-modal-confirm-body {
   --at-txt-al: center;
   text-align: var(--at-txt-al);
 }
-.atrc-modal-confirm-icon {
+.at-modal-confirm-icon {
   --at-fnt-sz: 50px;
   --at-cl: var(--at-danger);
 }

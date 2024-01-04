@@ -1,18 +1,18 @@
-.atrc-input-box .components-base-control__field {
+.at-input-box .components-base-control__field {
   --at-m: 0;
   margin-bottom: var(--at-m) !important;
 }
-.atrc-body {
+.at-body {
   --at-w: 100%;
   --at-pos: relative;
   width: var(--at-w);
   position: var(--at-pos);
 }
-.atrc-attachment-details {
+.at-attachment-details {
   --at-pos: relative;
   position: var(--at-pos);
 }
-.atrc-attachment-details .atrc-btn-delete {
+.at-attachment-details .at-btn-delete {
   --at-bdr-rad: 50%;
   --at-pos: absolute;
   --at-r: -8px;
@@ -28,11 +28,11 @@
   border-radius: var(--at-bdr-rad);
   position: var(--at-pos);
 }
-.atrc-cont-area {
+.at-cont-area {
   --at-pos: relative;
   position: var(--at-pos);
 }
-.atrc-cont-area--preview {
+.at-cont-area--preview {
   --at-pos: absolute;
   --at-t: 50%;
   --at-r: 0;
@@ -48,6 +48,6 @@
       -ms-transform: var(--at-tf);
           transform: var(--at-tf);
 }
-.atrc-render-tog {
+.at-render-tog {
   --at-gap: 10px;
 }

@@ -1,7 +1,7 @@
-.atrc-dropdown-cont .components-menu-item__item {
+.at-dropdown-cont .components-menu-item__item {
   --at-min-w: 100%;
   min-width: var(--at-min-w);
 }
-.atrc-dropdown-cont .components-menu-group .atrc-lbl {
+.at-dropdown-cont .components-menu-group .at-lbl {
   --at-m: 0;
 }

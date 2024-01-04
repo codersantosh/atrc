@@ -1,4 +1,4 @@
-.atrc-lbl {
+.at-lbl {
   display: inline-block;
   --at-fnt-wt: 600;
   --at-fnt-sz: 12px;
@@ -9,16 +9,16 @@
   color: var(--at-cl);
   text-transform: var(--at-txt-tf);
 }
-.atrc-lbl:empty {
+.at-lbl:empty {
   display: none;
 }
-.atrc-lbl.at-m {
+.at-lbl.at-m {
   --at-m: 0 0 15px 0;
 }
-.atrc-lbl-color-picker {
+.at-lbl-color-picker {
   --at-m: 0 !important;
 }
-.atrc-lbl-dropdown-device-lbl {
+.at-lbl-dropdown-device-lbl {
   --at-m: 0 0 5px 0 !important;
   margin: var(--at-m) !important;
 }
