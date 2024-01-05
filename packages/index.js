@@ -310,6 +310,8 @@ export { default as AtrcNav } from './molecules/nav';
 export { default as AtrcNotice } from './molecules/notice';
 
 export { default as AtrcPagination } from './molecules/pagination';
+export { AtrcGetPaginationList as AtrcGetPaginationList } from './molecules/pagination/public-pagination';
+export { default as AtrcPublicPagination } from './molecules/pagination/public-pagination';
 
 export { default as AtrcPanelBody } from './molecules/panel-body';
 export { default as AtrcPanelRow } from './molecules/panel-row';

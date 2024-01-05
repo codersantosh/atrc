@@ -41,12 +41,13 @@ const AtrcPagination = (props) => {
 				variant ? AtrcPrefix('pagination') + '-' + variant : ''
 			)}
 			{...defaultProps}>
-			<AtrcSpan isNum={true}>
-				{totalItems}
-				&nbsp;
-				{__('items', 'atrc-prefix-atrc')}
-			</AtrcSpan>
-
+			{totalItems && (
+				<AtrcSpan isNum={true}>
+					{totalItems}
+					&nbsp;
+					{__('items', 'atrc-prefix-atrc')}
+				</AtrcSpan>
+			)}
 			<AtrcWrap className='at-flx at-al-itm-ctr'>
 				<AtrcButton
 					variant='pagination'

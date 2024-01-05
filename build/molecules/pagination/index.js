@@ -36,7 +36,7 @@ var AtrcPagination = function AtrcPagination(props) {
     nextPage = totalPages > currentPage ? currentPage + 1 : totalPages;
   return /*#__PURE__*/React.createElement(AtrcWrap, _extends({
     className: classnames(AtrcPrefix('pagination'), 'at-flx', 'at-al-itm-ctr', className, variant ? AtrcPrefix('pagination') + '-' + variant : '')
-  }, defaultProps), /*#__PURE__*/React.createElement(AtrcSpan, {
+  }, defaultProps), totalItems && /*#__PURE__*/React.createElement(AtrcSpan, {
     isNum: true
   }, totalItems, "\xA0", __('items', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcWrap, {
     className: "at-flx at-al-itm-ctr"
