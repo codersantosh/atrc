@@ -9,7 +9,9 @@
 		"build": "npm run build:packages",
 		"start": "wp-scripts start ./packages",
 		"packages-update": "wp-scripts packages-update",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build"
 	},
 	"repository": {
 		"type": "git",
@@ -38,7 +40,16 @@
 		"progress": "^2.0.3",
 		"rtlcss": "^4.1.1",
 		"sass": "^1.69.6",
-		"worker-farm": "^1.7.0"
+		"worker-farm": "^1.7.0",
+		"@storybook/addon-essentials": "^7.6.7",
+		"@storybook/addon-interactions": "^7.6.7",
+		"@storybook/addon-links": "^7.6.7",
+		"@storybook/addon-onboarding": "^1.0.10",
+		"@storybook/blocks": "^7.6.7",
+		"@storybook/react": "^7.6.7",
+		"@storybook/react-webpack5": "^7.6.7",
+		"@storybook/test": "^7.6.7",
+		"storybook": "^7.6.7"
 	},
 	"dependencies": {
 		"@wordpress/api-fetch": "^6.45.0",
