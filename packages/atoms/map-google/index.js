@@ -3,16 +3,17 @@ import { __, sprintf } from '@wordpress/i18n';
 import { useEffect, useState } from '@wordpress/element';
 
 /* Library */
-import classNames from 'classnames';
 
 /* Inbuilt */
+import AtrcIframe from '../iframe';
 import AtrcUniqueID from '../../utils/unique-id';
+import { AtrcWrap } from '../..';
 
 /* Local */
 const AtrcGoogleMap = ({
 	id,
 	apiKey,
-	loc = 'Gorkh Durbar',
+	loc = 'Gorkha Durbar',
 	lat,
 	lng,
 	zoom = 15,
@@ -189,14 +190,18 @@ const AtrcGoogleMap = ({
 	}, [scriptLoaded]);
 
 	return apiKey || msg ? (
-		<div
-			className={classNames(className, 'at-map')}
+		<AtrcWrap
+			className={classnames(
+				AtrcPrefix('map'),
+				className,
+				variant ? AtrcPrefix('map') + '-' + variant : ''
+			)}
 			id={mapID}
 			{...defaultProps}>
 			{msg}
-		</div>
+		</AtrcWrap>
 	) : (
-		<iframe
+		<AtrcIframe
 			title={sprintf(
 				// translators: %s: location
 				__(
@@ -209,7 +214,11 @@ const AtrcGoogleMap = ({
 				loc
 			)}&t=&z=${zoom}&ie=UTF8&output=embed`}
 			frameBorder='0'
-			className={classNames(className, 'at-map')}
+			className={classnames(
+				AtrcPrefix('map'),
+				className,
+				variant ? AtrcPrefix('map') + '-' + variant : ''
+			)}
 			id={mapID}
 			{...defaultProps}
 		/>

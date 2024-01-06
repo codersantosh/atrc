@@ -6,6 +6,7 @@ import { addQueryArgs } from '@wordpress/url';
 /*Library*/
 import classnames from 'classnames';
 import AtrcImg from '../img';
+import AtrcIframe from '../iframe';
 /*Local Components*/
 
 /*Source
@@ -121,6 +122,7 @@ const AtrcVideo = (props) => {
 
 		preload = '',
 		poster = '',
+		...defaultProps
 	} = props;
 
 	if (AtrcVideoIsHtml5(url)) {
@@ -141,6 +143,7 @@ const AtrcVideo = (props) => {
 				preload={preload}
 				src={url}
 				poster={poster}
+				{...defaultProps}
 			/>
 		);
 	}
@@ -150,6 +153,7 @@ const AtrcVideo = (props) => {
 				src={url}
 				width={width}
 				height={height}
+				{...defaultProps}
 			/>
 		);
 	}
@@ -167,18 +171,19 @@ const AtrcVideo = (props) => {
 			  });
 
 		return (
-			<iframe
+			<AtrcIframe
 				height={height}
 				width={width}
 				className={classnames(
-					'at-vid',
+					AtrcPrefix('vid'),
 					className,
-					variant ? 'at-vid-' + variant : ''
+					variant ? AtrcPrefix('vid') + '-' + variant : ''
 				)}
 				src={youtubeVideUrl}
 				frameBorder='0'
 				allowFullScreen={allowFullScreen}
 				title={__('Youtube video', 'atrc-prefix-atrc')}
+				{...defaultProps}
 			/>
 		);
 	}
@@ -194,35 +199,37 @@ const AtrcVideo = (props) => {
 			  })
 			: url;
 		return (
-			<iframe
+			<AtrcIframe
 				height={height}
 				width={width}
 				className={classnames(
-					'at-vid',
+					AtrcPrefix('vid'),
 					className,
-					variant ? 'at-vid-' + variant : ''
+					variant ? AtrcPrefix('vid') + '-' + variant : ''
 				)}
 				src={vimeoUrl}
 				frameBorder='0'
 				allowFullScreen={allowFullScreen}
 				title={__('Vimeo video', 'atrc-prefix-atrc')}
+				{...defaultProps}
 			/>
 		);
 	}
 
 	return (
-		<iframe
+		<AtrcIframe
 			height={height}
 			width={width}
 			className={classnames(
-				'at-vid',
+				AtrcPrefix('vid'),
 				className,
-				variant ? 'at-vid-' + variant : ''
+				variant ? AtrcPrefix('vid') + '-' + variant : ''
 			)}
 			src={url}
 			frameBorder='0'
 			allowFullScreen={allowFullScreen}
 			title={__('Other video', 'atrc-prefix-atrc')}
+			{...defaultProps}
 		/>
 	);
 };

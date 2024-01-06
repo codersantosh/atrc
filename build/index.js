@@ -29,6 +29,7 @@ export { default as AtrcFieldset } from './atoms/fieldset';
 export { default as AtrcFile } from './atoms/file';
 export { default as AtrcHr } from './atoms/hr';
 export { default as AtrcIcon } from './atoms/icon';
+export { default as AtrcIframe } from './atoms/iframe';
 export { default as AtrcImg } from './atoms/img';
 export { default as AtrcInternalCss } from './atoms/internal-css';
 export { AtrcGetProcessedCss } from './atoms/internal-css';

@@ -19,17 +19,18 @@ import { __, sprintf } from '@wordpress/i18n';
 import { useEffect, useState } from '@wordpress/element';
 
 /* Library */
-import classNames from 'classnames';
 
 /* Inbuilt */
+import AtrcIframe from '../iframe';
 import AtrcUniqueID from '../../utils/unique-id';
+import { AtrcWrap } from '../..';
 
 /* Local */
 var AtrcGoogleMap = function AtrcGoogleMap(_ref) {
   var id = _ref.id,
     apiKey = _ref.apiKey,
     _ref$loc = _ref.loc,
-    loc = _ref$loc === void 0 ? 'Gorkh Durbar' : _ref$loc,
+    loc = _ref$loc === void 0 ? 'Gorkha Durbar' : _ref$loc,
     lat = _ref.lat,
     lng = _ref.lng,
     _ref$zoom = _ref.zoom,
@@ -198,16 +199,16 @@ var AtrcGoogleMap = function AtrcGoogleMap(_ref) {
     /* Markers */
     cycleMarkers(markers);
   }, [scriptLoaded]);
-  return apiKey || msg ? /*#__PURE__*/React.createElement("div", _extends({
-    className: classNames(className, 'at-map'),
+  return apiKey || msg ? /*#__PURE__*/React.createElement(AtrcWrap, _extends({
+    className: classnames(AtrcPrefix('map'), className, variant ? AtrcPrefix('map') + '-' + variant : ''),
     id: mapID
-  }, defaultProps), msg) : /*#__PURE__*/React.createElement("iframe", _extends({
+  }, defaultProps), msg) : /*#__PURE__*/React.createElement(AtrcIframe, _extends({
     title: sprintf(
     // translators: %s: location
     __('Embedded content from Google Maps. Location: %s.', 'atrc-prefix-atrc'), loc),
     src: "https://maps.google.com/maps?q=".concat(encodeURIComponent(loc), "&t=&z=").concat(zoom, "&ie=UTF8&output=embed"),
     frameBorder: "0",
-    className: classNames(className, 'at-map'),
+    className: classnames(AtrcPrefix('map'), className, variant ? AtrcPrefix('map') + '-' + variant : ''),
     id: mapID
   }, defaultProps));
 };

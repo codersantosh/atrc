@@ -5,7 +5,10 @@ import { __ } from '@wordpress/i18n';
 import classnames from 'classnames';
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/* Inbuilt */
+import AtrcIframe from '../iframe';
+
+/*Local*/
 export function AtrcAudioIsHtml5(url) {
 	// Check if the URL is a SoundCloud track
 	if (
@@ -32,20 +35,21 @@ const AtrcAudio = (props) => {
 		url = '',
 
 		autoplay = false,
-		controls = false,
+		controls = true,
 		loop = false,
 		muted = true,
 		controlslist = '',
 
 		preload = '',
 		prefix = '',
+		...defaultProps
 	} = props;
 
 	if (AtrcAudioIsHtml5(url)) {
 		return (
 			<audio
 				className={classnames(
-					'at-aud',
+					AtrcPrefix('aud'),
 					className,
 					variant ? AtrcPrefix('aud') + '-' + variant : ''
 				)}
@@ -56,21 +60,22 @@ const AtrcAudio = (props) => {
 				controlsList={controlslist}
 				preload={preload}
 				src={url}
+				{...defaultProps}
 			/>
 		);
 	}
 
 	return (
-		<iframe
+		<AtrcIframe
 			className={classnames(
-				'at-aud',
-				'at-frame',
+				AtrcPrefix('aud'),
 				className,
 				variant ? AtrcPrefix('aud') + '-' + variant : ''
 			)}
 			src={url}
 			frameBorder='0'
 			title={__('Other audio', 'atrc-prefix-atrc')}
+			{...defaultProps}
 		/>
 	);
 };

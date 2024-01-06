@@ -1,3 +1,7 @@
+var _excluded = ["variant", "className", "url", "onSettings", "autoplay", "controls", "loop", "muted", "playsInline", "width", "height", "allowFullScreen", "preload", "poster"];
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 /* WordPress */
 import { __ } from '@wordpress/i18n';
 import { addQueryArgs } from '@wordpress/url';
@@ -5,6 +9,7 @@ import { addQueryArgs } from '@wordpress/url';
 /*Library*/
 import classnames from 'classnames';
 import AtrcImg from '../img';
+import AtrcIframe from '../iframe';
 /*Local Components*/
 
 /*Source
@@ -128,9 +133,10 @@ var AtrcVideo = function AtrcVideo(props) {
     _props$preload = props.preload,
     preload = _props$preload === void 0 ? '' : _props$preload,
     _props$poster = props.poster,
-    poster = _props$poster === void 0 ? '' : _props$poster;
+    poster = _props$poster === void 0 ? '' : _props$poster,
+    defaultProps = _objectWithoutProperties(props, _excluded);
   if (AtrcVideoIsHtml5(url)) {
-    return /*#__PURE__*/React.createElement("video", {
+    return /*#__PURE__*/React.createElement("video", _extends({
       className: classnames('at-vid', className, variant ? 'at-vid-' + variant : ''),
       autoPlay: autoplay,
       controls: controls,
@@ -142,14 +148,14 @@ var AtrcVideo = function AtrcVideo(props) {
       preload: preload,
       src: url,
       poster: poster
-    });
+    }, defaultProps));
   }
   if (AtrcIsImageUrl(url)) {
-    return /*#__PURE__*/React.createElement(AtrcImg, {
+    return /*#__PURE__*/React.createElement(AtrcImg, _extends({
       src: url,
       width: width,
       height: height
-    });
+    }, defaultProps));
   }
   if (AtrcVideoIsYoutube(url)) {
     var youtubeVideUrl = onSettings ? url : AtrcGetYoutubeVideUrl({
@@ -161,15 +167,15 @@ var AtrcVideo = function AtrcVideo(props) {
       showInfo: false,
       playsinline: playsInline
     });
-    return /*#__PURE__*/React.createElement("iframe", {
+    return /*#__PURE__*/React.createElement(AtrcIframe, _extends({
       height: height,
       width: width,
-      className: classnames('at-vid', className, variant ? 'at-vid-' + variant : ''),
+      className: classnames(AtrcPrefix('vid'), className, variant ? AtrcPrefix('vid') + '-' + variant : ''),
       src: youtubeVideUrl,
       frameBorder: "0",
       allowFullScreen: allowFullScreen,
       title: __('Youtube video', 'atrc-prefix-atrc')
-    });
+    }, defaultProps));
   }
   if (AtrcVideoIsVimeo(url)) {
     var vimeoUrl = onSettings ? vimeoVideoUrl({
@@ -180,25 +186,25 @@ var AtrcVideo = function AtrcVideo(props) {
       controls: controls,
       playsinline: playsInline
     }) : url;
-    return /*#__PURE__*/React.createElement("iframe", {
+    return /*#__PURE__*/React.createElement(AtrcIframe, _extends({
       height: height,
       width: width,
-      className: classnames('at-vid', className, variant ? 'at-vid-' + variant : ''),
+      className: classnames(AtrcPrefix('vid'), className, variant ? AtrcPrefix('vid') + '-' + variant : ''),
       src: vimeoUrl,
       frameBorder: "0",
       allowFullScreen: allowFullScreen,
       title: __('Vimeo video', 'atrc-prefix-atrc')
-    });
+    }, defaultProps));
   }
-  return /*#__PURE__*/React.createElement("iframe", {
+  return /*#__PURE__*/React.createElement(AtrcIframe, _extends({
     height: height,
     width: width,
-    className: classnames('at-vid', className, variant ? 'at-vid-' + variant : ''),
+    className: classnames(AtrcPrefix('vid'), className, variant ? AtrcPrefix('vid') + '-' + variant : ''),
     src: url,
     frameBorder: "0",
     allowFullScreen: allowFullScreen,
     title: __('Other video', 'atrc-prefix-atrc')
-  });
+  }, defaultProps));
 };
 export default AtrcVideo;
 //# sourceMappingURL=index.js.map
