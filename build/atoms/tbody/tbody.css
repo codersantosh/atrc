@@ -1,6 +1,0 @@
-.at-tbody {
-  --at-txt-al: left;
-  --at-p: 20px;
-  text-align: lvar(--at-txt-al);
-  padding: var(--at-p);
-}

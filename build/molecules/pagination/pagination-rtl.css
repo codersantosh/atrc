@@ -1,8 +1,0 @@
-.at-lnk-pagination {
-  --at-h: 30px;
-  --at-w: 30px;
-  --at-m: 0 5px;
-  height: var(--at-h);
-  width: var(--at-w);
-  margin: var(--at-m);
-}

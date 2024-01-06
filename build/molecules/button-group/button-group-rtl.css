@@ -1,9 +1,0 @@
-.at-btn-grp {
-  --at-g-t-b: 5px;
-  --at-g-l-r: 8px;
-  --at-gap: var(--at-g-t-b) var(--at-g-l-r);
-  --at-m: 15px 0 0 0;
-}
-.at-sidebar-right .at-btn {
-  --at-p: 10px 15px;
-}

@@ -1,8 +1,0 @@
-.at-ctrl-unit-device .at-ctrl-unit-wrp {
-  --at-w: 100%;
-  width: var(--at-w);
-}
-.at-ctrl-unit-device .at-rst-wrp .at-btn-rst-i {
-  --at-m: 13px 0 0 0;
-  margin: var(--at-m);
-}
