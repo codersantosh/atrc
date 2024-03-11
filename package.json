@@ -13,7 +13,7 @@
 		"packages-update": "wp-scripts packages-update",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build",
+		"build-storybook": "storybook build -o docs",
 		"prepublishOnly": "npm run build"
 	},
 	"repository": {
