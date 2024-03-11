@@ -1,0 +1,87 @@
+.at-rst-wrp {
+  --at-gap: 0 15px;
+}
+.at-rst-wrp > .components-base-control {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.at-rst-wrp .components-flex {
+  gap: 0 15px;
+}
+.at-rst-wrp .components-base-control:last-of-type {
+  --at-m: 0;
+  margin-bottom: var(--at-m) !important;
+}
+.at-rst-wrp .components-base-control__field {
+  --at-m: 0;
+  margin-bottom: var(--at-m);
+}
+.at-rst-wrp .components-font-size-picker__controls {
+  --at-m: 0;
+  margin-bottom: var(--at-m);
+}
+.at-rst-wrp .components-font-size-picker__controls .components-toggle-group-control-option-base {
+  --at-p: 0 11px;
+  padding: var(--at-p);
+}
+.at-rst-wrp .components-font-size-picker__controls .components-base-control:last-child {
+  --at-m: 0;
+  margin-bottom: var(--at-m);
+}
+.at-rst-wrp.at-ctrl-select-rst .at-btn-rst-i {
+  --at-m: 25px 0 0 0;
+  margin: var(--at-m);
+}
+.at-rst-wrp.at-ctrl-txt-rst .at-btn-rst-i {
+  --at-m: 24px 0 0 0;
+  margin: var(--at-m);
+}
+.at-rst-wrp.at-range-rst .at-btn-rst-i {
+  --at-m: 26px 0 0 0;
+  margin: var(--at-m);
+}
+.at-rst-wrp.at-bdr-rst .at-btn-rst-i {
+  --at-m: 28px 0 0 0;
+  margin: var(--at-m);
+}
+.at-rst-wrp.at-bdr-rad-rst .at-btn-rst-i {
+  --at-m: 30px 0 0 0;
+  margin: var(--at-m);
+}
+.at-rst-wrp.at-ctrl-unit-rst .at-btn-rst-i {
+  --at-m: 24px 0 0 0;
+  margin: var(--at-m);
+}
+.at-rst-wrp.at-box-four-rst .at-btn-rst-i {
+  --at-m: 35px 0 0 0;
+  margin: var(--at-m);
+}
+.at-rst-wrp.at-combobox-rst .at-btn-rst-i {
+  --at-m: 27px 0 0 0;
+  margin: var(--at-m);
+}
+.at-typ-ln-h .at-rst-wrp.at-ctrl-select-rst .at-btn-rst-i {
+  --at-m: 10px 0 0 0;
+  margin: var(--at-m);
+}
+.at-typ-ln-h .at-rst-wrp.at-ctrl-txt-rst .at-btn-rst-i {
+  --at-m: 12px 0 0 0;
+  margin: var(--at-m);
+}
+.at-typ-ln-h .at-rst-wrp.at-ctrl-unit-rst .at-btn-rst-i {
+  --at-m: 12px 0 0 0;
+  margin: var(--at-m);
+}
+.at-ctrl-select-device .at-rst-wrp .at-btn-rst-i {
+  --at-m: 4px 0 0 0;
+  margin: var(--at-m);
+}
+.at-lbl-rst .at-btn-rst-i {
+  --at-m: 4px 0 0 0 !important;
+  margin: var(--at-m);
+}
+.at-ctrl-zidx-device .at-btn-rst-i {
+  --at-m: 4px 0 0 0 !important;
+  margin: var(--at-m);
+}

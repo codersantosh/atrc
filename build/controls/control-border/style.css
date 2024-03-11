@@ -1,0 +1,4 @@
+.at-bdr .at-tab-pnl .at-rst-wrp.at-bdr-rst .at-btn-rst-i {
+  --at-m: 4px 0 0 0;
+  margin: var(--at-m);
+}

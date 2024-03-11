@@ -1,0 +1,8 @@
+.at-preview-file {
+  --at-bdr-w: 1px;
+  --at-bdr-sty: dashed;
+  --at-bdr-cl: var(--at-border-color);
+  --at-p: 10px;
+  --at-m: 15px 0;
+  width: 100%;
+}

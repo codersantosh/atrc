@@ -1,0 +1,8 @@
+.at-hr {
+  --at-bdr-w: 1px 0 0 0;
+  --at-bdr-sty: solid;
+  --at-bdr-cl: var(--at-border-color);
+  border-width: var(--at-bdr-w);
+  border-style: var(--at-bdr-sty);
+  border-color: var(--at-bdr-cl);
+}

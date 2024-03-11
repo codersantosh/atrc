@@ -1,0 +1,4 @@
+.at-pnl-row + .at-pnl-row {
+  --at-m: 15px 0 0 0;
+  margin: var(--at-m);
+}

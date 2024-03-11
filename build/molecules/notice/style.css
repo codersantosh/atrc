@@ -1,0 +1,34 @@
+.at-notice {
+  --at-p: 8px 12px !important;
+  --at-m: 20px 0 !important;
+  --at-box-sdw: 0 0 2px 1px rgba(0, 0, 0, 0.02);
+  --at-bg-cl: var(--at-white);
+  --at-border-color: var(--at-info);
+  --at-cl: var(--at-base-color);
+  background: var(--at-bg-cl);
+  color: var(--at-cl);
+  border-color: var(--at-border-color);
+}
+.at-notice .components-button {
+  --at-h: auto;
+  --at-min-w: auto;
+  height: var(--at-h);
+  min-width: var(--at-min-w);
+}
+.at-notice .components-button svg {
+  --at-h: 16px;
+  --at-w: 16px;
+  height: var(--at-h);
+  width: var(--at-w);
+}
+.at-notice .components-notice__content {
+  --at-m: 4px 5px 4px 0;
+  margin: var(--at-m);
+}
+
+[data-at-theme=dark] .at-notice {
+  --at-bg-cl: #202020;
+  --at-border-color: #bb86fc;
+  border-color: var(--at-border-color);
+  --at-cl: var(--at-body-color);
+}

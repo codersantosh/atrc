@@ -1,0 +1,10 @@
+.at-img-logo {
+  --at-max-w: 50px;
+}
+.at-logo .at-lnk-nav {
+  --at-opa: 1;
+  --at-bdr-w: 0;
+}
+.at-logo .at-lnk-active {
+  --at-opa: 1;
+}

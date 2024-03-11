@@ -1,0 +1,40 @@
+.at-bulk-wrp .at-btn-grp .at-ttip .at-btn {
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+  -webkit-animation-duration: 0.75s;
+          animation-duration: 0.75s;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+  -webkit-animation-name: animate-slide;
+          animation-name: animate-slide;
+  -webkit-animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+          animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
+}
+
+@-webkit-keyframes animate-slide {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(20px, 0);
+            transform: translate(20px, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+@keyframes animate-slide {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(20px, 0);
+            transform: translate(20px, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}

@@ -1,0 +1,11 @@
+.at-ftr-tpl-1 {
+  --at-p: 20px;
+  --at-bg-cl: var(--at-white);
+  --at-bdr-w: 1px 0 0 0;
+  --at-bdr-sty: solid;
+  --at-bdr-cl: var(--at-border-color);
+}
+
+[data-at-theme=dark] .at-ftr-tpl-1 {
+  --at-bg-cl: #202020;
+}

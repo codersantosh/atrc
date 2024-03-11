@@ -1,0 +1,22 @@
+.at-cb .components-flex {
+  --at-h: 35px;
+  --at-p: 0;
+  padding: var(--at-p);
+  height: var(--at-h);
+}
+.at-cb .components-combobox-control__input:not([type=submit]) {
+  --at-p: 0 10px !important;
+  --at-h: 35px;
+  padding: var(--at-p);
+  height: var(--at-h);
+}
+.at-cb .components-combobox-control__suggestions-container .components-form-token-field__suggestions.is-selected {
+  background: var(--at-primary);
+}
+.at-cb .components-form-token-field__suggestion.is-selected {
+  background: var(--at-primary);
+}
+
+[data-at-theme=dark] .at-cb .components-form-token-field__suggestion {
+  color: var(--at-white);
+}

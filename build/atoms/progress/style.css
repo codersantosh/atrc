@@ -1,0 +1,103 @@
+/* ProgressBar horizontal Styles */
+.at-prog {
+  /* Track */
+  --at-bg-cl: #E5EDE6;
+  --at-h: 30px;
+  --at-bdr-rad: 5px;
+  --at-ovf: hidden;
+  /* Bar */
+  --at-bar-w: 90%;
+  --at-bar-cl: #48B44F;
+  --at-bar-txt-gap: 0 10px;
+  /* ProgressBar Horizontal Styles */
+  /* ProgressBar Circle Styles */
+}
+.at-prog-bar {
+  --at-bg-cl: var(--at-bar-cl);
+  --at-w: var(--at-bar-w);
+}
+.at-prog-bar-striped {
+  --at-bg-img: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  --at-bg-sz: var(--at-h) var(--at-h);
+  background-image: var(--at-bg-img);
+  background-size: var(--at-bg-sz);
+}
+.at-prog-bar-animated {
+  -webkit-animation: 1s linear infinite at-prog-bar-stripes;
+          animation: 1s linear infinite at-prog-bar-stripes;
+}
+.at-prog_txt {
+  --at-gap: var(--at-bar-txt-gap);
+}
+.at-prog_txt .at-txt {
+  --at-m: 0;
+  margin: var(--at-m);
+  white-space: nowrap !important;
+}
+.at-prog-hor {
+  height: var(--at-h);
+}
+.at-prog-cir {
+  --at-pos: relative;
+  --at-strk-w: 1.8;
+  --at-prog-sz: 300px;
+  --at-h: var(--at-prog-sz, 200px);
+  --at-w: var(--at-prog-sz, 200px);
+  /* Track */
+  --at-trk-cl: #E5EDE6;
+  /* Bar */
+  --at-bar-cl: #48B44F;
+  --at-bar-line-cap: round;
+  --at-bar-strk-dashoffest: 90;
+  --at-bar-trs: stroke-dashoffset 1s ease-in-out;
+  stroke-width: var(--at-strk-w);
+}
+.at-prog-cir .at-svg {
+  fill: none !important;
+}
+.at-prog-cir .at-svg {
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+.at-prog-cir__trk {
+  --at-cl: var(--at-trk-cl);
+  stroke: var(--at-cl);
+}
+.at-prog-cir__bar {
+  --at-cl: var(--at-bar-cl);
+  --at-line-cap: var(--at-bar-line-cap);
+  --at-strk-dashoffest: var(--at-bar-strk-dashoffest);
+  --at-trs: var(--at-bar-trs);
+  stroke: var(--at-cl);
+  stroke-dasharray: 100 100;
+  stroke-dashoffset: var(--at-strk-dashoffest);
+  stroke-linecap: var(--at-line-cap);
+}
+.at-prog-cir-txt {
+  --at-pos: absolute;
+  --at-l: 50%;
+  --at-t: 50%;
+  --at-tf: translate(-50%, -50%);
+  -webkit-transform: var(--at-tf);
+      -ms-transform: var(--at-tf);
+          transform: var(--at-tf);
+}
+
+@-webkit-keyframes at-prog-bar-stripes {
+  0% {
+    background-position-x: var(--at-h);
+  }
+}
+
+@keyframes at-prog-bar-stripes {
+  0% {
+    background-position-x: var(--at-h);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .at-prog-bar-animated {
+    -webkit-animation: none;
+            animation: none;
+  }
+}

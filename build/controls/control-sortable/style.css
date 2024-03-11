@@ -1,0 +1,23 @@
+.at-ctrl-sort {
+  width: 100%;
+}
+.at-ctrl-sort-grp {
+  --at-cur: grab;
+}
+.at-ctrl-sort-item {
+  --at-p: 10px;
+  --at-bg-cl: var(--at-white);
+  --at-bdr-w: 1px;
+  --at-bdr-sty: solid;
+  --at-bdr-cl: var(--at-border-color);
+}
+.at-ctrl-sort-drag-handle {
+  --at-cur: grab;
+}
+.at-ctrl-sort-drag-handle-icon svg {
+  --at-w: 15px;
+  --at-h: 15px;
+}
+.at-ctrl-sort-drag-handle-icon svg path {
+  stroke: var(--at-body-color);
+}

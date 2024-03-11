@@ -1,0 +1,16 @@
+.at-spinner:not(.at-spinner-inline) {
+  --at-w: 30px;
+  --at-h: 30px;
+  --at-pos: absolute;
+  --at-l: 50%;
+  --at-t: 50%;
+  --at-tf: translate(-50%, -50%);
+  right: var(--at-l);
+  top: var(--at-t);
+  position: var(--at-pos) !important;
+  height: var(--at-h) !important;
+  width: var(--at-w) !important;
+  -webkit-transform: var(--at-tf);
+      -ms-transform: var(--at-tf);
+          transform: var(--at-tf);
+}

@@ -1,0 +1,43 @@
+.at-date-time-picker .components-datetime {
+  --at-p: 15px 0 0 0;
+  padding: var(--at-p);
+}
+.at-date-time-picker-cont {
+  font-family: var(--at-fnt-fam);
+}
+.at-date-time-picker-cont .components-datetime .components-button.is-secondary {
+  -webkit-box-shadow: inset 0 0 0 1px var(--at-primary);
+          box-shadow: inset 0 0 0 1px var(--at-primary);
+  color: var(--at-primary);
+}
+.at-date-time-picker-cont .components-datetime .components-button.is-primary {
+  background: var(--at-primary);
+  -webkit-box-shadow: inset 0 0 0 1px var(--at-primary);
+          box-shadow: inset 0 0 0 1px var(--at-primary);
+}
+.at-date-time-picker-cont .components-datetime .components-button.is-tertiary {
+  color: var(--at-primary);
+}
+.at-date-time-picker-cont .components-datetime .components-button[tabindex="0"] {
+  background: var(--at-primary);
+}
+
+[data-at-theme=dark] {
+  color-scheme: dark;
+}
+[data-at-theme=dark] .at-date-time-picker-cont .components-datetime .components-button[tabindex="-1"] {
+  color: var(--at-white);
+}
+[data-at-theme=dark] .at-date-time-picker-cont .components-text {
+  color: var(--at-white);
+}
+[data-at-theme=dark] .at-date-time-picker-cont .components-input-control__container, [data-at-theme=dark] .at-date-time-picker-cont .components-select-control__input, [data-at-theme=dark] .at-date-time-picker-cont .components-input-control__input {
+  background: transparent;
+  color: var(--at-white) !important;
+}
+[data-at-theme=dark] .at-date-time-picker-cont .components-custom-select-control__menu {
+  background: transparent;
+}
+[data-at-theme=dark] .at-date-time-picker-cont .components-input-control-suffix-wrapper svg {
+  fill: var(--at-white);
+}

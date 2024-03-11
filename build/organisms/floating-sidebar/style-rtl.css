@@ -1,0 +1,24 @@
+.at-sdbar-icon .at-svg {
+  --at-w: 18px;
+  --at-h: 18px;
+}
+.at-sdbar-flt.at-sdbar-r {
+  --at-p: 20px;
+  --at-pos: fixed;
+  --at-z-idx: 999;
+  --at-t: 32px;
+  --at-r: 0;
+  --at-w: 280px;
+  --at-h: 100%;
+  --at-bg-cl: var(--at-white);
+  --at-box-sdw: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+.at-sdbar-flt .at-btn-close {
+  --at-m: 0 0 20px 0;
+  --at-w: 24px;
+  --at-h: 24px;
+}
+.at-sdbar-flt .at-btn-close .at-svg {
+  --at-w: 18px;
+  --at-h: 18px;
+}

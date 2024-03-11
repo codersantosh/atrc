@@ -1,0 +1,31 @@
+.at-404-tpl-1 .at-404-cont {
+  --at-h: 100vh;
+  gap: 0;
+}
+.at-404-tpl-1 .at-404-cont-heading {
+  --at-m: 0 0 40px 0;
+}
+.at-404-tpl-1 .at-404-cont-heading-title {
+  --at-fnt-sz: 120px;
+  --at-fnt-wt: 800;
+  --at-ln-h: 1;
+}
+.at-404-tpl-1 .at-404-cont-heading-sub-title {
+  --at-txt-al: center;
+  --at-ln-h: 1;
+  --at-fnt-sz: 60px;
+  text-align: var(--at-txt-al);
+}
+.at-404-tpl-1 .at-404-cont-title {
+  --at-fnt-sz: 30px;
+}
+.at-404-tpl-1 .at-404-cont-desc {
+  --at-fnt-sz: 18px;
+}
+.at-404-tpl-1 .at-btn-grp {
+  --at-m: 30px 0 0 0;
+}
+.at-404-tpl-1 .at-btn-icon {
+  --at-p: 15px 30px;
+  font-family: var(--at-fnt-fam);
+}

@@ -1,0 +1,28 @@
+.at-cpd-slider-col-input {
+  --at-m: 30px 0 0 0;
+}
+.at-cpd-slider-col-field {
+  width: calc(33.3333333333% - 5px);
+  margin-right: 5px;
+}
+.at-cpd-slider .slider-handles [role=slider] {
+  --at-pos: absolute;
+  --at-tf: translate(-50%, -50%);
+  --at-w: 10px;
+  --at-h: 10px;
+  --at-p: 0;
+  --at-bdr-rad: 50%;
+  --at-bg-cl: var(--at-primary);
+  --at-bdr-w: 0;
+  position: var(--at-pos);
+  -webkit-transform: var(--at-tf);
+      -ms-transform: var(--at-tf);
+          transform: var(--at-tf);
+  width: var(--at-w);
+  height: var(--at-h);
+  padding: var(--at-p);
+  border-radius: var(--at-bdr-rad);
+  background-color: var(--at-bg-cl);
+  border-width: var(--at-bdr-w);
+  outline: 0;
+}

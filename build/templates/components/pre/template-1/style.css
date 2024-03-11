@@ -1,0 +1,25 @@
+/* Changelog */
+.at-pre-tpl-1 {
+  --at-bdr-cl: #d4d4d4;
+  --at-bdr-w: 1px;
+  --at-bdr-sty: solid;
+  --at-p: 0 0 0 20px;
+  --at-ln-h: 30px;
+  --at-bg-img: linear-gradient(#f5f5f5 50%, #e6e6e6 50%);
+  background-color: #f5f5f5;
+  --at-bg-sz: calc(var(--at-ln-h)) calc(var(--at-ln-h) + 30px);
+  display: block;
+  font-size: 12px;
+  overflow-x: visible;
+  overflow-y: hidden;
+  line-height: var(--at-ln-h);
+}
+
+[data-at-theme=dark] {
+  color-scheme: dark;
+}
+[data-at-theme=dark] .at-pre-tpl-1 {
+  --at-bdr-cl: #575757;
+  --at-bg-img: linear-gradient(#292c2e 50%, #3d3d3d 50%);
+  background-color: #292c2e;
+}

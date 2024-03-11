@@ -1,0 +1,49 @@
+.at-lnk {
+  --at-txt-dec: none;
+  --at-cl: var(--at-body-color);
+  --at-cur: pointer;
+  --at-outl: 0;
+  --at-box-sdw: none;
+  --at-fnt-wt: 600;
+  --at-fnt-sz: 13px;
+  cursor: var(--at-cur);
+  outline: var(--at-outl);
+  -webkit-box-shadow: var(--at-box-sdw);
+          box-shadow: var(--at-box-sdw);
+}
+.at-lnk:hover, .at-lnk:focus {
+  --at-cl: var(--at-body-color);
+  outline: var(--at-outl);
+  -webkit-box-shadow: var(--at-box-sdw);
+          box-shadow: var(--at-box-sdw);
+  color: var(--at-cl);
+}
+.at-lnk-nav {
+  --at-fnt-sz: 13px;
+  --at-opa: 0.8;
+  --at-p: 10px 0;
+  --at-bdr-w: 0 0 2px 0;
+  --at-bdr-sty: solid;
+  --at-bdr-cl: transparent;
+  --at-cl: var(--at-body-color);
+  --at-fnt-wt: 600;
+  --at-txt-dec: none;
+  --at-trs: all 0.5s ease-in-out 0s;
+  padding: var(--at-p);
+  opacity: var(--at-opa);
+  border-width: var(--at-bdr-w);
+  border-style: var(--at-bdr-sty);
+  border-color: var(--at-bdr-cl);
+  -webkit-transition: var(--at-trs);
+  transition: var(--at-trs);
+  display: inline-block;
+}
+.at-lnk-nav:hover, .at-lnk-nav:focus {
+  --at-opa: 1;
+  --at-cl: var(--at-primary);
+}
+.at-lnk[aria-current=page], .at-lnk-active {
+  --at-opa: 1;
+  --at-bdr-cl: var(--at-primary);
+  --at-cl: var(--at-primary);
+}

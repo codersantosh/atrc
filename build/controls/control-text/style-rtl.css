@@ -1,0 +1,22 @@
+.at-txt-small {
+  --at-w: 40px;
+  width: var(--at-w);
+}
+.at-txt-small .components-text-control__input {
+  --at-h: 40px;
+  height: var(--at-h) !important;
+}
+.at-txt .components-base-control__field {
+  --at-m: 0 !important;
+  margin-bottom: var(--at-m);
+}
+.at-txt .components-text-control__input {
+  --at-h: 35px;
+  --at-bdr-w: 1px;
+  --at-bdr-sty: solid;
+  --at-bdr-cl: var(--at-quaternary);
+  border-color: var(--at-bdr-cl);
+  border-width: var(--at-bdr-w);
+  border-style: var(--at-bdr-sty);
+  height: var(--at-h);
+}

@@ -1,0 +1,18 @@
+.at-ftr {
+  --at-p: 20px;
+}
+.at-ftr-fix {
+  --at-pos: fixed;
+  --at-b: 32px;
+  --at-r: 0;
+  --at-l: 160px;
+  --at-z-idx: 99;
+  --at-box-sdw: initial;
+  --at-m: initial;
+  --at-p: 0 20px;
+}
+.at-ftr-stky {
+  --at-pos: sticky;
+  --at-b: 0;
+  --at-z-idx: 99;
+}

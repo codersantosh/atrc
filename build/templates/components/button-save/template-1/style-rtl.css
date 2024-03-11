@@ -1,0 +1,11 @@
+.at-btn-save {
+  --at-gap: 0 10px;
+}
+.at-btn-save .at-spinner {
+  --at-m: 0;
+  --at-h: 12px;
+  --at-w: 12px;
+  margin: var(--at-m) !important;
+  height: var(--at-h) !important;
+  width: var(--at-w) !important;
+}

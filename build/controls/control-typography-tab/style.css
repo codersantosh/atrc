@@ -1,0 +1,10 @@
+.at-ctrl-typ-tab .components-base-control__label, .at-ctrl-typ-tab .components-input-control__label, .at-ctrl-typ-tab .components-panel__body-toggle {
+  --at-fnt-sz: 13px;
+  --at-fnt-wt: 600;
+  --at-cl: var(--at-body-color);
+  --at-txt-tf: capitalize;
+  font-size: var(--at-fnt-sz) !important;
+  font-weight: var(--at-fnt-wt) !important;
+  color: var(--at-cl);
+  text-transform: var(--at-txt-tf) !important;
+}

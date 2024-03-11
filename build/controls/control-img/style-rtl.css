@@ -1,0 +1,37 @@
+.at-ctrl-img-slf-hosted {
+  --at-pos: relative;
+}
+.at-ctrl-img-slf-hosted .at-btn-uploads {
+  --at-gap: 0 5px;
+  --at-p: 15px 5px;
+  --at-fnt-sz: 14px;
+  --at-w: 100%;
+}
+.at-ctrl-img-slf-hosted .at-btn-uploads .at-svg {
+  --at-w: 15px;
+  --at-h: 15px;
+}
+.at-img-sz {
+  --at-m: 15px 0 0 0;
+}
+.at-uploads-del {
+  --at-pos: absolute;
+  --at-t: 15px;
+  --at-r: 15px;
+}
+.at-uploads-del .at-btn-delete {
+  --at-w: 25px;
+  --at-h: 25px;
+  --at-bdr-rad: 50px;
+  --at-p: 0;
+}
+.at-uploads-del .at-btn-delete .at-svg {
+  --at-w: 12px;
+  --at-h: 12px;
+}
+.at-ctrl-img .at-ctrl-img-ext .at-img {
+  --at-m: 0 0 15px 0;
+}
+.at-dropdown-cont .at-ctrl-img {
+  width: 250px;
+}

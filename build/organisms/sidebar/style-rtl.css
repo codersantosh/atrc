@@ -1,0 +1,9 @@
+.at-sdbar {
+  --at-p: 20px;
+}
+.at-sdbar .at-hdr {
+  --at-p: 10px 0;
+}
+.at-sdbar .at-hdr .at-hr {
+  --at-m: 0 0 20px 0;
+}

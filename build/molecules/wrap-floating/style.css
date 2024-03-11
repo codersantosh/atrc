@@ -1,0 +1,20 @@
+.at-wrp-flt {
+  --at-pos: fixed;
+  --at-z-idx: 9999;
+}
+.at-wrp-flt-br {
+  --at-b: 0;
+  --at-r: 0;
+}
+.at-wrp-flt-bl {
+  --at-b: 0;
+  --at-l: 0;
+}
+.at-wrp-flt-tl {
+  --at-t: 0;
+  --at-l: 0;
+}
+.at-wrp-flt-tr {
+  --at-t: 0;
+  --at-r: 0;
+}

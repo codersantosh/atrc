@@ -1,0 +1,17 @@
+.at-ctrl-box-four .components-flex:empty {
+  display: none !important;
+}
+.at-ctrl-box-four .components-flex.component-box-control__input-controls {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.at-ctrl-box-four .components-flex .components-flex-item:empty {
+  display: none !important;
+}
+.at-ctrl-box-four .components-flex span.components-base-control__label:empty {
+  display: none !important;
+}
+.at-ctrl-box-four-device-tab .at-tab-pnl .at-rst-wrp.at-box-four-rst .at-btn-rst-i {
+  --at-m: 8px 0 0 0;
+  margin: var(--at-m);
+}
