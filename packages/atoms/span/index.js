@@ -4,10 +4,13 @@ import { forwardRef } from 'react';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Atoms*/
+import AtrcWrap from '../wrap';
+
+/* Prefix */
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local components*/
+/*Local*/
 const AtrcSpan = (props, ref) => {
 	const {
 		children = '',
@@ -18,7 +21,8 @@ const AtrcSpan = (props, ref) => {
 	} = props;
 
 	return (
-		<span
+		<AtrcWrap
+			tag='span'
 			className={classnames(
 				AtrcPrefix('span'),
 				className,
@@ -28,7 +32,7 @@ const AtrcSpan = (props, ref) => {
 			ref={ref}
 			{...defaultProps}>
 			{children}
-		</span>
+		</AtrcWrap>
 	);
 };
 export default forwardRef(AtrcSpan);

@@ -1,3 +1,4 @@
+/* Local */
 export default function AtrcIsGradientColor(value) {
 	if (!value) {
 		return false;

@@ -1,10 +1,10 @@
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/*Local*/
 const AtrcHr = (props) => {
 	const { className = '', variant = '', ...defaultProps } = props;
 

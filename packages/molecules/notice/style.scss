@@ -1,0 +1,48 @@
+@import '../../prefix-vars.scss';
+
+#{$appPrefix} {
+	&-notice {
+		#{$varPrefix}-p: 8px 12px !important;
+		#{$varPrefix}-m: 20px 0 !important;
+		#{$varPrefix}-box-sdw: 0 0 2px 1px rgba(0, 0, 0, 0.02);
+		#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+		#{$varPrefix}-border-color: var(#{$varPrefix}-info);
+		#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+
+		background: var(#{$varPrefix}-bg-cl);
+		color: var(#{$varPrefix}-cl);
+		border-color: var(#{$varPrefix}-border-color);
+
+		.components {
+			&-button {
+				#{$varPrefix}-h: auto;
+				#{$varPrefix}-min-w: auto;
+				height: var(#{$varPrefix}-h);
+				min-width: var(#{$varPrefix}-min-w);
+
+				svg {
+					#{$varPrefix}-h: 16px;
+					#{$varPrefix}-w: 16px;
+					height: var(#{$varPrefix}-h);
+					width: var(#{$varPrefix}-w);
+				}
+			}
+
+			&-notice__content {
+				#{$varPrefix}-m: 4px 5px 4px 0;
+				margin: var(#{$varPrefix}-m);
+			}
+		}
+	}
+}
+
+[data-at-theme='dark'] {
+	#{$appPrefix} {
+		&-notice {
+			#{$varPrefix}-bg-cl: #202020;
+			#{$varPrefix}-border-color: #bb86fc;
+			border-color: var(#{$varPrefix}-border-color);
+			#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+		}
+	}
+}

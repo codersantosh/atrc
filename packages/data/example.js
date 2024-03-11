@@ -16,7 +16,7 @@ console.log(AtrcApis);
 console.log(AtrcStore);
 console.log(AtrcRegisterStore('atrc-prefix-atrc'));
 
-function ExampleItems({ items, isLoading, totalPages, currentPage, getItems }) {
+function ExampleItems({ items, isLoading, totalPages, currentPage, getData }) {
 	// eslint-disable-next-line no-unused-vars
 	const [page, setPage] = useState(currentPage || 1);
 	/* const handlePageChange = (newPage) => {
@@ -25,7 +25,7 @@ function ExampleItems({ items, isLoading, totalPages, currentPage, getItems }) {
 	}; */
 	useEffect(() => {
 		console.log('1');
-		getItems();
+		getData();
 	}, []);
 
 	if (isLoading) {
@@ -49,27 +49,17 @@ function ExampleItems({ items, isLoading, totalPages, currentPage, getItems }) {
 
 const applyWithSelect = withSelect((select) => {
 	return {
-		items: select('atrc-prefix-atrc').getItems('posts'),
-		isLoading: select('atrc-prefix-atrc').getItemsIsLoading(
-			'posts'
-		),
-		totalPages: select('atrc-prefix-atrc').getItemsTotalPages(
-			'posts'
-		),
+		items: select('atrc-prefix-atrc').getData('posts'),
+		isLoading: select('atrc-prefix-atrc').getItemsIsLoading('posts'),
+		totalPages: select('atrc-prefix-atrc').getItemsTotalPages('posts'),
 	};
 });
 
 const applyWithDispatch = withDispatch((dispatch) => {
 	return {
-		getItems: (args = {}) => {
+		getData: (args = {}) => {
 			console.log('2');
-			// dispatch('atrc-prefix-atrc').getItems('posts', args);
-		},
-		setIsLoading: (isLoading) => {
-			dispatch('atrc-prefix-atrc').setIsLoading(
-				'posts',
-				isLoading
-			);
+			// dispatch('atrc-prefix-atrc').getData('posts', args);
 		},
 		setError: (error) => {
 			dispatch('atrc-prefix-atrc').setError('posts', error);

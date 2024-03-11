@@ -1,5 +1,6 @@
 /*React*/
 import { forwardRef } from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -7,7 +8,7 @@ import { useSelect } from '@wordpress/data';
 
 import { store as coreStore } from '@wordpress/core-data';
 
-/* Inbuilt */
+/* Atoms */
 import AtrcWrap from '../../atoms/wrap';
 import AtrcLink from '../../atoms/link';
 
@@ -31,7 +32,7 @@ const AtrcPostAuthorName = (props, ref) => {
 		[postType, postId]
 	);
 
-	const displayName = authorName?.name || __('Author Name', 'atrc=prefix-atrc');
+	const displayName = authorName?.name || __('Author Name', 'atrc-prefix-atrc');
 
 	const displayAuthor =
 		linkOptions && linkOptions.on ? (

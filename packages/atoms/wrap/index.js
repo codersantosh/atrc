@@ -4,10 +4,10 @@ import { forwardRef } from 'react';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/*Local*/
 const AtrcWrap = (props, ref) => {
 	const {
 		tag = 'div',
@@ -17,13 +17,18 @@ const AtrcWrap = (props, ref) => {
 		dangerouslySetInnerHTML = '',
 		...defaultProps
 	} = props;
+
 	const WrapTag = tag;
+	const thisClassNames = classnames(
+		className,
+		variant ? AtrcPrefix('') + variant : ''
+	);
 
 	if (dangerouslySetInnerHTML) {
 		return (
 			<WrapTag
 				ref={ref}
-				className={classnames(className, variant ? AtrcPrefix() + variant : '')}
+				className={thisClassNames}
 				dangerouslySetInnerHTML={dangerouslySetInnerHTML}
 				{...defaultProps}
 			/>
@@ -33,7 +38,7 @@ const AtrcWrap = (props, ref) => {
 	return (
 		<WrapTag
 			ref={ref}
-			className={classnames(className, variant ? AtrcPrefix('') + variant : '')}
+			className={thisClassNames}
 			{...defaultProps}>
 			{children}
 		</WrapTag>

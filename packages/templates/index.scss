@@ -1,7 +1,29 @@
 @import '../prefix-vars.scss';
 
-@import '../prefix-vars.scss';
-@import './404/404';
-@import './landing/landing';
-@import './list/list';
-@import './single/single';
+@import './404/template-1/style';
+
+@import './components/button-icon/template-1/style';
+
+@import './components/button-save/template-1/style';
+
+@import './components/img-and-word/template-1/style';
+
+@import './components/list-table/template-1/style';
+
+@import './components/pre/template-1/style';
+
+@import './components/title/template-1/style';
+@import './components/title/template-2/style';
+
+@import './footers/template-1/style';
+
+@import './headers/template-1/style';
+@import './headers/template-2/style';
+
+@import './item/template-1/style';
+
+@import './landing/template-1/style';
+
+@import './page-list/template-1/style';
+
+@import './single/template-1/style';

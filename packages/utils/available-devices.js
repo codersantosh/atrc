@@ -1,10 +1,15 @@
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
+
+/* Library */
 import { isArray } from 'lodash';
 
 import { BsDisplay, BsLaptop, BsPhone, BsTablet, BsTv } from 'react-icons/bs';
+
+/* Internal */
 import AtrcParseBoolean from './parse-boolean';
 
+/* Local */
 const AtrcAvailableDevices = () => {
 	return [
 		{
@@ -96,4 +101,5 @@ export const AtrcGetAvailableDevices = (nameArray) => {
 	}
 	return null;
 };
+
 export default AtrcAvailableDevices;

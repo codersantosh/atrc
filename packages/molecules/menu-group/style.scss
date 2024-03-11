@@ -1,0 +1,12 @@
+@import '../../prefix-vars.scss';
+
+#{$appPrefix} {
+    &-menu-grp {
+        .components {
+            &-menu-items-choice {
+                #{$varPrefix}-m: 15px;
+                margin-bottom: var(#{$varPrefix}-m);
+            }
+        }
+    }
+}

@@ -1,12 +1,12 @@
 /*React*/
 import { forwardRef } from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
 import { useEntityProp } from '@wordpress/core-data';
 
-/* Inbuilt */
-
+/* Atoms */
 import AtrcWrap from '../../atoms/wrap';
 
 /* Local */

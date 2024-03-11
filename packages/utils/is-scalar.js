@@ -1,3 +1,4 @@
+/* Local */
 export default function AtrcIsScalar(value) {
 	const type = typeof value;
 

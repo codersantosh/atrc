@@ -1,5 +1,6 @@
 /*React*/
 import { forwardRef } from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -9,8 +10,10 @@ import apiFetch from '@wordpress/api-fetch';
 
 import { addQueryArgs } from '@wordpress/url';
 
-/* Inbuilt */
+/* Atoms */
 import AtrcWrap from '../../atoms/wrap';
+
+/* Molecules */
 import AtrcNotice from './../../molecules/notice';
 
 /* Local */
@@ -18,6 +21,7 @@ const AtrcPostCommentCount = (props, ref) => {
 	const { postId, htmlTag, ...defaultProps } = props;
 
 	const [commentsCount, setCommentsCount] = useState();
+
 	useEffect(() => {
 		if (!postId) {
 			return;

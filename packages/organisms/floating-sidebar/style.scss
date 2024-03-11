@@ -1,0 +1,49 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+    &-sd {
+        &-nav {}
+    }
+
+    &-sdbar-icon {
+        .at {
+            &-svg {
+                #{$varPrefix}-w: 18px;
+                #{$varPrefix}-h: 18px;
+            }
+        }
+    }
+
+    &-sdbar {
+        &-flt {
+            &#{$appPrefix} {
+                &-sdbar {
+                    &-r {
+                        #{$varPrefix}-p: 20px;
+                        #{$varPrefix}-pos: fixed;
+                        #{$varPrefix}-z-idx: 999;
+                        #{$varPrefix}-t: 32px;
+                        #{$varPrefix}-r: 0;
+                        #{$varPrefix}-w: 280px;
+                        #{$varPrefix}-h: 100%;
+                        #{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+                        #{$varPrefix}-box-sdw: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+                    }
+                }
+            }
+
+            #{$appPrefix} {
+                &-btn-close {
+                    #{$varPrefix}-m: 0 0 20px 0;
+                    #{$varPrefix}-w: 24px;
+                    #{$varPrefix}-h: 24px;
+
+                    .at-svg {
+                        #{$varPrefix}-w: 18px;
+                        #{$varPrefix}-h: 18px;
+                    }
+                }
+            }
+        }
+    }
+}

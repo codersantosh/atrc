@@ -1,0 +1,1 @@
+The blocks folder is not part of the atrc and shouldnot included on atrc, it is private

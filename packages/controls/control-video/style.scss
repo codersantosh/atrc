@@ -1,0 +1,65 @@
+@import '../../prefix-vars.scss';
+
+#{$appPrefix} {
+	&-ctrl-vid {
+		&-slf-hosted {
+			#{$varPrefix}-pos: relative;
+			#{$varPrefix}-m: 0 0 15px 0;
+
+			#{$appPrefix}-btn {
+				&-uploads {
+					#{$varPrefix}-gap: 0 5px;
+					#{$varPrefix}-p: 15px 5px;
+					#{$varPrefix}-fnt-sz: 14px;
+					#{$varPrefix}-w: 100%;
+
+					.at-svg {
+						#{$varPrefix}-w: 15px;
+						#{$varPrefix}-h: 15px;
+					}
+				}
+			}
+		}
+
+		&-ext {
+			#{$varPrefix}-m: 15px 0 0 0;
+
+			.atrc-pnl-row {
+				&:first-of-type {
+					margin: 15px 0 0 0 !important;
+				}
+			}
+		}
+
+		&-uploads-del {
+			#{$varPrefix}-pos: absolute;
+			#{$varPrefix}-t: 15px;
+			#{$varPrefix}-r: 15px;
+		}
+
+		&-btn-delete {
+			#{$varPrefix}-w: 25px;
+			#{$varPrefix}-h: 25px;
+			#{$varPrefix}-bdr-rad: 50px;
+			#{$varPrefix}-p: 0;
+
+			.at-svg {
+				#{$varPrefix}-w: 12px;
+				#{$varPrefix}-h: 12px;
+			}
+		}
+
+		#{$appPrefix} {
+			&-ctrl-img {
+				#{$varPrefix}-m: 0 0 15px 0;
+			}
+		}
+	}
+	&-dropdown-cont {
+		#{$appPrefix} {
+			&-ctrl-vid {
+				width: 250px;
+			}
+		}
+	}
+}

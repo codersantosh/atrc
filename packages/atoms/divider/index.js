@@ -1,24 +1,44 @@
-/*WordPress*/
-import { __experimentalDivider as Divider } from '@wordpress/components';
-
 /*Library*/
 import classnames from 'classnames';
-/*Inbuilt*/
+
+/* Atoms */
+import AtrcIcon, { AtrcIconSvg } from '../icon';
+
+/* Controls */
+import { AtrcControlDividerDefaultSvg } from '../../controls/control-divider';
+
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/*Local*/
 const AtrcDivider = (props) => {
-	const { className = '', variant = '', ...defaultProps } = props;
-
-	return (
-		<Divider
-			className={classnames(
-				AtrcPrefix('divider'),
-				className,
-				variant ? AtrcPrefix('divider') + '-' + variant : ''
-			)}
-			{...defaultProps}
-		/>
+	const { className = '', variant = '', value, ...defaultProps } = props;
+	const thisClassnames = classnames(
+		AtrcPrefix('divider'),
+		className,
+		variant ? AtrcPrefix('divider') + '-' + variant : ''
 	);
+	if (value) {
+		if ('cust' === value.svgFrm && value.svg) {
+			return (
+				<AtrcIconSvg
+					svg={value.svg}
+					className={thisClassnames}
+				/>
+			);
+		}
+		if (value.svgDefd) {
+			return (
+				<AtrcIcon
+					className={thisClassnames}
+					icon={AtrcControlDividerDefaultSvg({
+						svgDefd: value.svgDefd,
+					})}
+				/>
+			);
+		}
+	}
+
+	return null;
 };
 export default AtrcDivider;

@@ -4,10 +4,10 @@ import { Spinner } from '@wordpress/components';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/*Local*/
 const AtrcSpinner = (props = {}) => {
 	const { className = '', variant = '', ...defaultProps } = props;
 

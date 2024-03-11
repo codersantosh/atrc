@@ -1,0 +1,112 @@
+@import '../../prefix-vars';
+
+%label {
+	#{$varPrefix}-fnt-wt: 600;
+	#{$varPrefix}-m: 0 0 5px 0;
+	#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+	#{$varPrefix}-txt-tf: capitalize;
+	#{$varPrefix}-fnt-sz: 13px;
+	#{$varPrefix}-lh-n: normal;
+	font-size: var(#{$varPrefix}-fnt-sz) !important;
+	font-weight: var(#{$varPrefix}-fnt-wt) !important;
+	color: var(#{$varPrefix}-cl) !important;
+	text-transform: var(#{$varPrefix}-txt-tf) !important;
+	margin: var(#{$varPrefix}-m);
+	font-family: var(#{$varPrefix}-fnt-fam);
+	line-height: var(#{$varPrefix}-lh-n) !important;
+}
+
+#{$appPrefix} {
+	&-wrp-lib {
+		.components {
+			&-base-control__label,
+			&-input-control__label {
+				@extend %label;
+			}
+			&-border-box-control {
+				label {
+					@extend %label;
+				}
+			}
+
+			&-combobox-control__suggestions-container,
+			&-input-control__input,
+			&-select-control__input,
+			&-text-control__input,
+			&-input-control__backdrop {
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+				border-color: var(#{$varPrefix}-bdr-cl) !important;
+			}
+
+			&-border-radius-control {
+				border: 0;
+				padding: 0;
+				margin: 0;
+				width: 100%;
+				&__wrapper {
+					align-items: center;
+					display: flex;
+					justify-content: space-between;
+					gap: 10px;
+				}
+				&__unit-control {
+					flex-shrink: 0;
+					margin-bottom: 0;
+					margin-right: 16px;
+					width: calc(50% - 8px);
+				}
+				&__input-controls-wrapper {
+					display: grid;
+					gap: 16px;
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+					margin-right: 12px;
+				}
+				.components {
+					&-range-control {
+						flex-grow: 1;
+					}
+				}
+			}
+		}
+	}
+}
+
+[data-at-theme='dark'] {
+	color-scheme: dark;
+	#{$appPrefix} {
+		&-wrp-lib {
+			.components {
+				&-input-control__container {
+					background: transparent;
+				}
+				&-input-control__suffix {
+					.components {
+						&-unit-control__select {
+							color: var(#{$varPrefix}-white);
+						}
+					}
+				}
+				&-input-control__input,
+				&-select-control__input {
+					color: var(#{$varPrefix}-white) !important;
+				}
+				&-select-control__input {
+					option {
+						background-color: var(#{$varPrefix}-quaternary);
+						color: var(#{$varPrefix}-white);
+					}
+				}
+				&-input-control-suffix-wrapper {
+					svg {
+						fill: var(#{$varPrefix}-white);
+					}
+				}
+			}
+			.component {
+				&-box-control__linked-button {
+					color: var(#{$varPrefix}-white) !important;
+				}
+			}
+		}
+	}
+}

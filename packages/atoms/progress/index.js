@@ -1,20 +1,20 @@
 /*React*/
 import { forwardRef } from 'react';
 
-// import { forwardRef } from '@wordpress/element'; /* this cause tree shaking issue */
-
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
-import AtrcPrefix from '../../prefix-vars';
-
+/* Atoms */
 import AtrcWrap from '../wrap';
 
+/*Prefix*/
+import AtrcPrefix from '../../prefix-vars';
+
+/* Utils */
 import AtrcIsGradientColor from '../../utils/is-gradient-color';
 import { AtrcIsLinearGradientColor } from '../../utils/is-gradient-color';
 
-/*Local Components*/
+/*Local*/
 export const AtrcProgressSvgGradientColor = ({ gradient, uniqueId }) => {
 	// Extracting the degree value
 	if (!gradient.includes('linear') || !gradient.match(/(\d+)deg/)) {
@@ -81,15 +81,15 @@ const AtrcProgress = (props, ref) => {
 		return (
 			<AtrcWrap
 				className={classnames(
-					'at-prog',
-					'at-prog-cir',
+					AtrcPrefix('prog'),
+					AtrcPrefix('prog-cir'),
 					className,
 					variant ? AtrcPrefix('prog') + '-' + variant : ''
 				)}
 				ref={ref}
 				{...defaultProps}>
 				<svg
-					className='at-svg at-w at-h'
+					className={classnames(AtrcPrefix('svg'), 'at-w', 'at-h')}
 					xmlns='http://www.w3.org/2000/svg'
 					viewBox='-1 -1 34 34'>
 					{AtrcIsLinearGradientColor(barColor) ? (
@@ -117,7 +117,10 @@ const AtrcProgress = (props, ref) => {
 					/>
 				</svg>
 				{children ? (
-					<AtrcWrap className='at-prog-cir-txt at-pos'>{children}</AtrcWrap>
+					<AtrcWrap
+						className={classnames(AtrcPrefix('prog-cir-txt'), 'at-pos')}>
+						{children}
+					</AtrcWrap>
 				) : null}
 			</AtrcWrap>
 		);
@@ -126,8 +129,8 @@ const AtrcProgress = (props, ref) => {
 	return (
 		<AtrcWrap
 			className={classnames(
-				'at-prog',
-				'at-prog-hor',
+				AtrcPrefix('prog'),
+				AtrcPrefix('prog-hor'),
 				className,
 				variant ? AtrcPrefix('prog') + '-' + variant : ''
 			)}
@@ -135,7 +138,8 @@ const AtrcProgress = (props, ref) => {
 			{...defaultProps}>
 			<AtrcWrap
 				className={classnames(
-					'at-prog-bar at-ovf at-h at-w at-trs',
+					AtrcPrefix('prog-bar'),
+					'at-ovf at-h at-w at-trs',
 					AtrcIsGradientColor(barColor) ? 'at-bg-img' : 'at-bg-cl'
 				)}>
 				{children}

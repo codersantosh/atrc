@@ -1,23 +1,26 @@
 /*React*/
 import { forwardRef } from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
 import { decodeEntities } from '@wordpress/html-entities';
 
-/* Inbuilt */
+/* Atoms */
+import AtrcSpan from '../../atoms/span';
 import AtrcWrap from '../../atoms/wrap';
 import AtrcLink from '../../atoms/link';
 import AtrcSpinner from '../../atoms/spinner';
 
-/* Local */
+/* Internal */
 import AtrcUsePostTerms from './use-post-terms';
 
+/* Local */
 const AtrcPostTerms = (props, ref) => {
 	const {
 		postType,
 		postId,
-		htmlTag,
+		htmlTag = 'div',
 		taxonomy = 'category',
 		separator,
 		...defaultProps
@@ -27,9 +30,11 @@ const AtrcPostTerms = (props, ref) => {
 		postId,
 		taxonomy,
 	});
+
 	const hasPost = postType;
 
 	const TermTag = htmlTag;
+
 	return (
 		<AtrcWrap
 			{...defaultProps}
@@ -54,7 +59,7 @@ const AtrcPostTerms = (props, ref) => {
 					.reduce((prev, curr) => (
 						<>
 							{prev}
-							<span
+							<AtrcSpan
 								dangerouslySetInnerHTML={{
 									__html: separator || ' ',
 								}}

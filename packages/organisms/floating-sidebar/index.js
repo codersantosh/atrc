@@ -1,13 +1,12 @@
-/*WordPress*/
-
 /*Library*/
 import { PortalWithState } from 'react-portal';
 
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
 
+/* Organisms */
 import AtrcSidebar from '../sidebar';
 
 /*Prefix*/
@@ -30,8 +29,8 @@ const AtrcFloatingSidebar = (props) => {
 	return (
 		<AtrcWrap
 			className={classnames(
-				AtrcPrefix('sidebar-icon'),
-				direction ? AtrcPrefix('side-nav') + direction : ''
+				AtrcPrefix('sdbar-icon'),
+				direction ? AtrcPrefix('sd-nav') + direction : ''
 			)}
 			{...defaultProps}>
 			<PortalWithState
@@ -57,7 +56,7 @@ const AtrcFloatingSidebar = (props) => {
 							{renderToggle(args)}
 							{portal(
 								<AtrcSidebar
-									variant='floating'
+									variant='flt'
 									className='at-pos at-z-idx at-w at-h at-bg-cl at-p at-box-sdw'
 									direction={direction}>
 									{renderContent(args)}

@@ -1,14 +1,17 @@
 /* WordPress */
 import { __ } from '@wordpress/i18n';
 
-/* Atrc */
-import AtrcTooltip from '../tooltip';
+/* Library */
+import { BsPlusSquare } from 'react-icons/bs';
+import classNames from 'classnames';
 
+/* Atoms */
 import AtrcButton from '../../atoms/button';
 import AtrcIcon from '../../atoms/icon';
 
-import { BsPlusSquare } from 'react-icons/bs';
+/* Molecules */
 
+/* Local */
 const AtrcRepeaterGroupAdd = (props) => {
 	const {
 		addGroup,
@@ -18,18 +21,14 @@ const AtrcRepeaterGroupAdd = (props) => {
 
 	return (
 		<AtrcButton
-			variant='add'
+			hasIcon={true}
 			onClick={addGroup}
-			className='at-m'>
-			<AtrcTooltip
-				className='at-flx at-al-itm-ctr at-gap'
-				text={tooltipText}>
-				<AtrcIcon
-					type='bootstrap'
-					icon={BsPlusSquare}
-				/>
-				{label}
-			</AtrcTooltip>
+			className={classNames('at-m')}>
+			<AtrcIcon
+				type='bootstrap'
+				icon={BsPlusSquare}
+			/>
+			{label}
 		</AtrcButton>
 	);
 };

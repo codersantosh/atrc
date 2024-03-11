@@ -4,13 +4,13 @@ import { Dropdown } from '@wordpress/components';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/*Local*/
 const AtrcDropdown = (props) => {
 	const {
 		className = '',

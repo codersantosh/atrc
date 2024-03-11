@@ -1,7 +1,7 @@
 /*WordPress*/
 import { useEffect, useRef, useState } from '@wordpress/element';
 
-/*Library*/
+/*Local*/
 const AtrcUseDelayFunction = (fn, dla = 2000) => {
 	if (!fn) return;
 	const [count, setCount] = useState(0);

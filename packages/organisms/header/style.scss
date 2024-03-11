@@ -1,0 +1,23 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+	&-hdr {
+		#{$varPrefix}-p: 20px;
+
+		&-stky {
+			#{$varPrefix}-pos: fixed;
+			#{$varPrefix}-t: 32px; // The value is set under the assumption that it is being used within the WordPress admin environment.
+			#{$varPrefix}-r: 0;
+			#{$varPrefix}-l: 160px; // The value is set under the assumption that it is being used within the WordPress admin environment.
+			#{$varPrefix}-z-idx: 99;
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+			#{$varPrefix}-box-sdw: initial;
+			#{$varPrefix}-m: initial;
+			#{$varPrefix}-p: 0 20px;
+
+			+ #at-main {
+				margin-top: var(#{$varPrefix}-m-t, 92px);
+			}
+		}
+	}
+}

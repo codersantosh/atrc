@@ -19,9 +19,9 @@ import { speak } from '@wordpress/a11y';
 /** Library*/
 import classnames from 'classnames';
 
-import { map, forEach, sortBy } from 'lodash';
+import { map, forEach, sortBy, cloneDeep } from 'lodash';
 
-/*Inbuilt*/
+/*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
 import AtrcLabel from '../../atoms/label';
 import AtrcButton from '../../atoms/button';
@@ -29,17 +29,20 @@ import AtrcIcon from '../../atoms/icon';
 import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
 import AtrcSpan from '../../atoms/span';
 
+/* Molecules */
 import AtrcNotice from '../notice';
 import AtrcDropdown from '../dropdown';
 import AtrcTooltip from '../tooltip';
 import AtrcTabPanel from '../tab-panel';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
+
+/* Utils */
 import AtrcUseInstanceId from '../../utils/use-instance-id';
 import AtrcUseStateCallback from './../../utils/use-state-callback';
 
-/*Local Components*/
+/*Local*/
 export function AtrcPanelTools(props) {
 	const {
 		label = '',
@@ -121,7 +124,8 @@ export function AtrcPanelTools(props) {
 			newActiveItems.splice(iDx, 1);
 		}
 
-		const valueCloned = Object.assign({}, panelToolsState);
+		const valueCloned = cloneDeep(panelToolsState);
+
 		valueCloned.activeItems = newActiveItems;
 		valueCloned.showChildren = newActiveItems.length;
 		if (localAllowTabs) {
@@ -156,7 +160,8 @@ export function AtrcPanelTools(props) {
 				newActiveItems.push(item.name);
 			}
 		});
-		const valueCloned = Object.assign({}, panelToolsState);
+		const valueCloned = cloneDeep(panelToolsState);
+
 		valueCloned.activeItems = newActiveItems;
 		if (localAllowTabs) {
 			valueCloned.tabs = getTabs(newActiveItems);
@@ -236,9 +241,8 @@ export function AtrcPanelTools(props) {
 															AtrcPrefix('menu-itm-wrp'),
 															'at-flx'
 														)}
-														key={iDx + 'menu-itm-wrp'}>
+														key={`${instanceId}-${iDx}-${control.name}`}>
 														<MenuItem
-															key={label}
 															isSelected={panelToolsState.activeItems.includes(
 																control.name
 															)}
@@ -313,10 +317,8 @@ export function AtrcPanelTools(props) {
 												variant={'tertiary'}
 												onClick={() => {
 													if (panelToolsState.activeItems.length) {
-														const valueCloned = Object.assign(
-															{},
-															panelToolsState
-														);
+														const valueCloned = cloneDeep(panelToolsState);
+
 														valueCloned.activeItems = [];
 														valueCloned.tabs = [];
 														valueCloned.showChildren = false;
@@ -332,7 +334,12 @@ export function AtrcPanelTools(props) {
 												}}>
 												<AtrcSpan
 													variant='reset'
-													className={classnames('at-flx', 'at-jfy-cont-btw')}>
+													className={classnames(
+														'at-flx',
+														'at-jfy-cont-btw',
+														'at-flx-grw-1',
+														' at-al-itm-ctr'
+													)}>
 													<AtrcSpan>
 														{__('Reset all', 'atrc-prefix-atrc')}
 													</AtrcSpan>
@@ -353,7 +360,8 @@ export function AtrcPanelTools(props) {
 						<AtrcButton
 							variant='dropdown'
 							onClick={() => {
-								const valueCloned = Object.assign({}, panelToolsState);
+								const valueCloned = cloneDeep(panelToolsState);
+
 								valueCloned.showChildren = !valueCloned.showChildren;
 								setPanelToolsState(valueCloned);
 							}}>

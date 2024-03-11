@@ -6,10 +6,10 @@ import { useEffect } from '@wordpress/element';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-//*Local Components*/
+//*Local*/
 const AtrcNotice = (props) => {
 	const {
 		children,
@@ -29,7 +29,7 @@ const AtrcNotice = (props) => {
 			const timer = setTimeout(() => onAutoRemove(), autoDismiss);
 			return () => clearTimeout(timer);
 		}
-	});
+	}, [autoDismiss]);
 
 	return (
 		<Notice

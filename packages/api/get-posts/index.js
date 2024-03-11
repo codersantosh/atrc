@@ -4,7 +4,7 @@ import apiFetch from '@wordpress/api-fetch';
 import { addQueryArgs } from '@wordpress/url';
 
 /*Inbuilt*/
-import AtrcGetRestBaseType from '../get-rest-base-types';
+import AtrcGetRestBaseType from '../get-rest-base-type';
 
 /*Local*/
 const AtrcGetPosts = async ({
@@ -25,7 +25,7 @@ const AtrcGetPosts = async ({
 	if (restBase) {
 		path += restBase;
 	} else {
-		const restBase1 = await AtrcGetRestBaseType({postType});
+		const restBase1 = await AtrcGetRestBaseType({ postType });
 		if (restBase1) {
 			path += restBase1;
 		} else {

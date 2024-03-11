@@ -7,7 +7,7 @@ import classnames from 'classnames';
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/*Local*/
 const AtrcMenuGroup = (props) => {
 	const { className = '', variant = '', ...defaultProps } = props;
 

@@ -1,31 +1,37 @@
+/*React*/
+import { forwardRef } from 'react';
+
 /*Library*/
-import classnames from "classnames";
+import classnames from 'classnames';
 
-/*Inbuilt*/
-import AtrcPrefix from "../../prefix-vars";
+/*Atoms*/
+import AtrcWrap from '../wrap';
 
-/*Local Components*/
-const AtrcCode = (props) => {
-    const {
-        className = '',
-        variant = '',
-        children = '',
-        ...defaultProps
-    } = props;
+/* Prefix */
+import AtrcPrefix from '../../prefix-vars';
 
-    return (
-        <code
-            className={
-                classnames(
-                    AtrcPrefix('code'),
-                    className,
-                    variant?AtrcPrefix('code')+'-'+variant:'',
-                )
-            }
-            {...defaultProps}
-        >
-            {children}
-        </code>
-    )
-}
-export default AtrcCode;
+/*Local*/
+const AtrcCode = (props, ref) => {
+	const {
+		className = '',
+		variant = '',
+		children = '',
+		...defaultProps
+	} = props;
+
+	return (
+		<AtrcWrap
+			tag='code'
+			className={classnames(
+				AtrcPrefix('code'),
+				className,
+				variant ? AtrcPrefix('code') + '-' + variant : ''
+			)}
+			ref={ref}
+			{...defaultProps}>
+			{children}
+		</AtrcWrap>
+	);
+};
+
+export default forwardRef(AtrcCode);

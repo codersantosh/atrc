@@ -6,7 +6,7 @@ import { useEntityProp, store as coreStore } from '@wordpress/core-data';
 import { useSelect } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
 
-/* Inbuilt */
+/* Atoms */
 import AtrcWrap from '../../atoms/wrap';
 import AtrcImg from '../../atoms/img';
 
@@ -14,6 +14,7 @@ import AtrcImg from '../../atoms/img';
 function getMediaSourceUrlBySizeSlug(media, slug) {
 	return media?.media_details?.sizes?.[slug]?.source_url || media?.source_url;
 }
+
 const AtrcPostFeaturedImage = (props, ref) => {
 	const {
 		postType,
@@ -46,6 +47,7 @@ const AtrcPostFeaturedImage = (props, ref) => {
 	);
 
 	const mediaUrl = getMediaSourceUrlBySizeSlug(media, size);
+
 	return (
 		<AtrcWrap
 			{...defaultProps}
@@ -60,7 +62,7 @@ const AtrcPostFeaturedImage = (props, ref) => {
 									// translators: %s: The image's alt text.
 									__('Featured image: %s', 'atrc-prefix-atrc'),
 									media.alt_text
-								)
+							  )
 							: __('Featured image', 'atrc-prefix-atrc')
 					}
 				/>

@@ -1,0 +1,47 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+	&-ctrl {
+		&-select {
+			&:focus,
+			&:focus-visible,
+			&:focus-within {
+				outline: 0 !important;
+				#{$varPrefix}-box-sdw: none;
+				box-shadow: var(#{$varPrefix}-box-sdw) !important;
+			}
+
+			&-multi {
+				> div {
+					#{$varPrefix}-h: 35px;
+					#{$varPrefix}-min-h: 35px;
+					#{$varPrefix}-bdr-rad: 3px;
+					#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+					height: var(#{$varPrefix}-h) !important;
+					min-height: var(#{$varPrefix}-min-h) !important;
+					border-radius: var(#{$varPrefix}-bdr-rad);
+					border-color: var(#{$varPrefix}-bdr-cl) !important;
+					font-family: var(#{$varPrefix}-fnt-fam);
+				}
+
+				.css-g1d714-ValueContainer {
+					#{$varPrefix}-p: 0;
+					padding-top: var(#{$varPrefix}-p) !important;
+					padding-bottom: var(#{$varPrefix}-p) !important;
+				}
+			}
+		}
+	}
+}
+:root {
+	#{$varPrefix}-multi-select-option-bg--hover: #dbdbdb;
+}
+[data-at-theme='dark'] {
+	color-scheme: dark;
+	#{$varPrefix}-multi-select-ctrl: transparent;
+	#{$varPrefix}-multi-select-input: transparent;
+	#{$varPrefix}-multi-select-cont: transparent;
+	#{$varPrefix}-multi-select-indicator: transparent;
+	#{$varPrefix}-multi-select-option: var(#{$varPrefix}-quaternary);
+	#{$varPrefix}-multi-select-option-bg--hover: var(#{$varPrefix}-tertiary);
+}

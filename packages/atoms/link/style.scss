@@ -1,0 +1,60 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+	&-lnk {
+		#{$varPrefix}-txt-dec: none;
+		#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+		#{$varPrefix}-cur: pointer;
+		#{$varPrefix}-outl: 0;
+		#{$varPrefix}-box-sdw: none;
+		#{$varPrefix}-fnt-wt: 600;
+		#{$varPrefix}-fnt-sz: 13px;
+
+		cursor: var(#{$varPrefix}-cur);
+		outline: var(#{$varPrefix}-outl);
+		box-shadow: var(#{$varPrefix}-box-sdw);
+
+		&:hover,
+		&:focus {
+			#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+			outline: var(#{$varPrefix}-outl);
+			box-shadow: var(#{$varPrefix}-box-sdw);
+			color: var(#{$varPrefix}-cl);
+		}
+
+		&-nav {
+			#{$varPrefix}-fnt-sz: 13px;
+			#{$varPrefix}-opa: 0.8;
+			#{$varPrefix}-p: 10px 0;
+			#{$varPrefix}-bdr-w: 0 0 2px 0;
+			#{$varPrefix}-bdr-sty: solid;
+			#{$varPrefix}-bdr-cl: transparent;
+			#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+			#{$varPrefix}-fnt-wt: 600;
+			#{$varPrefix}-txt-dec: none;
+			#{$varPrefix}-trs: all 0.5s ease-in-out 0s;
+
+			padding: var(#{$varPrefix}-p);
+			opacity: var(#{$varPrefix}-opa);
+			border-width: var(#{$varPrefix}-bdr-w);
+			border-style: var(#{$varPrefix}-bdr-sty);
+			border-color: var(#{$varPrefix}-bdr-cl);
+
+			transition: var(#{$varPrefix}-trs);
+
+			display: inline-block;
+
+			&:hover,
+			&:focus {
+				#{$varPrefix}-opa: 1;
+				#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+			}
+		}
+		&[aria-current='page'],
+		&-active {
+			#{$varPrefix}-opa: 1;
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary);
+			#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+		}
+	}
+}

@@ -4,10 +4,10 @@ import { PanelRow } from '@wordpress/components';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Component*/
+/*Local*/
 const AtrcPanelRow = (props) => {
 	const { children, className = '', variant = '', ...defaultProps } = props;
 

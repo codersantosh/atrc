@@ -1,0 +1,96 @@
+@import '../../prefix-vars.scss';
+
+#{$appPrefix} {
+	&-dropdown {
+		&-cont {
+			font-family: var(#{$varPrefix}-fnt-fam);
+			.components {
+				&-menu-item__item {
+					#{$varPrefix}-min-w: 100%;
+					min-width: var(#{$varPrefix}-min-w);
+				}
+
+				&-button {
+					&:hover {
+						color: var(#{$varPrefix}-primary);
+					}
+				}
+				&-menu-group {
+					#{$appPrefix}-lbl {
+						#{$varPrefix}-m: 0;
+					}
+				}
+			}
+			#{$appPrefix} {
+				&-span-reset {
+					#{$varPrefix}-cl: var(#{$varPrefix}-quaternary);
+					color: var(#{$varPrefix}-cl);
+					font-family: var(#{$varPrefix}-fnt-fam);
+				}
+			}
+		}
+	}
+	&-btn-dropdown {
+		#{$varPrefix}-p: 0;
+	}
+}
+
+[data-at-theme='dark'] {
+	#{$appPrefix} {
+		&-dropdown {
+			&-cont {
+				#{$appPrefix} {
+					&-span-reset {
+						#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+					}
+				}
+				.components {
+					&-button {
+						color: var(#{$varPrefix}-base-color);
+						&:hover {
+							color: var(#{$varPrefix}-primary);
+						}
+					}
+				}
+			}
+		}
+	}
+	.components {
+		&-popover {
+			&__content {
+				background: #1e1e1e;
+				box-shadow: 0 0 0 1px #575757, 0 0.7px 1px rgba(0, 0, 0, 0.1),
+					0 1.2px 1.7px -0.2px rgba(0, 0, 0, 0.1),
+					0 2.3px 3.3px -0.5px rgba(0, 0, 0, 0.1);
+			}
+		}
+		&-color-palette {
+			&__custom-color-wrapper {
+				background: #292c2e;
+			}
+			&__custom-color-name {
+				color: #fff;
+			}
+			&__custom-color-button {
+				&:after {
+					opacity: 0.2;
+				}
+			}
+		}
+		&-menu-group {
+			+ .components-menu-group {
+				border-top: 1px solid var(#{$varPrefix}-border-color);
+			}
+		}
+		&-input-control {
+			&__label {
+				color: #fff;
+			}
+		}
+		&-color-picker {
+			.components-button {
+				color: var(#{$varPrefix}-white);
+			}
+		}
+	}
+}

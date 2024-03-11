@@ -1,0 +1,10 @@
+@import '../../prefix-vars.scss';
+
+#{$appPrefix} {
+    &-pnl-row {
+        +#{$appPrefix}-pnl-row {
+            #{$varPrefix}-m: 15px 0 0 0;
+            margin: var(#{$varPrefix}-m);
+        }
+    }
+}

@@ -4,7 +4,7 @@ import { addQueryArgs } from '@wordpress/url';
 /* Library */
 import axios from 'axios';
 
-/* Inbuilt */
+/* Internal */
 import { AtrcStore } from './store';
 
 /* Local */
@@ -19,16 +19,25 @@ function axiosFetch(options) {
 	}
 	if (AtrcApis.baseUrls[key]) {
 		path = AtrcApis.baseUrls[key] + `/${path}`;
-	} else if (AtrcApis.baseUrls['atrc-prefix-atrc-global']) {
-		path = AtrcApis.baseUrls['atrc-prefix-atrc-global'] + `/${path}`;
+	} else if (AtrcApis.baseUrls['atrc-global-api-base-url']) {
+		path = AtrcApis.baseUrls['atrc-global-api-base-url'] + `/${path}`;
 	}
 	path = path.replace(/([^:]\/)\/+/g, '$1');
 	path = path.replace(/wp-json\/wp-json\//, 'wp-json/');
+
+	let axiosConfig = {};
+
+	if (AtrcApis.axiosConfig[key]) {
+		axiosConfig = AtrcApis.axiosConfig[key];
+	} else if (AtrcApis.axiosConfig['atrc-global-axios-config']) {
+		axiosConfig = AtrcApis.axiosConfig['atrc-global-axios-config'];
+	}
 
 	return axios({
 		url: path,
 		method,
 		data,
+		...axiosConfig,
 	});
 }
 
@@ -39,6 +48,7 @@ class ClassAtrcApis {
 			this.types = [];
 			this.baseUrls = {};
 			this.XWPNonce = '';
+			this.axiosConfig = {};
 		}
 		return ClassAtrcApis.instance;
 	}
@@ -47,22 +57,29 @@ class ClassAtrcApis {
 		this.XWPNonce = val;
 	}
 
-	baseUrl(key, url) {
+	baseUrl({ key, url }) {
 		this.baseUrls[key] = url;
+	}
+
+	/* https://www.npmjs.com/package/axios#request-config */
+	setAxiosConfig({ key, config }) {
+		this.axiosConfig[key] = config;
 	}
 
 	register(props) {
 		/**
-		 * @param {string}        key          key data type eg: post, page, custom type, custom table etc
-		 * @param {string}        path         rest api respective or full path eg:/wp/v2/posts/ or http://example.com/wp-json/wp/v2/posts/
-		 * @param {Object}        callbacks    a set of callback function for respective type or types eg: { getItems: () => {}, getItem: () => {}, insertItem: () => {}, deleteItem: () => {}}
-		 * @param {function(...)} filterResult optional filter result to add additional data on result
-		 * @param {boolean}       addStore     add store using @wordpress/data
+		 * @param {string}        key             key data type eg: post, page, custom type, custom table etc
+		 * @param {string}        path            rest api respective or full path eg:/wp/v2/posts/ or http://example.com/wp-json/wp/v2/posts/
+		 * @param {Object}        callbacks       a set of callback function for respective type or types eg: { getData: () => {}, getItem: () => {}, insertItem: () => {}, deleteItem: () => {}}
+		 * @param {function(...)} filterQueryArgs optional filter query args to filter/add additional queries.
+		 * @param {function(...)} filterResult    optional filter result to add additional data on result
+		 * @param {boolean}       addStore        add store using @wordpress/data
 		 */
 		const {
 			key,
 			path,
 			callbacks = {},
+			filterQueryArgs = null,
 			filterResult = null,
 			filterData = null,
 			addStore = true,
@@ -70,6 +87,7 @@ class ClassAtrcApis {
 			optionName,
 			queryArgs,
 			allowedParams,
+			queryParams,
 		} = props;
 		if ('settings' === type) {
 			this.types.push({
@@ -95,10 +113,11 @@ class ClassAtrcApis {
 			this.types.push({
 				key,
 				path,
-				type: 'getItems',
-				callbacks: callbacks.getItems || null,
+				type: 'getData',
+				callbacks: callbacks.getData || null,
 				filterResult,
 				filterData,
+				filterQueryArgs,
 			});
 			this.types.push({
 				key,
@@ -140,6 +159,7 @@ class ClassAtrcApis {
 				type,
 				queryArgs,
 				allowedParams,
+				queryParams,
 			});
 		}
 	}
@@ -151,7 +171,7 @@ class ClassAtrcApis {
 	 * @param {string}        type     custom type expect CURD operations
 	 * @param {function(...)} callback custom type callback function eg: doSomething: () => {}
 	 */
-	registerType(key, path, type, callback) {
+	registerType({ key, path, type, callback }) {
 		this.types.push({ key, path, type, callback });
 	}
 
@@ -162,7 +182,7 @@ class ClassAtrcApis {
 	 * @param {Object} data  optional either query args or insert/update data
 	 * @param {number} rowId optional either query args or insert/update data
 	 */
-	async doApi(key, type, data, rowId = 0) {
+	async doApi({ key, type, data, rowId = 0, hiddenQueryArgsData }) {
 		// Find the API endpoint based on the key and type provided
 		const api = this.types.find(
 			(item) => item.key === key && item.type === type
@@ -181,9 +201,11 @@ class ClassAtrcApis {
 			}
 
 			switch (api.type) {
-				case 'getItems': {
+				case 'getData': {
 					let { path } = api;
-
+					if (api.filterQueryArgs) {
+						data = api.filterQueryArgs({ data, api, hiddenQueryArgsData });
+					}
 					if (data) {
 						path = addQueryArgs(path, data);
 					}
@@ -195,9 +217,9 @@ class ClassAtrcApis {
 					});
 
 					if (response.headers) {
-						if (response.headers.get('X-WP-All-Total')) {
-							result.countAllItems = parseInt(
-								response.headers.get('X-WP-All-Total')
+						if (response.headers.get('X-WP-Query-Total')) {
+							result.countQueryItems = parseInt(
+								response.headers.get('X-WP-Query-Total')
 							);
 						}
 						if (response.headers.get('X-WP-TotalPages')) {
@@ -206,7 +228,7 @@ class ClassAtrcApis {
 							);
 						}
 						if (response.headers.get('X-WP-Total')) {
-							result.countQueryItems = parseInt(
+							result.countAllItems = parseInt(
 								response.headers.get('X-WP-Total')
 							);
 						}
@@ -227,7 +249,7 @@ class ClassAtrcApis {
 				}
 				case 'insertItem':
 					if (api.filterData) {
-						data = api.filterData(data, api);
+						data = api.filterData({ data, api });
 					}
 					response = await axiosFetch({
 						key,
@@ -239,7 +261,7 @@ class ClassAtrcApis {
 					break;
 				case 'updateItem':
 					if (api.filterData) {
-						data = api.filterData(data, api);
+						data = api.filterData({ data, api });
 					}
 
 					response = await axiosFetch({
@@ -315,7 +337,7 @@ class ClassAtrcApis {
 					break;
 			}
 			if (api.filterResult) {
-				result = api.filterResult(result, response);
+				result = api.filterResult({ result, response });
 			}
 		} catch (error) {
 			// eslint-disable-next-line no-console

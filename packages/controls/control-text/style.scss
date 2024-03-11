@@ -1,0 +1,31 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+	&-txt {
+		&-small {
+			#{$varPrefix}-w: 40px;
+			width: var(#{$varPrefix}-w);
+
+			.components-text-control__input {
+				#{$varPrefix}-h: 40px;
+				height: var(#{$varPrefix}-h) !important;
+			}
+		}
+
+		.components-base-control__field {
+			#{$varPrefix}-m: 0 !important;
+			margin-bottom: var(#{$varPrefix}-m);
+		}
+
+		.components-text-control__input {
+			#{$varPrefix}-h: 35px;
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-bdr-sty: solid;
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-quaternary);
+			border-color: var(#{$varPrefix}-bdr-cl);
+			border-width: var(#{$varPrefix}-bdr-w);
+			border-style: var(#{$varPrefix}-bdr-sty);
+			height: var(#{$varPrefix}-h);
+		}
+	}
+}

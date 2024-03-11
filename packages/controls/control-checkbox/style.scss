@@ -1,0 +1,55 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+	&-checkbox {
+		.components {
+			&-base-control__field {
+				#{$varPrefix}-m: 0;
+				margin-bottom: var(#{$varPrefix}-m);
+			}
+
+			&-checkbox-control {
+				&__input {
+					#{$varPrefix}-h: 15px;
+					#{$varPrefix}-w: 15px;
+					height: var(#{$varPrefix}-h) !important;
+					width: var(#{$varPrefix}-w) !important;
+
+					&-container {
+						#{$varPrefix}-m: 0;
+						margin-right: var(#{$varPrefix}-m);
+					}
+					&[type='checkbox'] {
+						&:checked,
+						&:indeterminate {
+							background: var(#{$varPrefix}-primary);
+							border-color: var(#{$varPrefix}-primary);
+						}
+					}
+				}
+				&__label {
+					vertical-align: top;
+				}
+			}
+		}
+
+		svg {
+			&.components-checkbox-control__checked,
+			&.components-checkbox-control__indeterminate {
+				#{$varPrefix}-h: 19px;
+				#{$varPrefix}-w: 19px;
+				height: var(#{$varPrefix}-h) !important;
+				width: var(#{$varPrefix}-w) !important;
+			}
+		}
+
+		&-label {
+			.components-checkbox-control__label {
+				#{$varPrefix}-p: 5px;
+				display: inline-block;
+
+				padding-left: var(#{$varPrefix}-m);
+			}
+		}
+	}
+}

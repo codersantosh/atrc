@@ -1,0 +1,105 @@
+@import '../../prefix-vars.scss';
+
+#{$appPrefix} {
+	&-tab-pnl {
+		&-inner {
+			.components {
+				&-tab-panel {
+					&__tab-content {
+						#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+						#{$varPrefix}-p: 15px;
+						padding: var(#{$varPrefix}-p);
+						background-color: var(#{$varPrefix}-bg-cl);
+					}
+
+					&__tabs-item {
+						#{$varPrefix}-fnt-sz: 12px;
+						#{$varPrefix}-fnt-wt: 600;
+						#{$varPrefix}-h: 40px;
+						#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+						height: var(#{$varPrefix}-h);
+						color: var(#{$varPrefix}-cl);
+						font-size: var(#{$varPrefix}-fnt-sz);
+						font-weight: var(#{$varPrefix}-fnt-wt);
+						font-family: var(#{$varPrefix}-fnt-fam);
+
+						&::after {
+							display: none;
+						}
+
+						&:focus {
+							&:not(:disabled) {
+								#{$varPrefix}-box-sdw: inset 0 0 0 2px transparent,
+									inset 0 1.5px 0 0 var(#{$varPrefix}-primary);
+								box-shadow: var(#{$varPrefix}-box-sdw);
+							}
+						}
+
+						&.is-active {
+							#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+							#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+							#{$varPrefix}-box-sdw: inset 0 0 0 2px transparent,
+								inset 0 1.5px 0 0 var(#{$varPrefix}-primary);
+							color: var(#{$varPrefix}-cl) !important;
+							background-color: var(#{$varPrefix}-bg-cl) !important;
+							box-shadow: var(#{$varPrefix}-box-sdw);
+						}
+					}
+				}
+			}
+
+			#{$appPrefix}-lbl-cl-picker {
+				margin-bottom: 0;
+				margin-left: 8px;
+			}
+
+			#{$appPrefix} {
+				&-ctrl-pnl-tools {
+					+ #{$appPrefix} {
+						&-ctrl-pnl-tools {
+							#{$varPrefix}-m: 15px 0 0 0;
+						}
+					}
+				}
+			}
+		}
+
+		&#{$appPrefix}-tab-pnl-inner {
+			&#{$appPrefix}-tab-pnl-primary {
+				> .components {
+					&-tab-panel {
+						&__tab-content {
+							#{$varPrefix}-bg-cl: var(#{$varPrefix}-octonary);
+						}
+					}
+				}
+
+				> .components-tab-panel__tabs {
+					> .components-tab-panel__tabs-item.is-active {
+						#{$varPrefix}-bg-cl: var(#{$varPrefix}-octonary);
+						#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+					}
+				}
+			}
+		}
+	}
+}
+
+[data-at-theme='dark'] {
+	#{$appPrefix} {
+		&-tab-pnl {
+			&-inner {
+				.components {
+					&-tab-panel {
+						&__tab-content {
+							#{$varPrefix}-bg-cl: #292c2e;
+						}
+						&__tabs-item {
+							#{$varPrefix}-bg-cl: #292c2e;
+						}
+					}
+				}
+			}
+		}
+	}
+}

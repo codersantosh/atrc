@@ -6,6 +6,7 @@ export function AtrcToCamelCase(property) {
 	}
 	return camelCase;
 }
+
 export function AtrcToKebabCase(property) {
 	let kebabCase = '';
 	for (let i = 0; i < property.length; i++) {

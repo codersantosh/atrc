@@ -1,33 +1,22 @@
 /*Library*/
-import classnames from "classnames";
+import classnames from 'classnames';
 
-/*Inbuilt*/
+/* Atoms */
 import AtrcWrap from '../../atoms/wrap';
 
-/*Inbuilt*/
-import AtrcPrefix from "../../prefix-vars";
+/* Prefix */
+import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/*Local*/
 const AtrcBulkActions = (props) => {
-
-    const {
-        className = '',
-        children='',
-        ...defaultProps
-    } = props;
-    return (
-        <AtrcWrap
-            className={
-                classnames(
-                    AtrcPrefix('bulk-actions'),
-                    className,
-                )
-            }
-            {...defaultProps}
-        >
-            {children}
-        </AtrcWrap>
-    );
+	const { className = '', children = '', ...defaultProps } = props;
+	return (
+		<AtrcWrap
+			className={classnames(AtrcPrefix('bulk-actions'), className)}
+			{...defaultProps}>
+			{children}
+		</AtrcWrap>
+	);
 };
 
 export default AtrcBulkActions;

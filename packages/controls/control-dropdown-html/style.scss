@@ -1,0 +1,46 @@
+@import '../../prefix-vars.scss';
+
+#{$appPrefix} {
+	&-ctrl-dropdown-html {
+		&-wrp {
+			#{$varPrefix}-w: 200px;
+		}
+
+		&-item {
+			.at-svg {
+				#{$varPrefix}-w: 100% !important;
+				#{$varPrefix}-h: initial !important;
+				height: var(#{$varPrefix}-h);
+				width: var(#{$varPrefix}-w);
+				#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+			}
+
+			&-preview {
+				#{$varPrefix}-p: 20px;
+				#{$varPrefix}-bdr-w: 2px;
+				#{$varPrefix}-bdr-sty: dashed;
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+				#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+				#{$varPrefix}-cur: pointer;
+			}
+		}
+	}
+}
+
+[data-at-theme='dark'] {
+	color-scheme: dark;
+	#{$appPrefix} {
+		&-ctrl-dropdown-html {
+			&-wrp {
+				#{$varPrefix}-w: 200px;
+			}
+
+			&-item {
+				svg {
+					#{$varPrefix}-cl: var(#{$varPrefix}-white);
+					fill: var(#{$varPrefix}-cl);
+				}
+			}
+		}
+	}
+}

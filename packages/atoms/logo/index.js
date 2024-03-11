@@ -1,14 +1,15 @@
 /* Library */
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Atoms*/
 import AtrcWrap from '../wrap';
 import AtrcImg from '../img';
 import AtrcLink from '../link';
 
+/* Prefix */
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/*Local*/
 const AtrcLogo = (props) => {
 	const {
 		variant = '',

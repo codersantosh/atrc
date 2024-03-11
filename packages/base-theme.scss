@@ -1,0 +1,216 @@
+@import './prefix-vars.scss';
+
+//global color and other properties related to body, container & light and dark theme.
+//default properties and light theme
+:root {
+	#{$varPrefix}-white: #fff;
+	#{$varPrefix}-black: #000;
+
+	#{$varPrefix}-base-color: #2e312f;
+
+	#{$varPrefix}-body-color: #9da29f;
+	#{$varPrefix}-body-bg: #f0f0f1;
+
+	#{$varPrefix}-primary: #48b44f;
+	#{$varPrefix}-primary--hover: #3ea245;
+
+	#{$varPrefix}-secondary: #e8f3eb;
+	#{$varPrefix}-secondary--hover: #c7e6cf;
+
+	#{$varPrefix}-tertiary: #a0a0a0;
+	#{$varPrefix}-tertiary--hover: #7b7979;
+
+	#{$varPrefix}-quaternary: #585a59;
+	#{$varPrefix}-quaternary--hover: #414141;
+
+	#{$varPrefix}-quinary: #f6f7f7;
+	#{$varPrefix}-quinary--hover: #eee;
+
+	#{$varPrefix}-accent: #f5e5b4;
+	#{$varPrefix}-accent--hover: #fff6dc;
+
+	#{$varPrefix}-heading: #f6f7f7;
+	#{$varPrefix}-link: #f6f7f7;
+	#{$varPrefix}-link--hover: #f6f7f7;
+
+	#{$varPrefix}-code-color: #d63384;
+	#{$varPrefix}-border-color: #d3d9de;
+
+	#{$varPrefix}-danger: #dc3232;
+	#{$varPrefix}-danger--hover: #c82333;
+
+	#{$varPrefix}-success: #46b450;
+	#{$varPrefix}-success--hover: #1e7e34;
+
+	#{$varPrefix}-info: #00a0d2;
+	#{$varPrefix}-info--hover: #17a2b8;
+
+	#{$varPrefix}-warning: #ffb900;
+	#{$varPrefix}-warning--hover: #e0a800;
+}
+
+[data-at-theme='dark'] {
+	color-scheme: dark;
+
+	#{$varPrefix}-base-color: #d7d7d7;
+
+	#{$varPrefix}-body-color: #959595;
+	#{$varPrefix}-body-bg: #121212;
+
+	#{$varPrefix}-secondary: #000;
+	#{$varPrefix}-secondary--hover: #292c2e;
+
+	#{$varPrefix}-border-color: #575757;
+
+	#{$appPrefix} {
+		&-bg {
+			&-white {
+				#{$varPrefix}-bg-cl: #1e1e1e;
+			}
+
+			&-grad {
+				&-1 {
+					#{$varPrefix}-bg-img: linear-gradient(90deg, #2d2d2d, #1e1e1e);
+				}
+			}
+		}
+	}
+}
+
+//at grid container styles
+
+@media (min-width: 576px) {
+	.at-ctnr {
+		#{$varPrefix}-ctnr: 540px;
+	}
+}
+
+@media (min-width: 768px) {
+	.at-ctnr {
+		#{$varPrefix}-ctnr: 720px;
+	}
+}
+
+@media (min-width: 992px) {
+	.at-ctnr {
+		#{$varPrefix}-ctnr: 960px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.at-ctnr {
+		#{$varPrefix}-ctnr: 1140px;
+	}
+}
+
+@media (min-width: 1400px) {
+	.at-ctnr {
+		#{$varPrefix}-ctnr: 1320px;
+	}
+}
+
+body {
+	#{$varPrefix}-fnt-fam: Arial, Helvetica, sans-serif;
+	#{$varPrefix}-fnt-sz: 14px;
+	#{$varPrefix}-fnt-wt: 400;
+	#{$varPrefix}-ln-h: 1.5;
+	#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+	background-color: var(#{$varPrefix}-body-bg);
+}
+
+h1 {
+	#{$varPrefix}-fnt-sz: 40px;
+	#{$varPrefix}-fnt-wt: 800;
+	#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+}
+
+h2 {
+	#{$varPrefix}-fnt-sz: 32px;
+	#{$varPrefix}-fnt-wt: 600;
+	#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+}
+
+h3 {
+	#{$varPrefix}-fnt-sz: 28px;
+	#{$varPrefix}-fnt-wt: 500;
+	#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+}
+
+h4 {
+	#{$varPrefix}-fnt-sz: 24px;
+	#{$varPrefix}-fnt-wt: 500;
+	#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+}
+
+h5 {
+	#{$varPrefix}-fnt-sz: 20px;
+	#{$varPrefix}-fnt-wt: 500;
+	#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+}
+
+h6 {
+	#{$varPrefix}-fnt-sz: 16px;
+	#{$varPrefix}-fnt-wt: 500;
+	#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+}
+
+p {
+	#{$varPrefix}-fnt-sz: 14px;
+	#{$varPrefix}-fnt-wt: 400;
+	#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+}
+
+code {
+	#{$varPrefix}-cl: var(#{$varPrefix}-code-color);
+}
+
+li {
+	#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+}
+
+// Theme CSS
+#{$appPrefix} {
+	&-ctnr {
+		#{$varPrefix}-gtr: 15px;
+	}
+
+	&-ctnr-min {
+		#{$varPrefix}-gtr: 15px;
+	}
+
+	&-gap {
+		#{$varPrefix}-gap: 15px;
+	}
+
+	&-m-0 {
+		#{$varPrefix}-m: 0 !important;
+	}
+
+	&-bg {
+		&-white {
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+		}
+
+		&-grad {
+			&-1 {
+				#{$varPrefix}-bg-img: linear-gradient(90deg, #ffbf96, #fe7096);
+			}
+
+			&-2 {
+				#{$varPrefix}-bg-img: linear-gradient(90deg, #90caf9, #047edf 99%);
+			}
+
+			&-3 {
+				#{$varPrefix}-bg-img: linear-gradient(90deg, #84d9d2, #07cdae);
+			}
+		}
+	}
+}
+
+a {
+	text-decoration: none;
+
+	&[disabled] {
+		pointer-events: none;
+	}
+}

@@ -1,0 +1,28 @@
+@import '../../../../prefix-vars';
+/* Changelog */
+.at-pre-tpl-1 {
+    #{$varPrefix}-bdr-cl: #d4d4d4;
+    #{$varPrefix}-bdr-w: 1px;
+    #{$varPrefix}-bdr-sty: solid;
+    #{$varPrefix}-p: 0 0 0 20px;
+    #{$varPrefix}-ln-h: 30px;
+    #{$varPrefix}-bg-img: linear-gradient(#f5f5f5 50%, #e6e6e6 50%);
+    background-color: #f5f5f5;
+
+    #{$varPrefix}-bg-sz: calc(var(#{$varPrefix}-ln-h)) calc(var(#{$varPrefix}-ln-h) + 30px);
+    display: block;
+    font-size: 12px;
+    overflow-x: visible;
+    overflow-y: hidden;
+    line-height: var(#{$varPrefix}-ln-h);
+}
+
+[data-at-theme='dark'] {
+    color-scheme: dark;
+
+    .at-pre-tpl-1 {
+        #{$varPrefix}-bdr-cl: #575757;
+        #{$varPrefix}-bg-img: linear-gradient(#292c2e 50%, #3d3d3d 50%);
+        background-color: #292c2e;
+    }
+}

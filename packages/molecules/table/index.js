@@ -1,10 +1,10 @@
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/*Local*/
 const AtrcTable = (props) => {
 	const {
 		className = '',
@@ -14,14 +14,15 @@ const AtrcTable = (props) => {
 		children,
 		...defaultProps
 	} = props;
-
+	console.log(props);
 	return (
 		<table
 			className={classnames(
 				AtrcPrefix('tbl'),
+				'at-w',
 				className,
-				isBordered ? AtrcPrefix('bordered') : '',
-				isRounded ? AtrcPrefix('rounded') : '',
+				isBordered ? AtrcPrefix('tbl-bordered') : '',
+				isRounded ? AtrcPrefix('tbl-rounded') : '',
 				variant ? AtrcPrefix('tbl') + '-' + variant : ''
 			)}
 			{...defaultProps}>

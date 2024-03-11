@@ -1,3 +1,7 @@
+/* WordPress */
+import { __ } from '@wordpress/i18n';
+
+/* Local */
 export default function AtrcGetQuantityAndUnitFromString(
 	value,
 	allowedUnits = [],
@@ -5,7 +9,10 @@ export default function AtrcGetQuantityAndUnitFromString(
 	defaultUnit = ''
 ) {
 	if (typeof value !== 'string') {
-		console.error("The 'value' parameter must be a string");
+		console.error(
+			__("The 'value' parameter must be a string", 'atrc-prefix-atrc')
+		);
+
 		return [defaultQuantity, defaultUnit];
 	}
 

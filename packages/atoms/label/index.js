@@ -1,11 +1,14 @@
+/*React*/
+import { forwardRef } from 'react';
+
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
-const AtrcLabel = (props) => {
+/*Local*/
+const AtrcLabel = (props, ref) => {
 	const {
 		className = '',
 		variant = '',
@@ -23,9 +26,10 @@ const AtrcLabel = (props) => {
 				variant ? AtrcPrefix('lbl') + '-' + variant : ''
 			)}
 			htmlFor={htmlFor}
+			ref={ref}
 			{...defaultProps}>
 			{children}
 		</label>
 	);
 };
-export default AtrcLabel;
+export default forwardRef(AtrcLabel);

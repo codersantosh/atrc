@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 const instanceMap = new WeakMap();
 
-/* Using withInstanceId issues on treeshaking so needed to recrated this */
+/* Using withInstanceId issues on treeshaking so needed to recrete this */
 /**
  * Creates a new id for a given object.
  *

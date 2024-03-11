@@ -8,7 +8,7 @@ import { useSelect } from '@wordpress/data';
 
 import { store as coreStore } from '@wordpress/core-data';
 
-/* Inbuilt */
+/* Atoms */
 import AtrcWrap from '../../atoms/wrap';
 
 /* Local */

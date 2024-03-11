@@ -4,21 +4,22 @@ import { __ } from '@wordpress/i18n';
 
 /*Library*/
 import classnames from 'classnames';
+import { BsExclamationCircle } from 'react-icons/bs';
 
-/*Inbuilt*/
+/* Atoms */
 import AtrcWrap from '../../atoms/wrap';
 import AtrcButton from '../../atoms/button';
 import AtrcIcon from '../../atoms/icon';
-import AtrcWord from '../../atoms/word';
+import AtrcText from '../../atoms/text';
 
+/* Molecules */
 import AtrcModal from '../modal';
 import AtrcButtonGroup from '../button-group';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
-import { BsExclamationCircle } from 'react-icons/bs';
 
-/*Local Components*/
+/*Local*/
 const AtrcModalConfirm = (props) => {
 	const {
 		className = '',
@@ -33,22 +34,21 @@ const AtrcModalConfirm = (props) => {
 	} = props;
 
 	const [isShow, setIsShow] = useState(isOpen);
-	function close() {
-		onCancel();
-	}
+
 	useEffect(() => {
 		setIsShow(isOpen);
 	}, [isOpen]);
+
 	if (isShow) {
 		return (
 			<AtrcModal
-				{...defaultProps}
-				onRequestClose={close}
+				onRequestClose={() => onCancel()}
 				className={classnames(
 					AtrcPrefix('modal-confirm'),
 					className || '',
 					variant ? AtrcPrefix('modal-confirm') + '-' + variant : ''
-				)}>
+				)}
+				{...defaultProps}>
 				<AtrcWrap
 					className={classnames(AtrcPrefix('modal-confirm-body'), 'at-p')}>
 					<AtrcIcon
@@ -61,23 +61,23 @@ const AtrcModalConfirm = (props) => {
 						icon={BsExclamationCircle}
 					/>
 
-					<AtrcWord
+					<AtrcText
 						tag='h4'
 						className={classnames('at-m')}>
 						{title}
-					</AtrcWord>
-					<AtrcWord
+					</AtrcText>
+					<AtrcText
 						tag='p'
 						className={classnames(AtrcPrefix('mt-0'))}>
 						{help}
-					</AtrcWord>
+					</AtrcText>
 				</AtrcWrap>
 
 				<AtrcWrap
 					className={classnames(AtrcPrefix('modal-confirm-footer'), 'at-p')}>
 					<AtrcButtonGroup>
 						<AtrcButton
-							onClick={() => close()}
+							onClick={() => onCancel()}
 							className={classnames('at-p', 'at-flx-grw-1')}>
 							{__('Cancel', 'atrc-prefix-atrc')}
 						</AtrcButton>

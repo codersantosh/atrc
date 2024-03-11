@@ -5,10 +5,10 @@ import { __experimentalToolsPanel as ToolsPanel } from '@wordpress/components';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Component*/
+/*Local*/
 const AtrcToolsPanel = (props) => {
 	const { children, className = '', variant = '', ...defaultProps } = props;
 

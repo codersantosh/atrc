@@ -4,15 +4,16 @@ import { useState } from '@wordpress/element';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
 
+/* Molecules */
 import AtrcModal from '../modal';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/*Local*/
 const AtrcModalToggle = (props) => {
 	const {
 		className = '',

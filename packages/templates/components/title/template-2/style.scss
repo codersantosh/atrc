@@ -1,0 +1,17 @@
+@import '../../../../prefix-vars';
+
+#{$appPrefix} {
+    &-sdbar {
+        #{$appPrefix} {
+            &-hdr {
+                #{$appPrefix} {
+                    &-btn {
+                        &-close {
+                            #{$varPrefix}-p: 6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

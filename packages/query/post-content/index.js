@@ -1,5 +1,6 @@
 /*React*/
 import { forwardRef } from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -10,8 +11,10 @@ import {
 	__experimentalUseHasRecursion as useHasRecursion,
 } from '@wordpress/block-editor';
 
-/* Inbuilt */
+/* Atoms */
 import AtrcWrap from '../../atoms/wrap';
+
+/* Molecules */
 import AtrcNotice from './../../molecules/notice';
 
 /* Local */

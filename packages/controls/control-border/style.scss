@@ -1,0 +1,28 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+	&-bdr {
+		#{$appPrefix} {
+			&-tab-pnl {
+				#{$appPrefix} {
+					&-rst-wrp {
+						&#{$appPrefix} {
+							&-bdr-rst {
+								#{$appPrefix} {
+									&-btn {
+										&-rst {
+											&-i {
+												#{$varPrefix}-m: 4px 0 0 0;
+												margin: var(#{$varPrefix}-m);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

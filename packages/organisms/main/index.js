@@ -1,10 +1,11 @@
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
-import AtrcPrefix from '../../prefix-vars';
-
+/* Atoms */
 import AtrcWrap from '../../atoms/wrap';
+
+/*Prefix*/
+import AtrcPrefix from '../../prefix-vars';
 
 /*Local*/
 const AtrcMain = (props) => {
@@ -24,6 +25,7 @@ const AtrcMain = (props) => {
 				className,
 				variant ? AtrcPrefix() + variant : ''
 			)}
+			id={AtrcPrefix('main')}
 			{...defaultProps}>
 			{children}
 		</AtrcWrap>

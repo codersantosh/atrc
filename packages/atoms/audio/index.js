@@ -3,10 +3,15 @@ import { __ } from '@wordpress/i18n';
 
 /*Library*/
 import classnames from 'classnames';
-import AtrcPrefix from '../../prefix-vars';
 
-/* Inbuilt */
+/* Atoms */
 import AtrcIframe from '../iframe';
+
+/* Molecules */
+import AtrcFigure from '../../molecules/figure';
+
+/* Prefix */
+import AtrcPrefix from '../../prefix-vars';
 
 /*Local*/
 export function AtrcAudioIsHtml5(url) {
@@ -23,11 +28,7 @@ export function AtrcAudioIsHtml5(url) {
 	return true;
 }
 
-const AtrcAudio = (props) => {
-	if (!props || !props.url) {
-		return null;
-	}
-
+export const AtrcAudioTag = (props) => {
 	const {
 		variant = '',
 		className = '',
@@ -41,29 +42,55 @@ const AtrcAudio = (props) => {
 		controlslist = '',
 
 		preload = '',
-		prefix = '',
 		...defaultProps
 	} = props;
 
-	if (AtrcAudioIsHtml5(url)) {
+	return (
+		<audio
+			className={classnames(
+				AtrcPrefix('aud'),
+				className,
+				variant ? AtrcPrefix('aud') + '-' + variant : ''
+			)}
+			autoPlay={autoplay}
+			controls={controls}
+			loop={loop}
+			muted={muted}
+			controlsList={controlslist}
+			preload={preload}
+			src={url}
+			{...defaultProps}
+		/>
+	);
+};
+
+export const AtrcHtml5Audio = (props) => {
+	const { wrapfigure = true, figureProps = {}, ...audioProps } = props;
+
+	if (wrapfigure) {
 		return (
-			<audio
-				className={classnames(
-					AtrcPrefix('aud'),
-					className,
-					variant ? AtrcPrefix('aud') + '-' + variant : ''
-				)}
-				autoPlay={autoplay}
-				controls={controls}
-				loop={loop}
-				muted={muted}
-				controlsList={controlslist}
-				preload={preload}
-				src={url}
-				{...defaultProps}
-			/>
+			<AtrcFigure
+				{...figureProps}
+				variant='aud'>
+				<AtrcAudioTag {...audioProps} />
+			</AtrcFigure>
 		);
 	}
+	return <AtrcAudioTag {...audioProps} />;
+};
+
+const AtrcAudio = (props) => {
+	if (!props || !props.url) {
+		return null;
+	}
+
+	const { url = '' } = props;
+
+	if (AtrcAudioIsHtml5(url)) {
+		return <AtrcHtml5Audio {...props} />;
+	}
+
+	const { variant = '', className = '', ...defaultProps } = props;
 
 	return (
 		<AtrcIframe

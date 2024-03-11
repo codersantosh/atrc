@@ -1,0 +1,47 @@
+@import '../../../prefix-vars';
+
+#{$appPrefix} {
+	&-404 {
+		&-tpl-1 {
+			#{$appPrefix} {
+				&-404 {
+					&-cont {
+						#{$varPrefix}-h: 100vh;
+						gap: 0;
+
+						&-heading {
+							#{$varPrefix}-m: 0 0 40px 0;
+							&-title {
+								#{$varPrefix}-fnt-sz: 120px;
+								#{$varPrefix}-fnt-wt: 800;
+								#{$varPrefix}-ln-h: 1;
+							}
+							&-sub-title {
+								#{$varPrefix}-txt-al: center;
+								#{$varPrefix}-ln-h: 1;
+								#{$varPrefix}-fnt-sz: 60px;
+								text-align: var(#{$varPrefix}-txt-al);
+							}
+						}
+						&-title {
+							#{$varPrefix}-fnt-sz: 30px;
+						}
+						&-desc {
+							#{$varPrefix}-fnt-sz: 18px;
+						}
+					}
+				}
+
+				&-btn {
+					&-grp {
+						#{$varPrefix}-m: 30px 0 0 0;
+					}
+					&-icon {
+						#{$varPrefix}-p: 15px 30px;
+						font-family: var(#{$varPrefix}-fnt-fam);
+					}
+				}
+			}
+		}
+	}
+}

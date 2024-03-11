@@ -3,193 +3,273 @@ import { __, sprintf } from '@wordpress/i18n';
 import { useEffect, useState } from '@wordpress/element';
 
 /* Library */
+import classnames from 'classnames';
+import { isEmpty } from 'lodash';
 
-/* Inbuilt */
+/* Atoms */
 import AtrcIframe from '../iframe';
+import AtrcWrap from '../wrap';
+
+/* Utils */
 import AtrcUniqueID from '../../utils/unique-id';
-import { AtrcWrap } from '../..';
+import AtrcPrefix from '../../prefix-vars';
 
 /* Local */
-const AtrcGoogleMap = ({
-	id,
-	apiKey,
-	loc = 'Gorkha Durbar',
-	lat,
-	lng,
-	zoom = 15,
-	mapTypeId = 'roadmap',
-	draggable,
-	typeCtrl,
-	zoomCtrl,
-	fullScreenCtrl,
-	streetViewCtrl,
-	markers,
-	mapStyle,
-	mapStyleCust,
-	className = '',
-	onChange = () => {},
-	...defaultProps
-}) => {
-	const mapID = id || AtrcUniqueID();
-	const [scriptLoaded, setScriptLoaded] = useState(false);
-	const [msg, setMessage] = useState(
-		apiKey ? __('Script is not loaded', 'atrc-prefix-atrc') : ''
-	);
+/* Not work for save function of Gutenberg block, to make it work we cannot use  hooks like useEffect.
+We are using gMapData that store map information on wrap props dataMap, later frontend JS should access this info.
+*/
 
-	let gMap;
-
-	/* Load script */
-	useEffect(() => {
-		if (!apiKey) {
-			return;
-		}
-
-		const scriptId = 'atrc-prefix-atrc-google-map-api';
-
-		if (
-			!document.getElementById(scriptId) &&
-			typeof window.google === 'undefined'
-		) {
-			const script = document.createElement('script');
-			script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
-			script.defer = true;
-			script.async = true;
-			script.id = scriptId;
-			// Add onload function to script
-			script.onload = function () {
-				setScriptLoaded(true);
-			};
-			// Append script element to the document.
-			document.head.appendChild(script);
-		}
-	}, []);
-
-	function addInfoWindow(marker, markerId, title, description) {
-		const contentString = `<div class="at-map-overview"><h6 class="at-map-overview-title">${title}</h6><div class="at-map-overview-content">${
-			description ? `<p>${description}</p>` : ''
-		}<a class="at-map-overview-delete" onclick="removeMarker( '${markerId}' )">${__(
-			'Delete Marker',
-			'atrc-prefix-atrc'
-		)}</a></div></div>`;
-
-		// eslint-disable-next-line no-undef
-		const infowindow = new google.maps.InfoWindow({
-			content: contentString,
-		});
-
-		marker.addListener('click', () => {
-			infowindow.open(gMap, marker);
-		});
+/* use this function on js by removing onChange and adjust minor*/
+const AtrcMapGoogleGetLatLong = (lat = '', lng = '') => {
+	lat = Number(lat);
+	lng = Number(lng);
+	if (!lat) {
+		lat = 23.475109;
 	}
-
-	function cycleMarkers(newMarkers) {
-		if (newMarkers && 0 < newMarkers.length) {
-			newMarkers.forEach((marker) => {
-				const latitude = marker.lat;
-				const longitude = marker.lng;
-				// eslint-disable-next-line no-undef
-				const position = new google.maps.LatLng(latitude, longitude);
-
-				// eslint-disable-next-line no-undef
-				const mark = new google.maps.Marker({
-					position,
-					map: gMap,
-					title: marker.title,
-					e4Draggable: true,
-				});
-
-				// eslint-disable-next-line no-undef
-				google.maps.event.addListener(mark, 'dragend', (event) => {
-					const newLat = event.latLng.lat();
-					const newLng = event.latLng.lng();
-					const markersCloned = newMarkers.map((newMaker) => {
-						if (marker.id === Number(newMaker.id)) {
-							return { ...marker, lat: newLat, lng: newLng };
-						}
-						return marker;
-					});
-
-					onChange({ markers: markersCloned });
-				});
-
-				addInfoWindow(mark, marker.id, marker.title, marker.desc);
-			});
-		}
+	if (!lng) {
+		lng = 78.451439;
 	}
+	return {
+		lat,
+		lng,
+	};
+};
 
-	useEffect(() => {
-		if (!apiKey) {
-			return;
-		}
-		if (!scriptLoaded) {
-			setMessage(__('Script is not loaded', 'atrc-prefix-atrc'));
-			return;
-		}
-		// eslint-disable-next-line no-undef
-		if (typeof google === 'undefined' || google === null) {
-			setMessage(__('google is undefined or null', 'atrc-prefix-atrc'));
-			return;
-		}
-		setMessage('');
+function AtrcMapGoogleAddInfoWindow(
+	gMap,
+	marker,
+	markerId,
+	title,
+	description
+) {
+	const contentString = `<div class="at-map-overview"><h6 class="at-map-overview-title">${title}</h6><div class="at-map-overview-content">${
+		description ? `<p>${description}</p>` : ''
+	}</div></div>`;
 
-		/* Init Map */
-		// eslint-disable-next-line no-undef
-		gMap = new google.maps.Map(document.getElementById(mapID), {
-			center: {
-				lat: Number(lat) || 28.0045,
-				lng: Number(lng) || 84.6284,
-			},
-			gestureHandling: 'cooperative',
-			zoom,
-			mapTypeId,
-		});
+	// eslint-disable-next-line no-undef
+	const infowindow = new google.maps.InfoWindow({
+		content: contentString,
+	});
 
-		if (loc && !lat && !lng) {
-			const request = {
-				query: loc,
-				fields: ['name', 'geometry'],
-			};
+	marker.addListener('click', () => {
+		infowindow.open(gMap, marker);
+	});
+}
+
+function AtrcMapGoogleAddMarkers(gMap, newMarkers) {
+	if (newMarkers && 0 < newMarkers.length) {
+		newMarkers.forEach((marker) => {
+			const latitude = marker.lat;
+			const longitude = marker.lng;
+			// eslint-disable-next-line no-undef
+			const position = new google.maps.LatLng(latitude, longitude);
 
 			// eslint-disable-next-line no-undef
-			const service = new google.maps.places.PlacesService(gMap);
-
-			service.findPlaceFromQuery(request, (results, status) => {
-				// eslint-disable-next-line no-undef
-				if (status === google.maps.places.PlacesServiceStatus.OK) {
-					if (0 < results.length) {
-						gMap.setCenter(results[0].geometry.loc);
-					}
-				}
+			const mark = new google.maps.Marker({
+				position,
+				map: gMap,
+				title: marker.title,
+				e4Draggable: true,
 			});
-		}
 
-		gMap.addListener('zoom_changed', () => {
-			const newZoom = gMap.getZoom();
-			onChange({ zoom: newZoom });
+			// eslint-disable-next-line no-undef
+			google.maps.event.addListener(mark, 'dragend', (event) => {
+				const newLat = event.latLng.lat();
+				const newLng = event.latLng.lng();
+				const markersCloned = newMarkers.map((newMaker) => {
+					if (marker.id === Number(newMaker.id)) {
+						return { ...marker, lat: newLat, lng: newLng };
+					}
+					return marker;
+				});
+			});
+
+			AtrcMapGoogleAddInfoWindow(
+				gMap,
+				mark,
+				marker.id,
+				marker.title,
+				marker.desc
+			);
 		});
+	}
+}
 
-		gMap.addListener('maptypeid_changed', () => {
-			const newMapTypeId = gMap.getMapTypeId();
-			onChange({ mapTypeId: newMapTypeId });
-		});
+const AtrcMapGoogle = ({
+	id = AtrcUniqueID(),
+	className = '',
+	variant = '',
+	value = {},
+	componentType = 'client',
+	...defaultProps
+}) => {
+	/* gogole map object */
 
-		gMap.addListener('bounds_changed', () => {
-			const location = gMap.getCenter();
-			if (location) {
-				const latitude = location.lat();
-				const longitude = location.lng();
-				onChange({
-					lat: latitude.toString(),
-					lng: longitude.toString(),
+	/* Map id */
+	const mapID = id;
+
+	/* Server data, for gutenberg frontend */
+	let gMapData = null;
+
+	const {
+		apiKey = '',
+		loc = 'Gorkha Palace',
+		lat = '23.475109',
+		lng = '78.451439',
+		markers = [],
+		mapTypeId = 'roadmap',
+		gestureHandling = 'auto',
+		zoom = 10,
+		mapTypeControl = false,
+		zoomControl = false,
+		fullscreenControl = false,
+		streetViewControl = false,
+		newGoogleMapProps = {},
+	} = value;
+
+	if ('client' === componentType && apiKey) {
+		/* Google map object to handle dynamic change */
+		const [googleMap, setGoogleMap] = useState();
+
+		/* Initilize google map */
+		useEffect(() => {
+			/* Init Map */
+			const initMap = async () => {
+				let mapProps = {};
+				mapProps.center = AtrcMapGoogleGetLatLong(lat, lng);
+				mapProps.zoom = zoom;
+				mapProps.mapTypeId = mapTypeId;
+				mapProps.gestureHandling = gestureHandling;
+				mapProps.mapTypeControl = mapTypeControl;
+				mapProps.zoomControl = zoomControl;
+				mapProps.fullscreenControl = fullscreenControl;
+				mapProps.streetViewControl = streetViewControl;
+				if (!isEmpty(newGoogleMapProps)) {
+					mapProps = {
+						...mapProps,
+						...newGoogleMapProps,
+					};
+				}
+				let gMap = await new google.maps.Map(
+					document.getElementById(mapID),
+					mapProps
+				);
+
+				/* Markers */
+				AtrcMapGoogleAddMarkers(gMap, markers);
+
+				/* Set google map object */
+				setGoogleMap(gMap);
+			};
+
+			/* Load script */
+			const loadMapScript = () => {
+				const scriptId = 'atrc-prefix-atrc-google-map-api';
+
+				if (
+					!document.getElementById(scriptId) &&
+					typeof window.google === 'undefined'
+				) {
+					const script = document.createElement('script');
+					script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
+					script.defer = true;
+					script.async = true;
+					script.id = scriptId;
+					// Append script element to the document.
+					document.head.appendChild(script);
+
+					// Add onload function to script
+					script.onload = function () {
+						initMap();
+					};
+
+					// Clean up the script on component unmount
+					return () => {
+						document.head.removeChild(script);
+					};
+				} else {
+					initMap();
+				}
+			};
+			loadMapScript();
+		}, [apiKey]);
+
+		/* Update Markers */
+		useEffect(() => {
+			if (googleMap) {
+				AtrcMapGoogleAddMarkers(googleMap, markers);
+			}
+		}, [markers]);
+
+		/* Update center Lat and ling */
+		useEffect(() => {
+			if (googleMap && lat && lng) {
+				googleMap.setCenter(AtrcMapGoogleGetLatLong(lat, lng));
+			}
+		}, [lat, lng]);
+
+		/* Update map type id */
+		useEffect(() => {
+			if (googleMap && mapTypeId) {
+				googleMap.setMapTypeId(mapTypeId);
+			}
+		}, [mapTypeId]);
+
+		/* Update zoom */
+		useEffect(() => {
+			if (googleMap && zoom) {
+				googleMap.setZoom(zoom);
+			}
+		}, [zoom]);
+
+		/* Update map options */
+		useEffect(() => {
+			if (googleMap) {
+				googleMap.setOptions({
+					gestureHandling,
+					mapTypeControl,
+					zoomControl,
+					fullscreenControl,
+					streetViewControl,
 				});
 			}
-		});
+		}, [
+			gestureHandling,
+			mapTypeControl,
+			zoomControl,
+			fullscreenControl,
+			streetViewControl,
+		]);
+	} else {
+		const googleMapInfo = {};
 
-		/* Markers */
-		cycleMarkers(markers);
-	}, [scriptLoaded]);
+		let mapProps = {};
+		mapProps.center = AtrcMapGoogleGetLatLong(lat, lng);
+		mapProps.zoom = zoom;
+		mapProps.mapTypeId = mapTypeId;
+		mapProps.gestureHandling = gestureHandling;
+		mapProps.mapTypeControl = mapTypeControl;
+		mapProps.zoomControl = zoomControl;
+		mapProps.fullscreenControl = fullscreenControl;
+		mapProps.streetViewControl = streetViewControl;
+		if (!isEmpty(newGoogleMapProps)) {
+			mapProps = {
+				...mapProps,
+				...newGoogleMapProps,
+			};
+		}
+		googleMapInfo.mapProps = mapProps;
+		if (markers) {
+			googleMapInfo.markers = markers;
+		}
+		if (mapID) {
+			googleMapInfo.mapID = mapID;
+		}
 
-	return apiKey || msg ? (
+		gMapData = JSON.stringify(googleMapInfo);
+	}
+
+	return apiKey ? (
 		<AtrcWrap
 			className={classnames(
 				AtrcPrefix('map'),
@@ -197,9 +277,8 @@ const AtrcGoogleMap = ({
 				variant ? AtrcPrefix('map') + '-' + variant : ''
 			)}
 			id={mapID}
-			{...defaultProps}>
-			{msg}
-		</AtrcWrap>
+			dataMap={gMapData}
+			{...defaultProps}></AtrcWrap>
 	) : (
 		<AtrcIframe
 			title={sprintf(
@@ -212,7 +291,7 @@ const AtrcGoogleMap = ({
 			)}
 			src={`https://maps.google.com/maps?q=${encodeURIComponent(
 				loc
-			)}&t=&z=${zoom}&ie=UTF8&output=embed`}
+			)}&ie=UTF8&output=embed`}
 			frameBorder='0'
 			className={classnames(
 				AtrcPrefix('map'),
@@ -225,4 +304,4 @@ const AtrcGoogleMap = ({
 	);
 };
 
-export default AtrcGoogleMap;
+export default AtrcMapGoogle;

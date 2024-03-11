@@ -13,5 +13,5 @@ export default function AtrcUniqueID(length = 7) {
 	for (let i = 0; i < length; i++) {
 		result += characters.charAt(Math.floor(Math.random() * charactersLength));
 	}
-	return 'ab-' + result;
+	return 'at-' + result;
 }

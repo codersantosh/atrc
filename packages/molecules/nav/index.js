@@ -1,15 +1,17 @@
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Atoms*/
 import AtrcLink from '../../atoms/link';
-import AtrcLi from '../../atoms/li';
 
-import AtrcUl from '../ul';
+/* Molecules */
+import AtrcLi from '../list/li';
+import AtrcList from '../list';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
-/*Local Components*/
+
+/*Local*/
 const NavLinkLoop = (props) => {
 	const { navs, linkProps = {}, ...defaultProps } = props;
 
@@ -36,6 +38,7 @@ const NavLinkLoop = (props) => {
 		);
 	});
 };
+
 const AtrcNav = (props) => {
 	const {
 		className = '',
@@ -55,7 +58,7 @@ const AtrcNav = (props) => {
 				variant ? AtrcPrefix('nav') + '-' + variant : ''
 			)}
 			{...defaultProps}>
-			<AtrcUl
+			<AtrcList
 				{...ulProps}
 				className={classnames(
 					AtrcPrefix('nav-ul'),
@@ -71,7 +74,7 @@ const AtrcNav = (props) => {
 					navs={navs}
 					linkProps={linkProps}
 				/>
-			</AtrcUl>
+			</AtrcList>
 		</nav>
 	);
 };

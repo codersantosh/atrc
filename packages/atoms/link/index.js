@@ -2,13 +2,11 @@
 import classnames from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
 
-/*Inbuilt*/
-import AtrcButton from '../button';
-
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
+
 /*
-Local Components
+Local
 Combination of all links which contain a tag and
 * button components
 * */
@@ -19,36 +17,26 @@ const AtrcLink = (props) => {
 		type = 'a',
 		to = '#',
 		children = '',
-		prefix = true,
+		isButton = false,
+		isActive = false,
 		dangerouslySetInnerHTML = '',
 		...defaultProps
 	} = props;
 
-	if (type === 'btn' || 'button' === type) {
-		return (
-			<AtrcButton
-				className={classnames(
-					prefix ? AtrcPrefix('lnk-btn') : null,
-					className,
-					variant ? AtrcPrefix('lnk') + '-' + variant : ''
-				)}
-				{...defaultProps}>
-				{children}
-			</AtrcButton>
-		);
-	}
+	const thisClassName = classnames(
+		!isButton ? AtrcPrefix('lnk') : null,
+		!isButton ? 'at-txt' : null,
+		className,
+		variant ? AtrcPrefix('lnk') + '-' + variant : '',
+		isActive ? AtrcPrefix('lnk-active') : null
+	);
+
 	if (type === 'nav-lnk') {
 		return (
 			<NavLink
 				to={to}
 				className={({ isActive }) =>
-					classnames(
-						prefix ? AtrcPrefix('lnk') : null,
-						AtrcPrefix('lnk-nav'),
-						className,
-						variant ? AtrcPrefix('lnk') + '-' + variant : '',
-						isActive ? AtrcPrefix('lnk-active') : undefined
-					)
+					classnames(AtrcPrefix('lnk-nav'), thisClassName)
 				}
 				{...defaultProps}>
 				{children}
@@ -59,11 +47,7 @@ const AtrcLink = (props) => {
 	if (type === 'router-link') {
 		return (
 			<Link
-				className={classnames(
-					prefix ? AtrcPrefix('lnk') : null,
-					className,
-					variant ? AtrcPrefix('lnk') + '-' + variant : ''
-				)}
+				className={thisClassName}
 				to={to}
 				{...defaultProps}>
 				{children}
@@ -73,11 +57,7 @@ const AtrcLink = (props) => {
 	if (dangerouslySetInnerHTML) {
 		return (
 			<a
-				className={classnames(
-					prefix ? AtrcPrefix('lnk') : null,
-					className,
-					variant ? AtrcPrefix('lnk') + '-' + variant : ''
-				)}
+				className={thisClassName}
 				dangerouslySetInnerHTML={dangerouslySetInnerHTML}
 				{...defaultProps}
 			/>
@@ -85,11 +65,7 @@ const AtrcLink = (props) => {
 	}
 	return (
 		<a
-			className={classnames(
-				prefix ? AtrcPrefix('lnk') : null,
-				className,
-				variant ? AtrcPrefix('lnk') + '-' + variant : ''
-			)}
+			className={thisClassName}
 			{...defaultProps}>
 			{children}
 		</a>

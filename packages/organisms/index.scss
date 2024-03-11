@@ -1,7 +1,10 @@
 @import '../prefix-vars.scss';
 
-@import './floating-sidebar/floating-sidebar';
-@import './footer/footer';
-@import './header/header';
-@import './main/main';
-@import 'sidebar/sidebar';
+@import './container/style';
+@import './content/style';
+@import './floating-sidebar/style';
+@import './footer/style';
+@import './header/style';
+@import './main/style';
+@import './row/style';
+@import './sidebar/style';

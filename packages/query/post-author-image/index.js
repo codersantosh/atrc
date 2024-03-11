@@ -1,18 +1,21 @@
 /*React*/
 import { forwardRef } from 'react';
-/*WordPress*/
 
+/*WordPress*/
 import { store as coreStore } from '@wordpress/core-data';
 
 import { useSelect } from '@wordpress/data';
 
 import { __ } from '@wordpress/i18n';
+
 import { addQueryArgs, removeQueryArgs } from '@wordpress/url';
 
-/* Inbuilt */
-import AtrcUseUserAvatar from './use-user-avatar';
+/* Atoms */
 import AtrcWrap from '../../atoms/wrap';
 import AtrcImg from '../../atoms/img';
+
+/* Internal */
+import AtrcUseUserAvatar from './use-user-avatar';
 
 /* Local */
 const AtrcPostAuthorImage = (props, ref) => {

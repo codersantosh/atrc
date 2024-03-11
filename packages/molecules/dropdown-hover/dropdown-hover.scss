@@ -1,8 +1,0 @@
-@import'../../prefix-vars';
-
-#{$appPrefix} {
-    &-dropdown-hover-cont {
-        #{$varPrefix}-p: 15px;
-        padding        : var(#{$varPrefix}-p);
-    }
-}

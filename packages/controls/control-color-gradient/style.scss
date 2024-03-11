@@ -1,0 +1,60 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+	&-cl-grd {
+		&-fieldset {
+			margin: 0;
+			padding: 0;
+			border: none;
+		}
+		&-dropdown {
+			#{$appPrefix} {
+				&-tab-pnl {
+					&-inner {
+						.components {
+							&-tab-panel {
+								&__tab-content {
+									#{$varPrefix}-bg-cl: var(#{$varPrefix}-quinary);
+								}
+
+								&__tabs-item {
+									&.is-active {
+										#{$varPrefix}-bg-cl: var(#{$varPrefix}-quinary);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+[data-at-theme='dark'] {
+	#{$appPrefix} {
+		&-cl-grd {
+			&-dropdown {
+				#{$appPrefix} {
+					&-tab-pnl {
+						&-inner {
+							.components {
+								&-tab-panel {
+									&__tab-content {
+										#{$varPrefix}-bg-cl: #292c2e;
+									}
+
+									&__tabs-item {
+										&.is-active {
+											#{$varPrefix}-bg-cl: #292c2e;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

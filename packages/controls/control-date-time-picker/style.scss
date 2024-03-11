@@ -1,0 +1,72 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+	&-date-time-picker {
+		.components {
+			&-datetime {
+				#{$varPrefix}-p: 15px 0 0 0;
+				padding: var(#{$varPrefix}-p);
+			}
+		}
+		&-cont {
+			font-family: var(#{$varPrefix}-fnt-fam);
+
+			.components {
+				&-datetime {
+					.components-button {
+						&.is-secondary {
+							box-shadow: inset 0 0 0 1px var(#{$varPrefix}-primary);
+							color: var(#{$varPrefix}-primary);
+						}
+						&.is-primary {
+							background: var(#{$varPrefix}-primary);
+							box-shadow: inset 0 0 0 1px var(#{$varPrefix}-primary);
+						}
+						&.is-tertiary {
+							color: var(#{$varPrefix}-primary);
+						}
+						&[tabindex='0'] {
+							background: var(#{$varPrefix}-primary);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+[data-at-theme='dark'] {
+	color-scheme: dark;
+
+	#{$appPrefix} {
+		&-date-time-picker {
+			&-cont {
+				.components {
+					&-datetime {
+						.components-button {
+							&[tabindex='-1'] {
+								color: var(#{$varPrefix}-white);
+							}
+						}
+					}
+					&-text {
+						color: var(#{$varPrefix}-white);
+					}
+					&-input-control__container,
+					&-select-control__input,
+					&-input-control__input {
+						background: transparent;
+						color: var(#{$varPrefix}-white) !important;
+					}
+					&-custom-select-control__menu {
+						background: transparent;
+					}
+					&-input-control-suffix-wrapper {
+						svg {
+							fill: var(#{$varPrefix}-white);
+						}
+					}
+				}
+			}
+		}
+	}
+}

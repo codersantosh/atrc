@@ -1,0 +1,54 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+	&-tbl {
+		#{$varPrefix}-w: 100%;
+		border-collapse: collapse;
+		border-spacing: 0;
+
+		&-bordered {
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-bdr-sty: solid;
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+			border-color: var(#{$varPrefix}-bdr-cl);
+			border-width: var(#{$varPrefix}-bdr-w);
+			border-style: var(#{$varPrefix}-bdr-sty);
+			#{$appPrefix} {
+				&-th {
+					#{$varPrefix}-bdr-w: 1px;
+					#{$varPrefix}-bdr-sty: solid;
+					#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+					border-color: var(#{$varPrefix}-bdr-cl);
+					border-width: var(#{$varPrefix}-bdr-w);
+					border-style: var(#{$varPrefix}-bdr-sty);
+				}
+				&-td {
+					#{$varPrefix}-bdr-w: 1px;
+					#{$varPrefix}-bdr-sty: solid;
+					#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+					border-color: var(#{$varPrefix}-bdr-cl);
+					border-width: var(#{$varPrefix}-bdr-w);
+					border-style: var(#{$varPrefix}-bdr-sty);
+				}
+			}
+		}
+	}
+	&-thead {
+		#{$varPrefix}-bg-cl: var(#{$varPrefix}-quinary);
+	}
+	&-tbody {
+		#{$varPrefix}-txt-al: left;
+		#{$varPrefix}-p: 20px;
+		text-align: lvar(#{$varPrefix}-txt-al);
+		padding: var(#{$varPrefix}-p);
+	}
+
+	&-th {
+		#{$varPrefix}-p: 15px;
+		#{$varPrefix}-txt-al: left;
+	}
+
+	&-td {
+		#{$varPrefix}-p: 15px;
+	}
+}

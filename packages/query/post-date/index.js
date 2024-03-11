@@ -1,5 +1,6 @@
 /*React*/
 import { forwardRef } from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -7,7 +8,7 @@ import { useEntityProp } from '@wordpress/core-data';
 
 import { dateI18n, getSettings as getDateSettings } from '@wordpress/date';
 
-/* Inbuilt */
+/* Atoms */
 import AtrcWrap from '../../atoms/wrap';
 import AtrcLink from '../../atoms/link';
 

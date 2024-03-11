@@ -4,11 +4,11 @@ import { DropdownMenu } from '@wordpress/components';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Component*/
-const AtrcControlDropdownMenu = (props) => {
+/*Local*/
+const AtrcDropdownMenu = (props) => {
 	const { variant = '', className = '', ...defaultProps } = props;
 
 	return (
@@ -23,4 +23,4 @@ const AtrcControlDropdownMenu = (props) => {
 	);
 };
 
-export default AtrcControlDropdownMenu;
+export default AtrcDropdownMenu;

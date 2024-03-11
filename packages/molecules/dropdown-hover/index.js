@@ -8,13 +8,13 @@ import { Popover } from '@wordpress/components';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local components and functions*/
+/*Local*/
 function useObservableState(initialState, onStateChange) {
 	const [state, setState] = useState(initialState);
 	return [
@@ -43,6 +43,7 @@ function Dropdown(props) {
 		onToggle,
 		style,
 	} = props;
+
 	// Use internal state instead of a ref to make sure that the component
 	// re-renders when the popover's anchor updates.
 	const [fallbackPopoverAnchor, setFallbackPopoverAnchor] = useState(null);

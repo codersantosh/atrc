@@ -15,7 +15,7 @@ import {
 
 import { count as wordCount } from '@wordpress/wordcount';
 
-/* Inbuilt */
+/* Atoms */
 import AtrcWrap from '../../atoms/wrap';
 
 /* Local */

@@ -1,72 +1,44 @@
-/*WordPress*/
-import { TextControl } from '@wordpress/components';
-
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
-import AtrcResetButtonIcon from '../reset-button-icon';
-import { AtrcResetWrap } from '../reset-button-icon';
-
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
-const RenderComponent = (props) => {
-	let {
-		className = '',
-		variant = '',
-		value = '',
-		wrapProps = {},
-		resetProps = {},
-		...defaultProps
-	} = props;
-	if (value === null || value === undefined) {
-		value = '';
-	}
-	return (
-		<TextControl
-			className={classnames(
-				AtrcPrefix('txt'),
-				className,
-				variant ? AtrcPrefix('txt') + '-' + variant : ''
-			)}
-			value={value}
-			{...defaultProps}
-		/>
-	);
-};
-
+/*Local*/
 const AtrcText = (props) => {
 	const {
-		allowReset = true,
-		value = '',
-		wrapProps = {},
-		resetProps = {},
-		onChange,
+		tag = 'p',
+		className = '',
+		variant = '',
+		children = '',
+		dangerouslySetInnerHTML,
+		...defaultProps
 	} = props;
 
-	if (allowReset) {
+	const TextTag = tag;
+	const thisClassNames = classnames(
+		AtrcPrefix('txt'),
+		className,
+		AtrcPrefix('txt') + '-' + tag,
+		variant ? AtrcPrefix('txt') + '-' + variant : ''
+	);
+	if (dangerouslySetInnerHTML) {
 		return (
-			<AtrcResetWrap
-				{...wrapProps}
-				{...resetProps}
-				className={classnames(
-					AtrcPrefix('txt-rst'),
-					'at-flx-grw-1',
-					resetProps.className || '',
-					wrapProps.className ? wrapProps.className : ''
-				)}>
-				<RenderComponent {...props} />
-				<AtrcResetButtonIcon
-					value={value}
-					onClick={() => onChange('')}
-				/>
-			</AtrcResetWrap>
+			<TextTag
+				className={thisClassNames}
+				dangerouslySetInnerHTML={dangerouslySetInnerHTML}
+				{...defaultProps}
+			/>
 		);
 	}
 
-	return <RenderComponent {...props} />;
+	return (
+		<TextTag
+			className={thisClassNames}
+			{...defaultProps}>
+			{children}
+		</TextTag>
+	);
 };
 
 export default AtrcText;

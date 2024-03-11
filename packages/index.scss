@@ -1,9 +1,12 @@
 @import './prefix-vars.scss';
 @import './_mixins.scss';
 
-@import './atrc.scss';
 /*global CSS*/
+@import './base-theme.scss';
 @import './atoms/index.scss';
+@import './controls/index.scss';
 @import './molecules/index.scss';
 @import './organisms/index.scss';
+@import './query/index.scss';
 @import './templates/index.scss';
+@import './wireframe/index.scss';

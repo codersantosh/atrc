@@ -1,0 +1,25 @@
+@import '../../prefix-vars';
+
+/* Global button */
+#{$appPrefix} {
+	&-ctrl-code-txt-area {
+		width: 100%;
+
+		.CodeMirror {
+			#{$varPrefix}-bg-cl: #fafafa;
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-bdr-sty: solid;
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+			#{$varPrefix}-w: 100%;
+
+			background: var(#{$varPrefix}-bg-cl);
+			border-width: var(#{$varPrefix}-bdr-w);
+			border-style: var(#{$varPrefix}-bdr-sty);
+			border-color: var(#{$varPrefix}-bdr-cl);
+			width: var(#{$varPrefix}-w);
+			* {
+				--at-box-szg: content-box;
+			}
+		}
+	}
+}

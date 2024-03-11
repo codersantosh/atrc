@@ -1,0 +1,253 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+	&-rst {
+		&-wrp {
+			#{$varPrefix}-gap: 0 15px;
+
+			> .components {
+				&-base-control {
+					flex-grow: 1;
+				}
+			}
+
+			.components {
+				&-flex {
+					gap: 0 15px;
+				}
+
+				&-base-control {
+					&:last-of-type {
+						#{$varPrefix}-m: 0;
+						margin-bottom: var(#{$varPrefix}-m) !important;
+					}
+
+					&__field {
+						#{$varPrefix}-m: 0;
+						margin-bottom: var(#{$varPrefix}-m);
+					}
+				}
+
+				&-font-size-picker__controls {
+					#{$varPrefix}-m: 0;
+					margin-bottom: var(#{$varPrefix}-m);
+
+					.components-toggle-group-control-option-base {
+						#{$varPrefix}-p: 0 11px;
+						padding: var(#{$varPrefix}-p);
+					}
+
+					.components-base-control {
+						&:last-child {
+							#{$varPrefix}-m: 0;
+							margin-bottom: var(#{$varPrefix}-m);
+						}
+					}
+				}
+			}
+
+			&#{$appPrefix} {
+				&-ctrl {
+					&-select-rst {
+						#{$appPrefix} {
+							&-btn {
+								&-rst {
+									&-i {
+										#{$varPrefix}-m: 25px 0 0 0;
+										margin: var(#{$varPrefix}-m);
+									}
+								}
+							}
+						}
+					}
+					&-txt-rst {
+						#{$appPrefix} {
+							&-btn {
+								&-rst {
+									&-i {
+										#{$varPrefix}-m: 24px 0 0 0;
+										margin: var(#{$varPrefix}-m);
+									}
+								}
+							}
+						}
+					}
+				}
+
+				&-range-rst {
+					#{$appPrefix} {
+						&-btn {
+							&-rst {
+								&-i {
+									#{$varPrefix}-m: 26px 0 0 0;
+									margin: var(#{$varPrefix}-m);
+								}
+							}
+						}
+					}
+				}
+
+				&-bdr-rst {
+					#{$appPrefix} {
+						&-btn {
+							&-rst {
+								&-i {
+									#{$varPrefix}-m: 28px 0 0 0;
+									margin: var(#{$varPrefix}-m);
+								}
+							}
+						}
+					}
+				}
+
+				&-bdr-rad-rst {
+					#{$appPrefix} {
+						&-btn {
+							&-rst {
+								&-i {
+									#{$varPrefix}-m: 30px 0 0 0;
+									margin: var(#{$varPrefix}-m);
+								}
+							}
+						}
+					}
+				}
+
+				&-ctrl-unit-rst {
+					#{$appPrefix} {
+						&-btn {
+							&-rst {
+								&-i {
+									#{$varPrefix}-m: 24px 0 0 0;
+									margin: var(#{$varPrefix}-m);
+								}
+							}
+						}
+					}
+				}
+
+				&-box-four-rst {
+					#{$appPrefix} {
+						&-btn {
+							&-rst {
+								&-i {
+									#{$varPrefix}-m: 35px 0 0 0;
+									margin: var(#{$varPrefix}-m);
+								}
+							}
+						}
+					}
+				}
+
+				&-combobox-rst {
+					#{$appPrefix} {
+						&-btn {
+							&-rst {
+								&-i {
+									#{$varPrefix}-m: 27px 0 0 0;
+									margin: var(#{$varPrefix}-m);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&-typ-ln-h {
+		#{$appPrefix} {
+			&-rst {
+				&-wrp {
+					&#{$appPrefix} {
+						&-ctrl {
+							&-select-rst {
+								#{$appPrefix} {
+									&-btn {
+										&-rst {
+											&-i {
+												#{$varPrefix}-m: 10px 0 0 0;
+												margin: var(#{$varPrefix}-m);
+											}
+										}
+									}
+								}
+							}
+
+							&-txt-rst {
+								#{$appPrefix} {
+									&-btn {
+										&-rst {
+											&-i {
+												#{$varPrefix}-m: 12px 0 0 0;
+												margin: var(#{$varPrefix}-m);
+											}
+										}
+									}
+								}
+							}
+						}
+
+						&-ctrl-unit-rst {
+							#{$appPrefix} {
+								&-btn {
+									&-rst {
+										&-i {
+											#{$varPrefix}-m: 12px 0 0 0;
+											margin: var(#{$varPrefix}-m);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&-ctrl-select-device {
+		#{$appPrefix} {
+			&-rst {
+				&-wrp {
+					#{$appPrefix} {
+						&-btn {
+							&-rst {
+								&-i {
+									#{$varPrefix}-m: 4px 0 0 0;
+									margin: var(#{$varPrefix}-m);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&-lbl-rst {
+		#{$appPrefix} {
+			&-btn {
+				&-rst {
+					&-i {
+						#{$varPrefix}-m: 4px 0 0 0 !important;
+						margin: var(#{$varPrefix}-m);
+					}
+				}
+			}
+		}
+	}
+
+	&-ctrl-zidx-device {
+		#{$appPrefix} {
+			&-btn {
+				&-rst {
+					&-i {
+						#{$varPrefix}-m: 4px 0 0 0 !important;
+						margin: var(#{$varPrefix}-m);
+					}
+				}
+			}
+		}
+	}
+}

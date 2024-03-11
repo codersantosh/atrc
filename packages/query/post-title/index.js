@@ -1,11 +1,12 @@
 /*React*/
 import { forwardRef } from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
 import { useEntityProp } from '@wordpress/core-data';
 
-/* Inbuilt */
+/* Atoms */
 import AtrcWrap from '../../atoms/wrap';
 import AtrcLink from '../../atoms/link';
 
@@ -22,6 +23,7 @@ const AtrcPostTitle = (props, ref) => {
 	);
 
 	const [link] = useEntityProp('postType', postType, 'link', postId);
+
 	let titleElement = (
 		<AtrcWrap
 			{...defaultProps}

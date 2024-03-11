@@ -4,13 +4,13 @@ import { Modal } from '@wordpress/components';
 /*Library*/
 import classnames from 'classnames';
 
-/*Atrc*/
+/*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Component*/
+/*Local*/
 const AtrcModal = (props) => {
 	const {
 		children,
@@ -27,8 +27,8 @@ const AtrcModal = (props) => {
 				className,
 				variant ? AtrcPrefix('modal') + '-' + variant : ''
 			)}
-			{...defaultProps}
-			onRequestClose={onRequestClose}>
+			onRequestClose={onRequestClose}
+			{...defaultProps}>
 			<AtrcWrap className={classnames(AtrcPrefix('modal-body'))}>
 				{children}
 			</AtrcWrap>

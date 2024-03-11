@@ -1,6 +1,8 @@
+/* WordPress */
 import { renderToString } from '@wordpress/element';
 
-const AtrcSvgComponentToString = ({ svgElement, fill = '#48b44f' }) => {
+/* Local */
+const AtrcSvgComponentToString = ({ svgElement, fill = '' }) => {
 	// Convert the React element to an SVG string
 	const svgString = renderToString(svgElement);
 
@@ -10,8 +12,10 @@ const AtrcSvgComponentToString = ({ svgElement, fill = '#48b44f' }) => {
 
 	// Manipulate the SVG using DOM methods (for example, changing the fill color to red)
 	const svgElements = tempDiv.getElementsByTagName('svg');
-	for (let i = 0; i < svgElements.length; i++) {
-		svgElements[i].setAttribute('fill', fill); // Replace 'red' with the desired fill color
+	if (fill) {
+		for (let i = 0; i < svgElements.length; i++) {
+			svgElements[i].setAttribute('fill', fill); // Replace 'red' with the desired fill color
+		}
 	}
 
 	// Get the updated SVG string from the temporary DOM element

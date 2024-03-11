@@ -4,13 +4,13 @@ import { Tooltip } from '@wordpress/components';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Atoms*/
 import AtrcSpan from '../../atoms/span';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Component*/
+/*Local*/
 const AtrcTooltip = (props) => {
 	const {
 		children = '',

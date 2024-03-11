@@ -1,0 +1,130 @@
+@import '../../prefix-vars';
+
+
+/* ProgressBar horizontal Styles */
+#{$appPrefix} {
+    &-prog {
+        /* Track */
+        #{$varPrefix}-bg-cl: #E5EDE6;
+        #{$varPrefix}-h: 30px;
+        #{$varPrefix}-bdr-rad: 5px;
+        #{$varPrefix}-ovf: hidden;
+
+        /* Bar */
+        #{$varPrefix}-bar-w: 90%;
+        #{$varPrefix}-bar-cl: #48B44F;
+        #{$varPrefix}-bar-txt-gap: 0 10px;
+
+        &-bar {
+            #{$varPrefix}-bg-cl: var(#{$varPrefix}-bar-cl);
+            #{$varPrefix}-w : var(#{$varPrefix}-bar-w);
+
+            &-striped {
+                #{$varPrefix}-bg-img: linear-gradient(45deg,
+                        rgba(255, 255, 255, 0.15) 25%,
+                        transparent 25%,
+                        transparent 50%,
+                        rgba(255, 255, 255, 0.15) 50%,
+                        rgba(255, 255, 255, 0.15) 75%,
+                        transparent 75%,
+                        transparent);
+                #{$varPrefix}-bg-sz: var(#{$varPrefix}-h) var(#{$varPrefix}-h);
+
+                background-image: var(#{$varPrefix}-bg-img);
+                background-size : var(#{$varPrefix}-bg-sz);
+            }
+
+            &-animated {
+                animation: 1s linear infinite at-prog-bar-stripes;
+            }
+        }
+
+        &_txt {
+            #{$varPrefix}-gap: var(#{$varPrefix}-bar-txt-gap);
+
+            .at-txt {
+                #{$varPrefix}-m: 0;
+                margin : var(#{$varPrefix}-m);
+                white-space: nowrap !important;
+            }
+        }
+
+        /* ProgressBar Horizontal Styles */
+        &-hor {
+            height : var(#{$varPrefix}-h);
+        }
+
+        /* ProgressBar Circle Styles */
+        &-cir {
+            #{$varPrefix}-pos: relative;
+            #{$varPrefix}-strk-w: 1.8;
+            #{$varPrefix}-prog-sz: 300px;
+
+            #{$varPrefix}-h: var(#{$varPrefix}-prog-sz, 200px);
+            #{$varPrefix}-w: var(#{$varPrefix}-prog-sz, 200px);
+
+            %cirProgSize {
+                fill: none !important;
+            }
+
+            /* Track */
+            #{$varPrefix}-trk-cl: #E5EDE6;
+
+            /* Bar */
+            #{$varPrefix}-bar-cl : #48B44F;
+            #{$varPrefix}-bar-line-cap : round;
+            #{$varPrefix}-bar-strk-dashoffest: 90;
+            #{$varPrefix}-bar-trs : stroke-dashoffset 1s ease-in-out;
+
+            stroke-width: var(#{$varPrefix}-strk-w);
+
+            .at-svg {
+                transform: rotate(-90deg);
+                @extend %cirProgSize;
+            }
+
+            &__trk {
+                #{$varPrefix}-cl: var(#{$varPrefix}-trk-cl);
+                stroke : var(#{$varPrefix}-cl);
+            }
+
+            &__bar {
+                #{$varPrefix}-cl : var(#{$varPrefix}-bar-cl);
+                #{$varPrefix}-line-cap : var(#{$varPrefix}-bar-line-cap);
+                #{$varPrefix}-strk-dashoffest: var(#{$varPrefix}-bar-strk-dashoffest);
+                #{$varPrefix}-trs : var(#{$varPrefix}-bar-trs);
+
+                stroke : var(#{$varPrefix}-cl);
+                stroke-dasharray: 100 100;
+                stroke-dashoffset: var(#{$varPrefix}-strk-dashoffest);
+                stroke-linecap : var(#{$varPrefix}-line-cap);
+            }
+
+            &-txt {
+                #{$varPrefix}-pos: absolute;
+                #{$varPrefix}-l: 50%;
+                #{$varPrefix}-t: 50%;
+                #{$varPrefix}-tf: translate(-50%, -50%);
+                transform : var(#{$varPrefix}-tf);
+            }
+        }
+    }
+}
+
+@keyframes at-prog-bar-stripes {
+    0% {
+        background-position-x: var(#{$varPrefix}-h);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .at-prog-bar-animated {
+        animation: none;
+    }
+}
+
+// .at-prog-cir,
+// .at-prog-cir .at-svg {
+//     #{$varPrefix}-h: var(#{$varPrefix}-prog-sz, 200px);
+//     #{$varPrefix}-w: var(#{$varPrefix}-prog-sz, 200px);
+// }

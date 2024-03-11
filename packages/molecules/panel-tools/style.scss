@@ -1,0 +1,116 @@
+@import '../../prefix-vars.scss';
+
+#{$appPrefix} {
+	&-nxt-m-0 {
+		+ #{$appPrefix} {
+			&-ctrl-pnl-tools {
+				#{$varPrefix}-m: 0;
+			}
+		}
+	}
+
+	&-active-radio {
+		#{$varPrefix}-m: 5px 5px 0 0;
+	}
+
+	&-ctrl-pnl-tools {
+		#{$varPrefix}-m: 15px 0 0 0;
+
+		&:first-child {
+			#{$varPrefix}-m: 0;
+		}
+
+		&-header {
+			#{$varPrefix}-p: 5px 10px 5px 10px;
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-bdr-sty: solid;
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+			#{$varPrefix}-ln-h: 0;
+			line-height: var(#{$varPrefix}-ln-h);
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+			}
+		}
+
+		&-actions {
+			#{$appPrefix} {
+				&-svg {
+					#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+				}
+			}
+		}
+
+		&-body {
+			#{$varPrefix}-p: 15px;
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-quinary);
+			#{$varPrefix}-bdr-w: 0 1px 1px 1px;
+			#{$varPrefix}-bdr-sty: solid;
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+		}
+
+		#{$appPrefix}-ctrl-pnl-tools-body {
+			> #{$appPrefix}-ctrl-pnl-tools {
+				+ #{$appPrefix} {
+					&-ctrl-pnl-tools {
+						#{$varPrefix}-m: 15px 0 0 0;
+					}
+				}
+			}
+		}
+
+		#{$appPrefix} {
+			&-ctrl-unit-wrp {
+				#{$varPrefix}-w: 100%;
+				width: var(#{$varPrefix}-w);
+				flex-grow: 1;
+
+				.components-input-control__container {
+					#{$varPrefix}-w: 100%;
+					width: var(#{$varPrefix}-w);
+				}
+			}
+		}
+	}
+
+	&-wrp {
+		#{$appPrefix} {
+			&-ctrl-pnl-tools {
+				&:first-child {
+					#{$varPrefix}-m: 0;
+				}
+
+				+ #{$appPrefix} {
+					&-ctrl-pnl-tools {
+						#{$varPrefix}-m: 15px 0 0 0;
+					}
+				}
+			}
+		}
+	}
+
+	&-menu-itm-wrp {
+		.components-button {
+			.components-menu-item__item {
+				#{$varPrefix}-box-szg: border-box;
+				box-sizing: var(#{$varPrefix}-box-szg) !important;
+			}
+		}
+	}
+}
+
+[data-at-theme='dark'] {
+	#{$appPrefix} {
+		&-ctrl-pnl-tools {
+			&-header {
+				#{$varPrefix}-bdr-cl: #312e2e;
+				#{$varPrefix}-bg-cl: #131313;
+			}
+			&-body {
+				#{$varPrefix}-bdr-cl: #312e2e;
+				#{$varPrefix}-bg-cl: #1e1e1e;
+			}
+		}
+	}
+}

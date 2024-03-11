@@ -8,22 +8,22 @@ import { SearchControl } from '@wordpress/components';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
 import AtrcButton from '../../atoms/button';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components and Functions*/
+/*Local*/
 const AtrcSearchBtn = (props) => {
 	const { doSearch, className = '', ...defaultProps } = props;
 
 	return (
 		<AtrcButton
-			{...defaultProps}
 			onClick={() => doSearch()}
 			className={classnames(className, AtrcPrefix('btn-search'), 'at-m')}
+			{...defaultProps}
 		/>
 	);
 };
@@ -41,6 +41,11 @@ const AtrcSearch = (props) => {
 		wrapProps = {},
 	} = props;
 	const [input, setInput] = useState(value);
+
+	useEffect(() => {
+		if (input !== value) setInput(value);
+	}, [value]);
+
 	/*Run only once on mount*/
 	useEffect(() => {
 		if ('keyDown' === type) {
@@ -55,7 +60,7 @@ const AtrcSearch = (props) => {
 				AtrcPrefix('search-wrp'),
 				wrapProps.className ? wrapProps.className : '',
 				'at-flx',
-				'at-al-itm-ctr'
+				'at-al-itm-strh'
 			)}>
 			<AtrcWrap
 				className={classnames('at-flx-grow-1')}

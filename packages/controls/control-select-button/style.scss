@@ -1,0 +1,119 @@
+@import '../../prefix-vars.scss';
+
+#{$appPrefix} {
+	&-ctrl-select-btn {
+		#{$appPrefix} {
+			&-btn {
+				&-select {
+					#{$varPrefix}-h: 40px;
+					#{$varPrefix}-min-w: 40px;
+					#{$varPrefix}-bdr-w: 1px;
+					#{$varPrefix}-bdr-sty: solid;
+					#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+					#{$varPrefix}-bg-cl: var(#{$varPrefix}-secondary);
+					#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+					height: var(#{$varPrefix}-h);
+					min-width: var(#{$varPrefix}-min-w);
+
+					#{$appPrefix} {
+						&-svg {
+							#{$varPrefix}-w: 20px;
+							#{$varPrefix}-h: 20px;
+						}
+					}
+					&:hover {
+						#{$varPrefix}-bg-cl: var(#{$varPrefix}-primary);
+						#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary);
+						#{$varPrefix}-cl: var(#{$varPrefix}-white);
+					}
+				}
+
+				&-active {
+					#{$varPrefix}-bg-cl: var(#{$varPrefix}-primary);
+					#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary);
+					#{$varPrefix}-cl: var(#{$varPrefix}-white);
+				}
+			}
+		}
+
+		&#{$appPrefix} {
+			&-ctrl-select-btn {
+				&-2col {
+					#{$varPrefix}-m: 15px 0 0 0;
+
+					#{$appPrefix} {
+						&-btn {
+							&-select {
+								#{$varPrefix}-fnt-sz: 0;
+								#{$varPrefix}-ln-h: normal;
+								#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+
+								#{$varPrefix}-w: calc((100% / 2) - (var(#{$varPrefix}-g-l-r)));
+								#{$varPrefix}-h: auto;
+								height: var(#{$varPrefix}-h);
+								width: var(#{$varPrefix}-w);
+
+								#{$appPrefix} {
+									&-svg {
+										#{$varPrefix}-w: 110px;
+										#{$varPrefix}-h: 50px;
+									}
+								}
+
+								&:not(#{$appPrefix}-btn-active) {
+									#{$appPrefix}-svg {
+										opacity: 0.5;
+									}
+
+									&:hover {
+										#{$appPrefix}-svg {
+											opacity: 0.8;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&-ctrl-txt-al-device {
+		#{$appPrefix}-ctrl-select-btn {
+			#{$appPrefix}-btn-grp {
+				#{$varPrefix}-gap: 5px;
+			}
+		}
+	}
+}
+
+[data-at-theme='dark'] {
+	color-scheme: dark;
+	#{$appPrefix} {
+		&-ctrl-select-btn {
+			#{$appPrefix} {
+				&-btn {
+					&-select {
+						#{$varPrefix}-bg-cl: transparent;
+						#{$varPrefix}-cl: var(#{$varPrefix}-white);
+
+						&:hover {
+							#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary);
+							#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+						}
+					}
+					&-active {
+						#{$varPrefix}-bg-cl: var(#{$varPrefix}-primary);
+						#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary);
+						#{$varPrefix}-cl: var(#{$varPrefix}-white);
+
+						&:hover {
+							#{$varPrefix}-cl: var(#{$varPrefix}-white);
+						}
+					}
+				}
+			}
+		}
+	}
+}

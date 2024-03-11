@@ -8,16 +8,16 @@ import { Icon } from '@wordpress/components';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
-const AtrcIconWp = (props) => {
+/*Local*/
+export const AtrcIconWp = (props) => {
 	const { className = '', variant = '', ...defaultProps } = props;
 	return (
 		<Icon
 			className={classnames(
-				'at-svg',
+				AtrcPrefix('svg'),
 				className,
 				variant ? AtrcPrefix('svg') + '-' + variant : ''
 			)}
@@ -26,24 +26,38 @@ const AtrcIconWp = (props) => {
 	);
 };
 
-const AtrcIconTag = (props) => {
-	const { icon, className = '', variant = '', ...defaultProps } = props;
+export const AtrcIconSvg = (props) => {
+	const { svg, variant = '', className = '', ...defaultProps } = props;
 
-	const IconTag = icon;
-	return (
-		<IconTag
+	const div = document.createElement('div');
+	div.innerHTML = svg;
+	const hasHtmlTags = div.querySelector('*') !== null;
+	return hasHtmlTags ? (
+		<span
 			className={classnames(
-				'at-svg',
 				className,
+				AtrcPrefix('svg-wrp'),
 				variant ? AtrcPrefix('svg') + '-' + variant : ''
 			)}
+			dangerouslySetInnerHTML={{ __html: svg }}
 			{...defaultProps}
 		/>
+	) : (
+		<span
+			className={classnames(
+				className,
+				AtrcPrefix('svg-wrp'),
+				variant ? AtrcPrefix('svg') + '-' + variant : ''
+			)}
+			{...defaultProps}>
+			{svg}
+		</span>
 	);
 };
 
-const AtrcIconUrl = (props) => {
-	const { iconUrl, ...defaultProps } = props;
+/* Dont work on save function of WordPress blocks */
+export const AtrcIconUrl = (props) => {
+	const { iconUrl, className = '', ...defaultProps } = props;
 
 	const [icon, setIcon] = useState();
 
@@ -83,7 +97,12 @@ const AtrcIconUrl = (props) => {
 	}
 
 	return (
-		<div
+		<span
+			className={classnames(
+				className,
+				AtrcPrefix('svg-wrp'),
+				variant ? AtrcPrefix('svg') + '-' + variant : ''
+			)}
 			dangerouslySetInnerHTML={{ __html: icon }}
 			{...defaultProps}
 		/>
@@ -103,7 +122,7 @@ const AtrcIcon = (props) => {
 	if (typeof icon === 'function') {
 		return icon({
 			className: classnames(
-				'at-svg',
+				AtrcPrefix('svg'),
 				'at-w',
 				'at-h',
 				className,
@@ -113,49 +132,12 @@ const AtrcIcon = (props) => {
 		});
 	}
 
-	if (type === 'wp') {
+	if (['bootstrap', 'wp', 'ri'].includes(type)) {
 		return <AtrcIconWp {...props} />;
 	}
-	if ('ri' === type) {
-		return <AtrcIconTag {...props} />;
-	}
-	if (type === 'bootstrap') {
-		return <AtrcIconTag {...props} />;
-	}
+
 	if (type === 'svg') {
-		if (typeof svg === 'function') {
-			return svg({
-				className: classnames(
-					className,
-					variant ? AtrcPrefix('svg') + '-' + variant : ''
-				),
-				...defaultProps,
-			});
-		}
-		const div = document.createElement('div');
-		div.innerHTML = svg;
-		const hasHtmlTags = div.querySelector('*') !== null;
-		return hasHtmlTags ? (
-			<span
-				className={classnames(
-					'at-svg',
-					className,
-					variant ? AtrcPrefix('svg') + '-' + variant : ''
-				)}
-				dangerouslySetInnerHTML={{ __html: svg }}
-				{...defaultProps}
-			/>
-		) : (
-			<span
-				className={classnames(
-					'at-svg',
-					className,
-					variant ? AtrcPrefix('svg') + '-' + variant : ''
-				)}
-				{...defaultProps}>
-				{svg}
-			</span>
-		);
+		return <AtrcIconSvg {...props} />;
 	}
 
 	if ('url' === type) {

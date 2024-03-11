@@ -1,0 +1,51 @@
+@import '../../prefix-vars.scss';
+
+#{$appPrefix} {
+	&-cb {
+		.components {
+			&-flex {
+				#{$varPrefix}-h: 35px;
+				#{$varPrefix}-p: 0;
+				padding: var(#{$varPrefix}-p);
+				height: var(#{$varPrefix}-h);
+			}
+
+			&-combobox-control {
+				&__input:not([type='submit']) {
+					#{$varPrefix}-p: 0 10px !important;
+					#{$varPrefix}-h: 35px;
+
+					padding: var(#{$varPrefix}-p);
+					height: var(#{$varPrefix}-h);
+				}
+
+				&__suggestions-container {
+					.components {
+						&-form-token-field__suggestions {
+							&.is-selected {
+								background: var(#{$varPrefix}-primary);
+							}
+						}
+					}
+				}
+			}
+			&-form-token-field__suggestion {
+				&.is-selected {
+					background: var(#{$varPrefix}-primary);
+				}
+			}
+		}
+	}
+}
+
+[data-at-theme='dark'] {
+	#{$appPrefix} {
+		&-cb {
+			.components {
+				&-form-token-field__suggestion {
+					color: var(#{$varPrefix}-white);
+				}
+			}
+		}
+	}
+}

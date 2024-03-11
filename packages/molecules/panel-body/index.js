@@ -4,12 +4,13 @@ import { PanelBody } from '@wordpress/components';
 /*Library*/
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
 
+/* Prefix */
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Component*/
+/*Local*/
 const AtrcPanelBody = (props) => {
 	const {
 		children,
@@ -24,8 +25,9 @@ const AtrcPanelBody = (props) => {
 			className={classnames(
 				AtrcPrefix('pnl-body'),
 				className,
-				defaultProps.variant ? null : 'at-m at-p at-bdr',
-				variant ? AtrcPrefix('pnl-body') + '-' + variant : ''
+				defaultProps.variant ? null : 'at-p at-bdr',
+				variant ? AtrcPrefix('pnl-body') + '-' + variant : '',
+				variant === 'st' ? 'at-m' : ''
 			)}
 			{...defaultProps}>
 			<AtrcWrap

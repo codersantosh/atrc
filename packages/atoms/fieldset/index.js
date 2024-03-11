@@ -1,32 +1,37 @@
+/*React*/
+import { forwardRef } from 'react';
+
 /*Library*/
-import classnames from "classnames";
+import classnames from 'classnames';
 
-/*Inbuilt*/
-import AtrcPrefix from "../../prefix-vars";
+/*Atoms*/
+import AtrcWrap from '../wrap';
 
-/*Local Component*/
-const AtrcFieldset = (props) => {
+/* Prefix */
+import AtrcPrefix from '../../prefix-vars';
 
-    const {
-        className = '',
-        variant = '',
-        children = '',
-        ...defaultProps
-    } = props;
+/*Local*/
+const AtrcFieldset = (props, ref) => {
+	const {
+		children = '',
+		isNum = false,
+		variant = '',
+		className = '',
+		...defaultProps
+	} = props;
 
-    return (
-        <fieldset
-            className={
-                classnames(
-                    AtrcPrefix('fieldset'),
-                    className,
-                    variant?AtrcPrefix('fieldset')+'-'+variant:'',
-                )
-            }
-            {...defaultProps}
-        >
-            {children}
-        </fieldset>
-    )
-}
-export default AtrcFieldset
+	return (
+		<AtrcWrap
+			tag='fieldset'
+			className={classnames(
+				AtrcPrefix('fieldset'),
+				className,
+				variant ? AtrcPrefix('fieldset') + '-' + variant : ''
+			)}
+			ref={ref}
+			{...defaultProps}>
+			{children}
+		</AtrcWrap>
+	);
+};
+export default forwardRef(AtrcFieldset);

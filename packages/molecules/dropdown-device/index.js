@@ -7,22 +7,24 @@ import { MenuGroup, MenuItem } from '@wordpress/components';
 import { find } from 'lodash';
 import classnames from 'classnames';
 
-/*Inbuilt*/
+/*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
 import AtrcLabel from '../../atoms/label';
 import AtrcButton from '../../atoms/button';
 import AtrcIcon from '../../atoms/icon';
-import AtrcWord from '../../atoms/word';
+import AtrcText from '../../atoms/text';
 
+/* Molecules */
 import AtrcDropdown from '../dropdown';
 import AtrcTooltip from '../tooltip';
 
+/* Utils */
 import AtrcUseInstanceId from '../../utils/use-instance-id';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/*Local*/
 export function AtrcDropdownDevice({
 	label = '',
 	className,
@@ -106,7 +108,7 @@ export function AtrcDropdownDevice({
 													icon={control.icon}
 													size={control.iconSize || 16}
 												/>
-												<AtrcWord tag='span'>{control.title}</AtrcWord>
+												<AtrcText tag='span'>{control.title}</AtrcText>
 											</AtrcTooltip>
 										</MenuItem>
 									);

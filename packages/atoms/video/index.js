@@ -5,9 +5,17 @@ import { addQueryArgs } from '@wordpress/url';
 
 /*Library*/
 import classnames from 'classnames';
+
+/* Atoms */
 import AtrcImg from '../img';
 import AtrcIframe from '../iframe';
-/*Local Components*/
+import AtrcPrefix from '../../prefix-vars';
+import AtrcFigure from '../../molecules/figure';
+
+/* Molecules */
+import AtrcPanelRow from '../../molecules/panel-row';
+
+/*Local*/
 
 /*Source
  * https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-vid-id-from-a-url
@@ -20,7 +28,7 @@ export function AtrcVideoIsYoutube(url) {
 	return match && match[7].length === 11 ? match[7] : false;
 }
 
-function AtrcGetYoutubeVideUrl(props) {
+export function AtrcGetYoutubeVideUrl(props) {
 	if (!props || !props.id) {
 		throw new Error('A YouTube vid ID is required');
 	}
@@ -68,7 +76,7 @@ export function AtrcVideoIsVimeo(url) {
 	return match && match.length === 7 ? match[6] : false;
 }
 
-function vimeoVideoUrl(props) {
+export function AtrcGetVimeoVideoUrl(props) {
 	// Validate the props object
 	if (!props || !props.id) {
 		throw new Error('A Vimeo vid ID is required');
@@ -90,24 +98,97 @@ function vimeoVideoUrl(props) {
 }
 
 export function AtrcVideoIsHtml5(url) {
-	// Check if the URL is a valid vid file
-	return /^(https?:)?\/\//.test(url) && /\.(mp4|webm|ogv|mov)$/.test(url);
+	// Check if the last part of the URL contains a valid vid file string
+	const urlParts = url.split('/');
+	const lastPart = urlParts[urlParts.length - 1];
+	return lastPart.includes('.mp4');
 }
+
 export function AtrcIsImageUrl(url) {
-	// Check if the URL is a valid image file
-	return /^(https?:)?\/\//.test(url) && /\.(png|jpe?g|gif|bmp)$/.test(url);
+	// Check if the last part of the URL contains a valid image file string
+	const urlParts = url.split('/');
+	const lastPart = urlParts[urlParts.length - 1];
+	return (
+		lastPart.includes('.png') ||
+		lastPart.includes('.jpg') ||
+		lastPart.includes('.jpeg') ||
+		lastPart.includes('.gif') ||
+		lastPart.includes('.bmp')
+	);
 }
+
+export const AtrcVideoTag = (props) => {
+	const {
+		variant = '',
+		className = '',
+
+		url = '',
+		onSettings = false,
+
+		autoplay = false,
+		controls = false,
+		loop = false,
+		muted = true,
+		playsInline = false,
+		width = '',
+		height = '',
+
+		preload = '',
+		poster = '',
+		...defaultProps
+	} = props;
+	return (
+		<video
+			className={classnames(
+				AtrcPrefix('vid'),
+				className,
+				variant ? AtrcPrefix('vid') + '-' + variant : ''
+			)}
+			autoPlay={autoplay}
+			controls={controls}
+			loop={loop}
+			muted={muted}
+			playsInline={playsInline}
+			width={width}
+			height={height}
+			preload={preload}
+			src={url}
+			poster={poster}
+			{...defaultProps}
+		/>
+	);
+};
+
+export const AtrcHtml5Video = (props) => {
+	const { wrapfigure = true, figureProps = {}, ...videoProps } = props;
+
+	if (wrapfigure) {
+		return (
+			<AtrcFigure
+				{...figureProps}
+				variant='vid'>
+				<AtrcVideoTag {...videoProps} />
+			</AtrcFigure>
+		);
+	}
+
+	return <AtrcVideoTag {...videoProps} />;
+};
 
 const AtrcVideo = (props) => {
 	if (!props || !props.url) {
 		return null;
 	}
 
+	const { url = '' } = props;
+
+	if (AtrcVideoIsHtml5(url)) {
+		return <AtrcHtml5Video {...props} />;
+	}
 	const {
 		variant = '',
 		className = '',
 
-		url = '',
 		onSettings = false,
 
 		autoplay = false,
@@ -125,28 +206,6 @@ const AtrcVideo = (props) => {
 		...defaultProps
 	} = props;
 
-	if (AtrcVideoIsHtml5(url)) {
-		return (
-			<video
-				className={classnames(
-					'at-vid',
-					className,
-					variant ? 'at-vid-' + variant : ''
-				)}
-				autoPlay={autoplay}
-				controls={controls}
-				loop={loop}
-				muted={muted}
-				playsInline={playsInline}
-				width={width}
-				height={height}
-				preload={preload}
-				src={url}
-				poster={poster}
-				{...defaultProps}
-			/>
-		);
-	}
 	if (AtrcIsImageUrl(url)) {
 		return (
 			<AtrcImg
@@ -171,25 +230,27 @@ const AtrcVideo = (props) => {
 			  });
 
 		return (
-			<AtrcIframe
-				height={height}
-				width={width}
-				className={classnames(
-					AtrcPrefix('vid'),
-					className,
-					variant ? AtrcPrefix('vid') + '-' + variant : ''
-				)}
-				src={youtubeVideUrl}
-				frameBorder='0'
-				allowFullScreen={allowFullScreen}
-				title={__('Youtube video', 'atrc-prefix-atrc')}
-				{...defaultProps}
-			/>
+			<AtrcPanelRow className={classnames('at-m')}>
+				<AtrcIframe
+					height={height}
+					width={width}
+					className={classnames(
+						AtrcPrefix('vid'),
+						className,
+						variant ? AtrcPrefix('vid') + '-' + variant : ''
+					)}
+					src={youtubeVideUrl}
+					frameBorder='0'
+					allowFullScreen={allowFullScreen}
+					title={__('Youtube video', 'atrc-prefix-atrc')}
+					{...defaultProps}
+				/>
+			</AtrcPanelRow>
 		);
 	}
 	if (AtrcVideoIsVimeo(url)) {
 		const vimeoUrl = onSettings
-			? vimeoVideoUrl({
+			? AtrcGetVimeoVideoUrl({
 					id: AtrcVideoIsVimeo(url),
 					autoplay,
 					loop,

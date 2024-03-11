@@ -7,13 +7,13 @@ import classnames from 'classnames';
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Inbuilt*/
+/*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
 import AtrcText from '../../atoms/text';
 import AtrcButton from '../../atoms/button';
 import AtrcSpan from '../../atoms/span';
 
-/*Local Component*/
+/*Local*/
 const AtrcPagination = (props) => {
 	const {
 		className = '',
@@ -48,12 +48,12 @@ const AtrcPagination = (props) => {
 					{__('items', 'atrc-prefix-atrc')}
 				</AtrcSpan>
 			)}
-			<AtrcWrap className='at-flx at-al-itm-ctr'>
+			<AtrcWrap className={classnames('at-flx', 'at-al-itm-ctr')}>
 				<AtrcButton
 					variant='pagination'
 					onClick={() => doPagination(1)}
 					disabled={prevDisabled}>
-					<AtrcSpan className='screen-reader-text'>
+					<AtrcSpan className={classnames('screen-reader-text')}>
 						{__('First page', 'atrc-prefix-atrc')}
 					</AtrcSpan>
 					<AtrcSpan aria-hidden='true'>«</AtrcSpan>
@@ -62,13 +62,13 @@ const AtrcPagination = (props) => {
 					variant='pagination'
 					onClick={() => doPagination(prevPage)}
 					disabled={prevDisabled}>
-					<AtrcSpan className='screen-reader-text'>
+					<AtrcSpan className={classnames('screen-reader-text')}>
 						{__('Previous page', 'atrc-prefix-atrc')}
 					</AtrcSpan>
 					<AtrcSpan aria-hidden='true'>‹</AtrcSpan>
 				</AtrcButton>
 
-				<AtrcSpan className='at-flx at-al-itm-ctr'>
+				<AtrcSpan className={classnames('at-flx', 'at-al-itm-ctr')}>
 					{isFooter ? (
 						currentPage
 					) : (
@@ -84,8 +84,7 @@ const AtrcPagination = (props) => {
 							allowReset={false}
 						/>
 					)}
-					<AtrcSpan
-						className={classnames(AtrcPrefix('mr-5'), AtrcPrefix('ml-5'))}>
+					<AtrcSpan>
 						&nbsp;
 						{__('of', 'atrc-helpdesk')}
 						&nbsp;
@@ -97,7 +96,7 @@ const AtrcPagination = (props) => {
 					variant='pagination'
 					onClick={() => doPagination(nextPage)}
 					disabled={nextDisabled}>
-					<AtrcSpan className='screen-reader-text'>
+					<AtrcSpan className={classnames('screen-reader-text')}>
 						{__('Next page', 'atrc-prefix-atrc')}
 					</AtrcSpan>
 					<AtrcSpan aria-hidden='true'>›</AtrcSpan>
@@ -107,7 +106,7 @@ const AtrcPagination = (props) => {
 					variant='pagination'
 					onClick={() => doPagination(totalPages)}
 					disabled={nextDisabled}>
-					<AtrcSpan className='screen-reader-text'>
+					<AtrcSpan className={classnames('screen-reader-text')}>
 						{__('Last page', 'atrc-prefix-atrc')}
 					</AtrcSpan>
 					<AtrcSpan aria-hidden='true'>»</AtrcSpan>

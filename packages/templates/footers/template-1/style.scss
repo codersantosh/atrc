@@ -1,0 +1,27 @@
+@import '../../../prefix-vars';
+
+#{$appPrefix} {
+	&-ftr {
+		&-tpl {
+			&-1 {
+				#{$varPrefix}-p: 20px;
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+				#{$varPrefix}-bdr-w: 1px 0 0 0;
+				#{$varPrefix}-bdr-sty: solid;
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+			}
+		}
+	}
+}
+
+[data-at-theme='dark'] {
+	#{$appPrefix} {
+		&-ftr {
+			&-tpl {
+				&-1 {
+					#{$varPrefix}-bg-cl: #202020;
+				}
+			}
+		}
+	}
+}

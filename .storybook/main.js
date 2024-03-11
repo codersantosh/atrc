@@ -1,16 +1,10 @@
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
 	stories: [
-		'../stories/**/*.mdx',
-		'../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-		'../stories/**/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+		'../stories/**/*.stories.@(js|ts)',
+		'../stories/**/**/*.stories.@(js|ts)',
 	],
-	addons: [
-		'@storybook/addon-links',
-		'@storybook/addon-essentials',
-		'@storybook/addon-onboarding',
-		'@storybook/addon-interactions',
-	],
+	addons: ['@storybook/addon-essentials'],
 	framework: {
 		name: '@storybook/react-webpack5',
 		options: {

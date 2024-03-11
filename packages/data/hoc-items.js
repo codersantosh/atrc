@@ -1,98 +1,202 @@
 /*WordPress*/
-import { withSelect, withDispatch } from '@wordpress/data';
+import { withSelect, withDispatch, dispatch } from '@wordpress/data';
+import { useEffect, useState } from '@wordpress/element';
+
+/* Library */
+import { isObject } from 'lodash';
+import { useLocation } from 'react-router-dom';
+
+/* Internal */
+import { AtrcGetQueryParams } from './utils';
 
 /*Local*/
-const AtrcApplyWithItems = (WrappedComponent) => {
-	return withSelect((select, ownProps) => {
-		if (!ownProps || !ownProps.atrcStore || !ownProps.atrcStoreKey) {
+
+// This HOC takes a component as an argument and returns a new component
+const withUrlChanged = (WrappedComponent) => {
+	return (props) => {
+		const [queryArgs, setQueryArgs] = useState(null);
+
+		const {
+			atrcStore = '',
+			atrcStoreKey = '',
+			refreshOnUrlChange = false,
+		} = props;
+
+		if (!refreshOnUrlChange) {
+			return <WrappedComponent {...props} />;
+		}
+
+		let currentPath;
+		try {
+			// Attempt to use useLocation()
+			const location = useLocation();
+			currentPath = location.pathname;
+		} catch (error) {
+			console.error('Component is not inside a <Router>.', error);
+			return <WrappedComponent {...props} />;
+		}
+
+		useEffect(() => {
+			if (currentPath) {
+				const newQueryArgs = AtrcGetQueryParams(atrcStoreKey);
+				setQueryArgs(newQueryArgs);
+				dispatch(atrcStore).setQueryArgs({
+					key: atrcStoreKey,
+					queryArgs: newQueryArgs,
+					update: false,
+				});
+			}
+
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+		}, [currentPath]);
+
+		/* queryArgs shoulbe be object either empty or not */
+		if (null === queryArgs) {
 			return null;
 		}
-		const { atrcStore = '', atrcStoreKey = '' } = ownProps;
+		return <WrappedComponent {...props} />;
+	};
+};
 
-		const itemsData = select(atrcStore).getItems(atrcStoreKey);
-		let isLoading = false;
-		let canSave = false;
-		let queryArgs = {};
-		let items = null;
-		let countAllItem = null;
-		let countQueryItems = null;
-		let totalPages = null;
-		let item = null;
-		let selectItems = null;
-		let confirmDelete = null;
+// Creating the HOC using withSelect
+const withSelectData = withSelect((select, ownProps) => {
+	if (!ownProps || !ownProps.atrcStore || !ownProps.atrcStoreKey) {
+		return null;
+	}
+	const {
+		atrcStore = '',
+		atrcStoreKey = '',
+		hiddenQueryArgsData = {},
+	} = ownProps;
 
-		let notices = [];
-		let updateData = null;
-		let extraData = null;
+	let queryArgs = AtrcGetQueryParams(atrcStoreKey);
 
-		if (itemsData && itemsData.items) {
-			({
-				isLoading,
-				canSave,
-				queryArgs,
-				items,
-				countAllItem,
-				countQueryItems,
-				totalPages,
-				item,
-				selectItems,
-				confirmDelete,
-				notices,
-				updateData,
-				extraData,
-			} = itemsData);
-		}
-		return {
+	/* select called selectors */
+	const itemsData = select(atrcStore).getData(
+		atrcStoreKey,
+		queryArgs,
+		hiddenQueryArgsData,
+		atrcStore
+	);
+	let isLoading = false;
+	let canSave = false;
+	let items = null;
+	let countAllItems = null;
+	let countQueryItems = null;
+	let totalPages = null;
+	let item = null;
+	let selectedItems = null;
+	let confirmDelete = null;
+
+	let notices = [];
+	let updateData = null;
+	let extraData = null;
+
+	if (itemsData && isObject(itemsData)) {
+		({
 			isLoading,
 			canSave,
 			queryArgs,
 			items,
-			countAllItem,
+			countAllItems,
 			countQueryItems,
 			totalPages,
 			item,
-			selectItems,
+			selectedItems,
 			confirmDelete,
 			notices,
 			updateData,
 			extraData,
-			getItem: (id) => select(atrcStore).getItem(atrcStoreKey, id),
-		};
-	})(
-		withDispatch((dispatch, ownProps) => {
-			if (!ownProps || !ownProps.atrcStore || !ownProps.atrcStoreKey) {
-				return null;
-			}
-			const { atrcStore = '', atrcStoreKey = '' } = ownProps;
+		} = itemsData);
+	}
+	return {
+		isLoading,
+		canSave,
+		queryArgs,
+		items,
+		countAllItems,
+		countQueryItems,
+		totalPages,
+		item,
+		selectedItems,
+		confirmDelete,
+		notices,
+		updateData,
+		extraData,
+		getItem: (id) => select(atrcStore).getItem(atrcStoreKey, id, atrcStore),
+	};
+});
 
-			return {
-				setQueryArgs: (args) =>
-					dispatch(atrcStore).setQueryArgs(atrcStoreKey, args),
-				toggleSelectAll: () =>
-					dispatch(atrcStore).toggleSelectAll(atrcStoreKey),
-				toggleSelect: (item) =>
-					dispatch(atrcStore).toggleSelect(atrcStoreKey, item),
-				setConfirmDelete: (val) =>
-					dispatch(ownProps.atrcStore).setConfirmDelete(atrcStoreKey, val),
-				deleteItems: (ids) =>
-					dispatch(ownProps.atrcStore).deleteItems(atrcStoreKey, ids),
-				updateItem: (item) =>
-					dispatch(ownProps.atrcStore).updateItem(atrcStoreKey, item),
-				insertItem: (item) =>
-					dispatch(ownProps.atrcStore).insertItem(atrcStoreKey, item),
-				setItem: (item) =>
-					dispatch(ownProps.atrcStore).setItem(atrcStoreKey, item),
-				updateItemData: (key, val) =>
-					dispatch(ownProps.atrcStore).updateItemData(atrcStoreKey, key, val),
-				setExtraData: (data) =>
-					dispatch(ownProps.atrcStore).setExtraData(atrcStoreKey, data),
-				setNotice: (notice) =>
-					dispatch(ownProps.atrcStore).setNotice(atrcStoreKey, notice),
-				removeNotice: (id) =>
-					dispatch(ownProps.atrcStore).removeNotice(atrcStoreKey, id),
-			};
-		})(WrappedComponent)
+// Creating the HOC using withDispatch
+// eslint-disable-next-line no-shadow
+const withDispatchActions = withDispatch((dispatch, ownProps) => {
+	if (!ownProps || !ownProps.atrcStore || !ownProps.atrcStoreKey) {
+		return null;
+	}
+	const {
+		atrcStore = '',
+		atrcStoreKey = '',
+		hiddenQueryArgsData = {},
+	} = ownProps;
+
+	/* dispatch called actions */
+	return {
+		setQueryArgs: (args = {}, update = true) =>
+			dispatch(atrcStore).setQueryArgs({
+				key: atrcStoreKey,
+				queryArgs: args,
+				update,
+				hiddenQueryArgsData,
+			}),
+		toggleSelectAll: () =>
+			dispatch(atrcStore).toggleSelectAll({ key: atrcStoreKey }),
+		toggleSelect: (item) =>
+			dispatch(atrcStore).toggleSelect({ key: atrcStoreKey, item }),
+		setConfirmDelete: (data) =>
+			dispatch(ownProps.atrcStore).setConfirmDelete({
+				key: atrcStoreKey,
+				data,
+			}),
+		deleteItems: (ids) =>
+			dispatch(ownProps.atrcStore).deleteItems({ key: atrcStoreKey, ids }),
+		updateItem: (item) =>
+			dispatch(ownProps.atrcStore).updateItem({
+				key: atrcStoreKey,
+				data: item,
+			}),
+		insertItem: (item) =>
+			dispatch(ownProps.atrcStore).insertItem({
+				key: atrcStoreKey,
+				data: item,
+			}),
+		setItem: (item) =>
+			dispatch(ownProps.atrcStore).setItem({
+				key: atrcStoreKey,
+				data: item,
+			}),
+		updateItemData: (key, val) =>
+			dispatch(ownProps.atrcStore).updateItemData({
+				key: atrcStoreKey,
+				dataKey: key,
+				dataVal: val,
+			}),
+		setExtraData: (data) =>
+			dispatch(ownProps.atrcStore).setExtraData({ key: atrcStoreKey, data }),
+		setNotice: (notice) =>
+			dispatch(ownProps.atrcStore).setNotice({ key: atrcStoreKey, notice }),
+		setNotices: (notices) =>
+			dispatch(ownProps.atrcStore).setNotice({ key: atrcStoreKey, notices }),
+		removeNotice: (id) =>
+			dispatch(ownProps.atrcStore).removeNotice({ key: atrcStoreKey, id }),
+	};
+});
+
+// Combining both HOCs into a single HOC
+const AtrcApplyWithItems = (WrappedComponent) => {
+	const WithCombinedFunctionality = withUrlChanged(
+		withSelectData(withDispatchActions(WrappedComponent))
 	);
+	return WithCombinedFunctionality;
 };
 
 export default AtrcApplyWithItems;

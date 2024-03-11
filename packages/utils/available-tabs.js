@@ -1,9 +1,3 @@
-const AtrcAvailableTabs = [
-	'normal',
-	'Hover',
-	'Active',
-	'Focus',
-	'Visited',
-	'ParentHover',
-];
+/* Local */
+const AtrcAvailableTabs = ['normal', 'hover', 'active', 'focus', 'visited'];
 export default AtrcAvailableTabs;

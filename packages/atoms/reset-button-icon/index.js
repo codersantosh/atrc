@@ -2,15 +2,15 @@
 import classnames from 'classnames';
 import { BsArrowCounterclockwise } from 'react-icons/bs';
 
-/*Inbuilt*/
+/*Atoms*/
 import AtrcWrap from '../wrap';
 import AtrcButton from '../button';
 import AtrcIcon from '../icon';
 
-/*Inbuilt*/
+/*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/*Local*/
 export const AtrcResetWrap = (props) => {
 	const { className = '', variant = '', children, ...defaultProps } = props;
 
@@ -45,11 +45,8 @@ const AtrcResetButtonIcon = (props) => {
 
 	return (
 		<AtrcButton
-			className={classnames(
-				AtrcPrefix('btn-rst-i'),
-				className,
-				variant ? AtrcPrefix('btn-rst-i') + '-' + variant : ''
-			)}
+			className={classnames(AtrcPrefix('btn-rst-i'), className)}
+			variant='link'
 			disabled={value === defaultValue}
 			{...defaultProps}>
 			<AtrcIcon

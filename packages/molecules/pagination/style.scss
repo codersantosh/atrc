@@ -1,0 +1,83 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+	&-pagination {
+		&-list {
+			#{$varPrefix}-gap: 5px;
+		}
+		&-link {
+			#{$varPrefix}-fnt-sz: 14px;
+			#{$varPrefix}-ln-h: 20px;
+			#{$varPrefix}-p: 6px 12px;
+			#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+			#{$varPrefix}-trs: all 0.3s ease-in-out;
+
+			padding: var(#{$varPrefix}-p);
+			transition: var(#{$varPrefix}-trs);
+
+			&[aria-current='page'],
+			&:hover {
+				background-color: var(#{$varPrefix}-primary--hover);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+	}
+}
+.screen-reader-text {
+	#{$varPrefix}-h: 1px;
+	#{$varPrefix}-w: 1px;
+	#{$varPrefix}-p: 1px;
+	#{$varPrefix}-m: -1px;
+	#{$varPrefix}-pos: absolute;
+	#{$varPrefix}-clp-pth: inset(50%);
+	#{$varPrefix}-ovf: hidden;
+	#{$varPrefix}-wrd-wrp: normal;
+	#{$varPrefix}-bdr-cl: none;
+	#{$varPrefix}-bdr-w: 0;
+	#{$varPrefix}-bdr-sty: none;
+
+	clip: rect(1px, 1px, 1px, 1px);
+
+	border-color: var(#{$varPrefix}-bdr-cl);
+	border-width: var(#{$varPrefix}-bdr-w);
+	border-style: var(#{$varPrefix}-bdr-sty);
+	word-wrap: var(#{$varPrefix}-wrd-wrp) !important;
+	overflow: var(#{$varPrefix}-ovf);
+	margin: var(#{$varPrefix}-m);
+	padding: var(#{$varPrefix}-p);
+	position: var(#{$varPrefix}-pos);
+	clip-path: var(#{$varPrefix}-clp-pth);
+	width: var(#{$varPrefix}-w);
+	height: var(#{$varPrefix}-h);
+
+	&:focus {
+		#{$varPrefix}-clp-pth: none;
+		#{$varPrefix}-p: 15px 23px 14px;
+		#{$varPrefix}-l: 5px;
+		#{$varPrefix}-t: 5px;
+		#{$varPrefix}-cl: #444;
+		#{$varPrefix}-bg-cl: #eee;
+		#{$varPrefix}-h: auto;
+		#{$varPrefix}-w: auto;
+		#{$varPrefix}-fnt-sz: 1em;
+		#{$varPrefix}-ln-h: normal;
+		#{$varPrefix}-txt-dec: none;
+		#{$varPrefix}-z-idx: 100000;
+
+		clip: auto !important;
+		display: block;
+
+		text-decoration: var(#{$varPrefix}-txt-dec);
+		font-size: var(#{$varPrefix}-fnt-sz);
+		line-height: var(#{$varPrefix}-ln-h);
+		width: var(#{$varPrefix}-w);
+		height: var(#{$varPrefix}-h);
+		background-color: var(#{$varPrefix}-bg-cl);
+		color: var(#{$varPrefix}-cl);
+		clip-path: var(#{$varPrefix}-clp-pth);
+		top: var(#{$varPrefix}-t);
+		left: var(#{$varPrefix}-l);
+		padding: var(#{$varPrefix}-p);
+		z-index: var(#{$varPrefix}-z-idx);
+	}
+}

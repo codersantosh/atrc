@@ -2,7 +2,7 @@
 import apiFetch from '@wordpress/api-fetch';
 
 /*Inbuilt*/
-import AtrcGetRestBaseType from '../get-rest-base-types';
+import AtrcGetRestBaseType from '../get-rest-base-type';
 
 /*Local*/
 const AtrcGetPost = async ({
@@ -23,7 +23,7 @@ const AtrcGetPost = async ({
 	if (restBase) {
 		path += restBase;
 	} else {
-		const rtBase = await AtrcGetRestBaseType({postType});
+		const rtBase = await AtrcGetRestBaseType({ postType });
 		if (rtBase) {
 			path += rtBase;
 		} else {

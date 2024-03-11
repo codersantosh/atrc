@@ -1,0 +1,121 @@
+@import '../../prefix-vars.scss';
+
+#{$appPrefix} {
+	&-modal-icon-picker-cont {
+		#{$appPrefix} {
+			&-lbl {
+				#{$varPrefix}-m: 15px 0;
+			}
+			&-btn {
+				#{$varPrefix}-m: 3px;
+				#{$varPrefix}-p: 0;
+				#{$varPrefix}-h: 35px;
+				#{$varPrefix}-w: 35px;
+				#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+			}
+			&-svg-wrp {
+				#{$appPrefix} {
+					&-svg {
+						#{$varPrefix}-h: 20px;
+						#{$varPrefix}-w: 20px;
+					}
+				}
+			}
+		}
+	}
+
+	&-modal-icon-picker {
+		#{$appPrefix} {
+			&-sdbar {
+				#{$appPrefix} {
+					&-btn-grp-vertical {
+						#{$appPrefix} {
+							&-btn {
+								&:not(#{$appPrefix}-btn-active) {
+									#{$varPrefix}-opa: 0.7;
+									#{$varPrefix}-trs: all 0.5s ease-in-out;
+									opacity: var(#{$varPrefix}-opa);
+									transition: var(#{$varPrefix}-trs);
+									&:hover {
+										#{$varPrefix}-opa: 1;
+										opacity: var(#{$varPrefix}-opa);
+									}
+								}
+								&#{$appPrefix}-btn-active {
+									#{$varPrefix}-bg-cl: var(#{$varPrefix}-primary--hover);
+									#{$varPrefix}-opa: 1;
+									opacity: var(#{$varPrefix}-opa);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		&-preview {
+			#{$appPrefix} {
+				&-btn-grp {
+					#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+					#{$varPrefix}-bdr-w: 1px;
+					#{$varPrefix}-bdr-sty: dashed;
+					#{$varPrefix}-p: 15px;
+				}
+			}
+		}
+	}
+
+	&-btn {
+		&-icon {
+			&-selector {
+				#{$varPrefix}-m: 3px;
+				#{$varPrefix}-p: 0;
+				#{$varPrefix}-h: 35px;
+				#{$varPrefix}-w: 35px;
+				#{$varPrefix}-cl: var(#{$varPrefix}-tertiary);
+				#{$appPrefix} {
+					&-svg {
+						#{$varPrefix}-h: 20px;
+						#{$varPrefix}-w: 20px;
+					}
+				}
+			}
+			&-selected {
+				#{$varPrefix}-m: 0;
+				#{$varPrefix}-p: 0;
+				#{$varPrefix}-h: 35px;
+				#{$varPrefix}-w: 35px;
+				#{$appPrefix} {
+					&-svg {
+						#{$varPrefix}-h: 20px;
+						#{$varPrefix}-w: 20px;
+					}
+				}
+			}
+		}
+	}
+
+	&-icon {
+		&-wp {
+			.at {
+				&-svg {
+					#{$varPrefix}-h: 20px;
+					#{$varPrefix}-w: 20px;
+					#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+					fill: var(#{$varPrefix}-cl);
+				}
+			}
+		}
+	}
+
+	&-allowed-icons {
+		#{$appPrefix} {
+			&-btn {
+				&-icon {
+					&-picker {
+						#{$varPrefix}-bg-cl: var(#{$varPrefix}-quaternary) !important;
+					}
+				}
+			}
+		}
+	}
+}

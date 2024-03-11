@@ -1,0 +1,35 @@
+@import '../../prefix-vars';
+#{$appPrefix} {
+	&-cpd-slider {
+		&-col {
+			&-input {
+				#{$varPrefix}-m: 30px 0 0 0;
+			}
+			&-field {
+				width: calc(100% / 3 - 5px);
+				margin-right: 5px;
+			}
+		}
+		.slider-handles [role='slider'] {
+			#{$varPrefix}-pos: absolute;
+			#{$varPrefix}-tf: translate(-50%, -50%);
+			#{$varPrefix}-w: 10px;
+			#{$varPrefix}-h: 10px;
+			#{$varPrefix}-p: 0;
+			#{$varPrefix}-bdr-rad: 50%;
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-primary);
+			#{$varPrefix}-bdr-w: 0;
+
+			position: var(#{$varPrefix}-pos);
+			transform: var(#{$varPrefix}-tf);
+			width: var(#{$varPrefix}-w);
+			height: var(#{$varPrefix}-h);
+			padding: var(#{$varPrefix}-p);
+			border-radius: var(#{$varPrefix}-bdr-rad);
+			background-color: var(#{$varPrefix}-bg-cl);
+			border-width: var(#{$varPrefix}-bdr-w);
+
+			outline: 0;
+		}
+	}
+}

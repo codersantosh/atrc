@@ -1,0 +1,291 @@
+@import '../../prefix-vars';
+
+/* Global button */
+#{$appPrefix} {
+	&-btn {
+		#{$varPrefix}-cur: pointer;
+		#{$varPrefix}-fnt-sz: 14px;
+
+		#{$varPrefix}-bdr-w: initial;
+		#{$varPrefix}-bdr-sty: initial;
+		#{$varPrefix}-p: 6px 12px;
+		#{$varPrefix}-ln-h: normal;
+		line-height: var(#{$varPrefix}-ln-h);
+
+		&[disabled] {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+
+		&-primary {
+			#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-primary);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary);
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-primary--hover);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary--hover);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+
+		&-secondary {
+			#{$varPrefix}-cl: var(#{$varPrefix}-black);
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-secondary);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-secondary);
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-secondary--hover);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-secondary--hover);
+				#{$varPrefix}-cl: var(#{$varPrefix}-black);
+			}
+		}
+
+		&-success {
+			#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-success);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-success);
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-success--hover);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-success--hover);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+		&-danger {
+			#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-danger);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-danger);
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-danger--hover);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-danger--hover);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+		&-warning {
+			#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-warning);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-warning);
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-warning--hover);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-warning--hover);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+		&-info {
+			#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-info);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-info);
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-info--hover);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-info--hover);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+		&-light {
+			#{$varPrefix}-cl: var(#{$varPrefix}-black);
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-quinary);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-quinary);
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-quinary--hover);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-quinary--hover);
+				#{$varPrefix}-cl: var(#{$varPrefix}-black);
+			}
+		}
+		&-dark {
+			#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-black);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-black);
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-black--hover);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-black--hover);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+		&-lnk {
+			#{$varPrefix}-cl: var(#{$varPrefix}-black);
+
+			&:hover {
+				#{$varPrefix}-cl: var(#{$varPrefix}-black);
+			}
+		}
+
+		&-outln-primary {
+			#{$varPrefix}-bg-cl: transparent;
+			#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary);
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-bdr-sty: solid;
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-primary);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+		&-outln-secondary {
+			#{$varPrefix}-bg-cl: transparent;
+			#{$varPrefix}-cl: var(#{$varPrefix}-secondary);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-secondary);
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-bdr-sty: solid;
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-secondary--hover);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-secondary--hover);
+				#{$varPrefix}-cl: var(#{$varPrefix}-black);
+			}
+		}
+		&-outln-success {
+			#{$varPrefix}-bg-cl: transparent;
+			#{$varPrefix}-cl: var(#{$varPrefix}-success);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-success);
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-bdr-sty: solid;
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-success);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-success);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+		&-outln-danger {
+			#{$varPrefix}-bg-cl: transparent;
+			#{$varPrefix}-cl: var(#{$varPrefix}-danger);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-danger);
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-bdr-sty: solid;
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-danger);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-danger);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+		&-outln-warning {
+			#{$varPrefix}-bg-cl: transparent;
+			#{$varPrefix}-cl: var(#{$varPrefix}-warning);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-warning);
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-bdr-sty: solid;
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-warning);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-warning);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+		&-outln-info {
+			#{$varPrefix}-bg-cl: transparent;
+			#{$varPrefix}-cl: var(#{$varPrefix}-info);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-info);
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-bdr-sty: solid;
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-info);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-info);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+		&-outln-light {
+			#{$varPrefix}-bg-cl: transparent;
+			#{$varPrefix}-cl: var(#{$varPrefix}-black);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-tertiary);
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-bdr-sty: solid;
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-tertiary);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-tertiary);
+				#{$varPrefix}-cl: var(#{$varPrefix}-black);
+			}
+		}
+		&-outln-dark {
+			#{$varPrefix}-bg-cl: transparent;
+			#{$varPrefix}-cl: var(#{$varPrefix}-black);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-black);
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-bdr-sty: solid;
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-black);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-black);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+
+		&-icon {
+			#{$varPrefix}-gap: 0 5px;
+		}
+
+		&-active {
+			#{$varPrefix}-cl: var(#{$varPrefix}-white) !important;
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-primary);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary);
+
+			&:hover {
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-primary);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-primary);
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+			}
+		}
+		//overriding WordPress default css
+		&-outln-primary,
+		&-primary {
+			&:hover {
+				color: #fff;
+			}
+		}
+
+		&-light,
+		&-secondary {
+			&:hover {
+				color: #000;
+			}
+		}
+	}
+}
+
+[data-at-theme='dark'] {
+	#{$appPrefix} {
+		&-btn {
+			&-secondary {
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-black);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-black);
+
+				&:hover {
+					#{$varPrefix}-bg-cl: #131313;
+					#{$varPrefix}-bdr-cl: #131313;
+					#{$varPrefix}-cl: var(#{$varPrefix}-white);
+				}
+			}
+			&-outln-secondary {
+				#{$varPrefix}-cl: var(#{$varPrefix}-white);
+				&:hover {
+					#{$varPrefix}-cl: var(#{$varPrefix}-white);
+				}
+			}
+			&-outln-light {
+				#{$varPrefix}-cl: var(#{$varPrefix}-tertiary);
+				&:hover {
+					#{$varPrefix}-cl: var(#{$varPrefix}-white);
+				}
+			}
+
+			&-lnk {
+				#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+
+				&:hover {
+					#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+				}
+			}
+		}
+	}
+}

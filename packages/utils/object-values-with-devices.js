@@ -1,14 +1,13 @@
 /*Library*/
-import { forEach, isEmpty } from 'lodash';
+import { forEach, isEmpty, cloneDeep } from 'lodash';
 
-/*Inbuilt*/
+/*Internal*/
 import AtrcAvailableTabs from './available-tabs';
 import AtrcAvailableDevices from './available-devices';
 import {
 	AtrcGetTabValues,
 	AtrcHasTabValues,
 } from './object-values-with-allowed-keys-and-tabs';
-
 import { AtrcUcFirst } from './string';
 
 /*Local*/
@@ -19,8 +18,9 @@ export function AtrcHasValueKey(value, key) {
 
 	return !!value[key];
 }
+
 export function AtrcResetValueKey(value, key) {
-	const valueCloned = Object.assign({}, value);
+	const valueCloned = cloneDeep(value);
 
 	delete valueCloned[key];
 
@@ -38,14 +38,29 @@ export const AtrcGetDeviceValues = (value, key) => {
 	avDevices.forEach((deviceProps) => {
 		const device = deviceProps.name;
 		let deviceKey;
-		if (device === 'xs') {
-			deviceKey = key;
-		} else {
-			deviceKey = device + AtrcUcFirst(key);
-		}
+		deviceKey = device + AtrcUcFirst(key);
 
 		if (value[deviceKey]) {
 			newValue[device] = value[deviceKey];
+		}
+	});
+	return newValue;
+};
+
+export const AtrcSetDeviceValues = (value, key) => {
+	if (isEmpty(value)) {
+		return null;
+	}
+
+	const newValue = {};
+
+	const avDevices = AtrcAvailableDevices();
+	avDevices.forEach((deviceProps) => {
+		const device = deviceProps.name;
+		const valKey = device + AtrcUcFirst(key);
+
+		if (value[device]) {
+			newValue[valKey] = value[device];
 		}
 	});
 	return newValue;
@@ -61,11 +76,7 @@ export const AtrcHasDeviceValues = (value, key) => {
 	for (let i = 0; i < avDevices.length; i++) {
 		const device = avDevices[i].name;
 		let deviceKey;
-		if (device === 'xs') {
-			deviceKey = key;
-		} else {
-			deviceKey = device + AtrcUcFirst(key);
-		}
+		deviceKey = device + AtrcUcFirst(key);
 
 		if (value[deviceKey]) {
 			return true;
@@ -84,16 +95,9 @@ export const AtrcResetDevices = (value, key) => {
 
 	avDevices.forEach((deviceProps) => {
 		const device = deviceProps.name;
-		let deviceKey;
-		if (device === 'xs') {
-			deviceKey = key;
-		} else {
-			deviceKey = device + AtrcUcFirst(key);
-		}
+		const deviceKey = device + AtrcUcFirst(key);
 
-		if (newValue[deviceKey]) {
-			delete newValue[deviceKey];
-		}
+		delete newValue[deviceKey];
 	});
 	return newValue;
 };
@@ -110,11 +114,7 @@ export const AtrcDeviceCss = (value, key, cssProp) => {
 		if (deviceProps.on) {
 			const device = deviceProps.name;
 			let deviceKey;
-			if (device === 'xs') {
-				deviceKey = key || device;
-			} else {
-				deviceKey = key ? device + AtrcUcFirst(key) : device;
-			}
+			deviceKey = key ? device + AtrcUcFirst(key) : device;
 
 			if (value[deviceKey]) {
 				if (!innerOutput[device]) {
@@ -132,7 +132,7 @@ export const AtrcDeviceAllowedKeys = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 export const AtrcDeviceTabCss = (value, key, cssProp) => {
 	if (!value) {
-		return value;
+		return '';
 	}
 
 	const innerOutput = {};
@@ -151,7 +151,7 @@ export const AtrcDeviceTabCss = (value, key, cssProp) => {
 						if (tab === 'normal') {
 							tabKey = itemKey;
 						} else {
-							tabKey = itemKey + tab;
+							tabKey = itemKey + AtrcUcFirst(tab);
 						}
 						if (!innerOutput[tabKey]) {
 							innerOutput[tabKey] = '';
@@ -176,15 +176,9 @@ export function AtrcMappingDeviceKeyValues(value, device, key) {
 		return null;
 	}
 
-	if ('xs' === device) {
-		return value[key];
-	}
 	return value[device + AtrcUcFirst(key)];
 }
 
 export function AtrcMappingDeviceKey(device, key) {
-	if ('xs' === device) {
-		return key;
-	}
 	return device + AtrcUcFirst(key);
 }

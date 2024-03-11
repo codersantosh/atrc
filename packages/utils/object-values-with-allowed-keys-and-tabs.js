@@ -1,9 +1,10 @@
 /*Library*/
 import { isArray, isEmpty, mapKeys, omit, pick } from 'lodash';
 
-/*Inbuilt*/
+/*Utils*/
 import AtrcAvailableTabs from './available-tabs';
 import AtrcIsScalar from './is-scalar';
+import { AtrcUcFirst } from './string';
 
 /*Local*/
 export const AtrcIsKeyWithValueNotEmpty = (obj, key) => {
@@ -14,6 +15,7 @@ export const AtrcIsKeyWithValueNotEmpty = (obj, key) => {
 		obj[key] !== ''
 	);
 };
+
 export const AtrcGetTabValues = (value, tab, allowedTabKeys = []) => {
 	if (
 		isEmpty(value) ||
@@ -23,6 +25,7 @@ export const AtrcGetTabValues = (value, tab, allowedTabKeys = []) => {
 		return {};
 	}
 
+	/* For border radius */
 	if (value[tab]) {
 		return value[tab];
 	}
@@ -30,11 +33,14 @@ export const AtrcGetTabValues = (value, tab, allowedTabKeys = []) => {
 	const tabKeys =
 		tab === 'normal'
 			? allowedTabKeys
-			: allowedTabKeys.map((prop) => prop + tab);
+			: allowedTabKeys.map((prop) => prop + AtrcUcFirst(tab));
 
-	return mapKeys(pick(value, tabKeys), (val, key) =>
-		tab === 'normal' ? key : key.replace(tab, '')
-	);
+	return mapKeys(pick(value, tabKeys), (val, key) => {
+		if ('normal' === tab) {
+			return key;
+		}
+		return key.replace(AtrcUcFirst(tab), '');
+	});
 };
 
 export const AtrcUpdateTabValues = (
@@ -51,14 +57,20 @@ export const AtrcUpdateTabValues = (
 
 	if (AtrcIsScalar(newVal)) {
 		allowedTabKeys.forEach((key) => {
-			const newKey = tab === 'normal' ? key : key + tab;
+			const newKey = tab === 'normal' ? key : key + AtrcUcFirst(tab);
 			delete clonedValue[newKey];
 		});
 		clonedValue[tab] = newVal;
 	} else {
 		delete clonedValue[tab];
 		allowedTabKeys.forEach((key) => {
-			const newKey = tab === 'normal' ? key : key + tab;
+			let newKey = '';
+			if ('normal' === tab) {
+				newKey = key;
+			} else {
+				newKey = key + AtrcUcFirst(tab);
+			}
+
 			if (key in newVal) {
 				clonedValue[newKey] = newVal[key];
 			} else {
@@ -78,14 +90,16 @@ export const AtrcHasTabValues = (tab, value, allowedTabKeys = []) => {
 	) {
 		return false;
 	}
+	/* For border radius */
 	if (value[tab]) {
 		return true;
 	}
+
 	if (tab === 'normal') {
 		return allowedTabKeys.some((key) => AtrcIsKeyWithValueNotEmpty(value, key));
 	}
 	return allowedTabKeys.some((key) =>
-		AtrcIsKeyWithValueNotEmpty(value, `${key}${tab}`)
+		AtrcIsKeyWithValueNotEmpty(value, `${key}${AtrcUcFirst(tab)}`)
 	);
 };
 
@@ -97,7 +111,7 @@ export const AtrcResetTab = (tab, value, allowedTabKeys = []) => {
 	const tabKeys =
 		tab === 'normal'
 			? allowedTabKeys
-			: allowedTabKeys.map((prop) => prop + tab);
+			: allowedTabKeys.map((prop) => prop + AtrcUcFirst(tab));
 
 	tabKeys.push('tab'); //for scalar value.
 
@@ -122,15 +136,21 @@ export const AtrcResetTabs = (value, allowedTabKeys) => {
 	return newValue;
 };
 
-export const AtrcTabCss = (value, key, cssProp) => {
+export const AtrcTabCss = (value, key = '', cssProp) => {
 	if (!value) {
-		return value;
+		return '';
 	}
 
 	const innerOutput = {};
 	AtrcAvailableTabs.forEach((tab) => {
-		const newKey = tab === 'normal' ? key : key + tab;
-		const newOutputKey = tab === 'normal' ? 'xs' : 'xs' + tab;
+		let newKey;
+		if (key) {
+			newKey = tab === 'normal' ? key : key + AtrcUcFirst(tab);
+		} else {
+			newKey = tab;
+		}
+
+		const newOutputKey = tab === 'normal' ? 'xs' : 'xs' + AtrcUcFirst(tab);
 		if (value[newKey]) {
 			if (!innerOutput[newOutputKey]) {
 				innerOutput[newOutputKey] = '';

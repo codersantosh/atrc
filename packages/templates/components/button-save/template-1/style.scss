@@ -1,0 +1,20 @@
+@import '../../../../prefix-vars';
+
+#{$appPrefix} {
+    &-btn {
+        &-save {
+            #{$varPrefix}-gap: 0 10px;
+
+            #{$appPrefix} {
+                &-spinner {
+                    #{$varPrefix}-m: 0;
+                    #{$varPrefix}-h: 12px;
+                    #{$varPrefix}-w: 12px;
+                    margin: var(#{$varPrefix}-m) !important;
+                    height: var(#{$varPrefix}-h) !important;
+                    width: var(#{$varPrefix}-w) !important;
+                }
+            }
+        }
+    }
+}

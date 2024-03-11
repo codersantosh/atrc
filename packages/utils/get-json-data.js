@@ -1,3 +1,4 @@
+/* Local */
 export default function AtrcGetJsonData(str) {
 	try {
 		const jsonDta = JSON.parse(str);

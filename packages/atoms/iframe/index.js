@@ -3,9 +3,11 @@ import { __ } from '@wordpress/i18n';
 
 /*Library*/
 import classnames from 'classnames';
+
+/* Prefix */
 import AtrcPrefix from '../../prefix-vars';
 
-/*Local Components*/
+/*Local*/
 const AtrcIframe = (props) => {
 	const {
 		variant = '',

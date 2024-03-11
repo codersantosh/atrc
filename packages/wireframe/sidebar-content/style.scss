@@ -1,0 +1,7 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+    &-cont-sdbar-wrp {
+        #{$varPrefix}-p: 20px;
+    }
+}

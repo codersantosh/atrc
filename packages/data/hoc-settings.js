@@ -27,13 +27,26 @@ const AtrcApplyWithSettings = (WrappedComponent) => {
 			const { atrcStore = '', atrcStoreKey = '' } = ownProps;
 			return {
 				saveSettings: (data) =>
-					dispatch(atrcStore).saveSettings(atrcStoreKey, data, true),
+					dispatch(atrcStore).saveSettings({
+						key: atrcStoreKey,
+						data,
+						setNotice: true,
+					}),
 				updateSetting: (key, val) =>
-					dispatch(atrcStore).updateSetting(atrcStoreKey, key, val),
+					dispatch(atrcStore).updateSetting({
+						key: atrcStoreKey,
+						dataKey: key,
+						dataVal: val,
+					}),
 				setNotice: (notice) =>
-					dispatch(ownProps.atrcStore).setNotice(atrcStoreKey, notice),
+					dispatch(ownProps.atrcStore).setNotice({ key: atrcStoreKey, notice }),
+				setNotices: (notices) =>
+					dispatch(ownProps.atrcStore).setNotice({
+						key: atrcStoreKey,
+						notices,
+					}),
 				removeNotice: (id) =>
-					dispatch(ownProps.atrcStore).removeNotice(atrcStoreKey, id),
+					dispatch(ownProps.atrcStore).removeNotice({ key: atrcStoreKey, id }),
 			};
 		})(WrappedComponent)
 	);
