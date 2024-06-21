@@ -1,0 +1,17 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+	&-form {
+		#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+		#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+		#{$varPrefix}-bdr-w: 1px;
+		#{$varPrefix}-bdr-sty: solid;
+		#{$varPrefix}-p: 25px 20px;
+		#{$varPrefix}-gap: 10px;
+		#{$varPrefix}-m: 20px 0;
+
+		&-pos {
+			#{$varPrefix}-h: 100vh;
+		}
+	}
+}

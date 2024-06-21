@@ -1,0 +1,30 @@
+.at-tree {
+  --at-gap: 20px 0;
+}
+.at-tree .at-gap {
+  --at-gap: 5px;
+}
+.at-tree .at-svg {
+  --at-cl: var(--at-primary);
+  --at-h: 16px;
+}
+.at-tree .at-tree {
+  --at-m: 10px 0 0 15px;
+  --at-gap: 10px 0;
+}
+.at-tree-folder .at-tree-folder {
+  --at-m: 0;
+}
+.at-tree-folder-file {
+  --at-m: 0;
+}
+.at-tree-folder-ttl-txt {
+  --at-m: 0;
+  --at-fnt-wt: bold;
+  --at-fnt-sz: 14px;
+}
+.at-tree-ttl {
+  --at-m: 0 0 10px 0;
+  --at-fnt-wt: bold;
+  --at-fnt-sz: 14px;
+}

@@ -1,0 +1,6 @@
+.at-badge {
+  --at-cl: var(--at-white);
+  --at-p: 4px 8px;
+  --at-gap: 3px;
+  color: var(--at-cl);
+}

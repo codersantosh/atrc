@@ -1,0 +1,12 @@
+.at-form {
+  --at-bg-cl: var(--at-white);
+  --at-bdr-cl: var(--at-border-color);
+  --at-bdr-w: 1px;
+  --at-bdr-sty: solid;
+  --at-p: 25px 20px;
+  --at-gap: 10px;
+  --at-m: 20px 0;
+}
+.at-form-pos {
+  --at-h: 100vh;
+}

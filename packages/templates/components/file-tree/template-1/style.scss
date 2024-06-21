@@ -1,0 +1,44 @@
+@import '../../../../prefix-vars';
+#{$appPrefix} {
+	&-tree {
+		#{$varPrefix}-gap: 20px 0;
+		#{$appPrefix} {
+			&-gap {
+				#{$varPrefix}-gap: 5px;
+			}
+			&-svg {
+				#{$varPrefix}-cl: var(#{$varPrefix}-primary);
+				#{$varPrefix}-h: 16px;
+			}
+			&-tree {
+				#{$varPrefix}-m: 10px 0 0 15px;
+				#{$varPrefix}-gap: 10px 0;
+			}
+		}
+
+		&-folder {
+			#{$appPrefix} {
+				&-tree {
+					&-folder {
+						#{$varPrefix}-m: 0;
+					}
+				}
+			}
+			&-file {
+				#{$varPrefix}-m: 0;
+			}
+			&-ttl {
+				&-txt {
+					#{$varPrefix}-m: 0;
+					#{$varPrefix}-fnt-wt: bold;
+					#{$varPrefix}-fnt-sz: 14px;
+				}
+			}
+		}
+		&-ttl {
+			#{$varPrefix}-m: 0 0 10px 0;
+			#{$varPrefix}-fnt-wt: bold;
+			#{$varPrefix}-fnt-sz: 14px;
+		}
+	}
+}

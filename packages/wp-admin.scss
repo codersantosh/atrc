@@ -1,0 +1,19 @@
+@import './prefix-vars';
+
+.wp-admin {
+	#wpcontent {
+		padding-right: 20px;
+	}
+	#{$appPrefix} {
+		&-hdr {
+			&-stky {
+				#{$varPrefix}-t: 32px; // The value is set under the assumption that it is being used within the WordPress admin environment.
+				#{$varPrefix}-l: 160px; // The value is set under the assumption that it is being used within the WordPress admin environment.
+
+				+ #at-main {
+					margin-top: var(#{$varPrefix}-m-t, 92px);
+				}
+			}
+		}
+	}
+}

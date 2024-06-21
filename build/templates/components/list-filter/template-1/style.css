@@ -1,0 +1,29 @@
+.at-ls-fl-tpl-1 .at-wrp-lib .components-base-control__field {
+  --at-m: 0;
+  margin: var(--at-m) !important;
+}
+.at-ls-fl-tpl-1 .at-bulk-wrp {
+  --at-trs: all 0.5s ease-in 1s;
+}
+.at-ls-fl-tpl-1 .at-bulk-wrp .at-svg {
+  --at-cl: var(--at-base-color);
+}
+.at-ls-fl-tpl-1 .at-ls-fl-row {
+  --at-min-h: 35px;
+  --at-p: 15px;
+}
+.at-ls-fl-tpl-1 .at-sort .at-btn {
+  --at-cl: var(--at-base-color);
+  --at-bg-cl: var(--at-white);
+  --at-bdr-cl: var(--at-border-color);
+  --at-bdr-w: 1px 1px 1px 0;
+  --at-bdr-sty: solid;
+  --at-p: 0 12px;
+}
+
+[data-at-theme=dark] {
+  color-scheme: dark;
+}
+[data-at-theme=dark] .at-ls-fl-tpl-1 .at-sort .at-btn {
+  --at-bg-cl: transparent;
+}

@@ -1,0 +1,10 @@
+@import '../../prefix-vars';
+
+#{$appPrefix} {
+	&-badge {
+		#{$varPrefix}-cl: var(#{$varPrefix}-white);
+		#{$varPrefix}-p: 4px 8px;
+		#{$varPrefix}-gap: 3px;
+		color: var(#{$varPrefix}-cl);
+	}
+}

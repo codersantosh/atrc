@@ -1,0 +1,10 @@
+.wp-admin #wpcontent {
+  padding-right: 20px;
+}
+.wp-admin .at-hdr-stky {
+  --at-t: 32px;
+  --at-l: 160px;
+}
+.wp-admin .at-hdr-stky + #at-main {
+  margin-top: var(--at-m-t, 92px);
+}

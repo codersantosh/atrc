@@ -1,0 +1,12 @@
+@import '../../../prefix-vars';
+
+#{$appPrefix} {
+	&-authentication {
+		&-tpl {
+			&-1 {
+				#{$varPrefix}-w: 320px;
+				#{$varPrefix}-m: auto;
+			}
+		}
+	}
+}

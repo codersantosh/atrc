@@ -1,0 +1,64 @@
+@import '../../../../prefix-vars';
+
+#{$appPrefix} {
+	&-ls-fl-tpl-1 {
+		#{$appPrefix} {
+			&-wrp-lib {
+				.components {
+					&-base {
+						&-control {
+							&__field {
+								#{$varPrefix}-m: 0;
+								margin: var(#{$varPrefix}-m) !important;
+							}
+						}
+					}
+				}
+			}
+			&-bulk-wrp {
+				#{$varPrefix}-trs: all 0.5s ease-in 1s;
+				#{$appPrefix} {
+					&-svg {
+						#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+					}
+				}
+			}
+			&-ls-fl {
+				&-row {
+					#{$varPrefix}-min-h: 35px;
+					#{$varPrefix}-p: 15px;
+				}
+			}
+			&-sort {
+				#{$appPrefix} {
+					&-btn {
+						#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+						#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+						#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+						#{$varPrefix}-bdr-w: 1px 1px 1px 0;
+						#{$varPrefix}-bdr-sty: solid;
+						#{$varPrefix}-p: 0 12px;
+					}
+				}
+			}
+		}
+	}
+}
+
+[data-at-theme='dark'] {
+	color-scheme: dark;
+
+	#{$appPrefix} {
+		&-ls-fl-tpl-1 {
+			#{$appPrefix} {
+				&-sort {
+					#{$appPrefix} {
+						&-btn {
+							#{$varPrefix}-bg-cl: transparent;
+						}
+					}
+				}
+			}
+		}
+	}
+}
