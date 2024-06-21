@@ -1,3 +1,5 @@
+import React from 'react';
+
 const AtrcBlocksCss = (props) => {
 	const { value, blockName } = props;
 

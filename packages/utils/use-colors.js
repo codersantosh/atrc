@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* WordPress */
 import { useState, useEffect } from '@wordpress/element';
 import { select } from '@wordpress/data';

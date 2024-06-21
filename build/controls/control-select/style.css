@@ -23,6 +23,7 @@
 
 :root {
   --at-multi-select-option-bg--hover: #dbdbdb;
+  --at-multi-select-menu: var(--at-white);
 }
 
 [data-at-theme=dark] {
@@ -31,6 +32,6 @@
   --at-multi-select-input: transparent;
   --at-multi-select-cont: transparent;
   --at-multi-select-indicator: transparent;
-  --at-multi-select-option: var(--at-quaternary);
+  --at-multi-select-menu: var(--at-quaternary);
   --at-multi-select-option-bg--hover: var(--at-tertiary);
 }

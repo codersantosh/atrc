@@ -1,0 +1,6 @@
+.at-txt-help {
+  --at-fnt-sz: 12px !important;
+  --at-m: 8px 0 0 0;
+  --at-fnt-sty: normal;
+  --at-cl: var(--at-body-color);
+}

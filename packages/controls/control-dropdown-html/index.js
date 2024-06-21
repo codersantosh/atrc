@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Attributes Structure
 Type string||int
 

@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* WordPress */
 import { __, sprintf } from '@wordpress/i18n';
 import { useEffect, useState } from '@wordpress/element';

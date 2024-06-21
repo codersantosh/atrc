@@ -10,6 +10,12 @@
 		}
 		&-cont {
 			font-family: var(#{$varPrefix}-fnt-fam);
+			&-hdr {
+				#{$varPrefix}-bdr-w: 0 0 1px 0;
+				#{$varPrefix}-bdr-sty: solid;
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+				#{$varPrefix}-m: 0 0 15px 0;
+			}
 
 			.components {
 				&-datetime {

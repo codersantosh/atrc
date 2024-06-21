@@ -1,19 +1,22 @@
 @import '../../prefix-vars';
 
 #{$appPrefix} {
-    &-sdbar {
-        #{$varPrefix}-p: 20px;
+	&-sdbar {
+		#{$varPrefix}-p: 20px;
 
-        #{$appPrefix} {
-            &-hdr {
-                #{$varPrefix}-p: 10px 0;
+		#{$appPrefix} {
+			&-hdr {
+				#{$varPrefix}-p: 10px 0;
 
-                #{$appPrefix} {
-                    &-hr {
-                        #{$varPrefix}-m: 0 0 20px 0;
-                    }
-                }
-            }
-        }
-    }
+				#{$appPrefix} {
+					&-hr {
+						#{$varPrefix}-m: 0 0 20px 0;
+					}
+				}
+			}
+			&-vid {
+				#{$varPrefix}-m: 0 0 15px 0;
+			}
+		}
+	}
 }

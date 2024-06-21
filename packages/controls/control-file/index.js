@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Attributes Structure
 Type Object
 {
@@ -323,7 +325,7 @@ const AtrcControlFile = (props) => {
 					{...selectSourceProps}
 				/>
 			) : null}
-			{allowSelf ? (
+			{allowSelf && !frm ? (
 				<SelfHostedFile
 					value={value}
 					onChange={onChange}
@@ -334,7 +336,7 @@ const AtrcControlFile = (props) => {
 					{...defaultProps}
 				/>
 			) : null}
-			{allowExternal ? (
+			{allowExternal && 'external' === frm ? (
 				<ExternalFile
 					value={value}
 					onChange={onChange}

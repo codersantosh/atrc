@@ -1,10 +1,6 @@
 .at-dropdown-cont {
   font-family: var(--at-fnt-fam);
 }
-.at-dropdown-cont .components-menu-item__item {
-  --at-min-w: 100%;
-  min-width: var(--at-min-w);
-}
 .at-dropdown-cont .components-button:hover {
   color: var(--at-primary);
 }

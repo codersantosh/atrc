@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Internal */
 import AtrcApis from '../api';
 import { AtrcDataLocalStorageSaveSettings } from '../local-storage';
@@ -86,7 +88,13 @@ export const actions = {
 	 * @return {Function} Async function representing the action.
 	 */
 	setQueryArgs:
-		({ key, queryArgs, update = true, hiddenQueryArgsData = null }) =>
+		({
+			key,
+			queryArgs,
+			update = true,
+			hiddenQueryArgsData = null,
+			refresh = false,
+		}) =>
 		// eslint-disable-next-line no-unused-vars
 		async ({ select, resolveSelect, dispatch }) => {
 			if (update) {
@@ -98,10 +106,16 @@ export const actions = {
 
 			const data = await resolveSelect.getCachedData(key, queryKey);
 			/* need refetch */
-			if (AtrcIsFlushed(data)) {
+			if (AtrcIsFlushed(data) || refresh) {
+				dispatch({
+					type: 'SET_IS_LOADING',
+					key,
+					isLoading: true,
+				});
+
 				const result = await AtrcApis.doApi({
 					key,
-					type: 'getData',
+					type: 'getItems',
 					data: queryArgs,
 					hiddenQueryArgsData,
 				});

@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { TextControl } from '@wordpress/components';
 
@@ -46,21 +48,21 @@ const AtrcControlText = (props) => {
 		allowReset = true,
 		value = '',
 		wrapProps = {},
-		resetProps = {},
+		resetWrapProps = {},
 		onChange,
+		readOnly,
 	} = props;
 
 	return (
-		<AtrcWrapLib className={classnames('at-flx-grw-1')}>
-			{allowReset ? (
+		<AtrcWrapLib
+			className={classnames('at-flx-grw-1')}
+			{...wrapProps}>
+			{allowReset && !readOnly ? (
 				<AtrcResetWrap
-					{...wrapProps}
-					{...resetProps}
+					{...resetWrapProps}
 					className={classnames(
 						AtrcPrefix('ctrl-txt-rst'),
-
-						resetProps.className || '',
-						wrapProps.className ? wrapProps.className : ''
+						resetWrapProps.className ? resetWrapProps.className : ''
 					)}>
 					<RenderComponent {...props} />
 					<AtrcResetButtonIcon

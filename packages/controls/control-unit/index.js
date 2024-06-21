@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { __experimentalUnitControl as UnitControl } from '@wordpress/components';
 
@@ -25,13 +27,26 @@ const RenderComponent = (props) => {
 };
 
 const AtrcControlUnit = (props) => {
-	const { allowReset = true, value = '', onChange } = props;
+	const {
+		allowReset = true,
+		value = '',
+		wrapProps = {},
+		resetWrapProps = {},
+		onChange,
+	} = props;
 
 	if (allowReset) {
 		return (
-			<AtrcWrapLib className={classnames('at-flx-grw-1')}>
+			<AtrcWrapLib
+				className={classnames('at-flx-grw-1')}
+				{...wrapProps}>
 				<AtrcResetWrap
-					className={classnames(AtrcPrefix('ctrl-unit-rst'), 'at-flx-grw-1')}>
+					{...resetWrapProps}
+					className={classnames(
+						AtrcPrefix('ctrl-unit-rst'),
+						'at-flx-grw-1',
+						resetWrapProps.className ? resetWrapProps.className : ''
+					)}>
 					<RenderComponent {...props} />
 					<AtrcResetButtonIcon
 						value={value}

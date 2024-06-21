@@ -2,6 +2,8 @@ var _excluded = ["className", "variant", "totalItems", "doPagination", "currentP
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import React from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -13,9 +15,9 @@ import AtrcPrefix from '../../prefix-vars';
 
 /*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
-import AtrcText from '../../atoms/text';
 import AtrcButton from '../../atoms/button';
 import AtrcSpan from '../../atoms/span';
+import AtrcControlText from '../../controls/control-text';
 
 /*Local*/
 var AtrcPagination = function AtrcPagination(props) {
@@ -35,13 +37,13 @@ var AtrcPagination = function AtrcPagination(props) {
     prevPage = currentPage > 1 ? currentPage - 1 : 1,
     nextPage = totalPages > currentPage ? currentPage + 1 : totalPages;
   return /*#__PURE__*/React.createElement(AtrcWrap, _extends({
-    className: classnames(AtrcPrefix('pagination'), 'at-flx', 'at-al-itm-ctr', className, variant ? AtrcPrefix('pagination') + '-' + variant : '')
+    className: classnames(AtrcPrefix('pagination'), 'at-flx', 'at-al-itm-ctr', 'at-gap', className, variant ? AtrcPrefix('pagination') + '-' + variant : '')
   }, defaultProps), totalItems && /*#__PURE__*/React.createElement(AtrcSpan, {
     isNum: true
   }, totalItems, "\xA0", __('items', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcWrap, {
-    className: classnames('at-flx', 'at-al-itm-ctr')
+    className: classnames('at-flx', 'at-al-itm-ctr', 'at-gap')
   }, /*#__PURE__*/React.createElement(AtrcButton, {
-    variant: "pagination",
+    variant: "light",
     onClick: function onClick() {
       return doPagination(1);
     },
@@ -51,7 +53,7 @@ var AtrcPagination = function AtrcPagination(props) {
   }, __('First page', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcSpan, {
     "aria-hidden": "true"
   }, "\xAB")), /*#__PURE__*/React.createElement(AtrcButton, {
-    variant: "pagination",
+    variant: "light",
     onClick: function onClick() {
       return doPagination(prevPage);
     },
@@ -62,7 +64,7 @@ var AtrcPagination = function AtrcPagination(props) {
     "aria-hidden": "true"
   }, "\u2039")), /*#__PURE__*/React.createElement(AtrcSpan, {
     className: classnames('at-flx', 'at-al-itm-ctr')
-  }, isFooter ? currentPage : /*#__PURE__*/React.createElement(AtrcText, {
+  }, isFooter ? currentPage : /*#__PURE__*/React.createElement(AtrcControlText, {
     variant: "small",
     value: currentPage,
     type: "number",
@@ -73,7 +75,7 @@ var AtrcPagination = function AtrcPagination(props) {
     },
     allowReset: false
   }), /*#__PURE__*/React.createElement(AtrcSpan, null, "\xA0", __('of', 'atrc-helpdesk'), "\xA0", /*#__PURE__*/React.createElement(AtrcSpan, null, totalPages))), /*#__PURE__*/React.createElement(AtrcButton, {
-    variant: "pagination",
+    variant: "light",
     onClick: function onClick() {
       return doPagination(nextPage);
     },
@@ -83,7 +85,7 @@ var AtrcPagination = function AtrcPagination(props) {
   }, __('Next page', 'atrc-prefix-atrc')), /*#__PURE__*/React.createElement(AtrcSpan, {
     "aria-hidden": "true"
   }, "\u203A")), /*#__PURE__*/React.createElement(AtrcButton, {
-    variant: "pagination",
+    variant: "light",
     onClick: function onClick() {
       return doPagination(totalPages);
     },

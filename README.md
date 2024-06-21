@@ -2,6 +2,24 @@
 
 > Atrc or atrc, short for Atomic React Components, is a versatile collection of React components designed to empower your React projects, with a special emphasis on seamless integration with WordPress. These components follow the atomic design principles, providing a structured and scalable approach to building user interfaces.
 
+## Projects using ATRC
+
+Check out these WordPress plugins that are currently using ATRC. Explore their codebases to see how ATRC is integrated and get started using ReactJS in your WordPress projects:
+
+- **Brand Master - Customize Login and User Frontend Dashboardr**
+
+  GitHub Repository: [Brand Master GitHub Repository](https://github.com/codersantosh/brand-master)
+
+  Brand Master is a WordPress plugin that allows you to customize the login page and user frontend dashboard. It utilizes ATRC for building its setting interface components. Explore the plugin's codebase to see how ATRC is implemented in a real-world WordPress project.
+
+- **Coming Soon and Maintenance Mode Page**
+
+  GitHub Repository: [Coming Soon and Maintenance Mode Page GitHub Repository](https://github.com/codersantosh/acme-coming-soon)
+
+  Coming Soon and Maintenance Mode Page is another WordPress plugin that helps you set up a coming soon or maintenance mode page for your website. This plugin also utilizes ATRC for its user interface components. Dive into the plugin's code to see how ATRC can be used effectively in WordPress plugin development.
+
+Feel free to explore these projects to gain insights into using ATRC in WordPress plugin development.
+
 ## Prerequisites
 
 Before incorporating Atrc into your React project, ensure that the following prerequisites are met:
@@ -41,6 +59,7 @@ Once you have these prerequisites in place, you are ready to seamlessly integrat
 ## Table of contents
 
 - [Atrc (atrc) - Atomic React Components](#atrc-atrc---atomic-react-components)
+  - [Projects using ATRC](#projects-using-atrc)
   - [Prerequisites](#prerequisites)
   - [Table of contents](#table-of-contents)
   - [Getting Started](#getting-started)

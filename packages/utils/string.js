@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function AtrcToCamelCase(property) {
 	const parts = property.split('-');
 	let camelCase = parts[0];

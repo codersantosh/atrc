@@ -1,4 +1,5 @@
 /* APIS */
+/* Fault tree shaking from @wordpress/i18n */
 export { default as AtrcGetPost } from './api/get-post';
 export { default as AtrcGetPosts } from './api/get-posts';
 export { default as AtrcGetRestBaseTaxonomy } from './api/get-rest-base-taxonomy';
@@ -13,15 +14,20 @@ export { default as AtrcGetUser } from './api/get-user';
 export { default as AtrcGetUsers } from './api/get-users';
 
 /* Atoms */
+/* Fault tree shaking from @wordpress/i18n */
 export { AtrcAudioIsHtml5 as AtrcAudioIsHtml5 } from './atoms/audio';
 export { AtrcAudioTag as AtrcAudioTag } from './atoms/audio';
 export { AtrcHtml5Audio as AtrcHtml5Audio } from './atoms/audio';
 export { default as AtrcAudio } from './atoms/audio';
 
+export { default as AtrcBadge } from './atoms/badge';
 export { default as AtrcButton } from './atoms/button';
 export { default as AtrcCode } from './atoms/code';
 export { default as AtrcCounter } from './atoms/counter';
+
+/* Fault tree shaking from AtrcControlDividerDefaultSvg */
 export { default as AtrcDivider } from './atoms/divider';
+
 export { default as AtrcFieldset } from './atoms/fieldset';
 export { default as AtrcHr } from './atoms/hr';
 
@@ -38,6 +44,8 @@ export { default as AtrcImg } from './atoms/img';
 export { default as AtrcLabel } from './atoms/label';
 export { default as AtrcLink } from './atoms/link';
 export { default as AtrcLogo } from './atoms/logo';
+
+/* Fault tree shaking? from lodash */
 export { default as AtrcMapGoogle } from './atoms/map-google';
 
 export { AtrcProgressSvgGradientColor as AtrcProgressSvgGradientColor } from './atoms/progress';
@@ -63,7 +71,7 @@ export { default as AtrcVideo } from './atoms/video';
 export { default as AtrcWrap } from './atoms/wrap';
 export { default as AtrcWrapLib } from './atoms/wrap-lib';
 
-/* Controls */
+/* Controls TODO testing treeshaking*/
 export { default as AtrcControlAlignmentMatrix } from './controls/control-alignment-matrix';
 
 export { default as AtrcControlAnimationAnimateCss } from './controls/control-animation-animate-css';
@@ -336,6 +344,7 @@ export { default as AtrcDropdownHover } from './molecules/dropdown-hover';
 export { default as AtrcDropdownMenu } from './molecules/dropdown-menu';
 
 export { default as AtrcFigure } from './molecules/figure';
+export { default as AtrcForm } from './molecules/form';
 
 export { default as AtrcLi } from './molecules/list/li';
 export { default as AtrcList } from './molecules/list';
@@ -390,6 +399,7 @@ export { default as AtrcTfoot } from './molecules/table/tfoot';
 export { default as AtrcTh } from './molecules/table/th';
 export { default as AtrcThead } from './molecules/table/thead';
 export { default as AtrcTr } from './molecules/table/tr';
+export { AtrcTableTag as AtrcTableTag } from './molecules/table';
 export { default as AtrcTable } from './molecules/table';
 
 export { default as AtrcToolsPanel } from './molecules/tools-panel';
@@ -426,15 +436,17 @@ export { default as AtrcPostTitle } from './query/post-title';
 
 /* Templates */
 export { default as Atrc404Template1 } from './templates/404/template-1';
+export { default as AtrcAuthenticationTemplate1 } from './templates/authentication/template-1';
 
 export { default as AtrcButtonIconTemplate1 } from './templates/components/button-icon/template-1';
 
 export { default as AtrcButtonSaveTemplate1 } from './templates/components/button-save/template-1';
 
+export { default as AtrcFileTreeTemplate1 } from './templates/components/file-tree/template-1';
+
 export { default as AtrcImgAndTextTemplate1 } from './templates/components/img-and-word/template-1';
 
-export { default as AtrcListTableTemplate1 } from './templates/components/list-table/template-1';
-export { default as AtrcListTableTemplate2 } from './templates/components/list-table/template-2';
+export { default as AtrcListFilterTemplate1 } from './templates/components/list-filter/template-1';
 
 export { default as AtrcPreTemplate1 } from './templates/components/pre/template-1';
 
@@ -444,7 +456,6 @@ export { default as AtrcTitleTemplate2 } from './templates/components/title/temp
 export { default as AtrcFooterTemplate1 } from './templates/footers/template-1';
 
 export { default as AtrcHeaderTemplate1 } from './templates/headers/template-1';
-export { default as AtrcHeaderTemplate2 } from './templates/headers/template-2';
 
 export { default as AtrcItemTemplate1 } from './templates/item/template-1';
 
@@ -538,6 +549,7 @@ use following prefix Atrc
 */
 export {
 	HashRouter as AtrcHashRouter,
+	BrowserRouter as AtrcBrowserRouter,
 	Route as AtrcRoute,
 	Routes as AtrcRoutes,
 	useParams as AtrcUseParams,

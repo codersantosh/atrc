@@ -4,49 +4,6 @@
 	&-modal {
 		#{$varPrefix}-max-w: 1140px;
 		max-width: var(#{$varPrefix}-max-w);
-
-		&-confirm {
-			.components {
-				&-modal {
-					&__header {
-						#{$varPrefix}-pos: static;
-						#{$varPrefix}-p: 5px 15px;
-						#{$varPrefix}-h: auto;
-						#{$varPrefix}-bdr-w: 0 0 1px 0;
-						#{$varPrefix}-bdr-sty: solid;
-						#{$varPrefix}-bdr-cl: var(#{$varPrefix}-quaternary);
-						position: var(#{$varPrefix}-pos);
-						padding: var(#{$varPrefix}-p);
-						height: var(#{$varPrefix}-h);
-						border-color: var(#{$varPrefix}-bdr-cl);
-						border-width: var(#{$varPrefix}-bdr-w);
-						border-style: var(#{$varPrefix}-bdr-sty);
-
-						&-heading {
-							#{$varPrefix}-fnt-sz: 15px;
-							font-size: var(#{$varPrefix}-fnt-sz);
-						}
-					}
-
-					&__content {
-						#{$varPrefix}-p: 0;
-						#{$varPrefix}-m: 0;
-						padding: var(#{$varPrefix}-p);
-						margin-top: var(#{$varPrefix}-m);
-					}
-				}
-			}
-
-			&-body {
-				#{$varPrefix}-txt-al: center;
-				text-align: var(#{$varPrefix}-txt-al);
-			}
-
-			&-icon {
-				#{$varPrefix}-fnt-sz: 50px;
-				#{$varPrefix}-cl: var(#{$varPrefix}-danger);
-			}
-		}
 	}
 }
 

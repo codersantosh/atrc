@@ -7,3 +7,6 @@
 .at-sdbar .at-hdr .at-hr {
   --at-m: 0 0 20px 0;
 }
+.at-sdbar .at-vid {
+  --at-m: 0 0 15px 0;
+}

@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Local*/
 var BgBlendMode = function BgBlendMode(value, innerOutput, property) {
   if (value.bgBlendMode) {

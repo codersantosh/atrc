@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Internal */
 import AtrcApis from '../api';
 import { AtrcStore } from '../store';
@@ -20,7 +22,7 @@ export var controls = {
   GET_DATA: function GET_DATA(action) {
     return AtrcApis.doApi({
       key: action.key,
-      type: 'getData',
+      type: 'getItems',
       data: action.queryArgs,
       hiddenQueryArgsData: action.hiddenQueryArgsData || null
     });

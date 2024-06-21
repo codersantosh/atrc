@@ -1,3 +1,5 @@
+import React from 'react';
+
 // Reference for multi select
 //https://stackoverflow.com/questions/54218351/changing-height-of-react-select-component
 /*WordPress*/
@@ -23,6 +25,7 @@ import AtrcLabel from '../../atoms/label';
 
 /* Prefix */
 import AtrcPrefix from '../../prefix-vars';
+import AtrcText from './../../atoms/text/index';
 
 /*Local*/
 export function AtrcDynamicSelect(props) {
@@ -74,6 +77,7 @@ export function AtrcDynamicSelect(props) {
 const ReactSelect = (props) => {
 	const {
 		label = '',
+		help = '',
 		variant = '',
 		className = '',
 		isMulti = false,
@@ -136,7 +140,7 @@ const ReactSelect = (props) => {
 		// dropdown menu
 		menu: (provided, state) => ({
 			...provided,
-			background: 'var(--at-multi-select-option)',
+			background: 'var(--at-multi-select-menu)',
 			color: 'var(--at-base-color)',
 		}),
 		// dropdown menu option
@@ -235,6 +239,13 @@ const ReactSelect = (props) => {
 					{...defaultProps}
 				/>
 			)}
+			{help ? (
+				<AtrcText
+					variant='help'
+					className={classnames('at-m')}>
+					{help}
+				</AtrcText>
+			) : null}
 		</AtrcWrap>
 	);
 };
@@ -279,19 +290,22 @@ const AtrcControlSelect = (props) => {
 		value = '',
 		defaultValue = '',
 		wrapProps = {},
+		resetWrapProps = {},
 		onChange,
 		options,
 		children,
 	} = props;
 
 	return (
-		<AtrcWrapLib className={classnames('at-flx-grw-1')}>
+		<AtrcWrapLib
+			className={classnames('at-flx-grw-1')}
+			{...wrapProps}>
 			{allowReset && !isMulti ? (
 				<AtrcResetWrap
-					{...wrapProps}
+					{...resetWrapProps}
 					className={classnames(
 						AtrcPrefix('ctrl-select-rst'),
-						wrapProps.className ? wrapProps.className : ''
+						resetWrapProps.className ? resetWrapProps.className : ''
 					)}>
 					<RenderComponent {...props} />
 					<AtrcResetButtonIcon

@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { useState, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -78,13 +80,13 @@ const AtrcModalConfirm = (props) => {
 					<AtrcButtonGroup>
 						<AtrcButton
 							onClick={() => onCancel()}
-							className={classnames('at-p', 'at-flx-grw-1')}>
+							className={classnames('at-flx-grw-1')}>
 							{__('Cancel', 'atrc-prefix-atrc')}
 						</AtrcButton>
 						<AtrcButton
 							onClick={() => onConfirm()}
-							variant='delete'
-							className={classnames('at-p', 'at-flx-grw-1')}>
+							variant='danger'
+							className={classnames('at-flx-grw-1')}>
 							{confirm}
 						</AtrcButton>
 					</AtrcButtonGroup>

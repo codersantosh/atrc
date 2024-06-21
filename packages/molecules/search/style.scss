@@ -11,7 +11,7 @@
 				&__input {
 					#{$varPrefix}-h: 35px;
 					#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
-					#{$varPrefix}-bdr-cl: var(#{$varPrefix}-quaternary);
+					#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
 					#{$varPrefix}-bdr-w: 1px;
 					#{$varPrefix}-bdr-sty: solid;
 

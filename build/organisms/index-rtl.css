@@ -47,14 +47,14 @@
 }
 .at-hdr-stky {
   --at-pos: fixed;
-  --at-t: 32px;
+  --at-t: 0;
   --at-r: 0;
-  --at-l: 160px;
-  --at-z-idx: 99;
+  --at-l: 0;
   --at-bg-cl: var(--at-white);
   --at-box-sdw: initial;
   --at-m: initial;
   --at-p: 0 20px;
+  --at-z-idx: 99;
 }
 .at-hdr-stky + #at-main {
   margin-top: var(--at-m-t, 92px);
@@ -68,4 +68,7 @@
 }
 .at-sdbar .at-hdr .at-hr {
   --at-m: 0 0 20px 0;
+}
+.at-sdbar .at-vid {
+  --at-m: 0 0 15px 0;
 }

@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Internal*/
 import BgPos from './image/position';
 import BgRpt from './image/repeat';

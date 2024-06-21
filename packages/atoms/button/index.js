@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 
 /*Library*/
@@ -18,7 +20,7 @@ function getVariantClass(variant) {
 	}
 	return AtrcPrefix('btn') + '-' + variant;
 }
-
+/*hasIcon : use only when both text & icon*/
 const AtrcButton = (props) => {
 	const {
 		className = '',

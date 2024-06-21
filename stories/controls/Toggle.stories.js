@@ -39,6 +39,7 @@ const Template = (args) => {
 		<AtrcControlToggle
 			checked={value}
 			onChange={handleChange}
+			label={__('Add logout on menu', 'atrc-prefix-atrc')}
 		/>
 	);
 };
@@ -59,6 +60,7 @@ export const Toggle = () => {
 					<AtrcControlToggle
 						checked={value}
 						onChange={handleChange}
+						label={__('Add logout on menu', 'atrc-prefix-atrc')}
 					/>
 				</>
 			}

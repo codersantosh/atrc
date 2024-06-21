@@ -3,6 +3,8 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import React from 'react';
+
 /*Attributes Structure
 Type Object or string
 {
@@ -76,13 +78,17 @@ var AtrcControlBorderRadius = function AtrcControlBorderRadius(props) {
     allowReset = _props$allowReset === void 0 ? true : _props$allowReset,
     _props$value = props.value,
     value = _props$value === void 0 ? '' : _props$value,
+    _props$wrapProps = props.wrapProps,
+    wrapProps = _props$wrapProps === void 0 ? {} : _props$wrapProps,
+    _props$resetWrapProps = props.resetWrapProps,
+    resetWrapProps = _props$resetWrapProps === void 0 ? {} : _props$resetWrapProps,
     onChange = props.onChange;
   if (allowReset) {
-    return /*#__PURE__*/React.createElement(AtrcWrapLib, {
+    return /*#__PURE__*/React.createElement(AtrcWrapLib, _extends({
       className: classnames('at-flx-grw-1')
-    }, /*#__PURE__*/React.createElement(AtrcResetWrap, {
-      className: classnames(AtrcPrefix('bdr-rad-rst'))
-    }, /*#__PURE__*/React.createElement(RenderBorderRadiusControl, props), /*#__PURE__*/React.createElement(AtrcResetButtonIcon, {
+    }, wrapProps), /*#__PURE__*/React.createElement(AtrcResetWrap, _extends({}, resetWrapProps, {
+      className: classnames(AtrcPrefix('bdr-rad-rst'), resetWrapProps.className ? resetWrapProps.className : '')
+    }), /*#__PURE__*/React.createElement(RenderBorderRadiusControl, props), /*#__PURE__*/React.createElement(AtrcResetButtonIcon, {
       value: value,
       onClick: function onClick() {
         return onChange({});

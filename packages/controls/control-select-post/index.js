@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* WordPress*/
 import { useMemo, useState } from '@wordpress/element';
 
@@ -128,7 +130,10 @@ function AtrcControlSelectPost(props) {
 		return (posts ?? []).map((post) => {
 			return {
 				value: post.id,
-				label: post.title.rendered || __('Untitled', 'atrc-prefix-atrc'),
+				label:
+					post.title.rendered ||
+					post.title.raw ||
+					__('Untitled', 'atrc-prefix-atrc'),
 			};
 		});
 	}, [posts]);
@@ -178,16 +183,6 @@ function AtrcControlSelectPost(props) {
 		},
 		[isAsync, value]
 	);
-
-	if (!options || !options.length) {
-		return (
-			<AtrcNotice
-				autoDismiss={false}
-				isDismissible={false}>
-				{__('No posts found!', 'atrc-prefix-atrc')}
-			</AtrcNotice>
-		);
-	}
 
 	if (isAsync) {
 		if (hasFixNotice) {

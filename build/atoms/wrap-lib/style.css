@@ -14,7 +14,10 @@
   line-height: var(--at-lh-n) !important;
 }
 
-.at-wrp-lib .components-combobox-control__suggestions-container, .at-wrp-lib .components-input-control__input, .at-wrp-lib .components-select-control__input, .at-wrp-lib .components-text-control__input, .at-wrp-lib .components-input-control__backdrop {
+.at-wrp-lib .components-checkbox-control label, .at-wrp-lib .components-toggle-control label {
+  max-width: 100%;
+}
+.at-wrp-lib .components-combobox-control__suggestions-container, .at-wrp-lib .components-input-control__input, .at-wrp-lib .components-select-control__input, .at-wrp-lib .components-text-control__input, .at-wrp-lib .components-textarea-control__input, .at-wrp-lib .components-input-control__backdrop {
   --at-bdr-cl: var(--at-border-color);
   border-color: var(--at-bdr-cl) !important;
 }

@@ -1,3 +1,4 @@
+import React from 'react';
 var AtrcBlocksHoc = function AtrcBlocksHoc(props) {
   var value = props.value,
     blockName = props.blockName;

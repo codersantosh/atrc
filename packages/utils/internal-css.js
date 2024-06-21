@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Library */
 /*STYLIS : https://www.npmjs.com/package/stylis*/
 import { compile, serialize, stringify, middleware, prefixer } from 'stylis';

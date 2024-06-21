@@ -1,8 +1,13 @@
+import React from 'react';
+
 /*WordPress*/
 import { ToggleControl } from '@wordpress/components';
 
 /*Library*/
 import classnames from 'classnames';
+
+/*Atoms*/
+import AtrcWrapLib from '../../atoms/wrap-lib';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
@@ -11,6 +16,7 @@ import AtrcPrefix from '../../prefix-vars';
 const AtrcControlToggle = (props) => {
 	const {
 		variant = '',
+		wrapProps = {},
 		className = '',
 		label = '',
 		onChange = () => {},
@@ -19,17 +25,19 @@ const AtrcControlToggle = (props) => {
 	} = props;
 
 	return (
-		<ToggleControl
-			className={classnames(
-				AtrcPrefix('tog'),
-				className,
-				variant ? AtrcPrefix('tog') + '-' + variant : ''
-			)}
-			label={label}
-			checked={checked}
-			onChange={onChange}
-			{...defaultProps}
-		/>
+		<AtrcWrapLib {...wrapProps}>
+			<ToggleControl
+				className={classnames(
+					AtrcPrefix('tog'),
+					className,
+					variant ? AtrcPrefix('tog') + '-' + variant : ''
+				)}
+				label={label}
+				checked={checked}
+				onChange={onChange}
+				{...defaultProps}
+			/>
+		</AtrcWrapLib>
 	);
 };
 export default AtrcControlToggle;

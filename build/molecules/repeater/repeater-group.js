@@ -8,6 +8,8 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+import React from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 import { chevronDown, chevronUp } from '@wordpress/icons';
@@ -19,7 +21,6 @@ import { sortableElement } from 'react-sortable-hoc';
 
 /*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
-import AtrcLabel from '../../atoms/label';
 import AtrcButton from '../../atoms/button';
 import AtrcIcon from '../../atoms/icon';
 import AtrcHr from '../../atoms/hr';
@@ -59,14 +60,18 @@ var RepeaterGroup = function RepeaterGroup(props) {
     isOpen = _useState2[0],
     onToggle = _useState2[1];
   return /*#__PURE__*/React.createElement(AtrcWrap, {
-    className: classnames(AtrcPrefix('repeater-grp'), 'at-m'),
+    className: classnames(AtrcPrefix('rpt-grp'), 'at-m'),
     key: groupIndex
   }, /*#__PURE__*/React.createElement(AtrcHeader, {
-    className: classnames(AtrcPrefix('repeater-grp-header'), 'at-flx', 'at-al-itm-ctr', 'at-gap', 'at-p', 'at-bg-cl', 'at-bdr')
-  }, isSortable && useDragHandle ? /*#__PURE__*/React.createElement(AtrcSortableDragHandle, null) : null, /*#__PURE__*/React.createElement(AtrcLabel, {
-    className: classnames('at-flx-grw-1')
+    className: classnames(AtrcPrefix('rpt-grp-hdr'), 'at-flx', 'at-al-itm-ctr', 'at-bg-cl', 'at-bdr')
+  }, isSortable && useDragHandle ? /*#__PURE__*/React.createElement(AtrcSortableDragHandle, null) : null, /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "link",
+    className: classnames('at-flx', 'at-jfy-cont-st', 'at-flx-grw-1', 'at-m', AtrcPrefix('rpt-grp-hdr-btn')),
+    onClick: function onClick() {
+      return onToggle(!isOpen);
+    }
   }, groupTitle), /*#__PURE__*/React.createElement(AtrcWrap, {
-    className: classnames(AtrcPrefix('repeater-grp-actions'), 'at-flx', 'at-al-itm-ctr', 'at-gap')
+    className: classnames(AtrcPrefix('rpt-grp-actions'), 'at-flx', 'at-al-itm-ctr', 'at-gap', 'at-p')
   }, /*#__PURE__*/React.createElement(AtrcButton, {
     className: classnames('at-flx', 'at-al-itm-ctr', 'at-jfy-cont-ctr'),
     variant: "link",
@@ -78,12 +83,12 @@ var RepeaterGroup = function RepeaterGroup(props) {
     size: 18,
     icon: isOpen ? chevronUp : chevronDown
   })))), /*#__PURE__*/React.createElement(AtrcWrap, {
-    className: classnames(AtrcPrefix('repeater-grp-itms'), 'at-bdr at-bg-cl', isOpen ? '' : 'at-d-non'),
+    className: classnames(AtrcPrefix('rpt-grp-itms'), 'at-bdr at-bg-cl', isOpen ? '' : 'at-d-non'),
     key: groupIndex
   }, /*#__PURE__*/React.createElement(AtrcWrap, {
-    className: classnames(AtrcPrefix('repeater-grp-itms-fields'), 'at-p')
+    className: classnames(AtrcPrefix('rpt-grp-itms-fields'), 'at-p')
   }, children), /*#__PURE__*/React.createElement(AtrcHr, null), /*#__PURE__*/React.createElement(AtrcFooter, {
-    className: classnames(AtrcPrefix('repeater-grp-footer'), 'at-p')
+    className: classnames(AtrcPrefix('rpt-grp-ftr'), 'at-p')
   }, /*#__PURE__*/React.createElement(AtrcButtonGroup, null, /*#__PURE__*/React.createElement(AtrcButton, {
     variant: "link",
     onClick: function onClick() {

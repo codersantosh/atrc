@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Internal */
 import OneColumnLayout from './one-column';
 import TwoColumnsLayout from './two-columns';

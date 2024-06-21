@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Inbuilt */
 import { AtrcControlBoxFourShorthandCssOnly } from '../control-box-four/css';
 

@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Library*/
 import { PortalWithState } from 'react-portal';
 

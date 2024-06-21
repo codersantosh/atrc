@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Attributes Structure
 Type string
 **/
@@ -16,15 +18,13 @@ import classnames from 'classnames';
 import AtrcWrap from '../../atoms/wrap';
 import AtrcIcon from '../../atoms/icon';
 import AtrcText from '../../atoms/text';
-import AtrcLink from '../../atoms/link';
-import AtrcLabel from '../../atoms/label';
+import AtrcButton from '../../atoms/button';
 
 /* Molecules */
 import AtrcDropdown from '../../molecules/dropdown';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
-import AtrcPanelRow from '../../molecules/panel-row';
 
 /* Local */
 function UserDateToggle(_ref) {
@@ -32,10 +32,8 @@ function UserDateToggle(_ref) {
     onClick = _ref.onClick,
     date = _ref.date;
   var dateFormat = getSettings().formats.date;
-  return /*#__PURE__*/React.createElement(AtrcLink, {
-    type: "btn",
-    label: __('Date', 'atrc-prefix-atrc'),
-    showTooltip: true,
+  return /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "link",
     "aria-expanded": isOpen,
     "aria-label": __('Select date: Date', 'atrc-prefix-atrc'),
     onClick: onClick
@@ -62,20 +60,18 @@ function UserDateForm(_ref2) {
   return /*#__PURE__*/React.createElement(AtrcWrap, {
     className: classnames(AtrcPrefix('date-time-picker-cont'))
   }, /*#__PURE__*/React.createElement(AtrcWrap, {
-    className: classnames('at-flx', 'at-al-itm-ctr', 'at-jfy-cont-btw', AtrcPrefix('bdr'), AtrcPrefix('bdr-b'))
+    className: classnames('at-flx', 'at-al-itm-ctr', 'at-jfy-cont-btw', 'at-bdr', 'at-m', AtrcPrefix('date-time-picker-cont-hdr'))
   }, /*#__PURE__*/React.createElement(AtrcText, {
     tag: "h6",
-    className: classnames(AtrcPrefix('m-0'))
-  }, label), onClose && /*#__PURE__*/React.createElement(AtrcLink, {
-    type: "btn",
-    variant: "close",
+    className: classnames(AtrcPrefix('m-0'), 'at-m')
+  }, label), onClose && /*#__PURE__*/React.createElement(AtrcButton, {
+    variant: "link",
     label: __('Close', 'atrc-prefix-atrc'),
     onClick: onClose
   }, /*#__PURE__*/React.createElement(AtrcIcon, {
-    className: classnames(AtrcPrefix('m-0')),
     type: "bootstrap",
     icon: BsX,
-    size: "14"
+    size: "16"
   }))), /*#__PURE__*/React.createElement(DateTimePicker, {
     startOfWeek: getSettings().l10n.startOfWeek,
     __nextRemoveHelpButton: true,
@@ -86,30 +82,26 @@ function UserDateForm(_ref2) {
   }));
 }
 export function AtrcControlDateTimePicker(_ref3) {
-  var _ref3$label = _ref3.label,
-    label = _ref3$label === void 0 ? __('Date', 'atrc-prefix-atrc') : _ref3$label,
-    _ref3$contentLabel = _ref3.contentLabel,
+  var _ref3$contentLabel = _ref3.contentLabel,
     contentLabel = _ref3$contentLabel === void 0 ? __('Date', 'atrc-prefix-atrc') : _ref3$contentLabel,
     date = _ref3.date,
     _onChange = _ref3.onChange;
   var rowref = useRef();
-  return /*#__PURE__*/React.createElement(AtrcWrap, {
-    className: classnames(AtrcPrefix('date-time-picker'))
-  }, /*#__PURE__*/React.createElement(AtrcDropdown, {
+  return /*#__PURE__*/React.createElement(AtrcDropdown, {
     width: "280px",
     popoverProps: {
       rowref: rowref,
-      placement: 'bottom left'
+      placement: 'bottom-start'
     },
     focusOnMount: true,
     renderToggle: function renderToggle(_ref4) {
       var isOpen = _ref4.isOpen,
         onToggle = _ref4.onToggle;
-      return /*#__PURE__*/React.createElement(React.Fragment, null, label ? /*#__PURE__*/React.createElement(AtrcPanelRow, null, /*#__PURE__*/React.createElement(AtrcLabel, null, label)) : null, /*#__PURE__*/React.createElement(AtrcPanelRow, null, /*#__PURE__*/React.createElement(UserDateToggle, {
+      return /*#__PURE__*/React.createElement(UserDateToggle, {
         isOpen: isOpen,
         onClick: onToggle,
         date: date
-      })));
+      });
     },
     renderContent: function renderContent(_ref5) {
       var onClose = _ref5.onClose;
@@ -122,7 +114,7 @@ export function AtrcControlDateTimePicker(_ref3) {
         }
       });
     }
-  }));
+  });
 }
 export default AtrcControlDateTimePicker;
 //# sourceMappingURL=index.js.map

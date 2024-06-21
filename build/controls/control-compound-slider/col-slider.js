@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Library */
 /**
  * react-compound-slider

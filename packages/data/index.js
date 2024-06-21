@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Redux Store Data */
 export { default as AtrcApis } from './api';
 export { default as AtrcRegisterStore } from './store';

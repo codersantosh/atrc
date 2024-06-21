@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { useRef, useEffect, useState } from '@wordpress/element';
 

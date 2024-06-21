@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { MenuItemsChoice } from '@wordpress/components';
 

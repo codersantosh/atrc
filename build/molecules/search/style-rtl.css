@@ -5,7 +5,7 @@
 .at-search .components-search-control__input {
   --at-h: 35px;
   --at-bg-cl: var(--at-white);
-  --at-bdr-cl: var(--at-quaternary);
+  --at-bdr-cl: var(--at-border-color);
   --at-bdr-w: 1px;
   --at-bdr-sty: solid;
   background: var(--at-bg-cl) !important;

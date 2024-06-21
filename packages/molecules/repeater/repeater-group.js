@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -12,7 +14,6 @@ import { sortableElement } from 'react-sortable-hoc';
 
 /*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
-import AtrcLabel from '../../atoms/label';
 import AtrcButton from '../../atoms/button';
 import AtrcIcon from '../../atoms/icon';
 import AtrcHr from '../../atoms/hr';
@@ -50,29 +51,37 @@ const RepeaterGroup = (props) => {
 	const [isOpen, onToggle] = useState(false);
 	return (
 		<AtrcWrap
-			className={classnames(AtrcPrefix('repeater-grp'), 'at-m')}
+			className={classnames(AtrcPrefix('rpt-grp'), 'at-m')}
 			key={groupIndex}>
 			<AtrcHeader
 				className={classnames(
-					AtrcPrefix('repeater-grp-header'),
+					AtrcPrefix('rpt-grp-hdr'),
 					'at-flx',
 					'at-al-itm-ctr',
-					'at-gap',
-					'at-p',
 					'at-bg-cl',
 					'at-bdr'
 				)}>
 				{isSortable && useDragHandle ? <AtrcSortableDragHandle /> : null}
-				<AtrcLabel className={classnames('at-flx-grw-1')}>
+				<AtrcButton
+					variant='link'
+					className={classnames(
+						'at-flx',
+						'at-jfy-cont-st',
+						'at-flx-grw-1',
+						'at-m',
+						AtrcPrefix('rpt-grp-hdr-btn')
+					)}
+					onClick={() => onToggle(!isOpen)}>
 					{groupTitle}
-				</AtrcLabel>
+				</AtrcButton>
 
 				<AtrcWrap
 					className={classnames(
-						AtrcPrefix('repeater-grp-actions'),
+						AtrcPrefix('rpt-grp-actions'),
 						'at-flx',
 						'at-al-itm-ctr',
-						'at-gap'
+						'at-gap',
+						'at-p'
 					)}>
 					<AtrcButton
 						className={classnames('at-flx', 'at-al-itm-ctr', 'at-jfy-cont-ctr')}
@@ -88,21 +97,17 @@ const RepeaterGroup = (props) => {
 			</AtrcHeader>
 			<AtrcWrap
 				className={classnames(
-					AtrcPrefix('repeater-grp-itms'),
+					AtrcPrefix('rpt-grp-itms'),
 					'at-bdr at-bg-cl',
 					isOpen ? '' : 'at-d-non'
 				)}
 				key={groupIndex}>
 				<AtrcWrap
-					className={classnames(
-						AtrcPrefix('repeater-grp-itms-fields'),
-						'at-p'
-					)}>
+					className={classnames(AtrcPrefix('rpt-grp-itms-fields'), 'at-p')}>
 					{children}
 				</AtrcWrap>
 				<AtrcHr />
-				<AtrcFooter
-					className={classnames(AtrcPrefix('repeater-grp-footer'), 'at-p')}>
+				<AtrcFooter className={classnames(AtrcPrefix('rpt-grp-ftr'), 'at-p')}>
 					<AtrcButtonGroup>
 						<AtrcButton
 							variant='link'

@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Local*/
 const AtrcControlColorCss = (value, property = '--at-cl') => {
 	const output = {};

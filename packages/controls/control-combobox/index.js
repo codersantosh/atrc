@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { ComboboxControl } from '@wordpress/components';
 
@@ -38,15 +40,24 @@ const RenderComponent = (props) => {
 };
 
 const AtrcControlCombobox = (props) => {
-	const { allowReset = true, value = '', onChange, wrapProps = {} } = props;
+	const {
+		allowReset = true,
+		value = '',
+		onChange,
+		wrapProps = {},
+		resetWrapProps = {},
+	} = props;
 
 	if (allowReset) {
 		return (
-			<AtrcWrapLib className={classnames('at-flx-grw-1')}>
+			<AtrcWrapLib
+				className={classnames('at-flx-grw-1')}
+				{...wrapProps}>
 				<AtrcResetWrap
+					{...resetWrapProps}
 					className={classnames(
 						AtrcPrefix('combobox-rst'),
-						wrapProps.className ? wrapProps.className : ''
+						resetWrapProps.className ? resetWrapProps.className : ''
 					)}>
 					<RenderComponent {...props} />
 					<AtrcResetButtonIcon

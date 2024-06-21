@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Value Structure
 Per tab: 30 values
 Type Object

@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { createContext } from '@wordpress/element';
 
@@ -7,8 +9,8 @@ import { sortableContainer } from 'react-sortable-hoc';
 
 /*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
-import AtrcLabel from '../../atoms/label';
 import AtrcHr from '../../atoms/hr';
+import AtrcText from '../../atoms/text';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
@@ -22,7 +24,7 @@ export const AtrcRepeaterContextData = createContext();
 const SortableContainer = sortableContainer((props) => {
 	const { children } = props;
 	return (
-		<AtrcWrap className={classnames(AtrcPrefix('repeater-grp-wrp'))}>
+		<AtrcWrap className={classnames(AtrcPrefix('rpt-grp-wrp'))}>
 			{children}
 		</AtrcWrap>
 	);
@@ -30,7 +32,7 @@ const SortableContainer = sortableContainer((props) => {
 
 const RepeaterGroupWrap = ({ children }) => {
 	return (
-		<AtrcWrap className={classnames(AtrcPrefix('repeater-grp-wrp'))}>
+		<AtrcWrap className={classnames(AtrcPrefix('rpt-grp-wrp'))}>
 			{children}
 		</AtrcWrap>
 	);
@@ -61,7 +63,7 @@ const AtrcRepeater = (props) => {
 	return (
 		<AtrcWrap
 			className={classnames(
-				AtrcPrefix('repeater'),
+				AtrcPrefix('rpt'),
 				className,
 				'at-flx-grw-1',
 				variant ? AtrcPrefix() + variant : ''
@@ -69,7 +71,11 @@ const AtrcRepeater = (props) => {
 			{...defaultProps}>
 			{label ? (
 				<>
-					<AtrcLabel {...labelProps}>{label}</AtrcLabel>
+					<AtrcText
+						variant='rpt-grp-ttl'
+						{...labelProps}>
+						{label}
+					</AtrcText>
 					<AtrcHr className={classnames('at-m')} />
 				</>
 			) : null}

@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* WordPress */
 import { addQueryArgs } from '@wordpress/url';
 

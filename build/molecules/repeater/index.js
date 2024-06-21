@@ -2,6 +2,8 @@ var _excluded = ["label", "className", "variant", "groups", "addGroup", "labelPr
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import React from 'react';
+
 /*WordPress*/
 import { createContext } from '@wordpress/element';
 
@@ -11,8 +13,8 @@ import { sortableContainer } from 'react-sortable-hoc';
 
 /*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
-import AtrcLabel from '../../atoms/label';
 import AtrcHr from '../../atoms/hr';
+import AtrcText from '../../atoms/text';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
@@ -25,13 +27,13 @@ export var AtrcRepeaterContextData = createContext();
 var SortableContainer = sortableContainer(function (props) {
   var children = props.children;
   return /*#__PURE__*/React.createElement(AtrcWrap, {
-    className: classnames(AtrcPrefix('repeater-grp-wrp'))
+    className: classnames(AtrcPrefix('rpt-grp-wrp'))
   }, children);
 });
 var RepeaterGroupWrap = function RepeaterGroupWrap(_ref) {
   var children = _ref.children;
   return /*#__PURE__*/React.createElement(AtrcWrap, {
-    className: classnames(AtrcPrefix('repeater-grp-wrp'))
+    className: classnames(AtrcPrefix('rpt-grp-wrp'))
   }, children);
 };
 var AtrcRepeater = function AtrcRepeater(props) {
@@ -63,8 +65,10 @@ var AtrcRepeater = function AtrcRepeater(props) {
     onChange(updatedValues);
   };
   return /*#__PURE__*/React.createElement(AtrcWrap, _extends({
-    className: classnames(AtrcPrefix('repeater'), className, 'at-flx-grw-1', variant ? AtrcPrefix() + variant : '')
-  }, defaultProps), label ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcLabel, labelProps, label), /*#__PURE__*/React.createElement(AtrcHr, {
+    className: classnames(AtrcPrefix('rpt'), className, 'at-flx-grw-1', variant ? AtrcPrefix() + variant : '')
+  }, defaultProps), label ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AtrcText, _extends({
+    variant: "rpt-grp-ttl"
+  }, labelProps), label), /*#__PURE__*/React.createElement(AtrcHr, {
     className: classnames('at-m')
   })) : null, /*#__PURE__*/React.createElement(AtrcRepeaterContextData.Provider, {
     value: {

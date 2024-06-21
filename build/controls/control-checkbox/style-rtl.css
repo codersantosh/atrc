@@ -1,12 +1,13 @@
 .at-checkbox .components-base-control__field {
   --at-m: 0;
   margin-bottom: var(--at-m);
-}
-.at-checkbox .components-checkbox-control__input {
-  --at-h: 15px;
-  --at-w: 15px;
-  height: var(--at-h) !important;
-  width: var(--at-w) !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .at-checkbox .components-checkbox-control__input-container {
   --at-m: 0;
@@ -19,7 +20,7 @@
 .at-checkbox .components-checkbox-control__label {
   vertical-align: top;
 }
-.at-checkbox svg.components-checkbox-control__checked, .at-checkbox svg.components-checkbox-control__indeterminate {
+.at-checkbox svg.components-checkbox-control__indeterminate {
   --at-h: 19px;
   --at-w: 19px;
   height: var(--at-h) !important;

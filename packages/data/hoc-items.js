@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { withSelect, withDispatch, dispatch } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
@@ -70,6 +72,9 @@ const withSelectData = withSelect((select, ownProps) => {
 	} = ownProps;
 
 	let queryArgs = AtrcGetQueryParams(atrcStoreKey);
+	if (!queryArgs.page) {
+		queryArgs.page = 1;
+	}
 
 	/* select called selectors */
 	const itemsData = select(atrcStore).getData(
@@ -78,6 +83,7 @@ const withSelectData = withSelect((select, ownProps) => {
 		hiddenQueryArgsData,
 		atrcStore
 	);
+
 	let isLoading = false;
 	let canSave = false;
 	let items = null;
@@ -147,6 +153,14 @@ const withDispatchActions = withDispatch((dispatch, ownProps) => {
 				queryArgs: args,
 				update,
 				hiddenQueryArgsData,
+			}),
+		refresh: (args = {}, update = true) =>
+			dispatch(atrcStore).setQueryArgs({
+				key: atrcStoreKey,
+				queryArgs: args,
+				update,
+				hiddenQueryArgsData,
+				refresh: true,
 			}),
 		toggleSelectAll: () =>
 			dispatch(atrcStore).toggleSelectAll({ key: atrcStoreKey }),

@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Utils */
 import { AtrcIsKeyWithValueNotEmpty } from '../../utils/object-values-with-allowed-keys-and-tabs';
 

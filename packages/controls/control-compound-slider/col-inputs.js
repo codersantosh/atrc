@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Local */
 const ColInputs = ({ value }) => {
 	return (

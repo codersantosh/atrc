@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Attributes Structure
 Type string
 **/
@@ -19,32 +21,28 @@ import classnames from 'classnames';
 import AtrcWrap from '../../atoms/wrap';
 import AtrcIcon from '../../atoms/icon';
 import AtrcText from '../../atoms/text';
-import AtrcLink from '../../atoms/link';
-import AtrcLabel from '../../atoms/label';
+import AtrcButton from '../../atoms/button';
 
 /* Molecules */
 import AtrcDropdown from '../../molecules/dropdown';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
-import AtrcPanelRow from '../../molecules/panel-row';
 
 /* Local */
 function UserDateToggle({ isOpen, onClick, date }) {
 	const dateFormat = getSettings().formats.date;
 
 	return (
-		<AtrcLink
-			type='btn'
-			label={__('Date', 'atrc-prefix-atrc')}
-			showTooltip
+		<AtrcButton
+			variant='link'
 			aria-expanded={isOpen}
 			aria-label={__('Select date: Date', 'atrc-prefix-atrc')}
 			onClick={onClick}>
 			{date
 				? dateI18n(dateFormat, date)
 				: __('Immediately', 'atrc-prefix-atrc')}
-		</AtrcLink>
+		</AtrcButton>
 	);
 }
 
@@ -78,28 +76,27 @@ function UserDateForm({
 					'at-flx',
 					'at-al-itm-ctr',
 					'at-jfy-cont-btw',
-					AtrcPrefix('bdr'),
-					AtrcPrefix('bdr-b')
+					'at-bdr',
+					'at-m',
+					AtrcPrefix('date-time-picker-cont-hdr')
 				)}>
 				<AtrcText
 					tag='h6'
-					className={classnames(AtrcPrefix('m-0'))}>
+					className={classnames(AtrcPrefix('m-0'), 'at-m')}>
 					{label}
 				</AtrcText>
 
 				{onClose && (
-					<AtrcLink
-						type='btn'
-						variant='close'
+					<AtrcButton
+						variant='link'
 						label={__('Close', 'atrc-prefix-atrc')}
 						onClick={onClose}>
 						<AtrcIcon
-							className={classnames(AtrcPrefix('m-0'))}
 							type='bootstrap'
 							icon={BsX}
-							size='14'
+							size='16'
 						/>
-					</AtrcLink>
+					</AtrcButton>
 				)}
 			</AtrcWrap>
 
@@ -116,46 +113,34 @@ function UserDateForm({
 }
 
 export function AtrcControlDateTimePicker({
-	label = __('Date', 'atrc-prefix-atrc'),
 	contentLabel = __('Date', 'atrc-prefix-atrc'),
 	date,
 	onChange,
 }) {
 	const rowref = useRef();
 	return (
-		<AtrcWrap className={classnames(AtrcPrefix('date-time-picker'))}>
-			<AtrcDropdown
-				width='280px'
-				popoverProps={{ rowref, placement: 'bottom left' }}
-				focusOnMount
-				renderToggle={({ isOpen, onToggle }) => (
-					<>
-						{label ? (
-							<AtrcPanelRow>
-								<AtrcLabel>{label}</AtrcLabel>
-							</AtrcPanelRow>
-						) : null}
-						<AtrcPanelRow>
-							<UserDateToggle
-								isOpen={isOpen}
-								onClick={onToggle}
-								date={date}
-							/>
-						</AtrcPanelRow>
-					</>
-				)}
-				renderContent={({ onClose }) => (
-					<UserDateForm
-						label={contentLabel}
-						onClose={onClose}
-						date={date}
-						onChange={(newVal) => {
-							onChange(newVal.replace('T', ' '));
-						}}
-					/>
-				)}
-			/>
-		</AtrcWrap>
+		<AtrcDropdown
+			width='280px'
+			popoverProps={{ rowref, placement: 'bottom-start' }}
+			focusOnMount
+			renderToggle={({ isOpen, onToggle }) => (
+				<UserDateToggle
+					isOpen={isOpen}
+					onClick={onToggle}
+					date={date}
+				/>
+			)}
+			renderContent={({ onClose }) => (
+				<UserDateForm
+					label={contentLabel}
+					onClose={onClose}
+					date={date}
+					onChange={(newVal) => {
+						onChange(newVal.replace('T', ' '));
+					}}
+				/>
+			)}
+		/>
 	);
 }
 

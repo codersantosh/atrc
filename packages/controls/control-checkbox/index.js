@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { CheckboxControl } from '@wordpress/components';
 

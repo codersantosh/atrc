@@ -1,3 +1,5 @@
+import React from 'react';
+
 const AtrcCssPrefix = 'at-';
 export const AtrcVarPrefix = '--at';
 

@@ -4,6 +4,8 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+import React from 'react';
+
 /*WordPress*/
 import { withSelect, withDispatch, dispatch } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
@@ -76,6 +78,9 @@ var withSelectData = withSelect(function (select, ownProps) {
     _ownProps$hiddenQuery = ownProps.hiddenQueryArgsData,
     hiddenQueryArgsData = _ownProps$hiddenQuery === void 0 ? {} : _ownProps$hiddenQuery;
   var queryArgs = AtrcGetQueryParams(atrcStoreKey);
+  if (!queryArgs.page) {
+    queryArgs.page = 1;
+  }
 
   /* select called selectors */
   var itemsData = select(atrcStore).getData(atrcStoreKey, queryArgs, hiddenQueryArgsData, atrcStore);
@@ -149,6 +154,17 @@ var withDispatchActions = withDispatch(function (dispatch, ownProps) {
         queryArgs: args,
         update: update,
         hiddenQueryArgsData: hiddenQueryArgsData
+      });
+    },
+    refresh: function refresh() {
+      var args = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var update = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      return dispatch(atrcStore).setQueryArgs({
+        key: atrcStoreKey,
+        queryArgs: args,
+        update: update,
+        hiddenQueryArgsData: hiddenQueryArgsData,
+        refresh: true
       });
     },
     toggleSelectAll: function toggleSelectAll() {

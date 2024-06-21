@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Local*/
 var AtrcControlColorGradientCss = function AtrcControlColorGradientCss(value) {
   var property = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '--at-cl';

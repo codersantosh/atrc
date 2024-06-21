@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { useSelect } from '@wordpress/data';
 import { store as coreStore } from '@wordpress/core-data';

@@ -1,1 +1,1 @@
-{"version":3,"names":[],"sources":["D:/wamp/www/atrc-package/atrc/packages/blocks/settings/utils.js"],"sourcesContent":[""],"mappings":""}
+{"version":3,"names":["React"],"sources":["D:/wamp/www/atrc-package/atrc/packages/blocks/settings/utils.js"],"sourcesContent":["import React from 'react';\n\n"],"mappings":"AAAA,OAAOA,KAAK,MAAM,OAAO","ignoreList":[]}

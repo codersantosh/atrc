@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { MenuGroup } from '@wordpress/components';
 

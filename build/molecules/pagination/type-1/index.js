@@ -8,6 +8,8 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+import React from 'react';
+
 /* WordPress */
 import { __, _x, sprintf } from '@wordpress/i18n';
 
@@ -95,7 +97,6 @@ var AtrcPaginationType1 = function AtrcPaginationType1(props) {
     _props$aProps = props.aProps,
     aProps = _props$aProps === void 0 ? {} : _props$aProps,
     defaultProps = _objectWithoutProperties(props, _excluded);
-  console.log(props);
   var hasNext = currentPage < totalPages,
     hasPrevious = currentPage > 1;
 
@@ -106,11 +107,11 @@ var AtrcPaginationType1 = function AtrcPaginationType1(props) {
     className: classnames(AtrcPrefix('pagination'), 'at-flx', 'at-al-itm-ctr', className, variant ? AtrcPrefix('pagination') + '-' + variant : ''),
     "aria-label": __('Pagination', 'atrc-prefix-atrc')
   }, defaultProps), /*#__PURE__*/React.createElement(AtrcList, _extends({
-    className: classnames(AtrcPrefix('pagination-list'), 'at-flx', 'at-al-itm-ctr', 'at-gap', ulProps && ulProps.className || '')
+    className: classnames(AtrcPrefix('pagination-ls'), 'at-flx', 'at-al-itm-ctr', 'at-gap', ulProps && ulProps.className || '')
   }, ulProps), hasPrevious && /*#__PURE__*/React.createElement(AtrcLi, _extends({
-    className: classnames(AtrcPrefix('pagination-item'), AtrcPrefix('pagination-item-prev'), liProps && liProps.className || '')
+    className: classnames(AtrcPrefix('pagination-itm'), AtrcPrefix('pagination-itm-prev'), liProps && liProps.className || '')
   }, liProps), /*#__PURE__*/React.createElement(AtrcLink, _extends({
-    className: classnames(AtrcPrefix('pagination-link'), aProps && aProps.className || ''),
+    className: classnames(AtrcPrefix('pagination-lnk'), aProps && aProps.className || ''),
     href: getPageUrl(currentPage - 1),
     onClick: function onClick() {
       return doPagination(event, currentPage - 1);
@@ -121,10 +122,10 @@ var AtrcPaginationType1 = function AtrcPaginationType1(props) {
     "aria-hidden": true
   }, _x('Previous', 'previous page link label', 'atrc-prefix-atrc')))), pages.map(function (page, index) {
     return /*#__PURE__*/React.createElement(AtrcLi, _extends({
-      className: classnames(AtrcPrefix('pagination-item'), AtrcPrefix('pagination-item-dash'), liProps && liProps.className || ''),
+      className: classnames(AtrcPrefix('pagination-itm'), AtrcPrefix('pagination-itm-dash'), liProps && liProps.className || ''),
       key: "".concat(index, "-").concat(page)
     }, liProps), page === '...' ? page : /*#__PURE__*/React.createElement(AtrcLink, _extends({
-      className: classnames(AtrcPrefix('pagination-link'), aProps && aProps.className || ''),
+      className: classnames(AtrcPrefix('pagination-lnk'), aProps && aProps.className || ''),
       href: getPageUrl(page),
       onClick: function onClick(event) {
         return doPagination(event, page);
@@ -138,9 +139,9 @@ var AtrcPaginationType1 = function AtrcPaginationType1(props) {
       "aria-hidden": true
     }, page)));
   }), hasNext && /*#__PURE__*/React.createElement(AtrcLi, _extends({
-    className: classnames(AtrcPrefix('pagination-item'), AtrcPrefix('pagination-item-next'), liProps && liProps.className || '')
+    className: classnames(AtrcPrefix('pagination-itm'), AtrcPrefix('pagination-itm-next'), liProps && liProps.className || '')
   }, liProps), /*#__PURE__*/React.createElement(AtrcLink, _extends({
-    className: classnames(AtrcPrefix('pagination-link'), aProps && aProps.className || ''),
+    className: classnames(AtrcPrefix('pagination-lnk'), aProps && aProps.className || ''),
     href: getPageUrl(currentPage + 1),
     onClick: function onClick() {
       return doPagination(event, currentPage + 1);

@@ -4,6 +4,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+import React from 'react';
 import { useEffect, useState } from '@wordpress/element';
 import { withSelect, withDispatch } from '@wordpress/data';
 import AtrcApis from './api';
@@ -21,7 +22,7 @@ function ExampleItems(_ref) {
     isLoading = _ref.isLoading,
     totalPages = _ref.totalPages,
     currentPage = _ref.currentPage,
-    getData = _ref.getData;
+    getItems = _ref.getItems;
   // eslint-disable-next-line no-unused-vars
   var _useState = useState(currentPage || 1),
     _useState2 = _slicedToArray(_useState, 2),
@@ -33,7 +34,7 @@ function ExampleItems(_ref) {
   }; */
   useEffect(function () {
     console.log('1');
-    getData();
+    getItems();
   }, []);
   if (isLoading) {
     return /*#__PURE__*/React.createElement("div", null, "Loading...");
@@ -49,17 +50,17 @@ function ExampleItems(_ref) {
 }
 var applyWithSelect = withSelect(function (select) {
   return {
-    items: select('atrc-prefix-atrc').getData('posts'),
+    items: select('atrc-prefix-atrc').getItems('posts'),
     isLoading: select('atrc-prefix-atrc').getItemsIsLoading('posts'),
     totalPages: select('atrc-prefix-atrc').getItemsTotalPages('posts')
   };
 });
 var applyWithDispatch = withDispatch(function (dispatch) {
   return {
-    getData: function getData() {
+    getItems: function getItems() {
       var args = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       console.log('2');
-      // dispatch('atrc-prefix-atrc').getData('posts', args);
+      // dispatch('atrc-prefix-atrc').getItems('posts', args);
     },
     setError: function setError(error) {
       dispatch('atrc-prefix-atrc').setError('posts', error);

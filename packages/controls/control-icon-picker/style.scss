@@ -1,5 +1,5 @@
 @import '../../prefix-vars.scss';
-
+@import '../../_mixins';
 #{$appPrefix} {
 	&-modal-icon-picker-cont {
 		#{$appPrefix} {
@@ -25,6 +25,10 @@
 	}
 
 	&-modal-icon-picker {
+		@include respond-above(md) {
+			#{$varPrefix}-min-w: 1140px;
+			min-width: var(#{$varPrefix}-min-w);
+		}
 		#{$appPrefix} {
 			&-sdbar {
 				#{$appPrefix} {

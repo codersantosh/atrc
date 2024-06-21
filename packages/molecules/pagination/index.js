@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -9,9 +11,9 @@ import AtrcPrefix from '../../prefix-vars';
 
 /*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
-import AtrcText from '../../atoms/text';
 import AtrcButton from '../../atoms/button';
 import AtrcSpan from '../../atoms/span';
+import AtrcControlText from '../../controls/control-text';
 
 /*Local*/
 const AtrcPagination = (props) => {
@@ -37,6 +39,7 @@ const AtrcPagination = (props) => {
 				AtrcPrefix('pagination'),
 				'at-flx',
 				'at-al-itm-ctr',
+				'at-gap',
 				className,
 				variant ? AtrcPrefix('pagination') + '-' + variant : ''
 			)}
@@ -48,9 +51,9 @@ const AtrcPagination = (props) => {
 					{__('items', 'atrc-prefix-atrc')}
 				</AtrcSpan>
 			)}
-			<AtrcWrap className={classnames('at-flx', 'at-al-itm-ctr')}>
+			<AtrcWrap className={classnames('at-flx', 'at-al-itm-ctr', 'at-gap')}>
 				<AtrcButton
-					variant='pagination'
+					variant='light'
 					onClick={() => doPagination(1)}
 					disabled={prevDisabled}>
 					<AtrcSpan className={classnames('screen-reader-text')}>
@@ -59,7 +62,7 @@ const AtrcPagination = (props) => {
 					<AtrcSpan aria-hidden='true'>«</AtrcSpan>
 				</AtrcButton>
 				<AtrcButton
-					variant='pagination'
+					variant='light'
 					onClick={() => doPagination(prevPage)}
 					disabled={prevDisabled}>
 					<AtrcSpan className={classnames('screen-reader-text')}>
@@ -72,7 +75,7 @@ const AtrcPagination = (props) => {
 					{isFooter ? (
 						currentPage
 					) : (
-						<AtrcText
+						<AtrcControlText
 							variant='small'
 							value={currentPage}
 							type='number'
@@ -93,7 +96,7 @@ const AtrcPagination = (props) => {
 				</AtrcSpan>
 
 				<AtrcButton
-					variant='pagination'
+					variant='light'
 					onClick={() => doPagination(nextPage)}
 					disabled={nextDisabled}>
 					<AtrcSpan className={classnames('screen-reader-text')}>
@@ -103,7 +106,7 @@ const AtrcPagination = (props) => {
 				</AtrcButton>
 
 				<AtrcButton
-					variant='pagination'
+					variant='light'
 					onClick={() => doPagination(totalPages)}
 					disabled={nextDisabled}>
 					<AtrcSpan className={classnames('screen-reader-text')}>

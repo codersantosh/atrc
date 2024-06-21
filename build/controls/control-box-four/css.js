@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Local */
 export function AtrcControlBoxFourShorthandCssOnly(_ref) {
   var value = _ref.value,

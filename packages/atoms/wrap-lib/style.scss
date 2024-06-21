@@ -19,6 +19,12 @@
 #{$appPrefix} {
 	&-wrp-lib {
 		.components {
+			&-checkbox-control,
+			&-toggle-control {
+				label {
+					max-width: 100%;
+				}
+			}
 			&-base-control__label,
 			&-input-control__label {
 				@extend %label;
@@ -33,6 +39,7 @@
 			&-input-control__input,
 			&-select-control__input,
 			&-text-control__input,
+			&-textarea-control__input,
 			&-input-control__backdrop {
 				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
 				border-color: var(#{$varPrefix}-bdr-cl) !important;

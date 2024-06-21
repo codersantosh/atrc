@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { RangeControl } from '@wordpress/components';
 
@@ -30,13 +32,27 @@ const RenderRange = (props) => {
 };
 
 const AtrcControlRange = (props) => {
-	const { allowReset = true, value, onChange, defaultValue = null } = props;
+	const {
+		allowReset = true,
+		value,
+		onChange,
+		defaultValue = null,
+		wrapProps = {},
+		resetWrapProps = {},
+	} = props;
 
 	if (allowReset) {
 		return (
-			<AtrcWrapLib className={classnames('at-flx-grw-1')}>
+			<AtrcWrapLib
+				className={classnames('at-flx-grw-1')}
+				{...wrapProps}>
 				<AtrcResetWrap
-					className={classnames(AtrcPrefix('range-rst'), 'at-flx-grw-1')}>
+					{...resetWrapProps}
+					className={classnames(
+						AtrcPrefix('range-rst'),
+						'at-flx-grw-1',
+						resetWrapProps.className ? resetWrapProps.className : ''
+					)}>
 					<RenderRange {...props} />
 					<AtrcResetButtonIcon
 						value={value}

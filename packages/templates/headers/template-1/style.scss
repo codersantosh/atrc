@@ -1,0 +1,16 @@
+@import '../../../prefix-vars';
+
+#{$appPrefix} {
+	&-main-header {
+		&-tpl {
+			&-1 {
+				&-ttl {
+					#{$varPrefix}-fnt-sz: 20px;
+					#{$varPrefix}-fnt-wt: 600;
+					#{$varPrefix}-m: 0;
+					#{$varPrefix}-cl: var(#{$varPrefix}-black);
+				}
+			}
+		}
+	}
+}

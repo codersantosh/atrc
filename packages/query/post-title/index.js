@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*React*/
 import { forwardRef } from 'react';
 
@@ -24,18 +26,9 @@ const AtrcPostTitle = (props, ref) => {
 
 	const [link] = useEntityProp('postType', postType, 'link', postId);
 
-	let titleElement = (
-		<AtrcWrap
-			{...defaultProps}
-			ref={ref}
-			tag={htmlTag}>
-			{__('Title', 'atrc-prefix-atrc')}
-		</AtrcWrap>
-	);
-
 	if (postType && postId) {
 		if (linkOptions && linkOptions.on && postType && postId) {
-			titleElement = (
+			return (
 				<AtrcWrap
 					{...defaultProps}
 					ref={ref}
@@ -53,7 +46,7 @@ const AtrcPostTitle = (props, ref) => {
 				</AtrcWrap>
 			);
 		} else {
-			titleElement = (
+			return (
 				<AtrcWrap
 					{...defaultProps}
 					ref={ref}
@@ -65,7 +58,14 @@ const AtrcPostTitle = (props, ref) => {
 			);
 		}
 	}
-	return titleElement;
+	return (
+		<AtrcWrap
+			{...defaultProps}
+			ref={ref}
+			tag={htmlTag}>
+			{__('Title', 'atrc-prefix-atrc')}
+		</AtrcWrap>
+	);
 };
 
 export default forwardRef(AtrcPostTitle);

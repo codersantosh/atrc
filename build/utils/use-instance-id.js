@@ -1,3 +1,4 @@
+import React from 'react';
 import { useMemo } from 'react';
 var instanceMap = new WeakMap();
 

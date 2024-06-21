@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* WordPress */
 import { __ } from '@wordpress/i18n';
 
@@ -11,7 +13,6 @@ import AtrcWrap from '../../../atoms/wrap';
 import AtrcNav from '../../../molecules/nav';
 
 /* Templates */
-import AtrcHeaderTemplate2 from '../../headers/template-2';
 
 /* Wireframe */
 import AtrcWireFrameContentSidebar from '../../../wireframe/content-sidebar';
@@ -53,10 +54,6 @@ const AtrcSingleTemplate1 = (props) => {
 
 				<AtrcWrap className='at-col-11'>
 					<AtrcWrap className={classnames(AtrcPrefix('bg-white'))}>
-						<AtrcHeaderTemplate2
-							title={'Single'}
-							buttons={[{ text: 'Save' }]}
-						/>
 						<AtrcWireFrameContentSidebar
 							renderSidebar={
 								<>

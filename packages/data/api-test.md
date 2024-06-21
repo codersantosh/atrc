@@ -6,7 +6,7 @@ register(key, path, callbacks = {}, filterResult = () => {}, addStore = true) : 
 
 "key" : a string that represents the data type of the API (e.g. post, page, custom type, custom table, etc)
 "path" : a string that represents the REST API endpoint or the full path of the API (e.g. '/wp/v2/posts/' or 'http://example.com/wp-json/wp/v2/posts/')
-"callbacks" : (optional) an object that can contain functions for different types of CRUD operations, such as getData, getItem, insertItem, updateItem, and deleteItem. These functions can be used to perform additional actions before or after the actual API call is made.
+"callbacks" : (optional) an object that can contain functions for different types of CRUD operations, such as getItems, getItem, insertItem, updateItem, and deleteItem. These functions can be used to perform additional actions before or after the actual API call is made.
 "filterResult" : (optional) a function that can be used to perform additional actions on the result before it is returned.
 "addStore" : (optional) a boolean value, which if set to true, will add store using @wordpress/data
 registerType({key, path, type, callback}) : This method is used to register a custom type of API for a particular data type (e.g. posts, pages, custom types). The method takes the following arguments:
@@ -18,7 +18,7 @@ registerType({key, path, type, callback}) : This method is used to register a cu
 async doApi({key, type, data, rowId = 0}) : This method is used to perform the actual API call based on the key and type provided. The method takes the following arguments:
 
 "key" : a string that represents the data type of the API (e.g. post, page, custom type, custom table, etc)
-"type" : a string that represents the type of API call to be made (e.g. getData, getItem, insertItem, updateItem, deleteItem, customType)
+"type" : a string that represents the type of API call to be made (e.g. getItems, getItem, insertItem, updateItem, deleteItem, customType)
 "data" : (optional) an object that can contain either query arguments or data to be inserted/updated
 "rowId" : (optional) the id of the item that is being operated on.
 The AtrcApis class allows you to register multiple types of APIs and perform CRUD operations on them.
@@ -32,7 +32,7 @@ Once you have imported the class, you can create a new instance of it and start 
 const atrcApis = new AtrcApis();
 
 atrcApis.register('post', '/wp/v2/posts/', {
-getData: (items) => {
+getItems: (items) => {
 // Perform some action on the items before returning them
 items.forEach((item) => {
 item.customField = 'Custom Value';
@@ -81,7 +81,7 @@ console.log(data);
 
 Once you have registered the APIs, you can use the doApi method to perform the actual API call. Here is an example of how to get all the items for the "post" data type:
 
-const items = await atrcApis.doApi({key:'post', type:'getData'});
+const items = await atrcApis.doApi({key:'post', type:'getItems'});
 console.log(items);
 
 And here is an example of how to insert a new item for the "post" data type:

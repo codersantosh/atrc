@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Local */
 export default function AtrcGetGoogleFontsUrl(googleFontsCollections) {
   var url = googleFontsCollections.filter(function (_ref) {

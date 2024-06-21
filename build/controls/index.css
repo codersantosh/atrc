@@ -73,12 +73,13 @@
 .at-checkbox .components-base-control__field {
   --at-m: 0;
   margin-bottom: var(--at-m);
-}
-.at-checkbox .components-checkbox-control__input {
-  --at-h: 15px;
-  --at-w: 15px;
-  height: var(--at-h) !important;
-  width: var(--at-w) !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .at-checkbox .components-checkbox-control__input-container {
   --at-m: 0;
@@ -91,7 +92,7 @@
 .at-checkbox .components-checkbox-control__label {
   vertical-align: top;
 }
-.at-checkbox svg.components-checkbox-control__checked, .at-checkbox svg.components-checkbox-control__indeterminate {
+.at-checkbox svg.components-checkbox-control__indeterminate {
   --at-h: 19px;
   --at-w: 19px;
   height: var(--at-h) !important;
@@ -240,6 +241,12 @@
 }
 .at-date-time-picker-cont {
   font-family: var(--at-fnt-fam);
+}
+.at-date-time-picker-cont-hdr {
+  --at-bdr-w: 0 0 1px 0;
+  --at-bdr-sty: solid;
+  --at-bdr-cl: var(--at-border-color);
+  --at-m: 0 0 15px 0;
 }
 .at-date-time-picker-cont .components-datetime .components-button.is-secondary {
   -webkit-box-shadow: inset 0 0 0 1px var(--at-primary);
@@ -446,6 +453,12 @@
   --at-h: 20px;
   --at-w: 20px;
 }
+@media (min-width: 992px) {
+  .at-modal-icon-picker {
+    --at-min-w: 1140px;
+    min-width: var(--at-min-w);
+  }
+}
 .at-modal-icon-picker .at-sdbar .at-btn-grp-vertical .at-btn:not(.at-btn-active) {
   --at-opa: 0.7;
   --at-trs: all 0.5s ease-in-out;
@@ -580,6 +593,7 @@
 
 :root {
   --at-multi-select-option-bg--hover: #dbdbdb;
+  --at-multi-select-menu: var(--at-white);
 }
 
 [data-at-theme=dark] {
@@ -588,7 +602,7 @@
   --at-multi-select-input: transparent;
   --at-multi-select-cont: transparent;
   --at-multi-select-indicator: transparent;
-  --at-multi-select-option: var(--at-quaternary);
+  --at-multi-select-menu: var(--at-quaternary);
   --at-multi-select-option-bg--hover: var(--at-tertiary);
 }
 

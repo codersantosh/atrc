@@ -1,3 +1,10 @@
+.at-badge {
+  --at-cl: var(--at-white);
+  --at-p: 4px 8px;
+  --at-gap: 3px;
+  color: var(--at-cl);
+}
+
 /* Global button */
 .at-btn {
   --at-cur: pointer;
@@ -73,23 +80,23 @@
   --at-cl: var(--at-white);
 }
 .at-btn-light {
-  --at-cl: var(--at-black);
-  --at-bg-cl: var(--at-quinary);
-  --at-bdr-cl: var(--at-quinary);
+  --at-cl: var(--at-base-color);
+  --at-bg-cl: var(--at-light);
+  --at-bdr-cl: var(--at-light);
 }
 .at-btn-light:hover {
-  --at-bg-cl: var(--at-quinary--hover);
-  --at-bdr-cl: var(--at-quinary--hover);
-  --at-cl: var(--at-black);
+  --at-bg-cl: var(--at-light--hover);
+  --at-bdr-cl: var(--at-light--hover);
+  --at-cl: var(--at-base-color);
 }
 .at-btn-dark {
   --at-cl: var(--at-white);
-  --at-bg-cl: var(--at-black);
-  --at-bdr-cl: var(--at-black);
+  --at-bg-cl: var(--at-dark);
+  --at-bdr-cl: var(--at-dark);
 }
 .at-btn-dark:hover {
-  --at-bg-cl: var(--at-black--hover);
-  --at-bdr-cl: var(--at-black--hover);
+  --at-bg-cl: var(--at-dark--hover);
+  --at-bdr-cl: var(--at-dark--hover);
   --at-cl: var(--at-white);
 }
 .at-btn-lnk {
@@ -172,26 +179,26 @@
 }
 .at-btn-outln-light {
   --at-bg-cl: transparent;
-  --at-cl: var(--at-black);
-  --at-bdr-cl: var(--at-tertiary);
+  --at-cl: var(--at-body-color);
+  --at-bdr-cl: var(--at-light);
   --at-bdr-w: 1px;
   --at-bdr-sty: solid;
 }
 .at-btn-outln-light:hover {
-  --at-bg-cl: var(--at-tertiary);
-  --at-bdr-cl: var(--at-tertiary);
-  --at-cl: var(--at-black);
+  --at-bg-cl: var(--at-light--hover);
+  --at-bdr-cl: var(--at-light);
+  --at-cl: var(--at-body-color);
 }
 .at-btn-outln-dark {
   --at-bg-cl: transparent;
-  --at-cl: var(--at-black);
-  --at-bdr-cl: var(--at-black);
+  --at-cl: var(--at-dark);
+  --at-bdr-cl: var(--at-dark);
   --at-bdr-w: 1px;
   --at-bdr-sty: solid;
 }
 .at-btn-outln-dark:hover {
-  --at-bg-cl: var(--at-black);
-  --at-bdr-cl: var(--at-black);
+  --at-bg-cl: var(--at-dark--hover);
+  --at-bdr-cl: var(--at-dark--hover);
   --at-cl: var(--at-white);
 }
 .at-btn-icon {
@@ -644,6 +651,13 @@
           transform: var(--at-tf);
 }
 
+.at-txt-help {
+  --at-fnt-sz: 12px !important;
+  --at-m: 8px 0 0 0;
+  --at-fnt-sty: normal;
+  --at-cl: var(--at-body-color);
+}
+
 .at-wrp-lib .components-border-box-control label, .at-wrp-lib .components-base-control__label, .at-wrp-lib .components-input-control__label {
   --at-fnt-wt: 600;
   --at-m: 0 0 5px 0;
@@ -660,7 +674,10 @@
   line-height: var(--at-lh-n) !important;
 }
 
-.at-wrp-lib .components-combobox-control__suggestions-container, .at-wrp-lib .components-input-control__input, .at-wrp-lib .components-select-control__input, .at-wrp-lib .components-text-control__input, .at-wrp-lib .components-input-control__backdrop {
+.at-wrp-lib .components-checkbox-control label, .at-wrp-lib .components-toggle-control label {
+  max-width: 100%;
+}
+.at-wrp-lib .components-combobox-control__suggestions-container, .at-wrp-lib .components-input-control__input, .at-wrp-lib .components-select-control__input, .at-wrp-lib .components-text-control__input, .at-wrp-lib .components-textarea-control__input, .at-wrp-lib .components-input-control__backdrop {
   --at-bdr-cl: var(--at-border-color);
   border-color: var(--at-bdr-cl) !important;
 }

@@ -6,14 +6,14 @@
 
 		&-stky {
 			#{$varPrefix}-pos: fixed;
-			#{$varPrefix}-t: 32px; // The value is set under the assumption that it is being used within the WordPress admin environment.
+			#{$varPrefix}-t: 0;
 			#{$varPrefix}-r: 0;
-			#{$varPrefix}-l: 160px; // The value is set under the assumption that it is being used within the WordPress admin environment.
-			#{$varPrefix}-z-idx: 99;
+			#{$varPrefix}-l: 0;
 			#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
 			#{$varPrefix}-box-sdw: initial;
 			#{$varPrefix}-m: initial;
 			#{$varPrefix}-p: 0 20px;
+			#{$varPrefix}-z-idx: 99;
 
 			+ #at-main {
 				margin-top: var(#{$varPrefix}-m-t, 92px);

@@ -1,7 +1,7 @@
 @import '../../prefix-vars.scss';
 
 #{$appPrefix} {
-	&-repeater {
+	&-rpt {
 		#{$appPrefix} {
 			&-lbl {
 				&:empty {
@@ -27,17 +27,25 @@
 					#{$varPrefix}-p: 15px;
 
 					#{$appPrefix} {
-						&-repeater-grp-itms {
+						&-rpt-grp-itms {
 						}
 					}
 				}
 			}
 
-			&-header {
+			&-hdr {
 				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
 				#{$varPrefix}-bdr-w: 1px;
 				#{$varPrefix}-bdr-sty: solid;
 				#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
+
+				&-btn {
+					#{$varPrefix}-m: 0;
+					#{$varPrefix}-fnt-wt: 700;
+					#{$varPrefix}-fnt-sz: 14px;
+					#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+					font-weight: var(#{$varPrefix}-fnt-wt);
+				}
 
 				#{$appPrefix} {
 					&-lbl {
@@ -56,7 +64,7 @@
 				}
 			}
 
-			&-footer {
+			&-ftr {
 				&#{$appPrefix} {
 					&-ftr {
 						#{$varPrefix}-p: 10px;
@@ -72,6 +80,7 @@
 			}
 
 			&-actions {
+				#{$varPrefix}-p: 10px;
 				#{$appPrefix} {
 					&-btn {
 						#{$varPrefix}-p: 0;
@@ -96,18 +105,30 @@
 			}
 		}
 	}
+	&-txt {
+		&-rpt {
+			&-grp {
+				&-ttl {
+					#{$varPrefix}-m: 0 0 15px 0;
+					#{$varPrefix}-fnt-wt: 600;
+					#{$varPrefix}-fnt-sz: 16px;
+					#{$varPrefix}-cl: var(#{$varPrefix}-base-cl);
+				}
+			}
+		}
+	}
 }
 
 [data-at-theme='dark'] {
 	#{$appPrefix} {
-		&-repeater {
+		&-rpt {
 			&-grp {
 				&-itms {
 					#{$varPrefix}-bdr-cl: #312e2e;
 					#{$varPrefix}-bg-cl: #1e1e1e;
 				}
 
-				&-header {
+				&-hdr {
 					#{$varPrefix}-bdr-cl: #312e2e;
 					#{$varPrefix}-bg-cl: #131313;
 				}

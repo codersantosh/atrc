@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Local*/
 export const AtrcBlocksSettingAllowHtmlTag = ({ blockName, value }) => {
 	if (['text'].includes(blockName)) {

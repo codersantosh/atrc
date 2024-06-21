@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Local*/
 const BgAtch = (value, innerOutput, property) => {
 	if (value.bgAtch) {

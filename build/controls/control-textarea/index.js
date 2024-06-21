@@ -2,6 +2,8 @@ var _excluded = ["className", "variant", "value", "allowReset", "wrapProps", "re
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import React from 'react';
+
 /*WordPress*/
 import { TextareaControl } from '@wordpress/components';
 
@@ -45,13 +47,13 @@ var AtrcControlTextarea = function AtrcControlTextarea(props) {
     value = _props$value2 === void 0 ? '' : _props$value2,
     _props$wrapProps2 = props.wrapProps,
     wrapProps = _props$wrapProps2 === void 0 ? {} : _props$wrapProps2,
-    _props$resetProps2 = props.resetProps,
-    resetProps = _props$resetProps2 === void 0 ? {} : _props$resetProps2,
+    _props$resetWrapProps = props.resetWrapProps,
+    resetWrapProps = _props$resetWrapProps === void 0 ? {} : _props$resetWrapProps,
     onChange = props.onChange;
-  return /*#__PURE__*/React.createElement(AtrcWrapLib, {
+  return /*#__PURE__*/React.createElement(AtrcWrapLib, _extends({
     className: classnames('at-flx-grw-1')
-  }, allowReset ? /*#__PURE__*/React.createElement(AtrcResetWrap, _extends({}, wrapProps, resetProps, {
-    className: classnames(AtrcPrefix('ctrl-txt-area-rst'), resetProps.className || '', wrapProps.className ? wrapProps.className : '')
+  }, wrapProps), allowReset ? /*#__PURE__*/React.createElement(AtrcResetWrap, _extends({}, resetWrapProps, {
+    className: classnames(AtrcPrefix('ctrl-txt-area-rst'), resetWrapProps.className ? resetWrapProps.className : '')
   }), /*#__PURE__*/React.createElement(RenderComponent, props), /*#__PURE__*/React.createElement(AtrcResetButtonIcon, {
     value: value,
     onClick: function onClick() {

@@ -16,14 +16,14 @@ function axiosFetch(options) {
 		if (!path.startsWith('wp-json')) {
 			path = `wp-json/${path}`;
 		}
+		if (AtrcApis.baseUrls[key]) {
+			path = AtrcApis.baseUrls[key] + `/${path}`;
+		} else if (AtrcApis.baseUrls['atrc-global-api-base-url']) {
+			path = AtrcApis.baseUrls['atrc-global-api-base-url'] + `/${path}`;
+		}
+		path = path.replace(/([^:]\/)\/+/g, '$1');
+		path = path.replace(/wp-json\/wp-json\//, 'wp-json/');
 	}
-	if (AtrcApis.baseUrls[key]) {
-		path = AtrcApis.baseUrls[key] + `/${path}`;
-	} else if (AtrcApis.baseUrls['atrc-global-api-base-url']) {
-		path = AtrcApis.baseUrls['atrc-global-api-base-url'] + `/${path}`;
-	}
-	path = path.replace(/([^:]\/)\/+/g, '$1');
-	path = path.replace(/wp-json\/wp-json\//, 'wp-json/');
 
 	let axiosConfig = {};
 
@@ -70,7 +70,7 @@ class ClassAtrcApis {
 		/**
 		 * @param {string}        key             key data type eg: post, page, custom type, custom table etc
 		 * @param {string}        path            rest api respective or full path eg:/wp/v2/posts/ or http://example.com/wp-json/wp/v2/posts/
-		 * @param {Object}        callbacks       a set of callback function for respective type or types eg: { getData: () => {}, getItem: () => {}, insertItem: () => {}, deleteItem: () => {}}
+		 * @param {Object}        callbacks       a set of callback function for respective type or types eg: { getItems: () => {}, getItem: () => {}, insertItem: () => {}, deleteItem: () => {}}
 		 * @param {function(...)} filterQueryArgs optional filter query args to filter/add additional queries.
 		 * @param {function(...)} filterResult    optional filter result to add additional data on result
 		 * @param {boolean}       addStore        add store using @wordpress/data
@@ -113,8 +113,8 @@ class ClassAtrcApis {
 			this.types.push({
 				key,
 				path,
-				type: 'getData',
-				callbacks: callbacks.getData || null,
+				type: 'getItems',
+				callbacks: callbacks.getItems || null,
 				filterResult,
 				filterData,
 				filterQueryArgs,
@@ -201,7 +201,7 @@ class ClassAtrcApis {
 			}
 
 			switch (api.type) {
-				case 'getData': {
+				case 'getItems': {
 					let { path } = api;
 					if (api.filterQueryArgs) {
 						data = api.filterQueryArgs({ data, api, hiddenQueryArgsData });
@@ -217,9 +217,9 @@ class ClassAtrcApis {
 					});
 
 					if (response.headers) {
-						if (response.headers.get('X-WP-Query-Total')) {
-							result.countQueryItems = parseInt(
-								response.headers.get('X-WP-Query-Total')
+						if (response.headers.get('X-WP-Count-All')) {
+							result.countAllItems = parseInt(
+								response.headers.get('X-WP-Count-All')
 							);
 						}
 						if (response.headers.get('X-WP-TotalPages')) {
@@ -228,7 +228,7 @@ class ClassAtrcApis {
 							);
 						}
 						if (response.headers.get('X-WP-Total')) {
-							result.countAllItems = parseInt(
+							result.countQueryItems = parseInt(
 								response.headers.get('X-WP-Total')
 							);
 						}

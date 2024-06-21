@@ -1,11 +1,11 @@
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 var _excluded = ["label", "value", "onChange", "showOptionNone", "optionNoneValue", "options", "className", "wrapProps", "isAsync"],
-  _excluded2 = ["label", "variant", "className", "isMulti", "isAsync", "multiValType", "valType", "value", "options", "loadOptions", "onChange", "wrapProps"],
+  _excluded2 = ["label", "help", "variant", "className", "isMulti", "isAsync", "multiValType", "valType", "value", "options", "loadOptions", "onChange", "wrapProps"],
   _excluded3 = ["variant", "className", "isMulti", "isAsync", "value", "options", "onChange", "wrapProps", "allowReset", "defaultValue"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -16,6 +16,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import React from 'react';
+
 // Reference for multi select
 //https://stackoverflow.com/questions/54218351/changing-height-of-react-select-component
 /*WordPress*/
@@ -38,6 +40,7 @@ import AtrcLabel from '../../atoms/label';
 
 /* Prefix */
 import AtrcPrefix from '../../prefix-vars';
+import AtrcText from './../../atoms/text/index';
 
 /*Local*/
 export function AtrcDynamicSelect(props) {
@@ -82,6 +85,8 @@ export function AtrcDynamicSelect(props) {
 var ReactSelect = function ReactSelect(props) {
   var _props$label = props.label,
     label = _props$label === void 0 ? '' : _props$label,
+    _props$help = props.help,
+    help = _props$help === void 0 ? '' : _props$help,
     _props$variant = props.variant,
     variant = _props$variant === void 0 ? '' : _props$variant,
     _props$className2 = props.className,
@@ -146,7 +151,7 @@ var ReactSelect = function ReactSelect(props) {
     // dropdown menu
     menu: function menu(provided, state) {
       return _objectSpread(_objectSpread({}, provided), {}, {
-        background: 'var(--at-multi-select-option)',
+        background: 'var(--at-multi-select-menu)',
         color: 'var(--at-base-color)'
       });
     },
@@ -219,7 +224,10 @@ var ReactSelect = function ReactSelect(props) {
     options: options,
     value: MapValue,
     onChange: doChange
-  }, defaultProps)));
+  }, defaultProps)), help ? /*#__PURE__*/React.createElement(AtrcText, {
+    variant: "help",
+    className: classnames('at-m')
+  }, help) : null);
 };
 var RenderComponent = function RenderComponent(props) {
   var _props$variant2 = props.variant,
@@ -260,13 +268,15 @@ var AtrcControlSelect = function AtrcControlSelect(props) {
     defaultValue = _props$defaultValue === void 0 ? '' : _props$defaultValue,
     _props$wrapProps4 = props.wrapProps,
     wrapProps = _props$wrapProps4 === void 0 ? {} : _props$wrapProps4,
+    _props$resetWrapProps = props.resetWrapProps,
+    resetWrapProps = _props$resetWrapProps === void 0 ? {} : _props$resetWrapProps,
     onChange = props.onChange,
     options = props.options,
     children = props.children;
-  return /*#__PURE__*/React.createElement(AtrcWrapLib, {
+  return /*#__PURE__*/React.createElement(AtrcWrapLib, _extends({
     className: classnames('at-flx-grw-1')
-  }, allowReset && !isMulti ? /*#__PURE__*/React.createElement(AtrcResetWrap, _extends({}, wrapProps, {
-    className: classnames(AtrcPrefix('ctrl-select-rst'), wrapProps.className ? wrapProps.className : '')
+  }, wrapProps), allowReset && !isMulti ? /*#__PURE__*/React.createElement(AtrcResetWrap, _extends({}, resetWrapProps, {
+    className: classnames(AtrcPrefix('ctrl-select-rst'), resetWrapProps.className ? resetWrapProps.className : '')
   }), /*#__PURE__*/React.createElement(RenderComponent, props), /*#__PURE__*/React.createElement(AtrcResetButtonIcon, {
     value: value,
     defaultValue: defaultValue,

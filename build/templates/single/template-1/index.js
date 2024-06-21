@@ -2,6 +2,8 @@ var _excluded = ["className", "variant", "label", "right"];
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import React from 'react';
+
 /* WordPress */
 import { __ } from '@wordpress/i18n';
 
@@ -15,7 +17,6 @@ import AtrcWrap from '../../../atoms/wrap';
 import AtrcNav from '../../../molecules/nav';
 
 /* Templates */
-import AtrcHeaderTemplate2 from '../../headers/template-2';
 
 /* Wireframe */
 import AtrcWireFrameContentSidebar from '../../../wireframe/content-sidebar';
@@ -53,12 +54,7 @@ var AtrcSingleTemplate1 = function AtrcSingleTemplate1(props) {
     className: "at-col-11"
   }, /*#__PURE__*/React.createElement(AtrcWrap, {
     className: classnames(AtrcPrefix('bg-white'))
-  }, /*#__PURE__*/React.createElement(AtrcHeaderTemplate2, {
-    title: 'Single',
-    buttons: [{
-      text: 'Save'
-    }]
-  }), /*#__PURE__*/React.createElement(AtrcWireFrameContentSidebar, {
+  }, /*#__PURE__*/React.createElement(AtrcWireFrameContentSidebar, {
     renderSidebar: /*#__PURE__*/React.createElement(React.Fragment, null, "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32."),
     renderContent: /*#__PURE__*/React.createElement(React.Fragment, null, "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32."),
     contentProps: {

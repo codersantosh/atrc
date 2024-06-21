@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Atoms */
 import AtrcButton from '../../../../atoms/button';
 import AtrcIcon from '../../../../atoms/icon';

@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Local */
 var ColInputs = function ColInputs(_ref) {
   var value = _ref.value;

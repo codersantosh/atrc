@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 import { arrowDown, arrowLeft, arrowRight, arrowUp } from '@wordpress/icons';

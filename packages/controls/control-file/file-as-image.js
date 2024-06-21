@@ -1,3 +1,5 @@
+import React from 'react';
+
 <AtrcControlFile
 	label={__('Logo', 'brand-master')}
 	value={mapImgValue}

@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Local*/
 const AtrcControlColorGradientCss = (value, property = '--at-cl') => {
 	const output = {};

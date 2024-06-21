@@ -14,6 +14,10 @@
     --at-m: 15px 0;
 }
 
+.at-404-cont {
+    --at-h: 100vh;
+}
+
 [data-at-theme='dark'] {
     .innerZoomElementWrapper {
         background: #121212;

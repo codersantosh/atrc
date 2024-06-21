@@ -1,3 +1,4 @@
+import React from 'react';
 var AtrcBlocksCss = function AtrcBlocksCss(props) {
   var value = props.value,
     blockName = props.blockName;

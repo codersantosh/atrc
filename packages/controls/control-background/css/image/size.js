@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Local*/
 const BgSz = (value, innerOutput, property) => {
 	if (value.bgSz) {

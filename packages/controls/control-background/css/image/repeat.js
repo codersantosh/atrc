@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Local*/
 const BgRpt = (value, innerOutput, property) => {
 	if (value.bgRpt) {

@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function AtrcUniqueID(length = 7) {
 	const a = new Uint32Array(3);
 	let result = '';

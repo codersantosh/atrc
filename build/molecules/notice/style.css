@@ -1,6 +1,6 @@
 .at-notice {
-  --at-p: 8px 12px !important;
-  --at-m: 20px 0 !important;
+  --at-p: 8px 12px;
+  --at-m: 20px 0;
   --at-box-sdw: 0 0 2px 1px rgba(0, 0, 0, 0.02);
   --at-bg-cl: var(--at-white);
   --at-border-color: var(--at-info);
@@ -8,6 +8,8 @@
   background: var(--at-bg-cl);
   color: var(--at-cl);
   border-color: var(--at-border-color);
+  margin: var(--at-m) !important;
+  padding: var(--at-p) !important;
 }
 .at-notice .components-button {
   --at-h: auto;

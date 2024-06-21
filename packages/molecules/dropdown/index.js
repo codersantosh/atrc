@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { Dropdown } from '@wordpress/components';
 

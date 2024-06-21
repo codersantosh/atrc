@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Values Structure
 Type Object
 {
@@ -171,13 +173,22 @@ const AtrcControlBorder = (props) => {
 		allowReset = true,
 		value = '',
 		defaultValue = undefined,
+		wrapProps = {},
+		resetWrapProps = {},
 		onChange,
 	} = props;
 
 	if (allowReset) {
 		return (
-			<AtrcWrapLib className={classnames('at-flx-grw-1')}>
-				<AtrcResetWrap className={classnames(AtrcPrefix('bdr-rst'))}>
+			<AtrcWrapLib
+				className={classnames('at-flx-grw-1')}
+				{...wrapProps}>
+				<AtrcResetWrap
+					{...resetWrapProps}
+					className={classnames(
+						AtrcPrefix('bdr-rst'),
+						resetWrapProps.className ? resetWrapProps.className : ''
+					)}>
 					<RenderBorderBoxControl {...props} />
 					<AtrcResetButtonIcon
 						defaultValue={defaultValue}

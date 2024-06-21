@@ -1,0 +1,12 @@
+@import '../../../prefix-vars.scss';
+
+#{$appPrefix} {
+	&-badge {
+		#{$appPrefix} {
+			&-svg {
+				#{$varPrefix}-h: 18px;
+				#{$varPrefix}-w: 18px;
+			}
+		}
+	}
+}

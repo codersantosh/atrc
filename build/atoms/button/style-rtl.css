@@ -73,23 +73,23 @@
   --at-cl: var(--at-white);
 }
 .at-btn-light {
-  --at-cl: var(--at-black);
-  --at-bg-cl: var(--at-quinary);
-  --at-bdr-cl: var(--at-quinary);
+  --at-cl: var(--at-base-color);
+  --at-bg-cl: var(--at-light);
+  --at-bdr-cl: var(--at-light);
 }
 .at-btn-light:hover {
-  --at-bg-cl: var(--at-quinary--hover);
-  --at-bdr-cl: var(--at-quinary--hover);
-  --at-cl: var(--at-black);
+  --at-bg-cl: var(--at-light--hover);
+  --at-bdr-cl: var(--at-light--hover);
+  --at-cl: var(--at-base-color);
 }
 .at-btn-dark {
   --at-cl: var(--at-white);
-  --at-bg-cl: var(--at-black);
-  --at-bdr-cl: var(--at-black);
+  --at-bg-cl: var(--at-dark);
+  --at-bdr-cl: var(--at-dark);
 }
 .at-btn-dark:hover {
-  --at-bg-cl: var(--at-black--hover);
-  --at-bdr-cl: var(--at-black--hover);
+  --at-bg-cl: var(--at-dark--hover);
+  --at-bdr-cl: var(--at-dark--hover);
   --at-cl: var(--at-white);
 }
 .at-btn-lnk {
@@ -172,26 +172,26 @@
 }
 .at-btn-outln-light {
   --at-bg-cl: transparent;
-  --at-cl: var(--at-black);
-  --at-bdr-cl: var(--at-tertiary);
+  --at-cl: var(--at-body-color);
+  --at-bdr-cl: var(--at-light);
   --at-bdr-w: 1px;
   --at-bdr-sty: solid;
 }
 .at-btn-outln-light:hover {
-  --at-bg-cl: var(--at-tertiary);
-  --at-bdr-cl: var(--at-tertiary);
-  --at-cl: var(--at-black);
+  --at-bg-cl: var(--at-light--hover);
+  --at-bdr-cl: var(--at-light);
+  --at-cl: var(--at-body-color);
 }
 .at-btn-outln-dark {
   --at-bg-cl: transparent;
-  --at-cl: var(--at-black);
-  --at-bdr-cl: var(--at-black);
+  --at-cl: var(--at-dark);
+  --at-bdr-cl: var(--at-dark);
   --at-bdr-w: 1px;
   --at-bdr-sty: solid;
 }
 .at-btn-outln-dark:hover {
-  --at-bg-cl: var(--at-black);
-  --at-bdr-cl: var(--at-black);
+  --at-bg-cl: var(--at-dark--hover);
+  --at-bdr-cl: var(--at-dark--hover);
   --at-cl: var(--at-white);
 }
 .at-btn-icon {

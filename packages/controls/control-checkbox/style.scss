@@ -6,15 +6,14 @@
 			&-base-control__field {
 				#{$varPrefix}-m: 0;
 				margin-bottom: var(#{$varPrefix}-m);
+
+				display: flex;
+				gap: 10px;
+				align-items: center;
 			}
 
 			&-checkbox-control {
 				&__input {
-					#{$varPrefix}-h: 15px;
-					#{$varPrefix}-w: 15px;
-					height: var(#{$varPrefix}-h) !important;
-					width: var(#{$varPrefix}-w) !important;
-
 					&-container {
 						#{$varPrefix}-m: 0;
 						margin-right: var(#{$varPrefix}-m);
@@ -34,7 +33,6 @@
 		}
 
 		svg {
-			&.components-checkbox-control__checked,
 			&.components-checkbox-control__indeterminate {
 				#{$varPrefix}-h: 19px;
 				#{$varPrefix}-w: 19px;

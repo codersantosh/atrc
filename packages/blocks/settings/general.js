@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* WordPress */
 import { useMemo } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';

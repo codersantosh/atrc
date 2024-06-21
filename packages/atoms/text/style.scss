@@ -1,1 +1,11 @@
 @import '../../prefix-vars';
+#{$appPrefix} {
+	&-txt {
+		&-help {
+			#{$varPrefix}-fnt-sz: 12px !important;
+			#{$varPrefix}-m: calc(8px) 0 0 0;
+			#{$varPrefix}-fnt-sty: normal;
+			#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+		}
+	}
+}

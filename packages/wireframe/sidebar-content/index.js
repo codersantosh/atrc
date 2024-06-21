@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Library*/
 import classnames from 'classnames';
 
@@ -98,7 +100,7 @@ const AtrcWireFrameSidebarContent = (props) => {
 			<WrapTag
 				className={classnames(
 					AtrcPrefix('cont-sdbar-wrp'),
-					AtrcPrefix('p'),
+
 					className,
 					variant ? AtrcPrefix('cont-sdbar-wrp') + '-' + variant : ''
 				)}

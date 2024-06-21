@@ -5,11 +5,6 @@
 		&-cont {
 			font-family: var(#{$varPrefix}-fnt-fam);
 			.components {
-				&-menu-item__item {
-					#{$varPrefix}-min-w: 100%;
-					min-width: var(#{$varPrefix}-min-w);
-				}
-
 				&-button {
 					&:hover {
 						color: var(#{$varPrefix}-primary);

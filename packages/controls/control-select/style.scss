@@ -35,6 +35,7 @@
 }
 :root {
 	#{$varPrefix}-multi-select-option-bg--hover: #dbdbdb;
+	#{$varPrefix}-multi-select-menu: var(#{$varPrefix}-white);
 }
 [data-at-theme='dark'] {
 	color-scheme: dark;
@@ -42,6 +43,6 @@
 	#{$varPrefix}-multi-select-input: transparent;
 	#{$varPrefix}-multi-select-cont: transparent;
 	#{$varPrefix}-multi-select-indicator: transparent;
-	#{$varPrefix}-multi-select-option: var(#{$varPrefix}-quaternary);
+	#{$varPrefix}-multi-select-menu: var(#{$varPrefix}-quaternary);
 	#{$varPrefix}-multi-select-option-bg--hover: var(#{$varPrefix}-tertiary);
 }

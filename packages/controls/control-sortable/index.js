@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Attributes Structure
 items Object
 Children can be anything.

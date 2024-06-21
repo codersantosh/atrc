@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Attributes Structure
 Type Object
 {
@@ -86,91 +88,89 @@ const AtrcControlLink = (props) => {
 	};
 
 	return (
-		<>
+		<AtrcWrap
+			className={classnames(
+				AtrcPrefix('ctrl-link'),
+				'at-flx-col',
+				'at-flx-grw-1',
+				'at-flx',
+				className,
+				variant ? AtrcPrefix('ctrl-link') + '-' + variant : ''
+			)}
+			{...defaultProps}>
 			{label && (
 				<AtrcLabel className={classnames(AtrcPrefix('m-0'))}>{label}</AtrcLabel>
 			)}
+			{allowOn && (
+				<AtrcPanelRow className={classnames('at-m')}>
+					<AtrcControlToggle
+						label={__('Allow link', 'atrc-prefix-atrc')}
+						checked={value && value.on}
+						onChange={() => {
+							let newVal = true;
+							if (value && value.on) {
+								newVal = false;
+							}
+							setAttr(newVal, 'on');
+						}}
+						{...onProps}
+					/>
+				</AtrcPanelRow>
+			)}
+			{isAllowField({ fieldType: 'url' }) && (
+				<AtrcPanelRow className={classnames('at-m')}>
+					<AtrcControlText
+						label={__('URL', 'atrc-prefix-atrc')}
+						wrapProps={{
+							className: 'at-flx-grw-1',
+						}}
+						value={value.url}
+						type='url'
+						onChange={(newVal) => setAttr(newVal, 'url')}
+						{...urlProps}
+					/>
+				</AtrcPanelRow>
+			)}
 
-			<AtrcWrap
-				className={classnames(
-					AtrcPrefix('ctrl-link'),
-
-					className,
-					variant ? AtrcPrefix('ctrl-link') + '-' + variant : ''
-				)}
-				{...defaultProps}>
-				{/* {label && <AtrcLabel>{label}</AtrcLabel>} */}
-				{allowOn && (
-					<AtrcPanelRow className={classnames('at-m')}>
-						<AtrcControlToggle
-							label={__('Allow link', 'atrc-prefix-atrc')}
-							checked={value && value.on}
-							onChange={() => {
-								let newVal = true;
-								if (value && value.on) {
-									newVal = false;
-								}
-								setAttr(newVal, 'on');
-							}}
-							{...onProps}
-						/>
-					</AtrcPanelRow>
-				)}
-				{isAllowField({ fieldType: 'url' }) && (
-					<AtrcPanelRow className={classnames('at-m')}>
-						<AtrcControlText
-							label={__('URL', 'atrc-prefix-atrc')}
-							wrapProps={{
-								className: 'at-flx-grw-1',
-							}}
-							value={value.url}
-							type='url'
-							onChange={(newVal) => setAttr(newVal, 'url')}
-							{...urlProps}
-						/>
-					</AtrcPanelRow>
-				)}
-
-				{isAllowField({ fieldType: 'ttl' }) && (
-					<AtrcPanelRow className={classnames('at-m')}>
-						<AtrcControlText
-							label={__('Title', 'atrc-prefix-atrc')}
-							value={value.ttl}
-							type='text'
-							onChange={(newVal) => setAttr(newVal, 'ttl')}
-							{...titleProps}
-						/>
-					</AtrcPanelRow>
-				)}
-				{isAllowField({ fieldType: 'tgt' }) && (
-					<AtrcPanelRow className={classnames('at-m')}>
-						<AtrcControlToggle
-							label={__('Open in new tab', 'atrc-prefix-atrc')}
-							checked={value && value.tgt === '_blank'}
-							onChange={() => {
-								let newVal = '';
-								if ((value && value.tgt === '') || !value || !value.tgt) {
-									newVal = '_blank';
-								}
-								setAttr(newVal, 'tgt');
-							}}
-							{...targetProps}
-						/>
-					</AtrcPanelRow>
-				)}
-				{isAllowField({ fieldType: 'rel' }) && (
-					<AtrcPanelRow className={classnames('at-m')}>
-						<AtrcControlText
-							label={__('Relation', 'atrc-prefix-atrc')}
-							value={value.rel}
-							type='text'
-							onChange={(newVal) => setAttr(newVal, 'rel')}
-							{...relProps}
-						/>
-					</AtrcPanelRow>
-				)}
-			</AtrcWrap>
-		</>
+			{isAllowField({ fieldType: 'ttl' }) && (
+				<AtrcPanelRow className={classnames('at-m')}>
+					<AtrcControlText
+						label={__('Title', 'atrc-prefix-atrc')}
+						value={value.ttl}
+						type='text'
+						onChange={(newVal) => setAttr(newVal, 'ttl')}
+						{...titleProps}
+					/>
+				</AtrcPanelRow>
+			)}
+			{isAllowField({ fieldType: 'tgt' }) && (
+				<AtrcPanelRow className={classnames('at-m')}>
+					<AtrcControlToggle
+						label={__('Open in new tab', 'atrc-prefix-atrc')}
+						checked={value && value.tgt === '_blank'}
+						onChange={() => {
+							let newVal = '';
+							if ((value && value.tgt === '') || !value || !value.tgt) {
+								newVal = '_blank';
+							}
+							setAttr(newVal, 'tgt');
+						}}
+						{...targetProps}
+					/>
+				</AtrcPanelRow>
+			)}
+			{isAllowField({ fieldType: 'rel' }) && (
+				<AtrcPanelRow className={classnames('at-m')}>
+					<AtrcControlText
+						label={__('Relation', 'atrc-prefix-atrc')}
+						value={value.rel}
+						type='text'
+						onChange={(newVal) => setAttr(newVal, 'rel')}
+						{...relProps}
+					/>
+				</AtrcPanelRow>
+			)}
+		</AtrcWrap>
 	);
 };
 export default AtrcControlLink;

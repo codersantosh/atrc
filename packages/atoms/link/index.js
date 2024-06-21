@@ -1,3 +1,7 @@
+import React from 'react';
+
+/* WordPress */
+
 /*Library*/
 import classnames from 'classnames';
 import { Link, NavLink } from 'react-router-dom';

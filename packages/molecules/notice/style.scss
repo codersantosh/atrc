@@ -2,8 +2,8 @@
 
 #{$appPrefix} {
 	&-notice {
-		#{$varPrefix}-p: 8px 12px !important;
-		#{$varPrefix}-m: 20px 0 !important;
+		#{$varPrefix}-p: 8px 12px;
+		#{$varPrefix}-m: 20px 0;
 		#{$varPrefix}-box-sdw: 0 0 2px 1px rgba(0, 0, 0, 0.02);
 		#{$varPrefix}-bg-cl: var(#{$varPrefix}-white);
 		#{$varPrefix}-border-color: var(#{$varPrefix}-info);
@@ -12,6 +12,8 @@
 		background: var(#{$varPrefix}-bg-cl);
 		color: var(#{$varPrefix}-cl);
 		border-color: var(#{$varPrefix}-border-color);
+		margin: var(#{$varPrefix}-m) !important;
+		padding: var(#{$varPrefix}-p) !important;
 
 		.components {
 			&-button {

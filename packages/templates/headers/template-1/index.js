@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 
@@ -9,6 +11,7 @@ import { BsBell, BsList, BsX } from 'react-icons/bs';
 import classnames from 'classnames';
 
 /*Atoms*/
+import AtrcText from '../../../atoms/text';
 import AtrcWrap from '../../../atoms/wrap';
 import AtrcButton from '../../../atoms/button';
 import AtrcIcon from '../../../atoms/icon';
@@ -32,6 +35,7 @@ const AtrcHeaderTemplate1 = (props) => {
 		className = '',
 		variant = '',
 		logo = null,
+		title = null,
 		primaryNav = null,
 		secondaryNav = null,
 		dropdownNav = null,
@@ -45,16 +49,32 @@ const AtrcHeaderTemplate1 = (props) => {
 		<AtrcHeader
 			className={classnames(
 				AtrcPrefix('main-header'),
+				AtrcPrefix('main-header-tpl-1'),
 				className,
-				variant ? AtrcPrefix('ls-header-admin') + '-' + variant : '',
+				variant ? AtrcPrefix('main-header-tpl-1') + '-' + variant : '',
 				'at-flx',
 				'at-flx-col',
 				'at-p'
 			)}
 			{...defaultProps}>
 			<AtrcWrap className='at-flx at-jfy-cont-btw'>
-				<AtrcWrap className='at-flx at-jfy-cont-st at-al-itm-ctr'>
+				<AtrcWrap
+					className={classnames(
+						'at-flx',
+						'at-jfy-cont-st',
+						'at-al-itm-ctr',
+						logo && title ? 'at-gap' : ''
+					)}>
 					{logo ? <AtrcLogo {...logo} /> : null}
+					{title ? (
+						<AtrcText
+							className={classnames(
+								'at-m',
+								AtrcPrefix('main-header-tpl-1-ttl')
+							)}
+							{...title}
+						/>
+					) : null}
 					{primaryNav ? (
 						<AtrcNav
 							className={classnames('at-p')}

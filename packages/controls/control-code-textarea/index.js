@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Value Structure
 Type string
 **/
@@ -47,12 +49,13 @@ const EditorNotice = () => {
 		</AtrcPanelRow>
 	);
 };
+
 const CodeEditor = (props) => {
 	const {
 		label = '',
 		className = '',
 		variant = '',
-		editorValue,
+		editorValue = '',
 		onChange,
 		editorSettings,
 		editorNotice,
@@ -63,6 +66,7 @@ const CodeEditor = (props) => {
 	const [codeMirror, setCodeMirror] = useState(null);
 
 	const instanceId = AtrcUseInstanceId(CodeEditor, 'control-code-textarea');
+	const textareaRef = useRef(null);
 
 	const debouncedOnChange = useRef(
 		debounce(
@@ -80,14 +84,14 @@ const CodeEditor = (props) => {
 		debouncedOnChange.current(val);
 	}, []);
 
-	/*Initialize CodeMirror*/
+	/* Initialize CodeMirror */
 	useEffect(() => {
-		if (typeof wp !== 'undefined' && wp.codeEditor) {
+		if (typeof wp !== 'undefined' && wp.codeEditor && textareaRef.current) {
 			const { defaultSettings, initialize } = wp.codeEditor;
 
 			if (initialize) {
 				const codeM = initialize(
-					instanceId,
+					textareaRef.current,
 					deepmerge(defaultSettings, editorSettings)
 				);
 				setCodeMirror(codeM);
@@ -113,6 +117,7 @@ const CodeEditor = (props) => {
 			{editorNotice ? <EditorNotice /> : null}
 			<AtrcPanelRow>
 				<textarea
+					ref={textareaRef}
 					id={instanceId}
 					value={value}
 					onChange={onChangeHandler}
@@ -122,7 +127,6 @@ const CodeEditor = (props) => {
 	);
 };
 
-/* Specialy for WordPress environment, since we are not using npm code mirror */
 const AtrcControlCodeTextarea = (props) => {
 	const {
 		value = '',
@@ -146,4 +150,5 @@ const AtrcControlCodeTextarea = (props) => {
 		/>
 	);
 };
+
 export default AtrcControlCodeTextarea;

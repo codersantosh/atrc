@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Local */
 export default function AtrcObjDeleteEmptyKey(value) {
   var modifiedObject = {};

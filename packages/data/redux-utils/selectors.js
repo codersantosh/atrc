@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* Local */
 
 // The selectors object includes a set of functions for accessing and deriving state values.

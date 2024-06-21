@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* WordPress */
 import { __, _x, sprintf } from '@wordpress/i18n';
 
@@ -77,7 +79,6 @@ const AtrcPaginationType1 = (props) => {
 		...defaultProps
 	} = props;
 
-	console.log(props);
 	const hasNext = currentPage < totalPages,
 		hasPrevious = currentPage > 1;
 
@@ -98,7 +99,7 @@ const AtrcPaginationType1 = (props) => {
 			{...defaultProps}>
 			<AtrcList
 				className={classnames(
-					AtrcPrefix('pagination-list'),
+					AtrcPrefix('pagination-ls'),
 					'at-flx',
 					'at-al-itm-ctr',
 					'at-gap',
@@ -108,14 +109,14 @@ const AtrcPaginationType1 = (props) => {
 				{hasPrevious && (
 					<AtrcLi
 						className={classnames(
-							AtrcPrefix('pagination-item'),
-							AtrcPrefix('pagination-item-prev'),
+							AtrcPrefix('pagination-itm'),
+							AtrcPrefix('pagination-itm-prev'),
 							(liProps && liProps.className) || ''
 						)}
 						{...liProps}>
 						<AtrcLink
 							className={classnames(
-								AtrcPrefix('pagination-link'),
+								AtrcPrefix('pagination-lnk'),
 								(aProps && aProps.className) || ''
 							)}
 							href={getPageUrl(currentPage - 1)}
@@ -134,8 +135,8 @@ const AtrcPaginationType1 = (props) => {
 				{pages.map((page, index) => (
 					<AtrcLi
 						className={classnames(
-							AtrcPrefix('pagination-item'),
-							AtrcPrefix('pagination-item-dash'),
+							AtrcPrefix('pagination-itm'),
+							AtrcPrefix('pagination-itm-dash'),
 							(liProps && liProps.className) || ''
 						)}
 						key={`${index}-${page}`}
@@ -145,7 +146,7 @@ const AtrcPaginationType1 = (props) => {
 						) : (
 							<AtrcLink
 								className={classnames(
-									AtrcPrefix('pagination-link'),
+									AtrcPrefix('pagination-lnk'),
 									(aProps && aProps.className) || ''
 								)}
 								href={getPageUrl(page)}
@@ -168,14 +169,14 @@ const AtrcPaginationType1 = (props) => {
 				{hasNext && (
 					<AtrcLi
 						className={classnames(
-							AtrcPrefix('pagination-item'),
-							AtrcPrefix('pagination-item-next'),
+							AtrcPrefix('pagination-itm'),
+							AtrcPrefix('pagination-itm-next'),
 							(liProps && liProps.className) || ''
 						)}
 						{...liProps}>
 						<AtrcLink
 							className={classnames(
-								AtrcPrefix('pagination-link'),
+								AtrcPrefix('pagination-lnk'),
 								(aProps && aProps.className) || ''
 							)}
 							href={getPageUrl(currentPage + 1)}

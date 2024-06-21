@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* WordPress */
 import { __ } from '@wordpress/i18n';
 
@@ -15,8 +17,8 @@ import AtrcIcon from '../../atoms/icon';
 const AtrcRepeaterGroupAdd = (props) => {
 	const {
 		addGroup,
-		tooltipText = __('Add repeater fields', 'atrc-prefix-atrc'),
-		label = __('Add repeater fields', 'atrc-prefix-atrc'),
+		tooltipText = __('Add rpt fields', 'atrc-prefix-atrc'),
+		label = __('Add rpt fields', 'atrc-prefix-atrc'),
 	} = props;
 
 	return (

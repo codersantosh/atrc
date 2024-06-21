@@ -1,3 +1,5 @@
+import React from 'react';
+
 /* WordPress */
 import { __ } from '@wordpress/i18n';
 
@@ -20,6 +22,7 @@ const AtrcButtonSaveTemplate1 = (props) => {
 		text = {
 			saved: __('Saved', 'atrc-prefix-atrc'),
 			save: __('Save settings', 'atrc-prefix-atrc'),
+			saving: __('Saving', 'atrc-prefix-atrc'),
 		},
 		spinnerPos = 'before',
 		spinnerProps = {},
@@ -31,7 +34,9 @@ const AtrcButtonSaveTemplate1 = (props) => {
 			className={classnames(
 				className,
 				AtrcPrefix('btn-save'),
-				'at-flx at-al-itm-ctr'
+				'at-flx',
+				'at-al-itm-ctr',
+				'at-gap'
 			)}
 			disabled={isLoading || !canSave}
 			{...defaultProps}>
@@ -41,7 +46,7 @@ const AtrcButtonSaveTemplate1 = (props) => {
 					{...spinnerProps}
 				/>
 			) : null}
-			{!isLoading ? (canSave ? text.save : text.saved) : null}
+			{!isLoading ? (canSave ? text.save : text.saved) : text.saving || null}
 
 			{'after' === spinnerPos && isLoading ? (
 				<AtrcSpinner

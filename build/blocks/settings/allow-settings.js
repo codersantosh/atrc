@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Local*/
 export var AtrcBlocksSettingAllowHtmlTag = function AtrcBlocksSettingAllowHtmlTag(_ref) {
   var blockName = _ref.blockName,

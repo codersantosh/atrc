@@ -1,19 +1,57 @@
 @import '../../prefix-vars.scss';
 
 #{$appPrefix} {
-    &-modal {
-        &-confirm {
-            &-body {
-                #{$varPrefix}-p: 30px 30px 15px 30px;
-            }
+	&-modal {
+		&-confirm {
+			.components {
+				&-modal {
+					&__header {
+						#{$varPrefix}-pos: static;
+						#{$varPrefix}-p: 5px 15px;
+						#{$varPrefix}-h: auto;
+						#{$varPrefix}-bdr-w: 0 0 1px 0;
+						#{$varPrefix}-bdr-sty: solid;
+						#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+						position: var(#{$varPrefix}-pos);
+						padding: var(#{$varPrefix}-p);
+						height: var(#{$varPrefix}-h);
+						border-color: var(#{$varPrefix}-bdr-cl);
+						border-width: var(#{$varPrefix}-bdr-w);
+						border-style: var(#{$varPrefix}-bdr-sty);
 
-            &-footer {
-                #{$varPrefix}-p: 0 15px 15px 15px;
+						&-heading {
+							#{$varPrefix}-fnt-sz: 15px;
+							font-size: var(#{$varPrefix}-fnt-sz);
+						}
+					}
 
-                .at-btn {
-                    #{$varPrefix}-p: 15px;
-                }
-            }
-        }
-    }
+					&__content {
+						#{$varPrefix}-p: 0;
+						#{$varPrefix}-m: 0;
+						padding: var(#{$varPrefix}-p);
+						margin-top: var(#{$varPrefix}-m);
+					}
+				}
+			}
+
+			&-body {
+				#{$varPrefix}-p: 30px 30px 15px 30px;
+				#{$varPrefix}-txt-al: center;
+				text-align: var(#{$varPrefix}-txt-al);
+			}
+
+			&-icon {
+				#{$varPrefix}-w: 50px;
+				#{$varPrefix}-m: 0 0 20px 0;
+				#{$varPrefix}-cl: var(#{$varPrefix}-danger);
+			}
+			&-footer {
+				#{$varPrefix}-p: 0 15px 15px 15px;
+
+				#{$appPrefix}-btn {
+					#{$varPrefix}-p: 15px;
+				}
+			}
+		}
+	}
 }

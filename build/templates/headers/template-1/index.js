@@ -1,7 +1,9 @@
-var _excluded = ["className", "variant", "logo", "primaryNav", "secondaryNav", "dropdownNav", "notification", "floatingSidebar", "button"];
+var _excluded = ["className", "variant", "logo", "title", "primaryNav", "secondaryNav", "dropdownNav", "notification", "floatingSidebar", "button"];
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import React from 'react';
+
 /*WordPress*/
 import { __ } from '@wordpress/i18n';
 import { moreHorizontalMobile } from '@wordpress/icons';
@@ -11,6 +13,7 @@ import { BsBell, BsList, BsX } from 'react-icons/bs';
 import classnames from 'classnames';
 
 /*Atoms*/
+import AtrcText from '../../../atoms/text';
 import AtrcWrap from '../../../atoms/wrap';
 import AtrcButton from '../../../atoms/button';
 import AtrcIcon from '../../../atoms/icon';
@@ -36,6 +39,8 @@ var AtrcHeaderTemplate1 = function AtrcHeaderTemplate1(props) {
     variant = _props$variant === void 0 ? '' : _props$variant,
     _props$logo = props.logo,
     logo = _props$logo === void 0 ? null : _props$logo,
+    _props$title = props.title,
+    title = _props$title === void 0 ? null : _props$title,
     _props$primaryNav = props.primaryNav,
     primaryNav = _props$primaryNav === void 0 ? null : _props$primaryNav,
     _props$secondaryNav = props.secondaryNav,
@@ -50,12 +55,14 @@ var AtrcHeaderTemplate1 = function AtrcHeaderTemplate1(props) {
     button = _props$button === void 0 ? null : _props$button,
     defaultProps = _objectWithoutProperties(props, _excluded);
   return /*#__PURE__*/React.createElement(AtrcHeader, _extends({
-    className: classnames(AtrcPrefix('main-header'), className, variant ? AtrcPrefix('ls-header-admin') + '-' + variant : '', 'at-flx', 'at-flx-col', 'at-p')
+    className: classnames(AtrcPrefix('main-header'), AtrcPrefix('main-header-tpl-1'), className, variant ? AtrcPrefix('main-header-tpl-1') + '-' + variant : '', 'at-flx', 'at-flx-col', 'at-p')
   }, defaultProps), /*#__PURE__*/React.createElement(AtrcWrap, {
     className: "at-flx at-jfy-cont-btw"
   }, /*#__PURE__*/React.createElement(AtrcWrap, {
-    className: "at-flx at-jfy-cont-st at-al-itm-ctr"
-  }, logo ? /*#__PURE__*/React.createElement(AtrcLogo, logo) : null, primaryNav ? /*#__PURE__*/React.createElement(AtrcNav, _extends({
+    className: classnames('at-flx', 'at-jfy-cont-st', 'at-al-itm-ctr', logo && title ? 'at-gap' : '')
+  }, logo ? /*#__PURE__*/React.createElement(AtrcLogo, logo) : null, title ? /*#__PURE__*/React.createElement(AtrcText, _extends({
+    className: classnames('at-m', AtrcPrefix('main-header-tpl-1-ttl'))
+  }, title)) : null, primaryNav ? /*#__PURE__*/React.createElement(AtrcNav, _extends({
     className: classnames('at-p'),
     variant: "primary"
   }, primaryNav)) : null), /*#__PURE__*/React.createElement(AtrcWrap, {

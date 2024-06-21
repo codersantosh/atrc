@@ -1,3 +1,4 @@
+import React from 'react';
 /*#__PURE__*/React.createElement(AtrcControlFile, {
   label: __('Logo', 'brand-master'),
   value: mapImgValue,

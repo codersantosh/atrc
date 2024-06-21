@@ -86,24 +86,24 @@
 			}
 		}
 		&-light {
-			#{$varPrefix}-cl: var(#{$varPrefix}-black);
-			#{$varPrefix}-bg-cl: var(#{$varPrefix}-quinary);
-			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-quinary);
+			#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-light);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-light);
 
 			&:hover {
-				#{$varPrefix}-bg-cl: var(#{$varPrefix}-quinary--hover);
-				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-quinary--hover);
-				#{$varPrefix}-cl: var(#{$varPrefix}-black);
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-light--hover);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-light--hover);
+				#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
 			}
 		}
 		&-dark {
 			#{$varPrefix}-cl: var(#{$varPrefix}-white);
-			#{$varPrefix}-bg-cl: var(#{$varPrefix}-black);
-			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-black);
+			#{$varPrefix}-bg-cl: var(#{$varPrefix}-dark);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-dark);
 
 			&:hover {
-				#{$varPrefix}-bg-cl: var(#{$varPrefix}-black--hover);
-				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-black--hover);
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-dark--hover);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-dark--hover);
 				#{$varPrefix}-cl: var(#{$varPrefix}-white);
 			}
 		}
@@ -195,27 +195,27 @@
 		}
 		&-outln-light {
 			#{$varPrefix}-bg-cl: transparent;
-			#{$varPrefix}-cl: var(#{$varPrefix}-black);
-			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-tertiary);
+			#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-light);
 			#{$varPrefix}-bdr-w: 1px;
 			#{$varPrefix}-bdr-sty: solid;
 
 			&:hover {
-				#{$varPrefix}-bg-cl: var(#{$varPrefix}-tertiary);
-				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-tertiary);
-				#{$varPrefix}-cl: var(#{$varPrefix}-black);
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-light--hover);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-light);
+				#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
 			}
 		}
 		&-outln-dark {
 			#{$varPrefix}-bg-cl: transparent;
-			#{$varPrefix}-cl: var(#{$varPrefix}-black);
-			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-black);
+			#{$varPrefix}-cl: var(#{$varPrefix}-dark);
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-dark);
 			#{$varPrefix}-bdr-w: 1px;
 			#{$varPrefix}-bdr-sty: solid;
 
 			&:hover {
-				#{$varPrefix}-bg-cl: var(#{$varPrefix}-black);
-				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-black);
+				#{$varPrefix}-bg-cl: var(#{$varPrefix}-dark--hover);
+				#{$varPrefix}-bdr-cl: var(#{$varPrefix}-dark--hover);
 				#{$varPrefix}-cl: var(#{$varPrefix}-white);
 			}
 		}

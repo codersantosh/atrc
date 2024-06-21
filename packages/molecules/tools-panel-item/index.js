@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*WordPress*/
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';

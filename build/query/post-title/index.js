@@ -8,6 +8,8 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import React from 'react';
+
 /*React*/
 import { forwardRef } from 'react';
 
@@ -37,13 +39,9 @@ var AtrcPostTitle = function AtrcPostTitle(props, ref) {
   var _useEntityProp3 = useEntityProp('postType', postType, 'link', postId),
     _useEntityProp4 = _slicedToArray(_useEntityProp3, 1),
     link = _useEntityProp4[0];
-  var titleElement = /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
-    ref: ref,
-    tag: htmlTag
-  }), __('Title', 'atrc-prefix-atrc'));
   if (postType && postId) {
     if (linkOptions && linkOptions.on && postType && postId) {
-      titleElement = /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+      return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
         ref: ref,
         tag: htmlTag
       }), /*#__PURE__*/React.createElement(AtrcLink, {
@@ -59,7 +57,7 @@ var AtrcPostTitle = function AtrcPostTitle(props, ref) {
         }
       }));
     } else {
-      titleElement = /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+      return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
         ref: ref,
         tag: htmlTag,
         dangerouslySetInnerHTML: {
@@ -68,7 +66,10 @@ var AtrcPostTitle = function AtrcPostTitle(props, ref) {
       }));
     }
   }
-  return titleElement;
+  return /*#__PURE__*/React.createElement(AtrcWrap, _extends({}, defaultProps, {
+    ref: ref,
+    tag: htmlTag
+  }), __('Title', 'atrc-prefix-atrc'));
 };
 export default /*#__PURE__*/forwardRef(AtrcPostTitle);
 //# sourceMappingURL=index.js.map

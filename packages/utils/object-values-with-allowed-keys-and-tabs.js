@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Library*/
 import { isArray, isEmpty, mapKeys, omit, pick } from 'lodash';
 

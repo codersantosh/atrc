@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Local*/
 var BgPos = function BgPos(value, innerOutput, property) {
   if (value.bgPosX || value.bgPosY) {

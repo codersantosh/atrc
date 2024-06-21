@@ -9,6 +9,8 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+import React from 'react';
+
 /*Value Structure
 Type string
 **/
@@ -53,7 +55,8 @@ var CodeEditor = function CodeEditor(props) {
     className = _props$className === void 0 ? '' : _props$className,
     _props$variant = props.variant,
     variant = _props$variant === void 0 ? '' : _props$variant,
-    editorValue = props.editorValue,
+    _props$editorValue = props.editorValue,
+    editorValue = _props$editorValue === void 0 ? '' : _props$editorValue,
     onChange = props.onChange,
     editorSettings = props.editorSettings,
     editorNotice = props.editorNotice,
@@ -67,6 +70,7 @@ var CodeEditor = function CodeEditor(props) {
     codeMirror = _useState4[0],
     setCodeMirror = _useState4[1];
   var instanceId = AtrcUseInstanceId(CodeEditor, 'control-code-textarea');
+  var textareaRef = useRef(null);
   var debouncedOnChange = useRef(debounce(function (val) {
     onChange(val);
   }, 500, {
@@ -78,14 +82,14 @@ var CodeEditor = function CodeEditor(props) {
     debouncedOnChange.current(val);
   }, []);
 
-  /*Initialize CodeMirror*/
+  /* Initialize CodeMirror */
   useEffect(function () {
-    if (typeof wp !== 'undefined' && wp.codeEditor) {
+    if (typeof wp !== 'undefined' && wp.codeEditor && textareaRef.current) {
       var _wp$codeEditor = wp.codeEditor,
         defaultSettings = _wp$codeEditor.defaultSettings,
         initialize = _wp$codeEditor.initialize;
       if (initialize) {
-        var codeM = initialize(instanceId, deepmerge(defaultSettings, editorSettings));
+        var codeM = initialize(textareaRef.current, deepmerge(defaultSettings, editorSettings));
         setCodeMirror(codeM);
         codeM.codemirror.on('change', onChangeHandler);
       }
@@ -99,13 +103,12 @@ var CodeEditor = function CodeEditor(props) {
   return /*#__PURE__*/React.createElement(AtrcWrap, _extends({
     className: classnames(AtrcPrefix('ctrl-code-txt-area'), className, variant ? AtrcPrefix('ctrl-code-txt-area') + '-' + variant : '')
   }, defaultProps), label ? /*#__PURE__*/React.createElement(AtrcLabel, null, label) : null, editorNotice ? /*#__PURE__*/React.createElement(EditorNotice, null) : null, /*#__PURE__*/React.createElement(AtrcPanelRow, null, /*#__PURE__*/React.createElement("textarea", {
+    ref: textareaRef,
     id: instanceId,
     value: value,
     onChange: onChangeHandler
   })));
 };
-
-/* Specialy for WordPress environment, since we are not using npm code mirror */
 var AtrcControlCodeTextarea = function AtrcControlCodeTextarea(props) {
   var _props$value = props.value,
     value = _props$value === void 0 ? '' : _props$value,

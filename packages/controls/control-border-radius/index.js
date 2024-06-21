@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Attributes Structure
 Type Object or string
 {
@@ -80,12 +82,25 @@ const RenderBorderRadiusControl = (props) => {
 };
 
 const AtrcControlBorderRadius = (props) => {
-	const { allowReset = true, value = '', onChange } = props;
+	const {
+		allowReset = true,
+		value = '',
+		wrapProps = {},
+		resetWrapProps = {},
+		onChange,
+	} = props;
 
 	if (allowReset) {
 		return (
-			<AtrcWrapLib className={classnames('at-flx-grw-1')}>
-				<AtrcResetWrap className={classnames(AtrcPrefix('bdr-rad-rst'))}>
+			<AtrcWrapLib
+				className={classnames('at-flx-grw-1')}
+				{...wrapProps}>
+				<AtrcResetWrap
+					{...resetWrapProps}
+					className={classnames(
+						AtrcPrefix('bdr-rad-rst'),
+						resetWrapProps.className ? resetWrapProps.className : ''
+					)}>
 					<RenderBorderRadiusControl {...props} />
 					<AtrcResetButtonIcon
 						value={value}

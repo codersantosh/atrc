@@ -1,4 +1,10 @@
+.at-menu-grp .components-menu-item__button {
+  --at-h: auto;
+  height: var(--at-h);
+}
 .at-menu-grp .components-menu-items-choice {
   --at-m: 15px;
+  --at-txt-al: left;
   margin-bottom: var(--at-m);
+  text-align: var(--at-txt-al);
 }

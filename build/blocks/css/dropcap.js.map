@@ -1,1 +1,1 @@
-{"version":3,"names":[],"sources":["D:/wamp/www/atrc-package/atrc/packages/blocks/css/dropcap.js"],"sourcesContent":[""],"mappings":""}
+{"version":3,"names":["React"],"sources":["D:/wamp/www/atrc-package/atrc/packages/blocks/css/dropcap.js"],"sourcesContent":["import React from 'react';\n\n"],"mappings":"AAAA,OAAOA,KAAK,MAAM,OAAO","ignoreList":[]}

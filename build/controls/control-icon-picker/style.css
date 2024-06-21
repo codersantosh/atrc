@@ -12,6 +12,12 @@
   --at-h: 20px;
   --at-w: 20px;
 }
+@media (min-width: 992px) {
+  .at-modal-icon-picker {
+    --at-min-w: 1140px;
+    min-width: var(--at-min-w);
+  }
+}
 .at-modal-icon-picker .at-sdbar .at-btn-grp-vertical .at-btn:not(.at-btn-active) {
   --at-opa: 0.7;
   --at-trs: all 0.5s ease-in-out;

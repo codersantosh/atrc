@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*Library*/
 import classnames from 'classnames';
 
@@ -23,10 +25,10 @@ const AtrcTr = (props) => {
 				AtrcPrefix('tr'),
 				className,
 				variant ? AtrcPrefix('tr') + '-' + variant : '',
-				isSticky ? AtrcPrefix('sticky') : '',
-				isLocked ? AtrcPrefix('locked') : '',
-				isEven ? AtrcPrefix('even') : '',
-				isOdd ? AtrcPrefix('odd') : ''
+				isSticky ? 'at-stky' : '',
+				isLocked ? AtrcPrefix('locked') + ' at-opa at-cur at-pos at-z-idx' : '',
+				isEven ? AtrcPrefix('even') + ' at-bg-cl' : '',
+				isOdd ? AtrcPrefix('odd') + ' at-bg-cl' : ''
 			)}
 			{...defaultProps}>
 			{children}

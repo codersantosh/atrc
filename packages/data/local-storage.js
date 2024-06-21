@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * Get settings from local storage or a cookie based on the provided key.
  *

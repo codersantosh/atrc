@@ -1,7 +1,14 @@
-.at-pagination-list {
+.at-pagination {
   --at-gap: 5px;
 }
-.at-pagination-link {
+.at-pagination .at-gap {
+  --at-gap: 5px;
+}
+.at-pagination .at-ctrl-txt .components-text-control__input {
+  --at-w: 60px;
+  width: var(--at-w);
+}
+.at-pagination-lnk {
   --at-fnt-sz: 14px;
   --at-ln-h: 20px;
   --at-p: 6px 12px;
@@ -11,64 +18,7 @@
   -webkit-transition: var(--at-trs);
   transition: var(--at-trs);
 }
-.at-pagination-link[aria-current=page], .at-pagination-link:hover {
+.at-pagination-lnk[aria-current=page], .at-pagination-lnk:hover {
   background-color: var(--at-primary--hover);
   --at-cl: var(--at-white);
-}
-
-.screen-reader-text {
-  --at-h: 1px;
-  --at-w: 1px;
-  --at-p: 1px;
-  --at-m: -1px;
-  --at-pos: absolute;
-  --at-clp-pth: inset(50%);
-  --at-ovf: hidden;
-  --at-wrd-wrp: normal;
-  --at-bdr-cl: none;
-  --at-bdr-w: 0;
-  --at-bdr-sty: none;
-  clip: rect(1px, 1px, 1px, 1px);
-  border-color: var(--at-bdr-cl);
-  border-width: var(--at-bdr-w);
-  border-style: var(--at-bdr-sty);
-  word-wrap: var(--at-wrd-wrp) !important;
-  overflow: var(--at-ovf);
-  margin: var(--at-m);
-  padding: var(--at-p);
-  position: var(--at-pos);
-  -webkit-clip-path: var(--at-clp-pth);
-          clip-path: var(--at-clp-pth);
-  width: var(--at-w);
-  height: var(--at-h);
-}
-.screen-reader-text:focus {
-  --at-clp-pth: none;
-  --at-p: 15px 23px 14px;
-  --at-l: 5px;
-  --at-t: 5px;
-  --at-cl: #444;
-  --at-bg-cl: #eee;
-  --at-h: auto;
-  --at-w: auto;
-  --at-fnt-sz: 1em;
-  --at-ln-h: normal;
-  --at-txt-dec: none;
-  --at-z-idx: 100000;
-  clip: auto !important;
-  display: block;
-  -webkit-text-decoration: var(--at-txt-dec);
-          text-decoration: var(--at-txt-dec);
-  font-size: var(--at-fnt-sz);
-  line-height: var(--at-ln-h);
-  width: var(--at-w);
-  height: var(--at-h);
-  background-color: var(--at-bg-cl);
-  color: var(--at-cl);
-  -webkit-clip-path: var(--at-clp-pth);
-          clip-path: var(--at-clp-pth);
-  top: var(--at-t);
-  right: var(--at-l);
-  padding: var(--at-p);
-  z-index: var(--at-z-idx);
 }

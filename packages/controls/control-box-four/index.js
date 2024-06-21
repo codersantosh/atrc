@@ -1,3 +1,5 @@
+import React from 'react';
+
 /*
 * Values Structure
 Type Object
@@ -97,6 +99,8 @@ const AtrcControlBoxFour = (props) => {
 		valueType = '',
 		splitOnAxis = false,
 		defaultValue = undefined,
+		wrapProps = {},
+		resetWrapProps = {},
 		onChange,
 	} = props;
 
@@ -188,8 +192,15 @@ const AtrcControlBoxFour = (props) => {
 
 	if (allowReset) {
 		return (
-			<AtrcWrapLib className={classnames('at-flx-grw-1')}>
-				<AtrcResetWrap className={classnames(AtrcPrefix('box-four-rst'))}>
+			<AtrcWrapLib
+				className={classnames('at-flx-grw-1')}
+				{...wrapProps}>
+				<AtrcResetWrap
+					{...resetWrapProps}
+					className={classnames(
+						AtrcPrefix('box-four-rst'),
+						resetWrapProps.className ? resetWrapProps.className : ''
+					)}>
 					<RenderBoxControl
 						{...props}
 						value={objValues}
