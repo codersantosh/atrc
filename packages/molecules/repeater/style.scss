@@ -55,6 +55,9 @@
 						line-height: var(#{$varPrefix}-ln-h);
 						max-width: var(#{$varPrefix}-max-w);
 					}
+					&-ctrl-sort-drag-handle {
+						#{$varPrefix}-m: 0 0 0 15px;
+					}
 				}
 
 				&#{$appPrefix} {

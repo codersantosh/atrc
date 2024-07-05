@@ -721,13 +721,13 @@ a[disabled] {
 /* ProgressBar horizontal Styles */
 .at-prog {
   /* Track */
-  --at-bg-cl: #E5EDE6;
+  --at-bg-cl: var(--at-secondary, #e8f3eb);
   --at-h: 30px;
   --at-bdr-rad: 5px;
   --at-ovf: hidden;
   /* Bar */
   --at-bar-w: 90%;
-  --at-bar-cl: #48B44F;
+  --at-bar-cl: var(--at-primary, #48b44f);
   --at-bar-txt-gap: 0 10px;
   /* ProgressBar Horizontal Styles */
   /* ProgressBar Circle Styles */
@@ -757,6 +757,9 @@ a[disabled] {
 .at-prog-hor {
   height: var(--at-h);
 }
+.at-prog-hor .at-prog-bar {
+  --at-p: 0 10px;
+}
 .at-prog-cir {
   --at-pos: relative;
   --at-strk-w: 1.8;
@@ -764,9 +767,9 @@ a[disabled] {
   --at-h: var(--at-prog-sz, 200px);
   --at-w: var(--at-prog-sz, 200px);
   /* Track */
-  --at-trk-cl: #E5EDE6;
+  --at-trk-cl: var(--at-secondary, #e8f3eb);
   /* Bar */
-  --at-bar-cl: #48B44F;
+  --at-bar-cl: var(--at-primary, #48b44f);
   --at-bar-line-cap: round;
   --at-bar-strk-dashoffest: 90;
   --at-bar-trs: stroke-dashoffset 1s ease-in-out;
@@ -1764,6 +1767,7 @@ a[disabled] {
 }
 .at-tog .components-form-toggle.is-checked .components-form-toggle__track {
   background-color: var(--at-success);
+  border-color: var(--at-success);
 }
 
 .at-ctrl-typ-tab .components-base-control__label, .at-ctrl-typ-tab .components-input-control__label, .at-ctrl-typ-tab .components-panel__body-toggle {
@@ -2407,6 +2411,9 @@ a[disabled] {
   line-height: var(--at-ln-h);
   max-width: var(--at-max-w);
 }
+.at-rpt-grp-hdr .at-ctrl-sort-drag-handle {
+  --at-m: 0 0 0 15px;
+}
 .at-rpt-grp-hdr.at-hdr {
   --at-p: 10px;
 }
@@ -2849,6 +2856,17 @@ a[disabled] {
   --at-bdr-cl: #575757;
   --at-bg-img: linear-gradient(#292c2e 50%, #3d3d3d 50%);
   background-color: #292c2e;
+}
+
+.at-prog-tpl-1 {
+  --at-bdr-sty: solid;
+  --at-bdr-w: 1px;
+  --at-bdr-cl: var(--at-border-color);
+  --at-bg-cl: var(--at-quinary);
+  --at-p: 15px;
+}
+.at-prog-tpl-1 .at-prog-hor {
+  --at-m: 15px 0 0 0;
 }
 
 .at-sdbar .at-hdr .at-btn-close {

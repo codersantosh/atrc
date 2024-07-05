@@ -64,7 +64,9 @@ var RepeaterGroup = function RepeaterGroup(props) {
     key: groupIndex
   }, /*#__PURE__*/React.createElement(AtrcHeader, {
     className: classnames(AtrcPrefix('rpt-grp-hdr'), 'at-flx', 'at-al-itm-ctr', 'at-bg-cl', 'at-bdr')
-  }, isSortable && useDragHandle ? /*#__PURE__*/React.createElement(AtrcSortableDragHandle, null) : null, /*#__PURE__*/React.createElement(AtrcButton, {
+  }, isSortable && useDragHandle ? /*#__PURE__*/React.createElement(AtrcSortableDragHandle, {
+    className: classnames('at-m')
+  }) : null, /*#__PURE__*/React.createElement(AtrcButton, {
     variant: "link",
     className: classnames('at-flx', 'at-jfy-cont-st', 'at-flx-grw-1', 'at-m', AtrcPrefix('rpt-grp-hdr-btn')),
     onClick: function onClick() {

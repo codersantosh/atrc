@@ -61,7 +61,9 @@ const RepeaterGroup = (props) => {
 					'at-bg-cl',
 					'at-bdr'
 				)}>
-				{isSortable && useDragHandle ? <AtrcSortableDragHandle /> : null}
+				{isSortable && useDragHandle ? (
+					<AtrcSortableDragHandle className={classnames('at-m')} />
+				) : null}
 				<AtrcButton
 					variant='link'
 					className={classnames(

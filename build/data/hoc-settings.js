@@ -53,20 +53,27 @@ var AtrcApplyWithSettings = function AtrcApplyWithSettings(WrappedComponent) {
           dataVal: val
         });
       },
+      deleteSettings: function deleteSettings() {
+        var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+        return dispatch(atrcStore).deleteSettings({
+          key: atrcStoreKey,
+          data: data
+        });
+      },
       setNotice: function setNotice(notice) {
-        return dispatch(ownProps.atrcStore).setNotice({
+        return dispatch(atrcStore).setNotice({
           key: atrcStoreKey,
           notice: notice
         });
       },
       setNotices: function setNotices(notices) {
-        return dispatch(ownProps.atrcStore).setNotice({
+        return dispatch(atrcStore).setNotice({
           key: atrcStoreKey,
           notices: notices
         });
       },
       removeNotice: function removeNotice(id) {
-        return dispatch(ownProps.atrcStore).removeNotice({
+        return dispatch(atrcStore).removeNotice({
           key: atrcStoreKey,
           id: id
         });

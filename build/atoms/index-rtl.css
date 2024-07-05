@@ -452,13 +452,13 @@
 /* ProgressBar horizontal Styles */
 .at-prog {
   /* Track */
-  --at-bg-cl: #E5EDE6;
+  --at-bg-cl: var(--at-secondary, #e8f3eb);
   --at-h: 30px;
   --at-bdr-rad: 5px;
   --at-ovf: hidden;
   /* Bar */
   --at-bar-w: 90%;
-  --at-bar-cl: #48B44F;
+  --at-bar-cl: var(--at-primary, #48b44f);
   --at-bar-txt-gap: 0 10px;
   /* ProgressBar Horizontal Styles */
   /* ProgressBar Circle Styles */
@@ -488,6 +488,9 @@
 .at-prog-hor {
   height: var(--at-h);
 }
+.at-prog-hor .at-prog-bar {
+  --at-p: 0 10px;
+}
 .at-prog-cir {
   --at-pos: relative;
   --at-strk-w: 1.8;
@@ -495,9 +498,9 @@
   --at-h: var(--at-prog-sz, 200px);
   --at-w: var(--at-prog-sz, 200px);
   /* Track */
-  --at-trk-cl: #E5EDE6;
+  --at-trk-cl: var(--at-secondary, #e8f3eb);
   /* Bar */
-  --at-bar-cl: #48B44F;
+  --at-bar-cl: var(--at-primary, #48b44f);
   --at-bar-line-cap: round;
   --at-bar-strk-dashoffest: 90;
   --at-bar-trs: stroke-dashoffset 1s ease-in-out;

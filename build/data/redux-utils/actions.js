@@ -668,6 +668,68 @@ export var actions = {
     }();
   },
   /**
+   * Action to delete settings via API.
+   * First, sets loading to true, and can save to false (!loading).
+   * If there is data, Sends data to the API, and the result to reducer.js for adding notice, deleting the item(s), and flushing the cache.
+   *
+   * @param {string}  key               - The settings key.
+   * @param {Object}  data              - The settings data to save.
+   * @param {boolean} [setNotice=false] - Whether to set a notice.
+   * @return {Function} Async function representing the action.
+   */
+  deleteSettings: function deleteSettings(_ref35) {
+    var key = _ref35.key,
+      _ref35$data = _ref35.data,
+      data = _ref35$data === void 0 ? null : _ref35$data,
+      _ref35$setNotice = _ref35.setNotice,
+      setNotice = _ref35$setNotice === void 0 ? false : _ref35$setNotice;
+    return /*#__PURE__*/function () {
+      var _ref37 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(_ref36) {
+        var select, resolveSelect, dispatch, result;
+        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+          while (1) switch (_context7.prev = _context7.next) {
+            case 0:
+              select = _ref36.select, resolveSelect = _ref36.resolveSelect, dispatch = _ref36.dispatch;
+              dispatch({
+                type: 'SET_IS_LOADING',
+                key: key,
+                isLoading: true
+              });
+              if (!('localStorage' === AtrcStore.TYPES[key])) {
+                _context7.next = 6;
+                break;
+              }
+              result = AtrcDataLocalStorageSaveSettings(key, data);
+              _context7.next = 9;
+              break;
+            case 6:
+              _context7.next = 8;
+              return AtrcApis.doApi({
+                key: key,
+                type: 'deleteSettings',
+                data: data
+              });
+            case 8:
+              result = _context7.sent;
+            case 9:
+              dispatch({
+                type: 'SET_SETTINGS',
+                key: key,
+                data: result,
+                setNotice: setNotice
+              });
+            case 10:
+            case "end":
+              return _context7.stop();
+          }
+        }, _callee7);
+      }));
+      return function (_x7) {
+        return _ref37.apply(this, arguments);
+      };
+    }();
+  },
+  /**
    * Custom Dispatch action.
    * Allows using this store with custom solutions by providing a callback function.
    *
@@ -675,11 +737,11 @@ export var actions = {
    * @return {Function} Function representing the custom dispatch action.
    */
   customDispatch: function customDispatch(callback) {
-    return function (_ref35) {
-      var select = _ref35.select,
-        resolveSelect = _ref35.resolveSelect,
-        dispatch = _ref35.dispatch,
-        registry = _ref35.registry;
+    return function (_ref38) {
+      var select = _ref38.select,
+        resolveSelect = _ref38.resolveSelect,
+        dispatch = _ref38.dispatch,
+        registry = _ref38.registry;
       callback(select, resolveSelect, dispatch, AtrcStore, AtrcApis, registry);
     };
   }

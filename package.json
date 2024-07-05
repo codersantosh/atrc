@@ -1,13 +1,13 @@
 {
 	"name": "atrc",
-	"version": "1.0.35",
+	"version": "1.0.36",
 	"description": "Atomic React Components",
 	"main": "build/index.js",
 	"types": "lib/types",
 	"scripts": {
 		"reactJS": "node ./bin/addReactToHead.js",
 		"build:packages": "node ./bin/build.js",
-		"build": "npm run build:packages",
+		"build": "npm-run-all build:packages build:storybook",
 		"start:packages-sass": "sass --source-map -w ./packages/index.scss build/index.css",
 		"start:wp-admin-sass": "sass --source-map -w ./packages/wp-admin.scss build/wp-admin.css",
 		"start:js": "wp-scripts start ./packages/index.js",
@@ -16,7 +16,7 @@
 		"packages-update": "wp-scripts packages-update",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build -o docs",
+		"build:storybook": "storybook build -o docs",
 		"prepublishOnly": "npm run build"
 	},
 	"repository": {

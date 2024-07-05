@@ -46,19 +46,21 @@ import AtrcMoveArrayValue from '../../utils/move-array-value';
 import AtrcPrefix from '../../prefix-vars';
 
 /*Local*/
-export var AtrcSortableDragHandle = sortableHandle(function () {
+export var AtrcSortableDragHandle = sortableHandle(function (_ref) {
+  var _ref$className = _ref.className,
+    className = _ref$className === void 0 ? '' : _ref$className;
   return /*#__PURE__*/React.createElement(AtrcSpan, {
-    className: classnames(AtrcPrefix('ctrl-sort-drag-handle'), 'at-cur')
+    className: classnames(AtrcPrefix('ctrl-sort-drag-handle'), 'at-cur', className)
   }, /*#__PURE__*/React.createElement(AtrcIconSvg, {
     className: classnames(AtrcPrefix('ctrl-sort-drag-handle-icon')),
     svg: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" class=\"at-svg\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" d=\"M15,5 L17,5 L17,3 L15,3 L15,5 Z M7,5 L9,5 L9,3 L7,3 L7,5 Z M15,13 L17,13 L17,11 L15,11 L15,13 Z M7,13 L9,13 L9,11 L7,11 L7,13 Z M15,21 L17,21 L17,19 L15,19 L15,21 Z M7,21 L9,21 L9,19 L7,19 L7,21 Z\"/></svg>"
   }));
 });
-var SortableItem = sortableElement(function (_ref) {
-  var sortableValue = _ref.sortableValue,
-    items = _ref.items,
-    useDragHandle = _ref.useDragHandle,
-    sortableItemProps = _ref.sortableItemProps;
+var SortableItem = sortableElement(function (_ref2) {
+  var sortableValue = _ref2.sortableValue,
+    items = _ref2.items,
+    useDragHandle = _ref2.useDragHandle,
+    sortableItemProps = _ref2.sortableItemProps;
   var item = find(items, {
     value: sortableValue
   });
@@ -110,9 +112,9 @@ var AtrcControlSortable = function AtrcControlSortable(props) {
     _props$sortableItemPr = props.sortableItemProps,
     sortableItemProps = _props$sortableItemPr === void 0 ? {} : _props$sortableItemPr,
     defaultProps = _objectWithoutProperties(props, _excluded3);
-  var handleSortEnd = function handleSortEnd(_ref2) {
-    var oldIndex = _ref2.oldIndex,
-      newIndex = _ref2.newIndex;
+  var handleSortEnd = function handleSortEnd(_ref3) {
+    var oldIndex = _ref3.oldIndex,
+      newIndex = _ref3.newIndex;
     var updatedValues = AtrcMoveArrayValue(value, oldIndex, newIndex);
     onChange(updatedValues);
   };

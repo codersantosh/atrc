@@ -350,6 +350,7 @@ export { default as AtrcFileTreeTemplate1 } from './templates/components/file-tr
 export { default as AtrcImgAndTextTemplate1 } from './templates/components/img-and-word/template-1';
 export { default as AtrcListFilterTemplate1 } from './templates/components/list-filter/template-1';
 export { default as AtrcPreTemplate1 } from './templates/components/pre/template-1';
+export { default as AtrcProgressTemplate1 } from './templates/components/progress/template-1';
 export { default as AtrcTitleTemplate1 } from './templates/components/title/template-1';
 export { default as AtrcTitleTemplate2 } from './templates/components/title/template-2';
 export { default as AtrcFooterTemplate1 } from './templates/footers/template-1';

@@ -20,12 +20,12 @@ export default {
 const primaryNav = [
 	{
 		to: '/',
-		children: __('Getting started', 'acme-coming-soon'),
+		children: __('Getting started', 'atrc-prefix-atrc'),
 		end: true,
 	},
 	{
 		to: '/maintenance',
-		children: __('Settings', 'acme-coming-soon'),
+		children: __('Settings', 'atrc-prefix-atrc'),
 	},
 ];
 
@@ -43,7 +43,7 @@ export const Template1 = () => {
 						<AtrcButton onClick={() => {}}>
 							{__(
 								'Show all hidden informations, notices and documentations ',
-								'acme-coming-soon'
+								'atrc-prefix-atrc'
 							)}
 						</AtrcButton>
 					</AtrcWrap>

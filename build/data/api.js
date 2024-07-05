@@ -131,6 +131,15 @@ var ClassAtrcApis = /*#__PURE__*/function () {
           filterData: filterData,
           optionName: optionName
         });
+        this.types.push({
+          key: key,
+          path: path,
+          type: 'deleteSettings',
+          callbacks: callbacks.deleteSettings || null,
+          filterResult: filterResult,
+          filterData: filterData,
+          optionName: optionName
+        });
       } else {
         // Register all methods for the key and path
         this.types.push({
@@ -243,7 +252,7 @@ var ClassAtrcApis = /*#__PURE__*/function () {
                 axios.defaults.headers.common['X-WP-Nonce'] = this.XWPNonce;
               }
               _context.t0 = api.type;
-              _context.next = _context.t0 === 'getItems' ? 12 : _context.t0 === 'getItem' ? 21 : _context.t0 === 'insertItem' ? 26 : _context.t0 === 'updateItem' ? 32 : _context.t0 === 'deleteItem' ? 38 : _context.t0 === 'getSettings' ? 43 : _context.t0 === 'saveSettings' ? 48 : 54;
+              _context.next = _context.t0 === 'getItems' ? 12 : _context.t0 === 'getItem' ? 21 : _context.t0 === 'insertItem' ? 26 : _context.t0 === 'updateItem' ? 32 : _context.t0 === 'deleteItem' ? 38 : _context.t0 === 'getSettings' ? 43 : _context.t0 === 'saveSettings' ? 48 : _context.t0 === 'deleteSettings' ? 54 : 59;
               break;
             case 12:
               path = api.path;
@@ -277,7 +286,7 @@ var ClassAtrcApis = /*#__PURE__*/function () {
                 }
               }
               result.items = response.data;
-              return _context.abrupt("break", 56);
+              return _context.abrupt("break", 61);
             case 21:
               _context.next = 23;
               return axiosFetch({
@@ -288,7 +297,7 @@ var ClassAtrcApis = /*#__PURE__*/function () {
             case 23:
               response = _context.sent;
               result = response.data;
-              return _context.abrupt("break", 56);
+              return _context.abrupt("break", 61);
             case 26:
               if (api.filterData) {
                 data = api.filterData({
@@ -306,7 +315,7 @@ var ClassAtrcApis = /*#__PURE__*/function () {
             case 29:
               response = _context.sent;
               result = response.data;
-              return _context.abrupt("break", 56);
+              return _context.abrupt("break", 61);
             case 32:
               if (api.filterData) {
                 data = api.filterData({
@@ -324,7 +333,7 @@ var ClassAtrcApis = /*#__PURE__*/function () {
             case 35:
               response = _context.sent;
               result = response.data;
-              return _context.abrupt("break", 56);
+              return _context.abrupt("break", 61);
             case 38:
               _context.next = 40;
               return axiosFetch({
@@ -335,7 +344,7 @@ var ClassAtrcApis = /*#__PURE__*/function () {
             case 40:
               response = _context.sent;
               result = response.data;
-              return _context.abrupt("break", 56);
+              return _context.abrupt("break", 61);
             case 43:
               _context.next = 45;
               return axiosFetch({
@@ -354,7 +363,7 @@ var ClassAtrcApis = /*#__PURE__*/function () {
               } else {
                 result.settings = response.data;
               }
-              return _context.abrupt("break", 56);
+              return _context.abrupt("break", 61);
             case 48:
               if (api.optionName) {
                 newData = {};
@@ -380,36 +389,56 @@ var ClassAtrcApis = /*#__PURE__*/function () {
               } else {
                 result.settings = response.data;
               }
-              return _context.abrupt("break", 56);
+              return _context.abrupt("break", 61);
             case 54:
+              _context.next = 56;
+              return axiosFetch({
+                key: key,
+                path: api.path,
+                method: 'DELETE',
+                data: data
+              });
+            case 56:
+              response = _context.sent;
+              if (api.optionName) {
+                if (response.data[api.optionName]) {
+                  result.settings = response.data[api.optionName];
+                } else {
+                  result.settings = null;
+                }
+              } else {
+                result.settings = response.data;
+              }
+              return _context.abrupt("break", 61);
+            case 59:
               if (api.callbacks) {
                 result = api.callbacks(key, type, data, rowId);
               } else {
                 console.error("Invalid type ".concat(api.type, " provided."));
               }
-              return _context.abrupt("break", 56);
-            case 56:
+              return _context.abrupt("break", 61);
+            case 61:
               if (api.filterResult) {
                 result = api.filterResult({
                   result: result,
                   response: response
                 });
               }
-              _context.next = 63;
+              _context.next = 68;
               break;
-            case 59:
-              _context.prev = 59;
+            case 64:
+              _context.prev = 64;
               _context.t1 = _context["catch"](7);
               // eslint-disable-next-line no-console
               console.log("Error while performing AtrcApis call. API details :".concat(api, "  Error: ").concat(_context.t1));
               result.error = _context.t1;
-            case 63:
+            case 68:
               return _context.abrupt("return", result);
-            case 64:
+            case 69:
             case "end":
               return _context.stop();
           }
-        }, _callee, this, [[7, 59]]);
+        }, _callee, this, [[7, 64]]);
       }));
       function doApi(_x) {
         return _doApi.apply(this, arguments);

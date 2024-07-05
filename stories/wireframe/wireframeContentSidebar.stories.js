@@ -196,8 +196,8 @@ export const Default = () => {
 					isLoading={false}
 					canSave={true}
 					text={{
-						saved: __('Saved', 'acme-coming-soon'),
-						save: __('Save settings', 'acme-coming-soon'),
+						saved: __('Saved', 'atrc-prefix-atrc'),
+						save: __('Save settings', 'atrc-prefix-atrc'),
 					}}
 					disabled={false}
 					onClick={() => {}}

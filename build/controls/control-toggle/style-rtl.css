@@ -8,4 +8,5 @@
 }
 .at-tog .components-form-toggle.is-checked .components-form-toggle__track {
   background-color: var(--at-success);
+  border-color: var(--at-success);
 }

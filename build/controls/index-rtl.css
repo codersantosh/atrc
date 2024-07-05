@@ -750,6 +750,7 @@
 }
 .at-tog .components-form-toggle.is-checked .components-form-toggle__track {
   background-color: var(--at-success);
+  border-color: var(--at-success);
 }
 
 .at-ctrl-typ-tab .components-base-control__label, .at-ctrl-typ-tab .components-input-control__label, .at-ctrl-typ-tab .components-panel__body-toggle {

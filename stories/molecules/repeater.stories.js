@@ -47,7 +47,7 @@ export const Repeater = {
 		children: (
 			<>
 				<AtrcRepeater
-					label={__('Add slugs', 'patterns-store')}
+					label={__('Add slugs', 'atrc-prefix-atrc')}
 					groups={() =>
 						map(items, (item, itemIndex) => (
 							<AtrcRepeaterGroup
@@ -63,14 +63,14 @@ export const Repeater = {
 								}}
 								groupTitle={sprintf(
 									// translators: %s: placeholder for idx
-									__('Slug %d', 'patterns-store'),
+									__('Slug %d', 'atrc-prefix-atrc'),
 									itemIndex + 1
 								)}
-								deleteTitle={__('Remove item', 'patterns-store')}>
+								deleteTitle={__('Remove item', 'atrc-prefix-atrc')}>
 								<AtrcPanelRow>
 									<AtrcControlText
-										label={__('Text', 'patterns-store')}
-										help={__('Any path of the url', 'patterns-store')}
+										label={__('Text', 'atrc-prefix-atrc')}
+										help={__('Any path of the url', 'atrc-prefix-atrc')}
 										value={item.text}
 										onChange={(newVal) => {
 											const updatedSettings = AtrcNestedObjUpdateByKey2({
@@ -85,8 +85,8 @@ export const Repeater = {
 								</AtrcPanelRow>
 								<AtrcPanelRow>
 									<AtrcControlSelect
-										label={__('Select', 'patterns-store')}
-										help={__('Any path of the url', 'patterns-store')}
+										label={__('Select', 'atrc-prefix-atrc')}
+										help={__('Any path of the url', 'atrc-prefix-atrc')}
 										value={item.select}
 										options={[
 											{
@@ -122,8 +122,8 @@ export const Repeater = {
 								});
 								dbUpdateSetting('exclude', addedSettings);
 							}}
-							tooltipText={__('Add item', 'patterns-store')}
-							label={__('Add item', 'patterns-store')}
+							tooltipText={__('Add item', 'atrc-prefix-atrc')}
+							label={__('Add item', 'atrc-prefix-atrc')}
 						/>
 					)}
 				/>
@@ -157,7 +157,7 @@ export const RepeaterWithSortable = () => {
 			renderContent={
 				<>
 					<AtrcRepeater
-						label={__('Add slugs', 'patterns-store')}
+						label={__('Add slugs', 'atrc-prefix-atrc')}
 						isSortable={true}
 						value={value}
 						onChange={setValue}
@@ -178,14 +178,14 @@ export const RepeaterWithSortable = () => {
 									}}
 									groupTitle={sprintf(
 										// translators: %s: placeholder for idx
-										__('Slug %d', 'patterns-store'),
+										__('Slug %d', 'atrc-prefix-atrc'),
 										itemIndex + 1
 									)}
-									deleteTitle={__('Remove item', 'patterns-store')}>
+									deleteTitle={__('Remove item', 'atrc-prefix-atrc')}>
 									<AtrcPanelRow>
 										<AtrcControlText
-											label={__('Text', 'patterns-store')}
-											help={__('Any path of the url', 'patterns-store')}
+											label={__('Text', 'atrc-prefix-atrc')}
+											help={__('Any path of the url', 'atrc-prefix-atrc')}
 											value={item.text}
 											onChange={(newVal) => {
 												const updatedSettings = AtrcNestedObjUpdateByKey2({
@@ -200,8 +200,8 @@ export const RepeaterWithSortable = () => {
 									</AtrcPanelRow>
 									<AtrcPanelRow>
 										<AtrcControlSelect
-											label={__('Select', 'patterns-store')}
-											help={__('Any path of the url', 'patterns-store')}
+											label={__('Select', 'atrc-prefix-atrc')}
+											help={__('Any path of the url', 'atrc-prefix-atrc')}
 											value={item.select}
 											options={[
 												{
@@ -237,8 +237,8 @@ export const RepeaterWithSortable = () => {
 									});
 									dbUpdateSetting('exclude', addedSettings);
 								}}
-								tooltipText={__('Add item', 'patterns-store')}
-								label={__('Add item', 'patterns-store')}
+								tooltipText={__('Add item', 'atrc-prefix-atrc')}
+								label={__('Add item', 'atrc-prefix-atrc')}
 							/>
 						)}
 					/>

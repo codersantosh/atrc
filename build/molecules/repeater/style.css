@@ -36,6 +36,9 @@
   line-height: var(--at-ln-h);
   max-width: var(--at-max-w);
 }
+.at-rpt-grp-hdr .at-ctrl-sort-drag-handle {
+  --at-m: 0 0 0 15px;
+}
 .at-rpt-grp-hdr.at-hdr {
   --at-p: 10px;
 }

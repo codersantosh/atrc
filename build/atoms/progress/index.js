@@ -1,4 +1,4 @@
-var _excluded = ["className", "type", "variant", "barColor", "uniqueId", "hasAnimation", "children"];
+var _excluded = ["className", "type", "variant", "barColor", "uniqueId", "hasAnimation", "hasStriped", "children"];
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
@@ -64,7 +64,7 @@ export var AtrcProgressSvgGradientColor = function AtrcProgressSvgGradientColor(
     colors: colorStops
   };
   return /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("linearGradient", {
-    id: 'at-lg-' + uniqueId,
+    id: uniqueId,
     gradientTransform: "".concat(gradientObject.deg)
   }, gradientObject.colors.map(function (item, index) {
     return /*#__PURE__*/React.createElement("stop", {
@@ -87,10 +87,13 @@ var AtrcProgress = function AtrcProgress(props, ref) {
     uniqueId = _props$uniqueId === void 0 ? '' : _props$uniqueId,
     _props$hasAnimation = props.hasAnimation,
     hasAnimation = _props$hasAnimation === void 0 ? '' : _props$hasAnimation,
+    _props$hasStriped = props.hasStriped,
+    hasStriped = _props$hasStriped === void 0 ? '' : _props$hasStriped,
     _props$children = props.children,
     children = _props$children === void 0 ? '' : _props$children,
     defaultProps = _objectWithoutProperties(props, _excluded);
   if ('cir' === type) {
+    var uniqueIdLocal = 'at-' + uniqueId;
     return /*#__PURE__*/React.createElement(AtrcWrap, _extends({
       className: classnames(AtrcPrefix('prog'), AtrcPrefix('prog-cir'), className, variant ? AtrcPrefix('prog') + '-' + variant : ''),
       ref: ref
@@ -98,20 +101,24 @@ var AtrcProgress = function AtrcProgress(props, ref) {
       className: classnames(AtrcPrefix('svg'), 'at-w', 'at-h'),
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "-1 -1 34 34"
-    }, AtrcIsLinearGradientColor(barColor) ? /*#__PURE__*/React.createElement(AtrcProgressSvgGradientColor, {
+    }, uniqueId && AtrcIsLinearGradientColor(barColor) ? /*#__PURE__*/React.createElement(AtrcProgressSvgGradientColor, {
       gradient: barColor,
-      uniqueId: uniqueId
+      uniqueId: uniqueIdLocal
     }) : null, /*#__PURE__*/React.createElement("circle", {
       cx: "16",
       cy: "16",
       r: "15.9155",
       className: classnames('at-svg-cir', 'at-prog-cir__trk')
-    }), /*#__PURE__*/React.createElement("circle", {
+    }), /*#__PURE__*/React.createElement("circle", _extends({
       cx: "16",
       cy: "16",
       r: "15.9155",
-      className: classnames('at-svg-cir', 'at-prog-cir__bar', hasAnimation ? 'at-prog-cir__bar-ani' : null)
-    })), children ? /*#__PURE__*/React.createElement(AtrcWrap, {
+      className: classnames('at-svg-cir', 'at-prog-cir__bar')
+    }, uniqueId && AtrcIsLinearGradientColor(barColor) ? {
+      style: {
+        '--at-cl': "url(#".concat(uniqueIdLocal, ")")
+      }
+    } : {}))), children ? /*#__PURE__*/React.createElement(AtrcWrap, {
       className: classnames(AtrcPrefix('prog-cir-txt'), 'at-pos')
     }, children) : null);
   }
@@ -119,7 +126,7 @@ var AtrcProgress = function AtrcProgress(props, ref) {
     className: classnames(AtrcPrefix('prog'), AtrcPrefix('prog-hor'), className, variant ? AtrcPrefix('prog') + '-' + variant : ''),
     ref: ref
   }, defaultProps), /*#__PURE__*/React.createElement(AtrcWrap, {
-    className: classnames(AtrcPrefix('prog-bar'), 'at-ovf at-h at-w at-trs', AtrcIsGradientColor(barColor) ? 'at-bg-img' : 'at-bg-cl')
+    className: classnames(AtrcPrefix('prog-bar'), 'at-ovf', 'at-h', 'at-w', 'at-trs', 'at-p', hasAnimation ? 'at-prog-bar-animated' : null, hasStriped ? 'at-prog-bar-striped' : null, AtrcIsGradientColor(barColor) ? 'at-bg-img' : 'at-bg-cl')
   }, children));
 };
 export default /*#__PURE__*/forwardRef(AtrcProgress);

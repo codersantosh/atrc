@@ -97,16 +97,16 @@ export const SortableWithCheckbox = () => {
 										<>
 											<AtrcPanelRow>
 												<AtrcControlText
-													label={__('Text', 'patterns-store')}
-													help={__('Any path of the url', 'patterns-store')}
+													label={__('Text', 'atrc-prefix-atrc')}
+													help={__('Any path of the url', 'atrc-prefix-atrc')}
 													value={item.text}
 													onChange={(newVal) => {}}
 												/>
 											</AtrcPanelRow>
 											<AtrcPanelRow>
 												<AtrcControlSelect
-													label={__('Select', 'patterns-store')}
-													help={__('Any path of the url', 'patterns-store')}
+													label={__('Select', 'atrc-prefix-atrc')}
+													help={__('Any path of the url', 'atrc-prefix-atrc')}
 													value={item.select}
 													options={[
 														{
@@ -177,16 +177,16 @@ export const SortableWithoutDragHandle = () => {
 										<>
 											<AtrcPanelRow>
 												<AtrcControlText
-													label={__('Text', 'patterns-store')}
-													help={__('Any path of the url', 'patterns-store')}
+													label={__('Text', 'atrc-prefix-atrc')}
+													help={__('Any path of the url', 'atrc-prefix-atrc')}
 													value={item.text}
 													onChange={(newVal) => {}}
 												/>
 											</AtrcPanelRow>
 											<AtrcPanelRow>
 												<AtrcControlSelect
-													label={__('Select', 'patterns-store')}
-													help={__('Any path of the url', 'patterns-store')}
+													label={__('Select', 'atrc-prefix-atrc')}
+													help={__('Any path of the url', 'atrc-prefix-atrc')}
 													value={item.select}
 													options={[
 														{

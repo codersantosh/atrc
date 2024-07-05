@@ -449,6 +449,7 @@ export { default as AtrcImgAndTextTemplate1 } from './templates/components/img-a
 export { default as AtrcListFilterTemplate1 } from './templates/components/list-filter/template-1';
 
 export { default as AtrcPreTemplate1 } from './templates/components/pre/template-1';
+export { default as AtrcProgressTemplate1 } from './templates/components/progress/template-1';
 
 export { default as AtrcTitleTemplate1 } from './templates/components/title/template-1';
 export { default as AtrcTitleTemplate2 } from './templates/components/title/template-2';

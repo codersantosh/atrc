@@ -53,7 +53,7 @@ export const AtrcProgressSvgGradientColor = ({ gradient, uniqueId }) => {
 	return (
 		<defs>
 			<linearGradient
-				id={'at-lg-' + uniqueId}
+				id={uniqueId}
 				gradientTransform={`${gradientObject.deg}`}>
 				{gradientObject.colors.map((item, index) => (
 					<stop
@@ -75,11 +75,13 @@ const AtrcProgress = (props, ref) => {
 		barColor = '',
 		uniqueId = '',
 		hasAnimation = '',
+		hasStriped = '',
 		children = '',
 		...defaultProps
 	} = props;
 
 	if ('cir' === type) {
+		let uniqueIdLocal = 'at-' + uniqueId;
 		return (
 			<AtrcWrap
 				className={classnames(
@@ -94,10 +96,10 @@ const AtrcProgress = (props, ref) => {
 					className={classnames(AtrcPrefix('svg'), 'at-w', 'at-h')}
 					xmlns='http://www.w3.org/2000/svg'
 					viewBox='-1 -1 34 34'>
-					{AtrcIsLinearGradientColor(barColor) ? (
+					{uniqueId && AtrcIsLinearGradientColor(barColor) ? (
 						<AtrcProgressSvgGradientColor
 							gradient={barColor}
-							uniqueId={uniqueId}
+							uniqueId={uniqueIdLocal}
 						/>
 					) : null}
 					<circle
@@ -111,11 +113,10 @@ const AtrcProgress = (props, ref) => {
 						cx='16'
 						cy='16'
 						r='15.9155'
-						className={classnames(
-							'at-svg-cir',
-							'at-prog-cir__bar',
-							hasAnimation ? 'at-prog-cir__bar-ani' : null
-						)}
+						className={classnames('at-svg-cir', 'at-prog-cir__bar')}
+						{...(uniqueId && AtrcIsLinearGradientColor(barColor)
+							? { style: { '--at-cl': `url(#${uniqueIdLocal})` } }
+							: {})}
 					/>
 				</svg>
 				{children ? (
@@ -141,7 +142,13 @@ const AtrcProgress = (props, ref) => {
 			<AtrcWrap
 				className={classnames(
 					AtrcPrefix('prog-bar'),
-					'at-ovf at-h at-w at-trs',
+					'at-ovf',
+					'at-h',
+					'at-w',
+					'at-trs',
+					'at-p',
+					hasAnimation ? 'at-prog-bar-animated' : null,
+					hasStriped ? 'at-prog-bar-striped' : null,
 					AtrcIsGradientColor(barColor) ? 'at-bg-img' : 'at-bg-cl'
 				)}>
 				{children}
