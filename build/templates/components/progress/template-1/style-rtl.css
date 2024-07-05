@@ -1,0 +1,10 @@
+.at-prog-tpl-1 {
+  --at-bdr-sty: solid;
+  --at-bdr-w: 1px;
+  --at-bdr-cl: var(--at-border-color);
+  --at-bg-cl: var(--at-quinary);
+  --at-p: 15px;
+}
+.at-prog-tpl-1 .at-prog-hor {
+  --at-m: 15px 0 0 0;
+}

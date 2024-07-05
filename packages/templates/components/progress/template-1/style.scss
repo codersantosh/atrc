@@ -1,0 +1,16 @@
+@import '../../../../prefix-vars';
+
+#{$appPrefix} {
+	&-prog-tpl-1 {
+		#{$varPrefix}-bdr-sty: solid;
+		#{$varPrefix}-bdr-w: 1px;
+		#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color);
+		#{$varPrefix}-bg-cl: var(#{$varPrefix}-quinary);
+		#{$varPrefix}-p: 15px;
+		#{$appPrefix} {
+			&-prog-hor {
+				#{$varPrefix}-m: 15px 0 0 0;
+			}
+		}
+	}
+}
