@@ -19,7 +19,7 @@ var AtrcControlIconPickerDefaultIcons = function AtrcControlIconPickerDefaultIco
     if ('Icon' !== key) {
       return {
         id: key,
-        svg: renderToString( /*#__PURE__*/React.createElement(AtrcIconWp, {
+        svg: renderToString(/*#__PURE__*/React.createElement(AtrcIconWp, {
           icon: WpIconsAllF[key]
         }))
       };

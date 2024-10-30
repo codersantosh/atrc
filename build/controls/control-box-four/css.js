@@ -8,6 +8,9 @@ export function AtrcControlBoxFourShorthandCssOnly(_ref) {
     _ref$emptyVal = _ref.emptyVal,
     emptyVal = _ref$emptyVal === void 0 ? 0 : _ref$emptyVal;
   var shorthandStr = '';
+  if (!value) {
+    return shorthandStr;
+  }
   if (value.all) {
     var splitedValues = value.all.split(' ');
     var countValues = splitedValues.length;

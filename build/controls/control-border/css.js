@@ -18,7 +18,7 @@ var AtrcControlBorderCss = function AtrcControlBorderCss(_ref) {
   var output = {
     xs: ''
   };
-  if (!isEmpty(value)) {
+  if (value && !isEmpty(value)) {
     /* Color */
     if (value.cl) {
       output.xs += "".concat(properties.borderColor, " : ").concat(value.cl, ";");

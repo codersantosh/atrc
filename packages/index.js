@@ -557,4 +557,5 @@ export {
 	useNavigate as AtrcUseNavigate,
 	useLocation as AtrcUseLocation,
 	Navigate as AtrcNavigate,
+	Outlet as AtrcOutlet,
 } from 'react-router-dom';

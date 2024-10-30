@@ -1,24 +1,25 @@
-@import'../../prefix-vars';
+@import '../../prefix-vars';
 
 #{$appPrefix} {
-    &-img {
-        &-logo {
-            #{$varPrefix}-max-w: 50px;
-        }
-    }
+	&-img {
+		&-logo {
+			#{$varPrefix}-max-w: 50px;
+		}
+	}
 
-    &-logo {
-        #{$appPrefix} {
-            &-lnk {
-                &-nav {
-                    #{$varPrefix}-opa  : 1;
-                    #{$varPrefix}-bdr-w: 0;
-                }
+	&-logo {
+		#{$appPrefix} {
+			&-lnk {
+				&-nav {
+					#{$varPrefix}-opa: 1;
+					#{$varPrefix}-bdr-w: 0;
+					#{$varPrefix}-p: 0;
+				}
 
-                &-active {
-                    #{$varPrefix}-opa: 1;
-                }
-            }
-        }
-    }
+				&-active {
+					#{$varPrefix}-opa: 1;
+				}
+			}
+		}
+	}
 }

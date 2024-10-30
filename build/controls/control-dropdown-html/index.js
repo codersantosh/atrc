@@ -1,7 +1,7 @@
 var _excluded = ["label", "value", "onChange", "options", "variant", "className", "instanceId"];
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var s = Object.getOwnPropertySymbols(e); for (r = 0; r < s.length; r++) o = s[r], t.includes(o) || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
+function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (e.includes(n)) continue; t[n] = r[n]; } return t; }
 import React from 'react';
 
 /*Attributes Structure
@@ -117,13 +117,13 @@ var RenderControl = function RenderControl(props) {
     }
   }, defaultProps));
 };
-var AtrcControlDropdownHtml = function AtrcControlDropdownHtml(props) {
+var _AtrcControlDropdownHtml = function AtrcControlDropdownHtml(props) {
   var _props$allowReset = props.allowReset,
     allowReset = _props$allowReset === void 0 ? true : _props$allowReset,
     _props$value = props.value,
     value = _props$value === void 0 ? '' : _props$value,
     onChange = props.onChange;
-  var instanceId = AtrcUseInstanceId(AtrcControlDropdownHtml, 'atrc-ctrl-dropdown-html');
+  var instanceId = AtrcUseInstanceId(_AtrcControlDropdownHtml, 'atrc-ctrl-dropdown-html');
   if (allowReset) {
     return /*#__PURE__*/React.createElement(AtrcWrap, {
       className: classnames(AtrcPrefix('rst-wrp'), AtrcPrefix('lbl-rst'), 'at-flx', 'at-al-itm-st', 'at-gap', 'at-flx-grw-1')
@@ -138,5 +138,5 @@ var AtrcControlDropdownHtml = function AtrcControlDropdownHtml(props) {
   }
   return /*#__PURE__*/React.createElement(RenderControl, props);
 };
-export default AtrcControlDropdownHtml;
+export default _AtrcControlDropdownHtml;
 //# sourceMappingURL=index.js.map

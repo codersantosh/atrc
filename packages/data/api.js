@@ -10,6 +10,10 @@ import { AtrcStore } from './store';
 /* Local */
 /* AtrcApis is a utility class that can be used to register and perform CRUD operations on different types of APIs. It allows for registering different types of APIs for a particular data type, such as posts, pages, and custom types, and also allows for registering custom types of APIs. The class utilizes the @wordpress/api-fetch and @wordpress/url libraries to handle the API calls and add query arguments to the URLs, and it allows for additional actions to be performed on the data before or after the API call is made. It also allows for adding store using @wordpress/data library.*/
 
+export const AtrcAxios = (axiosConfig) => {
+    return axios({ ...axiosConfig });
+}
+
 function axiosFetch(options) {
     let { key, path, data, method } = options;
     if (!path.startsWith('http')) {
@@ -33,7 +37,7 @@ function axiosFetch(options) {
         axiosConfig = AtrcApis.axiosConfig['atrc-global-axios-config'];
     }
 
-    return axios({
+    return AtrcAxios({
         url: path,
         method,
         data,
@@ -88,6 +92,7 @@ class ClassAtrcApis {
             queryArgs,
             allowedParams,
             queryParams,
+            axiosConfig = {},
         } = props;
         if ('settings' === type) {
             this.types.push({
@@ -98,6 +103,7 @@ class ClassAtrcApis {
                 filterResult,
                 filterData,
                 optionName,
+                axiosConfig,
             });
             this.types.push({
                 key,
@@ -107,6 +113,7 @@ class ClassAtrcApis {
                 filterResult,
                 filterData,
                 optionName,
+                axiosConfig,
             });
             this.types.push({
                 key,
@@ -115,7 +122,7 @@ class ClassAtrcApis {
                 callbacks: callbacks.deleteSettings || null,
                 filterResult,
                 filterData,
-                optionName,
+                axiosConfig,
             });
         } else {
             // Register all methods for the key and path
@@ -127,6 +134,7 @@ class ClassAtrcApis {
                 filterResult,
                 filterData,
                 filterQueryArgs,
+                axiosConfig,
             });
             this.types.push({
                 key,
@@ -135,6 +143,7 @@ class ClassAtrcApis {
                 callbacks: callbacks.getItem || null,
                 filterResult,
                 filterData,
+                axiosConfig,
             });
             this.types.push({
                 key,
@@ -143,6 +152,7 @@ class ClassAtrcApis {
                 callbacks: callbacks.insertItem || null,
                 filterResult,
                 filterData,
+                axiosConfig,
             });
             this.types.push({
                 key,
@@ -151,6 +161,7 @@ class ClassAtrcApis {
                 callbacks: callbacks.updateItem || null,
                 filterResult,
                 filterData,
+                axiosConfig,
             });
             this.types.push({
                 key,
@@ -159,6 +170,7 @@ class ClassAtrcApis {
                 callbacks: callbacks.deleteItem || null,
                 filterResult,
                 filterData,
+                axiosConfig,
             });
         }
 
@@ -219,11 +231,16 @@ class ClassAtrcApis {
                         path = addQueryArgs(path, data);
                     }
 
-                    response = await axiosFetch({
+                    let getItemsAxiosConfig = {
                         key,
                         path,
                         method: 'GET',
-                    });
+                    };
+                    if (api.axiosConfig.getItems) {
+                        getItemsAxiosConfig = api.axiosConfig.getItems(getItemsAxiosConfig);
+                    }
+
+                    response = await axiosFetch(getItemsAxiosConfig);
 
                     if (response.headers) {
                         if (response.headers.get('X-WP-Count-All')) {
@@ -247,11 +264,15 @@ class ClassAtrcApis {
                     break;
                 }
                 case 'getItem': {
-                    response = await axiosFetch({
+                    let getItemAxiosConfig = {
                         key,
                         path: `${api.path}/${rowId}`,
                         method: 'GET',
-                    });
+                    };
+                    if (api.axiosConfig.getItem) {
+                        getItemAxiosConfig = api.axiosConfig.getItem(getItemAxiosConfig);
+                    }
+                    response = await axiosFetch(getItemAxiosConfig);
                     result = response.data;
 
                     break;
@@ -260,12 +281,18 @@ class ClassAtrcApis {
                     if (api.filterData) {
                         data = api.filterData({ data, api });
                     }
-                    response = await axiosFetch({
+
+                    let insertItemAxiosConfig = {
                         key,
                         path: api.path,
                         method: 'POST',
                         data,
-                    });
+                    };
+                    if (api.axiosConfig.insertItem) {
+                        insertItemAxiosConfig = api.axiosConfig.insertItem(insertItemAxiosConfig);
+                    }
+
+                    response = await axiosFetch(insertItemAxiosConfig);
                     result = response.data;
                     break;
                 case 'updateItem':
@@ -273,30 +300,43 @@ class ClassAtrcApis {
                         data = api.filterData({ data, api });
                     }
 
-                    response = await axiosFetch({
+                    let updateItemAxiosConfig = {
                         key,
                         path: `${api.path}/${rowId}`,
                         method: 'POST',
                         data,
-                    });
+                    };
+                    if (api.axiosConfig.updateItem) {
+                        updateItemAxiosConfig = api.axiosConfig.updateItem(updateItemAxiosConfig);
+                    }
+
+                    response = await axiosFetch(updateItemAxiosConfig);
                     result = response.data;
                     break;
                 case 'deleteItem':
-                    response = await axiosFetch({
+                    let deleteItemAxiosConfig = {
                         key,
                         path: `${api.path}/${rowId}`,
                         method: 'DELETE',
-                    });
+                    };
+                    if (api.axiosConfig.deleteItem) {
+                        deleteItemAxiosConfig = api.axiosConfig.deleteItem(deleteItemAxiosConfig);
+                    }
+                    response = await axiosFetch(deleteItemAxiosConfig);
                     result = response.data;
                     break;
 
                 /* Settings */
                 case 'getSettings': {
-                    response = await axiosFetch({
+                    let getSettingsAxiosConfig = {
                         key,
                         path: api.path,
                         method: 'GET',
-                    });
+                    };
+                    if (api.axiosConfig.getSettings) {
+                        getSettingsAxiosConfig = api.axiosConfig.getSettings(getSettingsAxiosConfig);
+                    }
+                    response = await axiosFetch(getSettingsAxiosConfig);
                     if (api.optionName) {
                         if (response.data[api.optionName]) {
                             result.settings = response.data[api.optionName];
@@ -318,12 +358,17 @@ class ClassAtrcApis {
                         newData = data;
                     }
 
-                    response = await axiosFetch({
+                    let saveSettingsAxiosConfig = {
                         key,
                         path: api.path,
                         method: 'POST',
                         data: newData,
-                    });
+                    };
+                    if (api.axiosConfig.saveSettings) {
+                        saveSettingsAxiosConfig = api.axiosConfig.saveSettings(saveSettingsAxiosConfig);
+                    }
+
+                    response = await axiosFetch(saveSettingsAxiosConfig);
 
                     if (api.optionName) {
                         if (response.data[api.optionName]) {
@@ -338,12 +383,17 @@ class ClassAtrcApis {
                 }
 
                 case 'deleteSettings': {
-                    response = await axiosFetch({
+                    let deleteSettingsAxiosConfig = {
                         key,
                         path: api.path,
                         method: 'DELETE',
                         data: data,
-                    });
+                    };
+                    if (api.axiosConfig.deleteSettings) {
+                        deleteSettingsAxiosConfig = api.axiosConfig.deleteSettings(deleteSettingsAxiosConfig);
+                    }
+
+                    response = await axiosFetch(deleteSettingsAxiosConfig);
 
                     if (api.optionName) {
                         if (response.data[api.optionName]) {

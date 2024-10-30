@@ -1,7 +1,7 @@
 var _excluded = ["label", "value", "columns", "className", "variant", "onChange", "allowedDevices"];
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var s = Object.getOwnPropertySymbols(e); for (r = 0; r < s.length; r++) o = s[r], t.includes(o) || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
+function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (e.includes(n)) continue; t[n] = r[n]; } return t; }
 import React from 'react';
 
 /*Library*/
@@ -22,7 +22,7 @@ import AtrcUseInstanceId from '../../utils/use-instance-id';
 import ColumnLayout from './columns-layout';
 
 /* Local */
-var AtrcControlColumnsAdvanced = function AtrcControlColumnsAdvanced(props) {
+var _AtrcControlColumnsAdvanced = function AtrcControlColumnsAdvanced(props) {
   var label = props.label,
     value = props.value,
     columns = props.columns,
@@ -35,7 +35,7 @@ var AtrcControlColumnsAdvanced = function AtrcControlColumnsAdvanced(props) {
     _props$allowedDevices = props.allowedDevices,
     allowedDevices = _props$allowedDevices === void 0 ? true : _props$allowedDevices,
     defaultProps = _objectWithoutProperties(props, _excluded);
-  var instanceId = AtrcUseInstanceId(AtrcControlColumnsAdvanced, 'atrc-dropdown-device');
+  var instanceId = AtrcUseInstanceId(_AtrcControlColumnsAdvanced, 'atrc-dropdown-device');
 
   /* Return null since no device */
   if (!allowedDevices) {
@@ -67,5 +67,5 @@ var AtrcControlColumnsAdvanced = function AtrcControlColumnsAdvanced(props) {
     });
   });
 };
-export default AtrcControlColumnsAdvanced;
+export default _AtrcControlColumnsAdvanced;
 //# sourceMappingURL=index.js.map

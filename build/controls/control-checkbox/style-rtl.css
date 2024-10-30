@@ -9,6 +9,9 @@
       -ms-flex-align: center;
           align-items: center;
 }
+.at-checkbox .components-base-control__field .components-flex {
+  gap: 10px;
+}
 .at-checkbox .components-checkbox-control__input-container {
   --at-m: 0;
   margin-left: var(--at-m);

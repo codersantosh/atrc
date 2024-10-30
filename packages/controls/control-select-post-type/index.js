@@ -29,108 +29,110 @@ import AtrcPrefix from '../../prefix-vars';
  * @return {boolean} Whether a specific post type is hierarchical.
  */
 export function AtrcUseIsPostTypeHierarchical(postType) {
-	return useSelect(
-		(select) => {
-			const type = select(coreStore).getPostType(postType);
-			return type?.viewable && type?.hierarchical;
-		},
-		[postType]
-	);
+    return useSelect(
+        (select) => {
+            const type = select(coreStore).getPostType(postType);
+            return type?.viewable && type?.hierarchical;
+        },
+        [postType]
+    );
 }
 const excludedPostTypes = [
-	'attachment',
-	'gutentor-fonts',
-	'wp_template',
-	'gutentor-icons',
+    'attachment',
+    'gutentor-fonts',
+    'wp_template',
+    'gutentor-icons',
 ];
 
 export function AtrcControlGetPostTypeOptions(props = {}) {
-	const { tax = '', showOptionNone = false, optionNoneValue = '' } = props;
+    const { tax = '', showOptionNone = false, optionNoneValue = '', optionNoneLabel = '' } = props;
 
-	const postTypes = useSelect((select) => {
-		const { getPostTypes } = select(coreStore);
+    const postTypes = useSelect((select) => {
+        const { getPostTypes } = select(coreStore);
 
-		const filteredPostTypes = getPostTypes({ per_page: -1 })?.filter(
-			({ viewable, slug }) => viewable && !excludedPostTypes.includes(slug)
-		);
-		return filteredPostTypes;
-	}, []);
+        const filteredPostTypes = getPostTypes({ per_page: -1 })?.filter(
+            ({ viewable, slug }) => viewable && !excludedPostTypes.includes(slug)
+        );
+        return filteredPostTypes;
+    }, []);
 
-	const options = useMemo(() => {
-		const baseOptions = [];
+    const options = useMemo(() => {
+        const baseOptions = [];
 
-		(postTypes || []).forEach(({ labels, slug, taxonomies }) => {
-			if (!tax) {
-				baseOptions.push({
-					label: labels.singular_name,
-					value: slug,
-				});
-			} else if (taxonomies.includes(tax)) {
-				baseOptions.push({
-					label: labels.singular_name,
-					value: slug,
-				});
-			}
-		});
+        (postTypes || []).forEach(({ labels, slug, taxonomies }) => {
+            if (!tax) {
+                baseOptions.push({
+                    label: labels.singular_name,
+                    value: slug,
+                });
+            } else if (taxonomies.includes(tax)) {
+                baseOptions.push({
+                    label: labels.singular_name,
+                    value: slug,
+                });
+            }
+        });
 
-		if (showOptionNone) {
-			return [
-				{
-					value: optionNoneValue,
-					label: __('Select', 'atrc-prefix-atrc'),
-				},
-				...baseOptions,
-			];
-		}
+        if (showOptionNone) {
+            return [
+                {
+                    value: optionNoneValue,
+                    label: optionNoneLabel,
+                },
+                ...baseOptions,
+            ];
+        }
 
-		return baseOptions;
-	}, [tax, postTypes, showOptionNone]);
+        return baseOptions;
+    }, [tax, postTypes, showOptionNone]);
 
-	return options;
+    return options;
 }
 
 /*AtrcControlSelectPostType*/
 function AtrcControlSelectPostType(props) {
-	const {
-		label,
-		value,
-		onChange,
-		showOptionNone = true,
-		optionNoneValue = '',
-		variant = '',
-		className = '',
-		...defaultProps
-	} = props;
+    const {
+        label,
+        value,
+        onChange,
+        showOptionNone = true,
+        optionNoneValue = '',
+        optionNoneLabel = __('Select', 'atrc-prefix-atrc'),
+        variant = '',
+        className = '',
+        ...defaultProps
+    } = props;
 
-	const options = AtrcControlGetPostTypeOptions({
-		showOptionNone,
-		optionNoneValue,
-	});
+    const options = AtrcControlGetPostTypeOptions({
+        showOptionNone,
+        optionNoneValue,
+        optionNoneLabel,
+    });
 
-	if (!options || !options.length) {
-		return (
-			<AtrcNotice
-				autoDismiss={false}
-				isDismissible={false}>
-				{__('No types found!', 'atrc-prefix-atrc')}
-			</AtrcNotice>
-		);
-	}
+    if (!options || !options.length) {
+        return (
+            <AtrcNotice
+                autoDismiss={false}
+                isDismissible={false}>
+                {__('No types found!', 'atrc-prefix-atrc')}
+            </AtrcNotice>
+        );
+    }
 
-	return (
-		<AtrcControlSelect
-			label={label}
-			className={classnames(
-				AtrcPrefix('ctrl-select-post-type'),
-				className,
-				variant ? AtrcPrefix('ctrl-select-post-type') + '-' + variant : ''
-			)}
-			value={value}
-			onChange={onChange}
-			options={options}
-			{...defaultProps}
-		/>
-	);
+    return (
+        <AtrcControlSelect
+            label={label}
+            className={classnames(
+                AtrcPrefix('ctrl-select-post-type'),
+                className,
+                variant ? AtrcPrefix('ctrl-select-post-type') + '-' + variant : ''
+            )}
+            value={value}
+            onChange={onChange}
+            options={options}
+            {...defaultProps}
+        />
+    );
 }
 
 export default AtrcControlSelectPostType;

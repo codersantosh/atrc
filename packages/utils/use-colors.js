@@ -1,154 +1,203 @@
 import React from 'react';
 
 /* WordPress */
-import { useState, useEffect } from '@wordpress/element';
+import { useState, useEffect, useMemo } from '@wordpress/element';
 import { select } from '@wordpress/data';
 import { useSetting } from '@wordpress/block-editor';
+import { _x } from '@wordpress/i18n';
 
 /* Library */
 import { isEmpty } from 'lodash';
 
 /* Local */
-const DefaultColors = () => {
-	return {
-		colors: [
-			{
-				color: 'var(#{$varPrefix}-white)fff',
-				name: 'Base',
-				slug: 'base',
-			},
-			{
-				color: '#000000',
-				name: 'Contrast',
-				slug: 'contrast',
-			},
-			{
-				color: '#9DFF20',
-				name: 'Primary',
-				slug: 'primary',
-			},
-			{
-				color: '#345C00',
-				name: 'Secondary',
-				slug: 'secondary',
-			},
-			{
-				color: '#F6F6F6',
-				name: 'Tertiary',
-				slug: 'tertiary',
-			},
-		],
-		gradients: [
-			{
-				slug: 'vertical-secondary-to-tertiary',
-				gradient:
-					'linear-gradient(to bottom,var(--wp--preset--color--secondary) 0%,var(--wp--preset--color--tertiary) 100%)',
-				name: 'Vertical secondary to tertiary',
-			},
-			{
-				slug: 'vertical-secondary-to-background',
-				gradient:
-					'linear-gradient(to bottom,var(--wp--preset--color--secondary) 0%,var(--wp--preset--color--background) 100%)',
-				name: 'Vertical secondary to background',
-			},
-			{
-				slug: 'vertical-tertiary-to-background',
-				gradient:
-					'linear-gradient(to bottom,var(--wp--preset--color--tertiary) 0%,var(--wp--preset--color--background) 100%)',
-				name: 'Vertical tertiary to background',
-			},
-			{
-				slug: 'diagonal-primary-to-foreground',
-				gradient:
-					'linear-gradient(to bottom right,var(--wp--preset--color--primary) 0%,var(--wp--preset--color--foreground) 100%)',
-				name: 'Diagonal primary to foreground',
-			},
-			{
-				slug: 'diagonal-secondary-to-background',
-				gradient:
-					'linear-gradient(to bottom right,var(--wp--preset--color--secondary) 50%,var(--wp--preset--color--background) 50%)',
-				name: 'Diagonal secondary to background',
-			},
-			{
-				slug: 'diagonal-background-to-secondary',
-				gradient:
-					'linear-gradient(to bottom right,var(--wp--preset--color--background) 50%,var(--wp--preset--color--secondary) 50%)',
-				name: 'Diagonal background to secondary',
-			},
-			{
-				slug: 'diagonal-tertiary-to-background',
-				gradient:
-					'linear-gradient(to bottom right,var(--wp--preset--color--tertiary) 50%,var(--wp--preset--color--background) 50%)',
-				name: 'Diagonal tertiary to background',
-			},
-			{
-				slug: 'diagonal-background-to-tertiary',
-				gradient:
-					'linear-gradient(to bottom right,var(--wp--preset--color--background) 50%,var(--wp--preset--color--tertiary) 50%)',
-				name: 'Diagonal background to tertiary',
-			},
-		],
-	};
-};
+export function AtrcUseColorSolids(props = {}) {
+    const { useCSSVariables = false } = props;
+    const [allSolids, setAllSolids] = useState([]);
 
-export function AtrcUseColorSolids() {
-	const [allSolids, setAllSolids] = useState([]);
+    const userPalette = useSetting('color.palette.custom');
+    const themePalette = useSetting('color.palette.theme');
+    const defaultPalette = useSetting('color.palette.default');
+    const shouldDisplayDefaultColors = useSetting('color.defaultPalette');
 
-	const userPalette = useSetting('color.palette.custom');
-	const themePalette = useSetting('color.palette.theme');
-	const defaultPalette = useSetting('color.palette.default');
+    return useMemo(() => {
+        let themePalatteSolids = [];
+        let defaultPaletteSolids = [];
+        let userPaletteSolids = [];
 
-	useEffect(() => {
-		let solids = [
-			...(userPalette || []),
-			...(themePalette || []),
-			...(defaultPalette || []),
-		];
-		if (isEmpty(solids)) {
-			solids = select('core/block-editor').getSettings().colors;
-		}
-		if (isEmpty(solids)) {
-			solids = [...DefaultColors().colors];
-		}
-		setAllSolids(solids);
-	}, [userPalette, themePalette, defaultPalette]);
+        if (themePalette) {
+            if (useCSSVariables) {
+                themePalatteSolids = themePalette.map((themeColor) => ({
+                    name: themeColor.name,
+                    color: `var(--wp--preset--color--${themeColor.slug})`,
+                }));
+            } else {
+                themePalatteSolids = [...themePalette];
+            }
+        }
+        if (defaultPalette) {
+            if (useCSSVariables) {
+                defaultPaletteSolids = defaultPalette.map((themeColor) => ({
+                    name: themeColor.name,
+                    color: `var(--wp--preset--color--${themeColor.slug})`,
+                }));
+            } else {
+                defaultPaletteSolids = [...defaultPalette];
+            }
+        }
 
-	return allSolids;
+        if (userPalette) {
+            if (useCSSVariables) {
+                userPaletteSolids = userPalette.map((themeColor) => ({
+                    name: themeColor.name,
+                    color: `var(--wp--preset--color--${themeColor.slug})`,
+                }));
+            } else {
+                userPaletteSolids = [...userPalette];
+            }
+        }
+
+        const result = [];
+        if (themePalatteSolids && themePalatteSolids.length) {
+            result.push({
+                name: _x(
+                    'Theme',
+                    'Indicates this palette comes from the theme.',
+                    'atrc-prefix-atrc'
+                ),
+                colors: themePalatteSolids,
+            });
+        }
+        if (
+            shouldDisplayDefaultColors &&
+            defaultPaletteSolids &&
+            defaultPaletteSolids.length
+        ) {
+            result.push({
+                name: _x(
+                    'Default',
+                    'Indicates this palette comes from WordPress.',
+                    'atrc-prefix-atrc'
+                ),
+                colors: defaultPaletteSolids,
+            });
+        }
+        if (userPaletteSolids && userPaletteSolids.length) {
+            result.push({
+                name: _x(
+                    'Custom',
+                    'Indicates this palette is created by the user.',
+                    'atrc-prefix-atrc'
+                ),
+                colors: userPaletteSolids,
+            });
+        }
+        return result;
+    }, [
+        userPalette,
+        themePalette,
+        defaultPalette,
+        shouldDisplayDefaultColors,
+    ]);
 }
 
-export function AtrcUseColorGradients() {
-	const [allGradients, setAllGradients] = useState([]);
+export function AtrcUseColorGradients(props = {}) {
+    const { useCSSVariables = true } = props;
+    const userGradientPalette = useSetting('color.gradients.custom');
+    const themeGradientPalette = useSetting('color.gradients.theme');
+    const defaultGradientPalette = useSetting('color.gradients.default');
+    const shouldDisplayDefaultGradients = useSetting('color.defaultGradients');
 
-	const userGradientPalette = useSetting('color.gradients.custom');
-	const themeGradientPalette = useSetting('color.gradients.theme');
-	const defaultGradientPalette = useSetting('color.gradients.default');
+    return useMemo(() => {
+        let themeGradientSolids = [];
+        let defaultGradientSolids = [];
+        let userGradientSolids = [];
 
-	useEffect(() => {
-		let gradientsColor = [
-			...(userGradientPalette || []),
-			...(themeGradientPalette || []),
-			...(defaultGradientPalette || []),
-		];
-		if (isEmpty(gradientsColor)) {
-			gradientsColor = select('core/block-editor').getSettings().gradients;
-		}
-		if (isEmpty(gradientsColor)) {
-			gradientsColor = [...DefaultColors().gradients];
-		}
-		setAllGradients(gradientsColor);
-	}, [userGradientPalette, themeGradientPalette, defaultGradientPalette]);
+        if (themeGradientPalette) {
+            if (useCSSVariables) {
+                themeGradientSolids = themeGradientPalette.map((gradient) => ({
+                    name: gradient.name,
+                    gradient: `var(--wp--preset--gradient--${gradient.slug})`,
+                }));
+            } else {
+                themeGradientSolids = [...themeGradientPalette];
+            }
+        }
+        if (defaultGradientPalette) {
+            if (useCSSVariables) {
+                defaultGradientSolids = defaultGradientPalette.map((gradient) => ({
+                    name: gradient.name,
+                    gradient: `var(--wp--preset--gradient--${gradient.slug})`,
+                }));
+            } else {
+                defaultGradientSolids = [...defaultGradientPalette];
+            }
+        }
 
-	return allGradients;
+        if (userGradientPalette) {
+            if (useCSSVariables) {
+                userGradientSolids = userGradientPalette.map((gradient) => ({
+                    name: gradient.name,
+                    gradient: `var(--wp--preset--gradient--${gradient.slug})`,
+                }));
+            } else {
+                userGradientSolids = [...userGradientPalette];
+            }
+        }
+
+        const result = [];
+        if (themeGradientSolids && themeGradientSolids.length) {
+            result.push({
+                name: _x(
+                    'Theme',
+                    'Indicates this gradient comes from the theme.',
+                    'atrc-prefix-atrc'
+                ),
+                gradients: themeGradientSolids,
+            });
+        }
+        if (
+            shouldDisplayDefaultGradients &&
+            defaultGradientSolids &&
+            defaultGradientSolids.length
+        ) {
+            result.push({
+                name: _x(
+                    'Default',
+                    'Indicates this gradient comes from WordPress.',
+                    'atrc-prefix-atrc'
+                ),
+                gradients: defaultGradientSolids,
+            });
+        }
+        if (userGradientSolids && userGradientSolids.length) {
+            result.push({
+                name: _x(
+                    'Custom',
+                    'Indicates this gradient is created by the user.',
+                    'atrc-prefix-atrc'
+                ),
+                gradients: userGradientSolids,
+            });
+        }
+        return result;
+    }, [
+        userGradientPalette,
+        themeGradientPalette,
+        defaultGradientPalette,
+        shouldDisplayDefaultGradients,
+        useCSSVariables,
+    ]);
 }
+
 
 const AtrcUseColors = () => {
-	const allSolids = AtrcUseColorSolids();
-	const allGradients = AtrcUseColorGradients();
+    const allSolids = AtrcUseColorSolids();
+    const allGradients = AtrcUseColorGradients();
 
-	return {
-		allSolids,
-		allGradients,
-	};
+    return {
+        allSolids,
+        allGradients,
+    };
 };
 
 export default AtrcUseColors;

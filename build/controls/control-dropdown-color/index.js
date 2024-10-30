@@ -1,7 +1,7 @@
-var _excluded = ["label", "value", "onChange", "variant", "className"];
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+var _excluded = ["label", "value", "onChange", "variant", "className", "useCSSVariables"];
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var s = Object.getOwnPropertySymbols(e); for (r = 0; r < s.length; r++) o = s[r], t.includes(o) || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
+function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (e.includes(n)) continue; t[n] = r[n]; } return t; }
 import React from 'react';
 
 /*Attributes Structure
@@ -17,8 +17,10 @@ import classnames from 'classnames';
 
 /*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
+import AtrcWrapLib from '../../atoms/wrap-lib';
 import AtrcLabel from '../../atoms/label';
 import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
+import { AtrcResetWrap } from '../../atoms/reset-button-icon';
 
 /* Molecules */
 import AtrcDropdown from '../../molecules/dropdown';
@@ -32,9 +34,8 @@ import { AtrcUseColorSolids } from '../../utils/use-colors';
 /*Local*/
 export var AtrcControlDropdownColorAllowedKeys = ['cl'];
 var RenderControl = function RenderControl(props) {
-  var allSolids = AtrcUseColorSolids();
   var _props$label = props.label,
-    label = _props$label === void 0 ? '' : _props$label,
+    label = _props$label === void 0 ? __('Color', 'atrc-prefix-atrc') : _props$label,
     value = props.value,
     _props$onChange = props.onChange,
     onChange = _props$onChange === void 0 ? function () {} : _props$onChange,
@@ -42,7 +43,12 @@ var RenderControl = function RenderControl(props) {
     variant = _props$variant === void 0 ? '' : _props$variant,
     _props$className = props.className,
     className = _props$className === void 0 ? '' : _props$className,
+    _props$useCSSVariable = props.useCSSVariables,
+    useCSSVariables = _props$useCSSVariable === void 0 ? true : _props$useCSSVariable,
     defaultProps = _objectWithoutProperties(props, _excluded);
+  var allSolids = AtrcUseColorSolids({
+    useCSSVariables: useCSSVariables
+  });
   return /*#__PURE__*/React.createElement(AtrcDropdown, _extends({
     className: classnames(AtrcPrefix('ctrl-dropdown-cl'), className, variant ? AtrcPrefix('ctrl-dropdown-cl') + '-' + variant : ''),
     renderToggle: function renderToggle(_ref) {
@@ -53,9 +59,9 @@ var RenderControl = function RenderControl(props) {
         onClick: onToggle
       }, /*#__PURE__*/React.createElement(ColorIndicator, {
         colorValue: value
-      }), /*#__PURE__*/React.createElement(AtrcLabel, {
+      }), label ? /*#__PURE__*/React.createElement(AtrcLabel, {
         variant: "color-picker"
-      }, label || __('Color', 'atrc-prefix-atrc')));
+      }, label) : null);
     },
     renderContent: function renderContent() {
       return /*#__PURE__*/React.createElement(ColorPalette, {
@@ -74,18 +80,24 @@ var AtrcControlDropdownColor = function AtrcControlDropdownColor(props) {
     allowReset = _props$allowReset === void 0 ? true : _props$allowReset,
     _props$value = props.value,
     value = _props$value === void 0 ? '' : _props$value,
-    onChange = props.onChange;
-  if (allowReset) {
-    return /*#__PURE__*/React.createElement(AtrcWrap, {
-      className: classnames(AtrcPrefix('dropdown-cl'), 'at-flx', 'at-al-itm-ctr', 'at-jfy-cont-btw', 'at-gap')
-    }, /*#__PURE__*/React.createElement(RenderControl, props), /*#__PURE__*/React.createElement(AtrcResetButtonIcon, {
-      value: value,
-      onClick: function onClick() {
-        return onChange('');
-      }
-    }));
-  }
-  return /*#__PURE__*/React.createElement(RenderControl, props);
+    _props$defaultValue = props.defaultValue,
+    defaultValue = _props$defaultValue === void 0 ? '' : _props$defaultValue,
+    onChange = props.onChange,
+    _props$wrapProps = props.wrapProps,
+    wrapProps = _props$wrapProps === void 0 ? {} : _props$wrapProps,
+    _props$resetWrapProps = props.resetWrapProps,
+    resetWrapProps = _props$resetWrapProps === void 0 ? {} : _props$resetWrapProps;
+  return /*#__PURE__*/React.createElement(AtrcWrapLib, _extends({
+    className: classnames('at-flx-grw-1', AtrcPrefix('dropdown-cl'))
+  }, wrapProps), allowReset ? /*#__PURE__*/React.createElement(AtrcResetWrap, _extends({}, resetWrapProps, {
+    className: classnames(AtrcPrefix('dropdown-cl-rst'), resetWrapProps.className ? resetWrapProps.className : '')
+  }), /*#__PURE__*/React.createElement(RenderControl, props), /*#__PURE__*/React.createElement(AtrcResetButtonIcon, {
+    value: value,
+    defaultValue: defaultValue,
+    onClick: function onClick() {
+      return onChange(defaultValue);
+    }
+  })) : /*#__PURE__*/React.createElement(RenderControl, props));
 };
 export default AtrcControlDropdownColor;
 //# sourceMappingURL=index.js.map

@@ -251,6 +251,10 @@
 }
 
 /* ProgressBar horizontal Styles */
+.at-prog-cir .at-svg {
+  fill: none !important;
+}
+
 .at-prog {
   /* Track */
   --at-bg-cl: #E5EDE6;
@@ -303,9 +307,6 @@
   --at-bar-strk-dashoffest: 90;
   --at-bar-trs: stroke-dashoffset 1s ease-in-out;
   stroke-width: var(--at-strk-w);
-}
-.at-prog-cir .at-svg {
-  fill: none !important;
 }
 .at-prog-cir .at-svg {
   -webkit-transform: rotate(90deg);
@@ -444,12 +445,17 @@
 .at-logo .at-lnk-nav {
   --at-opa: 1;
   --at-bdr-w: 0;
+  --at-p: 0;
 }
 .at-logo .at-lnk-active {
   --at-opa: 1;
 }
 
 /* ProgressBar horizontal Styles */
+.at-prog-cir .at-svg {
+  fill: none !important;
+}
+
 .at-prog {
   /* Track */
   --at-bg-cl: var(--at-secondary, #e8f3eb);
@@ -505,9 +511,6 @@
   --at-bar-strk-dashoffest: 90;
   --at-bar-trs: stroke-dashoffset 1s ease-in-out;
   stroke-width: var(--at-strk-w);
-}
-.at-prog-cir .at-svg {
-  fill: none !important;
 }
 .at-prog-cir .at-svg {
   -webkit-transform: rotate(90deg);

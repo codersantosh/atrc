@@ -14,8 +14,10 @@ import classnames from 'classnames';
 
 /*Atoms*/
 import AtrcWrap from '../../atoms/wrap';
+import AtrcWrapLib from '../../atoms/wrap-lib';
 import AtrcLabel from '../../atoms/label';
 import AtrcResetButtonIcon from '../../atoms/reset-button-icon';
+import { AtrcResetWrap } from '../../atoms/reset-button-icon';
 
 /* Molecules */
 import AtrcDropdown from '../../molecules/dropdown';
@@ -30,16 +32,17 @@ import { AtrcUseColorSolids } from '../../utils/use-colors';
 export const AtrcControlDropdownColorAllowedKeys = ['cl'];
 
 const RenderControl = (props) => {
-	const allSolids = AtrcUseColorSolids();
-
 	const {
-		label = '',
+		label = __('Color', 'atrc-prefix-atrc'),
 		value,
 		onChange = () => {},
 		variant = '',
 		className = '',
+		useCSSVariables = true,
 		...defaultProps
 	} = props;
+
+	const allSolids = AtrcUseColorSolids({ useCSSVariables: useCSSVariables });
 
 	return (
 		<AtrcDropdown
@@ -53,9 +56,7 @@ const RenderControl = (props) => {
 					className='at-flx at-al-itm-ctr at-gap'
 					onClick={onToggle}>
 					<ColorIndicator colorValue={value} />
-					<AtrcLabel variant='color-picker'>
-						{label || __('Color', 'atrc-prefix-atrc')}
-					</AtrcLabel>
+					{label ? <AtrcLabel variant='color-picker'>{label}</AtrcLabel> : null}
 				</AtrcWrap>
 			)}
 			renderContent={() => (
@@ -74,27 +75,37 @@ const RenderControl = (props) => {
 };
 
 const AtrcControlDropdownColor = (props) => {
-	const { allowReset = true, value = '', onChange } = props;
+	const {
+		allowReset = true,
+		value = '',
+		defaultValue = '',
+		onChange,
+		wrapProps = {},
+		resetWrapProps = {},
+	} = props;
 
-	if (allowReset) {
-		return (
-			<AtrcWrap
-				className={classnames(
-					AtrcPrefix('dropdown-cl'),
-					'at-flx',
-					'at-al-itm-ctr',
-					'at-jfy-cont-btw',
-					'at-gap'
-				)}>
+	return (
+		<AtrcWrapLib
+			className={classnames('at-flx-grw-1', AtrcPrefix('dropdown-cl'))}
+			{...wrapProps}>
+			{allowReset ? (
+				<AtrcResetWrap
+					{...resetWrapProps}
+					className={classnames(
+						AtrcPrefix('dropdown-cl-rst'),
+						resetWrapProps.className ? resetWrapProps.className : ''
+					)}>
+					<RenderControl {...props} />
+					<AtrcResetButtonIcon
+						value={value}
+						defaultValue={defaultValue}
+						onClick={() => onChange(defaultValue)}
+					/>
+				</AtrcResetWrap>
+			) : (
 				<RenderControl {...props} />
-				<AtrcResetButtonIcon
-					value={value}
-					onClick={() => onChange('')}
-				/>
-			</AtrcWrap>
-		);
-	}
-
-	return <RenderControl {...props} />;
+			)}
+		</AtrcWrapLib>
+	);
 };
 export default AtrcControlDropdownColor;
