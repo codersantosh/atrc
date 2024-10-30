@@ -21,7 +21,7 @@ const AtrcControlBorderCss = ({
 }) => {
 	const output = { xs: '' };
 
-	if (!isEmpty(value)) {
+	if (value && !isEmpty(value)) {
 		/* Color */
 		if (value.cl) {
 			output.xs += `${properties.borderColor} : ${value.cl};`;

@@ -424,5 +424,5 @@ export { default as AtrcPrefix } from './prefix-vars';
 Instead of using import { Route, Routes, Navigate } from 'react-router-dom';
 use following prefix Atrc
 */
-export { HashRouter as AtrcHashRouter, BrowserRouter as AtrcBrowserRouter, Route as AtrcRoute, Routes as AtrcRoutes, useParams as AtrcUseParams, useNavigate as AtrcUseNavigate, useLocation as AtrcUseLocation, Navigate as AtrcNavigate } from 'react-router-dom';
+export { HashRouter as AtrcHashRouter, BrowserRouter as AtrcBrowserRouter, Route as AtrcRoute, Routes as AtrcRoutes, useParams as AtrcUseParams, useNavigate as AtrcUseNavigate, useLocation as AtrcUseLocation, Navigate as AtrcNavigate, Outlet as AtrcOutlet } from 'react-router-dom';
 //# sourceMappingURL=index.js.map

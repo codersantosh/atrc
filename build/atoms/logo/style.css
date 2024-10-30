@@ -4,6 +4,7 @@
 .at-logo .at-lnk-nav {
   --at-opa: 1;
   --at-bdr-w: 0;
+  --at-p: 0;
 }
 .at-logo .at-lnk-active {
   --at-opa: 1;

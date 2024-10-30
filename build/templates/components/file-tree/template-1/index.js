@@ -1,7 +1,7 @@
 var _excluded = ["className", "value", "rootName"];
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var s = Object.getOwnPropertySymbols(e); for (r = 0; r < s.length; r++) o = s[r], t.includes(o) || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
+function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (e.includes(n)) continue; t[n] = r[n]; } return t; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 import React from 'react';
 
@@ -25,7 +25,7 @@ import AtrcLi from '../../../../molecules/list/li';
 import AtrcPrefix from '../../../../prefix-vars';
 
 /* Local */
-var FileTree = function FileTree(_ref) {
+var _FileTree = function FileTree(_ref) {
   var data = _ref.data,
     _ref$name = _ref.name,
     name = _ref$name === void 0 ? '' : _ref$name;
@@ -53,7 +53,7 @@ var FileTree = function FileTree(_ref) {
     }), /*#__PURE__*/React.createElement(AtrcText, {
       tag: "h6",
       className: classnames('at-tree-folder-ttl-txt', 'at-m')
-    }, name)), /*#__PURE__*/React.createElement(FileTree, {
+    }, name)), /*#__PURE__*/React.createElement(_FileTree, {
       name: "",
       data: data
     })));
@@ -62,7 +62,7 @@ var FileTree = function FileTree(_ref) {
     return /*#__PURE__*/React.createElement(AtrcList, {
       className: classnames('at-tree', 'at-flx', 'at-flx-col', 'at-gap', 'at-m')
     }, Object.keys(data).map(function (key) {
-      return /*#__PURE__*/React.createElement(FileTree, {
+      return /*#__PURE__*/React.createElement(_FileTree, {
         key: key,
         name: key,
         data: data[key]
@@ -83,7 +83,7 @@ var AtrcFileTreeTemplate1 = function AtrcFileTreeTemplate1(props) {
   }, defaultProps), rootName ? /*#__PURE__*/React.createElement(AtrcText, {
     tag: "h6",
     className: classnames('at-m', 'at-tree-ttl')
-  }, __('Folder', 'atrc-prefix-atrc')) : null, /*#__PURE__*/React.createElement(FileTree, {
+  }, rootName) : null, /*#__PURE__*/React.createElement(_FileTree, {
     data: value
   }));
 };

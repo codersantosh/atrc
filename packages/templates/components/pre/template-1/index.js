@@ -25,7 +25,7 @@ const AtrcPreTemplate1 = (props) => {
 			{...defaultProps}>
 			<AtrcWrap
 				tag='pre'
-				className='at-pre'>
+				className={classnames('at-pre', 'at-m')}>
 				{children || content}
 			</AtrcWrap>
 		</AtrcWrap>

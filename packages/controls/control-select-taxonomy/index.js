@@ -20,82 +20,84 @@ import AtrcPrefix from '../../prefix-vars';
 
 /* Local*/
 export function AtrcControlGetTaxonomyOptions(props = {}) {
-	const { postType = '', showOptionNone = false, optionNoneValue = '' } = props;
+    const { postType = '', showOptionNone = false, optionNoneValue = '', optionNoneLabel = '' } = props;
 
-	const taxonomies = AtrcUseTaxonomies({ postType });
-	const ExcludeTaxonomies = ['nav_menu'];
+    const taxonomies = AtrcUseTaxonomies({ postType });
+    const ExcludeTaxonomies = ['nav_menu'];
 
-	const options = useMemo(() => {
-		const baseOptions = [];
+    const options = useMemo(() => {
+        const baseOptions = [];
 
-		(taxonomies || []).forEach(({ name, slug }) => {
-			if (!ExcludeTaxonomies.includes(slug)) {
-				baseOptions.push({
-					label: name,
-					value: slug,
-				});
-			}
-		});
+        (taxonomies || []).forEach(({ name, slug }) => {
+            if (!ExcludeTaxonomies.includes(slug)) {
+                baseOptions.push({
+                    label: name,
+                    value: slug,
+                });
+            }
+        });
 
-		if (showOptionNone) {
-			return [
-				{
-					value: optionNoneValue,
-					label: __('Select', 'atrc-prefix-atrc'),
-				},
-				...baseOptions,
-			];
-		}
+        if (showOptionNone) {
+            return [
+                {
+                    value: optionNoneValue,
+                    label: optionNoneLabel,
+                },
+                ...baseOptions,
+            ];
+        }
 
-		return baseOptions;
-	}, [taxonomies]);
+        return baseOptions;
+    }, [taxonomies]);
 
-	return options;
+    return options;
 }
 
 /*AtrcControlSelectTaxonomy*/
 function AtrcControlSelectTaxonomy(props) {
-	const {
-		label,
-		value,
-		onChange,
-		showOptionNone = true,
-		optionNoneValue = '',
-		variant = '',
-		className = '',
-		postType = '',
-		...defaultProps
-	} = props;
+    const {
+        label,
+        value,
+        onChange,
+        showOptionNone = true,
+        optionNoneValue = '',
+        optionNoneLabel = __('Select', 'atrc-prefix-atrc'),
+        variant = '',
+        className = '',
+        postType = '',
+        ...defaultProps
+    } = props;
 
-	const options = AtrcControlGetTaxonomyOptions({
-		postType,
-		showOptionNone,
-		optionNoneValue,
-	});
+    const options = AtrcControlGetTaxonomyOptions({
+        postType,
+        showOptionNone,
+        optionNoneValue,
+        optionNoneLabel
+    });
 
-	if (!options || !options.length) {
-		return (
-			<AtrcNotice
-				autoDismiss={false}
-				isDismissible={false}>
-				{__('No taxonomies found!', 'atrc-prefix-atrc')}
-			</AtrcNotice>
-		);
-	}
-	return (
-		<AtrcControlSelect
-			label={label}
-			className={classnames(
-				AtrcPrefix('ctrl-select-taxonomy'),
-				className,
-				variant ? AtrcPrefix('ctrl-select-taxonomy') + '-' + variant : ''
-			)}
-			value={value}
-			onChange={onChange}
-			options={options}
-			{...defaultProps}
-		/>
-	);
+    if (!options || !options.length) {
+        return (
+            <AtrcNotice
+                autoDismiss={false}
+                isDismissible={false}>
+                {__('No taxonomies found!', 'atrc-prefix-atrc')}
+            </AtrcNotice>
+        );
+    }
+    return (
+        <AtrcControlSelect
+            label={label}
+            className={classnames(
+                AtrcPrefix('ctrl-select-taxonomy'),
+                className,
+                variant ? AtrcPrefix('ctrl-select-taxonomy') + '-' + variant : ''
+            )}
+            value={value}
+            onChange={onChange}
+            options={options}
+            {...defaultProps}
+        />
+    );
 }
 
 export default AtrcControlSelectTaxonomy;

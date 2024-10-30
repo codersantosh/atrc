@@ -1,3 +1,7 @@
+var _excluded = ["value", "label", "onChange", "variant", "className", "allowedTabs"];
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var s = Object.getOwnPropertySymbols(e); for (r = 0; r < s.length; r++) o = s[r], t.includes(o) || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
+function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (e.includes(n)) continue; t[n] = r[n]; } return t; }
 import React from 'react';
 
 /*Value Structure
@@ -39,7 +43,8 @@ var AtrcControlDropdownColorTab = function AtrcControlDropdownColorTab(props) {
     _props$className = props.className,
     className = _props$className === void 0 ? '' : _props$className,
     _props$allowedTabs = props.allowedTabs,
-    allowedTabs = _props$allowedTabs === void 0 ? ['normal', 'hover'] : _props$allowedTabs;
+    allowedTabs = _props$allowedTabs === void 0 ? ['normal', 'hover'] : _props$allowedTabs,
+    defaultProps = _objectWithoutProperties(props, _excluded);
   var setAttr = function setAttr(newVal, type) {
     var valueCloned = cloneDeep(value);
     valueCloned[type] = newVal;
@@ -88,14 +93,14 @@ var AtrcControlDropdownColorTab = function AtrcControlDropdownColorTab(props) {
     tools: AllTabs
   }, function (activeItems) {
     return map(activeItems, function (tab, iDx) {
-      return /*#__PURE__*/React.createElement(AtrcControlDropdownColor, {
+      return /*#__PURE__*/React.createElement(AtrcControlDropdownColor, _extends({
         label: '',
         value: value && value[tab],
         onChange: function onChange(newVal) {
           return setAttr(newVal, tab);
         },
         key: iDx
-      });
+      }, defaultProps));
     });
   });
 };

@@ -5,6 +5,7 @@
   --at-t: 32px;
   --at-l: 160px;
 }
-.wp-admin .at-hdr-stky + #at-main {
+
+.at-has-hdr-stky #wpbody-content {
   margin-top: var(--at-m-t, 92px);
 }

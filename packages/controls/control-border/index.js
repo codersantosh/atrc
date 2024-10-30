@@ -7,19 +7,19 @@ Type Object
     sty: 'solid',
     w: '1px'
     =======OR==========
-	tCl: '#72aee6',
+    tCl: '#72aee6',
     tSty: 'solid',
     tW: '1px'
 
-	rCl: '#72aee6',
+    rCl: '#72aee6',
     rSty: 'solid',
     rW: '1px'
 
-	bCl: '#72aee6',
+    bCl: '#72aee6',
     bSty: 'solid',
     bW: '1px'
 
-	lCl: '#72aee6',
+    lCl: '#72aee6',
     lSty: 'solid',
     lW: '1px'
 }
@@ -43,6 +43,9 @@ import { AtrcControlBoxFourShorthandCssOnly } from '../control-box-four/css';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
+
+/* Utils */
+import { AtrcUseColorSolids } from '../../utils/use-colors';
 
 /*Local*/
 export const AtrcControlBorderAllowedKeys = [
@@ -91,41 +94,46 @@ const RenderBorderBoxControl = (props) => {
 		className = '',
 		value,
 		onChange,
+		useCSSVariables = true,
 		...defaultProps
 	} = props;
 
+	const allSolids = AtrcUseColorSolids({ useCSSVariables: useCSSVariables });
+
 	/*Color*/
 	const newObj = {};
-
-	if (value.cl || value.sty || value.w) {
-		newObj.color = value.cl;
-		newObj.style = value.sty;
-		newObj.width = value.w;
-	} else {
-		newObj.top = {
-			color: value.tCl,
-			style: value.tSty,
-			width: value.tW,
-		};
-		newObj.right = {
-			color: value.rCl,
-			style: value.rSty,
-			width: value.rW,
-		};
-		newObj.bottom = {
-			color: value.bCl,
-			style: value.bSty,
-			width: value.bW,
-		};
-		newObj.left = {
-			color: value.lCl,
-			style: value.lSty,
-			width: value.lW,
-		};
+	if (value) {
+		if (value.cl || value.sty || value.w) {
+			newObj.color = value.cl;
+			newObj.style = value.sty;
+			newObj.width = value.w;
+		} else {
+			newObj.top = {
+				color: value.tCl,
+				style: value.tSty,
+				width: value.tW,
+			};
+			newObj.right = {
+				color: value.rCl,
+				style: value.rSty,
+				width: value.rW,
+			};
+			newObj.bottom = {
+				color: value.bCl,
+				style: value.bSty,
+				width: value.bW,
+			};
+			newObj.left = {
+				color: value.lCl,
+				style: value.lSty,
+				width: value.lW,
+			};
+		}
 	}
 
 	return (
 		<BorderBoxControl
+			colors={allSolids}
 			label={label}
 			className={classnames(
 				AtrcPrefix('ctrl-bdr'),

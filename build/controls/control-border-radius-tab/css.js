@@ -21,7 +21,10 @@ var AtrcControlBorderRadiusTabCss = function AtrcControlBorderRadiusTabCss(value
     AtrcAvailableTabs.forEach(function (tab) {
       if (AtrcHasTabValues(tab, value, AtrcControlBorderRadiusAllowedKeys)) {
         var bdrRadVal = AtrcGetTabValues(value, tab, AtrcControlBorderRadiusAllowedKeys);
-        var bdrRadCss = AtrcControlBorderRadiusCss(bdrRadVal, property);
+        var bdrRadCss = AtrcControlBorderRadiusCss({
+          value: bdrRadVal,
+          property: property
+        });
         if (!isEmpty(bdrRadCss)) {
           forEach(bdrRadCss, function (item, itemKey) {
             if (tab === 'normal') {

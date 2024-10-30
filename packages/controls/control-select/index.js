@@ -35,6 +35,7 @@ export function AtrcDynamicSelect(props) {
 		onChange,
 		showOptionNone = false,
 		optionNoneValue = 0,
+        optionNoneLabel = __('Select', 'atrc-prefix-atrc'),
 		options,
 		className = '',
 		wrapProps = {},
@@ -54,7 +55,7 @@ export function AtrcDynamicSelect(props) {
 		options = [
 			{
 				value: optionNoneValue,
-				label: __('Select', 'atrc-prefix-atrc'),
+                label: optionNoneLabel,
 			},
 			...options,
 		];

@@ -231,8 +231,7 @@ a[disabled] {
   margin: var(--at-m);
   padding: var(--at-p);
   position: var(--at-pos);
-  -webkit-clip-path: var(--at-clp-pth);
-          clip-path: var(--at-clp-pth);
+  clip-path: var(--at-clp-pth);
   width: var(--at-w);
   height: var(--at-h);
 }
@@ -259,8 +258,7 @@ a[disabled] {
   height: var(--at-h);
   background-color: var(--at-bg-cl);
   color: var(--at-cl);
-  -webkit-clip-path: var(--at-clp-pth);
-          clip-path: var(--at-clp-pth);
+  clip-path: var(--at-clp-pth);
   top: var(--at-t);
   right: var(--at-l);
   padding: var(--at-p);
@@ -520,6 +518,10 @@ a[disabled] {
 }
 
 /* ProgressBar horizontal Styles */
+.at-prog-cir .at-svg {
+  fill: none !important;
+}
+
 .at-prog {
   /* Track */
   --at-bg-cl: #E5EDE6;
@@ -572,9 +574,6 @@ a[disabled] {
   --at-bar-strk-dashoffest: 90;
   --at-bar-trs: stroke-dashoffset 1s ease-in-out;
   stroke-width: var(--at-strk-w);
-}
-.at-prog-cir .at-svg {
-  fill: none !important;
 }
 .at-prog-cir .at-svg {
   -webkit-transform: rotate(90deg);
@@ -713,12 +712,17 @@ a[disabled] {
 .at-logo .at-lnk-nav {
   --at-opa: 1;
   --at-bdr-w: 0;
+  --at-p: 0;
 }
 .at-logo .at-lnk-active {
   --at-opa: 1;
 }
 
 /* ProgressBar horizontal Styles */
+.at-prog-cir .at-svg {
+  fill: none !important;
+}
+
 .at-prog {
   /* Track */
   --at-bg-cl: var(--at-secondary, #e8f3eb);
@@ -774,9 +778,6 @@ a[disabled] {
   --at-bar-strk-dashoffest: 90;
   --at-bar-trs: stroke-dashoffset 1s ease-in-out;
   stroke-width: var(--at-strk-w);
-}
-.at-prog-cir .at-svg {
-  fill: none !important;
 }
 .at-prog-cir .at-svg {
   -webkit-transform: rotate(90deg);
@@ -1097,6 +1098,9 @@ a[disabled] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.at-checkbox .components-base-control__field .components-flex {
+  gap: 10px;
 }
 .at-checkbox .components-checkbox-control__input-container {
   --at-m: 0;
@@ -2693,20 +2697,17 @@ a[disabled] {
 
 .at-hdr {
   --at-p: 20px;
+  --at-bg-cl: var(--at-white);
 }
 .at-hdr-stky {
   --at-pos: fixed;
   --at-t: 0;
   --at-r: 0;
   --at-l: 0;
-  --at-bg-cl: var(--at-white);
   --at-box-sdw: initial;
   --at-m: initial;
   --at-p: 0 20px;
   --at-z-idx: 99;
-}
-.at-hdr-stky + #at-main {
-  margin-top: var(--at-m-t, 92px);
 }
 
 .at-sdbar {
@@ -2833,6 +2834,9 @@ a[disabled] {
 }
 
 /* Changelog */
+.at-pre {
+  --at-m: 0;
+}
 .at-pre-tpl-1 {
   --at-bdr-cl: #d4d4d4;
   --at-bdr-w: 1px;

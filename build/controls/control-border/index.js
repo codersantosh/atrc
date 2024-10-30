@@ -1,7 +1,7 @@
-var _excluded = ["label", "variant", "className", "value", "onChange"];
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+var _excluded = ["label", "variant", "className", "value", "onChange", "useCSSVariables"];
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var s = Object.getOwnPropertySymbols(e); for (r = 0; r < s.length; r++) o = s[r], t.includes(o) || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
+function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (e.includes(n)) continue; t[n] = r[n]; } return t; }
 import React from 'react';
 
 /*Values Structure
@@ -11,19 +11,19 @@ Type Object
     sty: 'solid',
     w: '1px'
     =======OR==========
-	tCl: '#72aee6',
+    tCl: '#72aee6',
     tSty: 'solid',
     tW: '1px'
 
-	rCl: '#72aee6',
+    rCl: '#72aee6',
     rSty: 'solid',
     rW: '1px'
 
-	bCl: '#72aee6',
+    bCl: '#72aee6',
     bSty: 'solid',
     bW: '1px'
 
-	lCl: '#72aee6',
+    lCl: '#72aee6',
     lSty: 'solid',
     lW: '1px'
 }
@@ -47,6 +47,9 @@ import { AtrcControlBoxFourShorthandCssOnly } from '../control-box-four/css';
 
 /*Prefix*/
 import AtrcPrefix from '../../prefix-vars';
+
+/* Utils */
+import { AtrcUseColorSolids } from '../../utils/use-colors';
 
 /*Local*/
 export var AtrcControlBorderAllowedKeys = ['cl', 'sty', 'w', 'tCl', 'tSty', 'tW', 'rCl', 'rSty', 'rW', 'bCl', 'bSty', 'bW', 'lCl', 'lSty', 'lW'];
@@ -91,37 +94,45 @@ var RenderBorderBoxControl = function RenderBorderBoxControl(props) {
     className = _props$className === void 0 ? '' : _props$className,
     value = props.value,
     _onChange = props.onChange,
+    _props$useCSSVariable = props.useCSSVariables,
+    useCSSVariables = _props$useCSSVariable === void 0 ? true : _props$useCSSVariable,
     defaultProps = _objectWithoutProperties(props, _excluded);
+  var allSolids = AtrcUseColorSolids({
+    useCSSVariables: useCSSVariables
+  });
 
   /*Color*/
   var newObj = {};
-  if (value.cl || value.sty || value.w) {
-    newObj.color = value.cl;
-    newObj.style = value.sty;
-    newObj.width = value.w;
-  } else {
-    newObj.top = {
-      color: value.tCl,
-      style: value.tSty,
-      width: value.tW
-    };
-    newObj.right = {
-      color: value.rCl,
-      style: value.rSty,
-      width: value.rW
-    };
-    newObj.bottom = {
-      color: value.bCl,
-      style: value.bSty,
-      width: value.bW
-    };
-    newObj.left = {
-      color: value.lCl,
-      style: value.lSty,
-      width: value.lW
-    };
+  if (value) {
+    if (value.cl || value.sty || value.w) {
+      newObj.color = value.cl;
+      newObj.style = value.sty;
+      newObj.width = value.w;
+    } else {
+      newObj.top = {
+        color: value.tCl,
+        style: value.tSty,
+        width: value.tW
+      };
+      newObj.right = {
+        color: value.rCl,
+        style: value.rSty,
+        width: value.rW
+      };
+      newObj.bottom = {
+        color: value.bCl,
+        style: value.bSty,
+        width: value.bW
+      };
+      newObj.left = {
+        color: value.lCl,
+        style: value.lSty,
+        width: value.lW
+      };
+    }
   }
   return /*#__PURE__*/React.createElement(BorderBoxControl, _extends({
+    colors: allSolids,
     label: label,
     className: classnames(AtrcPrefix('ctrl-bdr'), 'at-flx-grw-1', className, variant ? AtrcPrefix('ctrl-bdr') + '-' + variant : ''),
     value: newObj,

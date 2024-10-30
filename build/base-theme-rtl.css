@@ -230,8 +230,7 @@ a[disabled] {
   margin: var(--at-m);
   padding: var(--at-p);
   position: var(--at-pos);
-  -webkit-clip-path: var(--at-clp-pth);
-          clip-path: var(--at-clp-pth);
+  clip-path: var(--at-clp-pth);
   width: var(--at-w);
   height: var(--at-h);
 }
@@ -258,8 +257,7 @@ a[disabled] {
   height: var(--at-h);
   background-color: var(--at-bg-cl);
   color: var(--at-cl);
-  -webkit-clip-path: var(--at-clp-pth);
-          clip-path: var(--at-clp-pth);
+  clip-path: var(--at-clp-pth);
   top: var(--at-t);
   right: var(--at-l);
   padding: var(--at-p);

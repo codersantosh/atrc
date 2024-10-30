@@ -112,7 +112,7 @@ const AtrcFileTreeTemplate1 = (props) => {
                 <AtrcText
                     tag='h6'
                     className={classnames('at-m', 'at-tree-ttl')}>
-                    {__('Folder', 'atrc-prefix-atrc')}
+                    {rootName}
                 </AtrcText>
             ) : null}
 

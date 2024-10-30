@@ -1,7 +1,7 @@
-var _excluded = ["label", "value", "onChange", "showOptionNone", "optionNoneValue", "variant", "className"];
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+var _excluded = ["label", "value", "onChange", "showOptionNone", "optionNoneValue", "optionNoneLabel", "variant", "className"];
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var s = Object.getOwnPropertySymbols(e); for (r = 0; r < s.length; r++) o = s[r], t.includes(o) || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
+function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (e.includes(n)) continue; t[n] = r[n]; } return t; }
 import React from 'react';
 
 /* WordPress*/
@@ -43,7 +43,9 @@ export function AtrcControlGetPostTypeOptions() {
     _props$showOptionNone = props.showOptionNone,
     showOptionNone = _props$showOptionNone === void 0 ? false : _props$showOptionNone,
     _props$optionNoneValu = props.optionNoneValue,
-    optionNoneValue = _props$optionNoneValu === void 0 ? '' : _props$optionNoneValu;
+    optionNoneValue = _props$optionNoneValu === void 0 ? '' : _props$optionNoneValu,
+    _props$optionNoneLabe = props.optionNoneLabel,
+    optionNoneLabel = _props$optionNoneLabe === void 0 ? '' : _props$optionNoneLabe;
   var postTypes = useSelect(function (select) {
     var _getPostTypes;
     var _select = select(coreStore),
@@ -78,7 +80,7 @@ export function AtrcControlGetPostTypeOptions() {
     if (showOptionNone) {
       return [{
         value: optionNoneValue,
-        label: __('Select', 'atrc-prefix-atrc')
+        label: optionNoneLabel
       }].concat(baseOptions);
     }
     return baseOptions;
@@ -95,6 +97,8 @@ function AtrcControlSelectPostType(props) {
     showOptionNone = _props$showOptionNone2 === void 0 ? true : _props$showOptionNone2,
     _props$optionNoneValu2 = props.optionNoneValue,
     optionNoneValue = _props$optionNoneValu2 === void 0 ? '' : _props$optionNoneValu2,
+    _props$optionNoneLabe2 = props.optionNoneLabel,
+    optionNoneLabel = _props$optionNoneLabe2 === void 0 ? __('Select', 'atrc-prefix-atrc') : _props$optionNoneLabe2,
     _props$variant = props.variant,
     variant = _props$variant === void 0 ? '' : _props$variant,
     _props$className = props.className,
@@ -102,7 +106,8 @@ function AtrcControlSelectPostType(props) {
     defaultProps = _objectWithoutProperties(props, _excluded);
   var options = AtrcControlGetPostTypeOptions({
     showOptionNone: showOptionNone,
-    optionNoneValue: optionNoneValue
+    optionNoneValue: optionNoneValue,
+    optionNoneLabel: optionNoneLabel
   });
   if (!options || !options.length) {
     return /*#__PURE__*/React.createElement(AtrcNotice, {

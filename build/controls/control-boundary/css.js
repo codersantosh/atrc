@@ -95,7 +95,10 @@ var AtrcControlBoundaryCss = function AtrcControlBoundaryCss(_ref) {
       }
     }
     if (value.bdrRad) {
-      var _gotCss4 = AtrcControlBorderRadiusCss(value.bdrRad, properties.borderRadius);
+      var _gotCss4 = AtrcControlBorderRadiusCss({
+        value: value.bdrRad,
+        properties: properties.borderRadius
+      });
       if (_gotCss4 && !isEmpty(_gotCss4)) {
         forEach(_gotCss4, function (item, itemKey) {
           output[itemKey] += item;

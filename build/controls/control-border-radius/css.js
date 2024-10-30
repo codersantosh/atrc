@@ -5,22 +5,26 @@ import React from 'react';
 import { AtrcControlBoxFourShorthandCssOnly } from '../control-box-four/css';
 
 /* Local */
-var AtrcControlBorderRadiusCss = function AtrcControlBorderRadiusCss(value) {
-  var property = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '--at-bdr-rad';
+var AtrcControlBorderRadiusCss = function AtrcControlBorderRadiusCss(_ref) {
+  var value = _ref.value,
+    _ref$property = _ref.property,
+    property = _ref$property === void 0 ? '--at-bdr-rad' : _ref$property;
   var output = {
     xs: ''
   };
-  if (_typeof(value) === 'object') {
-    output.xs += "".concat(property, ":").concat(AtrcControlBoxFourShorthandCssOnly({
-      value: {
-        t: value.tL,
-        r: value.tR,
-        b: value.bR,
-        l: value.bL
-      }
-    }), ";");
-  } else {
-    output.xs += "".concat(property, " : ").concat(value, ";");
+  if (value) {
+    if (_typeof(value) === 'object') {
+      output.xs += "".concat(property, ":").concat(AtrcControlBoxFourShorthandCssOnly({
+        value: {
+          t: value.tL,
+          r: value.tR,
+          b: value.bR,
+          l: value.bL
+        }
+      }), ";");
+    } else {
+      output.xs += "".concat(property, " : ").concat(value, ";");
+    }
   }
   return output;
 };
